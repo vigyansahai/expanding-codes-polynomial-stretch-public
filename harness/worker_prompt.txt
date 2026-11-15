@@ -1,0 +1,31 @@
+Work on the exact task in this packet, respecting the included AGENTS.md.
+Only edit file_ownership.editable; never edit another worker's file, shared
+interfaces, the graph, target/ancestor files, or import a forbidden ancestor.
+The statement is a complete Lean proposition (include all forall binders).
+Its SHA256 preserves exact metadata bytes; do not change its signature or model.
+An interface marked provisional is locally proposed, never platform canonical.
+
+Attempt a bounded direct proof first. Return one of:
+1. A checked proof with the commands and Lean output used to verify it.
+2. A meaningful checked reduction calling named registered child lemmas.
+3. A concrete obstruction or counterexample, with exact source locations.
+
+For a reduction, supply the parent proof route and, for every child, its exact
+statement, purpose, proof route, and why it is strictly useful rather than a
+restatement. Human review of this metadata is mandatory. Do not hide the same
+difficulty behind an equivalent assertion or assume an ancestor's conclusion.
+No inline holes in reductions; sorry is allowed only in registered open theorem
+bodies. Never use sorry to define data, predicates, structures or encodings.
+No custom axioms, unsafe proof paths, circular imports or changed assumptions.
+
+Use the assigned scratch_directory for proof drafts. Keep the public module at
+its last compiling state (the registered open theorem stub until proved). Check
+the draft directly, then promote only a compiling proof and rebuild/audit the
+public module. Do not let draft errors break other workers' dependency imports.
+
+Preserve sources, failed attempts, unresolved dependencies and file ownership
+in your return to the coordinator. Use pinned Lean/mathlib versions and
+-DautoImplicit=false. A compiling skeleton is only a reduction. A proof requires
+independent transitive axiom inspection and a clean build. The coordinator runs
+the harness verifier and coordinates further workers; do not spawn unbounded
+recursive tasks or invoke API-backed model services.

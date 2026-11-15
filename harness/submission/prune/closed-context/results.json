@@ -1,0 +1,30 @@
+[
+  {
+    "stage": "compile",
+    "exit_code": 0,
+    "elapsed_seconds": 72.5245931148529,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=harness/submission/prune/closed-context/Main.setup.json",
+      "-o",
+      "harness/submission/prune/closed-context/Main.olean",
+      "harness/submission/prune/Main.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce"
+  },
+  {
+    "stage": "audit",
+    "exit_code": 0,
+    "elapsed_seconds": 65.23191690444946,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=harness/submission/prune/closed-context/MainAudit.setup.json",
+      "harness/submission/prune/MainAudit.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce"
+  }
+]

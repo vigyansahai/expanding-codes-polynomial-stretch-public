@@ -1,0 +1,9 @@
+ExpandingCodes/Computation/SamplerAssembly.lean:1586:2: warning: Unused tactic linter: `change _ + _ + 1 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.SamplerAssembly.Concrete.step_contract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

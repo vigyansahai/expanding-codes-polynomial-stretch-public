@@ -1,0 +1,36 @@
+theorem Storage.saved_form_fresh (d k : ℕ) (a : Fin 80) (ha : a=71 ∨ a=72) :
+    ∀ j,Storage.low d k a≠Storage.formLayout d k j := by
+  intro j
+  cases j with
+  | inl j =>
+    rcases ha with rfl|rfl <;> fin_cases j <;>
+      simp [Storage.formLayout,Storage.formCommon,Storage.address,Storage.low,Fin.ext_iff]
+  | inr j =>
+    intro heq
+    have hh := congrArg Fin.val heq
+    have hi := a.isLt
+    simp [Storage.coefficient,Storage.low] at hh
+    omega
+
+theorem save_phase_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (dst : Fin 80) (hdst : dst=70 ∨ dst=71 ∨ dst=72)
+    (inp : Inputs) (s : TapeStore (Storage.registers d k) 2)
+    (hs : LayerInvariant d k ell b h forms hashes z M s) :
+    ∃ t e,t≤7*M+7 ∧ (saveField d k dst).Stops inp (s.toCfg (saveField d k dst).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ LayerFrame d k i s e.store ∧
+      TapeStore.SamePayload e.store s ∧
+      (∀ a : Fin 80,a≠dst → a≠53 → e.reg (Storage.low d k a)=s.reg (Storage.low d k a)) ∧
+      e.reg (Storage.low d k dst)=s.reg (Storage.field d k 30) := by
+  obtain ⟨t,e,ht,he,hee,hef,hep,heprec,hev⟩ := copy_phase_stops i
+    (Storage.low d k 30) (Storage.low d k dst) (Storage.low d k 53)
+    ((Storage.low_injective d k).ne (by rcases hdst with rfl|rfl|rfl <;> decide))
+    ((Storage.low_injective d k).ne (by decide))
+    ((Storage.low_injective d k).ne (by rcases hdst with rfl|rfl|rfl <;> decide))
+    (writable_low d k i dst (by rcases hdst with rfl|rfl|rfl <;> decide))
+    (writable_low d k i 53 (by decide))
+    (Storage.low_field_fresh d k dst (by rcases hdst with rfl|rfl|rfl <;> decide))
+    (Storage.low_field_fresh d k 53 (by decide)) inp s hs
+  exact ⟨t,e,ht,he,hee,hef,hep,
+    fun a had hat => heprec _ ((Storage.low_injective d k).ne had) ((Storage.low_injective d k).ne hat),hev⟩

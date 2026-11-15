@@ -1,0 +1,2 @@
+./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.lean:10:8: warning: declaration uses `sorry`
+Lean check peak resident memory: 4913 MB; cap: 6144 MB

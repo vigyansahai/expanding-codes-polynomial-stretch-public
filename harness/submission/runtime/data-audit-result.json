@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 19.074519541,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "harness/submission/runtime/DataAudit.lean"
+  ]
+}

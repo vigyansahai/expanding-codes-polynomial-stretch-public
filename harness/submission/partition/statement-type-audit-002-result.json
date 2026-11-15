@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 19.574823584,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "harness/submission/partition/StatementTypeAudit.lean"
+  ]
+}

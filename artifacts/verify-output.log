@@ -1,0 +1,2 @@
+'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean check peak resident memory: 5471 MB; cap: 6144 MB

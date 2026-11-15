@@ -1,0 +1,17 @@
+harness/attempts/sampler_tables/SamplerTables.lean:87:2: error: Type mismatch: After simplification, term
+  List.ofFn_add
+ has type
+  @Eq (List Bool) (List.ofFn ω) ((List.ofFn fun i => ω (Fin.castLE ⋯ i)) ++ List.ofFn fun i => ω (Fin.natAdd a i))
+but is expected to have type
+  @Eq (List Bool) (List.ofFn ω)
+    (List.ofFn
+        ((Equiv.sumArrowEquivProdArrow (Fin a) (Fin b) Bool)
+            ((finSumFinEquiv.symm.arrowCongr (Equiv.refl Bool)) ω)).1 ++
+      List.ofFn
+        ((Equiv.sumArrowEquivProdArrow (Fin a) (Fin b) Bool) ((finSumFinEquiv.symm.arrowCongr (Equiv.refl Bool)) ω)).2)
+harness/attempts/sampler_tables/SamplerTables.lean:138:89: error: unsolved goals
+θ : ℝ
+n extra : ℕ
+g : Geometry (dimension θ) n
+G : Generator (rowCount (dimension θ) n) n
+⊢ (∑ x, if x = G then ((sampleLaw θ n g) x).toReal else 0) = ((sampleLaw θ n g) G).toReal

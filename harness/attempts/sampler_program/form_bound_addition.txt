@@ -1,0 +1,15 @@
+theorem formIndexTime_bound (r : Fin 5 → Fin R) (c d j M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) :
+    formIndexTime r c d j s≤(32+6*c+6*d*(c+1)+2*j)*(M+1) := by
+  have h₀ := hs (r 0); have h₁ := hs (r 1); have h₂ := hs (r 2)
+  have h₃ := hs (r 3); have h₄ := hs (r 4)
+  have hmid : s.reg (r 0)+c*s.reg (r 1)≤(c+1)*M := by
+    have hc := Nat.mul_le_mul_left c h₁
+    nlinarith
+  have hfirst := Nat.mul_le_mul_left c (show 5*s.reg (r 1)+6≤6*(M+1) by omega)
+  have hsecond := Nat.mul_le_mul_left d
+    (show 5*(s.reg (r 0)+c*s.reg (r 1))+6≤6*(c+1)*(M+1) by nlinarith)
+  unfold formIndexTime
+  nlinarith
+
+#print axioms formIndexTime_bound

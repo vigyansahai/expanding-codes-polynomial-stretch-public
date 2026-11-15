@@ -1,0 +1,17 @@
+{
+  "source_sha256": "eb87aa6670a0bf47bfc7a7ed9f700c8171a21e556ff8b21fd9d2f39b0470b710",
+  "source_bytes": 1117,
+  "key": "field_multiply",
+  "mode": "audit",
+  "exit_code": 0,
+  "elapsed_seconds": 39.944135249999995,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./harness/submission/partition/audit-cache/Audit_field_multiply.olean",
+    "./harness/submission/partition/Audit_field_multiply.lean"
+  ],
+  "output": "./harness/submission/partition/audit-cache/Audit_field_multiply.olean"
+}

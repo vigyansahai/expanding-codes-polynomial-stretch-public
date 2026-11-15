@@ -1,0 +1,63 @@
+ExpandingCodes/Computation/TesterEvaluation.lean:114:75: warning: This simp argument is unused:
+  hcr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [comparison, hr.eq_iff, hc.eq_iff, Ne.symm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:205:17: warning: This simp argument is unused:
+  powerWorkspace
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [scalar, Fin.val_mk] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:205:32: warning: This simp argument is unused:
+  scalar
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [powerWorkspace, Fin.val_mk] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:205:39: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [powerWorkspace, scalar] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:247:24: warning: This simp argument is unused:
+  TapeCfg.mapPC
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [value, hle, TapeStore.toCfg, zeroIndex_value]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:247:38: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [value, hle, TapeCfg.mapPC, zeroIndex_value]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:250:14: warning: This simp argument is unused:
+  TapeCfg.mapPC
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.toCfg, TapeStore.setReg, hio]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterEvaluation.lean:250:28: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeCfg.mapPC, TapeStore.setReg, hio]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterEvaluation.sumCore_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.sumDigits_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.evaluate_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.evaluate_canonical_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.degree_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

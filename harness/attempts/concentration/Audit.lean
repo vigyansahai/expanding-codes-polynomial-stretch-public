@@ -1,0 +1,6 @@
+import ExpandingCodes.Probability.BoundedDifferences
+set_option autoImplicit false
+#check @ExpandingCodes.PolynomialStretch.boundedDifferences_lower_tail
+#print axioms ExpandingCodes.PolynomialStretch.boundedDifferences_mgf
+#print axioms ExpandingCodes.PolynomialStretch.boundedDifferences_lower_tail
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_eq_uniformMean

@@ -1,0 +1,22 @@
+{
+  "definition_id": "bb1f8e47-cf0f-4a06-b15f-6932679d299a",
+  "definition_name": "CodingTheory",
+  "definition_title": "Finite-field linear codes and Hamming weight enumerators",
+  "natural_language_statement": "This definition bundle establishes the common coding-theory vocabulary used by the mission and intended for reuse across later textbook missions.\n\nA word over an alphabet $F$ with coordinate type $\\iota$ is a function $\\iota\\to F$. When $F$ is a field, a linear code is an $F$-submodule of this word space. The standard bilinear form is\n\n$$\n\\langle c,v\\rangle=\\sum_{i\\in\\iota}c_i v_i,\n$$\n\nand the dual code $C^\\perp$ is the submodule of words orthogonal to every element of $C$.\n\nFor a finite field and finite coordinate type, the homogeneous Hamming weight enumerator is defined symbolically over the integers by\n\n$$\nW_C(X,Y)=\\sum_{c\\in C}X^{|\\iota|-\\operatorname{wt}(c)}Y^{\\operatorname{wt}(c)}.\n$$\n\nIts complex-valued form is defined by evaluating this polynomial. A definitional evaluation lemma records that the two presentations agree.\n\n**Formalization Note.** The common declarations use the book-wide `CodingTheory` namespace. The explicit `hamming` names leave room for later complete, Lee, exact, joint, and split weight enumerators without changing this interface.\n",
+  "created_at": "2026-09-09T22:03:22.374316+00:00",
+  "vote_count": 0,
+  "definition": "import Mathlib.InformationTheory.Hamming\nimport Mathlib.LinearAlgebra.BilinearForm.Orthogonal\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.Data.Complex.Basic\nimport Mathlib.Algebra.MvPolynomial.Monad\nimport Mathlib.LinearAlgebra.Matrix.Notation\n\nnamespace CodingTheory\n\nopen scoped BigOperators\n\n/-- A word over the alphabet `F`, with coordinates indexed by `ι`. -/\nabbrev Word (F ι : Type*) := ι → F\n\n/-- A linear code of length indexed by `ι` over the finite field `F`. -/\nabbrev LinearCode (F ι : Type*) [Field F] := Submodule F (Word F ι)\n\n/-- The standard coordinatewise bilinear form on words. -/\ndef dotForm (F ι : Type*) [Field F] [Fintype ι] :\n    LinearMap.BilinForm F (Word F ι) :=\n  dotProductBilin F F\n\n/-- The dual of a linear code under the standard coordinatewise bilinear form. -/\ndef dualCode (F ι : Type*) [Field F] [Fintype ι]\n    (C : LinearCode F ι) : LinearCode F ι :=\n  (dotForm F ι).orthogonal C\n\n/-- The homogeneous Hamming weight enumerator as a bivariate polynomial over `ℤ`. -/\nnoncomputable def hammingWeightEnumeratorPolynomial (F ι : Type*) [Field F] [Fintype F]\n    [DecidableEq F] [Fintype ι] [DecidableEq ι]\n    (C : LinearCode F ι) : MvPolynomial (Fin 2) ℤ :=\n  letI := Fintype.ofFinite C\n  ∑ c : C,\n    MvPolynomial.X 0 ^ (Fintype.card ι - hammingNorm (c : ι → F)) *\n      MvPolynomial.X 1 ^ hammingNorm (c : ι → F)\n\n/-- The homogeneous Hamming weight enumerator evaluated at two complex variables. -/\nnoncomputable def hammingWeightEnumerator (F ι : Type*) [Field F] [Fintype F]\n    [DecidableEq F] [Fintype ι] [DecidableEq ι]\n    (C : LinearCode F ι) (X Y : ℂ) : ℂ :=\n  MvPolynomial.eval₂Hom (Int.castRingHom ℂ) ![X, Y]\n    (hammingWeightEnumeratorPolynomial F ι C)\n\n/-- Evaluating the polynomial weight enumerator gives the complex weight enumerator. -/\n@[simp] theorem hammingWeightEnumeratorPolynomial_eval\n    (F ι : Type*) [Field F] [Fintype F] [DecidableEq F]\n    [Fintype ι] [DecidableEq ι]\n    (C : LinearCode F ι) (X Y : ℂ) :\n    MvPolynomial.eval₂Hom (Int.castRingHom ℂ) ![X, Y]\n        (hammingWeightEnumeratorPolynomial F ι C) =\n      hammingWeightEnumerator F ι C X Y := rfl\n\nend CodingTheory\n",
+  "source": "F. J. MacWilliams and N. J. A. Sloane, The Theory of Error-Correcting Codes, Chapter 5, pp. 125–126 (dual code and Hamming weight enumerator) and p. 146 (q-ary Hamming weight enumerator), https://books.google.com/books?id=nv6WCJgcjxcC, chapter DOI: 10.1016/S0924-6509(08)70530-0",
+  "tags": [
+    "codingtheory",
+    "error-correctingcodes",
+    "finitefields",
+    "weightenumerator"
+  ],
+  "created_by": "[REDACTED_ACCOUNT]",
+  "created_by_username": "Rui Chao",
+  "deprecated_at": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+}

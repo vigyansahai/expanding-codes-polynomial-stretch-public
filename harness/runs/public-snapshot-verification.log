@@ -1,0 +1,156 @@
+Public snapshot verification: 2026-11-15T03:17:25.495377+00:00
+All 511 Lean sources match the pre-redaction snapshot byte-for-byte.
+Pinned Lean/Mathlib and canonical definitions checked by engine.check_versions.
+Existing compilation cache reused; no clean rebuild performed.
+Fresh invocation: engine.audit_declarations(root, all_54_nodes), through tools/lake-serial.
+'ExpandingCodes.PolynomialStretch.construction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.erasure_ambiguity' depends on axioms: [propext, Classical.choice, Quot.sound]
+closure_audit_wp_5_ed0.lean:66:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.auxiliary_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+closure_audit_wp_5_ed0.lean:75:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.distinguishing' depends on axioms: [propext, Classical.choice, Quot.sound]
+closure_audit_wp_5_ed0.lean:89:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.preliminary_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+closure_audit_wp_5_ed0.lean:96:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.hash_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.sum_eval_pair_mul_flatIndicator_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.two_point_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.tensorize_two_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.fourier_parseval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.fourier_gradient_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.russo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.cross_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Erasure.finrank_ambiguity_le_undetermined' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Erasure.card_essential_le_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Erasure.expectationOn_insert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Erasure.exit_area_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Erasure.exit_eq_puncturedProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Erasure.ambiguity_sublinear_of_exit_crossDecay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.erasure_ambiguity_of_exit_crossDecay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.meanExit_eq_exit_of_doublyTransitive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.puncturedFailure_equal_influences' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.meanExit_cross_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.finrank_reedMuller' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.boundedDifferences_lower_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.eventual_sampleLaw_rowWeight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.activePointSet_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.eventually_rowCount_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.rational_parameter_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.binomial_atom_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.rational_geometry_programs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.eventual_sampler_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.eventual_uniform_rank_acceptance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.tendsto_auxiliary_monomialCount_div' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.rowCount_log_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.adversarial_rankTest_acceptance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+closure_audit_wp_5_ed0.lean:200:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.preliminary_expansion_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+closure_audit_wp_5_ed0.lean:207:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.rankTest_distinguishing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.limitingRate_lower_parameter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.limitingRate_lt_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+closure_audit_wp_5_ed0.lean:225:22: warning: Variable name `hd` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hd
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+closure_audit_wp_5_ed0.lean:225:35: warning: Variable name `hρ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hρ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_halfErasure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+closure_audit_wp_5_ed0.lean:227:22: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.PolynomialStretch.hash_expansion_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.binary_sampler_implementation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.binary_tester_implementation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.binarySamplerFromInput_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All 54 exact statement and transitive axiom checks passed.
+Old metadata freshness claims were cleared before refreshing all graph receipts.
+Current graph metadata/source receipts refreshed and validated.
+Finished: 2026-11-15T03:23:01.144310+00:00

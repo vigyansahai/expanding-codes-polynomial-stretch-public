@@ -1,0 +1,10 @@
+import ExpandingCodes.Probability.PreliminaryCounting
+set_option autoImplicit false
+#print axioms ExpandingCodes.PolynomialStretch.candidateCollision
+#print axioms ExpandingCodes.PolynomialStretch.activeWitnessEvent
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_candidateCollision_le
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_activeWitnessEvent_le
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_bad_implies_activeWitnessEvent
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_exists_active_sets_le_pow
+#print axioms ExpandingCodes.PolynomialStretch.sum_pow_succ_le_two_mul
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_bad_prob_le_two_base

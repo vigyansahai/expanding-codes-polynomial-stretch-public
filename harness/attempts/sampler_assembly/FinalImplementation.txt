@@ -1,0 +1,15 @@
+/-- The frozen sampler implementation, witnessed by the fully concrete finite
+source program and its proved exact output, random law, and polynomial clock. -/
+theorem binary_sampler_implementation_source (θ : ℚ)
+    (hθ : 0 < (θ : ℝ) ∧ (θ : ℝ) < 1/2) :
+    SamplerImplementation θ (fun n => binaryGeometry (dimension (θ : ℝ)) n) := by
+  let d := dimension (θ : ℝ)
+  let k := arity (θ : ℝ)
+  have hd4 : 4 ≤ d := dimension_ge_four (θ : ℝ) hθ
+  have hk : 0 < k := hash_arity_pos (θ : ℝ) hθ
+  apply binary_sampler_of_source θ hθ (sampler d k) (fun n => sourceTime d n k) (max 2 k)
+    (sourceTime_polynomial d k (by omega))
+  intro n hn ω
+  exact sampler_source d n k (by omega) hk ((le_max_left 2 k).trans hn) ((le_max_right 2 k).trans hn) ω
+
+#print axioms binary_sampler_implementation_source

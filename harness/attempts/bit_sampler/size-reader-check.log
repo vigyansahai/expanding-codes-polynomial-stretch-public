@@ -1,0 +1,3 @@
+'ExpandingCodes.Computation.SizeReader.sizeInput_unary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SizeReader.scan_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SizeReader.sizeInput_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

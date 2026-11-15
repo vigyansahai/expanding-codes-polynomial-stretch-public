@@ -1,0 +1,19 @@
+{
+  "definition_source_sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+  "definition": {
+    "path": "runtime-definition-payload.json",
+    "sha256": "3d391efa613c1f73dba6acb43fe9ab510b6e3df1ea89c724f7a7ce76b03f402e"
+  },
+  "problems": {
+    "sampler": {
+      "theorem_name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source"
+    },
+    "tester": {
+      "theorem_name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source"
+    }
+  },
+  "problem_batch": {
+    "path": "runtime-problems-payload.json",
+    "sha256": "b116196e0879c34bef69436234718dface0b0e46497dcc1237b32eb2d456f816"
+  }
+}

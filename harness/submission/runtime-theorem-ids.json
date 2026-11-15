@@ -1,0 +1,14 @@
+[
+  {
+    "status": "PUBLISHED",
+    "theorem_name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+    "theorem_id": "54beb6bb-0159-4933-94f6-13bd9bb0abb2",
+    "error_message": ""
+  },
+  {
+    "status": "PUBLISHED",
+    "theorem_name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+    "theorem_id": "10997984-c823-47b6-a593-c21180ed8f6a",
+    "error_message": ""
+  }
+]

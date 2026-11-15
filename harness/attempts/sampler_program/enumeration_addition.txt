@@ -1,0 +1,59 @@
+theorem number_ofFn (q d : ℕ) (f : Fin d → ℕ) :
+    Nat.ofDigits q (List.ofFn f)=∑ i : Fin d,f i*q^i.val := by
+  induction d with
+  | zero => simp
+  | succ d ih =>
+    rw [List.ofFn_succ,Nat.ofDigits_cons,ih,Fin.sum_univ_succ]
+    simp only [Fin.val_zero,pow_zero,Nat.mul_one,Fin.val_succ]
+    congr 1
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro i hi
+    rw [pow_succ']
+    ring
+
+theorem number_eq_finFunctionFinEquiv (q d : ℕ) (f : Fin d → Fin q) :
+    Nat.ofDigits q (List.ofFn (fun i => (f i).val))=(finFunctionFinEquiv f).val := by
+  rw [number_ofFn,finFunctionFinEquiv_apply]
+
+theorem canonical_digits (q d : ℕ) (f : Fin d → Fin q) (z : Fin (q^d))
+    (hz : Nat.ofDigits q (List.ofFn (fun i => (f i).val))=z.val) :
+    f=finFunctionFinEquiv.symm z := by
+  apply finFunctionFinEquiv.injective
+  rw [Equiv.apply_symm_apply]
+  apply Fin.ext
+  rw [← number_eq_finFunctionFinEquiv]
+  exact hz
+
+theorem iterate_radix (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (n : ℕ) :
+    ((nextStore q tmp ps)^[n] s).reg q=s.reg q := by
+  have hqt : q≠tmp := by
+    intro he; exact (List.nodup_cons.mp huniq).1 (by simp [he])
+  have hqps : q∉used ps := by
+    intro he; exact (List.nodup_cons.mp huniq).1 (by simp [he])
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    rw [Function.iterate_succ_apply',nextStore_fresh q tmp ps _ q hqt hqps,ih]
+
+/-- Exact numerical row invariant for an arbitrary number of physical carries. -/
+theorem iterate_number (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (hv : Valid q ps s)
+    (hq : 1<s.reg q) (n : ℕ) :
+    Nat.ofDigits (s.reg q) (readings ps ((nextStore q tmp ps)^[n] s))=
+      (Nat.ofDigits (s.reg q) (readings ps s)+n)%(s.reg q)^ps.length := by
+  induction n with
+  | zero =>
+    have hb := Nat.ofDigits_lt_base_pow_length hq (readings_bounded q ps s hv)
+    simpa [readings] using (Nat.mod_eq_of_lt hb).symm
+  | succ n ih =>
+    rw [Function.iterate_succ_apply']
+    have hn := iterate_radix q tmp ps huniq s n
+    have hi := program_number q tmp ps huniq _ (iterate_valid q tmp ps huniq s hv n) (by omega)
+    rw [hn] at hi
+    rw [hi,ih]
+    omega
+
+#print axioms canonical_digits
+#print axioms iterate_number

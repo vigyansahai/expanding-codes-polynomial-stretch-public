@@ -1,0 +1,18 @@
+{
+  "source_sha256": "94cd724a0a366608a99147c07ce4d7a945321289ec6c35e48505b4a5b088388e",
+  "source_bytes": 1080,
+  "key": "field_setup",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 27.687445167,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops.olean"
+}

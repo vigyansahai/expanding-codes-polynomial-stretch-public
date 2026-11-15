@@ -1,0 +1,78 @@
+harness/attempts/tester_suffix/TesterSuffix.lean:55:74: error: unsolved goals
+R B : ℕ
+θ : ℚ
+r : Fin 8 → Fin R
+hr : Function.Injective r
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hd : ∀ (j : Fin R), d.reg j ≤ M
+c : TapeCfg R B (2 + raiseLabels (eta θ).den)
+hc :
+  (loadConstant (r 2) (eta θ).den).Stops inp (d.toCfg (loadConstant (r 2) (eta θ).den).entry)
+    (d.reg (r 2) + 2 * (eta θ).den + 2) c
+hcs : c.store = d.setReg (r 2) (eta θ).den
+f : TapeCfg R B (2 + raiseLabels (eta θ).num.toNat)
+hf :
+  (loadConstant (r 3) (eta θ).num.toNat).Stops inp (c.store.toCfg (loadConstant (r 3) (eta θ).num.toNat).entry)
+    (c.store.reg (r 3) + 2 * (eta θ).num.toNat + 2) f
+hfs : f.store = c.store.setReg (r 3) (eta θ).num.toNat
+hpost : f.store = constantsStore θ r d
+h3 : c.store.reg (r 3) = d.reg (r 3)
+hbound : ∀ (j : Fin R), f.store.reg j ≤ envelope θ M
+small : TapeStore 8 B := TapeStore.projectStorage r id f.store
+hb : ∀ (i : Fin 8), small.reg i ≤ envelope θ M
+u : ℕ
+e : TapeCfg 8 B 54
+hu : u ≤ 100 * (envelope θ M + 1) ^ 2
+he : TesterProgram.rankThreshold.Stops inp (small.toCfg TesterProgram.rankThreshold.entry) u e
+heo : e.output = small.output ++ [decide (small.reg 0 * small.reg 2 ≤ small.reg 3 * small.reg 1)]
+right✝ :
+  e.roHead = small.roHead ∧
+    e.bufferTape = small.bufferTape ∧ e.bufferHead = small.bufferHead ∧ ∀ (r : Fin 8), ↑r < 4 → e.reg r = small.reg r
+z : TapeCfg R B 54
+hz :
+  (TapeProgram.renameStorage r id TesterProgram.rankThreshold).Stops inp
+    (f.store.toCfg TesterProgram.rankThreshold.entry) u z
+hproj : TapeCfg.projectStorage r id z = e
+hzo : z.output = e.output
+⊢ f.reg (r 0) * f.reg (r 2) ≤ f.reg (r 3) * f.reg (r 1) ↔ d.reg (r 0) * (eta θ).den ≤ (eta θ).num.toNat * d.reg (r 1)
+harness/attempts/tester_suffix/TesterSuffix.lean:56:16: warning: This simp argument is unused:
+  hpost
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [small, TapeStore.projectStorage, constantsStore, TapeStore.setReg, hr.eq_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_suffix/TesterSuffix.lean:56:47: warning: This simp argument is unused:
+  constantsStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [small, hpost, TapeStore.projectStorage, TapeStore.setReg, hr.eq_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_suffix/TesterSuffix.lean:56:62: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [small, hpost, TapeStore.projectStorage, constantsStore, hr.eq_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_suffix/TesterSuffix.lean:56:79: warning: This simp argument is unused:
+  hr.eq_iff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [small, hpost, TapeStore.projectStorage, constantsStore, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterSuffix.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterSuffix.timeBound_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterSuffix.program_canonical' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

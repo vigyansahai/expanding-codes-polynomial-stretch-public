@@ -1,0 +1,32 @@
+'ExpandingCodes.Computation.TesterGram.program' depends on axioms: [propext, Quot.sound]
+harness/attempts/tester_gram/TesterGram.lean:209:63: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [evaluationCaller, Matrix.cons_val_zero, Matrix.cons_val_two, Matrix.cons_val_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram/TesterGram.lean:238:63: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [evaluationCaller, Matrix.cons_val_zero, Matrix.cons_val_two, Matrix.cons_val_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram/TesterGram.lean:208:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/tester_gram/TesterGram.lean:211:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/tester_gram/TesterGram.lean:237:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/tester_gram/TesterGram.lean:240:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/tester_gram/TesterGram.lean:300:4: warning: Unused tactic linter: `change c₄.store.reg (digit d g i) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterGram.maskedTerm_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.construct' depends on axioms: [propext, Classical.choice, Quot.sound]

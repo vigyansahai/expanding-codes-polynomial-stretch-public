@@ -1,0 +1,133 @@
+/-- Proved source-step budget for multiplication, marker offset and charged seek. -/
+def positionBound (d : TapeStore R B) (index width offset tmp count : Fin R) (b : Fin B) : ℕ :=
+  d.reg offset+d.reg count+d.reg tmp+5*d.reg width+
+    d.reg width*(5*d.reg index+7)+11+d.bufferHead b+
+    2*entryOffset (d.reg index) (d.reg width)+6
+
+/-- A common loose budget for either complete indexed read or indexed write. -/
+def entryAccessBound (d : TapeStore R B) (index width offset tmp count : Fin R) (b : Fin B) : ℕ :=
+  positionBound d index width offset tmp count b+3*d.reg width+4
+
+ theorem entryAccessBound_le (d : TapeStore R B) (index width offset tmp count : Fin R)
+    (b : Fin B) (M : ℕ) (hi : d.reg index ≤ M) (hw : d.reg width ≤ M)
+    (ho : d.reg offset ≤ M) (ht : d.reg tmp ≤ M) (hc : d.reg count ≤ M)
+    (hh : d.bufferHead b ≤ M) : entryAccessBound d index width offset tmp count b ≤ 50*(M+1)^2 := by
+  have hp : d.reg index*d.reg width ≤ M*M := Nat.mul_le_mul hi hw
+  have hq : d.reg width*(5*d.reg index+7) ≤ M*(5*M+7) :=
+    Nat.mul_le_mul hw (by omega)
+  unfold entryAccessBound positionBound entryOffset
+  nlinarith
+
+/-- A complete physical array read. The width register is consumed and the
+value accumulator must start at zero; every indexed traversal is real code. -/
+def readEntry (index width offset tmp count value : Fin R) (b : Fin B) : TapeProgram R B 35 :=
+  TapeProgram.seq (positionEntry index width offset tmp count b) (readBlock width value b)
+
+ theorem readEntry_stops (index width offset tmp count value : Fin R)
+    (hio : index ≠ offset) (hit : index ≠ tmp) (hic : index ≠ count)
+    (hwo : width ≠ offset) (hwt : width ≠ tmp) (hwc : width ≠ count)
+    (hot : offset ≠ tmp) (hoc : offset ≠ count) (htc : tmp ≠ count)
+    (hwv : width ≠ value) (hvo : value ≠ offset) (hvt : value ≠ tmp) (hvc : value ≠ count)
+    (b : Fin B) (inp : Inputs) (d : TapeStore R B) (hm : Marked d b)
+    (hv : d.reg value = 0) (v : ℕ)
+    (hblock : ThermometerAt d b (entryOffset (d.reg index) (d.reg width)) (d.reg width) v) :
+    ∃ t e, t ≤ entryAccessBound d index width offset tmp count b ∧
+      (readEntry index width offset tmp count value b).Stops inp
+        (d.toCfg (readEntry index width offset tmp count value b).entry) t e ∧
+      e.reg = Function.update (Function.update
+        (((d.setReg offset 0).setReg tmp 0).setReg count 0).reg width 0) value v ∧
+      e.bufferHead = Function.update d.bufferHead b
+        (entryOffset (d.reg index) (d.reg width)+d.reg width) ∧
+      TapeStore.SamePayload e.store d := by
+  obtain ⟨t, c, ht, hc, hcr, hch, hcp⟩ := positionEntry_stops index width offset tmp count
+    hio hit hic hwo hwt hwc hot hoc htc b inp d hm
+  have hcwidth : c.reg width = d.reg width := by
+    rw [hcr]
+    simp [TapeStore.setReg, hwo, hwt, hwc]
+  have hcvalue : c.reg value = 0 := by
+    rw [hcr]
+    simp [TapeStore.setReg, hvo, hvt, hvc, hv]
+  have hchead : c.bufferHead b = entryOffset (d.reg index) (d.reg width) := by
+    rw [hch]
+    simp
+  have hct : ThermometerAt c.store b (c.bufferHead b) (d.reg width) v := by
+    rw [hchead]
+    exact hblock.of_payload hcp
+  obtain ⟨e, he, her, heh, hep⟩ := readBlock_stops width value hwv b inp
+    (d.reg width) v c.store hcwidth hct
+  have hall := hc.seq he
+  refine ⟨t+1+(2*d.reg width+v+1), (e.toCfg (3 : Fin 4)).mapPC (TapeProgram.rightLabel 31),
+    ?_, ?_, ?_, ?_, hep.trans hcp⟩
+  · have := hblock.1
+    change t ≤ positionBound d index width offset tmp count b at ht
+    unfold entryAccessBound
+    omega
+  · convert hall using 1 <;> rfl
+  · change e.reg = _
+    simpa [hcr, hcvalue] using her
+  · change e.bufferHead = _
+    rw [heh, hch]
+    simp [Function.update_idem]
+
+/-- Complete extensional effect of one physical field/hash entry overwrite. -/
+structure EntryWritten (d e : TapeStore R B) (b : Fin B) (start width value : ℕ) : Prop where
+  roHead : e.roHead = d.roHead
+  output : e.output = d.output
+  head : e.bufferHead = Function.update d.bufferHead b (start+width)
+  symbol : ∀ c k, (e.bufferTape c).getD k .blank =
+    if c = b ∧ start ≤ k ∧ k < start+width then
+      if k < start+value then .one else .zero
+    else (d.bufferTape c).getD k .blank
+
+/-- A complete physical indexed array write, including offset multiplication. -/
+def writeEntry (index width offset tmp count value : Fin R) (b : Fin B) : TapeProgram R B 38 :=
+  TapeProgram.seq (positionEntry index width offset tmp count b) (writeBlock value width b)
+
+ theorem writeEntry_stops (index width offset tmp count value : Fin R)
+    (hio : index ≠ offset) (hit : index ≠ tmp) (hic : index ≠ count)
+    (hwo : width ≠ offset) (hwt : width ≠ tmp) (hwc : width ≠ count)
+    (hot : offset ≠ tmp) (hoc : offset ≠ count) (htc : tmp ≠ count)
+    (hvw : value ≠ width) (hvo : value ≠ offset) (hvt : value ≠ tmp) (hvc : value ≠ count)
+    (b : Fin B) (inp : Inputs) (d : TapeStore R B) (hm : Marked d b)
+    (hv : d.reg value ≤ d.reg width) :
+    ∃ t e, t ≤ entryAccessBound d index width offset tmp count b ∧
+      (writeEntry index width offset tmp count value b).Stops inp
+        (d.toCfg (writeEntry index width offset tmp count value b).entry) t e ∧
+      e.reg = (((((d.setReg offset 0).setReg tmp 0).setReg count 0).setReg value 0).setReg width 0).reg ∧
+      EntryWritten d e.store b (entryOffset (d.reg index) (d.reg width)) (d.reg width) (d.reg value) := by
+  obtain ⟨t, c, ht, hc, hcr, hch, hcp⟩ := positionEntry_stops index width offset tmp count
+    hio hit hic hwo hwt hwc hot hoc htc b inp d hm
+  have hcwidth : c.reg width = d.reg width := by
+    rw [hcr]
+    simp [TapeStore.setReg, hwo, hwt, hwc]
+  have hcvalue : c.reg value = d.reg value := by
+    rw [hcr]
+    simp [TapeStore.setReg, hvo, hvt, hvc]
+  have hchead : c.bufferHead b = entryOffset (d.reg index) (d.reg width) := by
+    rw [hch]
+    simp
+  obtain ⟨e, he, hes⟩ := writeBlock_stops value width hvw b inp
+    (d.reg value) (d.reg width) c.store hcvalue hcwidth hv
+  have hall := hc.seq he
+  refine ⟨t+1+(2*d.reg width+d.reg value+3), e.mapPC (TapeProgram.rightLabel 31), ?_, ?_, ?_, ?_⟩
+  · change t ≤ positionBound d index width offset tmp count b at ht
+    unfold entryAccessBound
+    omega
+  · convert hall using 1 <;> rfl
+  · change e.store.reg = _
+    rw [hes, writeBlockStore_reg]
+    change Function.update (Function.update c.reg value 0) width 0 = _
+    rw [hcr]
+    rfl
+  · change EntryWritten d e.store b _ _ _
+    rw [hes]
+    constructor
+    · rw [writeBlockStore_roHead]
+      exact hcp.roHead
+    · rw [writeBlockStore_output]
+      exact hcp.output
+    · rw [writeBlockStore_head value width b (d.reg value) (d.reg width) c.store hv, hch]
+      simp [Function.update_idem]
+    · intro f k
+      rw [writeBlockStore_symbol value width b (d.reg value) (d.reg width) c.store hv]
+      rw [hchead, hcp.symbol]

@@ -1,0 +1,35 @@
+harness/attempts/sampler_tables/SamplerTables.lean:140:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  List.ofFn ω
+in the target expression
+  List.ofFn ω = List.ofFn xf ++ (List.ofFn xh ++ List.ofFn tail)
+
+d n : ℕ
+g : Geometry d n
+k beta extra : ℕ
+inp : NKtLB.Inputs
+ω : Fin (entropy d n k beta + extra) → Bool
+A : ℕ := formEntries d n k * fieldExponent d n
+H : ℕ := hashEntries d n k * beta
+main : Fin (A + H) → Bool := ((splitBits (A + H) extra) ω).1
+xf : Fin A → Bool := ((splitBits A H) main).1
+xh : Fin H → Bool := ((splitBits A H) main).2
+tail : Fin extra → Bool := ((splitBits (A + H) extra) ω).2
+⊢ List.ofFn ω = List.ofFn xf ++ (List.ofFn xh ++ List.ofFn tail)
+'ExpandingCodes.PolynomialStretch.SamplerTables.flatFour_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.formsEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.hashesEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.uniform_decodeCoins' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.decodeCoins_physical' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.generator_law' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.fromTape_law' depends on axioms: [propext, Classical.choice, Quot.sound]

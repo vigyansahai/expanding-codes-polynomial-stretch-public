@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 182.372605209,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=harness/submission/runtime/staged",
+    "--setup=harness/submission/runtime/sampler-closed.setup.json",
+    "-o",
+    "harness/submission/runtime/SamplerReductionClosed.olean",
+    "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean"
+  ]
+}

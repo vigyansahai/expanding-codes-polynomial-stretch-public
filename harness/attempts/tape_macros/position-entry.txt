@@ -1,0 +1,97 @@
+/-- Full physical indexing: multiply individual index/width counters, add the
+marker offset, reset, and traverse. There is no uncharged random-access operation. -/
+def positionEntry (index width offset tmp count : Fin R) (b : Fin B) : TapeProgram R B 31 :=
+  TapeProgram.seq (TapeProgram.seq
+    (UnaryArithmetic.multiply index width offset tmp count) (TapeMacros.increment offset))
+    (seekEntry offset b)
+
+ theorem positionEntry_stops (index width offset tmp count : Fin R)
+    (hio : index ≠ offset) (hit : index ≠ tmp) (hic : index ≠ count)
+    (hwo : width ≠ offset) (hwt : width ≠ tmp) (hwc : width ≠ count)
+    (hot : offset ≠ tmp) (hoc : offset ≠ count) (htc : tmp ≠ count)
+    (b : Fin B) (inp : Inputs) (d : TapeStore R B) (hm : Marked d b) :
+    ∃ t e, t ≤ d.reg offset+d.reg count+d.reg tmp+5*d.reg width+
+        d.reg width*(5*d.reg index+7)+11 + d.bufferHead b+
+        2*entryOffset (d.reg index) (d.reg width)+6 ∧
+      (positionEntry index width offset tmp count b).Stops inp
+        (d.toCfg (positionEntry index width offset tmp count b).entry) t e ∧
+      e.reg = (((d.setReg offset 0).setReg tmp 0).setReg count 0).reg ∧
+      e.bufferHead = Function.update d.bufferHead b (entryOffset (d.reg index) (d.reg width)) ∧
+      TapeStore.SamePayload e.store d := by
+  obtain ⟨t, c, ht, hc, hcs⟩ := UnaryArithmetic.multiply_stops index width offset tmp count
+    hio hit hic hwo hwt hwc hot hoc htc inp d
+  have ho : c.reg offset = d.reg index*d.reg width := by
+    change c.store.reg offset = _
+    rw [hcs]
+    simp [UnaryArithmetic.multiplyStore, TapeStore.setReg, hot, hoc]
+  let d₂ := c.store.setReg offset (c.reg offset+1)
+  have hinc := TapeMacros.increment_stops offset inp c.store
+  have ho₂ : d₂.reg offset = entryOffset (d.reg index) (d.reg width) := by
+    simp [d₂, TapeStore.setReg, ho, entryOffset, Nat.add_comm]
+  have hheads : d₂.bufferHead = d.bufferHead := by
+    change c.store.bufferHead = d.bufferHead
+    rw [hcs]
+    rfl
+  have hpMul : TapeStore.SamePayload c.store d := by
+    rw [hcs]
+    exact (TapeStore.setReg_payload _ count 0).trans
+      ((TapeStore.setReg_payload _ tmp 0).trans
+        (TapeStore.setReg_payload d offset (d.reg index*d.reg width)))
+  have hp₂ : TapeStore.SamePayload d₂ d :=
+    (TapeStore.setReg_payload c.store offset (c.reg offset+1)).trans hpMul
+  have hm₂ : Marked d₂ b := by
+    constructor
+    · rw [hp₂.symbol]
+      exact hm.1
+    · intro k hk hkh
+      rw [hp₂.symbol]
+      exact hm.2 k hk (by simpa [hheads] using hkh)
+  obtain ⟨e, hseek, her, heh, hep⟩ := seekEntry_stops offset b inp
+    (d.reg index) (d.reg width) d₂ ho₂ hm₂
+  have hall := (hc.seq hinc).seq hseek
+  refine ⟨(t+1+1)+1+(d₂.bufferHead b+2*entryOffset (d.reg index) (d.reg width)+3),
+    e.mapPC (TapeProgram.rightLabel 26), ?_, ?_, ?_, ?_, hep.trans hp₂⟩
+  · rw [hheads]
+    omega
+  · convert hall using 1 <;> rfl
+  · change e.reg = _
+    rw [her]
+    change Function.update d₂.reg offset 0 = _
+    simp only [d₂, TapeStore.setReg, Function.update_idem]
+    change Function.update c.store.reg offset 0 = _
+    rw [hcs]
+    simp only [UnaryArithmetic.multiplyStore, TapeStore.setReg]
+    funext j
+    by_cases ho' : j = offset
+    · subst j
+      simp [Function.update, hot, hoc, htc]
+    · by_cases ht' : j = tmp
+      · subst j
+        simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+      · by_cases hc' : j = count
+        · subst j
+          simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+        · simp [Function.update, ho', ht', hc']
+  · simpa [hheads] using heh
+
+ theorem positionEntry_stops_polynomial (index width offset tmp count : Fin R)
+    (hio : index ≠ offset) (hit : index ≠ tmp) (hic : index ≠ count)
+    (hwo : width ≠ offset) (hwt : width ≠ tmp) (hwc : width ≠ count)
+    (hot : offset ≠ tmp) (hoc : offset ≠ count) (htc : tmp ≠ count)
+    (b : Fin B) (inp : Inputs) (M : ℕ) (d : TapeStore R B) (hm : Marked d b)
+    (hi : d.reg index ≤ M) (hw : d.reg width ≤ M) (ho : d.reg offset ≤ M)
+    (ht : d.reg tmp ≤ M) (hc : d.reg count ≤ M) (hh : d.bufferHead b ≤ M) :
+    ∃ t e, t ≤ 40*(M+1)^2 ∧
+      (positionEntry index width offset tmp count b).Stops inp
+        (d.toCfg (positionEntry index width offset tmp count b).entry) t e ∧
+      e.reg = (((d.setReg offset 0).setReg tmp 0).setReg count 0).reg ∧
+      e.bufferHead = Function.update d.bufferHead b (entryOffset (d.reg index) (d.reg width)) ∧
+      TapeStore.SamePayload e.store d := by
+  obtain ⟨t, e, htime, hstop, her, heh, hep⟩ := positionEntry_stops index width offset tmp count
+    hio hit hic hwo hwt hwc hot hoc htc b inp d hm
+  refine ⟨t, e, ?_, hstop, her, heh, hep⟩
+  have hp : d.reg index*d.reg width ≤ M*M := Nat.mul_le_mul hi hw
+  have hq : d.reg width*(5*d.reg index+7) ≤ M*(5*M+7) :=
+    Nat.mul_le_mul hw (by omega)
+  unfold entryOffset at htime
+  nlinarith

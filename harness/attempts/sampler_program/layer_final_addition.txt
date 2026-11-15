@@ -1,0 +1,59 @@
+theorem layer_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (hk : k≤2^ell) (hb : 0<b) (hM : 1≤M) (caps : LayerCaps d k ell b M)
+    (inp : Inputs) (s : TapeStore (Storage.registers d k) 2)
+    (hs : LayerInvariant d k ell b h forms hashes z M s) :
+    ∃ t e,t≤layerTimeBound d k i M ∧
+      (layer d k i).Stops inp (s.toCfg (layer d k i).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ TapeStore.SamePayload e.store s ∧
+      e.reg (Storage.neighbor d k i)=i.val*b+
+        (EncodedSampler.neighbor (BinaryField.indexOperations ell h) forms hashes i z).val ∧
+      (∀ j,e.reg (Storage.point d k j)=s.reg (Storage.point d k j)) ∧
+      (∀ j,e.reg (Storage.countdown d k j)=s.reg (Storage.countdown d k j)) ∧
+      (∀ a : Fin 80,(32≤a.val ∧ a.val<46) ∨ (60≤a.val ∧ a.val<69) →
+        e.reg (Storage.low d k a)=s.reg (Storage.low d k a)) ∧
+      e.output=s.output ∧
+      (∀ a : Fin k,a≠i → e.reg (Storage.neighbor d k a)=s.reg (Storage.neighbor d k a)) ∧
+      LayerFrame d k i s e.store := by
+  let alpha : Fin (2^ell) := ⟨i.val,lt_of_lt_of_le i.isLt hk⟩
+  let a := (EncodedSampler.fixed (BinaryField.indexOperations ell h) alpha z).1
+  let u := (EncodedSampler.linear (BinaryField.indexOperations ell h) (formSlice forms 0 i a) z).1
+  let v := (EncodedSampler.linear (BinaryField.indexOperations ell h) (formSlice forms 1 i a) z).1
+  obtain ⟨t₁,c₁,ht₁,h₁,hi₁,hf₁,hp₁,hα₁⟩ := alpha_phase_stops i hk inp s hs
+  obtain ⟨t₂,c₂,ht₂,h₂,hi₂,hf₂,hp₂,ha₂⟩ := fixed_phase_stops i alpha inp hM c₁.store hi₁ hα₁
+  obtain ⟨t₃,c₃,ht₃,h₃,hi₃,hf₃,hp₃,hcf₃,hv₃⟩ := save_phase_stops i 70 (Or.inl rfl) inp c₂.store hi₂
+  have ha₃ : c₃.reg (Storage.address d k)=a.val := hv₃.trans ha₂
+  obtain ⟨t₄,c₄,ht₄,h₄,hi₄,hf₄,hp₄,hca₄,hcu₄,hu₄⟩ := random_phase_stops i 0 a inp hM c₃.store hi₃ caps ha₃
+  have ha₄ : c₄.reg (Storage.address d k)=a.val := hca₄.trans ha₃
+  obtain ⟨t₅,c₅,ht₅,h₅,hi₅,hf₅,hp₅,hcf₅,hv₅⟩ := save_phase_stops i 71 (Or.inr (Or.inl rfl)) inp c₄.store hi₄
+  have hu₅ : c₅.reg (Storage.u d k)=u.val := hv₅.trans hu₄
+  have ha₅ : c₅.reg (Storage.address d k)=a.val := (hcf₅ 70 (by decide) (by decide)).trans ha₄
+  obtain ⟨t₆,c₆,ht₆,h₆,hi₆,hf₆,hp₆,hca₆,hcu₆,hv₆⟩ := random_phase_stops i 1 a inp hM c₅.store hi₅ caps ha₅
+  have ha₆ : c₆.reg (Storage.address d k)=a.val := hca₆.trans ha₅
+  have hu₆ : c₆.reg (Storage.u d k)=u.val := hcu₆.trans hu₅
+  obtain ⟨t₇,c₇,ht₇,h₇,hi₇,hf₇,hp₇,hcf₇,hv₇⟩ := save_phase_stops i 72 (Or.inr (Or.inr rfl)) inp c₆.store hi₆
+  have ha₇ : c₇.reg (Storage.address d k)=a.val := (hcf₇ 70 (by decide) (by decide)).trans ha₆
+  have hu₇ : c₇.reg (Storage.u d k)=u.val := (hcf₇ 71 (by decide) (by decide)).trans hu₆
+  have hv₇' : c₇.reg (Storage.v d k)=v.val := hv₇.trans hv₆
+  obtain ⟨t₈,c₈,ht₈,h₈,hi₈,hf₈,hp₈,hv₈⟩ := hash_phase_stops i a u v inp hb c₇.store hi₇ caps ha₇ hu₇ hv₇'
+  have hall := ((((((h₁.seq h₂).seq h₃).seq h₄).seq h₅).seq h₆).seq h₇).seq h₈
+  have hframe : LayerFrame d k i s c₈.store := ((((((hf₁.trans hf₂).trans hf₃).trans hf₄).trans hf₅).trans hf₆).trans hf₇).trans hf₈
+  have hpay : TapeStore.SamePayload c₈.store s := hp₈.trans (hp₇.trans (hp₆.trans (hp₅.trans (hp₄.trans (hp₃.trans (hp₂.trans hp₁))))))
+  have hi : i.val<2^ell := lt_of_lt_of_le i.isLt hk
+  have hneighbor : EncodedSampler.neighbor (BinaryField.indexOperations ell h) forms hashes i z=
+      hashes (SamplerTables.flatFour k (2^ell) (2^ell) (2^ell) (((i,a),u),v)) := by
+    simp only [EncodedSampler.neighbor,EncodedSampler.address,dif_pos hi,alpha,a,u,v,formSlice]
+  have hresult : c₈.reg (Storage.neighbor d k i)=i.val*b+
+      (EncodedSampler.neighbor (BinaryField.indexOperations ell h) forms hashes i z).val := by
+    rw [hneighbor]
+    exact hv₈
+  refine ⟨_,_,?_,hall,hi₈,hpay,hresult,?_,?_,?_,hpay.output,?_,hframe⟩
+  · unfold layerTimeBound
+    omega
+  · intro j; exact hframe _ (point_not_writable d k i j)
+  · intro j; exact hframe _ (countdown_not_writable d k i j)
+  · intro a ha; exact hframe _ (protected_low_not_writable d k i a ha)
+  · intro a ha; exact hframe _ (other_neighbor_not_writable d k i a ha)
+
+#print axioms layer_stops

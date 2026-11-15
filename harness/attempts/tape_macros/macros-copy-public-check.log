@@ -1,0 +1,257 @@
+ExpandingCodes/Computation/TapeMacros.lean:33:43: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:35:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:49:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:53:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:62:45: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:63:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:84:32: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:89:12: warning: This simp argument is unused:
+  Function.update_of_ne hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:104:44: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:106:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:121:48: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:122:71: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:124:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:145:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:145:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:145:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:145:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:150:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:150:57: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:150:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:155:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:155:36: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:155:41: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:213:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:213:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:213:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:213:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:216:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:216:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:216:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:216:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:216:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:219:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:219:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:263:38: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, cell]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeMacros.lean:265:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, cell]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TapeMacros.clear_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.transfer_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.cell_stops' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.distribute_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.copy_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

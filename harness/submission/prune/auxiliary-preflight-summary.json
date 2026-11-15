@@ -1,0 +1,28 @@
+{
+  "ready_for_submission": true,
+  "path": "./harness/submission/prune/AuxiliaryRate.lean",
+  "target_theorem_id_snapshot": "ac6f56d7-9985-4160-9c5d-84b2bccf5082",
+  "target_theorem_name": "ExpandingCodes.PolynomialStretch.auxiliary_rate",
+  "sha256": "b47a65ecc943ebb4c9b3f81c36f096a10e224d1af9d253910102d9cfd62d40f8",
+  "bytes": 174406,
+  "proof_compile_seconds": 71.64227509498596,
+  "proof_compile_peak_mb": 5407,
+  "audit_seconds": 20.71614694595337,
+  "audit_peak_mb": 5304,
+  "exact_type_check": "Entire canonical quantified proposition := @solution",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_module_count": 35,
+  "instance_roots": [],
+  "source_reference_restoration": [
+    "ExpandingCodes.PolynomialStretch.erasureExpectation_eq_expectedAmbiguity"
+  ],
+  "attempt001_preserved_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "compile_log": "auxiliary-compile.log",
+  "audit_log": "auxiliary-audit.log",
+  "proof_statement_changes": false,
+  "new_platform_data_or_theorems_published": false
+}

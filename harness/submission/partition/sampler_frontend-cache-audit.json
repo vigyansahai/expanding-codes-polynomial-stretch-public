@@ -1,0 +1,3 @@
+{"theorem_name": "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+ "exact_statement_type": true,
+ "axioms": ["propext", "Classical.choice", "Quot.sound"]}

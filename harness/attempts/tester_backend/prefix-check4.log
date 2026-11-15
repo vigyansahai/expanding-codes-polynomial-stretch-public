@@ -1,0 +1,40 @@
+harness/attempts/tester_backend/TesterPrefix.lean:206:4: error: Tactic `rfl` failed: The left-hand side
+  Function.update (Function.update marked.reg ⟨76, ⋯⟩ (marked.reg ⟨70, ⋯⟩)) ⟨2, ⋯⟩ 0 ⟨↑j, ⋯⟩
+is not definitionally equal to the right-hand side
+  s.reg ⟨↑j, ⋯⟩
+
+d n M : ℕ
+inp : Inputs
+y : Word (rowCount d n)
+hi : inp.input = sizeInput n ++ wordBits y
+s : TapeStore (80 + 6 * d) 3
+hs : SetupReady d n M s
+hcover : TesterEnvelopeCovers d n M
+hmarks : (markers d).Stops inp (s.toCfg (markers d).entry) 5 ((markedStore d s).toCfg (TapeProgram.rightLabel 4 1))
+marked : TapeStore (80 + 6 * d) 3 := markedStore d s
+htapes : ((markedStore d s).bufferTape = fun x => [Sym.bot]) ∧ (markedStore d s).bufferHead = fun x => 1
+hb : ∀ (j : Fin (80 + 6 * d)), marked.reg j ≤ M
+t : ℕ
+c : TapeCfg (80 + 6 * d) 3 11
+ht : t ≤ 7 * M + 7
+hc :
+  (TapeMacros.copy (low d 70) (low d 76) (low d 2)).Stops inp
+    (marked.toCfg (TapeMacros.copy (low d 70) (low d 76) (low d 2)).entry) t c
+hcs : c.store = (marked.setReg (low d 76) (marked.reg (low d 70))).setReg (low d 2) 0
+hcb : ∀ (j : Fin (80 + 6 * d)), c.reg j ≤ M
+j : Fin 80
+hj : ¬↑j = 76
+hj2 : ¬↑j = 2
+⊢ Function.update (Function.update marked.reg ⟨76, ⋯⟩ (marked.reg ⟨70, ⋯⟩)) ⟨2, ⋯⟩ 0 ⟨↑j, ⋯⟩ = s.reg ⟨↑j, ⋯⟩
+harness/attempts/tester_backend/TesterPrefix.lean:251:6: error: Type mismatch: After simplification, term
+  hloadTable
+ has type
+  TapeArrays.ThermometerTable (TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store) 2
+    (c.reg (inputLayout d 0)) fun j => if y j ≠ 0 then 1 else 0
+but is expected to have type
+  TapeArrays.ThermometerTable post 2 (fieldSize d n) fun z => if y z ≠ 0 then 1 else 0
+'ExpandingCodes.Computation.TesterPrefix.setup_initial_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterPrefix.input_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

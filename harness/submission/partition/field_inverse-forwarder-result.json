@@ -1,0 +1,22 @@
+{
+  "cpu_user_system_seconds": 13.60704,
+  "peak_resident_mib": 3764.703125,
+  "lean_memory_cap_mib": 6144,
+  "source_sha256": "3c35ee2425300c51ad4f706091e9e83cda78caba8792ed81d728ca9f65aeeeaa",
+  "source_bytes": 62,
+  "key": "field_inverse",
+  "mode": "forwarder",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 60.6532895,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/closed-forwarders",
+    "-o",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.olean",
+    "./harness/submission/partition/closed-forwarders/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.olean"
+}

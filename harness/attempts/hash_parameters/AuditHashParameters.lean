@@ -1,0 +1,16 @@
+import ExpandingCodes.Construction.HashParameters
+set_option autoImplicit false
+#print axioms ExpandingCodes.PolynomialStretch.hashRepeatThreshold
+#print axioms ExpandingCodes.PolynomialStretch.hashRatio
+#print axioms ExpandingCodes.PolynomialStretch.hashRepeatThreshold_le
+#print axioms ExpandingCodes.PolynomialStretch.hash_exponent_gap
+#print axioms ExpandingCodes.PolynomialStretch.hash_arity_pos
+#print axioms ExpandingCodes.PolynomialStretch.lt_two_arity_mul_buckets
+#print axioms ExpandingCodes.PolynomialStretch.hash_bucket_ratio_le
+#print axioms ExpandingCodes.PolynomialStretch.hashRatioConstant
+#print axioms ExpandingCodes.PolynomialStretch.hashRatio_nonneg
+#print axioms ExpandingCodes.PolynomialStretch.hashRatio_le
+#print axioms ExpandingCodes.PolynomialStretch.tendsto_hashRatio_mul_rpow
+#print axioms ExpandingCodes.PolynomialStretch.tendsto_hashRatio_scaled
+#print axioms ExpandingCodes.PolynomialStretch.tendsto_hashRatio
+#print axioms ExpandingCodes.PolynomialStretch.eventually_hash_parameters

@@ -1,0 +1,41 @@
+{
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "renames": [
+    {
+      "old": "ExpandingCodes.Computation.SamplerAssembly.prelude",
+      "new": "ExpandingCodes.Computation.SamplerAssembly.samplerFrontendProgram",
+      "refs": [
+        {
+          "start": 1528262,
+          "end": 1528269,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": true
+        },
+        {
+          "start": 1529053,
+          "end": 1529060,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": false
+        },
+        {
+          "start": 1529108,
+          "end": 1529115,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": false
+        },
+        {
+          "start": 1538558,
+          "end": 1538565,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": false
+        }
+      ]
+    }
+  ],
+  "oracle": "source-refs.jsonl",
+  "collision_in_original_graph": false
+}

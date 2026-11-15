@@ -1,0 +1,35 @@
+/-- Exact extensional flat-buffer semantics: the copied interval is read from
+successive RO cells; every cell outside it, including other buffers, is preserved. -/
+ theorem copyCellsStore_symbol (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) (c : Fin B) (k : ℕ) :
+    ((copyCellsStore r i b inp n d).bufferTape c).getD k .blank =
+      if c = b ∧ d.bufferHead b ≤ k ∧ k < d.bufferHead b+n then
+        Machine.readRO (inp.get i) (d.roHead i+(k-d.bufferHead b))
+      else (d.bufferTape c).getD k .blank := by
+  induction n generalizing d with
+  | zero =>
+    simp only [copyCellsStore, Nat.add_zero]
+    split_ifs with hc
+    · omega
+    · rfl
+  | succ n ih =>
+    rw [copyCellsStore, ih]
+    simp only [copyCellStore, cellStore, TapeProgram.decStore, Machine.moveHead,
+      Function.update_self]
+    by_cases hc : c = b
+    · subst c
+      simp only [Function.update_self, true_and, getD_writeAt]
+      by_cases hk : k = d.bufferHead b
+      · subst k
+        simp
+      · by_cases hl : d.bufferHead b < k
+        · have h₁ : d.bufferHead b+1 ≤ k := by omega
+          have h₂ : (d.bufferHead b+1 ≤ k ∧ k < d.bufferHead b+1+n) ↔
+              (d.bufferHead b ≤ k ∧ k < d.bufferHead b+(n+1)) := by omega
+          have h₃ : d.roHead i+1+(k-(d.bufferHead b+1)) =
+              d.roHead i+(k-d.bufferHead b) := by omega
+          simp only [h₂, h₃, if_neg hk]
+        · have h₁ : ¬ d.bufferHead b+1 ≤ k := by omega
+          have h₂ : ¬ d.bufferHead b ≤ k := by omega
+          simp [h₁, h₂, hk]
+    · simp [hc, Function.update_of_ne hc]

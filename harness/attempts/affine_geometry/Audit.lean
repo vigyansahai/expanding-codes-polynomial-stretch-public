@@ -1,0 +1,13 @@
+import ExpandingCodes.Construction.ActivePairs
+
+set_option autoImplicit false
+
+#print axioms ExpandingCodes.PolynomialStretch.alpha_injective
+#print axioms ExpandingCodes.PolynomialStretch.fixedForm_layers_injective
+#print axioms ExpandingCodes.PolynomialStretch.eq_of_fixedForm_eq
+#print axioms ExpandingCodes.PolynomialStretch.activeLayers
+#print axioms ExpandingCodes.PolynomialStretch.activePointSet
+#print axioms ExpandingCodes.PolynomialStretch.mem_activeLayers
+#print axioms ExpandingCodes.PolynomialStretch.mem_activePointSet
+#print axioms ExpandingCodes.PolynomialStretch.exists_active_layers
+#print axioms ExpandingCodes.PolynomialStretch.activePointSet_card_le

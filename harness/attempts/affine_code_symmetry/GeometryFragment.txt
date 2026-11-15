@@ -1,0 +1,64 @@
+/-- A linear automorphism takes any nonzero vector to any other. -/
+theorem exists_linearEquiv_apply_eq {F V : Type*} [Field F] [AddCommGroup V] [Module F V]
+    [FiniteDimensional F V] (u v : V) (hu : u ≠ 0) (hv : v ≠ 0) :
+    ∃ T : V ≃ₗ[F] V, T u = v := by
+  let eu := LinearEquiv.toSpanNonzeroSingleton F V u hu
+  let ev := LinearEquiv.toSpanNonzeroSingleton F V v hv
+  let f := eu.symm.trans ev
+  obtain ⟨T, hT⟩ := Submodule.exists_linearEquiv_restrict_eq f
+  refine ⟨T, ?_⟩
+  have h := hT (eu 1)
+  have he : (f (eu 1) : V) = v := by simp [f, ev]
+  have hu' : (eu 1 : V) = u := by simp [eu]
+  rw [he, hu'] at h
+  exact h.symm
+
+/-- Every linear map on the coordinate space has a degree-one polynomial representation. -/
+theorem reedMuller_comp_linear_add_mem {F : Type*} [Field F] [Fintype F] {d R : ℕ}
+    (T : (Fin d → F) →ₗ[F] (Fin d → F)) (b : Fin d → F)
+    (c : (Fin d → F) → F) (hc : c ∈ reedMuller F d R) :
+    (fun z => c (T z + b)) ∈ reedMuller F d R := by
+  let A : Fin d → Fin d → F := fun i j => T (fun k => if j = k then 1 else 0) i
+  have hT : ∀ z, T z + b = (fun i => b i + ∑ j, A i j * z j) := by
+    intro z
+    funext i
+    rw [LinearMap.pi_apply_eq_sum_univ T z]
+    simp [A, Finset.sum_apply, Pi.smul_apply, smul_eq_mul, mul_comm, add_comm]
+  simpa only [← hT] using reedMuller_comp_affine_mem A b c hc
+
+/-- An affine permutation with prescribed linear and translation parts. -/
+noncomputable def affineCoordinatePerm {F : Type*} [Field F] {d : ℕ}
+    (T : (Fin d → F) ≃ₗ[F] (Fin d → F)) (a b : Fin d → F) :
+    Equiv.Perm (Fin d → F) where
+  toFun z := T (z - a) + b
+  invFun z := T.symm (z - b) + a
+  left_inv z := by simp
+  right_inv z := by simp
+
+theorem affineCoordinatePerm_mem_codePreservingSubgroup {F : Type*} [Field F] [Fintype F]
+    {d R : ℕ} (T : (Fin d → F) ≃ₗ[F] (Fin d → F)) (a b : Fin d → F) :
+    affineCoordinatePerm T a b ∈ codePreservingSubgroup (reedMuller F d R) := by
+  intro c
+  constructor
+  · intro hc
+    have h := reedMuller_comp_linear_add_mem T.toLinearMap (b - T a) c hc
+    simpa only [affineCoordinatePerm, Equiv.coe_fn_mk, map_sub, sub_eq_add_neg,
+      add_assoc, add_comm, add_left_comm] using h
+  · intro hc
+    have h := reedMuller_comp_linear_add_mem T.symm.toLinearMap (a - T.symm b)
+      (fun z => c (affineCoordinatePerm T a b z)) hc
+    have he : (fun z => c (affineCoordinatePerm T a b (T.symm z + (a - T.symm b)))) = c := by
+      funext z
+      congr 1
+      simp [affineCoordinatePerm, map_add, map_sub] <;> abel
+    rwa [he] at h
+
+/-- The code-preserving affine permutations act doubly transitively on points. -/
+theorem reedMuller_pair_transitive {F : Type*} [Field F] [Fintype F] {d R : ℕ}
+    (a b a' b' : Fin d → F) (hab : a ≠ b) (hab' : a' ≠ b') :
+    ∃ σ ∈ codePreservingSubgroup (reedMuller F d R), σ a = a' ∧ σ b = b' := by
+  obtain ⟨T, hT⟩ := exists_linearEquiv_apply_eq (b - a) (b' - a')
+    (sub_ne_zero.mpr (Ne.symm hab)) (sub_ne_zero.mpr (Ne.symm hab'))
+  refine ⟨affineCoordinatePerm T a a', affineCoordinatePerm_mem_codePreservingSubgroup T a a', ?_, ?_⟩
+  · simp [affineCoordinatePerm]
+  · simp [affineCoordinatePerm, hT]

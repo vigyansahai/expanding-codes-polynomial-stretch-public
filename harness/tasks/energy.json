@@ -1,0 +1,106 @@
+{
+  "owner": "energy",
+  "status": "proved",
+  "interface": "provisional",
+  "goals": [
+    "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+    "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy"
+  ],
+  "file_ownership": [
+    "ExpandingCodes/Probability/SharpThreshold/Energy.lean",
+    "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean",
+    "ExpandingCodes/Probability/SharpThreshold/GradientFourier.lean",
+    "harness/attempts/energy/",
+    "harness/tasks/energy.json"
+  ],
+  "proof_route": [
+    "Prove coordinate derivatives of explicit product characters.",
+    "Expand f in characters, differentiate finite sums, and use character orthogonality to identify gradient coefficients.",
+    "Prove diagonal noise coefficients via the same orthogonality.",
+    "Reindex finite subsets by insertion/erasure, and count incidences to get support cardinalities.",
+    "Apply bilinear Parseval to f=gradient_i f or noise_r gradient_i f."
+  ],
+  "checked": [
+    "Isolated gradient coefficient identity and character derivative compile with autoImplicit=false.",
+    "All shared helpers pass isolated Lean, without any sorry.",
+    "Combined isolated EnergyLeaves.lean passes and both transitive axiom sets are exactly propext, Classical.choice, Quot.sound."
+  ],
+  "failed_attempts": [
+    {
+      "approach": "Unfold all Fourier expressions during the linearity proof",
+      "result": "Unfolding expanded coefficients on only one side after rewriting the finite inversion expansion. Replaced by a targeted change of the outer Fourier definition; checked."
+    },
+    {
+      "approach": "Cancel the Parseval normalization denominator with generic field_simp",
+      "result": "Needed explicit nonzero facts hp.ne' and (sub_pos.mpr hp').ne'; supplied these and the isolated helper passed."
+    }
+  ],
+  "source_hashes": {
+    "ExpandingCodes/Probability/SharpThreshold/Basic.lean": "3dda39b9770915dfa535475a66286c0ffb658b58e80fd1707ddac37ce4c20c76",
+    "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean": "36df66683937036850a6d344ce35f26b6f3374f3b3ca3724983077f2c77436a2",
+    "ExpandingCodes/Probability/SharpThreshold/Energy.lean": "c95bac8e39732eb6e340dd89ae83d643b0d354e68f9631d35fbfb5edb218dc71",
+    "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean": "0fcc365273ed9f1c9adf182b2f1700bdaf4370c66262afb5321f01ad7220a0b7"
+  },
+  "memory_policy": "No warm REPL. Only tools/lake-serial short-lived checks, memory 4096 MB and one Lean thread.",
+  "unresolved": [],
+  "exact_tasks": [
+    {
+      "id": "boolean_fourier_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+      "statement": "\u2200 {I : Type*} [Fintype I] (p : \u211d), 0 < p \u2192 p < 1 \u2192 \u2200 f : Finset I \u2192 \u211d, p * (1 - p) * (\u2211 i : I, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.gradient i f E ^ 2)) = \u2211 S : Finset I, (S.card : \u211d) * ExpandingCodes.SharpThreshold.fourier p f S ^ 2",
+      "statement_sha256": "561bcee973759f1b6c3c3a8c9ce11c72ef2742f81180847e78fa1d03df5d7298"
+    },
+    {
+      "id": "boolean_fourier_noise_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy",
+      "statement": "\u2200 {I : Type*} [Fintype I] (p r : \u211d), 0 < p \u2192 p < 1 \u2192 \u2200 f : Finset I \u2192 \u211d, p * (1 - p) * (\u2211 i : I, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.noise p r (ExpandingCodes.SharpThreshold.gradient i f) E ^ 2)) = \u2211 S : Finset I, (S.card : \u211d) * r ^ (2 * (S.card - 1)) * ExpandingCodes.SharpThreshold.fourier p f S ^ 2",
+      "statement_sha256": "dedd343d7188b28508ca5ba96a8cdb10a1fede0a7a630d06f892aa4afc9fbba8"
+    }
+  ],
+  "checks": [
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/energy/GradientFourier.lean",
+      "exit_code": 0,
+      "result": "All finite Fourier helper proofs compile."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/energy/EnergyLeaves.lean",
+      "exit_code": 0,
+      "result": "Combined isolated proof compiles; both leaf axioms exactly propext, Classical.choice, Quot.sound."
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Probability.SharpThreshold.Energy ExpandingCodes.Probability.SharpThreshold.NoisedEnergy",
+      "exit_code": 0,
+      "result": "Freshly built GradientFourier (3.1s), NoisedEnergy (2.1s), and Energy (2.2s). Build completed successfully (2651 jobs). Existing unused-section-variable lints in Erasure and Basic; no warnings in the three promoted modules."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/energy/Audit.lean",
+      "exit_code": 0,
+      "result": "Public Energy, NoisedEnergy, fourier_gradient, and sum_fourier_gradient_weighted all depend only on propext, Classical.choice, Quot.sound."
+    }
+  ],
+  "axiom_dependencies": {
+    "ExpandingCodes.SharpThreshold.fourier_gradient_energy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "output_hashes": {
+    "ExpandingCodes/Probability/SharpThreshold/Energy.lean": "06c59265d786fbc883b6eb01c933ebddbf868bb0c37bdac3fc7296fb82fbbac9",
+    "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean": "1709f33f9cafc658e2d53a2afbc1115b2c23d11a01febe77f02d900f43201280",
+    "ExpandingCodes/Probability/SharpThreshold/GradientFourier.lean": "c8dbaf456f266e56f196450a6b96c87fe855e7f96ecdc807931291fffc280fe1"
+  },
+  "proof_integrity": {
+    "exact_leaf_statements_preserved": true,
+    "new_open_children": [],
+    "sorry_or_custom_axioms_in_owned_public_modules": false,
+    "forbidden_ancestor_imports": false,
+    "shared_interfaces_edited": false
+  }
+}

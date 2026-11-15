@@ -1,0 +1,114 @@
+theorem LayerFrame.setReg {d k : ℕ} {i : Fin k} (s : TapeStore (Storage.registers d k) 2)
+    (r : Fin (Storage.registers d k)) (v : ℕ) (hr : LayerWritable d k i r) :
+    LayerFrame d k i s (s.setReg r v) := by
+  intro x hx
+  have hne : x≠r := by intro heq; subst x; exact hx hr
+  simp [TapeStore.setReg,hne]
+
+theorem Storage.low_field_fresh (d k : ℕ) (a : Fin 80) (ha : 31≤a.val) :
+    ∀ j,Storage.low d k a≠Storage.field d k j := by
+  intro j hij
+  have hh := congrArg Fin.val hij
+  have hj := j.isLt
+  simp [Storage.field,Storage.low] at hh
+  omega
+
+theorem copy_phase_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (src dst tmp : Fin (Storage.registers d k))
+    (hsd : src≠dst) (hst : src≠tmp) (hdt : dst≠tmp)
+    (hd : LayerWritable d k i dst) (ht : LayerWritable d k i tmp)
+    (hdf : ∀ j,dst≠Storage.field d k j) (htf : ∀ j,tmp≠Storage.field d k j)
+    (inp : Inputs) (s : TapeStore (Storage.registers d k) 2)
+    (hs : LayerInvariant d k ell b h forms hashes z M s) :
+    ∃ t e,t≤7*M+7 ∧ (TapeMacros.copy src dst tmp).Stops inp
+      (s.toCfg (TapeMacros.copy (B := 2) src dst tmp).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ LayerFrame d k i s e.store ∧
+      TapeStore.SamePayload e.store s ∧ e.reg dst=s.reg src := by
+  obtain ⟨t,e,htime,he,hes,heb⟩ := copy_stops_bound src dst tmp hsd hst hdt inp M s hs.counters
+  have hframe : LayerFrame d k i s e.store := by
+    rw [hes]
+    exact (LayerFrame.setReg s dst _ hd).trans (LayerFrame.setReg _ tmp 0 ht)
+  have henv : Environment (Storage.field d k) ell (selectedIndex ell h) e.store := by
+    rw [hes]
+    exact (hs.field.setExternal dst _ hdf).setExternal tmp 0 htf
+  have hheads : ∀ a,e.bufferHead a≤M := by
+    change ∀ a,e.store.bufferHead a≤M
+    rw [hes]
+    exact hs.heads
+  have hp : TapeStore.SamePayload e.store s := by rw [hes]; exact ⟨rfl,rfl,fun _ _ => rfl⟩
+  refine ⟨t,e,htime,he,hs.transport hframe henv heb hheads hp,hframe,hp,?_⟩
+  change e.store.reg dst=_
+  rw [hes]
+  simp [TapeStore.setReg,hdt]
+
+theorem alpha_phase_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (hk : k≤2^ell) (inp : Inputs) (s : TapeStore (Storage.registers d k) 2)
+    (hs : LayerInvariant d k ell b h forms hashes z M s) :
+    ∃ t e,t≤M+2*i.val+2 ∧ (ParameterPrograms.loadConstant (Storage.alpha d k) i.val).Stops inp
+      (s.toCfg (ParameterPrograms.loadConstant (B := 2) (Storage.alpha d k) i.val).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ LayerFrame d k i s e.store ∧
+      TapeStore.SamePayload e.store s ∧ e.reg (Storage.alpha d k)=i.val := by
+  obtain ⟨e,he,hes⟩ := ParameterPrograms.loadConstant_stops (Storage.alpha d k) i.val inp s
+  have hi : i.val≤M := by
+    have hq := hs.counters (Storage.field d k 23)
+    rw [hs.field.cardinal] at hq
+    exact (le_trans (le_of_lt i.isLt) hk).trans hq
+  have hframe : LayerFrame d k i s e.store := by
+    rw [hes]
+    exact LayerFrame.setReg s _ _ (writable_low d k i 69 (by decide))
+  have henv : Environment (Storage.field d k) ell (selectedIndex ell h) e.store := by
+    rw [hes]
+    exact hs.field.setExternal _ _ (Storage.low_field_fresh d k 69 (by decide))
+  have hb : ∀ x,e.reg x≤M := by change ∀ x,e.store.reg x≤M; rw [hes]; exact setReg_bound _ _ _ M hs.counters hi
+  have hh : ∀ a,e.bufferHead a≤M := by change ∀ a,e.store.bufferHead a≤M; rw [hes]; exact hs.heads
+  have hp : TapeStore.SamePayload e.store s := by rw [hes]; exact ⟨rfl,rfl,fun _ _ => rfl⟩
+  refine ⟨_,e,?_,he,hs.transport hframe henv hb hh hp,hframe,hp,?_⟩
+  · have hα := hs.counters (Storage.alpha d k); omega
+  · change e.store.reg (Storage.alpha d k)=_; rw [hes]; simp
+
+theorem fixed_phase_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (alpha : Fin (2^ell)) (inp : Inputs) (hM : 1≤M)
+    (s : TapeStore (Storage.registers d k) 2) (hs : LayerInvariant d k ell b h forms hashes z M s)
+    (ha : s.reg (Storage.alpha d k)=alpha.val) :
+    ∃ t e,t≤fixedTimeBound d M ∧ (fixed (Storage.fixedLayout d k)).Stops inp
+      (s.toCfg (fixed (B := 2) (Storage.fixedLayout d k)).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ LayerFrame d k i s e.store ∧
+      TapeStore.SamePayload e.store s ∧
+      e.reg (Storage.field d k 30)=(EncodedSampler.fixed (BinaryField.indexOperations ell h) alpha z).1.val := by
+  have henv : Environment (fixedFieldLayout (Storage.fixedLayout d k)) ell (selectedIndex ell h) s := by
+    rw [Storage.fixedField_eq]
+    exact hs.field
+  obtain ⟨t,e,ht,he,hev,hee,hep,hef,heb,het⟩ := fixed_stops (Storage.fixedLayout d k)
+    (Storage.fixedLayout_injective d k) inp ell h alpha z M hM s hs.counters henv ha hs.points
+  have hframe : LayerFrame d k i s e.store := by
+    intro x hx
+    by_cases hp : ∃ j,x=Storage.point d k j
+    · obtain ⟨j,rfl⟩ := hp
+      exact hep j
+    · apply hef x
+      intro a hxa
+      cases a with
+      | inl a =>
+        apply hx
+        rw [hxa]
+        exact writable_fixedCommon d k i a
+      | inr a =>
+        cases a with
+        | inl j =>
+          apply hx
+          rw [hxa]
+          exact writable_coefficient d k i j
+        | inr j => exact hp ⟨j,hxa⟩
+  have hee' : Environment (Storage.field d k) ell (selectedIndex ell h) e.store := by
+    simpa only [Storage.fixedField_eq] using hee
+  have hh : ∀ a,e.bufferHead a≤M := by rw [(tapeData_components het).2.2.2]; exact hs.heads
+  have hp : TapeStore.SamePayload e.store s := tapeData_payload het
+  exact ⟨t,e,ht,he,hs.transport hframe hee' heb hh hp,hframe,hp,hev⟩
+
+#print axioms fixed_phase_stops

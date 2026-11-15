@@ -1,0 +1,98 @@
+{
+  "source_path": "./harness/submission/prune/Main.lean",
+  "source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+  "source_bytes": 217365,
+  "theorem_name": "ExpandingCodes.PolynomialStretch.expanding_codes",
+  "theorem_id": "35a9bc65-151f-4a09-baa1-2c28821d6cd3",
+  "compile": {
+    "stage": "compile",
+    "exit_code": 0,
+    "elapsed_seconds": 72.5245931148529,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=harness/submission/prune/closed-context/Main.setup.json",
+      "-o",
+      "harness/submission/prune/closed-context/Main.olean",
+      "harness/submission/prune/Main.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce"
+  },
+  "closed_audit": {
+    "stage": "audit",
+    "exit_code": 0,
+    "elapsed_seconds": 65.23191690444946,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=harness/submission/prune/closed-context/MainAudit.setup.json",
+      "harness/submission/prune/MainAudit.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "statement_context": {
+    "compile": {
+      "stage": "compile",
+      "exit_code": 0,
+      "elapsed_seconds": 93.88303470611572,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--setup=./harness/submission/prune/statement-context/Main.setup.json",
+        "-o",
+        "./harness/submission/prune/statement-context/Main.olean",
+        "./harness/submission/prune/Main.lean"
+      ],
+      "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+      "context": "statement-only registered target stubs; not a closed-proof claim"
+    },
+    "audit": {
+      "stage": "audit",
+      "exit_code": 0,
+      "elapsed_seconds": 62.06696128845215,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--setup=./harness/submission/prune/statement-context/MainStatementAudit.setup.json",
+        "./harness/submission/prune/statement-context/MainStatementAudit.lean"
+      ],
+      "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+      "context": "statement-only registered target stubs; not a closed-proof claim"
+    },
+    "compile_peak_mb": 5020,
+    "note": "Only published Data + three registered target statement stubs. Explicit audit confirms no Core or original project proof modules. Imported stub sorryAx is expected here; this is portability, not a closed-proof claim."
+  },
+  "children": [
+    {
+      "state_path": "./harness/submission/auxiliary-rate-attempt-001.json",
+      "theorem_id": "ac6f56d7-9985-4160-9c5d-84b2bccf5082",
+      "submission_id": "cc2cc7af-10be-42a0-9113-6802849cd2b7",
+      "status": "ACCEPTED"
+    },
+    {
+      "state_path": "./harness/submission/sampler-attempt-002.json",
+      "theorem_id": "54beb6bb-0159-4933-94f6-13bd9bb0abb2",
+      "submission_id": "bba1221f-928f-41c5-9e51-659d7e41dedd",
+      "status": "ACCEPTED"
+    },
+    {
+      "state_path": "./harness/submission/tester-attempt-002.json",
+      "theorem_id": "10997984-c823-47b6-a593-c21180ed8f6a",
+      "submission_id": "6f879b30-966c-43e5-91e4-39cba94cfae4",
+      "status": "ACCEPTED"
+    }
+  ],
+  "frozen_original_sources_checked": 174,
+  "changed_original_sources": [],
+  "local_summary_path": "./harness/submission/prune/main-preflight-summary.json",
+  "ready_for_api": true
+}

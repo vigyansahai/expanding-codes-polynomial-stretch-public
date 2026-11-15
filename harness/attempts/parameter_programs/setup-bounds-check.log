@@ -1,0 +1,34 @@
+harness/attempts/parameter_programs/ParameterSetupBounds.lean:18:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/attempts/parameter_programs/ParameterSetupBounds.lean:24:8: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/attempts/parameter_programs/ParameterSetupBounds.lean:44:13: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only at hreg
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterSetupBounds.lean:62:22: warning: Variable name `hn` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/parameter_programs/ParameterSetupBounds.lean:62:33: warning: Variable name `hnk` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hnk
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.Computation.ParameterPrograms.source_exec_reg_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_running_counters_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setupInput_compiled' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

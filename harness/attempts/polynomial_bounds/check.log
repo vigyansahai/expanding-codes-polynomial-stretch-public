@@ -1,0 +1,18 @@
+harness/attempts/polynomial_bounds/PolynomialBounds.lean:59:25: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/polynomial_bounds/PolynomialBounds.lean:85:9: error: Function expected at
+  Nat.lt_two_pow_self
+but this term has type
+  ?m.14 < 2 ^ ?m.14
+
+Note: Expected a function because this term is being applied to the argument
+  (fieldExponent d n)
+'ExpandingCodes.PolynomialStretch.samplerEntropy_polynomial' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.common_polynomial_envelope' depends on axioms: [propext, Quot.sound]

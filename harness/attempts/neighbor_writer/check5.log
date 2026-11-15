@@ -1,0 +1,174 @@
+harness/attempts/neighbor_writer/NeighborWriter.lean:327:50: error: Expected type must not contain free variables
+  Sum.inl 1 ≠ Sum.inl 2
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+harness/attempts/neighbor_writer/NeighborWriter.lean:333:50: error: Expected type must not contain free variables
+  Sum.inl 2 ≠ Sum.inl 1
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+harness/attempts/neighbor_writer/NeighborWriter.lean:339:92: error: Expected type must not contain free variables
+  Sum.inl 0 ≠ Sum.inl 1
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+harness/attempts/neighbor_writer/NeighborWriter.lean:339:92: error: Expected type must not contain free variables
+  Sum.inl 7 ≠ Sum.inl 1
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+harness/attempts/neighbor_writer/NeighborWriter.lean:340:92: error: Expected type must not contain free variables
+  Sum.inl 0 ≠ Sum.inl 2
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+harness/attempts/neighbor_writer/NeighborWriter.lean:340:92: error: Expected type must not contain free variables
+  Sum.inl 7 ≠ Sum.inl 2
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+harness/attempts/neighbor_writer/NeighborWriter.lean:384:9: error: don't know how to synthesize implicit argument `b`
+  @And.intro (t + 5 ≤ k * (160 * (M + 1) + 1) + 5)
+    ((body l).Stops inp (d.toCfg (body l).entry) (t + 5) ?m.223 ∧ TapeCfg.store ?m.223 = bodyStore l d) ?m.226
+    ⟨?m.229, ?m.230⟩
+context:
+R B k : ℕ
+l : Layout R k
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+ho : d.reg l.out ≤ 1
+t : ℕ
+c : TapeCfg R B (marksLabels (List.finRange k).length)
+ht : t ≤ (List.finRange k).length * (160 * (M + 1) + 1)
+hc : (marks l (List.finRange k)).Stops inp (d.toCfg (marks l (List.finRange k)).entry) t c
+hcs : c.store = marksStore l (List.finRange k) d
+hb : c.reg l.out ≤ 1
+he : (emitFlag l.out).Stops inp (c.store.toCfg 0) 2 ((emitStore l.out c.store).toCfg 3)
+hi :
+  (TapeMacros.increment l.col).Stops inp ((emitStore l.out c.store).toCfg 0) 1
+    (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1)
+hall :
+  (((marks l (List.finRange k)).seq (emitFlag l.out)).seq (TapeMacros.increment l.col)).Stops inp
+    (TapeCfg.mapPC (leftLabel 2) (TapeCfg.mapPC (leftLabel 4) (d.toCfg (marks l (List.finRange k)).entry)))
+    (t + 1 + 2 + 1 + 1)
+    (TapeCfg.mapPC (rightLabel (marksLabels (List.finRange k).length + 4))
+      (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1))
+⊢ Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:384:9: error: don't know how to synthesize implicit argument `b`
+  @And.intro ((body l).Stops inp (d.toCfg (body l).entry) (t + 5) ?m.223) (TapeCfg.store ?m.223 = bodyStore l d) ?m.229
+    ?m.230
+context:
+R B k : ℕ
+l : Layout R k
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+ho : d.reg l.out ≤ 1
+t : ℕ
+c : TapeCfg R B (marksLabels (List.finRange k).length)
+ht : t ≤ (List.finRange k).length * (160 * (M + 1) + 1)
+hc : (marks l (List.finRange k)).Stops inp (d.toCfg (marks l (List.finRange k)).entry) t c
+hcs : c.store = marksStore l (List.finRange k) d
+hb : c.reg l.out ≤ 1
+he : (emitFlag l.out).Stops inp (c.store.toCfg 0) 2 ((emitStore l.out c.store).toCfg 3)
+hi :
+  (TapeMacros.increment l.col).Stops inp ((emitStore l.out c.store).toCfg 0) 1
+    (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1)
+hall :
+  (((marks l (List.finRange k)).seq (emitFlag l.out)).seq (TapeMacros.increment l.col)).Stops inp
+    (TapeCfg.mapPC (leftLabel 2) (TapeCfg.mapPC (leftLabel 4) (d.toCfg (marks l (List.finRange k)).entry)))
+    (t + 1 + 2 + 1 + 1)
+    (TapeCfg.mapPC (rightLabel (marksLabels (List.finRange k).length + 4))
+      (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1))
+⊢ Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:384:9: error: don't know how to synthesize implicit argument `a`
+  @And.intro ((body l).Stops inp (d.toCfg (body l).entry) (t + 5) ?m.223) (TapeCfg.store ?m.223 = bodyStore l d) ?m.229
+    ?m.230
+context:
+R B k : ℕ
+l : Layout R k
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+ho : d.reg l.out ≤ 1
+t : ℕ
+c : TapeCfg R B (marksLabels (List.finRange k).length)
+ht : t ≤ (List.finRange k).length * (160 * (M + 1) + 1)
+hc : (marks l (List.finRange k)).Stops inp (d.toCfg (marks l (List.finRange k)).entry) t c
+hcs : c.store = marksStore l (List.finRange k) d
+hb : c.reg l.out ≤ 1
+he : (emitFlag l.out).Stops inp (c.store.toCfg 0) 2 ((emitStore l.out c.store).toCfg 3)
+hi :
+  (TapeMacros.increment l.col).Stops inp ((emitStore l.out c.store).toCfg 0) 1
+    (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1)
+hall :
+  (((marks l (List.finRange k)).seq (emitFlag l.out)).seq (TapeMacros.increment l.col)).Stops inp
+    (TapeCfg.mapPC (leftLabel 2) (TapeCfg.mapPC (leftLabel 4) (d.toCfg (marks l (List.finRange k)).entry)))
+    (t + 1 + 2 + 1 + 1)
+    (TapeCfg.mapPC (rightLabel (marksLabels (List.finRange k).length + 4))
+      (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1))
+⊢ Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:384:14: error: don't know how to synthesize placeholder for argument `w`
+context:
+R B k : ℕ
+l : Layout R k
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+ho : d.reg l.out ≤ 1
+t : ℕ
+c : TapeCfg R B (marksLabels (List.finRange k).length)
+ht : t ≤ (List.finRange k).length * (160 * (M + 1) + 1)
+hc : (marks l (List.finRange k)).Stops inp (d.toCfg (marks l (List.finRange k)).entry) t c
+hcs : c.store = marksStore l (List.finRange k) d
+hb : c.reg l.out ≤ 1
+he : (emitFlag l.out).Stops inp (c.store.toCfg 0) 2 ((emitStore l.out c.store).toCfg 3)
+hi :
+  (TapeMacros.increment l.col).Stops inp ((emitStore l.out c.store).toCfg 0) 1
+    (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1)
+hall :
+  (((marks l (List.finRange k)).seq (emitFlag l.out)).seq (TapeMacros.increment l.col)).Stops inp
+    (TapeCfg.mapPC (leftLabel 2) (TapeCfg.mapPC (leftLabel 4) (d.toCfg (marks l (List.finRange k)).entry)))
+    (t + 1 + 2 + 1 + 1)
+    (TapeCfg.mapPC (rightLabel (marksLabels (List.finRange k).length + 4))
+      (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1))
+⊢ TapeCfg R B (bodyLabels k)
+harness/attempts/neighbor_writer/NeighborWriter.lean:375:92: error: unsolved goals
+R B k : ℕ
+l : Layout R k
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+ho : d.reg l.out ≤ 1
+t : ℕ
+c : TapeCfg R B (marksLabels (List.finRange k).length)
+ht : t ≤ (List.finRange k).length * (160 * (M + 1) + 1)
+hc : (marks l (List.finRange k)).Stops inp (d.toCfg (marks l (List.finRange k)).entry) t c
+hcs : c.store = marksStore l (List.finRange k) d
+hb : c.reg l.out ≤ 1
+he : (emitFlag l.out).Stops inp (c.store.toCfg 0) 2 ((emitStore l.out c.store).toCfg 3)
+hi :
+  (TapeMacros.increment l.col).Stops inp ((emitStore l.out c.store).toCfg 0) 1
+    (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1)
+hall :
+  (((marks l (List.finRange k)).seq (emitFlag l.out)).seq (TapeMacros.increment l.col)).Stops inp
+    (TapeCfg.mapPC (leftLabel 2) (TapeCfg.mapPC (leftLabel 4) (d.toCfg (marks l (List.finRange k)).entry)))
+    (t + 1 + 2 + 1 + 1)
+    (TapeCfg.mapPC (rightLabel (marksLabels (List.finRange k).length + 4))
+      (((emitStore l.out c.store).setReg l.col ((emitStore l.out c.store).reg l.col + 1)).toCfg 1))
+⊢ ∃ t e, t ≤ k * (160 * (M + 1) + 1) + 5 ∧ (body l).Stops inp (d.toCfg (body l).entry) t e ∧ e.store = bodyStore l d
+'ExpandingCodes.Computation.NeighborWriter.markStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.markEq_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.emitFlag_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.marksStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.marks_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.body_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

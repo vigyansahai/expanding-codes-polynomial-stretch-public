@@ -1,0 +1,69 @@
+def powerVectorLabels {d : ℕ} : List (Fin d) → ℕ
+  | [] => 1
+  | j::js => powerCoefficientLabels j.val+powerVectorLabels js
+
+def powerVector {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) :
+    (js : List (Fin d)) → TapeProgram R B (powerVectorLabels js)
+  | [] => TapeProgram.skip
+  | j::js => TapeProgram.seq (powerCoefficient r j) (powerVector r js)
+
+theorem powerVector_stops {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (hr : Function.Injective r)
+    (js : List (Fin d)) (hjs : js.Nodup) (inp : Inputs) (ell : ℕ) (h : 0<ell) (alpha : Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment (powerWorkspace (powerField r)) ell (selectedIndex ell h) s)
+    (halpha : s.reg (r (.inl 32))=alpha.val) :
+    ∃ t e, t≤js.length*(powerCoefficientTimeBound d M+1) ∧
+      (powerVector r js).Stops inp (s.toCfg (powerVector (B := B) r js).entry) t e ∧
+      (∀ j∈js,e.reg (r (.inr j))=(EncodedTester.power (BinaryField.indexOperations ell h) alpha j.val).1.val) ∧
+      (∀ j,j∉js → e.reg (r (.inr j))=s.reg (r (.inr j))) ∧
+      Environment (powerWorkspace (powerField r)) ell (selectedIndex ell h) e.store ∧
+      e.reg (r (.inl 32))=s.reg (r (.inl 32)) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧
+      (∀ x,e.reg x≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  induction js generalizing s with
+  | nil =>
+    exact ⟨0,s.toCfg ⟨0,by simp [powerVectorLabels]⟩,by simp,TapeProgram.skip_stops inp s,
+      by simp,fun _ _ => rfl,henv,rfl,fun _ _ => rfl,hs,rfl⟩
+  | cons j js ih =>
+    have hjtail := (List.nodup_cons.mp hjs).1
+    have htail := (List.nodup_cons.mp hjs).2
+    obtain ⟨u,z,hu,hz,hzv,hze,hza,hzf,hzo,hzb,hzt⟩ := powerCoefficient_stops r hr j inp ell h alpha M hM s hs henv halpha
+    obtain ⟨t,e,ht,he,hev,hef,hee,hea,heo,heb,het⟩ := ih htail z.store hzb hze (by
+      change z.reg (r (.inl 32))=_; rw [hza]; exact halpha)
+    have hall := hz.seq he
+    refine ⟨u+1+t,_,?_,hall,?_,?_,hee,hea.trans hza,?_,heb,het.trans hzt⟩
+    · change u+1+t≤(js.length+1)*(powerCoefficientTimeBound d M+1)
+      rw [Nat.add_mul,Nat.one_mul]
+      omega
+    · intro a ha
+      simp only [List.mem_cons] at ha
+      rcases ha with rfl|ha
+      · exact (hef _ hjtail).trans hzv
+      · exact hev a ha
+    · intro a ha
+      have haj : a≠j := fun he => ha (by simp [he])
+      have hat : a∉js := fun he => ha (by simp [he])
+      exact (hef a hat).trans (hzf a haj)
+    · intro x hx
+      exact (heo x hx).trans (hzo x hx)
+
+def allPowers {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) :
+    TapeProgram R B (powerVectorLabels (List.finRange d)) := powerVector r (List.finRange d)
+
+theorem allPowers_stops {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (hr : Function.Injective r)
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (alpha : Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment (powerWorkspace (powerField r)) ell (selectedIndex ell h) s)
+    (halpha : s.reg (r (.inl 32))=alpha.val) :
+    ∃ t e, t≤d*(powerCoefficientTimeBound d M+1) ∧
+      (allPowers r).Stops inp (s.toCfg (allPowers (B := B) r).entry) t e ∧
+      (∀ j,e.reg (r (.inr j))=(EncodedTester.power (BinaryField.indexOperations ell h) alpha j.val).1.val) ∧
+      Environment (powerWorkspace (powerField r)) ell (selectedIndex ell h) e.store ∧
+      e.reg (r (.inl 32))=s.reg (r (.inl 32)) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧
+      (∀ x,e.reg x≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  obtain ⟨t,e,ht,he,hev,hef,hee,hea,heo,heb,het⟩ := powerVector_stops r hr (List.finRange d) (by simp)
+    inp ell h alpha M hM s hs henv halpha
+  exact ⟨t,e,by simpa using ht,he,fun j => hev j (by simp),hee,hea,heo,heb,het⟩
+
+#print axioms allPowers_stops

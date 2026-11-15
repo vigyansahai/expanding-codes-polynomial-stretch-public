@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 42.436645207999995,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=harness/submission/runtime/cache-src",
+    "-o",
+    "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.olean",
+    "./harness/submission/runtime/cache-src/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.lean"
+  ]
+}

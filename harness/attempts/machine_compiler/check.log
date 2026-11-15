@@ -1,0 +1,36 @@
+harness/attempts/machine_compiler/CounterCompiler.lean:122:17: warning: This simp argument is unused:
+  if_neg ih
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/machine_compiler/CounterCompiler.lean:164:51: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hq, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/machine_compiler/CounterCompiler.lean:164:55: warning: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hs, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/machine_compiler/CounterCompiler.lean:327:79: warning: This simp argument is unused:
+  eq_self_iff_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [normal, transition, hc, CounterProgram.step, hscan, hz, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.CounterCompiler.localSimulation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.CounterCompiler.compile_halts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.CounterCompiler.compile_computes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.CounterCompiler.compile_run_ne_query' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

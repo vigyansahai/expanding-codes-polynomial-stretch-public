@@ -1,0 +1,66 @@
+{
+  "owner": "sampler_assembly",
+  "status": "Complete: closed exact sampler implementation, frozen public sources, all direct/public/fresh-import checks passed, zero pending compilers",
+  "files": [
+    "ExpandingCodes/Computation/SamplerAssembly.lean",
+    "ExpandingCodes/Computation/SamplerImplementation.lean"
+  ],
+  "scratch": "harness/attempts/sampler_assembly/",
+  "exact_goal": "A finite TapeProgram fixed before runtime n/q/ell/m/b, outputting matrixBits(binarySamplerFromInput d n k beta inp), with true source Stops and uniform polynomial time on all finite random tapes",
+  "checked": [
+    "prepareRandom: 22-label physical preserving copies, exact store, time <=14M+15, global final counter bound M",
+    "markedFill: 57-label actual bottom-marker write plus existing 55-label counted random table fill",
+    "markedFill Stops and physical thermometer-table sampledValues semantics at actual offset1",
+    "markedFill exact RO-head, buffer-head, output, protected-register and global-counter contracts",
+    "staticScale: actual constant loader + unary multiplication; exact store/value, time<=40(M+1)^2 and caller-selected global final bound M",
+    "cube: actual two unary multiplications computing runtime q^3; exact store/value/frame, time<=65(M+1)^2 and caller-selected global final bound M",
+    "formCount/hashCount true source arithmetic for2*k*q*d andk*q^3; physical formFill/hashFill exact Stops/counters/table/marker/head contracts",
+    "tables: full two-table source composition, time<=391(M+1)^3; canonical physical sampledValues including exact continuous random offset; both BottomMarked and heads<=M",
+    "sizeStage: exact unary input and mission sizes, explicit source time2n+4+setupTimeBound d(n+1), alloutsidezero, clean scratch, full payload and polynomial source clock",
+    "fieldSetup: actual ell/q copies plus516-label actual SourceFieldSetup; selected field environment, true Stops<=40020(M+1)^7, sameglobalM, protected and tape-data frames",
+    "prelude_stops/preludeTime_polynomial: entire unarysize/randomtables/field source execution with RuntimeReady andemptyoutput, instantiating rootSamplerEnvelopeCovers",
+    "Concrete.sampler: full fixed-before-runtime finite sourcecode: prelude, odometerinit, runtime mcopy, counted outerloop of actualk-layerlist/every-column rowwriter/physicalcarry",
+    "rowBody_stops_of_layers: true actual layers/writer/odometer trace, exact numeric rowState+prefix invariant includingfinalwrap, sameM and outerremainingcounter",
+    "finish_stops_of_layers: actual odometerinit+runtime mcopy+m-counted loop outputs exactmatrixBits(binarySamplerFromInput) from strictly smaller actual layerblock",
+    "LayerInvariant/RuntimeReady adapters, samplerEnvelope layercaps, StablePost/StepPost\u2192actualfinitek-layerblock execution and allframes",
+    "Concrete.sourceTime_polynomial: actual fullsourceclock from allproved stages with explicit uniformlayerclock substitution",
+    "Concrete.sampler_stops_of_step/sampler_source_of_step: complete actualsourceStops/runhalt/output on EVERY finite randomtape, conditional onlyoneactualsinglelayeroperationalcontract",
+    "binary_sampler_implementation_of_step: exact canonical rational\u03b8 goal from actualsource/compiler/law bridge, thresholdmax2arity; scratch76380 exit0 axiomaudit standardonly",
+    "SamplerProgram.layer_stops discharged through concrete StepContract with fieldSize_covers_arity and exact globalM LayerCaps",
+    "Concrete.sampler_source: unconditional actual source run halt/exact matrixBits output on every finite random tape for d>=1,k>0,n>=max2k",
+    "binary_sampler_implementation_source: exact frozen rationaltheta sampler mission clause via concrete finite source, proved polynomialclock, compiler overhead and exact random law",
+    "Final Assembly scratch54039/public52653 exit0 with standard-only axiom audits; final Implementation scratch7895/public20067 exit0 with standard-only audits"
+  ],
+  "route": [
+    "Inject ParameterSetup fixed program into32..45",
+    "Compute physical table counts via actual staticScale/cube; prepare length/width counters46/47",
+    "Initialize forms0 and hashes1 bottom markers and perform actual continuous randomness fills",
+    "Copy ell34/q35 to field20/23 and execute actual SourceFieldSetup",
+    "Initialize little-endian odometer; count row loop with runtime m36",
+    "Per row execute all checked actual layers, actual NeighborWriter.writeRow, actual odometer increment",
+    "Relate enumeration/output to exact EncodedSampler matrix and apply root SamplerSource bridge"
+  ],
+  "layout": "Generic injective r:Fin80->FinR for prelude; concrete Storage.registers d k=80+4*d+k. Size32..45, random46..52, scalar53..59, outer60,odotmp61,writer62..68,layer69..74, points80+j,countdowns80+d+j,coefficients80+2d+j,neighbors80+4d+i",
+  "unresolved": [],
+  "proof_integrity": "No axioms, data holes, sorry, native_decide, modified model, or runtime-dependent code tables. Public last compiling module preserved while scratch grows.",
+  "validation": "Final Assembly scratch54039/public52653 exit0; final Implementation scratch7895/public20067 exit0; fresh-import AuditSamplerFinal82119 exit0. All audited declarations depend only propext, Classical.choice, Quot.sound; no sorryAx/custom axioms. Public sources frozen. Root owns final clean42target build/all54 mission audit.",
+  "failed_approaches": [
+    "Implicit FinK parameter of ThermometerTable is not rewritten by simp; use explicit rw on physical count equalities before sampledValues/values simplification.",
+    "A premature public promotion based on empty running log was reverted to last compiling checkpoint; subsequent promotions require observed compiler exit0 and durable checkpoint copy.",
+    "simp-only on the final finite-field neighbor equality produced an implicit-q transport mismatch; direct exact hvalue closes the definitionally identical target and audits without sorryAx."
+  ],
+  "public_frozen": true,
+  "final_theorem": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+  "source_theorem": "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source",
+  "concrete_program": "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler d k",
+  "handoff": "Root: import ExpandingCodes.Computation.SamplerImplementation; replace ProgramObligations.binary_sampler_implementation registered stub by exact binary_sampler_implementation_source \u03b8 h\u03b8. Root owns final clean serialized Lake build and all54 mission-theorem audits.",
+  "checkpoints": [
+    "checkpoint-prelude-factory.lean",
+    "checkpoint-row-frames.lean",
+    "checkpoint-outer-source.lean",
+    "checkpoint-final-assembly.lean",
+    "checkpoint-final-implementation.lean"
+  ],
+  "axiom_audit": "harness/attempts/sampler_assembly/final-audit.log: Concrete.sampler,step_contract,sampler_source,sourceTime_polynomial,binary_sampler_implementation_source all standard-three axioms only.",
+  "pending_compilers": 0
+}

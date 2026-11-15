@@ -1,0 +1,40 @@
+/-- Physical entries begin after the reserved bottom marker. The offset is an
+individual bounded unary register; construction of 1+i*width is charged separately. -/
+def entryOffset (i width : ℕ) : ℕ := 1+i*width
+
+/-- Reset and then traverse exactly the supplied unary offset. -/
+def seekEntry (offset : Fin R) (b : Fin B) : TapeProgram R B 5 :=
+  TapeProgram.seq (reset b) (seekRight offset b)
+
+ theorem seekEntry_stops (offset : Fin R) (b : Fin B) (inp : Inputs)
+    (i w : ℕ) (d : TapeStore R B) (ho : d.reg offset = entryOffset i w)
+    (hm : Marked d b) :
+    ∃ e, (seekEntry offset b).Stops inp (d.toCfg (seekEntry (R := R) offset b).entry)
+      (d.bufferHead b+2*entryOffset i w+3) e ∧
+      e.reg = Function.update d.reg offset 0 ∧
+      e.bufferHead = Function.update d.bufferHead b (entryOffset i w) ∧
+      TapeStore.SamePayload e.store d := by
+  obtain ⟨d₁, h₁, hr₁, hh₁, hp₁⟩ := reset_stops b inp (d.bufferHead b) d rfl hm
+  have ho₁ : d₁.reg offset = entryOffset i w := by rw [hr₁]; exact ho
+  obtain ⟨e, h₂, hr₂, hh₂, hp₂⟩ := seekRight_stops offset b inp (entryOffset i w) d₁ ho₁
+  have hall := h₁.seq h₂
+  refine ⟨(e.toCfg (2 : Fin 3)).mapPC (TapeProgram.rightLabel 2), ?_, ?_, ?_, hp₂.trans hp₁⟩
+  · convert hall using 1 <;> first | rfl | omega
+  · simpa [hr₁] using hr₂
+  · change e.bufferHead = _
+    rw [hh₂, hh₁]
+    simp [Function.update_idem]
+
+/-- A table is physically present in successive fixed-width bit blocks. This
+is a specification over explicit buffer cells, not a new array instruction. -/
+def ThermometerTable {N : ℕ} (d : TapeStore R B) (b : Fin B) (width : ℕ)
+    (values : Fin N → ℕ) : Prop :=
+  ∀ i, ThermometerAt d b (entryOffset i.val width) width (values i)
+
+ theorem ThermometerAt.of_payload {d e : TapeStore R B} {b : Fin B} {start w v : ℕ}
+    (h : ThermometerAt d b start w v) (hp : TapeStore.SamePayload e d) :
+    ThermometerAt e b start w v := by
+  refine ⟨h.1, ?_⟩
+  intro j hj
+  rw [hp.symbol]
+  exact h.2 j hj

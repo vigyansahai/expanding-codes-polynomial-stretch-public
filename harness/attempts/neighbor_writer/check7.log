@@ -1,0 +1,152 @@
+harness/attempts/neighbor_writer/NeighborWriter.lean:438:4: error: Tactic `apply` failed: could not unify the conclusion of `congrArg List.ofFn`
+  List.ofFn ?m.110 = List.ofFn ?m.111
+with the goal
+  decide
+      (∃ i,
+        Function.update d.reg l.count (d.reg l.count - 1) l.col =
+          Function.update d.reg l.count (d.reg l.count - 1) (l.neighbor i)) =
+    decide (∃ i, d.reg l.col = d.reg (l.neighbor i))
+
+Note: The full type of `congrArg List.ofFn` is
+  ?m.110 = ?m.111 → List.ofFn ?m.110 = List.ofFn ?m.111
+
+case succ.e_a.e_head
+R B k : ℕ
+l : Layout R k
+n : ℕ
+ih :
+  ∀ (d : TapeStore R B),
+    d.reg l.out = 0 →
+      (loopStore l n d).output = d.output ++ List.ofFn fun j => decide (∃ i, d.reg l.col + ↑j = d.reg (l.neighbor i))
+d : TapeStore R B
+ho : d.reg l.out = 0
+⊢ decide
+      (∃ i,
+        Function.update d.reg l.count (d.reg l.count - 1) l.col =
+          Function.update d.reg l.count (d.reg l.count - 1) (l.neighbor i)) =
+    decide (∃ i, d.reg l.col = d.reg (l.neighbor i))
+harness/attempts/neighbor_writer/NeighborWriter.lean:457:8: error: 'change' tactic failed, pattern
+  d.reg l.count - 1 ≤ M
+is not definitionally equal to target
+  d₁.reg l.count ≤ M
+harness/attempts/neighbor_writer/NeighborWriter.lean:480:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  o ≥ 0
+  m ≥ 0
+  j ≥ 0
+  i ≥ 0
+  i - j ≥ -1
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f + j - m - o ≥ 7
+  c ≥ 0
+  c - f ≥ -5
+  b ≥ 0
+  a ≥ 1
+  a - b - g ≥ 1
+  a - g - h ≥ 0
+where
+ a := ↑M
+ b := ↑(d₁.reg l.col)
+ c := ↑k * ↑(160 * (M + 1) + 1)
+ f := ↑s
+ g := ↑(d₂.reg l.count)
+ h := ↑(d₂.reg l.col)
+ i := ↑n * ↑(k * (160 * (M + 1) + 1) + 7)
+ j := ↑t
+ m := ↑n *
+  ↑(k *
+        (⋯ + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) +
+                                                                                  (M + 1) +
+                                                                                (M + 1) +
+                                                                              (M + 1) +
+                                                                            (M + 1) +
+                                                                          (M + 1) +
+                                                                        (M + 1) +
+                                                                      (M + 1) +
+                                                                    (M + 1) +
+                                                                  (M + 1) +
+                                                                (M + 1) +
+                                                              (M + 1) +
+                                                            (M + 1) +
+                                                          (M + 1) +
+                                                        (M + 1) +
+                                                      (M + 1) +
+                                                    (M + 1) +
+                                                  (M + 1) +
+                                                (M + 1) +
+                                              (M + 1) +
+                                            (M + 1) +
+                                          (M + 1) +
+                                        (M + 1) +
+                                      (M + 1) +
+                                    (M + 1) +
+                                  (M + 1) +
+                                (M + 1) +
+                              (M + 1) +
+                            (M + 1) +
+                          (M + 1) +
+                        (M + 1) +
+                      (M + 1) +
+                    (M + 1) +
+                  (M + 1) +
+                (M + 1) +
+              (M + 1) +
+            (M + 1) +
+          1) +
+      7)
+ o := ↑k *
+  ↑(⋯ + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) + (M + 1) +
+                                                                                (M + 1) +
+                                                                              (M + 1) +
+                                                                            (M + 1) +
+                                                                          (M + 1) +
+                                                                        (M + 1) +
+                                                                      (M + 1) +
+                                                                    (M + 1) +
+                                                                  (M + 1) +
+                                                                (M + 1) +
+                                                              (M + 1) +
+                                                            (M + 1) +
+                                                          (M + 1) +
+                                                        (M + 1) +
+                                                      (M + 1) +
+                                                    (M + 1) +
+                                                  (M + 1) +
+                                                (M + 1) +
+                                              (M + 1) +
+                                            (M + 1) +
+                                          (M + 1) +
+                                        (M + 1) +
+                                      (M + 1) +
+                                    (M + 1) +
+                                  (M + 1) +
+                                (M + 1) +
+                              (M + 1) +
+                            (M + 1) +
+                          (M + 1) +
+                        (M + 1) +
+                      (M + 1) +
+                    (M + 1) +
+                  (M + 1) +
+                (M + 1) +
+              (M + 1) +
+            (M + 1) +
+          (M + 1) +
+        (M + 1) +
+      1)
+'ExpandingCodes.Computation.NeighborWriter.markStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.markEq_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.emitFlag_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.marksStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.marks_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.body_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.loopStore_output' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.loop_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

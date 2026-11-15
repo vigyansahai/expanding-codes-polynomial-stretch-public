@@ -1,0 +1,16 @@
+import ExpandingCodes.Probability.Distinguishing
+set_option autoImplicit false
+#check @ExpandingCodes.PolynomialStretch.testMatrix_rank_mean_lower
+#check @ExpandingCodes.PolynomialStretch.eventual_rankTest_uniform_acceptance_family
+#check @ExpandingCodes.PolynomialStretch.bernoulli_weight_upper_tail
+#check @ExpandingCodes.PolynomialStretch.rankTest_distinguishing
+#print axioms ExpandingCodes.PolynomialStretch.uniformMean_ambiguity_support_compl
+#print axioms ExpandingCodes.PolynomialStretch.testMatrix_rank_mean_lower
+#print axioms ExpandingCodes.PolynomialStretch.rankTest_uniformProb_le_of_mean
+#print axioms ExpandingCodes.PolynomialStretch.bernoulli_two_point_mgf_le
+#print axioms ExpandingCodes.PolynomialStretch.bernoulli_weight_upper_tail
+#print axioms ExpandingCodes.PolynomialStretch.rankTest_accepts_arbitrary_errors
+#print axioms ExpandingCodes.PolynomialStretch.rankTest_bernoulli_acceptance
+#print axioms ExpandingCodes.PolynomialStretch.eventual_rankTest_uniform_acceptance_family
+#print axioms ExpandingCodes.PolynomialStretch.rankTest_distinguishing
+#print axioms ExpandingCodes.PolynomialStretch.auxiliary_rate

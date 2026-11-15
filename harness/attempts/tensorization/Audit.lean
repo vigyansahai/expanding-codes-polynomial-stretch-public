@@ -1,0 +1,3 @@
+import ExpandingCodes.Probability.SharpThreshold.Tensorization
+set_option autoImplicit false
+#print axioms ExpandingCodes.SharpThreshold.tensorize_two_point

@@ -1,0 +1,7 @@
+import ExpandingCodes.Computation.SamplerImplementation
+
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.step_contract
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.sourceTime_polynomial
+#print axioms ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source

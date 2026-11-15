@@ -1,0 +1,8 @@
+[{"type":
+  "∀ (θ : Rat),\n  And\n      (@LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero))\n        (@Rat.cast Real Real.instRatCast θ))\n      (@LT.lt Real Real.instLT (@Rat.cast Real Real.instRatCast θ)\n        (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))\n          (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))\n          (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯)))) →\n    ExpandingCodes.PolynomialStretch.SamplerImplementation θ fun n =>\n      ExpandingCodes.PolynomialStretch.binaryGeometry\n        (ExpandingCodes.PolynomialStretch.dimension (@Rat.cast Real Real.instRatCast θ)) n",
+  "name":
+  "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source"},
+ {"type":
+  "∀ (θ : Rat),\n  And\n      (@LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero))\n        (@Rat.cast Real Real.instRatCast θ))\n      (@LT.lt Real Real.instLT (@Rat.cast Real Real.instRatCast θ)\n        (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))\n          (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))\n          (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯)))) →\n    ExpandingCodes.PolynomialStretch.TesterImplementation θ fun n =>\n      ExpandingCodes.PolynomialStretch.binaryGeometry\n        (ExpandingCodes.PolynomialStretch.dimension (@Rat.cast Real Real.instRatCast θ)) n",
+  "name":
+  "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source"}]

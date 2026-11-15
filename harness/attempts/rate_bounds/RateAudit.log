@@ -1,0 +1,18 @@
+'ExpandingCodes.PolynomialStretch.uniformProb_exists_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.binomial_atom_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.uniformProb_trueSet_interval_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.gridBand_prob_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.auxiliary_grid_rate_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.limitingRate_lower_parameter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.cubeHalfspace_midpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.limitingRate_lt_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.tendsto_preliminaryRatio_scaled' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.eventually_preliminary_parameters' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

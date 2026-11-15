@@ -1,0 +1,55 @@
+def blockTime (d k M : ℕ) : ℕ := k*(layerTimeUniform d k M+1)
+def sourceTime (d n k : ℕ) : ℕ :=
+  preludeTime d n (samplerEnvelope d k n)+1+
+    finishTime d n k (blockTime d k (samplerEnvelope d k n)) (samplerEnvelope d k n)
+
+theorem sourceTime_polynomial (d k : ℕ) (hd : 0<d) : PolynomialBound (fun n => sourceTime d n k) := by
+  have hM := samplerEnvelope_polynomial d k hd
+  have hC : PolynomialBound (fun n => blockTime d k (samplerEnvelope d k n)) :=
+    (PolynomialBound.const k).mul (((layerTimeUniform_polynomial d k).comp hM).add (PolynomialBound.const 1))
+  have hW0 : PolynomialBound (fun M => NeighborWriter.writeRowBound k M) :=
+    ((PolynomialBound.const (161*k+25)).mul
+      ((PolynomialBound.identity.add (PolynomialBound.const 1)).pow 2)).of_le
+      (fun M _ => NeighborWriter.writeRowBound_polynomial k M)
+  have hW := hW0.comp hM
+  have hO : PolynomialBound (fun n => d*(8*samplerEnvelope d k n+20)) :=
+    (PolynomialBound.const d).mul (((PolynomialBound.const 8).mul hM).add (PolynomialBound.const 20))
+  have hRow : PolynomialBound (fun n => rowBodyTime d k (blockTime d k (samplerEnvelope d k n))
+      (samplerEnvelope d k n)) :=
+    ((hC.add hW).add hO).add (PolynomialBound.const 2)
+  have hF : PolynomialBound (fun n => finishTime d n k (blockTime d k (samplerEnvelope d k n))
+      (samplerEnvelope d k n)) :=
+    ((((hO.add (((PolynomialBound.const 7).mul hM).add (PolynomialBound.const 7))).add
+      (PolynomialBound.const 2)).add
+      ((rowCount_polynomial d hd).mul (hRow.add (PolynomialBound.const 2)))).add (PolynomialBound.const 1)
+  exact ((preludeTime_polynomial d k hd).add (PolynomialBound.const 1)).add hF
+
+theorem sampler_stops_of_step (d n k : ℕ) (hd : 1 ≤ d) (hk : 0<k) (hn : 2 ≤ n) (hnk : k ≤ n)
+    (inp : Inputs) (hi : inp.input=sizeInput n)
+    (hStep : StepContract d n k (samplerEnvelope d k n) inp
+      (layerTimeUniform d k (samplerEnvelope d k n))) :
+    ∃ t e,t ≤ sourceTime d n k ∧
+      (sampler d k).Stops inp ((initialStore (Storage.registers d k) 2).toCfg (sampler d k).entry) t e ∧
+      e.output=matrixBits (binarySamplerFromInput d n k (Nat.log 2 (n/k)) inp) := by
+  have hM := samplerEnvelope_covers d k n
+  obtain ⟨t₁,a,ht₁,ha,has,haReady,haOut⟩ := prelude_stops (Storage.low d k)
+    (Storage.low_injective d k) d n k hd hk hn hnk inp hi (samplerEnvelope d k n) hM
+  obtain ⟨t₂,e,ht₂,he,heo⟩ := finish_stops_of_layers d n k (samplerEnvelope d k n) inp
+    (by have := hM.two;omega) (Storage.pointPairs_nodup d k) (blockTime d k (samplerEnvelope d k n))
+    (block_contract_of_step d n k _ inp _ hStep) a.store haReady haOut
+  refine ⟨_,_,?_,ha.seq he,heo⟩
+  unfold sourceTime
+  omega
+
+theorem sampler_source_of_step (d n k : ℕ) (hd : 1 ≤ d) (hk : 0<k) (hn : 2 ≤ n) (hnk : k ≤ n)
+    (ω : List Bool)
+    (hStep : StepContract d n k (samplerEnvelope d k n) ⟨sizeInput n,[],[],ω⟩
+      (layerTimeUniform d k (samplerEnvelope d k n))) :
+    ∃ t ≤ sourceTime d n k,
+      (sampler d k).halted ((sampler d k).run ⟨sizeInput n,[],[],ω⟩ t) ∧
+      ((sampler d k).run ⟨sizeInput n,[],[],ω⟩ t).output=
+        matrixBits (binarySamplerFromInput d n k (Nat.log 2 (n/k)) ⟨sizeInput n,[],[],ω⟩) := by
+  obtain ⟨t,e,ht,he,heo⟩ := sampler_stops_of_step d n k hd hk hn hnk ⟨sizeInput n,[],[],ω⟩ rfl hStep
+  have hr := he.exec.iterate
+  change (sampler d k).run ⟨sizeInput n,[],[],ω⟩ t=e at hr
+  exact ⟨t,ht,by rw [hr];exact he.halted,by rw [hr];exact heo⟩

@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "owner": "tape_macros",
+  "owned_files": [
+    "ExpandingCodes/Computation/TapeLoops.lean",
+    "ExpandingCodes/Computation/TapeMacros.lean",
+    "ExpandingCodes/Computation/TapeArrays.lean",
+    "harness/attempts/tape_macros/*",
+    "harness/tasks/tape_macros.json"
+  ],
+  "status": "complete: owned finite tape macro and physical array foundation publicly compiled and transitively audited; central Lake trace refresh remains coordinator work",
+  "canonical_definitions": [
+    "Definitions/Def_NKtLB_Machine.lean"
+  ],
+  "interface": "local finite TapeProgram combinators over unchanged canonical NKtLB; no mission definition altered",
+  "proof_route": [
+    "Port checked active trace, halt, relabel, disjoint finite sequencing and actual counted-loop construction to explicit-buffer language.",
+    "Prove exact finite source executions of clear and destructive addition; build copy from actual increment/transfer phases; all array data remain on explicit buffers.",
+    "Prove single-cell operations, marker-based reset and charged head seek before any flat-array access."
+  ],
+  "completed": [
+    {
+      "declaration": "ExpandingCodes.Computation.TapeProgram.countedLoop_stops",
+      "statement": "Fresh counted loop with actual body traces bounded C stops within n*(C+2)+1 source steps.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeProgram.Stops.seq",
+      "statement": "Finite disjoint-table program sequencing executes in exactly t+1+s source steps.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeProgram.Stops.compile",
+      "statement": "Source Stops from init yields canonical NKtLB HaltsWith at 1+2*t and exact output.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeMacros.clear_stops",
+      "statement": "Actual two-label clearing routine stops after exactly n+1 source steps and zeroes only the chosen counter.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeMacros.transfer_stops",
+      "statement": "Actual three-label destructive addition src\u2192dst stops after exactly 2*n+1 source steps, for distinct src,dst; payload unchanged.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeMacros.cell_stops",
+      "statement": "Actual two-label single-cell finite buffer action stops after exactly one source step.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeMacros.copy_stops",
+      "statement": "Actual eleven-label copy with pairwise distinct src,dst,tmp executes in oldDst+oldTmp+5*oldSrc+7 source steps; dst becomes oldSrc, src preserved, tmp zero, all tape data unchanged.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.seekRight_stops",
+      "statement": "Actual three-label seek consumes distance counter n and performs n explicit right moves, in exactly 2*n+1 source steps; all payload symbols preserved.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.reset_stops",
+      "statement": "Actual bottom-marker scan resets buffer head h to zero in exactly h+1 source steps, assuming marker at zero and none in active positive prefix; all payload symbols preserved.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.copyCell_stops",
+      "statement": "Actual six-label program reads one canonical RO symbol, branches finitely, writes that exact symbol to current buffer cell and moves right, in exactly two source steps.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeMacros.addPreserving_stops",
+      "statement": "Nine-label actual unary add preserving src, adds original src to dst, clears tmp, in oldTmp+5*oldSrc+5 source steps; three distinct registers.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.copyCells_stops",
+      "statement": "Eight-label program copies n consecutive canonical RO symbols into successive explicit buffer cells in exactly 4*n+1 source steps, consuming loop counter.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.copyCellsStore_symbol",
+      "statement": "Every copied interval symbol equals exact initial RO symbol at corresponding head offset; every other buffer/cell preserved extensionally.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.writeBlock_stops",
+      "statement": "Seven-label physical thermometer writer, distinct value/width counters v,w with v\u2264w, consumes both, writes v ones then w-v zeros; exact source cost 2*w+v+3.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.writeBlockStore_symbol",
+      "statement": "Thermometer writer changes exactly the initial head interval of width w to v ones then w-v zeros; every cell of every other buffer and every cell outside that interval is preserved.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.readBlock_stops",
+      "statement": "Four-label thermometer scanner, distinct width/value registers, width w and encoded value v, stops in exactly 2*w+v+1 source steps, consumes width and adds v to accumulator; payload symbols/RO heads/output unchanged; head advances w.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.seekEntry_stops",
+      "statement": "Five-label reset+seek supplied unary offset 1+i*w; exact oldHead+2*(1+i*w)+3 source steps. This intermediate API charges traversal but accepts supplied offset.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.positionEntry_stops_polynomial",
+      "statement": "Thirty-one-label actual multiplication+increment+reset+traversal computes 1+index*width and physically positions head there; preserves index,width, clears offset/tmp/count. Source time\u226440*(M+1)^2 when initial counters and buffer head\u2264M.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.readEntry_stops",
+      "statement": "Thirty-five-label complete indexed read includes unary offset multiplication, marker reset, charged traversal and thermometer scan. Requires zero value accumulator and encoded entry; returns decoded value, clears width/offset/tmp/count, preserves all buffer symbols/RO heads/output.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.writeEntry_stops",
+      "statement": "Thirty-eight-label complete indexed write includes unary offset multiplication, marker reset, charged traversal and thermometer write. Returns exact EntryWritten interval semantics, clears value/width/offset/tmp/count, preserves all cells outside addressed entry.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.entryAccessBound_le",
+      "statement": "Both complete indexed routines have source time\u2264entryAccessBound\u226450*(M+1)^2 when initial five index/width/offset/scratch counters and selected buffer head\u2264M.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.initializeBuffer_stops",
+      "statement": "Two-label finite program installs reserved bot at zero and advances head to one in exactly one source step from an extensionally blank buffer/head zero.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.EntryWritten.bottomMarked",
+      "statement": "A positive-offset physical thermometer write preserves the global unique-bottom-marker invariant; payload-preserving reads preserve it as well.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ExpandingCodes.Computation.TapeArrays.EntryWritten.table",
+      "statement": "Exact physical EntryWritten overwrite at 1+i*width yields ThermometerTable of Function.update values i v, preserving every other logical entry.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "checked_artifacts": [
+    "harness/attempts/tape_macros/loops-check.log",
+    "harness/attempts/tape_macros/loops-public-check.log",
+    "harness/attempts/tape_macros/macros-check.log",
+    "harness/attempts/tape_macros/macros-public-check.log",
+    "harness/attempts/tape_macros/macros-copy-check.log",
+    "harness/attempts/tape_macros/macros-copy-public-check.log",
+    "harness/attempts/tape_macros/arrays-check.log",
+    "harness/attempts/tape_macros/macros-add-check.log",
+    "harness/attempts/tape_macros/macros-add-public-check.log",
+    "harness/attempts/tape_macros/arrays-public-check.log",
+    "harness/attempts/tape_macros/arrays-block-check.log",
+    "harness/attempts/tape_macros/arrays-block-public-check.log",
+    "harness/attempts/tape_macros/arrays-write-check.log",
+    "harness/attempts/tape_macros/arrays-write-public-check.log",
+    "harness/attempts/tape_macros/arrays-read-check.log",
+    "harness/attempts/tape_macros/arrays-read-public-check.log",
+    "harness/attempts/tape_macros/arrays-position-check.log",
+    "harness/attempts/tape_macros/arrays-position-public-check.log",
+    "harness/attempts/tape_macros/arrays-access-check.log",
+    "harness/attempts/tape_macros/arrays-access-public-check.log",
+    "harness/attempts/tape_macros/arrays-table-check.log",
+    "harness/attempts/tape_macros/arrays-table-public-check.log",
+    "harness/attempts/tape_macros/final-axiom-audit.log"
+  ],
+  "open_theorem_bodies": [],
+  "unresolved_dependencies": [
+    "Coordinator must refresh central Lake traces for TapeLoops, TapeMacros, TapeArrays before claiming a clean repository build.",
+    "Full sampler/tester finite programs, field-operation source refinements, exact sample law integration, and mission polynomial bounds remain external."
+  ],
+  "lake_trace_refresh_required": [
+    "ExpandingCodes.Computation.TapeArrays",
+    "ExpandingCodes.Computation.TapeLoops",
+    "ExpandingCodes.Computation.TapeMacros"
+  ],
+  "representation": {
+    "field_entry": "q explicit cells per field value v<q, v ones then q-v zeros",
+    "hash_entry": "b explicit cells per bucket value j<b",
+    "marker": "bot reserved at cell zero; entry i begins at 1+i*width",
+    "coordinator_approval": "Root approved this polynomial-overhead physical representation; runtime-algorithms-plan.json updated."
+  },
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "dependencies": [
+    "ExpandingCodes.Computation.TapeCompiler",
+    "ExpandingCodes.Computation.UnaryArithmetic (field_programs owner; used actual multiply program, never a multiplication instruction)"
+  ],
+  "source_locations": {
+    "trace_composition": "ExpandingCodes/Computation/TapeLoops.lean:59",
+    "counted_loop": "ExpandingCodes/Computation/TapeLoops.lean:272",
+    "counter_copy_add": "ExpandingCodes/Computation/TapeMacros.lean:222",
+    "thermometer_writer": "ExpandingCodes/Computation/TapeArrays.lean:468",
+    "thermometer_reader": "ExpandingCodes/Computation/TapeArrays.lean:622",
+    "physical_indexing": "ExpandingCodes/Computation/TapeArrays.lean:726",
+    "complete_read": "ExpandingCodes/Computation/TapeArrays.lean:842",
+    "complete_write": "ExpandingCodes/Computation/TapeArrays.lean:904",
+    "logical_table_update": "ExpandingCodes/Computation/TapeArrays.lean:1006"
+  },
+  "proof_notes": [
+    "CounterLoops port reuses checked active-trace and meaningful finite-code constructions, carrying all explicit buffer fields in stores.",
+    "Arithmetic tests and tape scans are actual finite instructions. No entire variable-size table is stored in a unary register.",
+    "Intermediate seekEntry accepts a supplied unary offset and charges reset/traversal; complete positionEntry/readEntry/writeEntry additionally construct that offset with actual checked unary multiplication and increment.",
+    "Physical finite-list trailing blank differences are handled by extensional getD equality.",
+    "No open theorem bodies, sorry, custom axioms, unsafe code, target imports or mission-definition edits."
+  ],
+  "final_validation": {
+    "public_compile": "All three public modules directly compiled with ./tools/lake-serial env lean -o corresponding public .olean; exit 0, autoImplicit false, default 6144MB and one compiler thread.",
+    "aggregate_audit": "./tools/lake-serial env lean harness/attempts/tape_macros/Audit.lean: exit 0; all 20 audited public completion/representation/marker declarations use only allowed axioms.",
+    "open_theorem_bodies": [],
+    "forbidden_source_scan": "No sorry, sorryAx, custom axiom or unsafe occurs in owned public sources."
+  }
+}

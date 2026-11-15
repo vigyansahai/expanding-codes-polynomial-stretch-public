@@ -1,0 +1,32 @@
+/-- Actual source program for a fixed-dimensional encoded linear form. -/
+def linear {d : ℕ} (r : Fin 31 → Fin R) (coeff point : Fin d → Fin R) :
+    TapeProgram R B (2+dotLabels (List.ofFn (fun i => (coeff i,point i)))) :=
+  dotFromZero r (List.ofFn (fun i => (coeff i,point i)))
+
+theorem linear_stops {d : ℕ} (r : Fin 31 → Fin R) (hr : Function.Injective r)
+    (coeff point : Fin d → Fin R) (hc : ∀ j i,coeff j≠r i) (hp : ∀ j i,point j≠r i)
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (values : Fin R → Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment r ell (selectedIndex ell h) s)
+    (hvc : ∀ j,s.reg (coeff j)=(values (coeff j)).val)
+    (hvp : ∀ j,s.reg (point j)=(values (point j)).val) :
+    ∃ t e, t≤(d+1)*(13320*(M+1)^6) ∧
+      (linear r coeff point).Stops inp (s.toCfg (linear (B := B) r coeff point).entry) t e ∧
+      e.reg (r 30)=(EncodedSampler.linear (BinaryField.indexOperations ell h)
+        (fun j => values (coeff j)) (fun j => values (point j))).1.val ∧
+      Environment r ell (selectedIndex ell h) e.store ∧
+      (∀ j,(∀ i,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  have hlist : ∀ p∈List.ofFn (fun i => (coeff i,point i)),(∀ i,p.1≠r i) ∧ (∀ i,p.2≠r i) := by
+    intro p hpm
+    obtain ⟨j,rfl⟩ := List.mem_ofFn.mp hpm
+    exact ⟨hc j,hp j⟩
+  have hvlist : ∀ p∈List.ofFn (fun i => (coeff i,point i)),
+      s.reg p.1=(values p.1).val ∧ s.reg p.2=(values p.2).val := by
+    intro p hpm
+    obtain ⟨j,rfl⟩ := List.mem_ofFn.mp hpm
+    exact ⟨hvc j,hvp j⟩
+  have hrun := dotFromZero_stops r hr _ hlist inp ell h values M hM s hs henv hvlist
+  simpa only [linear,List.length_ofFn,List.map_ofFn,EncodedSampler.linear] using hrun
+
+#print axioms linear_stops

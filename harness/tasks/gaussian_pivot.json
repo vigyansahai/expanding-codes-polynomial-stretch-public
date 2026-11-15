@@ -1,0 +1,25 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/GaussianPivot.lean",
+  "draft": "harness/attempts/gaussian_pivot/GaussianPivot.lean",
+  "status": "complete, direct and public-o checks passed, standard axioms only",
+  "inverse": "inverseLayout Fin31\u2192Fin64 maps operand6,monic38,N37,q0,q\u00b236,out50. invertPivot_stops exactinverseIndex, input6/FieldSetup/allcaller\u226540except50 preserved, allfinalregs\u2264M, all physical payload/heads unchanged.",
+  "coordinate_plan": {
+    "registers": "radixcols40; flatinput2; digitlow43/countdown52; digithigh53/countdown54; odometer tmp59; loopcount55; copytmp58; unarymultiply high53*cols40\u2192rowBase44 withtmp56/count57. Othercaller40,41,42,45..51,60..63 preserved.",
+    "source": "initialize two digits via actualinitDigits31labels + copyflat2\u219255tmp58(11), countedLoop43label odometer on55 (45), multiply24; total111labels. Then inverse418: total529labels.",
+    "important_order": "Coordinates BEFORE inverse: inverse scratch destroysflatindex2, whilecoordinates preservespivotvalue6 andinverse preservescoordinates43/44.",
+    "hypotheses": "allinitialregs\u2264M,1<cols40,flatindex2<cols\u00b2; matrixruntimeboundM coversflatindices androwbase.",
+    "loop_proof": "Use countedLoop_stops, concrete Fresh55 bydecide. Invariant remaining\u2264flat, allregs\u2264M, Valid40 twoDigits,reg40=initialcols, Nat.ofDigitscols(readings)=flat\u2212remaining, and exactframe outside43,52,53,54,55,58,59. Body usesprogram_stops_valid andprogram_number; dec55 doesnotchangeValid/readings/radix; nextnumber=(prior+1)%cols\u00b2=flat\u2212remaining byflat<cols\u00b2. InitInv usesinitializeStore_values/fresh/valid plusactualcopy.",
+    "post": "Atloopend col<cols,number=col+cols*high=flat. Derivecol=flat%cols andhigh=flat/cols; actualmultiply rowBase=high*cols\u2264flat\u2264M. PreserveFieldSetup/physicalpayload/head andfinalallregs\u2264M.",
+    "dependencies": "SamplerOdometer full enum/program_stops_valid public-o30247 passed; UnaryArithmetic.multiply_stops_polynomial actual24label bound32(M+1)^2."
+  },
+  "logs": [
+    "harness/attempts/gaussian_pivot/check.log",
+    "harness/attempts/gaussian_pivot/public-inverse.log",
+    "harness/attempts/gaussian_pivot/check3.log",
+    "harness/attempts/gaussian_pivot/check4.log",
+    "harness/attempts/gaussian_pivot/check7.log",
+    "harness/attempts/gaussian_pivot/public-full.log"
+  ],
+  "api": "preparePivot_stops ell h d inp M FieldSetup allregbound (1<cols40) (flat2<cols\u00b2) a (reg6=a.val): t\u226421000(M+1)^7 actualStops; PivotOutcome col43=flat%cols,rowBase44=(flat/cols)*cols,inv50=actualinverseIndex a, setup, allfinalregs\u2264M, samephysicalpayload/exactheads/pivot6 preserved. Callerframe all\u226540 satisfyingOutsidePivotCoordinates andr!=50; inparticular40,41,42,45..49,51,60..63 stable."
+}

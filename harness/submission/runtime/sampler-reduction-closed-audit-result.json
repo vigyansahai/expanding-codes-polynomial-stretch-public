@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 165.764334625,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--setup=harness/submission/runtime/sampler-closed-audit.setup.json",
+    "harness/submission/runtime/SamplerClosedAudit.lean"
+  ]
+}

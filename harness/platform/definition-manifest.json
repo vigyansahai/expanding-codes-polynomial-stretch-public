@@ -1,0 +1,90 @@
+[
+  {
+    "module": "Definitions.Def_ExpandingCodes_PolynomialStretch_Sampler",
+    "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+    "definition_id": "1563cc63-5a0d-48a8-bdab-46756533d258",
+    "sha256": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+    "imports": [
+      "Definitions.Def_ExpandingCodes_PolynomialStretch_Parameters"
+    ]
+  },
+  {
+    "module": "Definitions.Def_ExpandingCodes_PolynomialStretch_OperationalFamily",
+    "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_OperationalFamily.lean",
+    "definition_id": "41466d1d-9260-4086-8a89-553a06a7254f",
+    "sha256": "df250f0892281987cdc071cdf214ec6ad3d6283d3bd5acf7ac0c4d76ac809722",
+    "imports": [
+      "Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel",
+      "Definitions.Def_NKtLB_Machine"
+    ]
+  },
+  {
+    "module": "Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel",
+    "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+    "definition_id": "c8675505-f7bc-49e0-a1dd-36f3e2df54a9",
+    "sha256": "a5b19ce5dc52f25e34692d92cf1446743437ceee3f16c170ec2a0e5135b99caa",
+    "imports": [
+      "Definitions.Def_ExpandingCodes_PolynomialStretch_PolynomialTest"
+    ]
+  },
+  {
+    "module": "Definitions.Def_ExpandingCodes_PolynomialStretch_PolynomialTest",
+    "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+    "definition_id": "f28466c6-4f2e-4a2c-8487-ae2bdbd10095",
+    "sha256": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+    "imports": [
+      "Definitions.Def_ExpandingCodes_PolynomialStretch_Sampler"
+    ]
+  },
+  {
+    "module": "Definitions.Def_ExpandingCodes_PolynomialStretch_Parameters",
+    "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean",
+    "definition_id": "6fdf94a9-373d-4fa5-a94d-9b422a52b5c9",
+    "sha256": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+    "imports": [
+      "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryModel"
+    ]
+  },
+  {
+    "module": "Definitions.Def_NKtLB_Machine",
+    "path": "Definitions/Def_NKtLB_Machine.lean",
+    "definition_id": "cffc7a2a-241c-496f-bb59-4f25e4a81a95",
+    "sha256": "785889c2be55cdc3a69d2244752ee113e814e39993a6a71e1f3b6dcbba1ef89c",
+    "imports": []
+  },
+  {
+    "module": "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryModel",
+    "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean",
+    "definition_id": "e22f7418-e525-4794-84bd-255aa3a15287",
+    "sha256": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+    "imports": [
+      "Definitions.Def_QuantumExpander_Decoder_Setting"
+    ]
+  },
+  {
+    "module": "Definitions.Def_QuantumExpander_Decoder_Setting",
+    "path": "Definitions/Def_QuantumExpander_Decoder_Setting.lean",
+    "definition_id": "f90cb34e-f8b5-4d65-84c4-1c1d3b2c8a82",
+    "sha256": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+    "imports": [
+      "Definitions.Def_CodingTheory",
+      "Definitions.Def_TillichZemor_HGP_Setting"
+    ]
+  },
+  {
+    "module": "Definitions.Def_CodingTheory",
+    "path": "Definitions/Def_CodingTheory.lean",
+    "definition_id": "bb1f8e47-cf0f-4a06-b15f-6932679d299a",
+    "sha256": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+    "imports": []
+  },
+  {
+    "module": "Definitions.Def_TillichZemor_HGP_Setting",
+    "path": "Definitions/Def_TillichZemor_HGP_Setting.lean",
+    "definition_id": "9fadc8f0-3584-4954-809b-6d7a8ae72a0a",
+    "sha256": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+    "imports": [
+      "Definitions.Def_CodingTheory"
+    ]
+  }
+]

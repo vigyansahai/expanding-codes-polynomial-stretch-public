@@ -1,0 +1,12 @@
+ExpandingCodes/Computation/FieldCoefficients.lean:25:10: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.FieldPrograms.indexEquiv_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.FieldPrograms.candidateCoefficient_bit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldPrograms.coefficient_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

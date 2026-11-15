@@ -1,0 +1,11 @@
+'ExpandingCodes.Computation.TesterInput.load_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterInput.word_symbols' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterPowers.power_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterPowers.product_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.evaluate_canonical_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.auxiliaryDegree_nat' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TesterEvaluation.degree_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.maskedTerm_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.construct' depends on axioms: [propext, Classical.choice, Quot.sound]

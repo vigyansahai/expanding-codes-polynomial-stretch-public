@@ -1,0 +1,13 @@
+'ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SamplerAssembly.Concrete.step_contract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SamplerAssembly.Concrete.sourceTime_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

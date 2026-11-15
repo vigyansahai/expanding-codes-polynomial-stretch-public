@@ -1,0 +1,113 @@
+{
+  "source": "harness/submission/Upload.lean",
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "server_source_limit_bytes": 1048576,
+  "method": [
+    "Stage1 sanctioned declaration extractor against compiled actual Upload.olean",
+    "Root global solution plus all participating-module instance declarations",
+    "Close actual typeDeps/valueDeps, descend inductives to constructors, then close all members of retained whole source commands",
+    "Match elaborator declaration ranges by containment against Lean parser whole-command spans",
+    "Take union of original parser leaf-token byte spans, omitting doc-comment/module-doc syntax and all whitespace",
+    "For auxiliary_rate-only variant, restrict instance roots to original AuxiliaryRate import closure",
+    "For main-after-auxiliary_rate variant, retain auxiliary_rate type dependencies but do not descend its proof or retain its declaration"
+  ],
+  "results": {
+    "full": {
+      "reachable_declarations": 3603,
+      "retained_decl_commands": 2774,
+      "retained_source_command_bytes": 1678562,
+      "retained_declaration_bytes": 1630783,
+      "noncomment_token_bytes_lower_bound": 1232913,
+      "declaration_token_bytes_lower_bound": 1201702,
+      "mandatory_ascii_word_separators_lower_bound": 92590,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1294292
+    },
+    "auxiliary-rate": {
+      "reachable_declarations": 275,
+      "retained_decl_commands": 265,
+      "retained_source_command_bytes": 207100,
+      "retained_declaration_bytes": 159321,
+      "noncomment_token_bytes_lower_bound": 140941,
+      "declaration_token_bytes_lower_bound": 109730,
+      "mandatory_ascii_word_separators_lower_bound": 7744,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 117474
+    },
+    "main-after-auxiliary-rate": {
+      "reachable_declarations": 3352,
+      "retained_decl_commands": 2531,
+      "retained_source_command_bytes": 1525722,
+      "retained_declaration_bytes": 1477943,
+      "noncomment_token_bytes_lower_bound": 1128120,
+      "declaration_token_bytes_lower_bound": 1096909,
+      "mandatory_ascii_word_separators_lower_bound": 85083,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1181992
+    },
+    "main-opaque-prefix-1": {
+      "reachable_declarations": 3352,
+      "retained_decl_commands": 2531,
+      "retained_source_command_bytes": 1525722,
+      "retained_declaration_bytes": 1477943,
+      "noncomment_token_bytes_lower_bound": 1128120,
+      "declaration_token_bytes_lower_bound": 1096909,
+      "mandatory_ascii_word_separators_lower_bound": 85083,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1181992
+    },
+    "main-opaque-prefix-2": {
+      "reachable_declarations": 3320,
+      "retained_decl_commands": 2499,
+      "retained_source_command_bytes": 1495401,
+      "retained_declaration_bytes": 1447622,
+      "noncomment_token_bytes_lower_bound": 1106773,
+      "declaration_token_bytes_lower_bound": 1075562,
+      "mandatory_ascii_word_separators_lower_bound": 84049,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1159611
+    },
+    "main-opaque-prefix-3": {
+      "reachable_declarations": 3272,
+      "retained_decl_commands": 2450,
+      "retained_source_command_bytes": 1457769,
+      "retained_declaration_bytes": 1409990,
+      "noncomment_token_bytes_lower_bound": 1080732,
+      "declaration_token_bytes_lower_bound": 1049521,
+      "mandatory_ascii_word_separators_lower_bound": 82266,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1131787
+    },
+    "main-opaque-prefix-4": {
+      "reachable_declarations": 3272,
+      "retained_decl_commands": 2449,
+      "retained_source_command_bytes": 1456925,
+      "retained_declaration_bytes": 1409146,
+      "noncomment_token_bytes_lower_bound": 1080159,
+      "declaration_token_bytes_lower_bound": 1048948,
+      "mandatory_ascii_word_separators_lower_bound": 82219,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1131167
+    },
+    "main-opaque-prefix-5": {
+      "reachable_declarations": 3272,
+      "retained_decl_commands": 2449,
+      "retained_source_command_bytes": 1456925,
+      "retained_declaration_bytes": 1409146,
+      "noncomment_token_bytes_lower_bound": 1080159,
+      "declaration_token_bytes_lower_bound": 1048948,
+      "mandatory_ascii_word_separators_lower_bound": 82219,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1131167
+    },
+    "main-opaque-prefix-6": {
+      "reachable_declarations": 3177,
+      "retained_decl_commands": 2357,
+      "retained_source_command_bytes": 1395627,
+      "retained_declaration_bytes": 1347848,
+      "noncomment_token_bytes_lower_bound": 1037792,
+      "declaration_token_bytes_lower_bound": 1006581,
+      "mandatory_ascii_word_separators_lower_bound": 79404,
+      "declaration_tokens_plus_mandatory_word_separators_lower_bound": 1085985
+    }
+  },
+  "conclusion": "Whole-declaration DCE plus whitespace/comment cleanup cannot fit full main, main after auxiliary_rate, or main after all six existing mathematical milestones. With all six opaque, declaration token bytes plus mandatory ASCII-word separators alone exceed 1MiB by 37409 bytes. Additional runtime theorem/data modular publishing or proof refactoring is required.",
+  "source_reference_fallback": "Auxiliary-rate preflight found erased rfl simp bridge erasureExpectation_eq_expectedAmbiguity; restored as a complete parser-owned declaration. Missing source references only increase the optimistic lower bounds.",
+  "original_or_attempt001_sources_changed": false,
+  "facts": [
+    "decl_graph.jsonl",
+    "parser-facts.jsonl"
+  ]
+}

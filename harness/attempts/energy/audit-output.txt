@@ -1,0 +1,4 @@
+'ExpandingCodes.SharpThreshold.fourier_gradient_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.fourier_gradient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.SharpThreshold.sum_fourier_gradient_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]

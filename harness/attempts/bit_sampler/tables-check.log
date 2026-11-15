@@ -1,0 +1,19 @@
+harness/attempts/bit_sampler/RandomTables.lean:314:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+'ExpandingCodes.Computation.RandomTables.entry_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.RandomTables.fill_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.RandomTables.fillStore_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.RandomTables.uniform_tableIndex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.RandomTables.uniform_sampledValues' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.RandomTables.fillStore_sampledValues' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

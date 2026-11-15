@@ -1,0 +1,26 @@
+'ExpandingCodes.Computation.TapeProgram.Stops.seq' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.Stops.compile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.countedLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.clear_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.transfer_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.copy_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeMacros.addPreserving_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.copyCellsStore_symbol' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.readBlock_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.writeBlock_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.writeBlockStore_symbol' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.positionEntry_stops_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.readEntry_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.writeEntry_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.entryAccessBound_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.BottomMarked.marked' depends on axioms: [propext]
+'ExpandingCodes.Computation.TapeArrays.BottomMarked.of_payload' depends on axioms: [propext]
+'ExpandingCodes.Computation.TapeArrays.EntryWritten.bottomMarked' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.initializeBuffer_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.EntryWritten.table' depends on axioms: [propext, Classical.choice, Quot.sound]

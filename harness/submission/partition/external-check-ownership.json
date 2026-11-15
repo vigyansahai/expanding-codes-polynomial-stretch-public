@@ -1,0 +1,12 @@
+{
+  "sampler_frontend": {
+    "owner": "/root/submission_runtime_modules",
+    "source": "frozen; read-only",
+    "owns": ["upload log/result/setup", "cache log/result/audit", "forwarder log/result", "per-key preflight"]
+  },
+  "tester_frontend": {
+    "owner": "/root/submission_runtime_modules",
+    "source": "frozen; read-only",
+    "owns": ["upload log/result/setup", "cache log/result/audit", "forwarder log/result", "per-key preflight"]
+  }
+}

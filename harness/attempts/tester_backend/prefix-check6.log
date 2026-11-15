@@ -1,0 +1,2 @@
+'ExpandingCodes.Computation.TesterPrefix.setup_initial_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterPrefix.input_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

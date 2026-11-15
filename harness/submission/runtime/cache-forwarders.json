@@ -1,0 +1,49 @@
+[
+  {
+    "endpoint": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+    "source": "./harness/submission/runtime/cache-src/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.lean",
+    "canonical_cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.olean",
+    "output": "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.olean",
+    "backups": []
+  },
+  {
+    "endpoint": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+    "source": "./harness/submission/runtime/cache-src/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.lean",
+    "canonical_cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.olean",
+    "output": "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.olean",
+    "backups": []
+  },
+  {
+    "endpoint": "ExpandingCodes.PolynomialStretch.auxiliary_rate",
+    "source": "./harness/submission/runtime/cache-src/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.lean",
+    "canonical_cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+    "output": "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+    "backups": [
+      {
+        "cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.ilean",
+        "backup_path": "./harness/submission/runtime/cache-backups/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.ilean",
+        "backup_sha256": "5a8d37427fc6e5cf422169d36de555a4852ca701073b2aabab0a861a0f51e3e2"
+      },
+      {
+        "cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.ilean.hash",
+        "backup_path": "./harness/submission/runtime/cache-backups/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.ilean.hash",
+        "backup_sha256": "9518a20990eea5bece2ebbb8193285ef22a1e3a47df5a4d9671f335c87fe3e58"
+      },
+      {
+        "cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+        "backup_path": "./harness/submission/runtime/cache-backups/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+        "backup_sha256": "f6c279c9351b9ff657fbe04de3ee4ff65f6f9b8eae78974246bc83387304c02e"
+      },
+      {
+        "cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean.hash",
+        "backup_path": "./harness/submission/runtime/cache-backups/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean.hash",
+        "backup_sha256": "6113643a3de48debf483bd0c675a19f9c4573875c2654a7ea97f40983ee0fbe1"
+      },
+      {
+        "cache_path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.trace",
+        "backup_path": "./harness/submission/runtime/cache-backups/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.trace",
+        "backup_sha256": "978460e7ee2ce2db277b7df1d24515b1d06663a434fe6cf6bb59a6156b399716"
+      }
+    ]
+  }
+]

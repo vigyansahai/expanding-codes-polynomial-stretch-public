@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "owner": "reed_muller_dimension",
+  "file_ownership": [
+    "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+    "harness/attempts/reed_muller_dimension/",
+    "harness/tasks/reed_muller_dimension.json"
+  ],
+  "nodes": [
+    {
+      "id": "reed_muller_dimension",
+      "declaration": "ExpandingCodes.PolynomialStretch.finrank_reedMuller",
+      "file": "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+      "statement": "∀ {F : Type*} [Field F] [Fintype F] (d R : ℕ), Module.finrank F (ExpandingCodes.PolynomialStretch.reedMuller F d R) = Fintype.card (ExpandingCodes.PolynomialStretch.Monomials F d R)",
+      "statement_sha256": "04ce872b5751b4988da363cf011dc08bddc9994d65ea1b3a26244f4d4436a343",
+      "proof_route": "Represent each exact canonical exponent vector by Finsupp.equivFunOnFinite.symm and its coefficient-one MvPolynomial monomial. The map from canonical indices to exponent Finsupp is injective, so basisMonomials gives linear independence of the polynomial family. Every exponent coordinate is below card F, so its span lies in restrictDegree (card F-1). MvPolynomial.eq_zero_of_eval_eq_zero makes evaluation injective there; a variable-only ULift rename handles Mathlib's equal-universe restriction without restricting F. Map polynomial independence through evalₗ, identify evaluation with exact monomialEval, and apply finrank_span_eq_card to exact reedMuller.",
+      "owner": "reed_muller_dimension",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+        "ExpandingCodes/Algebra/ReedMullerDimension.lean"
+      ],
+      "sources": [
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "lines": "8-15",
+          "role": "Exact canonical Monomials, monomialEval and reedMuller definitions; all unchanged."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Polynomial.lean",
+          "lines": "118-224",
+          "declaration": "MvPolynomial.eq_zero_of_eval_eq_zero",
+          "role": "Evaluation is injective on polynomials with individual variable degree below field cardinality."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/RingTheory/MvPolynomial/Basic.lean",
+          "lines": "173-208",
+          "declaration": "MvPolynomial.basisMonomials",
+          "role": "Polynomial monomial basis and restrictDegree membership characterization."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Constructions.lean",
+          "lines": "461-469",
+          "declaration": "finrank_span_eq_card",
+          "role": "Converts independence to the dimension of the exact canonical span."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Check canonical imported draft with serialized 4 GB one-thread Lean process.",
+          "result": "Lean exited 134 before elaboration with memory_exception at interpreter. An import-only check with canonical PolynomialTest and Finite.Polynomial reproduced the failure. No proof failure inferred; canonical import validation is pending root memory-cap measurement. Root subsequently measured the canonical import at 5426 MB peak RSS and raised the serialized default to 6144 MB; final canonical checks now use that approved default."
+        },
+        {
+          "approach": "Apply MvPolynomial.eq_zero_of_eval_eq_zero directly at variable type Fin d and arbitrary-universe coefficient type F.",
+          "result": "The Mathlib theorem ties variable and coefficient universes, so Fin d forces F : Type. Resolved without weakening: rename variables to ULift.{u} (Fin d), apply the theorem, and use rename_injective."
+        },
+        {
+          "approach": "Use degreeOf and evalₗ by definitional reduction in the helper proof.",
+          "result": "Their opaque definitions require explicit degreeOf_def and evalₗ_apply rewrites; these routine elaboration fixes are complete in the passing lightweight proof."
+        }
+      ],
+      "review": {
+        "reviewer": "reed_muller_dimension self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Proves the exact algebraic finite dimension equality, with arbitrary-universe fields, and no asymptotic volume assertion. Direct canonical draft check, promoted public target build, exact universe-polymorphic signature examples, and final transitive axiom audit all passed. No source definition changed and no theorem has a hole. Administrative open status awaits independent coordinator review/verify receipt."
+      }
+    }
+  ],
+  "worker_result": {
+    "status": "exact_canonical_definition_dimension_proved_fresh_build_and_axiom_audit_passed",
+    "open_theorem_bodies": [],
+    "unresolved_dependencies": [],
+    "scope": "Only exact finite Reed-Muller dimension; no limiting-volume or rate convergence statement.",
+    "proof_draft": "harness/attempts/reed_muller_dimension/ReedMullerDimension.lean",
+    "lightweight_attempt": "harness/attempts/reed_muller_dimension/Lightweight.lean",
+    "lightweight_definition_status": "Exact text of the three canonical definitions copied into provisional attempt namespace solely to isolate large canonical import footprint; these are not replacement platform definitions.",
+    "checked_commands": [
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/reed_muller_dimension/Lightweight.lean",
+        "exit_code": 0
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/reed_muller_dimension/LightweightAudit.lean",
+        "exit_code": 0
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/reed_muller_dimension/ReedMullerDimension.lean",
+        "exit_code": 0,
+        "scope": "Exact canonical import draft, before promotion."
+      },
+      {
+        "command": "./tools/lake-serial build ExpandingCodes.Algebra.ReedMullerDimension",
+        "exit_code": 0,
+        "result": "Built ExpandingCodes.Algebra.ReedMullerDimension (9.5s); Build completed successfully (8713 jobs)."
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/reed_muller_dimension/PublicAudit.lean",
+        "exit_code": 0,
+        "scope": "Final imported public module: universe-polymorphic exact signature examples and transitive axioms."
+      }
+    ],
+    "axiom_audit": {
+      "scope": "Final imported public module immediately after clean successful target build.",
+      "declarations": [
+        "ExpandingCodes.PolynomialStretch.eq_zero_of_eval_eq_zero_fin",
+        "ExpandingCodes.PolynomialStretch.linearIndependent_monomialEval",
+        "ExpandingCodes.PolynomialStretch.finrank_reedMuller"
+      ],
+      "all_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "forbidden_axioms": [],
+      "signature_examples_checked": 2,
+      "audit_file": "harness/attempts/reed_muller_dimension/PublicAudit.lean",
+      "canonical_output": "'ExpandingCodes.PolynomialStretch.finrank_reedMuller' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "compiler_policy": "Only short-lived tools/lake-serial compiler processes, using coordinator-approved serialized 6144 MB cap after canonical-import peak-RSS measurement. No warm_repl or tools/lean-repl.",
+    "memory_resolution": "Root measured canonical Sampler import success at 6144 MB, peak resident memory 5426 MB, and updated wrapper/package default to 6 GB on the 16 GB workstation. User permits up to 8 GB; this worker does not alter the coordinator cap.",
+    "public_module": "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+    "public_source_sha256": "77e3c4c03462a0ded73c02e937249ce2f57d0f8bf7931ebe97ec379f9e02f1b6",
+    "useful_supporting_declarations": {
+      "ExpandingCodes.PolynomialStretch.eq_zero_of_eval_eq_zero_fin": "Universe-polymorphic finite-variable reduced-polynomial evaluation injectivity.",
+      "ExpandingCodes.PolynomialStretch.linearIndependent_monomialEval": "The exact canonical family monomialEval is linearly independent for every finite field F and all natural d,R.",
+      "ExpandingCodes.PolynomialStretch.finrank_reedMuller": "Module.finrank F (reedMuller F d R) = Fintype.card (Monomials F d R)."
+    },
+    "next_integration": "Root semantic review and harness integration/verify receipt. This algebraic branch has no unresolved proof obligation; the independent asymptotic bounded-exponent-volume/rate analysis is outside its scope."
+  }
+}

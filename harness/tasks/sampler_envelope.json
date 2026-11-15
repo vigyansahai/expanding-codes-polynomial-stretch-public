@@ -1,0 +1,20 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/SamplerEnvelope.lean",
+  "status": "complete directcheck, public-o refreshing",
+  "definitions": [
+    "samplerBucketCount k n=2^Nat.log2(n/k)",
+    "samplerEnvelope d k n explicitsum ofsetup/staticconstants/field/tableheads/rows/output/entropy bounds",
+    "SamplerEnvelopeCovers namedfields covering eachquantity"
+  ],
+  "proofs": [
+    "samplerBucketCount_le n+1",
+    "samplerEnvelope_covers",
+    "samplerEnvelope_polynomial for0<d"
+  ],
+  "purpose": "One fixed global scalar/head envelope for actual samplerrow/layer/prelude traces; true runtime claims still supplied separately.",
+  "logs": [
+    "harness/attempts/sampler_envelope/check.log",
+    "harness/attempts/sampler_envelope/public.log"
+  ]
+}

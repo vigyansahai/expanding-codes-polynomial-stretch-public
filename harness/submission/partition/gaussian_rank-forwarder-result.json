@@ -1,0 +1,22 @@
+{
+  "cpu_user_system_seconds": 13.144115,
+  "peak_resident_mib": 3244.140625,
+  "lean_memory_cap_mib": 6144,
+  "source_sha256": "47b40fdcaa8f703b18926c771263db22583e4e2744152aa5e3872d5b9e951f4e",
+  "source_bytes": 62,
+  "key": "gaussian_rank",
+  "mode": "forwarder",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 125.706509083,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/closed-forwarders",
+    "-o",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean",
+    "./harness/submission/partition/closed-forwarders/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean"
+}

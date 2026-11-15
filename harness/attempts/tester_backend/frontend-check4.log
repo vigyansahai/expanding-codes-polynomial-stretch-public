@@ -1,0 +1,2 @@
+'ExpandingCodes.Computation.TesterFrontend.program_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterFrontend.clock_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]

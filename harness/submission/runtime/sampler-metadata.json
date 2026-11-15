@@ -1,0 +1,31 @@
+{
+  "theorem_name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+  "preamble": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen ExpandingCodes.PolynomialStretch\n",
+  "formal_statement": "theorem ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source (θ : ℚ)\n    (hθ : 0 < (θ : ℝ) ∧ (θ : ℝ) < 1/2) :\n    SamplerImplementation θ (fun n => binaryGeometry (dimension (θ : ℝ)) n) := by sorry\n",
+  "original_declaration": {
+    "name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+    "module": "harness.submission.Upload",
+    "kind": "theorem",
+    "isPrivate": false,
+    "isInstance": false,
+    "userName": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+    "startLine": 32423,
+    "endLine": 32435,
+    "typeDeps": [
+      "ExpandingCodes.PolynomialStretch.binaryGeometry",
+      "ExpandingCodes.PolynomialStretch.SamplerImplementation"
+    ],
+    "valueDeps": [
+      "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler",
+      "ExpandingCodes.Computation.SamplerAssembly.Concrete.sourceTime",
+      "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source",
+      "ExpandingCodes.Computation.SamplerAssembly.Concrete.samplerLabels",
+      "ExpandingCodes.PolynomialStretch.hash_arity_pos",
+      "ExpandingCodes.PolynomialStretch.binary_sampler_of_source",
+      "ExpandingCodes.Computation.SamplerAssembly.Concrete.sourceTime_polynomial",
+      "ExpandingCodes.PolynomialStretch.dimension_ge_four",
+      "ExpandingCodes.Computation.SamplerProgram.Storage.registers"
+    ]
+  },
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc"
+}

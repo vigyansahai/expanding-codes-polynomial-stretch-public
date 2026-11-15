@@ -1,0 +1,7 @@
+{"theorem_name":
+ "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+ "source_sha256":
+ "8e86c633678d2bdf35ec063175d17f844d29e1231f5a706f94400ed1035b2939",
+ "source_bytes": 211592,
+ "exact_solution_type": true,
+ "axioms": ["propext", "Classical.choice", "Quot.sound"]}

@@ -1,0 +1,42 @@
+{
+  "owner": "encoded_tester",
+  "status": "encoded_algorithm_and_source_threshold_complete_full_source_open",
+  "files": [
+    "ExpandingCodes/Computation/EncodedGaussian.lean",
+    "ExpandingCodes/Computation/EncodedTester.lean",
+    "ExpandingCodes/Computation/TesterProgram.lean"
+  ],
+  "scratch": "harness/attempts/encoded_tester/",
+  "exact_parent": "Computation/ProgramObligations.binary_tester_implementation: TesterImplementation theta (fun n => binaryGeometry (dimension (theta : Real)) n)",
+  "route": [
+    "Execute Gaussian scan, full-pivot Schur and recursive rank on Fin q indices with concrete BinaryField index arithmetic; use an injective operation-preserving decoder to commute exactly with the existing generic Gaussian run, including its Work record.",
+    "Enumerate all q^d exponent tuples and points explicitly through finFunctionFinEquiv.symm. Recompute two bounded monomials for each masked Gram summand and eagerly materialize m by m entries. Zero above the canonical total-degree bound.",
+    "Decode the constructed table to the canonical fullTestMatrix under an explicit exponent equivalence. Transfer rank by reindexing and the existing zero-padding theorem, then use exact rational cross multiplication.",
+    "Implement a fixed actual TapeProgram suffix for the natural rank threshold: two runtime unary products using checked UnaryArithmetic.multiply, followed by a six-label comparator. Concrete full source table construction and Gaussian loops remain separate open work."
+  ],
+  "checked": [
+    "EncodedGaussian draft direct compiler check passed, then promoted public module direct -o refresh passed. Operations, scan, schur, run use no Field instance at runtime. Exact run_decode equality includes all Gaussian.Work counters; run_correct and run_work_le transfer to the existing Gaussian proof. BinaryField.indexOperations is concrete addIndex/multiplyIndex/inverseIndex, with subtraction implemented as addition in characteristic two.",
+    "EncodedTester draft direct compiler check passed and promoted. Counted power/product/sum/evaluation/term/entry/table are executable on Fin q values. constructionCost_le and binaryTestTable_construction_work bound actual calls to encoded field operations by m^3*(2*d*(q+1)+2). binaryTestTable_rank equals the immutable canonical testMatrix rank; binaryRankTest_eq equals the immutable canonical rankTest.",
+    "Printed audits for indexOperations_interpretation, EncodedGaussian.run_correct/run_work_le, binaryTestTable_rank, binaryRankTest_eq and binaryTestTable_construction_work use only propext, Classical.choice and Quot.sound. No sorryAx.",
+    "TesterProgram draft direct compiler passed and promoted. Six fixed-label compareLE consumes two runtime counters, emits the exact comparison, preserves all input heads/buffers and other registers, decreases every register, and has exact compareTime <=2*a+3. Fixed 54-label rankThreshold composes two concrete unary multiply programs and compareLE, has exact output decide(rank*den <= num*m), preserves registers 0..3 and all input heads/buffers, and source t<=100*(M+1)^2. All three printed audits are clean.",
+    "rankThreshold_canonical draft passed and promoted: under explicit stored-rank/dimension/rational-constant preconditions, the concrete physical suffix emits the immutable rankTest bit. It does not assert the existence of the earlier source stages. Audit has only propext, Classical.choice and Quot.sound.",
+    "All public direct -o refreshes passed for EncodedGaussian, EncodedTester and TesterProgram. Latest TesterProgram refresh includes canonical bridge.",
+    "Final scratch Audit.lean compiler passed. A direct decide proof verifies encoded GF(2) matrix [[0,1],[1,1]] has rank2. Executed Work is comparisons3,inverses2,arithmetic3,reads8,writes1,enumerated5. Executable equality checks for all-zero/all-one/one-hot binaryRankTest(theta=1/4,d=1,n=1) all return true (expected tester outputs true,true,false). The actual rankThreshold source, started with rank1,m2,den8,num3, outputs [false] after300 steps. Final six axiom audits all contain only propext, Classical.choice, Quot.sound."
+  ],
+  "in_progress": [],
+  "unresolved": [
+    "Actual finite uniform TapeProgram construction of the encoded table and Gaussian elimination. Finite lists/Vectors and abstract field-entry counts are not physical source costs.",
+    "Refine concrete field index arithmetic to actual source routines; field_convolution worker currently supplies only coefficient/convolution leaves, with selected-modulus multiplication/inversion still open.",
+    "Refine base-q digits, degree sums/comparison, loop state, table entry access and two work matrices to physical source operations. Runtime n,q,ell,m may not determine code size or label count.",
+    "Input parsing, field modulus setup and fixed rational constant loading are separate source tasks; the rankThreshold suffix expects denominator/numerator in registers.",
+    "Root central Lake dependency build/audit after promotion; full final binary_tester_implementation remains open."
+  ],
+  "resource_model": "EncodedTester costs count calls to finite index field operations exactly by recursion, excluding digit arithmetic, natural comparisons, list allocation, tape moves and source loop control. EncodedGaussian carries the generic algorithm's abstract Work record exactly. Neither is claimed to be NKtLB time.",
+  "failed_approaches": [
+    "Lean rewrite transparency did not unfold rowCount/fieldSize or binaryGeometry.F automatically. Explicit calc steps, unfolding runtime sizes before Vector indexing, a generic fullTestMatrix_apply lemma and exact rank_submatrix composition avoided misleading type mismatch goals.",
+    "A Bool nonzero comparison needed Bool.eq_iff_iff with bne_iff_ne rather than simp alone.",
+    "Actual TapeProgram execution constructors require explicit intermediate TapeCfg arguments when simp leaves metavariable states unconstrained.",
+    "Direct decide for closed rational tester examples remained stuck after maxRecDepth10000, while #eval computes them correctly. These are retained as executable checks, not claimed as kernel decision proofs. The generic semantic correctness theorem and all actual source correctness theorems are proved and audited without native reflection or additional axioms."
+  ],
+  "integrity": "No custom axioms, sorry, unsafe, data holes, modified canonical definitions, or hidden full-program efficiency assumptions. The original source endpoint remains open."
+}

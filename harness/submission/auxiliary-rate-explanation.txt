@@ -1,0 +1,26 @@
+Let $0<\varepsilon<1/2$, put $d=\operatorname{dimension}(\varepsilon)$, and let $g_n$ be any family of geometries from the statement. Write $C_n$ for its auxiliary Reed--Muller code, $m_n$ for its row count, and $\rho_d$ for `limitingRate d`. We prove
+$$
+\frac12-\frac\varepsilon8\le\rho_d<\frac12,
+\qquad
+\frac{\dim C_n}{m_n}\longrightarrow\rho_d,
+\qquad
+\frac{\mathbb E[\dim\operatorname{ambiguity}(C_n,E_{1/2})]}{m_n}\longrightarrow0.
+$$
+
+The rate is computed by counting reduced monomials. Their evaluation functions on the finite affine space are linearly independent, so the code dimension equals the number of exponent tuples satisfying the exact auxiliary-degree cutoff. After normalization by the field size, this is a finite grid approximation to the cube volume
+$$
+\rho_d=
+\operatorname{vol}\left\{x\in[0,1]^d:
+\sum_{i=1}^d x_i\le\frac{d-3}{2}\right\}.
+$$
+The grid count converges to this volume as the field sizes tend to infinity. The proof retains the integer floor and conversion in the stated cutoff; the resulting rounding error vanishes in the normalized limit. Coordinate reindexing transports the calculation to every allowed geometry.
+
+Cube symmetry gives the strict upper bound by $1/2$. For the lower bound, a binomial interval estimate and an exact grid-band decomposition bound the deficit from $1/2$ by the reciprocal square-root scale in $d$. The prescribed choice
+$$
+d=2\lceil512\varepsilon^{-2}\rceil
+$$
+then gives the displayed $\varepsilon/8$ bound.
+
+For the erasure assertion, affine changes of variables preserve the reduced Reed--Muller evaluation space. Degree reduction over the finite field does not increase the total-degree cutoff. The affine action is doubly transitive on distinct coordinates, and coordinate reindexing supplies the same symmetry on the stated row order.
+
+The general erasure argument associates a monotone Boolean recovery event to a coordinate. The stabilizer symmetry makes the relevant influences equal. A sharp-threshold theorem, proved from its two-point, tensorization, Fourier/noise-energy and Russo components, combines with the one-sided area identity to show that normalized ambiguity tends to zero below the rate-determined erasure threshold. Since $\rho_d<1/2$, the erasure probability $1/2$ lies strictly below $1-\rho_d$. Applying that result to $C_n$, together with the proved rate convergence and growing row counts, establishes the final limit.

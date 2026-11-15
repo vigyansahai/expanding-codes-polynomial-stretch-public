@@ -1,0 +1,829 @@
+harness/attempts/hash_expansion/HashExpansion.lean:13:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+ε : Real
+n : Nat
+g : ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n
+s :
+  ExpandingCodes.PolynomialStretch.Forms.{0}
+    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+    (ExpandingCodes.PolynomialStretch.dimension ε) (ExpandingCodes.PolynomialStretch.arity ε)
+hfit :
+  @LE.le.{0} Nat instLENat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ExpandingCodes.PolynomialStretch.arity ε)
+      (ExpandingCodes.PolynomialStretch.buckets ε n))
+    n
+hgood : ExpandingCodes.PolynomialStretch.PreliminaryGood ε n g s
+L : Nat
+hL :
+  @LE.le.{0} Real Real.instLE (@Nat.cast.{0} Real Real.instNatCast L)
+    (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd)
+      (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) ε
+          (@Nat.cast.{0} Real Real.instNatCast (ExpandingCodes.PolynomialStretch.arity ε)))
+        (@Nat.cast.{0} Real Real.instNatCast (ExpandingCodes.PolynomialStretch.dimension ε)))
+      (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+S : Finset.{0} (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n))
+hsize :
+  @LE.le.{0} Real Real.instLE
+    (@Nat.cast.{0} Real Real.instNatCast
+      (@Finset.card.{0}
+        (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S))
+    (@HPow.hPow.{0, 0, 0} Real Real Real (@instHPow.{0, 0} Real Real Real.instPow)
+      (@Nat.cast.{0} Real Real.instNatCast n)
+      (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)) ε))
+C : Real
+hC : @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) C
+hbase :
+  @LE.le.{0} Real Real.instLE
+    (@HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+      (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+        (@Nat.cast.{0} Real Real.instNatCast (ExpandingCodes.PolynomialStretch.arity ε))
+        (@Nat.cast.{0} Real Real.instNatCast
+          (@Finset.card.{0}
+            (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S)))
+      (@Nat.cast.{0} Real Real.instNatCast (ExpandingCodes.PolynomialStretch.buckets ε n)))
+    C
+D : Finset.{0}
+  (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+    (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+      (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))) :=
+  @ExpandingCodes.PolynomialStretch.neighbors.{0, 0}
+    (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n))
+    (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+      (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+    (Fin.fintype (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n))
+    (@instFintypeProd.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+      (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+      (Fin.fintype (ExpandingCodes.PolynomialStretch.arity ε))
+      (@instFintypeProd.{0, 0}
+        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+        (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (@instFintypeProd.{0, 0}
+          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+    (@ExpandingCodes.PolynomialStretch.preliminary (ExpandingCodes.PolynomialStretch.dimension ε) n
+      (ExpandingCodes.PolynomialStretch.arity ε) g s)
+    S
+hD :
+  @LE.le.{0} Nat instLENat
+    (@Finset.card.{0}
+      (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+        (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+      D)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ExpandingCodes.PolynomialStretch.arity ε)
+      (@Finset.card.{0}
+        (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S))
+hocc :
+  @LE.le.{0} Real Real.instLE
+    (@ExpandingCodes.PolynomialStretch.uniformProb.{0}
+      (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) →
+        Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instFintype.{0, 0}
+        (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+        (fun
+            (a :
+              Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g)))) =>
+          Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        (fun
+            (a b :
+              Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g)))) =>
+          Classical.propDecidable
+            (@Eq.{1}
+              (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+              a b))
+        (@instFintypeProd.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          (Fin.fintype (ExpandingCodes.PolynomialStretch.arity ε))
+          (@instFintypeProd.{0, 0}
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+            (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (@instFintypeProd.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+        fun
+          (a :
+            Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                    g)))) =>
+        Fin.fintype (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instNonempty.{1, 1}
+        (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+        (fun
+            (a :
+              Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g)))) =>
+          Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        fun
+          (a :
+            Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                    g)))) =>
+        ExpandingCodes.PolynomialStretch.bucketNonempty ε n)
+      fun
+        (f :
+          Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) →
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n)) =>
+      @LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@Finset.card.{0} (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+            (@Finset.image.{0, 0}
+              (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+              (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+              (instDecidableEqFin (ExpandingCodes.PolynomialStretch.buckets ε n)) f D))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) L
+            (@Finset.card.{0}
+              (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S)))
+        (@Finset.card.{0}
+          (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+          D))
+    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+      (@HPow.hPow.{0, 0, 0} Real Nat Real
+        (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+        (@OfNat.ofNat.{0} Real (nat_lit 2)
+          (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast
+            (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))))
+        (@Finset.card.{0}
+          (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+          D))
+      (@HPow.hPow.{0, 0, 0} Real Nat Real
+        (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+        (@HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+          (@Nat.cast.{0} Real Real.instNatCast
+            (@Finset.card.{0}
+              (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+              D))
+          (@Nat.cast.{0} Real Real.instNatCast
+            (@Fintype.card.{0} (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+              (Fin.fintype (ExpandingCodes.PolynomialStretch.buckets ε n)))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) L
+          (@Finset.card.{0}
+            (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S))))
+heq :
+  @Eq.{1} Real
+    (@ExpandingCodes.PolynomialStretch.uniformProb.{0}
+      (ExpandingCodes.PolynomialStretch.Hashes.{0}
+        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instFintype.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+        (fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+          Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)) →
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        (instDecidableEqFin (ExpandingCodes.PolynomialStretch.arity ε))
+        (Fin.fintype (ExpandingCodes.PolynomialStretch.arity ε))
+        fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+        @Pi.instFintype.{0, 0}
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          (fun
+              (a :
+                Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g))) =>
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+          (fun
+              (a b :
+                Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g))) =>
+            @instDecidableEqProd.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+              (fun
+                  (a b :
+                    @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g) =>
+                Classical.propDecidable
+                  (@Eq.{1}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g) a
+                    b))
+              (fun
+                  (a b :
+                    Prod.{0, 0}
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                        g)) =>
+                @instDecidableEqProd.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (fun
+                      (a b :
+                        @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g) =>
+                    Classical.propDecidable
+                      (@Eq.{1}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        a b))
+                  (fun
+                      (a b :
+                        @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g) =>
+                    Classical.propDecidable
+                      (@Eq.{1}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        a b))
+                  a b)
+              a b)
+          (@instFintypeProd.{0, 0}
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+            (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (@instFintypeProd.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          fun
+            (a :
+              Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) =>
+          Fin.fintype (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instNonempty.{1, 1} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+        (fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+          Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)) →
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+        @Pi.instNonempty.{1, 1}
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          (fun
+              (a :
+                Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g))) =>
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+          fun
+            (a :
+              Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) =>
+          ExpandingCodes.PolynomialStretch.bucketNonempty ε n)
+      fun
+        (ω :
+          ExpandingCodes.PolynomialStretch.Hashes.{0}
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n)) =>
+      @LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@Finset.card.{0} (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+            (@Finset.image.{0, 0}
+              (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+              (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+              (instDecidableEqFin (ExpandingCodes.PolynomialStretch.buckets ε n))
+              (@DFunLike.coe.{1, 1, 1}
+                (Equiv.{1, 1}
+                  (ExpandingCodes.PolynomialStretch.Hashes.{0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+                  (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                      (Prod.{0, 0}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        (Prod.{0, 0}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g))) →
+                    Fin (ExpandingCodes.PolynomialStretch.buckets ε n)))
+                (ExpandingCodes.PolynomialStretch.Hashes.{0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+                (fun
+                    (x :
+                      ExpandingCodes.PolynomialStretch.Hashes.{0}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n)) =>
+                  Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                      (Prod.{0, 0}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        (Prod.{0, 0}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g))) →
+                    Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+                (@EquivLike.toFunLike.{1, 1, 1}
+                  (Equiv.{1, 1}
+                    (ExpandingCodes.PolynomialStretch.Hashes.{0}
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                      (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+                    (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                        (Prod.{0, 0}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          (Prod.{0, 0}
+                            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε)
+                              n g)
+                            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε)
+                              n g))) →
+                      Fin (ExpandingCodes.PolynomialStretch.buckets ε n)))
+                  (ExpandingCodes.PolynomialStretch.Hashes.{0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+                  (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                      (Prod.{0, 0}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        (Prod.{0, 0}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g))) →
+                    Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+                  (@Equiv.instEquivLike.{1, 1}
+                    (ExpandingCodes.PolynomialStretch.Hashes.{0}
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                      (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+                    (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                        (Prod.{0, 0}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          (Prod.{0, 0}
+                            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε)
+                              n g)
+                            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε)
+                              n g))) →
+                      Fin (ExpandingCodes.PolynomialStretch.buckets ε n))))
+                (@ExpandingCodes.PolynomialStretch.hashesEquiv.{0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+                ω)
+              D))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) L
+            (@Finset.card.{0}
+              (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S)))
+        (@Finset.card.{0}
+          (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+          D))
+    (@ExpandingCodes.PolynomialStretch.uniformProb.{0}
+      (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) →
+        Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instFintype.{0, 0}
+        (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+        (fun
+            (a :
+              Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g)))) =>
+          Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        (fun
+            (a b :
+              Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g)))) =>
+          @instDecidableEqProd.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+            (instDecidableEqFin (ExpandingCodes.PolynomialStretch.arity ε))
+            (fun
+                (a b :
+                  Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (Prod.{0, 0}
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                        g))) =>
+              @instDecidableEqProd.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+                (fun
+                    (a b :
+                      @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                        g) =>
+                  Classical.propDecidable
+                    (@Eq.{1}
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                      a b))
+                (fun
+                    (a b :
+                      Prod.{0, 0}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)) =>
+                  @instDecidableEqProd.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (fun
+                        (a b :
+                          @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g) =>
+                      Classical.propDecidable
+                        (@Eq.{1}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          a b))
+                    (fun
+                        (a b :
+                          @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g) =>
+                      Classical.propDecidable
+                        (@Eq.{1}
+                          (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                            g)
+                          a b))
+                    a b)
+                a b)
+            a b)
+        (@instFintypeProd.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          (Fin.fintype (ExpandingCodes.PolynomialStretch.arity ε))
+          (@instFintypeProd.{0, 0}
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+            (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (@instFintypeProd.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+        fun
+          (a :
+            Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                    g)))) =>
+        Fin.fintype (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instNonempty.{1, 1}
+        (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+        (fun
+            (a :
+              Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g)))) =>
+          Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        fun
+          (a :
+            Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                    g)))) =>
+        ExpandingCodes.PolynomialStretch.bucketNonempty ε n)
+      fun
+        (f :
+          Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) →
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n)) =>
+      @LE.le.{0} Nat instLENat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@Finset.card.{0} (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+            (@Finset.image.{0, 0}
+              (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+              (Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+              (instDecidableEqFin (ExpandingCodes.PolynomialStretch.buckets ε n)) f D))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) L
+            (@Finset.card.{0}
+              (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S)))
+        (@Finset.card.{0}
+          (Prod.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))))
+          D))
+⊢ @LE.le.{0} Real Real.instLE
+    (@ExpandingCodes.PolynomialStretch.uniformProb.{0}
+      (ExpandingCodes.PolynomialStretch.Hashes.{0}
+        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+        (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instFintype.{0, 0} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+        (fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+          Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)) →
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        (instDecidableEqFin (ExpandingCodes.PolynomialStretch.arity ε))
+        (Fin.fintype (ExpandingCodes.PolynomialStretch.arity ε))
+        fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+        @Pi.instFintype.{0, 0}
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          (fun
+              (a :
+                Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g))) =>
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+          (fun
+              (a b :
+                Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g))) =>
+            @instDecidableEqProd.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+              (fun
+                  (a b :
+                    @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g) =>
+                Classical.propDecidable
+                  (@Eq.{1}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g) a
+                    b))
+              (fun
+                  (a b :
+                    Prod.{0, 0}
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                      (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                        g)) =>
+                @instDecidableEqProd.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (fun
+                      (a b :
+                        @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g) =>
+                    Classical.propDecidable
+                      (@Eq.{1}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        a b))
+                  (fun
+                      (a b :
+                        @ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g) =>
+                    Classical.propDecidable
+                      (@Eq.{1}
+                        (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                          g)
+                        a b))
+                  a b)
+              a b)
+          (@instFintypeProd.{0, 0}
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))
+            (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (@instFintypeProd.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.finite (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          fun
+            (a :
+              Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) =>
+          Fin.fintype (ExpandingCodes.PolynomialStretch.buckets ε n))
+      (@Pi.instNonempty.{1, 1} (Fin (ExpandingCodes.PolynomialStretch.arity ε))
+        (fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+          Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)) →
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+        fun (a : Fin (ExpandingCodes.PolynomialStretch.arity ε)) =>
+        @Pi.instNonempty.{1, 1}
+          (Prod.{0, 0} (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (Prod.{0, 0}
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+              (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)))
+          (fun
+              (a :
+                Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (Prod.{0, 0}
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                    (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n
+                      g))) =>
+            Fin (ExpandingCodes.PolynomialStretch.buckets ε n))
+          fun
+            (a :
+              Prod.{0, 0}
+                (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                (Prod.{0, 0}
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+                  (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g))) =>
+          ExpandingCodes.PolynomialStretch.bucketNonempty ε n)
+      fun
+        (h :
+          ExpandingCodes.PolynomialStretch.Hashes.{0}
+            (@ExpandingCodes.PolynomialStretch.Geometry.F (ExpandingCodes.PolynomialStretch.dimension ε) n g)
+            (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n)) =>
+      @LT.lt.{0} Real Real.instLT
+        (@Nat.cast.{0} Real Real.instNatCast
+          (@Finset.card.{0} (Fin n)
+            (@ExpandingCodes.PolynomialStretch.neighbors.{0, 0}
+              (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) (Fin n)
+              (Fin.fintype (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n))
+              (Fin.fintype n)
+              (@ExpandingCodes.PolynomialStretch.combined (ExpandingCodes.PolynomialStretch.dimension ε) n
+                (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n) g s h)
+              S)))
+        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+          (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+            (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+              (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)) ε)
+            (@Nat.cast.{0} Real Real.instNatCast (ExpandingCodes.PolynomialStretch.arity ε)))
+          (@Nat.cast.{0} Real Real.instNatCast
+            (@Finset.card.{0}
+              (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S))))
+    (@HPow.hPow.{0, 0, 0} Real Nat Real
+      (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+      (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+        (@HPow.hPow.{0, 0, 0} Real Nat Real
+          (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+          (@OfNat.ofNat.{0} Real (nat_lit 2)
+            (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast
+              (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))))
+          (ExpandingCodes.PolynomialStretch.arity ε))
+        (@HPow.hPow.{0, 0, 0} Real Nat Real
+          (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid))) C L))
+      (@Finset.card.{0}
+        (Fin (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)) S))
+harness/attempts/hash_expansion/HashExpansion.lean:56:8: error: (kernel) unknown constant 'ExpandingCodes.PolynomialStretch.uniformProb_combined_fixed_set_le'

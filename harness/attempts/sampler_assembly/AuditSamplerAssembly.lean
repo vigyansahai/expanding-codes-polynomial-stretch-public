@@ -1,0 +1,9 @@
+import ExpandingCodes.Computation.SamplerAssembly
+
+#print axioms ExpandingCodes.Computation.SamplerAssembly.prelude_stops
+#print axioms ExpandingCodes.Computation.SamplerAssembly.preludeTime_polynomial
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.rowBody_stops_of_layers
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.finish_stops_of_layers
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.block_contract_of_step
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.sourceTime_polynomial
+#print axioms ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source_of_step

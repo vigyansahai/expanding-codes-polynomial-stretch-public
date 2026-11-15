@@ -1,0 +1,33 @@
+ExpandingCodes/Computation/ParameterFloor.lean:70:77: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [floorPrepare, floorCeilLayout, floorCeilIndex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/ParameterFloor.lean:87:27: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ExpandingCodes/Computation/ParameterFloor.lean:109:69: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [floorPrepare, floorCeilLayout, floorCeilIndex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/ParameterFloor.lean:123:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.ParameterPrograms.floorPowerStore_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.floorPowerTwo_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

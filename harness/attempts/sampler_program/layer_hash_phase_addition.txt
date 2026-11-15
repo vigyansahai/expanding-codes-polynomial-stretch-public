@@ -1,0 +1,109 @@
+theorem Storage.low_ne_neighbor (d k : ℕ) (a : Fin 80) (i : Fin k) :
+    Storage.low d k a≠Storage.neighbor d k i := by
+  intro heq
+  have hh := congrArg Fin.val heq
+  have ha := a.isLt
+  simp only [Storage.low_val,Storage.neighbor_val] at hh
+  omega
+
+theorem Storage.hash_scratch_fresh (d k : ℕ) (x : Fin (Storage.registers d k)) (hx : x.val<53) :
+    ∀ j : Fin 8,4≤j.val → x≠Storage.hashLayout d k j := by
+  intro j hj heq
+  have hh := congrArg Fin.val heq
+  fin_cases j <;> simp [Storage.hashLayout,Storage.address,Storage.u,Storage.v,Storage.hashIndex,Storage.low] at hh hj <;> omega
+
+theorem Storage.read_scratch_fresh (d k : ℕ) (x : Fin (Storage.registers d k)) (hx : x.val<53) :
+    ∀ j : Fin 8,2≤j.val → x≠Storage.hashReadLayout d k j := by
+  intro j hj heq
+  have hh := congrArg Fin.val heq
+  fin_cases j <;> simp [Storage.hashReadLayout,Storage.hashIndex,Storage.bucket,Storage.low] at hh hj <;> omega
+
+theorem writable_hashScratch (d k : ℕ) (i : Fin k) (j : Fin 8) (hj : 4≤j.val) :
+    LayerWritable d k i (Storage.hashLayout d k j) := by
+  fin_cases j <;> first | omega | exact writable_low d k i _ (by decide)
+
+theorem writable_readScratch (d k : ℕ) (i : Fin k) (j : Fin 8) (hj : 2≤j.val) :
+    LayerWritable d k i (Storage.hashReadLayout d k j) := by
+  fin_cases j <;> first | omega | exact writable_low d k i _ (by decide)
+
+theorem writable_neighbor (d k : ℕ) (i : Fin k) : LayerWritable d k i (Storage.neighbor d k i) :=
+  Or.inr (Or.inr (Or.inr (Or.inr rfl)))
+
+theorem hash_phase_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (a u v : Fin (2^ell)) (inp : Inputs) (hb : 0<b)
+    (s : TapeStore (Storage.registers d k) 2) (hs : LayerInvariant d k ell b h forms hashes z M s)
+    (caps : LayerCaps d k ell b M)
+    (ha : s.reg (Storage.address d k)=a.val) (hu : s.reg (Storage.u d k)=u.val) (hv : s.reg (Storage.v d k)=v.val) :
+    let index := SamplerTables.flatFour k (2^ell) (2^ell) (2^ell) (((i,a),u),v)
+    ∃ t e,t≤hashedColumnTimeBound i.val M ∧
+      (hashedColumn (Storage.hashLayout d k) (Storage.hashReadLayout d k) (Storage.neighbor d k i)
+        (Storage.low d k 53) (1 : Fin 2) i.val).Stops inp
+        (s.toCfg (hashedColumn (B := 2) (Storage.hashLayout d k) (Storage.hashReadLayout d k) (Storage.neighbor d k i)
+          (Storage.low d k 53) (1 : Fin 2) i.val).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ LayerFrame d k i s e.store ∧
+      TapeStore.SamePayload e.store s ∧ e.reg (Storage.neighbor d k i)=i.val*b+(hashes index).val := by
+  dsimp only
+  let index := SamplerTables.flatFour k (2^ell) (2^ell) (2^ell) (((i,a),u),v)
+  have hidx : hashAddress (Storage.hashLayout d k) i.val s=index.val := by
+    rw [SamplerLayerBounds.hash_index_val]
+    unfold hashAddress
+    change s.reg (Storage.v d k)+s.reg (Storage.field d k 23)*
+      (s.reg (Storage.u d k)+s.reg (Storage.field d k 23)*(s.reg (Storage.address d k)+s.reg (Storage.field d k 23)*i.val))=_
+    rw [hs.field.cardinal,ha,hu,hv]
+  have hB : s.reg (Storage.hashReadLayout d k 1)=b := hs.buckets
+  have hN : k*(2^ell)*(2^ell)*(2^ell)≤M := by
+    have hmul := Nat.le_mul_of_pos_right (k*(2^ell)*(2^ell)*(2^ell)) hb
+    have hbound := caps.hashHead
+    omega
+  have haddr : hashAddress (Storage.hashLayout d k) i.val s≤M := by
+    rw [hidx]; exact index.isLt.le.trans hN
+  have hcolumn : (hashes index).val+i.val*s.reg (Storage.hashReadLayout d k 1)≤M := by
+    rw [hB]
+    simpa [Nat.add_comm] using (SamplerLayerBounds.column_lt i (hashes index)).le.trans caps.columns
+  have hend : TapeArrays.entryOffset (hashAddress (Storage.hashLayout d k) i.val s)
+      (s.reg (Storage.hashReadLayout d k 1))+s.reg (Storage.hashReadLayout d k 1)≤M := by
+    rw [hidx,hB]
+    have hend := (SamplerLayerBounds.table_end b index).trans caps.hashHead
+    unfold TapeArrays.entryOffset
+    nlinarith
+  have hblock : TapeArrays.ThermometerAt s 1
+      (TapeArrays.entryOffset (hashAddress (Storage.hashLayout d k) i.val s) (s.reg (Storage.hashReadLayout d k 1)))
+      (s.reg (Storage.hashReadLayout d k 1)) (hashes index).val := by
+    rw [hidx,hB]
+    exact hs.tables.hashTable index
+  obtain ⟨t,e,ht,he,hev,hef,hec,heheads,hehead,hep,hem⟩ := hashedColumn_stops
+    (Storage.hashLayout d k) (Storage.hashReadLayout d k) (Storage.hashLayout_injective d k) (Storage.hashReadLayout_injective d k)
+    (Storage.neighbor d k i) (Storage.low d k 53) rfl
+    (Storage.hash_scratch_fresh d k (Storage.low d k 39) (by decide))
+    (Storage.low_ne_neighbor d k 74 i)
+    ((Storage.low_injective d k).ne (by decide : (74 : Fin 80)≠53))
+    (Ne.symm (Storage.low_ne_neighbor d k 53 i)) (Storage.low_ne_neighbor d k 39 i)
+    ((Storage.low_injective d k).ne (by decide : (39 : Fin 80)≠53))
+    1 i.val inp M s hs.counters (hs.heads 1) hs.tables.hashMarked haddr (hashes index).val hcolumn hend hblock
+  have hframe : LayerFrame d k i s e.store := by
+    intro x hx
+    apply hef x
+    · intro j hj hxj
+      apply hx; rw [hxj]; exact writable_hashScratch d k i j hj
+    · intro j hj hxj
+      apply hx; rw [hxj]; exact writable_readScratch d k i j hj
+    · intro hxj; apply hx; rw [hxj]; exact writable_neighbor d k i
+    · intro hxj; apply hx; rw [hxj]; exact writable_low d k i 53 (by decide)
+  have hfield (j : Fin 31) : e.reg (Storage.field d k j)=s.reg (Storage.field d k j) := by
+    have hj : (Storage.field d k j).val<53 := by change j.val<53; have := j.isLt; omega
+    exact hef _ (Storage.hash_scratch_fresh d k _ hj) (Storage.read_scratch_fresh d k _ hj)
+      (Storage.low_ne_neighbor d k ⟨j.val,by have := j.isLt; omega⟩ i)
+      (Ne.symm (Storage.low_field_fresh d k 53 (by decide) j))
+  have hee : Environment (Storage.field d k) ell (selectedIndex ell h) e.store := hs.field.frame (fun j _ => hfield j)
+  have hh : ∀ j,e.bufferHead j≤M := by
+    intro j
+    by_cases hj : j=1
+    · subst j; exact hehead
+    · rw [heheads]
+      simpa [hj] using hs.heads j
+  rw [hB] at hev
+  exact ⟨t,e,ht,he,hs.transport hframe hee hec hh hep,hframe,hep,hev⟩
+
+#print axioms hash_phase_stops

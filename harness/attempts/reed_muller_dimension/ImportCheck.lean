@@ -1,0 +1,6 @@
+import Definitions.Def_ExpandingCodes_PolynomialStretch_PolynomialTest
+import Mathlib.FieldTheory.Finite.Polynomial
+set_option autoImplicit false
+#check MvPolynomial.eq_zero_of_eval_eq_zero
+#check MvPolynomial.basisMonomials
+#check finrank_span_eq_card

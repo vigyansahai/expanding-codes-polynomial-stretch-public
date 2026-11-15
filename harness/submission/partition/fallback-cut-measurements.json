@@ -1,0 +1,65 @@
+[
+  {
+    "existing_node": "gaussian_rank",
+    "potential_child": "ExpandingCodes.Computation.GaussianGrid.materializeGrid_stops",
+    "parent_raw_bytes": 177282,
+    "child_raw_bytes": 139182,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "gaussian_rank",
+    "potential_child": "ExpandingCodes.Computation.GaussianDriver.round_stops",
+    "parent_raw_bytes": 70466,
+    "child_raw_bytes": 219514,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "gaussian_rank",
+    "potential_child": "ExpandingCodes.Computation.GaussianDriver.afterPivot_stops",
+    "parent_raw_bytes": 130723,
+    "child_raw_bytes": 186902,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "tester_gram",
+    "potential_child": "ExpandingCodes.Computation.TesterGram.pointBody_stops",
+    "parent_raw_bytes": 121263,
+    "child_raw_bytes": 173050,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "tester_gram",
+    "potential_child": "ExpandingCodes.Computation.TesterGram.rowLoop_stops",
+    "parent_raw_bytes": 78260,
+    "child_raw_bytes": 220408,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "sampler_frontend",
+    "potential_child": "ExpandingCodes.Computation.SamplerAssembly.tables_stops",
+    "parent_raw_bytes": 178510,
+    "child_raw_bytes": 87528,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "sampler_frontend",
+    "potential_child": "ExpandingCodes.Computation.ParameterPrograms.setup_stops",
+    "parent_raw_bytes": 171096,
+    "child_raw_bytes": 96639,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "field_setup",
+    "potential_child": "ExpandingCodes.Computation.SourceModulus.construct_stops_exact",
+    "parent_raw_bytes": 117625,
+    "child_raw_bytes": 120159,
+    "status": "measurement_only_not_registered_or_required"
+  },
+  {
+    "existing_node": "field_setup",
+    "potential_child": "ExpandingCodes.Computation.SourceModulus.constructResult_index",
+    "parent_raw_bytes": 146793,
+    "child_raw_bytes": 74236,
+    "status": "measurement_only_not_registered_or_required"
+  }
+]

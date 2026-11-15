@@ -1,0 +1,64 @@
+/-- One field/hash value occupies a fixed width of physical bit cells. -/
+def ThermometerAt (d : TapeStore R B) (b : Fin B) (start width value : ℕ) : Prop :=
+  value ≤ width ∧ ∀ j, j < width →
+    (d.bufferTape b).getD (start+j) .blank = if j < value then .one else .zero
+
+ theorem writeBlockStore_reg (value width : Fin R) (b : Fin B) (v w : ℕ) (d : TapeStore R B) :
+    (writeBlockStore value width b v w d).reg =
+      ((d.setReg value 0).setReg width 0).reg := by
+  simp [writeBlockStore, fillStore_reg, TapeStore.setReg, Function.update_idem]
+
+ theorem writeBlockStore_head (value width : Fin R) (b : Fin B) (v w : ℕ)
+    (d : TapeStore R B) (hv : v ≤ w) :
+    (writeBlockStore value width b v w d).bufferHead =
+      Function.update d.bufferHead b (d.bufferHead b+w) := by
+  have h : v+(w-v) = w := by omega
+  simp [writeBlockStore, fillStore_head, TapeStore.setReg, Function.update_idem, ← Nat.add_assoc, h]
+
+ theorem writeBlockStore_roHead (value width : Fin R) (b : Fin B) (v w : ℕ) (d : TapeStore R B) :
+    (writeBlockStore value width b v w d).roHead = d.roHead := by
+  simp [writeBlockStore, fillStore_roHead, TapeStore.setReg]
+
+ theorem writeBlockStore_output (value width : Fin R) (b : Fin B) (v w : ℕ) (d : TapeStore R B) :
+    (writeBlockStore value width b v w d).output = d.output := by
+  simp [writeBlockStore, fillStore_output, TapeStore.setReg]
+
+ theorem writeBlockStore_symbol (value width : Fin R) (b : Fin B) (v w : ℕ)
+    (d : TapeStore R B) (hv : v ≤ w) (c : Fin B) (k : ℕ) :
+    ((writeBlockStore value width b v w d).bufferTape c).getD k .blank =
+      if c = b ∧ d.bufferHead b ≤ k ∧ k < d.bufferHead b+w then
+        if k < d.bufferHead b+v then .one else .zero
+      else (d.bufferTape c).getD k .blank := by
+  simp only [writeBlockStore, fillStore_symbol, fillStore_head, TapeStore.setReg,
+    Function.update_self]
+  by_cases hc : c = b
+  · subst c
+    simp only [true_and]
+    split_ifs <;> try rfl <;> omega
+  · simp [hc]
+
+ theorem writeBlockStore_thermometer (value width : Fin R) (b : Fin B) (v w : ℕ)
+    (d : TapeStore R B) (hv : v ≤ w) :
+    ThermometerAt (writeBlockStore value width b v w d) b (d.bufferHead b) w v := by
+  refine ⟨hv, ?_⟩
+  intro j hj
+  rw [writeBlockStore_symbol value width b v w d hv]
+  have h₁ : d.bufferHead b ≤ d.bufferHead b+j := by omega
+  have h₂ : d.bufferHead b+j < d.bufferHead b+w := by omega
+  have h₃ : d.bufferHead b+j < d.bufferHead b+v ↔ j < v := by omega
+  simp [h₁, h₂, h₃]
+
+/-- Moving a preserving scanner one cell shifts a thermometer window and
+removes one possible leading one. -/
+ theorem ThermometerAt.tail {d e : TapeStore R B} {b : Fin B} {w v : ℕ}
+    (h : ThermometerAt d b (d.bufferHead b) (w+1) v)
+    (hp : TapeStore.SamePayload e d) (hh : e.bufferHead b = d.bufferHead b+1) :
+    ThermometerAt e b (e.bufferHead b) w (v-1) := by
+  refine ⟨by have := h.1; omega, ?_⟩
+  intro j hj
+  rw [hp.symbol, hh]
+  have hk := h.2 (j+1) (by omega)
+  have he : d.bufferHead b+1+j = d.bufferHead b+(j+1) := by omega
+  rw [he, hk]
+  have hi : j+1 < v ↔ j < v-1 := by omega
+  simp only [hi]

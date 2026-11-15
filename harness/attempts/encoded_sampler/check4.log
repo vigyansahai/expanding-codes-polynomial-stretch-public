@@ -1,0 +1,3 @@
+'ExpandingCodes.PolynomialStretch.encodedSampler_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.encodedSampler_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.binarySamplerFromInput_law' depends on axioms: [propext, Classical.choice, Quot.sound]

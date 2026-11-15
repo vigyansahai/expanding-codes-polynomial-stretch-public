@@ -1,0 +1,43 @@
+{
+  "theorem_id": "1ce73220-63d1-4c40-b322-2817e04f5120",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.preliminary_expansion",
+  "theorem_title": "Lemma 2.6 — simultaneous preliminary expansion with little-o failure",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Lemma 2.6. Multiplication by n^(1/ε) retains its little-o assertion. -/\ntheorem preliminary_expansion (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)\n    (g : ∀ n, Geometry (dimension ε) n) :\n    Tendsto (fun n =>\n      uniformProb (fun s : Forms (g n).F (dimension ε) (arity ε) =>\n        ¬ PreliminaryGood ε n (g n) s) * (n : ℝ) ^ (1 / ε))\n      atTop (nhds 0) := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "Fix $0<\\varepsilon<1/2$ and the construction parameters. Let $f(n)$ be the probability, over the independent per-level-set linear forms, that at least one row set $S$ with $|S|\\le n^{1-\\varepsilon}$ violates the preliminary expansion bound. Then\n$$f(n)n^{1/\\varepsilon}\\longrightarrow0,\\qquad |\\Gamma_A(S)|\\ge(k-d+1)|S|\\ \\text{outside that failure event}.$$\nThe event quantifies simultaneously over all such row sets, including the empty set. It uses the specified fixed layer forms and all independent random coefficient vectors.\n\nThis gives the complete little-o expansion estimate before hashing. It is uniform in the choice of compatible field and public enumeration.\n\nDifferences from the source:\n- encoding: failure probability o(n^{−1/ε}) → failure probability multiplied by the real power n^{1/ε} converges to zero; reason: this is the exact little-o assertion; n tends to infinity and is eventually positive\n- encoding: simultaneous expansion for all small row sets → the complement of PreliminaryGood under the uniform law on all coefficient vectors; reason: the event and the complete independent sampling law are unchanged\n",
+  "created_at": "2026-11-08T19:11:08.086131+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_Sampler\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 12 / PDF p. 13, Lemma 2.6.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "ac961b6f-aab9-4351-8ca1-98da1da337a6",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "c53644f5-12df-4438-b2fb-413bd8f575cf",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

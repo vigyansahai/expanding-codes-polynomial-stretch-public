@@ -1,0 +1,177 @@
+/-- One physical constant write and right move. -/
+abbrev painted (d : TapeStore R B) (b : Fin B) (s : Sym) : TapeStore R B :=
+  cellStore d b (fun _ => (s,.right))
+
+/-- Repeated writes, used only as a data specification of the finite programs. -/
+def fillStore (b : Fin B) (s : Sym) : ℕ → TapeStore R B → TapeStore R B
+  | 0, d => d
+  | n+1, d => fillStore b s n (painted d b s)
+
+ theorem fillStore_reg (b : Fin B) (s : Sym) (n : ℕ) (d : TapeStore R B) :
+    (fillStore b s n d).reg = d.reg := by
+  induction n generalizing d with
+  | zero => rfl
+  | succ n ih => exact ih _
+
+ theorem fillStore_roHead (b : Fin B) (s : Sym) (n : ℕ) (d : TapeStore R B) :
+    (fillStore b s n d).roHead = d.roHead := by
+  induction n generalizing d with
+  | zero => rfl
+  | succ n ih => exact ih _
+
+ theorem fillStore_output (b : Fin B) (s : Sym) (n : ℕ) (d : TapeStore R B) :
+    (fillStore b s n d).output = d.output := by
+  induction n generalizing d with
+  | zero => rfl
+  | succ n ih => exact ih _
+
+ theorem fillStore_head (b : Fin B) (s : Sym) (n : ℕ) (d : TapeStore R B) :
+    (fillStore b s n d).bufferHead = Function.update d.bufferHead b (d.bufferHead b+n) := by
+  induction n generalizing d with
+  | zero => simp [fillStore]
+  | succ n ih =>
+    rw [fillStore, ih]
+    simp [painted, cellStore, Machine.moveHead, Function.update_idem, Nat.add_assoc, Nat.add_comm]
+
+ theorem fillStore_symbol (b : Fin B) (s : Sym) (n : ℕ) (d : TapeStore R B)
+    (c : Fin B) (k : ℕ) :
+    ((fillStore b s n d).bufferTape c).getD k .blank =
+      if c = b ∧ d.bufferHead b ≤ k ∧ k < d.bufferHead b+n then s
+      else (d.bufferTape c).getD k .blank := by
+  induction n generalizing d with
+  | zero =>
+    simp only [fillStore, Nat.add_zero]
+    split_ifs with hc
+    · omega
+    · rfl
+  | succ n ih =>
+    rw [fillStore, ih]
+    simp only [painted, cellStore, Machine.moveHead, Function.update_self]
+    by_cases hc : c = b
+    · subst c
+      simp only [Function.update_self, true_and, getD_writeAt]
+      by_cases hk : k = d.bufferHead b
+      · subst k
+        simp
+      · by_cases hl : d.bufferHead b < k
+        · have h₂ : (d.bufferHead b+1 ≤ k ∧ k < d.bufferHead b+1+n) ↔
+              (d.bufferHead b ≤ k ∧ k < d.bufferHead b+(n+1)) := by omega
+          simp only [h₂, if_neg hk]
+        · have h₁ : ¬ d.bufferHead b+1 ≤ k := by omega
+          have h₂ : ¬ d.bufferHead b ≤ k := by omega
+          simp [h₁, h₂, hk]
+    · simp [hc, Function.update_of_ne hc]
+
+/-- Write as many identical cells as the unary counter specifies. -/
+def writeRun (r : Fin R) (b : Fin B) (s : Sym) : TapeProgram R B 3 where
+  entry := 0
+  code j := if j = 0 then .dec r 2 1 else if j = 1 then .buffer b (fun _ => (s,.right,0))
+    else .halt
+
+ theorem writeRun_stops (r : Fin R) (b : Fin B) (s : Sym) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) (hd : d.reg r = n) :
+    (writeRun r b s).Stops inp (d.toCfg 0) (2*n+1)
+      ((fillStore b s n (d.setReg r 0)).toCfg 2) := by
+  induction n generalizing d with
+  | zero =>
+    have hc : d.setReg r 0 = d := by simp [TapeStore.setReg, ← hd]
+    constructor
+    · apply TapeProgram.Exec.one
+      · simp [TapeProgram.halted, writeRun]
+      · simp [TapeProgram.step, writeRun, TapeStore.toCfg, hd, fillStore, hc]
+    · simp [TapeProgram.halted, writeRun]
+  | succ n ih =>
+    let d₁ := d.setReg r n
+    let e := painted d₁ b s
+    have he : e.reg r = n := by simp [e, d₁, painted, cellStore, TapeStore.setReg]
+    have ht := ih e he
+    have hs₁ : (writeRun r b s).step inp (d.toCfg 0) = d₁.toCfg 1 := by
+      simp [TapeProgram.step, writeRun, TapeStore.toCfg, d₁, TapeStore.setReg, hd]
+    have hs₂ : (writeRun r b s).step inp (d₁.toCfg 1) = e.toCfg 0 := by
+      simp [TapeProgram.step, writeRun, TapeStore.toCfg, e, painted, cellStore]
+    have hpost : e.setReg r 0 = painted (d.setReg r 0) b s := by
+      simp [e, d₁, painted, cellStore, TapeStore.setReg, Function.update_idem]
+    constructor
+    · have h := TapeProgram.Exec.step (by simp [TapeProgram.halted, writeRun]) hs₁
+        (TapeProgram.Exec.step (by simp [TapeProgram.halted, writeRun]) hs₂ ht.exec)
+      simpa [hpost, fillStore, Nat.mul_succ, Nat.add_assoc] using h
+    · exact ht.halted
+
+/-- Each written cell additionally decrements a distinct width counter. The
+width decrement saturates at zero, so the code has total semantics for all stores. -/
+def writeDebit (value width : Fin R) (b : Fin B) (s : Sym) : TapeProgram R B 4 where
+  entry := 0
+  code j := if j = 0 then .dec value 3 1 else if j = 1 then .dec width 2 2
+    else if j = 2 then .buffer b (fun _ => (s,.right,0)) else .halt
+
+ theorem writeDebit_stops (value width : Fin R) (hne : value ≠ width) (b : Fin B)
+    (s : Sym) (inp : Inputs) (n : ℕ) (d : TapeStore R B) (hd : d.reg value = n) :
+    (writeDebit value width b s).Stops inp (d.toCfg 0) (3*n+1)
+      ((fillStore b s n ((d.setReg value 0).setReg width (d.reg width-n))).toCfg 3) := by
+  induction n generalizing d with
+  | zero =>
+    have hc : (d.setReg value 0).setReg width (d.reg width-0) = d := by
+      have hv : d.setReg value 0 = d := by simp [TapeStore.setReg, ← hd]
+      rw [hv]
+      simp [TapeStore.setReg]
+    constructor
+    · apply TapeProgram.Exec.one
+      · simp [TapeProgram.halted, writeDebit]
+      · simp [TapeProgram.step, writeDebit, TapeStore.toCfg, hd, fillStore, hc]
+    · simp [TapeProgram.halted, writeDebit]
+  | succ n ih =>
+    let d₁ := d.setReg value n
+    let d₂ := d₁.setReg width (d.reg width-1)
+    let e := painted d₂ b s
+    have he : e.reg value = n := by simp [e, d₂, d₁, painted, cellStore, TapeStore.setReg, hne]
+    have ht := ih e he
+    have hs₁ : (writeDebit value width b s).step inp (d.toCfg 0) = d₁.toCfg 1 := by
+      simp [TapeProgram.step, writeDebit, TapeStore.toCfg, d₁, TapeStore.setReg, hd]
+    have hs₂ : (writeDebit value width b s).step inp (d₁.toCfg 1) = d₂.toCfg 2 := by
+      simp only [TapeProgram.step, writeDebit, TapeStore.toCfg, show (1 : Fin 4) ≠ 0 by decide,
+        if_false, if_true]
+      split <;> simp_all [d₂, d₁, TapeStore.setReg, Function.update_of_ne (Ne.symm hne)]
+    have hs₃ : (writeDebit value width b s).step inp (d₂.toCfg 2) = e.toCfg 0 := by
+      simp [TapeProgram.step, writeDebit, TapeStore.toCfg, e, painted, cellStore]
+    have hpost : (e.setReg value 0).setReg width (e.reg width-n) =
+        painted ((d.setReg value 0).setReg width (d.reg width-(n+1))) b s := by
+      simp only [e, d₂, d₁, painted, cellStore, TapeStore.setReg]
+      congr 1
+      funext j
+      by_cases hw : j = width
+      · subst j
+        simp [Function.update, hne, Ne.symm hne, Nat.sub_sub, Nat.add_comm]
+      · by_cases hv : j = value
+        · subst j
+          simp [Function.update, hne, Ne.symm hne]
+        · simp [Function.update, hw, hv]
+    constructor
+    · have h := TapeProgram.Exec.step (by simp [TapeProgram.halted, writeDebit]) hs₁
+        (TapeProgram.Exec.step (by simp [TapeProgram.halted, writeDebit]) hs₂
+          (TapeProgram.Exec.step (by simp [TapeProgram.halted, writeDebit]) hs₃ ht.exec))
+      simpa [hpost, fillStore, Nat.mul_succ, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using h
+    · exact ht.halted
+
+/-- q-cell thermometer write: the first value cells are one, and the remaining
+width-value cells are zero. Both unary input counters are consumed. -/
+def writeBlock (value width : Fin R) (b : Fin B) : TapeProgram R B 7 :=
+  TapeProgram.seq (writeDebit value width b .one) (writeRun width b .zero)
+
+def writeBlockStore (value width : Fin R) (b : Fin B) (v w : ℕ) (d : TapeStore R B) : TapeStore R B :=
+  fillStore b .zero (w-v) ((fillStore b .one v
+    ((d.setReg value 0).setReg width (w-v))).setReg width 0)
+
+ theorem writeBlock_stops (value width : Fin R) (hne : value ≠ width) (b : Fin B)
+    (inp : Inputs) (v w : ℕ) (d : TapeStore R B) (hv : d.reg value = v)
+    (hw : d.reg width = w) (hvw : v ≤ w) :
+    ∃ e, (writeBlock value width b).Stops inp (d.toCfg (writeBlock (B := B) value width b).entry)
+      (2*w+v+3) e ∧ e.store = writeBlockStore value width b v w d := by
+  let d₁ := fillStore b .one v ((d.setReg value 0).setReg width (w-v))
+  have h₁ := writeDebit_stops value width hne b .one inp v d hv
+  have h₁' : (writeDebit value width b .one).Stops inp (d.toCfg 0) (3*v+1) (d₁.toCfg 3) := by
+    simpa [d₁, hw] using h₁
+  have hr : d₁.reg width = w-v := by simp [d₁, fillStore_reg, TapeStore.setReg]
+  have h₂ := writeRun_stops width b .zero inp (w-v) d₁ hr
+  have hall := h₁'.seq h₂
+  refine ⟨((writeBlockStore value width b v w d).toCfg (2 : Fin 3)).mapPC (TapeProgram.rightLabel 4), ?_, rfl⟩
+  · convert hall using 1 <;> first | rfl | omega

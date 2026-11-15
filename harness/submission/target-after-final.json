@@ -1,0 +1,43 @@
+{
+  "theorem_id": "35a9bc65-151f-4a09-baa1-2c28821d6cd3",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.expanding_codes",
+  "theorem_title": "Theorem 1.1 — sparse expanding codes with polynomial stretch and arbitrary near-half errors",
+  "status": "Proved",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\n/-- Theorem 1.1: constant arity, polynomial stretch and runtime, and the unconditional\nnear-half arbitrary-error test. The absolute arity constant precedes ε. -/\ntheorem expanding_codes :\n    ∃ C : ℝ, 0 < C ∧ ∀ ε : ℝ, 0 < ε → ε < 1 / 2 →\n      ∃ (k : ℕ) (m : ℕ → ℕ) (P : ∀ n, PMF (Generator (m n) n))\n        (D : ∀ n, Word (m n) → Bool),\n        (k : ℝ) ≤ C * ε⁻¹ ^ 6 ∧ EfficientFamily ε k m P D := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "There is an absolute constant $C>0$ such that for every real $0<\\varepsilon<1/2$ there are an integer $k\\le C\\varepsilon^{-6}$, a deterministic row-count function $m(n)$, a randomized matrix sampler and a deterministic test $D$. For every sufficiently large $n$,\n$$n<m(n)<n^k,\\qquad m(n)=n^{O_\\varepsilon(1)}.$$\nThe sampler runs in $\\operatorname{poly}_\\varepsilon(n)$ time on every unbiased random tape, with exactly the stated output law on binary matrices $G\\in\\mathbb F_2^{m(n)\\times n}$. Every output has row weight exactly $k$, and\n$$\\Pr[G\\text{ is }(1-\\varepsilon,k,n^{1-\\varepsilon})\\text{-expanding}]\\ge1-n^{-1/\\varepsilon}.$$\nThe test runs in deterministic $\\operatorname{poly}_\\varepsilon(m,n)$ time. For every sampler output, every binary message $x$ and every binary error $e$ with $|\\operatorname{supp}(e)|\\le(1/2-\\varepsilon)m$,\n$$D(Gx+e)=1,\\qquad\\Pr[D(U_m)=1]\\le\\exp(-\\varepsilon^2m/128).$$\nThe error may depend arbitrarily on the message and on the sampled matrix. Constants, programs and the eventual size threshold are fixed before $n$, the matrix and its random bits; $k$ does not depend on $n$.\n\nThis is the headline existence theorem. The construction milestone supplies its witnesses without restricting $\\varepsilon$ to rational values or assuming successful expansion.\n\nDifferences from the source:\n- encoding: randomized polynomial-time sampler and deterministic polynomial-time test → fixed finite transition tables, a polynomial-length unbiased tape, exact output law, and worst-case transition bounds; reason: this spells out the algorithmic existence clauses with no advice, runtime annotation or correctness assumption\n- encoding: m=n^{O_ε(1)}>n depending only on n,ε and m<n^k → a deterministic function m with n<m(n)<n^k eventually; reason: k is fixed before n, so the same displayed bound already gives polynomial growth\n- encoding: exp(−Ω_ε(m)) → exp(−ε²m/128) eventually; reason: the construction uses a fixed rational θ between ε/2 and ε; the source proof rate θ²/32 gives the displayed ε-rate\n",
+  "created_at": "2026-11-08T19:14:46.977884+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_OperationalFamily\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 2 / PDF p. 3, Theorem 1.1.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "7de2e86a-fb71-400d-b6da-93957139d324",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "c58578d5-6fb2-4108-9dc5-0cc63ec18595",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

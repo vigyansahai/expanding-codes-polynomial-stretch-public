@@ -1,0 +1,72 @@
+[
+  {
+    "key": "field_add",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.lean",
+    "source_bytes": 211592,
+    "source_sha256": "8e86c633678d2bdf35ec063175d17f844d29e1231f5a706f94400ed1035b2939",
+    "preflight": "./harness/submission/partition/field_add-preflight.json"
+  },
+  {
+    "key": "field_inverse",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.lean",
+    "source_bytes": 254415,
+    "source_sha256": "5dec0710f647c23ebea1cbe7a6fe87e26e0a0e24a3637ac540c932fda3b9b9d7",
+    "preflight": "./harness/submission/partition/field_inverse-preflight.json"
+  },
+  {
+    "key": "field_multiply",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.lean",
+    "source_bytes": 224259,
+    "source_sha256": "884c23fde5001562ff4311cb204b5d76bb223ed719d8d89f0c39ba264b0e4bcf",
+    "preflight": "./harness/submission/partition/field_multiply-preflight.json"
+  },
+  {
+    "key": "field_setup",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldSetup_setup_stops.lean",
+    "source_bytes": 261667,
+    "source_sha256": "7178edcd9eca7d9fb67925fce7f9e2641f28e42b14f8341e2f44fb2501454be4",
+    "preflight": "./harness/submission/partition/field_setup-preflight.json"
+  },
+  {
+    "key": "gaussian_rank",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean",
+    "source_bytes": 328588,
+    "source_sha256": "48cfffece092555ef64e3789b99c6f9692b3175539c6ae4acfadaff1a598b95b",
+    "preflight": "./harness/submission/partition/gaussian_rank-preflight.json"
+  },
+  {
+    "key": "sampler_frontend",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean",
+    "source_bytes": 289220,
+    "source_sha256": "f448e65c291b37578aed8fb2bacf87b645186348b73f028a4945d1e733bcd2b0",
+    "preflight": "./harness/submission/partition/sampler_frontend-preflight.json"
+  },
+  {
+    "key": "sampler_layer",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerProgram_layer_stops.lean",
+    "source_bytes": 255118,
+    "source_sha256": "4f67b71b5e89514731ee55e047b2ff4e535e0b5fec09098dce930fe7d970e9c5",
+    "preflight": "./harness/submission/partition/sampler_layer-preflight.json"
+  },
+  {
+    "key": "tape_compile",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean",
+    "source_bytes": 108571,
+    "source_sha256": "98a36a87915e6ae2b67153f3a4389619cb83164ef7e3876c8bd9aadc4e39e657",
+    "preflight": "./harness/submission/partition/tape_compile-preflight.json"
+  },
+  {
+    "key": "tester_frontend",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TesterFrontend_program_stops.lean",
+    "source_bytes": 234221,
+    "source_sha256": "0e0830a135d34d11993d9398b8189aefe65a294cd718a4222def5f84291bf13c",
+    "preflight": "./harness/submission/partition/tester_frontend-preflight.json"
+  },
+  {
+    "key": "tester_gram",
+    "source": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TesterGram_program_stops.lean",
+    "source_bytes": 306894,
+    "source_sha256": "650cb8051949297af2b4945caa94778251eab2d9115bd120039c4d842891d85b",
+    "preflight": "./harness/submission/partition/tester_gram-preflight.json"
+  }
+]

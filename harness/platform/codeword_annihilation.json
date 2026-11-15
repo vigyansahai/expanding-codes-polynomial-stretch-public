@@ -1,0 +1,43 @@
+{
+  "theorem_id": "a62f8feb-bc30-4f5f-8cc4-da7d651f34c0",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.codeword_annihilation",
+  "theorem_title": "Lemma 2.2 — codeword annihilation and arbitrary-error rank bound",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Lemma 2.2, with the standing sufficiently-large-n convention of §2. -/\ntheorem codeword_annihilation (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2) :\n    ∀ᶠ n : ℕ in atTop, ∀ (g : Geometry (dimension ε) n)\n      (s : Forms g.F (dimension ε) (arity ε))\n      (h : Hashes g.F (arity ε) (buckets ε n)) (x : Word n),\n      testMatrix g ((combined g s h).mulVec x) = 0 ∧\n      ∀ e : Word (rowCount (dimension ε) n),\n        (testMatrix g ((combined g s h).mulVec x + e)).rank ≤ weight e := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "Fix $0<\\varepsilon<1/2$ and use the construction and rank matrix from equations (1)–(5). For all sufficiently large $n$, every sampled matrix $G$ and every codeword $c$ in its binary column image satisfy\n$$\\mathcal M(c)=0,\\qquad \\operatorname{rank}_{F_q}\\mathcal M(c+e)\\le|\\operatorname{supp}(e)|\\quad\\text{for every binary }e.$$\nBoth conclusions hold for all coefficient vectors and hash functions, including every nonexpanding output. Errors may depend on $c$ and on $G$.\n\nThis is the algebraic guarantee underlying the arbitrary-error test. Codewords are written as $Gx$ for arbitrary binary $x$, which ranges over the complete column image.\n\nDifferences from the source:\n- encoding: one-based vectors, fixed finite fields and sufficiently large input size → zero-based finite indices, public field/row equivalences, and an eventual assertion before all outputs; reason: these are the same objects and the standing sufficiently-large-n convention; no sampler output is excluded\n- encoding: c ranges over the binary column image of G → c is Gx for every binary message x; reason: a generator column image consists exactly of these products, without any rank condition\n",
+  "created_at": "2026-11-08T19:12:13.862485+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_PolynomialTest\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 9 / PDF p. 10, Lemma 2.2.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "4cb87f2c-2557-42a0-b9f2-75679daef5ef",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "5d22d80f-ddba-4b9e-9c80-5a0aaf6b71dc",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

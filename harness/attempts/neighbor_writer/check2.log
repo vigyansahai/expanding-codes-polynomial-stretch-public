@@ -1,0 +1,42 @@
+harness/attempts/neighbor_writer/NeighborWriter.lean:85:10: error(lean.unknownIdentifier): Unknown identifier `setReg_bound`
+harness/attempts/neighbor_writer/NeighborWriter.lean:127:6: error: Type mismatch: After simplification, term
+  hfs
+ has type
+  f.store = if e.reg (r 2) = 0 then (lessThanStore (reverse r) s).setReg out 1 else lessThanStore (reverse r) s
+but is expected to have type
+  f.store =
+    if (lessThanStore (reverse r) s).reg (r 2) = 0 then (lessThanStore (reverse r) s).setReg out 1
+    else lessThanStore (reverse r) s
+harness/attempts/neighbor_writer/NeighborWriter.lean:134:43: error: Application type mismatch: The argument
+  Stops.seq hc he
+has type
+  ((lessThan r).seq
+        (branchZero (r 2) ((lessThan (reverse r)).seq (branchZero (r 2) (loadConstant out 1) skip)) skip)).Stops
+    inp (TapeCfg.mapPC (leftLabel (33 + (2 + raiseLabels 1 + 1 + 2) + 1 + 2)) (d.toCfg (lessThan r).entry)) (t + 1 + u)
+    (TapeCfg.mapPC (rightLabel 33) e)
+but is expected to have type
+  (markEq r out).Stops inp (d.toCfg (markEq r out).entry) (t + 1 + u) (TapeCfg.mapPC ?m.665 e)
+in the application
+  And.intro (Stops.seq hc he)
+harness/attempts/neighbor_writer/NeighborWriter.lean:138:4: error: Type mismatch: After simplification, term
+  hes
+ has type
+  e.store =
+    if c.reg (r 2) = 0 then
+      if (lessThanStore (reverse r) (lessThanStore r d)).reg (r 2) = 0 then
+        (lessThanStore (reverse r) (lessThanStore r d)).setReg out 1
+      else lessThanStore (reverse r) (lessThanStore r d)
+    else lessThanStore r d
+but is expected to have type
+  e.store =
+    if (lessThanStore r d).reg (r 2) = 0 then
+      if (lessThanStore (reverse r) (lessThanStore r d)).reg (r 2) = 0 then
+        (lessThanStore (reverse r) (lessThanStore r d)).setReg out 1
+      else lessThanStore (reverse r) (lessThanStore r d)
+    else lessThanStore r d
+'ExpandingCodes.Computation.NeighborWriter.markStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.markEq_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.emitFlag_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

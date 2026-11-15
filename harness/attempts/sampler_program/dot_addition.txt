@@ -1,0 +1,60 @@
+def dotLabels : List (Fin R × Fin R) → ℕ
+  | [] => 1
+  | _::ps => dotLabels ps+849
+
+/-- A finite, statically unrolled dot product. Tail-first execution agrees
+exactly with the right-associated encoded sum, avoiding reassociation assumptions. -/
+def dot (r : Fin 31 → Fin R) : (ps : List (Fin R × Fin R)) → TapeProgram R B (dotLabels ps)
+  | [] => TapeProgram.skip
+  | p::ps => TapeProgram.seq (dot r ps) (term r p.1 p.2)
+
+def dotValue (ell : ℕ) (h : 0<ell) (m : Fin (2^ell)) (values : Fin R → Fin (2^ell)) :
+    List (Fin R × Fin R) → Fin (2^ell) → Fin (2^ell)
+  | [],c => c
+  | p::ps,c => BinaryField.addIndex ell
+      (BinaryField.multiplyIndex ell h m (indexEquiv ell (values p.1)) (indexEquiv ell (values p.2)))
+      (dotValue ell h m values ps c)
+
+theorem dotLabels_eq (ps : List (Fin R × Fin R)) : dotLabels ps=849*ps.length+1 := by
+  induction ps with
+  | nil => rfl
+  | cons p ps ih => simp only [dotLabels,List.length_cons,ih]; omega
+
+/-- Actual bounded source execution of every fixed-dimensional dot product.
+The caller's inputs remain on their individual counters throughout the run. -/
+theorem dot_stops (r : Fin 31 → Fin R) (hr : Function.Injective r)
+    (ps : List (Fin R × Fin R)) (hp : ∀ p∈ps,(∀ i,p.1≠r i) ∧ (∀ i,p.2≠r i))
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (m c : Fin (2^ell))
+    (values : Fin R → Fin (2^ell)) (M : ℕ) (hM : 1≤M)
+    (s : TapeStore R B) (hs : ∀ j,s.reg j≤M) (henv : Environment r ell m s)
+    (hv : ∀ p∈ps,s.reg p.1=(values p.1).val ∧ s.reg p.2=(values p.2).val)
+    (hc : s.reg (r 30)=c.val) :
+    ∃ t e, t≤ps.length*(13300*(M+1)^6+1) ∧
+      (dot r ps).Stops inp (s.toCfg (dot (B := B) r ps).entry) t e ∧
+      e.reg (r 30)=(dotValue ell h m values ps c).val ∧ Environment r ell m e.store ∧
+      (∀ j,(∀ i,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  induction ps generalizing s with
+  | nil =>
+    exact ⟨0,s.toCfg ⟨0,by simp [dotLabels]⟩,by simp,TapeProgram.skip_stops inp s,hc,
+      henv,fun _ _ => rfl,hs,rfl⟩
+  | cons p ps ih =>
+    have hps : ∀ a∈ps,(∀ i,a.1≠r i) ∧ (∀ i,a.2≠r i) := fun a ha => hp a (by simp [ha])
+    have hvs : ∀ a∈ps,s.reg a.1=(values a.1).val ∧ s.reg a.2=(values a.2).val :=
+      fun a ha => hv a (by simp [ha])
+    obtain ⟨t,d,ht,hd,hdv,hde,hdo,hdb,hdt⟩ := ih hps s hs henv hvs hc
+    have hpp := hp p (by simp)
+    have hvp := hv p (by simp)
+    obtain ⟨u,e,hu,he,hev,hee,heo,heb,het⟩ := term_stops r hr p.1 p.2 hpp.1 hpp.2
+      inp ell h m (values p.1) (values p.2) (dotValue ell h m values ps c) M hM d.store hdb hde
+      (by rw [hdo p.1 hpp.1]; exact hvp.1)
+      (by rw [hdo p.2 hpp.2]; exact hvp.2) hdv
+    have hall := hd.seq he
+    refine ⟨t+1+u,_,?_,hall,hev,hee,?_,heb,het.trans hdt⟩
+    · change t+1+u≤(ps.length+1)*(13300*(M+1)^6+1)
+      rw [Nat.add_mul,Nat.one_mul]
+      omega
+    · intro j hj
+      exact (heo j hj).trans (hdo j hj)
+
+#print axioms dot_stops

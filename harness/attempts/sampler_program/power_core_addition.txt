@@ -1,0 +1,98 @@
+def powerLabels : ℕ → ℕ
+  | 0 => 1
+  | j+1 => 862+powerLabels j
+
+def powerCore (r : Fin 32 → Fin R) (x : Fin R) : (j : ℕ) → TapeProgram R B (powerLabels j)
+  | 0 => TapeProgram.skip
+  | j+1 => TapeProgram.seq (powerStep r x) (powerCore r x j)
+
+theorem powerCore_stops (r : Fin 32 → Fin R) (hr : Function.Injective r)
+    (x : Fin R) (hx : ∀ i,x≠r i) (inp : Inputs) (ell : ℕ) (h : 0<ell)
+    (alpha : Fin (2^ell)) (M : ℕ) (hM : 1≤M) (j : ℕ)
+    (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment (powerWorkspace r) ell (selectedIndex ell h) s)
+    (a : Fin (2^ell)) (ha : s.reg (r 31)=a.val) (hxv : s.reg x=alpha.val) :
+    ∃ t e, t≤j*(13400*(M+1)^6+1) ∧
+      (powerCore r x j).Stops inp (s.toCfg (powerCore (B := B) r x j).entry) t e ∧
+      e.reg (r 31)=((fun z => (BinaryField.indexOperations ell h).mul z alpha)^[j] a).val ∧
+      Environment (powerWorkspace r) ell (selectedIndex ell h) e.store ∧
+      (∀ i,(∀ v,i≠r v) → e.reg i=s.reg i) ∧
+      (∀ i,e.reg i≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  induction j generalizing s a with
+  | zero =>
+    exact ⟨0,s.toCfg ⟨0,by simp [powerLabels]⟩,by simp,TapeProgram.skip_stops inp s,ha,
+      henv,fun _ _ => rfl,hs,rfl⟩
+  | succ j ih =>
+    obtain ⟨u,d,hu,hd,hdv,hde,hdo,hdb,hdt⟩ := powerStep_stops r hr x hx inp ell h a alpha M hM s hs henv ha hxv
+    obtain ⟨t,e,ht,he,hev,hee,heo,heb,het⟩ := ih d.store hdb hde
+      ((BinaryField.indexOperations ell h).mul a alpha) hdv (by
+        change d.reg x=_; rw [hdo x hx]; exact hxv)
+    have hall := hd.seq he
+    refine ⟨u+1+t,_,?_,hall,?_,hee,?_,heb,het.trans hdt⟩
+    · change u+1+t≤(j+1)*(13400*(M+1)^6+1)
+      rw [Nat.add_mul,Nat.one_mul]
+      omega
+    · simpa only [Function.iterate_succ_apply] using hev
+    · intro i hi
+      exact (heo i hi).trans (hdo i hi)
+
+theorem oneIndex_value (ell : ℕ) (h : 0<ell) : (BinaryField.oneIndex ell).val=1 := by
+  rw [BinaryField.oneIndex,indexEquiv_inverse_value]
+  rw [Finset.sum_eq_single (⟨0,h⟩ : Fin ell)]
+  · simp [BinaryField.one]
+  · intro i hi hne
+    have hiz : i.val≠0 := fun he => hne (Fin.ext he)
+    simp [BinaryField.one,hiz]
+  · simp
+
+theorem power_iterate (ell : ℕ) (h : 0<ell) (alpha : Fin (2^ell)) (j : ℕ) :
+    (fun z => (BinaryField.indexOperations ell h).mul z alpha)^[j] (BinaryField.oneIndex ell)=
+      (EncodedTester.power (BinaryField.indexOperations ell h) alpha j).1 := by
+  induction j with
+  | zero => rfl
+  | succ j ih => rw [Function.iterate_succ_apply',ih]; rfl
+
+/-- Actual fixed-exponent field power; exponent j affects finite control only. -/
+def powerFromOne (r : Fin 32 → Fin R) (x : Fin R) (j : ℕ) :
+    TapeProgram R B (4+powerLabels j) :=
+  TapeProgram.seq (SourceFieldArithmetic.setOne (r 31)) (powerCore r x j)
+
+theorem powerFromOne_stops (r : Fin 32 → Fin R) (hr : Function.Injective r)
+    (x : Fin R) (hx : ∀ i,x≠r i) (inp : Inputs) (ell : ℕ) (h : 0<ell)
+    (alpha : Fin (2^ell)) (M : ℕ) (hM : 1≤M) (j : ℕ)
+    (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment (powerWorkspace r) ell (selectedIndex ell h) s) (hxv : s.reg x=alpha.val) :
+    ∃ t e, t≤(j+1)*(13420*(M+1)^6) ∧
+      (powerFromOne r x j).Stops inp (s.toCfg (powerFromOne (B := B) r x j).entry) t e ∧
+      e.reg (r 31)=(EncodedTester.power (BinaryField.indexOperations ell h) alpha j).1.val ∧
+      Environment (powerWorkspace r) ell (selectedIndex ell h) e.store ∧
+      (∀ i,(∀ v,i≠r v) → e.reg i=s.reg i) ∧
+      (∀ i,e.reg i≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  obtain ⟨c,hc,hcs⟩ := SourceFieldArithmetic.setOne_stops (r 31) inp s
+  have hb : ∀ i,c.reg i≤M := by
+    change ∀ i,c.store.reg i≤M
+    rw [hcs]
+    exact setReg_bound s _ 1 M hs hM
+  have he : Environment (powerWorkspace r) ell (selectedIndex ell h) c.store := by
+    rw [hcs]
+    exact henv.setExternal (r 31) 1 (powerOutside r hr)
+  obtain ⟨t,e,ht,hstop,hev,henv',hframe,heb,het⟩ := powerCore_stops r hr x hx inp ell h alpha M hM j
+    c.store hb he (BinaryField.oneIndex ell)
+    (by rw [hcs]; simp [oneIndex_value ell h])
+    (by rw [hcs]; simpa [TapeStore.setReg,hx 31] using hxv)
+  have hall := hc.seq hstop
+  refine ⟨s.reg (r 31)+3+1+t,_,?_,hall,?_,henv',?_,heb,?_⟩
+  · have hp₁ : M+1≤(M+1)^6 := by
+      simpa only [pow_one] using Nat.pow_le_pow_right (show 0<M+1 by omega) (show 1≤6 by decide)
+    have hcounter := hs (r 31)
+    have hfactor : 13400*(M+1)^6+1≤13420*(M+1)^6 := by omega
+    have htime := ht.trans (Nat.mul_le_mul_left j hfactor)
+    rw [Nat.add_mul,Nat.one_mul]
+    omega
+  · simpa only [power_iterate ell h alpha j] using hev
+  · intro i hi
+    exact (hframe i hi).trans (by rw [hcs]; simp [TapeStore.setReg,hi 31])
+  · simpa only [hcs,FieldConvolution.tapeData_setReg] using het
+
+#print axioms powerCore_stops
+#print axioms powerFromOne_stops

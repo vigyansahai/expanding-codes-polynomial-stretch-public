@@ -1,0 +1,32 @@
+{
+  "problems": [
+    {
+      "theorem_name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+      "formal_statement": "theorem ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source (θ : ℚ)\n    (hθ : 0 < (θ : ℝ) ∧ (θ : ℝ) < 1/2) :\n    SamplerImplementation θ (fun n => binaryGeometry (dimension (θ : ℝ)) n) := by sorry\n",
+      "preamble": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen ExpandingCodes.PolynomialStretch\n",
+      "theorem_title": "One finite polynomial-time machine for the exact expanding-code sampler",
+      "natural_language_statement": "Let $0<\\theta<1/2$ be rational and use the specified binary-field geometry in dimension $d=\\mathrm{dimension}(\\theta)$. There are one finite probabilistic machine $S$, integers $A>0$, $a\\geq0$, and $N\\geq2$, depending on $\\theta$ and independent of the input size, such that for every $n\\geq N$, every random tape of length $T(n)=A(n+1)^a$ makes $S$ output a generator matrix within $T(n)$ steps. For uniform independent tape bits its output law is exactly\n\n$$\\Pr[S(n)=G]=P_{\\theta,n}(G).$$\n\nHere $P_{\\theta,n}$ is the canonical distribution obtained by two independent random linear forms for each layer and each value of its fixed first linear form, together with independent uniform layer hash tables and the specified matrix encoding. This supplies the operational sampling clauses of the efficient-family theorem.",
+      "source": "Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch, user-supplied 824.pdf, Section 2, Theorem 2.1 (pp. 7-9), https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch. Machine-level implementation details were developed in the accompanying Lean formalization; the checked local proof archive has SHA256 694ed62f8511cd5a41c6354a96349e0a72f820296592e4f312215e403a2722d5. Section 2.1, equations (1)-(4), pp. 8-9; formal implementation endpoint ExpandingCodes/Computation/SamplerImplementation.lean, binary_sampler_implementation_source.",
+      "tags": [
+        "expanding-codes-polynomial-stretch",
+        "coding-theory",
+        "complexity-theory"
+      ]
+    },
+    {
+      "theorem_name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+      "formal_statement": "theorem ExpandingCodes.PolynomialStretch.binary_tester_implementation_source (θ : ℚ)\n    (hθ : 0 < (θ : ℝ) ∧ (θ : ℝ) < 1/2) :\n    TesterImplementation θ (fun n => binaryGeometry (dimension (θ : ℝ)) n) := by sorry\n",
+      "preamble": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen ExpandingCodes.PolynomialStretch\n",
+      "theorem_title": "One finite polynomial-time machine for the expanding-code rank test",
+      "natural_language_statement": "Let $0<\\theta<1/2$ be rational and use the specified binary-field geometry in dimension $d=\\mathrm{dimension}(\\theta)$. There are one finite deterministic machine $D$, integers $B>0$, $b\\geq0$, and $N\\geq2$, depending on $\\theta$ and independent of the input size and received word, such that for every $n\\geq N$ and binary word $y$ of length $m=\\mathrm{rowCount}(d,n)$,\n\n$$D(n,y)=\\mathrm{rankTest}_{\\theta}(y) \\quad\\text{within }B(m+n+1)^b\\text{ steps}.$$\n\nThe test is the canonical finite-field Gram-matrix rank predicate, with its specified row ordering and input/output encodings. This supplies the operational deterministic-testing clause of the efficient-family theorem.",
+      "source": "Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch, user-supplied 824.pdf, Section 2, Theorem 2.1 (pp. 7-9), https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch. Machine-level implementation details were developed in the accompanying Lean formalization; the checked local proof archive has SHA256 694ed62f8511cd5a41c6354a96349e0a72f820296592e4f312215e403a2722d5. Section 2.2, equation (5) and the following displayed rank test, p. 9; formal implementation endpoint ExpandingCodes/Computation/TesterImplementation.lean, binary_tester_implementation_source.",
+      "tags": [
+        "expanding-codes-polynomial-stretch",
+        "coding-theory",
+        "complexity-theory"
+      ]
+    }
+  ],
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false
+}

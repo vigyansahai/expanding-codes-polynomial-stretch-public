@@ -1,0 +1,184 @@
+namespace Storage
+
+theorem point_injective (d k : ℕ) : Function.Injective (point d k) := by
+  intro i j hij; apply Fin.ext
+  have hh := congrArg Fin.val hij
+  simp only [point_val] at hh
+  omega
+
+theorem coefficient_injective (d k : ℕ) : Function.Injective (coefficient d k) := by
+  intro i j hij; apply Fin.ext
+  have hh := congrArg Fin.val hij
+  simp only [coefficient_val] at hh
+  omega
+
+theorem neighbor_injective (d k : ℕ) : Function.Injective (neighbor d k) := by
+  intro i j hij; apply Fin.ext
+  have hh := congrArg Fin.val hij
+  simp only [neighbor_val] at hh
+  omega
+
+theorem fixedCommon_cases (d k : ℕ) (i : Fin 33) :
+    (fixedCommon d k i).val<32 ∨ (fixedCommon d k i).val=69 := by
+  by_cases hi : i.val<32
+  · left; simpa [fixedCommon,hi,low] using hi
+  · right; simp [fixedCommon,hi,alpha,low]
+
+theorem fixedCommon_lt (d k : ℕ) (i : Fin 33) : (fixedCommon d k i).val<80 := by
+  rcases fixedCommon_cases d k i with hi|hi <;> omega
+
+theorem fixedCommon_injective (d k : ℕ) : Function.Injective (fixedCommon d k) := by
+  intro a b hab; apply Fin.ext
+  have hh := congrArg Fin.val hab
+  have ha := a.isLt; have hb := b.isLt
+  by_cases h₁ : a.val<32 <;> by_cases h₂ : b.val<32 <;>
+    simp [fixedCommon,h₁,h₂,alpha,low] at hh <;> omega
+
+theorem fixedLayout_injective (d k : ℕ) : Function.Injective (fixedLayout d k) := by
+  intro a b hab
+  cases a with
+  | inl a =>
+    cases b with
+    | inl b => exact congrArg Sum.inl (fixedCommon_injective d k hab)
+    | inr b =>
+      have hs := fixedCommon_lt d k a
+      cases b with
+      | inl b =>
+        have hh := congrArg Fin.val hab
+        change (fixedCommon d k a).val=80+2*d+b.val at hh
+        omega
+      | inr b =>
+        have hh := congrArg Fin.val hab
+        change (fixedCommon d k a).val=80+b.val at hh
+        omega
+  | inr a =>
+    cases a with
+    | inl a =>
+      cases b with
+      | inl b =>
+        have hs := fixedCommon_lt d k b
+        have hh := congrArg Fin.val hab
+        change 80+2*d+a.val=(fixedCommon d k b).val at hh
+        omega
+      | inr b =>
+        cases b with
+        | inl b =>
+          congr 1; congr 1
+          exact coefficient_injective d k hab
+        | inr b =>
+          have hh := congrArg Fin.val hab
+          change 80+2*d+a.val=80+b.val at hh
+          have := b.isLt
+          omega
+    | inr a =>
+      cases b with
+      | inl b =>
+        have hs := fixedCommon_lt d k b
+        have hh := congrArg Fin.val hab
+        change 80+a.val=(fixedCommon d k b).val at hh
+        omega
+      | inr b =>
+        cases b with
+        | inl b =>
+          have hh := congrArg Fin.val hab
+          change 80+a.val=80+2*d+b.val at hh
+          have := a.isLt
+          omega
+        | inr b =>
+          congr 1; congr 1
+          exact point_injective d k hab
+
+theorem formCommon_lt (d k : ℕ) (i : Fin 11) : (formCommon d k i).val<80 := by
+  fin_cases i <;> simp [formCommon,address,low]
+
+theorem formCommon_injective (d k : ℕ) : Function.Injective (formCommon d k) := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;> simp_all [formCommon,address,(low_injective d k).eq_iff]
+
+theorem formLayout_injective (d k : ℕ) : Function.Injective (formLayout d k) := by
+  intro a b hab
+  cases a with
+  | inl a =>
+    cases b with
+    | inl b => exact congrArg Sum.inl (formCommon_injective d k hab)
+    | inr b =>
+      have hs := formCommon_lt d k a
+      have hh := congrArg Fin.val hab
+      change (formCommon d k a).val=80+2*d+b.val at hh
+      omega
+  | inr a =>
+    cases b with
+    | inl b =>
+      have hs := formCommon_lt d k b
+      have hh := congrArg Fin.val hab
+      change 80+2*d+a.val=(formCommon d k b).val at hh
+      omega
+    | inr b => exact congrArg Sum.inr (coefficient_injective d k hab)
+
+theorem hashLayout_injective (d k : ℕ) : Function.Injective (hashLayout d k) := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;>
+    simp_all [hashLayout,address,u,v,hashIndex,(low_injective d k).eq_iff]
+
+theorem hashReadLayout_injective (d k : ℕ) : Function.Injective (hashReadLayout d k) := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;>
+    simp_all [hashReadLayout,bucket,hashIndex,(low_injective d k).eq_iff]
+
+theorem coefficient_field_fresh (d k : ℕ) : ∀ j i,coefficient d k j≠field d k i := by
+  intro j i hij
+  have hh := congrArg Fin.val hij
+  have hi := i.isLt
+  simp [coefficient,field,low] at hh
+  omega
+
+theorem point_field_fresh (d k : ℕ) : ∀ j i,point d k j≠field d k i := by
+  intro j i hij
+  have hh := congrArg Fin.val hij
+  have hi := i.isLt
+  simp [point,field,low] at hh
+  omega
+
+theorem point_form_fresh (d k : ℕ) : ∀ j i,point d k j≠formLayout d k i := by
+  intro j i hij
+  cases i with
+  | inl i =>
+    have hs := formCommon_lt d k i
+    have hh := congrArg Fin.val hij
+    change 80+j.val=(formCommon d k i).val at hh
+    omega
+  | inr i =>
+    have hh := congrArg Fin.val hij
+    change 80+j.val=80+2*d+i.val at hh
+    have := j.isLt
+    omega
+
+theorem address_field_fresh (d k : ℕ) : ∀ i,address d k≠field d k i := by
+  intro i hij
+  have hh := congrArg Fin.val hij
+  have hi := i.isLt
+  simp [address,field,low] at hh
+  omega
+
+theorem field_form_fresh (d k : ℕ) (a : Fin 31) (ha : a=3 ∨ a=19 ∨ a=24) :
+    ∀ i,field d k a≠formLayout d k i := by
+  intro i
+  cases i with
+  | inl i =>
+    rcases ha with rfl|rfl|rfl <;> fin_cases i <;>
+      simp [field,formLayout,formCommon,address,low,Fin.ext_iff]
+  | inr j => exact Ne.symm (coefficient_field_fresh d k j a)
+
+theorem field_form_q (d k : ℕ) : field d k 23=formLayout d k (.inl 1) := rfl
+
+theorem fixedField_eq (d k : ℕ) : SamplerProgram.fixedFieldLayout (fixedLayout d k)=field d k := by
+  funext i
+  apply Fin.ext
+  have hi : i.val<32 := by have := i.isLt; omega
+  simp [SamplerProgram.fixedFieldLayout,SamplerProgram.powerWorkspace,SamplerProgram.powerField,
+    SamplerProgram.fixedPowerLayout,SamplerProgram.fixedPowerIndex,fixedLayout,fixedCommon,hi,field,low,
+    Function.comp_def]
+end Storage
+
+#print axioms Storage.fixedLayout_injective
+#print axioms Storage.formLayout_injective

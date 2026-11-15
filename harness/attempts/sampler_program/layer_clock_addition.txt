@@ -1,0 +1,44 @@
+theorem powerCoefficientTimeBound_polynomial (d : ℕ) : PolynomialBound (powerCoefficientTimeBound d) := by
+  exact (PolynomialBound.const (d+2)).mul
+    ((PolynomialBound.const 13440).mul ((PolynomialBound.identity.add (PolynomialBound.const 1)).pow 6))
+
+theorem fixedTimeBound_polynomial (d : ℕ) : PolynomialBound (fixedTimeBound d) := by
+  exact (((PolynomialBound.const d).mul ((powerCoefficientTimeBound_polynomial d).add (PolynomialBound.const 1))).add
+    (PolynomialBound.const 1)).add
+      ((PolynomialBound.const (d+1)).mul ((PolynomialBound.const 13320).mul
+        ((PolynomialBound.identity.add (PolynomialBound.const 1)).pow 6)))
+
+theorem vectorTimeBound_polynomial (c d : ℕ) : PolynomialBound (vectorTimeBound c d) := by
+  exact (PolynomialBound.const (112+6*c+6*d*(c+1)+2*d)).mul
+    ((PolynomialBound.identity.add (PolynomialBound.const 1)).pow 2)
+
+theorem randomLinearTimeBound_polynomial (c d : ℕ) : PolynomialBound (randomLinearTimeBound c d) := by
+  exact (((PolynomialBound.const d).mul ((vectorTimeBound_polynomial c d).add (PolynomialBound.const 1))).add
+    (PolynomialBound.const 1)).add
+      ((PolynomialBound.const (d+1)).mul ((PolynomialBound.const 13320).mul
+        ((PolynomialBound.identity.add (PolynomialBound.const 1)).pow 6)))
+
+theorem layerTimeBound_polynomial (d k : ℕ) (i : Fin k) : PolynomialBound (layerTimeBound d k i) := by
+  exact ((((((fixedTimeBound_polynomial d).add (randomLinearTimeBound_polynomial i.val d)).add
+    (randomLinearTimeBound_polynomial (i.val+k) d)).add (hashedColumnTimeBound_polynomial i.val)).add
+      ((PolynomialBound.const 22).mul PolynomialBound.identity)).add (PolynomialBound.const (2*i.val))).add
+        (PolynomialBound.const 30)
+
+/-- One clock for every statically unrolled layer. -/
+def layerTimeUniform (d k M : ℕ) : ℕ := Finset.univ.sum (fun i : Fin k => layerTimeBound d k i M)
+
+theorem layerTimeBound_le_uniform (d k M : ℕ) (i : Fin k) :
+    layerTimeBound d k i M≤layerTimeUniform d k M := by
+  exact Finset.single_le_sum (fun j _ => Nat.zero_le (layerTimeBound d k j M)) (Finset.mem_univ i)
+
+theorem layerTimeUniform_polynomial (d k : ℕ) : PolynomialBound (layerTimeUniform d k) := by
+  classical
+  have hs : ∀ s : Finset (Fin k),PolynomialBound (fun M => s.sum (fun i => layerTimeBound d k i M)) := by
+    intro s
+    induction s using Finset.induction_on with
+    | empty => simpa only [Finset.sum_empty] using PolynomialBound.const 0
+    | @insert i s hi ih =>
+      simpa only [Finset.sum_insert hi] using (layerTimeBound_polynomial d k i).add ih
+  exact hs Finset.univ
+
+#print axioms layerTimeUniform_polynomial

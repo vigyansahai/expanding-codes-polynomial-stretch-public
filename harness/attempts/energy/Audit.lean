@@ -1,0 +1,7 @@
+import ExpandingCodes.Probability.SharpThreshold.Energy
+import ExpandingCodes.Probability.SharpThreshold.NoisedEnergy
+set_option autoImplicit false
+#print axioms ExpandingCodes.SharpThreshold.fourier_gradient_energy
+#print axioms ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy
+#print axioms ExpandingCodes.SharpThreshold.fourier_gradient
+#print axioms ExpandingCodes.SharpThreshold.sum_fourier_gradient_weighted

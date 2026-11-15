@@ -1,0 +1,4 @@
+ExpandingCodes/Computation/TapeBounds.lean:15:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ExpandingCodes.Computation.TapeProgram.bufferBounded_run' depends on axioms: [propext, Classical.choice, Quot.sound]

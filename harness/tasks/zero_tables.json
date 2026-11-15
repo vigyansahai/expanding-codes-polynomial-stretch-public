@@ -1,0 +1,19 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/ZeroTables.lean",
+  "status": "complete directcheck, public-o refreshing",
+  "program": "existing actual3label writeRun specializedzero, countregisterNruntime, source2N+1",
+  "contracts": [
+    "program_stops exact result=fillStorezeroN(setRegr0)",
+    "result_table fromhead1 andN=K*width gives exactzeroThermometerTableK",
+    "result_bottomMarked preservesbotmarker",
+    "result_other_table/symbol preserves allothertables",
+    "result_reg/result_bound unchangedallregs exceptcount0",
+    "result_payload preservesRO/output",
+    "result_head exacthead1+N"
+  ],
+  "logs": [
+    "harness/attempts/zero_tables/check2.log",
+    "harness/attempts/zero_tables/public.log"
+  ]
+}

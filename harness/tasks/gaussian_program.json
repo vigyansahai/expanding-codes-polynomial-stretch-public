@@ -1,0 +1,76 @@
+{
+  "owner": "encoded_tester",
+  "status": "physical_gaussian_complete_public_refreshed_audited",
+  "files": [
+    "ExpandingCodes/Computation/GaussianProgram.lean",
+    "ExpandingCodes/Computation/GaussianGrid.lean",
+    "ExpandingCodes/Computation/GaussianDriver.lean",
+    "ExpandingCodes/Computation/GaussianDriverBounds.lean"
+  ],
+  "scratch": "harness/attempts/encoded_tester/",
+  "exact_parent": "ProgramObligations.binary_tester_implementation; actual uniform finite TapeProgram Gaussian on thermometer arrays, then exact canonical tester",
+  "layout": {
+    "registers": 64,
+    "buffers": 2,
+    "access": "persistent q0; scratch width1/index2/offset3/tmp4/count5/value6; scan remaining7/found8",
+    "schur_entry": "addresses D9,C10,B11,out12; shared inverse13; fetched D14,C15,B16; multiply outputs17/18; final result6",
+    "field_setup": "q0,qSquared36,coefficientCount37,monicWord38; caller Gaussian loop state reserved in registers40..63",
+    "uniformity": "No q, dimensions, row count or number of entries occurs in code/label-count parameters. All are runtime scalar unary registers."
+  },
+  "checked": [
+    "readCurrent: actual48-label copyq+clear accumulator+readEntry code, exact register/payload/head effects and source <=100*(M+1)^2.",
+    "searchLoop: generic actual finite early-exit loop with checked exact zero/continue/found active traces; no array/field instructions introduced.",
+    "pivotScan: actual54-label loop, exact scanResult first-nonzero semantics, untouched matrix payload/RO heads/output, registers9..63 and other buffer head preserved, source <=n*(100*((K+1)^2+1)^2+5)+1 under explicit runtime-counter/head/table bounds.",
+    "scanResult_spec: failed result means every scanned entry is zero; successful result is the first nonzero entry in the bounded row-major interval.",
+    "flatEntry/MatrixStored explicit physical rectangular table representation. physicalPivot_nonzero and physicalPivot_zero connect scan outcomes to actual encoded matrix entries. binary_zeroIndex_val proves binary field zero has unary index0. encoded_schur_rank_step transfers a returned nonzero pivot to the exact encoded Schur rank identity.",
+    "fetch: actual70-label addresscopy+readCurrent+save scalar, exact effects and source <=120*(M+1)^2; fetchPost_bounded proves scalar-register bounds preserved.",
+    "writeCurrent: actual60-label addresscopy+copyq+writeEntry, exact register result/EntryWritten physical interval effect and source <=100*(M+1)^2.",
+    "ScalarContract is an explicit contract for a fixed actual TapeProgram, with ell quantified inside, actual Stops/source polynomial bound/exact output/protected-frame/final bound/payload and buffer-head contract. It does not assert source primitives exist.",
+    "schurArithmetic_stops: concrete finite sequencing of two multiplication source programs and one subtraction program yields the exact Schur expression and preserves pivot inverse, setup and caller state.",
+    "Actual SourceFieldArithmetic.multiply374-label program is embedded twice via checked explicit Fin27\u2192Fin64 injections. multiply_source_contract and both schurMultiply contracts passed with actual source t<=10000*(M+1)^6, exact finite-field multiplication, protected/final scalar bounds and all tape/head frames.",
+    "fetchSchur210-label actual source sequence reads D/C/B into registers14/15/16, preserves field setup/inverse/target/caller state and all input symbols, bounds all final registers by initialM and input head by(M+1)^2. Source <=360*((M+1)^2+1)^2+2. Draft compiler passed.",
+    "schurEntry_stops actual source composition passed with source<=460*((M+1)^2+1)^2+20000*(M+1)^6+C*(M+1)^k+6, exact EntryWritten Schur expression, and caller registers>=40 preserved. At this checked stage only subtraction was a contracted actual finite-program parameter.",
+    "Actual SourceFieldArithmetic.addition365-label program is embedded through checked explicit subLayout, supplying subtraction via characteristic two. schurSubtract_contract passed with actual source<=3000*(M+1)^5, exact addIndex, full required scalar/tape/head frames. Fully concrete1383-label Schur-cell program and concreteSchurEntry_stops passed before the latest invariant strengthening.",
+    "Full GaussianProgram public source promoted and -o refreshed. Concrete1383-label Schur-cell includes preserved FieldSetup/all-register boundM/both head bounds/bottom markers, and exact paddedSchur_rank_step is checked. All audits clean.",
+    "GaussianGrid.prepareAddresses_stops: actual71-label counter program computes D=rowBase41+col42, C=rowBase41+pivotCol43, B=pivotRowBase44+col42, target=outIndex45 into9..12 using actual unary copies/additions. Exact store/caller-frame, all-register boundM maintained for in-range addresses, source<=100*(M+1). Public prefix refreshed.",
+    "GaussianGrid.materializeCell_stops: actual1454-label source takes MatrixStored input and explicit runtime Coordinates invariant, computes all physical addresses and overwrites exactly the corresponding paddedSchur cell in output. Source<=100*(M+1)+460*((M+1)^2+1)^2+20000*(M+1)^6+3000*(M+1)^5+7; returns exact EntryWritten witness plus preserved caller registers>=40 and SchurCellState invariants. Draft passed and promoted; latest public refresh running.",
+    "countedLoop_stops_of_body checked: same actual finite countedLoop code with semantic restored-counter contracts rather than syntactic Fresh, useful for composed source field routines; clean propext/Quot.sound audit.",
+    "cellTick1469-label source checked: copy persistent inverse50\u219213, materializeCell1454, increment column42/output45. Exact physical cell overwrite, all other caller registers stable, all scalar/head/marker/field setup invariants preserved. Source<=tickBudgetM (explicit degree6 polynomial).",
+    "prefixValues_update/prefixStored_written checked: an exact physical EntryWritten extends the padded-Schur output prefix by exactly one logical cell. Input matrix preservation through writes to the other buffer is proved.",
+    "ColumnInv/columnLoop1471-label source checked: actual finite counted loop over runtime47, invariant includes exact output prefix and fixed input matrix, all field/scalar/head/marker bounds, runtime coordinates/pivot/inverse metadata and caller frame. Source<=remaining*(tickBudgetM+2)+1.",
+    "rowBody1493/rowLoop1495/gridPrepare15/materializeGrid1510 all CHECKED, promoted, public-o refreshed. Whole materializeGrid_stops returns exact physical output=paddedSchur, input stored matrix preserved, FieldSetup/allregs<=M/both head and marker invariants, rowBase41 and output45=m*n,46=0, caller frame outside41/42/45/46/47. Source<=20*(M+1)+m*(rowBudget(n,M)+2)+2. All audits standard axioms only.",
+    "ScanOutcome now also proves scratch1/3/4/5 and remaining7 never increase at exit. ScanOutcome.all_bounded and pivotScan_table_stops CHECKED: physical scan preserves fixed global all-register boundM, avoiding repeated coarse squaring between Gaussian rounds. Latest public-o refresh running.",
+    "GaussianDriver actual4260-label rankProgram complete, direct-checked, promoted and public-o refreshed. It uses preserving zero/positive branches, exact first-nonzero scans, root529-label pivot coordinate/inverse preparation, the concrete1510-label Schur grid, current-buffer60/done61/fuel62/rank48 loops, and no code parameters depending on q,m or ell.",
+    "GaussianDriver LoopInv combines exact physical current/spare matrices, setup/head/marker/global-counter envelope Common, progress rank+remaining<=m and PaddedGaussian.step iteration. loop_stops and rankProgram_stops checked with standard axioms only, yielding exact rank48, remaining62=0, preserved ROhead/output, fixed source bound10M+13+m*(roundBudget(m,M)+2)+2.",
+    "GaussianGrid whole-column/row/grid source proofs now carry exact ROhead/output frames compositionally. ScanOutcome.all_bounded preserves fixed global M; no repeated squaring between rounds.",
+    "GaussianDriverBounds sourceBudget_le checked: whenm<=M, the exact composed source budget is <=100000*(M+1)^9. rankProgram_stops_rank returns the rank of the decoded finite-field matrix; rankProgram_stops_canonical returns exact canonical testMatrix(binaryGeometry degree n)y rank. Both promoted and public-o refreshed.",
+    "GaussianAudit.lean direct check PASS. Actual54-label pivotScan over explicit q2 thermometer buffer [0,1,1,1] ran500 source steps and returned(index1,value1,found1,haltedtrue). PaddedGaussian.run on [[0,1],[1,1]] returnedrank2.",
+    "Final transitive audit: rankProgram data uses onlypropext/Quot.sound; pivotScan_table_stops,concreteSchurEntry_stops,materializeGrid_stops,preparePivot_stops,loop_stops,rankProgram_stops,sourceBudget_le,rankProgram_stops_rank,rankProgram_stops_canonical use onlypropext/Classical.choice/Quot.sound. No sorryAx,customaxioms,unsafe or native reflection."
+  ],
+  "in_progress": [],
+  "unresolved": [
+    "Parent final integration only: initial runtime dimension/cell-count initialization, tester input/full Gram construction and setup, final program storage injection, rational suffix, source-to-NKtLB clock/compiler and global polynomial mission bounds.",
+    "Root central clean Lake build and final transitive axiom audit across complete tester mission endpoint."
+  ],
+  "failed_approaches": [
+    "simp_all over the full pivot invariant exploded; isolated readPost_outside with explicit finite-register disequalities instead.",
+    "simp only Nat.succ_mul expanded the coefficient100 into repeated additions. Use one explicit ring equality for the outer (n+1)*iterationBudget before linear arithmetic.",
+    "TapeCfg.store projections sometimes prevented rw from seeing c.reg; explicit change/dsimp of TapeCfg.store and separately derived register-function equalities resolve this without changing definitions.",
+    "protected is a reserved Lean keyword; ScalarOutcome uses field name frame.",
+    "Optional Quiet code-inspection by decide over1510/4260labels exceeded the unchanged6144MB interpreter cap. Removed this attempt and proved IO preservation compositionally from EntryWritten/SamePayload trace frames. No cap increase, no large interpreter reflection retained.",
+    "omega treats indexOperations and a local abbreviation ops as distinct opaque atoms; typed the intermediate model_rank_step_le inequality with the exact ops expression before arithmetic."
+  ],
+  "integrity": "No sorry, custom axioms, unsafe, abstract array/arithmetic opcodes or modified mission definitions. Complete actual Gaussian source and semantic refinement checked. All exported source correctness audits use only propext, Classical.choice, Quot.sound. Full mission endpoint remains parent integration work.",
+  "final_api": {
+    "import": "ExpandingCodes.Computation.GaussianDriverBounds",
+    "namespace": "ExpandingCodes.Computation.GaussianDriver",
+    "program": "rankProgram : TapeProgram 64 2 4260",
+    "generic_theorem": "rankProgram_stops_rank ell h m M inp d hc A B ha hb",
+    "canonical_theorem": "rankProgram_stops_canonical degree n M inp d y hc B ha hb",
+    "common_preconditions": "SchurCellState ell h 0 1 d M (setup,allregs<=M,bothheads<=(M+1)^2,bothbotmarkers),d40=m,d49=m,d51=m*m,1<m;MatrixStored d0 A and d1 B. No initial rank/done/flag/fuel values assumed; actual initializer clears/loads them.",
+    "outputs": "Exact actualStops;time<=100000*(M+1)^9;Common preserved;rank48=decodedmatrixrank or canonicaltestMatrixrank;fuel62=0;ROheads/output unchanged. Both matrix buffers may change.",
+    "layout": "q0,qSquared36,coefficientCount37,monic38,cols40,rank48,rows49,cells51,bufferflag60,done61,fuel62,copytmp63;other registers source scratch.",
+    "audit": "harness/attempts/encoded_tester/GaussianAudit.lean",
+    "build": "Driver and Bounds direct public -o checks PASS. Root central clean Lake build remains final integration duty."
+  }
+}

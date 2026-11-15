@@ -1,0 +1,159 @@
+{
+  "node": {
+    "id": "boolean_tensorize_two_point",
+    "declaration": "ExpandingCodes.SharpThreshold.tensorize_two_point",
+    "file": "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean",
+    "statement": "∀ {I : Type*} [Fintype I] (p r : ℝ), 0 < p → p < 1 → 0 ≤ r → r ≤ 1 → ExpandingCodes.SharpThreshold.TwoPointContraction p r → ∀ f : Finset I → ℝ, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.noise p r f E ^ 2) ≤ (ExpandingCodes.Erasure.expectation p (fun E => |f E| ^ (4 / 3 : ℝ))) ^ (3 / 2 : ℝ)",
+    "statement_sha256": "e2fc526ec222ea30a6c85a6b256e6d92b2ec664bc6aca6c585090ab419ca67a6",
+    "proof_route": "Expand finite Fourier noise into a product kernel; tensorize the supplied scalar contraction by finite-coordinate induction and weighted Minkowski.",
+    "owner": "tensorization",
+    "status": "proved",
+    "interface": "provisional",
+    "dependencies": [],
+    "context_files": [
+      "AGENTS.md",
+      "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+      "ExpandingCodes/Probability/Erasure.lean"
+    ],
+    "sources": [
+      {
+        "path": "tmp/feasibility/erasure-capacity.txt",
+        "lines": "500-635",
+        "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+      },
+      {
+        "path": ".lake/packages/mathlib/Mathlib/Analysis/MeanInequalities.lean",
+        "lines": "1045-1053",
+        "declaration": "Real.Lp_add_le_of_nonneg",
+        "role": "Existing finite real Minkowski inequality. Weighted mixed-norm tensorization can use this after absorbing atom weights into inputs."
+      }
+    ],
+    "failed_attempts": [
+      {
+        "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+        "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+      }
+    ],
+    "review": {
+      "reviewer": "root coordinator",
+      "statement_preserved": true,
+      "strictly_useful": true,
+      "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+    }
+  },
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "file_ownership": {
+    "owner": "tensorization",
+    "editable": [
+      "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean",
+      "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean",
+      "harness/tasks/tensorization.json"
+    ],
+    "scratch_directory": "harness/attempts/tensorization"
+  },
+  "proof_route": {
+    "steps": [
+      "Finset.prod_one_add expands the finite product kernel into the r-weighted character sum.",
+      "Swap the two finite sums in the explicit Fourier definition to identify noise with productNoiseOn univ, without Parseval or inversion.",
+      "Apply Real.Lp_add_le_of_nonneg at exponent 3/2 after absorbing each atom weight raised to 2/3 into the inputs.",
+      "Raise the weighted Minkowski inequality to 3/2, obtaining the finite mixed-norm interchange.",
+      "Condition expectationOn (insert i s) on whether i is present. Other coordinates are unchanged by insertion, giving an explicit two-branch kernel recurrence.",
+      "Compute the four one-coordinate kernel values using sqrt(p*(1-p))^2=p*(1-p), then apply the given TwoPointContraction.",
+      "Induct on the finite coordinate set s. The scalar contraction bounds the output pair pointwise; mixed-norm interchange moves the remaining expectations outside the pair; the two induction hypotheses complete the step.",
+      "Specialize the proved productNoiseOn_contract theorem to univ and rewrite back to the frozen noise definition."
+    ],
+    "integrity": "No analytic hypotheses were added, no final hypercontractivity or sharp-threshold statement is assumed, no Parseval dependency is needed. The exact frozen theorem signature, including the bounds on r, is preserved. The helper induction actually does not require those r bounds because the supplied scalar contraction already suffices."
+  },
+  "promoted_helpers": [
+    "productNoiseOn",
+    "noise_character_kernel",
+    "noise_eq_productNoiseOn_univ",
+    "weighted_minkowski_three_halves",
+    "weighted_mixed_norm",
+    "productNoiseOn_insert_coordinate",
+    "productNoiseOn_insert",
+    "kernel_two_point",
+    "expectationOn_mixed_norm",
+    "productNoiseOn_contract"
+  ],
+  "sources": [
+    {
+      "path": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+      "declaration": "Finset.prod_one_add",
+      "role": "Expands the product kernel into a sum over subsets."
+    },
+    {
+      "path": ".lake/packages/mathlib/Mathlib/Analysis/MeanInequalities.lean",
+      "lines": "1048-1053",
+      "declaration": "Real.Lp_add_le_of_nonneg",
+      "role": "Finite Minkowski inequality for nonnegative real inputs."
+    },
+    {
+      "path": "ExpandingCodes/Probability/Erasure.lean",
+      "lines": "305-323",
+      "declaration": "expectationOn_insert",
+      "role": "Conditions the independent finite Bernoulli expectation on the inserted coordinate."
+    }
+  ],
+  "failed_approaches": [
+    {
+      "approach": "Directly factor a common scalar after swapping noise sums.",
+      "result": "The summand was not syntactically normalized. Rewrote the kernel on the right, distributed scalar multiplication and closed each summand by ring."
+    },
+    {
+      "approach": "Use explicit function positional arguments for Real.Lp_add_le_of_nonneg.",
+      "result": "The functions are implicit arguments; passing named f and g resolves the elaboration error."
+    },
+    {
+      "approach": "Place classical only in theorem proof bodies containing insert in their statements.",
+      "result": "Statement elaboration needs the classical scope too. Added open scoped Classical, matching the existing coordinate and erasure conventions."
+    },
+    {
+      "approach": "Infer coordinate inequality binders inside rewrite lambdas.",
+      "result": "Implicit coordinate metavariables left the equality transport ambiguous. Added the explicit type j ≠ i."
+    }
+  ],
+  "verification": {
+    "draft_check": {
+      "command": "./tools/lake-serial env lean harness/attempts/tensorization/ProductNoise.lean",
+      "exit_code": 0,
+      "result": "Complete helper proof plus the exact frozen theorem succeeded. Only unused-section-variable and unused-r-hypothesis lint warnings."
+    },
+    "public_build": {
+      "command": "./tools/lake-serial build ExpandingCodes.Probability.SharpThreshold.ProductNoise ExpandingCodes.Probability.SharpThreshold.Tensorization",
+      "exit_code": 0,
+      "result": "Built ProductNoise in 3.2s and Tensorization in 2.1s; 2649 jobs. Only lint warnings, no proof holes."
+    },
+    "axiom_audit": {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/tensorization/Audit.lean",
+      "exit_code": 0,
+      "declaration": "ExpandingCodes.SharpThreshold.tensorize_two_point",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "contains_sorryAx": false,
+      "custom_axioms": []
+    },
+    "source_sha256": {
+      "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean": "290331741034877a90650e542ae9edbed6fcd147766461d5f66e5b3e962dead3",
+      "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean": "257cebba2f3125875f9ba6f303272b2be12492cd4c5edf7573e9926be7f2fb9f"
+    },
+    "note": "Standalone worker record. The coordinator owns graph integration and independent harness receipts."
+  },
+  "unresolved_dependencies": [],
+  "final_source_locations": {
+    "noise_character_kernel": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:18",
+    "noise_eq_productNoiseOn_univ": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:32",
+    "weighted_minkowski_three_halves": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:59",
+    "weighted_mixed_norm": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:92",
+    "productNoiseOn_insert": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:176",
+    "kernel_two_point": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:227",
+    "productNoiseOn_contract": "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean:269",
+    "tensorize_two_point": "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean:13"
+  }
+}

@@ -1,0 +1,36 @@
+harness/attempts/zero_tables/ZeroTables.lean:25:2: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/attempts/zero_tables/ZeroTables.lean:32:2: error: Tactic `rfl` failed: The left-hand side
+  if c = b ∧ (d.setReg r 0).bufferHead b ≤ j ∧ j < (d.setReg r 0).bufferHead b + N then Sym.zero
+  else ((d.setReg r 0).bufferTape c).getD j Sym.blank
+is not definitionally equal to the right-hand side
+  if c = b ∧ 1 ≤ j ∧ j < 1 + N then Sym.zero else (d.bufferTape c).getD j Sym.blank
+
+R B : ℕ
+r : Fin R
+b : Fin B
+N : ℕ
+d : TapeStore R B
+hh : d.bufferHead b = 1
+c : Fin B
+j : ℕ
+⊢ (if c = b ∧ (d.setReg r 0).bufferHead b ≤ j ∧ j < (d.setReg r 0).bufferHead b + N then Sym.zero
+    else ((d.setReg r 0).bufferTape c).getD j Sym.blank) =
+    if c = b ∧ 1 ≤ j ∧ j < 1 + N then Sym.zero else (d.bufferTape c).getD j Sym.blank
+harness/attempts/zero_tables/ZeroTables.lean:62:86: error: unsolved goals
+R B : ℕ
+r : Fin R
+b : Fin B
+N : ℕ
+d : TapeStore R B
+c : Fin B
+hc : c ≠ b
+j : ℕ
+⊢ ((d.setReg r 0).bufferTape c)[j]?.getD Sym.blank = (d.bufferTape c)[j]?.getD Sym.blank
+'ExpandingCodes.Computation.ZeroTables.result_table' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.ZeroTables.program_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.ZeroTables.result_other_table' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

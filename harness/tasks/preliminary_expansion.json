@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "owner": "preliminary_expansion",
+  "owned_files": [
+    "ExpandingCodes/Construction/Peeling.lean",
+    "ExpandingCodes/Probability/PreliminaryExpansion.lean",
+    "ExpandingCodes/Probability/PreliminaryCounting.lean",
+    "harness/attempts/preliminary_expansion/*",
+    "harness/tasks/preliminary_expansion.json"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean"
+  ],
+  "exact_goal": "ExpandingCodes.PolynomialStretch.preliminary_expansion, canonical Theorems/Thm_ExpandingCodes_PolynomialStretch_preliminary_expansion.lean",
+  "source": {
+    "path": "tmp/feasibility/paper.txt",
+    "lines": "640-705",
+    "role": "Lemma 2.6"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "proof_route": [
+    "Strong induction on row subsets and exact removal identity extract a nonempty collision core from failure of expansion.",
+    "Active pairs each consume two row-layer incidences, giving 2|A|\u2264k|S|; collision-core points lie in deterministic W_A.",
+    "Independent per-active-pair coefficient events; union bound distinct witness pairs from W_A, whose card\u2264|A|^d.",
+    "Union bound a-element active-pair sets, use crude count\u2264(kq)^a to obtain base\u2264C\u03b5*n^(\u22122d \u03b5). This exponent suffices because d\u22651024/\u03b5\u00b2.",
+    "Bound finite geometric tail and show scaled real-power limit from 2d \u03b5>1/\u03b5."
+  ],
+  "nodes": [
+    {
+      "id": "layeredNeighbors_erase_card",
+      "declaration": "ExpandingCodes.PolynomialStretch.layeredNeighbors_erase_card",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem layeredNeighbors_erase_card {I V : Type*} {k : \u2115}\n    (f : I \u2192 Fin k \u2192 V) (S : Finset I) {z : I} (hz : z \u2208 S) :\n    (layeredNeighbors f S).card + (collisionLayers f S z).card =\n      (layeredNeighbors f (S.erase z)).card + k",
+      "proof_route": "Express neighbor set as old neighbors union the k distinct neighbors of removed row. Their intersection is an injective image of collisionLayers. Apply card_union_add_card_inter.",
+      "dependencies": [
+        "mem_layeredNeighbors",
+        "mem_collisionLayers"
+      ]
+    },
+    {
+      "id": "layeredNeighbors_expansion_of_peeling",
+      "declaration": "ExpandingCodes.PolynomialStretch.layeredNeighbors_expansion_of_peeling",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem layeredNeighbors_expansion_of_peeling {I V : Type*} {d k : \u2115}\n    (f : I \u2192 Fin k \u2192 V) (S : Finset I)\n    (h : \u2200 T \u2286 S, T.Nonempty \u2192 \u2203 z \u2208 T, (collisionLayers f T z).card < d) :\n    (k + 1) * S.card \u2264 (layeredNeighbors f S).card + d * S.card",
+      "proof_route": "Strong induction on finite row sets. Choose a low-collision row, invoke induction on its erase, and combine exact removal identity with \u03ba<d by natural arithmetic.",
+      "dependencies": [
+        "layeredNeighbors_erase_card"
+      ]
+    },
+    {
+      "id": "exists_collision_core",
+      "declaration": "ExpandingCodes.PolynomialStretch.exists_collision_core",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem exists_collision_core {I V : Type*} {d k : \u2115}\n    (f : I \u2192 Fin k \u2192 V) (S : Finset I)\n    (hbad : (layeredNeighbors f S).card + d * S.card < (k + 1) * S.card) :\n    \u2203 T \u2286 S, T.Nonempty \u2227 \u2200 z \u2208 T, d \u2264 (collisionLayers f T z).card",
+      "proof_route": "Contrapositive of peeling: failure forbids the statement that every nonempty subset has a low-collision row.",
+      "dependencies": [
+        "layeredNeighbors_expansion_of_peeling"
+      ]
+    },
+    {
+      "id": "preliminary_neighbors_eq",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_neighbors_eq",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem preliminary_neighbors_eq {d n k : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (S : Finset (Fin (rowCount d n))) :\n    neighbors (preliminary g s) S =\n      layeredNeighbors (fun z i => address g s i (g.rowOrder z)) S",
+      "proof_route": "Extensional equality with canonical QuantumExpander.Decoder.nbhdA; each preliminary entry is exactly the indicator of its layered address.",
+      "dependencies": [
+        "mem_layeredNeighbors"
+      ]
+    },
+    {
+      "id": "preliminary_bad_has_collision_core",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_bad_has_collision_core",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem preliminary_bad_has_collision_core (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (s : Forms g.F (dimension \u03b5) (arity \u03b5))\n    (hbad : \u00ac PreliminaryGood \u03b5 n g s) :\n    \u2203 S : Finset (Fin (rowCount (dimension \u03b5) n)),\n      S.Nonempty \u2227 (S.card : \u211d) \u2264 (n : \u211d) ^ (1 - \u03b5) \u2227\n      \u2200 z \u2208 S, dimension \u03b5 \u2264\n        (collisionLayers (fun z i => address g s i (g.rowOrder z)) S z).card",
+      "proof_route": "Push negation through canonical PreliminaryGood, convert its real neighbor inequality into natural deficit inequality, extract collision core, preserve size by subset-card monotonicity.",
+      "dependencies": [
+        "preliminary_neighbors_eq",
+        "exists_collision_core"
+      ]
+    },
+    {
+      "id": "preliminaryActivePairs_card_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminaryActivePairs_card_le",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem preliminaryActivePairs_card_le {d n k : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (S : Finset (Fin (rowCount d n))) :\n    2 * (preliminaryActivePairs g s S).card \u2264 k * S.card",
+      "proof_route": "Map finite row-layer incidences (S\u00d7Fin k) to fixed-form level pairs. Every active pair has two distinct witnesses in its fiber. Sum fiber cardinalities and bound by k|S|.",
+      "dependencies": [
+        "mem_preliminaryActivePairs"
+      ]
+    },
+    {
+      "id": "collisionLayers_subset_activeLayers",
+      "declaration": "ExpandingCodes.PolynomialStretch.collisionLayers_subset_activeLayers",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem collisionLayers_subset_activeLayers {d n k : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (S : Finset (Fin (rowCount d n)))\n    {z : Fin (rowCount d n)} (hz : z \u2208 S) :\n    collisionLayers (fun z i => address g s i (g.rowOrder z)) S z \u2286\n      activeLayers g (preliminaryActivePairs g s S) (g.rowOrder z)",
+      "proof_route": "A colliding second row witnesses membership of (i,fixedForm z i) in the active pair set.",
+      "dependencies": [
+        "mem_collisionLayers",
+        "mem_activeLayers",
+        "mem_preliminaryActivePairs"
+      ]
+    },
+    {
+      "id": "collision_core_rows_mem_activePointSet",
+      "declaration": "ExpandingCodes.PolynomialStretch.collision_core_rows_mem_activePointSet",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem collision_core_rows_mem_activePointSet {d n k : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (S : Finset (Fin (rowCount d n)))\n    (hcore : \u2200 z \u2208 S, d \u2264\n      (collisionLayers (fun z i => address g s i (g.rowOrder z)) S z).card) :\n    \u2200 z \u2208 S, g.rowOrder z \u2208 activePointSet g (preliminaryActivePairs g s S)",
+      "proof_route": "The at-least-d collision layers inject by inclusion into activeLayers; activePointSet is defined by its cardinal threshold.",
+      "dependencies": [
+        "collisionLayers_subset_activeLayers",
+        "mem_activePointSet"
+      ]
+    },
+    {
+      "id": "collision_core_activePairs_nonempty",
+      "declaration": "ExpandingCodes.PolynomialStretch.collision_core_activePairs_nonempty",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "file": "ExpandingCodes/Construction/Peeling.lean",
+      "statement": "theorem collision_core_activePairs_nonempty {d n k : \u2115} (g : Geometry d n)\n    (hd : 0 < d) (s : Forms g.F d k) (S : Finset (Fin (rowCount d n)))\n    (hne : S.Nonempty) (hcore : \u2200 z \u2208 S, d \u2264\n      (collisionLayers (fun z i => address g s i (g.rowOrder z)) S z).card) :\n    (preliminaryActivePairs g s S).Nonempty",
+      "proof_route": "Choose any core row and one collision layer, possible since d>0; this supplies an active level pair.",
+      "dependencies": [
+        "collisionLayers_subset_activeLayers"
+      ]
+    },
+    {
+      "id": "uniformProb_candidateCollision_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_candidateCollision_le",
+      "status": "proved_and_audited",
+      "holes": [],
+      "file": "ExpandingCodes/Probability/PreliminaryCounting.lean",
+      "statement": "theorem uniformProb_candidateCollision_le {F : Type*} [Field F] [Fintype F]\n    {d : \u2115} (W : Finset (Fin d \u2192 F)) :\n    uniformProb (candidateCollision W) \u2264 (W.card : \u211d) ^ 2 / (Fintype.card F : \u211d) ^ 2",
+      "proof_route": "Union bound ordered pairs from deterministic candidate set W. For distinct pairs, exact two-linear-functional collision probability equals q\u207b\u00b2; for diagonal pairs the event is false. Count at most |W|\u00b2 pairs.",
+      "dependencies": [
+        "uniformProb_congr",
+        "uniformProb_two_linearForm_collision",
+        "uniformProb_exists_finset"
+      ],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "uniformProb_activeWitnessEvent_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_activeWitnessEvent_le",
+      "status": "proved_and_audited",
+      "holes": [],
+      "file": "ExpandingCodes/Probability/PreliminaryCounting.lean",
+      "statement": "theorem uniformProb_activeWitnessEvent_le {d n k : \u2115} (g : Geometry d n)\n    (hk : k \u2264 fieldSize d n) (A : Finset (Fin k \u00d7 g.F)) :\n    uniformProb (activeWitnessEvent g A) \u2264\n      ((A.card : \u211d) ^ (2 * d) / (fieldSize d n : \u211d) ^ 2) ^ A.card",
+      "proof_route": "Exact forms reindexing and uniformProb_forms_events factor independence by active level pair. Bound each coordinate by candidateCollision union bound; use Vandermonde activePointSet_card_le to replace |W_A|\u00b2 by |A|^(2d).",
+      "dependencies": [
+        "uniformProb_forms_events",
+        "uniformProb_candidateCollision_le",
+        "activePointSet_card_le",
+        "geometry_card"
+      ],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "preliminary_bad_implies_activeWitnessEvent",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_bad_implies_activeWitnessEvent",
+      "status": "proved_and_audited",
+      "holes": [],
+      "file": "ExpandingCodes/Probability/PreliminaryCounting.lean",
+      "statement": "theorem preliminary_bad_implies_activeWitnessEvent (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (hd : 0 < dimension \u03b5)\n    (s : Forms g.F (dimension \u03b5) (arity \u03b5))\n    (hbad : \u00ac PreliminaryGood \u03b5 n g s) :\n    \u2203 A : Finset (Fin (arity \u03b5) \u00d7 g.F), A.Nonempty \u2227\n      (A.card : \u211d) \u2264 (arity \u03b5 : \u211d) * (n : \u211d) ^ (1 - \u03b5) \u2227 activeWitnessEvent g A s",
+      "proof_route": "Extract canonical collision core S, choose its exact active pair set A, transport row witnesses through arbitrary public rowOrder, and derive coefficient collisions at each fixed level from address equality.",
+      "dependencies": [
+        "preliminary_bad_has_collision_core",
+        "preliminaryActivePairs_card_le",
+        "collision_core_rows_mem_activePointSet",
+        "collision_core_activePairs_nonempty"
+      ],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "uniformProb_exists_active_sets_le_pow",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_exists_active_sets_le_pow",
+      "status": "proved_and_audited",
+      "holes": [],
+      "file": "ExpandingCodes/Probability/PreliminaryCounting.lean",
+      "statement": "theorem uniformProb_exists_active_sets_le_pow {d n k : \u2115} (g : Geometry d n)\n    (hk : k \u2264 fieldSize d n) (a : \u2115) (B : \u211d)\n    (hbase : (k : \u211d) * (a : \u211d) ^ (2 * d) / (fieldSize d n : \u211d) \u2264 B) :\n    uniformProb (fun s : Forms g.F d k =>\n      \u2203 A \u2208 (Finset.univ : Finset (Fin k \u00d7 g.F)).powersetCard a,\n        activeWitnessEvent g A s) \u2264 B ^ a",
+      "proof_route": "Union bound a-element subsets of kq possible active pairs. Exact card_powersetCard and Nat.choose_le_pow give at most (kq)^a sets, yielding base k*a^(2d)/q.",
+      "dependencies": [
+        "uniformProb_exists_finset",
+        "uniformProb_activeWitnessEvent_le",
+        "geometry_card"
+      ],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "sum_pow_succ_le_two_mul",
+      "declaration": "ExpandingCodes.PolynomialStretch.sum_pow_succ_le_two_mul",
+      "status": "proved_and_audited",
+      "holes": [],
+      "file": "ExpandingCodes/Probability/PreliminaryCounting.lean",
+      "statement": "theorem sum_pow_succ_le_two_mul (B : \u211d) (hB : 0 \u2264 B) (hhalf : B \u2264 1 / 2) (N : \u2115) :\n    (\u2211 j \u2208 Finset.range N, B ^ (j + 1)) \u2264 2 * B",
+      "proof_route": "Factor out first term B and compare remaining finite geometric sum termwise to ratio1/2, whose full sum is at most2.",
+      "dependencies": [
+        "sum_geometric_two_le"
+      ],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "preliminary_bad_prob_le_two_base",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_bad_prob_le_two_base",
+      "status": "proved_and_audited",
+      "holes": [],
+      "file": "ExpandingCodes/Probability/PreliminaryCounting.lean",
+      "statement": "theorem preliminary_bad_prob_le_two_base (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (hd : 0 < dimension \u03b5)\n    (hk : arity \u03b5 \u2264 fieldSize (dimension \u03b5) n)\n    (hhalf : (arity \u03b5 : \u211d) *\n      ((arity \u03b5 : \u211d) * (n : \u211d) ^ (1 - \u03b5)) ^ (2 * dimension \u03b5) /\n        (fieldSize (dimension \u03b5) n : \u211d) \u2264 1 / 2) :\n    uniformProb (fun s : Forms g.F (dimension \u03b5) (arity \u03b5) =>\n      \u00ac PreliminaryGood \u03b5 n g s) \u2264\n      2 * ((arity \u03b5 : \u211d) *\n        ((arity \u03b5 : \u211d) * (n : \u211d) ^ (1 - \u03b5)) ^ (2 * dimension \u03b5) /\n          (fieldSize (dimension \u03b5) n : \u211d))",
+      "proof_route": "Cover canonical failure by active sets indexed with j=|A|\u22121 below floor(k*n^(1\u2212\u03b5)). Bound each fixed-cardinality event by B^(j+1), use size monotonicity, and sum finite geometric tail.",
+      "dependencies": [
+        "preliminary_bad_implies_activeWitnessEvent",
+        "uniformProb_mono",
+        "uniformProb_exists_finset",
+        "uniformProb_exists_active_sets_le_pow",
+        "sum_pow_succ_le_two_mul"
+      ],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "preliminary_expansion_limit",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_expansion_limit",
+      "file": "ExpandingCodes/Probability/PreliminaryExpansion.lean",
+      "statement": "theorem preliminary_expansion_limit (\u03b5 : \u211d) (h\u03b5 : 0 < \u03b5 \u2227 \u03b5 < 1 / 2)\n    (g : \u2200 n, Geometry (dimension \u03b5) n) :\n    Tendsto (fun n =>\n      uniformProb (fun s : Forms (g n).F (dimension \u03b5) (arity \u03b5) =>\n        \u00ac PreliminaryGood \u03b5 n (g n) s) * (n : \u211d) ^ (1 / \u03b5))\n      atTop (nhds 0)",
+      "status": "proved_and_audited",
+      "proof_route": "The exact canonical failure probability is nonnegative. Eventually the construction parameters satisfy hk and B\u22641/2, so the finite theorem bounds the scaled failure probability by 2*B*n^(1/\u03b5). Root proved this upper bound tends to zero, so squeeze_zero' gives the exact canonical limit uniformly in arbitrary public Geometry and rowOrder.",
+      "dependencies": [
+        "preliminary_bad_prob_le_two_base",
+        "dimension_ge_four",
+        "eventually_preliminary_parameters",
+        "tendsto_preliminaryRatio_scaled"
+      ],
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "open_theorem_bodies": [],
+  "checks": [
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/preliminary_expansion/Peeling.lean",
+      "result": "pass"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Construction.Peeling",
+      "result": "pass"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/preliminary_expansion/AuditPeeling.lean",
+      "result": "pass; all12 listed declarations exactly propext, Classical.choice, Quot.sound"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/preliminary_expansion/PreliminaryCounting.lean",
+      "result": "pass"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Probability.PreliminaryCounting",
+      "result": "pass; final module6.8sec"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/preliminary_expansion/AuditCounting.lean",
+      "result": "pass; all8 listed declarations exactly propext, Classical.choice, Quot.sound"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/preliminary_expansion/PreliminaryExpansion.lean",
+      "result": "pass; no warnings"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Probability.PreliminaryExpansion",
+      "result": "pass; final public support module built4.8sec; 8729 jobs including cached imports"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/preliminary_expansion/AuditExpansion.lean",
+      "result": "pass; preliminary_expansion_limit depends exactly on propext, Classical.choice, Quot.sound"
+    }
+  ],
+  "failed_approaches": [
+    {
+      "detail": "Initial tactic draft omitted destructuring a product when simplifying existential image membership; repaired by ext \u27e8l,v\u27e9. No mathematical obstruction."
+    },
+    {
+      "detail": "First counting proof parsed successfully except two routine simplifications: replace simp of let-defined E with explicit conjunction equivalence, and add div_pow to constant product normalization. Both repaired; complete next check passed."
+    }
+  ],
+  "unresolved_dependencies": [],
+  "status": "complete",
+  "worker_result": {
+    "status": "complete",
+    "open_theorem_bodies": [],
+    "pending_compilation": [],
+    "ownership_preserved": true,
+    "canonical_statement_preserved": true,
+    "source_lines": "640-705",
+    "promotion": "All3 owned public Lean modules promoted after draft direct checks, then fresh built and transitively axiom-audited.",
+    "canonical_forward": "Root-owned Theorems file should import ExpandingCodes.Probability.PreliminaryExpansion and use exact preliminary_expansion_limit \u03b5 h\u03b5 g. Worker did not modify Theorems or main graph.",
+    "axiom_audit": {
+      "files": [
+        "harness/attempts/preliminary_expansion/AuditPeeling.lean",
+        "harness/attempts/preliminary_expansion/AuditCounting.lean",
+        "harness/attempts/preliminary_expansion/AuditExpansion.lean"
+      ],
+      "result": "All21 inspected public declarations have exactly propext, Classical.choice, Quot.sound; final exact-type limit theorem has no sorryAx or custom axioms."
+    },
+    "remaining": "No open mathematical or validation obligations in owned support modules. Canonical forwarding and graph closure remain root-owned."
+  },
+  "canonical_type_comparison": {
+    "result": "exact binder/type match modulo theorem name and whitespace",
+    "normalized_statement_sha256": "cf9bea834d5373adb68842e015f4361990c2224cf97fecf8ed9051828d40886c"
+  },
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "interface": "local_support_over_exact_canonical_definitions",
+  "canonical_goal_file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_preliminary_expansion.lean",
+  "canonical_goal_snapshot": "harness/platform/preliminary_expansion.json",
+  "proof_route_note": "The active-set count is deliberately weaker than the paper's binomial/factorial estimate. Counting at most (kq)^a sets yields base k*a^(2d)/q, bounded by B. Since 2d*\u03b5>1/\u03b5 for exact canonical dimension, this proves the same canonical little-o conclusion. No statement or model is changed."
+}

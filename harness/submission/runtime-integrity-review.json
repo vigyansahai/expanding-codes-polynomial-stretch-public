@@ -1,0 +1,1115 @@
+{
+  "reviewed_at": "2026-11-14T23:47:39.664136+00:00",
+  "reviewer": "/root/upload_integrity",
+  "scope": "Independent read-only export classification and integrity review. No compiler, REPL, API, network, secrets, or source edits. Only this report written.",
+  "status": "PASS for inspected snapshot integrity/classification; compilation and final axioms pending",
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "skills": [
+    "prove2me_workspace/SKILL.md",
+    "prove2me_workspace/references/contribute.md",
+    "prove2me_workspace/references/upload_full_project.md"
+  ],
+  "policy_basis": "upload_full_project Phase 2 requires theorem cited by a def body to be proved inside its definition bundle, avoiding sorry-stub taint; contribute allows necessary defining/constructor helpers and essential typeclass instances.",
+  "files": {
+    "data": {
+      "path": "harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean",
+      "bytes": 296264,
+      "sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+      "manifest_matches": true,
+      "under_one_mib": true,
+      "independent_reconstruction_exact": true,
+      "applied_export_rename_ref_count": 2
+    },
+    "sampler": {
+      "path": "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean",
+      "bytes": 778658,
+      "sha256": "85a58281f3c5a8a2a277a2b39a95d6cefccb71864891e05b9fcf1842c5620257",
+      "manifest_matches": true,
+      "under_one_mib": true,
+      "independent_reconstruction_exact": true,
+      "applied_export_rename_ref_count": 2
+    },
+    "tester": {
+      "path": "harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean",
+      "bytes": 884899,
+      "sha256": "f8f15d52a5369813ae32df8d62d7293d71e487c369982f3167d0541429051230",
+      "manifest_matches": true,
+      "under_one_mib": true,
+      "independent_reconstruction_exact": true,
+      "applied_export_rename_ref_count": 0
+    }
+  },
+  "frozen_sources": {
+    "checked": 174,
+    "mismatches": []
+  },
+  "canonical_definitions": {
+    "checked": 10,
+    "mismatches": []
+  },
+  "data_reconstruction": "All three renamed payloads independently reconstructed byte-for-byte from frozen Upload using exact declaration-span subtraction, moduleDoc spans, private tokens, selective-open token, and complete Stage 2 declaration/reference rename ranges. No model assumptions, theorem statements, or proof logic changed.",
+  "data_counts": {
+    "retained_commands": 964,
+    "standalone_embedded_theorem_commands": 45,
+    "standalone_embedded_theorem_bytes": 17987,
+    "source_theorem_kind_declarations": 352,
+    "note": "Additional theorem-kind declarations are structural accessors sharing retained data command spans."
+  },
+  "specific_findings": [
+    {
+      "subject": "GaussianProgram.scanResult_spec",
+      "finding": "Small inductive characterization of the pure finite scan; scan_nonzero_lt constructs the bounded Fin coordinate in PaddedGaussian.pivot. Essential defined-data prerequisite, not tape-machine runtime correctness."
+    },
+    {
+      "subject": "SamplerAssembly.Concrete.writerRegisters_injective",
+      "finding": "Concrete finite register embedding injectivity fills the writerLayout proof field; no sampler output or runtime correctness claim."
+    },
+    {
+      "subject": "BinaryPolynomial/BinaryField",
+      "finding": "Irreducibility, existence, and coefficient algebra justify nonempty bounded searches (selectedIndex/multiplyIndex/inverse), equivalence fields, and quotient-field instance. All 42 original standalone theorem commands have real transitive definition dependency witnesses. Actual sampler/tester correctness remains in separate solutions."
+    },
+    {
+      "subject": "Deprivatization",
+      "finding": "Only Gaussian.prodSubmoduleEquiv and GaussianPivot.decidablePreserves lose private at Stage 2 ranges. Both construct data; user names unchanged and collision-checked."
+    },
+    {
+      "subject": "Stale historical module documentation",
+      "finding": "Historical sharp-threshold sorryAx comment removed using exact parser moduleDoc range in entirely unselected source module. No executable code changed."
+    }
+  ],
+  "deprivatization": [
+    {
+      "original": "_private.harness.submission.Upload.0.ExpandingCodes.Computation.Gaussian.prodSubmoduleEquiv",
+      "public": "ExpandingCodes.Computation.Gaussian.prodSubmoduleEquiv",
+      "reference_count": 2,
+      "collision_in_original_graph": false
+    },
+    {
+      "original": "_private.harness.submission.Upload.0.ExpandingCodes.Computation.GaussianPivot.decidablePreserves",
+      "public": "ExpandingCodes.Computation.GaussianPivot.decidablePreserves",
+      "reference_count": 2,
+      "collision_in_original_graph": false
+    }
+  ],
+  "embedded_theorems": [
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches"
+      ],
+      "bytes": 1303,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        435,
+        458
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff"
+      ],
+      "bytes": 1245,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        411,
+        433
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.GaussianProgram.scanResult_spec"
+      ],
+      "bytes": 1227,
+      "module": "ExpandingCodes.Computation.GaussianProgram",
+      "lines": [
+        23028,
+        23054
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.Computation.GaussianProgram.scanResult_spec",
+        "ExpandingCodes.Computation.PaddedGaussian.scan_nonzero_lt",
+        "ExpandingCodes.Computation.PaddedGaussian.pivot"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.factorFree_iff_irreducible"
+      ],
+      "bytes": 1176,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        209,
+        230
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.factorFree_iff_irreducible",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.SamplerAssembly.Concrete.writerRegisters_injective"
+      ],
+      "bytes": 874,
+      "module": "ExpandingCodes.Computation.SamplerAssembly",
+      "lines": [
+        31592,
+        31616
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.Computation.SamplerAssembly.Concrete.writerRegisters_injective",
+        "ExpandingCodes.Computation.SamplerAssembly.Concrete.writerLayout"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex"
+      ],
+      "bytes": 771,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        534,
+        549
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productMatches_iff"
+      ],
+      "bytes": 708,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        183,
+        197
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.factorFree_iff_irreducible",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiply_certificate"
+      ],
+      "bytes": 705,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        474,
+        485
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiply_certificate",
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_multiply",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_multiply"
+      ],
+      "bytes": 679,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        498,
+        507
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_multiply",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_surjective"
+      ],
+      "bytes": 678,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        133,
+        146
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_surjective",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_irreducible_monic"
+      ],
+      "bytes": 514,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        232,
+        239
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_irreducible_monic",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_encode"
+      ],
+      "bytes": 491,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        311,
+        320
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_encode",
+        "ExpandingCodes.PolynomialStretch.BinaryField.coefficientEquiv"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.CounterCompiler.getD_append_singleton"
+      ],
+      "bytes": 474,
+      "module": "ExpandingCodes.Computation.CounterCompiler",
+      "lines": [
+        1453,
+        1462
+      ],
+      "classification": "structural source-elaboration prerequisite",
+      "reason": "Finite-list getD API (10-line proof), required by preserved open CounterCompiler command; no execution/correctness claim."
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidateCoefficient_eq"
+      ],
+      "bytes": 438,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        151,
+        160
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidateCoefficient_eq",
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusConvolution_eq",
+        "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusConvolution_eq"
+      ],
+      "bytes": 410,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        385,
+        390
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusConvolution_eq",
+        "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.encode_decode"
+      ],
+      "bytes": 397,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        322,
+        329
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.encode_decode",
+        "ExpandingCodes.PolynomialStretch.BinaryField.coefficientEquiv"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productCoefficient_eq"
+      ],
+      "bytes": 369,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        168,
+        172
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productCoefficient_eq",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.factorFree_iff_irreducible",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.polynomial_coefficients"
+      ],
+      "bytes": 368,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        105,
+        111
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.polynomial_coefficients",
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_encode",
+        "ExpandingCodes.PolynomialStretch.BinaryField.coefficientEquiv"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.RandomBits.value_lt"
+      ],
+      "bytes": 361,
+      "module": "ExpandingCodes.Computation.RandomBits",
+      "lines": [
+        5436,
+        5446
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.Computation.RandomBits.value_lt",
+        "ExpandingCodes.Computation.RandomTables.sampledValues"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.convolution_eq"
+      ],
+      "bytes": 343,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        375,
+        379
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.convolution_eq",
+        "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.polynomial_one"
+      ],
+      "bytes": 324,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        516,
+        526
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.polynomial_one",
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_one",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex_factorFree"
+      ],
+      "bytes": 298,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        254,
+        258
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_irreducible",
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusFact",
+        "ExpandingCodes.PolynomialStretch.BinaryField.field"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.bufferCoefficient_eq"
+      ],
+      "bytes": 293,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        365,
+        370
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.bufferCoefficient_eq",
+        "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree"
+      ],
+      "bytes": 277,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        241,
+        245
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.natDegree_polynomial_lt"
+      ],
+      "bytes": 273,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        405,
+        409
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.natDegree_polynomial_lt",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.PaddedGaussian.scan_nonzero_lt"
+      ],
+      "bytes": 273,
+      "module": "ExpandingCodes.Computation.PaddedGaussian",
+      "lines": [
+        27310,
+        27315
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.Computation.PaddedGaussian.scan_nonzero_lt",
+        "ExpandingCodes.Computation.PaddedGaussian.pivot"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_natDegree"
+      ],
+      "bytes": 237,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        120,
+        124
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_natDegree",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.coefficient_polynomial_high"
+      ],
+      "bytes": 221,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        101,
+        103
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.coefficient_polynomial_high",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_surjective",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.coefficient_polynomial"
+      ],
+      "bytes": 201,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        92,
+        95
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.coefficient_polynomial",
+        "ExpandingCodes.PolynomialStretch.BinaryField.encode_decode",
+        "ExpandingCodes.PolynomialStretch.BinaryField.coefficientEquiv"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_ne_one"
+      ],
+      "bytes": 192,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        126,
+        131
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_ne_one",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.factorFree_iff_irreducible",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree",
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.degree_polynomial_lt"
+      ],
+      "bytes": 180,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        97,
+        99
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.degree_polynomial_lt",
+        "ExpandingCodes.PolynomialStretch.BinaryField.encode_decode",
+        "ExpandingCodes.PolynomialStretch.BinaryField.coefficientEquiv"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_irreducible"
+      ],
+      "bytes": 157,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        273,
+        274
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_irreducible",
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusFact",
+        "ExpandingCodes.PolynomialStretch.BinaryField.field"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.geometry_card"
+      ],
+      "bytes": 146,
+      "module": "ExpandingCodes.Construction.Geometry",
+      "lines": [
+        691,
+        693
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.geometry_card",
+        "ExpandingCodes.PolynomialStretch.encodedExponentOrder"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.SamplerProgram.Storage.low_injective"
+      ],
+      "bytes": 139,
+      "module": "ExpandingCodes.Computation.SamplerProgram",
+      "lines": [
+        17104,
+        17107
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.Computation.SamplerProgram.Storage.low_injective",
+        "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.charTwo"
+      ],
+      "bytes": 137,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        298,
+        299
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.charTwo",
+        "ExpandingCodes.PolynomialStretch.binaryGeometry"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.polynomial_zero"
+      ],
+      "bytes": 133,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        513,
+        514
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.polynomial_zero",
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_zero",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_monic"
+      ],
+      "bytes": 127,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        117,
+        118
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_monic",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches",
+        "ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_one"
+      ],
+      "bytes": 124,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        531,
+        532
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_one",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_zero"
+      ],
+      "bytes": 122,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        528,
+        529
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_zero",
+        "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex",
+        "ExpandingCodes.PolynomialStretch.BinaryField.inverse"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusFact"
+      ],
+      "bytes": 120,
+      "module": "ExpandingCodes.Computation.BinaryField",
+      "lines": [
+        292,
+        293
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryField.modulusFact",
+        "ExpandingCodes.PolynomialStretch.BinaryField.field"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_natDegree"
+      ],
+      "bytes": 114,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        270,
+        271
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_natDegree",
+        "ExpandingCodes.PolynomialStretch.BinaryField.decode_encode",
+        "ExpandingCodes.PolynomialStretch.BinaryField.coefficientEquiv"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.fieldExponent_pos"
+      ],
+      "bytes": 98,
+      "module": "ExpandingCodes.Construction.Geometry",
+      "lines": [
+        677,
+        679
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.fieldExponent_pos",
+        "ExpandingCodes.Computation.SamplerAssembly.Concrete.operations"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_monic"
+      ],
+      "bytes": 96,
+      "module": "ExpandingCodes.Computation.BinaryPolynomial",
+      "lines": [
+        267,
+        268
+      ],
+      "classification": "necessary defining/constructor proof prerequisite",
+      "reverse_dependency_witness": [
+        "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_monic",
+        "ExpandingCodes.PolynomialStretch.BinaryField.encode"
+      ]
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.SamplerProgram.Storage.neighbor_val"
+      ],
+      "bytes": 95,
+      "module": "ExpandingCodes.Computation.SamplerProgram",
+      "lines": [
+        17123,
+        17123
+      ],
+      "classification": "structural source-elaboration prerequisite",
+      "reason": "rfl register-projection simp lemma; explicit source reference in writerRegisters_injective fills writerLayout."
+    },
+    {
+      "names": [
+        "ExpandingCodes.Computation.SamplerProgram.Storage.low_val"
+      ],
+      "bytes": 79,
+      "module": "ExpandingCodes.Computation.SamplerProgram",
+      "lines": [
+        17119,
+        17119
+      ],
+      "classification": "structural source-elaboration prerequisite",
+      "reason": "rfl register-projection simp lemma; explicit source reference in writerRegisters_injective fills writerLayout."
+    }
+  ],
+  "endpoints": {
+    "sampler": {
+      "name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+      "statement_exact_original_header_modulo_fully_qualified_name": true,
+      "not_present_in_data": true,
+      "solution_imports": [
+        "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "import Mathlib"
+      ],
+      "solution_exposes_top_level_solution": true
+    },
+    "tester": {
+      "name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+      "statement_exact_original_header_modulo_fully_qualified_name": true,
+      "not_present_in_data": true,
+      "solution_imports": [
+        "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "import Mathlib"
+      ],
+      "solution_exposes_top_level_solution": true
+    }
+  },
+  "pending_gates": [
+    "Revised sampler/tester compiled/type/axiom gates remain runtime-worker/coordinator responsibility; corrected sampler compile pending. This review ran no compiler.",
+    "API definition payload and Data unchanged; source solution uploads must use new proof hashes.",
+    "Report hash-bound; refresh on staged payload changes."
+  ],
+  "issues": [],
+  "metadata_review": {
+    "files": {
+      "harness/submission/prepare_publications.py": "1e4aed386ea1878d524b02ade834928ac86f3641e202753f8159134e523d874a",
+      "harness/submission/sampler-explanation.txt": "556fddcbe8231bf59794d65e5ce11ef346822f20a935bdd62cebaaec86f74a84",
+      "harness/submission/tester-explanation.txt": "4c8702caa9456959de65bf8b505813271c9e7d24f4215dfe81f1ead59c582613"
+    },
+    "findings": [
+      {
+        "severity": "correction required before publication",
+        "file": "harness/submission/prepare_publications.py",
+        "subject": "sampler natural_language_statement",
+        "current": "canonical distribution obtained by independent random affine forms and layer hash tables",
+        "replacement": "canonical distribution obtained by two independent random linear forms for each layer and each value of its fixed first linear form, together with independent uniform layer hash tables",
+        "basis": "Frozen canonical Sampler.lean Forms/linearForm/address/sampleLaw and paper Section 2.1 equation (3). The zero sets are affine flats; the sampled forms themselves are linear.",
+        "status": "corrected by coordinator; wording verified"
+      },
+      {
+        "severity": "minor precision",
+        "file": "harness/submission/prepare_publications.py",
+        "subject": "definition natural_language_statement",
+        "suggestion": "Use positive binary extension degree ell, as BinaryField.Carrier requires 0 < ell.",
+        "status": "corrected by coordinator; wording verified"
+      }
+    ],
+    "other_claims": "Checked finite-machine quantifier order, time/tape polynomials, exact canonical distribution and encodings, deterministic Gram rank predicate, padding, threshold arithmetic, and source/compiler proof route; no additional discrepancy found. Both explanation files accurately describe linear coordinates.",
+    "source_citations": "Verified paper Theorem 2.1 and Section 2.1 equations (1)-(4), pp. 8-9, Section 2.2 equation (5) and displayed rank test, p. 9. Local-formalization source citation is intentional per coordinator; archive hash not independently rechecked in this subtask.",
+    "coordinator_correction_confirmed": "2026-11-14T23:25:55.357872+00:00",
+    "fixes_verified_in_builder": {
+      "positive_extension_degree": true,
+      "random_linear_forms": true,
+      "no_random_affine_forms": true
+    },
+    "preamble_autoImplicit_false_verified": true,
+    "actual_api_payload_matches_staged_source_and_metadata": true,
+    "actual_api_payloads": {
+      "harness/submission/runtime-definition-payload.json": "3d391efa613c1f73dba6acb43fe9ab510b6e3df1ea89c724f7a7ce76b03f402e",
+      "harness/submission/runtime-problems-payload.json": "b116196e0879c34bef69436234718dface0b0e46497dcc1237b32eb2d456f816"
+    }
+  },
+  "source_reference_closure": {
+    "stream_result": {
+      "exit_code": 0,
+      "elapsed_seconds": 462.058714208,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--run",
+        "harness/submission/runtime/ExtractRefsStream.lean",
+        "harness/submission/Upload.lean",
+        "harness/submission/runtime/source-refs.jsonl"
+      ]
+    },
+    "data_missing_local_source_references": [],
+    "added_embedded_theorems": [
+      "ExpandingCodes.Computation.CounterCompiler.getD_append_singleton",
+      "ExpandingCodes.Computation.SamplerProgram.Storage.neighbor_val",
+      "ExpandingCodes.Computation.SamplerProgram.Storage.low_val"
+    ],
+    "all_additions_appropriate": true
+  },
+  "scope_adjustments_review": {
+    "count": 1,
+    "records": [
+      {
+        "command": 286,
+        "token_start": 71271,
+        "token_end": 71289,
+        "omitted_unprovided_alias": "ExpandingCodes.Computation.CounterCompiler.tape_write_scanned"
+      }
+    ],
+    "finding": "One exact parser-token deletion of unprovided CounterCompiler.tape_write_scanned from a selective open. Original retained data declarations and proofs unchanged. Sampler/tester solution files keep their original open and helper.",
+    "independent_data_reconstruction_after_edit": true
+  },
+  "export_rename_review": {
+    "map": {
+      "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+      "renames": [
+        {
+          "old": "ExpandingCodes.Computation.SamplerAssembly.prelude",
+          "new": "ExpandingCodes.Computation.SamplerAssembly.samplerFrontendProgram",
+          "refs": [
+            {
+              "start": 1528262,
+              "end": 1528269,
+              "original": "prelude",
+              "replacement": "samplerFrontendProgram",
+              "is_binding": true
+            },
+            {
+              "start": 1529053,
+              "end": 1529060,
+              "original": "prelude",
+              "replacement": "samplerFrontendProgram",
+              "is_binding": false
+            },
+            {
+              "start": 1529108,
+              "end": 1529115,
+              "original": "prelude",
+              "replacement": "samplerFrontendProgram",
+              "is_binding": false
+            },
+            {
+              "start": 1538558,
+              "end": 1538565,
+              "original": "prelude",
+              "replacement": "samplerFrontendProgram",
+              "is_binding": false
+            }
+          ]
+        }
+      ],
+      "oracle": "source-refs.jsonl",
+      "collision_in_original_graph": false
+    },
+    "map_sha256": "104a03c19d68510b8790804a19fb69a80d9d3ec4faaa0b63e714c94a7701a687",
+    "matches_exact_stage2_binding_and_reference_ranges": true,
+    "per_payload_edit_counts": {
+      "data": 2,
+      "sampler": 2,
+      "tester": 0
+    },
+    "graph_public_name_collision": false,
+    "all_original_174_frozen_source_hashes_preserved": true,
+    "finding": "Semantics-preserving export-only alpha-rename of an ordinary finite-program constructor. One binding and all three uses covered. The module header remains normal import Mathlib; no Lean prelude command is present. Retained proof and definition text differs only at the documented reference identifiers, plus previously audited namespace/private/doc edits.",
+    "core_scope": "Core is an unpublished local compilation cache; coordinator confirms no API upload, no independent byte reconstruction needed."
+  },
+  "external_validation_artifacts_reviewed": {
+    "data_renamed_compile": {
+      "exit_code": 0,
+      "elapsed_seconds": 49.023146542,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--root=harness/submission/runtime/staged",
+        "-o",
+        ".lake/build/lib/lean/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.olean",
+        "harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean"
+      ]
+    },
+    "data_renamed_audit": {
+      "exit_code": 0,
+      "elapsed_seconds": 39.174228667,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "harness/submission/runtime/DataAudit.lean"
+      ]
+    },
+    "data_renamed_audit_summary": {
+      "declarations": 2244,
+      "only_standard_axioms": true,
+      "renamed_constructor_present": true,
+      "old_constructor_absent": true
+    }
+  },
+  "implicit_simp_api_review": {
+    "all_full_upload_simp_attribute_commands": 75,
+    "runtime_participating_simp_root_commands": 56,
+    "root_commands": [
+      197,
+      198,
+      199,
+      266,
+      295,
+      318,
+      346,
+      397,
+      434,
+      435,
+      471,
+      472,
+      692,
+      1103,
+      1270,
+      1728,
+      1730,
+      1731,
+      1744,
+      1765,
+      1766,
+      1780,
+      1810,
+      1835,
+      1858,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2077,
+      2669,
+      2736,
+      2802,
+      2814,
+      2815,
+      2816,
+      2838,
+      2840,
+      2967,
+      2968,
+      2969,
+      2970,
+      3075,
+      3100,
+      3101,
+      3102,
+      3112,
+      3113,
+      3365,
+      3366,
+      3367,
+      3368,
+      3369,
+      3370,
+      3482
+    ],
+    "all_retained_in_each_proof_or_data": true,
+    "no_non_data_instance_roots": true,
+    "proof_scope_roots": [
+      "NKtLB.Machine.Computes.mono",
+      "NKtLB.Machine.Computes.output_unique",
+      "NKtLB.Machine.HaltsWith.mono",
+      "NKtLB.Machine.HaltsWith.output_unique",
+      "NKtLB.Machine.bitsSym_injective",
+      "NKtLB.Machine.run_add",
+      "NKtLB.Machine.run_stable_of_halt",
+      "NKtLB.Machine.run_succ",
+      "NKtLB.Machine.step_of_halt"
+    ],
+    "finding": "Original simp-tagged theorem commands and their source dependencies are retained inside solutions to reproduce erased implicit simp context. No new proof logic, axiom, assumption, instance, or model change. Data unchanged. Both new solution payloads were independently reconstructed byte-for-byte in the preceding verification; the follow-on prefix check was corrected for the parser token @[ being a single token.",
+    "all_attribute_decorated_commands": 75,
+    "all_attributes_simp": true,
+    "standalone_attribute_commands": []
+  }
+}

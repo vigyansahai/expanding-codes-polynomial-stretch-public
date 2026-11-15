@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "owner": "machine_compiler",
+  "owned_files": [
+    "ExpandingCodes/Computation/CounterMachine.lean",
+    "ExpandingCodes/Computation/CounterTape.lean",
+    "ExpandingCodes/Computation/CounterCompiler.lean",
+    "harness/attempts/machine_compiler/*",
+    "harness/tasks/machine_compiler.json",
+    "ExpandingCodes/Computation/CounterLoops.lean"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_NKtLB_Machine.lean"
+  ],
+  "interface": "local compiler foundation over unchanged exact canonical NKtLB definitions; the source counter language is local, not mission canonical",
+  "status": "compiler_and_compositional_counted_loop_foundations_proved_publicly_built_and_audited",
+  "proof_route": [
+    "Prove canonical Machine.writeAt produces the expected pointwise getD update, ignoring finite-list trailing blanks.",
+    "Represent natural register n by bot at zero, ones in cells 1 through n, blank afterward, and head position n. Increment is preserve/right then one/stay; positive decrement is blank/left; zero is detected by bot.",
+    "Use a finite six-form source language: halt, jump, inc, dec-zero-or-positive, emit constant bit, read/advance one of four read-only tapes with a four-symbol branch table.",
+    "Compile with two banks of L labels plus start/halt/query states via constructive finSumFinEquiv. Ordinary and increment-completion tables only inspect scanned symbols and perform legal one-cell writes/moves.",
+    "Prove initialization and each instruction-boundary Represents relation, then exact run simulation at time 1+P.time inp t. Prove P.time inp t <= 2*t.",
+    "Prove TapeRep of a finite bit word forces the concrete list to be that word followed by blanks, yielding exact canonical Cfg.output. Use canonical halt absorption to pad to 1+2*t.",
+    "Define Exec with only active actual source steps and Stops with a halted endpoint. Relabel actual finite target labels, preserving active traces.",
+    "Sequence code tables in a disjoint finite sum: first-fragment halt becomes one jump to the second entry. Prove exact cost t+1+s.",
+    "Counted-loop table consists of body labels plus a decrement/branch header and halt exit. Body halts redirect to the header. Fresh forbids writes to the loop counter. Induction on the initial counter proves n*(B+2)+1 using actual verified body executions and an indexed invariant."
+  ],
+  "nodes": [
+    {
+      "id": "writeAt_extensional",
+      "declaration": "ExpandingCodes.Computation.getD_writeAt",
+      "statement": "(Machine.writeAt l h a).getD k blank = if k=h then a else l.getD k blank",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "unary_microsteps",
+      "declarations": [
+        "ExpandingCodes.Computation.unary_inc_two_steps",
+        "ExpandingCodes.Computation.unary_dec_one_step",
+        "ExpandingCodes.Computation.unary_zero_test"
+      ],
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "exact_output",
+      "declarations": [
+        "ExpandingCodes.Computation.TapeRep.bits_shape",
+        "ExpandingCodes.Computation.TapeRep.output"
+      ],
+      "status": "proved; included transitively in compile_halts audit",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "source_cost",
+      "declaration": "ExpandingCodes.Computation.CounterProgram.time_le",
+      "statement": "P.time inp t <= 2*t",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "local_simulation",
+      "declaration": "ExpandingCodes.Computation.CounterCompiler.localSimulation",
+      "statement": "For every program P, oracle O, inputs inp, source cfg c, and target cfg m satisfying Represents P c m, the exact P.cost c target steps produce a representation of P.step inp c.",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "compiler_correctness",
+      "declaration": "ExpandingCodes.Computation.CounterCompiler.compile_halts",
+      "statement": "forall P O inp t, P.halted (P.run inp t) -> (compile P).HaltsWith O inp (1+2*t) (bitsSym (P.run inp t).output)",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "compiler_computes",
+      "declaration": "ExpandingCodes.Computation.CounterCompiler.compile_computes",
+      "statement": "forall P u t, P.halted (P.run <u,[],[],[]> t) -> (compile P).Computes (1+2*t) u (P.run <u,[],[],[]> t).output",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "no_oracle_queries",
+      "declaration": "ExpandingCodes.Computation.CounterCompiler.compile_run_ne_query",
+      "statement": "forall P O inp t, ((compile P).run O inp t).state != (compile P).query",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "source_exec",
+      "declarations": [
+        "ExpandingCodes.Computation.CounterProgram.Exec.iterate",
+        "ExpandingCodes.Computation.CounterProgram.Exec.trans",
+        "ExpandingCodes.Computation.CounterProgram.Exec.relabel",
+        "ExpandingCodes.Computation.CounterProgram.Stops.compile"
+      ],
+      "statement": "Active finite source traces compose, lift through actual label remappings, and from init imply the canonical machine HaltsWith bound 1+2*t.",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "finite_sequencing",
+      "declaration": "ExpandingCodes.Computation.CounterProgram.Stops.seq",
+      "statement": "P.Stops inp c t d -> Q.Stops inp (d.store.toCfg Q.entry) s e -> (seq P Q).Stops inp (c.mapPC (leftLabel K)) (t+1+s) (e.mapPC (rightLabel L))",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "fresh_register_preservation",
+      "declarations": [
+        "ExpandingCodes.Computation.CounterProgram.step_reg_of_fresh",
+        "ExpandingCodes.Computation.CounterProgram.Exec.reg_of_fresh"
+      ],
+      "statement": "If all inc/dec instructions avoid register r, source steps and finite active executions preserve its value.",
+      "status": "proved; included transitively in countedLoop_stops audit",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "finite_counted_loop",
+      "declaration": "ExpandingCodes.Computation.CounterProgram.countedLoop_stops",
+      "statement": "For actual finite body P, a syntactically fresh counter r, invariant Inv indexed by remaining iterations, and verified per-iteration Stops executions of cost at most B, starting with r=n and Inv n yields a Stops execution of countedLoop P r with t <= n*(B+2)+1, final counter zero, and Inv 0.",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "checked_artifacts": [
+    "harness/attempts/machine_compiler/check.log",
+    "harness/attempts/machine_compiler/public-build.log",
+    "harness/attempts/machine_compiler/loops-check.log",
+    "harness/attempts/machine_compiler/loops-public-build.log"
+  ],
+  "failed_approaches": [
+    "Using a semireducible def for compile prevented simp/rewrite from identifying Fin ((compile P).works+2) with Fin (R+2). A reducible abbrev for the explicit machine removes that dependent-type transparency obstruction; no semantic change.",
+    "Comparing concrete tape lists directly fails because canonical idle writes may extend lists with blanks. Pointwise getD equality plus the separately proved bits_shape/output normalization resolves this."
+  ],
+  "open_theorem_bodies": [],
+  "unresolved_dependencies": [],
+  "remaining_mission_work": [
+    "Construct fixed finite source programs implementing the finite-field geometry sampler and rank tester, and prove their source-level correctness and polynomial source-step bounds.",
+    "This language stores only unary natural registers and a sequential bit output. Polynomial-space arrays or binary work buffers still require additional low-level tape support or another verified representation. Encoding large arrays as one unary number does not by itself preserve polynomial complexity.",
+    "The exact sampler random-bit distribution and high-level finite-field algorithms are not provided by this compiler theorem."
+  ],
+  "public_build": "./tools/lake-serial build ExpandingCodes.Computation.CounterCompiler: exit 0; 8710 jobs, all final audits allowed axioms only",
+  "next_extension_assessment": {
+    "problem": "Polynomial arrays cannot be encoded into a single polynomially bounded unary register; base-q encoding of m entries grows exponentially in m.",
+    "proposed_modules": [
+      "ExpandingCodes/Computation/TapeProgram.lean",
+      "ExpandingCodes/Computation/TapeCompiler.lean"
+    ],
+    "ownership": "proposed next task; not yet implemented or assigned by this worker",
+    "language": "Retain unary counter primitives; add B explicit work buffers with finite List Sym contents and Nat heads. A buffer instruction takes only its scanned symbol through a fixed four-entry table Sym -> (Sym x Move x Fin L). It writes one cell, moves at most one cell, and selects one finite next label.",
+    "compiler": "Use R+B canonical work tapes and 2L+3 control states. Preserve the existing compiler modules. Compare buffers by TapeRep, so source and target may have different trailing-blank storage. Buffer action costs exactly one canonical step; counter increment remains two.",
+    "proof_decomposition": [
+      "Define finite source syntax and operational buffer semantics using canonical writeAt/getD/moveHead; no arbitrary-function or whole-array instruction.",
+      "Build explicit finite target table with counter, buffer, output, and query tape index injections.",
+      "Reuse CounterTape.getD_writeAt and TapeRep.output; ordinary idle writes preserve every buffer extensionally.",
+      "Prove the one-step buffer action and reuse existing counter instruction proof patterns; alternatively project away additional buffers to the old compiler on nonbuffer instructions.",
+      "Lift local cases to exact-time source/target simulation and source-step polynomial bound as in CounterCompiler."
+    ],
+    "array_route": "Store entries sequentially as bits with explicit delimiters; traverse cells using unary index/length counters and bounded loops. Individual field values, polynomial-search candidates, and temporary products may remain bounded unary integers (q or q^2), while the entire polynomial-length array remains on buffer tapes.",
+    "still_needed": "Register renaming/fresh allocation and concrete clear/copy/add routines; finite-array read/write/navigation; actual finite-field sampler/tester programs, correctness, randomness distribution, and polynomial source-step bounds."
+  },
+  "loop_public_build": "./tools/lake-serial build ExpandingCodes.Computation.CounterLoops: exit 0; 8711 jobs; final audits only allowed axioms"
+}

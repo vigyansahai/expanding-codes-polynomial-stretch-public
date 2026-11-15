@@ -1,0 +1,18 @@
+{
+  "source_sha256": "1f200e6c899eee28e30458caba7752790e6e16542a769f56185bc8abcb7bb9e5",
+  "source_bytes": 1113,
+  "key": "field_inverse",
+  "mode": "audit",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 52.764053625,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./harness/submission/partition/audit-cache/Audit_field_inverse.olean",
+    "./harness/submission/partition/Audit_field_inverse.lean"
+  ],
+  "output": "./harness/submission/partition/audit-cache/Audit_field_inverse.olean"
+}

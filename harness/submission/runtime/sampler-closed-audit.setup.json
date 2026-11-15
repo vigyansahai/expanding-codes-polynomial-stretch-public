@@ -1,0 +1,31 @@
+{
+  "name": "harness.submission.runtime.SamplerClosedAudit",
+  "isModule": false,
+  "options": {
+    "autoImplicit": false
+  },
+  "plugins": [],
+  "dynlibs": [],
+  "importArts": {
+    "Theorems.Thm_ExpandingCodes_Computation_SamplerAssembly_prelude_stops": [
+      [
+        "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops": [
+      [
+        "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts": [
+      [
+        "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.olean"
+      ]
+    ],
+    "Solutions.Sol_binary_sampler_implementation_source": [
+      [
+        "./harness/submission/runtime/SamplerReductionClosed.olean"
+      ]
+    ]
+  }
+}

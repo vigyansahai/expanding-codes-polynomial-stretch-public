@@ -1,0 +1,39 @@
+# Local authentication and private configuration
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+credentials.json
+**/credentials.json
+**/prove2-token.json
+**/auth.json
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Lean/package/compiler outputs; preserve source generators and audit records.
+.lake/
+**/.lake/
+*.olean
+*.olean.*
+*.ilean
+*.ilean.*
+*.trace
+*.o
+*.a
+*.dylib
+*.so
+**/__pycache__/
+*.py[cod]
+.DS_Store
+**/.git/
+
+# Local scratch inputs, private recovery backups, and authentication state.
+/tmp/
+
+# Reading materials are referenced bibliographically rather than uploaded.
+*.pdf

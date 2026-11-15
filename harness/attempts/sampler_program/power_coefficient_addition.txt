@@ -1,0 +1,93 @@
+def powerField {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (i : Fin 32) : Fin R :=
+  r (.inl ⟨i.val,by omega⟩)
+
+theorem powerField_injective {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (hr : Function.Injective r) :
+    Function.Injective (powerField r) := by
+  intro i j heq
+  have hh := Sum.inl.inj (hr heq)
+  have hv := congrArg Fin.val hh
+  exact Fin.ext hv
+
+theorem powerAlpha_fresh {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (hr : Function.Injective r) :
+    ∀ i,r (.inl 32)≠powerField r i := by
+  intro i heq
+  have hh : (32 : Fin 33)=⟨i.val,by omega⟩ := Sum.inl.inj (hr heq)
+  have hv := congrArg Fin.val hh
+  have := i.isLt
+  omega
+
+theorem powerCoefficient_fresh {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (hr : Function.Injective r)
+    (j : Fin d) : ∀ i,r (.inr j)≠powerField r i := by
+  intro i heq
+  have hh := hr heq
+  cases hh
+
+def powerCoefficientLabels (j : ℕ) : ℕ := (4+powerLabels j)+11
+
+def powerCoefficient {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (j : Fin d) :
+    TapeProgram R B (powerCoefficientLabels j.val) :=
+  TapeProgram.seq (powerFromOne (powerField r) (r (.inl 32)) j.val)
+    (TapeMacros.copy (powerField r 31) (r (.inr j)) (powerField r 2))
+
+def powerCoefficientTimeBound (d M : ℕ) : ℕ := (d+2)*(13440*(M+1)^6)
+
+theorem powerCoefficient_stops {d : ℕ} (r : Fin 33 ⊕ Fin d → Fin R) (hr : Function.Injective r)
+    (j : Fin d) (inp : Inputs) (ell : ℕ) (h : 0<ell) (alpha : Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment (powerWorkspace (powerField r)) ell (selectedIndex ell h) s)
+    (halpha : s.reg (r (.inl 32))=alpha.val) :
+    ∃ t e, t≤powerCoefficientTimeBound d M ∧
+      (powerCoefficient r j).Stops inp (s.toCfg (powerCoefficient (B := B) r j).entry) t e ∧
+      e.reg (r (.inr j))=(EncodedTester.power (BinaryField.indexOperations ell h) alpha j.val).1.val ∧
+      Environment (powerWorkspace (powerField r)) ell (selectedIndex ell h) e.store ∧
+      e.reg (r (.inl 32))=s.reg (r (.inl 32)) ∧
+      (∀ a,a≠j → e.reg (r (.inr a))=s.reg (r (.inr a))) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧
+      (∀ x,e.reg x≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  have hrf := powerField_injective r hr
+  obtain ⟨t,z,ht,hz,hzv,hze,hzo,hzb,hzt⟩ := powerFromOne_stops (powerField r) hrf
+    (r (.inl 32)) (powerAlpha_fresh r hr) inp ell h alpha M hM j.val s hs henv halpha
+  obtain ⟨u,e,hu,he,hes,heb⟩ := copy_stops_bound (powerField r 31) (r (.inr j)) (powerField r 2)
+    (Ne.symm (powerCoefficient_fresh r hr j 31)) (hrf.ne (by decide)) (powerCoefficient_fresh r hr j 2)
+    inp M z.store hzb
+  have hall := hz.seq he
+  refine ⟨t+1+u,_,?_,hall,?_,?_,?_,?_,?_,heb,?_⟩
+  · have hp : M+1≤(M+1)^6 := by
+      simpa only [pow_one] using Nat.pow_le_pow_right (show 0<M+1 by omega) (show 1≤6 by decide)
+    have hj : j.val+1≤d+1 := by have := j.isLt; omega
+    have ht' := ht.trans (Nat.mul_le_mul_right (13420*(M+1)^6) hj)
+    have hfac : 13420*(M+1)^6≤13440*(M+1)^6 := by omega
+    have ht'' := ht'.trans (Nat.mul_le_mul_left (d+1) hfac)
+    have hu' : 1+u≤13440*(M+1)^6 := by omega
+    unfold powerCoefficientTimeBound
+    calc
+      t+1+u≤(d+1)*(13440*(M+1)^6)+13440*(M+1)^6 := by omega
+      _=(d+2)*(13440*(M+1)^6) := by ring
+  · change e.store.reg (r (.inr j))=_
+    rw [hes]
+    simpa only [TapeStore.setReg,Function.update_of_ne (powerCoefficient_fresh r hr j 2),Function.update_self] using hzv
+  · rw [hes]
+    have hf : ∀ i : Fin 31,r (.inr j)≠powerWorkspace (powerField r) i := fun i =>
+      powerCoefficient_fresh r hr j ⟨i.val,by omega⟩
+    exact (hze.setExternal _ _ hf).setReg (powerWorkspace_injective _ hrf) 2 0 (by decide)
+  · change e.store.reg (r (.inl 32))=_
+    rw [hes]
+    have hcoef : r (.inl 32)≠r (.inr j) := by intro hh; have := hr hh; cases this
+    simp only [TapeStore.setReg,Function.update_of_ne (powerAlpha_fresh r hr 2),Function.update_of_ne hcoef]
+    exact hzo _ (powerAlpha_fresh r hr)
+  · intro a haj
+    change e.store.reg (r (.inr a))=_
+    rw [hes]
+    have hcoef : r (.inr a)≠r (.inr j) := fun hh => haj (Sum.inr.inj (hr hh))
+    simp only [TapeStore.setReg,Function.update_of_ne (powerCoefficient_fresh r hr a 2),Function.update_of_ne hcoef]
+    exact hzo _ (powerCoefficient_fresh r hr a)
+  · intro x hx
+    change e.store.reg x=_
+    rw [hes]
+    simp only [TapeStore.setReg,Function.update_of_ne (hx (.inl 2)),Function.update_of_ne (hx (.inr j))]
+    exact hzo x (fun i => hx (.inl ⟨i.val,by omega⟩))
+  · change FieldConvolution.tapeData e.store=_
+    rw [hes]
+    simpa only [FieldConvolution.tapeData_setReg] using hzt
+
+#print axioms powerCoefficient_stops

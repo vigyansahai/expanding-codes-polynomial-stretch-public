@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 19.132004709,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--run",
+    "harness/submission/runtime/ExtractSketchInfo.lean",
+    "ExpandingCodes/Computation/GaussianCorrectness.lean",
+    "ExpandingCodes"
+  ]
+}

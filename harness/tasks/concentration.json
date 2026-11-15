@@ -1,0 +1,44 @@
+{
+  "id": "finite_boolean_bounded_differences",
+  "owner": "concentration",
+  "status": "proved",
+  "interface": "provisional local concentration helper; canonical uniformProb is imported unchanged",
+  "declaration": "ExpandingCodes.PolynomialStretch.boundedDifferences_lower_tail",
+  "file": "ExpandingCodes/Probability/BoundedDifferences.lean",
+  "file_ownership": [
+    "ExpandingCodes/Probability/BoundedDifferences.lean",
+    "ExpandingCodes/Probability/FiniteMGF.lean",
+    "harness/attempts/concentration/*.lean",
+    "harness/tasks/concentration.json"
+  ],
+  "statement": "For m>0 and f:(Fin m\u2192Bool)\u2192\u211d with |f(update x i b)-f x|\u22641 for every x,i,b, and t\u22650, uniformProb(f\u2264uniformMean f-t)\u2264Real.exp(-2*t^2/m).",
+  "proof_route": "Uniform finite means are exact normalized sums. Split a Boolean cube through Fin.consEquiv. Induct on dimension to bound the centered MGF by exp(m*s^2/8). Slice means differ by at most one. Their two-point centered MGF is a cosh, bounded by Mathlib Real.cosh_le_exp_half_sq and the squared slice-mean gap. Pointwise exponential Markov yields a lower tail and the parameter s=4t/m gives the sharp exponent.",
+  "source_locations": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean:31 (canonical uniformProb)",
+    ".lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Trigonometric/Series.lean:154 (Real.cosh_le_exp_half_sq)",
+    ".lake/packages/mathlib/Mathlib/Data/Fin/Tuple/Basic.lean:142 (Fin.cons_update)",
+    "harness/attempts/concentration/BoundedDifferences.lean (active isolated draft)"
+  ],
+  "open_dependencies": [],
+  "failed_approaches": [
+    "Initial draft used reserved Lean token \u03bb as a variable; renamed to s. No mathematical obstruction.",
+    "Zero-dimensional proof initially chose an explicit empty function while simp chose default; simplifying normalized sums directly solved the equality. No mathematical gap."
+  ],
+  "verification": {
+    "direct_lean": "PASS: ./tools/lake-serial env lean harness/attempts/concentration/BoundedDifferences.lean, exit 0, no diagnostics.",
+    "fresh_public_build": "PASS: ./tools/lake-serial build ExpandingCodes.Probability.BoundedDifferences, exit 0. Built public module in 5.6s; 8710 jobs completed successfully.",
+    "axiom_audit": "PASS: ./tools/lake-serial env lean harness/attempts/concentration/Audit.lean, exit 0. Exact final signature checked. boundedDifferences_mgf, boundedDifferences_lower_tail, uniformProb_eq_uniformMean depend only on [propext, Classical.choice, Quot.sound].",
+    "sorry_or_custom_axioms": false
+  },
+  "components": [
+    "uniformMean_const, uniformMean_mono, uniformMean_add/sub/mul: exact finite normalized sums",
+    "uniformMean_abs_sub_le: pointwise bounded differences pass to means",
+    "uniformProb_eq_uniformMean: canonical PMF uniform probability equals the indicator mean",
+    "uniformMean_cons: exact Boolean cube conditioning via Fin.consEquiv",
+    "HasUnitBoundedDifferences.cons and mean_slice_gap: hereditary coordinate bounds and conditional mean gap",
+    "two_point_centered_exp_le: centered equal-weight two-point MGF at distance at most one",
+    "boundedDifferences_mgf: dimension induction, exp(m*s^2/8)",
+    "uniformProb_lower_tail_le_mgf: finite exponential Markov",
+    "boundedDifferences_lower_tail: optimize at s=4*t/m"
+  ]
+}

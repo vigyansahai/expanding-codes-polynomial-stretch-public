@@ -1,0 +1,20 @@
+import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryModel
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Series
+set_option autoImplicit false
+#check Equiv.piFinSucc
+#check Equiv.piFinSuccAbove
+#check Fin.consEquiv
+#check Fintype.sum_equiv
+#check Fintype.sum_prod_type
+#check Fintype.sum_bool
+#check Fin.cons_succ
+#check Fin.cons_zero
+#check Fin.cons_update
+#check Fin.update_cons
+#check PMF.uniformOfFintype_apply
+#check Finset.expect
+#check Fintype.sum_subsingleton
+#check Fintype.card_fun
+#check Real.cosh_le_exp_half_sq
+#check Fin.sum_univ_succ
+#print Equiv.piFinSucc

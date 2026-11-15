@@ -1,0 +1,164 @@
+harness/attempts/field_programs/UnaryArithmetic.lean:32:23: warning: Variable name `hdc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hdc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/field_programs/UnaryArithmetic.lean:32:43: warning: Variable name `htc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _htc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/field_programs/UnaryArithmetic.lean:45:49: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, htc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:45:54: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:46:8: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:46:21: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdt, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:89:34: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, hac, htc, ht]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:112:17: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:161:34: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:31: warning: This simp argument is unused:
+  had
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hat, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:36: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:41: warning: This simp argument is unused:
+  hac
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:46: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:51: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:56: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:164:61: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, hdc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:167:48: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:167:53: warning: This simp argument is unused:
+  hbt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:167:58: warning: This simp argument is unused:
+  hbc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:167:73: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:168:12: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:168:25: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_programs/UnaryArithmetic.lean:171:63: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, Ne.symm hdc, Ne.symm hdt, hbd, hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.UnaryArithmetic.mulLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.UnaryArithmetic.multiply_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.UnaryArithmetic.multiply_stops_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

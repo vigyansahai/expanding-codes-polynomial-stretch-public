@@ -1,0 +1,97 @@
+{
+  "owner": "sampler_program",
+  "status": "Complete and frozen: concrete source layer public-o17504 PASS; no pending compiler; ready for final assembly adapter and root clean build",
+  "files": [
+    "ExpandingCodes/Computation/SamplerOdometer.lean",
+    "ExpandingCodes/Computation/SamplerEvaluation.lean",
+    "ExpandingCodes/Computation/SamplerProgram.lean"
+  ],
+  "exact_goal": "Actual finite TapeProgram, independent of runtime n,q,ell,m,b, emitting matrixBits(binarySamplerFromInput d n k beta inp), with uniform polynomial source time",
+  "checked": [
+    "SamplerOdometer.decrement: actual physical two-label single decrement with exact one-step Stops",
+    "SamplerOdometer.reset: actual 15-label clear/copy/decrement digit reset; exact physical store and linear runtime bound",
+    "SamplerOdometer.program: static list-of-digit-registers compilation; 21*d+1 labels, no runtime-dependent code or packed arrays",
+    "program_stops: distinct q/tmp/digit/countdown counters, all counters <=M imply actual source Stops <=d*(8*M+20), exact nextStore, final counters<=M+1",
+    "nextStore_fresh/payload: untouched outside digit/countdown/tmp layout; all tapes/heads/output preserved",
+    "program_readings: canonical complement invariant digit+countdown+1=q implies exact little-endian digit-list successor",
+    "initialize_stops/initializeStore_values/initializeStore_valid: actual finite initialization of all separate digit/countdown counters",
+    "program_valid/iterate_valid: complement invariant persists across actual carry functional stores",
+    "SamplerEvaluation.lookup_stops: actual48label indexed thermometer lookup, preserves runtime index/width/externalregs/symbols, source<=64*(M+1)^2 and finalcounters<=M",
+    "SamplerEvaluation.addFrom_stops: actual387label external operand wrapper, remaps preserved add operand to avoid changing runtime multiplication modulus; result exact addIndex, time<=3100*(M+1)^5, caller/env/tapes/counter frames",
+    "SamplerEvaluation.multiplyFrom_stops: actual407label external operand wrapper, result exact multiplyIndex, time<=10100*(M+1)^6, caller/env/tapes/counter frames",
+    "program_stops_valid: canonical Valid digit invariant strengthens actual odometer final bound to all counters<=M, enabling fixed global envelope",
+    "iterate_number: exact little-endian Nat.ofDigits numerical carry invariant modulo runtime q^d for arbitrary iterate count",
+    "canonical_digits/number_eq_finFunctionFinEquiv: exact bridge from enumerated unary digit counters to canonical Fin row order",
+    "labels_eq/initializeLabels_eq: source code counts21*d+1 and15*d+1, independent of runtime q",
+    "SamplerProgram.term_stops: actual849label physical scalar product-plus-accumulator, source<=13300*(M+1)^6, exact result and preserved environment/caller/tapes/counter bound",
+    "SamplerProgram.dot_stops: actual tail-first static list compilation (849*d+1labels), exact right-fold scalar sum, uniform bound and all physical frames",
+    "SamplerProgram.dotFromZero_stops/dotValue_sum: actual clear+dot, exact canonical EncodedTester.sum under runtime selected-modulus Environment, source<=(d+1)*13320*(M+1)^6, finalcounter<=M",
+    "SamplerProgram.linear_stops: actual finite source for exact EncodedSampler.linear on fixed coefficient/point registers, <=(d+1)*13320*(M+1)^6 with all counter/env/caller/tape frames",
+    "SamplerProgram.powerStep/powerCore/powerFromOne: actual fixed-exponent field power source, code862*j+5labels; output exact EncodedTester.power O alpha j, source<=(j+1)*13420*(M+1)^6, all counter/env/caller/tape frames",
+    "SamplerEvaluation.scaleAdd_stops: actual staticc preserving unary additions, exact store and exactc*(5*src+6)source cost",
+    "SamplerEvaluation.formIndex_stops/formIndexTime_bound: actual flat-form index j+d*(a+c*q), exact complete store and source<=(32+6c+6d(c+1)+2j)*(M+1)",
+    "SamplerEvaluation.hornerStep_stops/hornerTime_bound: actual44label unary acc:=q*acc+digit, exact poststore, source<=32*(M+1)^2 and finalcounter<=(M+1)^2",
+    "SamplerEvaluation.hashIndex_stops/hashIndexStore_value: actual fixed-layer load followedbythree44label runtime unary Horner steps, exact v+q*(u+q*(a+q*i)), exact poststore, explicit polynomial standalone time/counter envelope",
+    "SamplerEvaluation.coefficientLoad_stops: actual formIndex+physical lookup+caller coefficient copy. Exact value,a/q/externalcounter/symbol/head/BottomMarked frames; allfinalcounters<=oneglobalM from true mid/index bounds; source<=(112+6c+6d(c+1)+2j)*(M+1)^2",
+    "Exact global-envelope lemmas scaleStore_bound_exact/formIndexStore_bound_exact/hornerStore_bound_exact/hashIndexStore_bound_exact checked; actual hash final onlyindex/product/scratch survive, semantic finalindex<=M gives allfinalcounters<=M",
+    "hashEnvelope_polynomial/hashIndexTimeBound_polynomial: standalone source/counter envelopes closed by explicit polynomial closure",
+    "SamplerProgram.vectorLoad_stops/allCoefficients_stops: actual statically unrolled whole coefficient-vector table loader, exact loaded scalar values, a/q preserved, missingcoefficient/caller frames, allcounter<=M, focusedhead<=M and everyotherbufferheadpreserved, BottomMarked/SamePayload",
+    "SamplerProgram.linear_stops_values: typed caller interface for actual linear source, scalar register interpretation used only in proofs",
+    "SamplerProgram.powerCoefficient_stops/powerVector/allPowers_stops: actual separate powercoefficient counters, exact EncodedTester.power values, sameglobalM/env/caller/tapeData frame",
+    "SamplerProgram.fixed_stops: actual powersvector then linear evaluator yielding exact EncodedSampler.fixed; points/env/caller/tapeData preserved, allcounter<=M",
+    "SamplerProgram.Storage: agreed concrete static samplerregister embedding, R80+4*d+k, rootassemblyworker coordinated",
+    "SamplerProgram.randomLinear_stops: actual coefficient-vector physical load then exact typed linear source; all counters/global environment/table-head/payload/caller frames",
+    "SamplerEvaluation.hashedColumn_stops: actual unary Horner hash index, physical thermometer lookup, bucket copy and static layer offset; exact neighbor column with same global M and precise protected width/environment frames",
+    "SamplerProgram.Storage concrete layouts and pointPairs_nodup/length/readings: checked finite embedding supporting independent assembly worker",
+    "SamplerProgram.layer: actual finite eight-stage source factory depends only on fixed d,k,i; layerTimeUniform_polynomial checked",
+    "Scratch alpha_phase_stops/fixed_phase_stops/save_phase_stops/random_phase_stops/hash_phase_stops: exact semantic values, LayerInvariant, caller frame, cache frames, physical payload preservation; all audits standard only",
+    "SamplerProgram.layer_stops: actual eight-source-trace composition, exact EncodedSampler.neighbor column, LayerInvariant, point/countdown/protected/other-neighbor frames, SamePayload/output and globalM; time<=layerTimeBound",
+    "SamplerProgram.layer_stops directcheck85416 PASS; transitive axiom dependencies exactly propext,Classical.choice,Quot.sound; no custom axioms/sorry/unsafe/native_decide",
+    "SamplerProgram concrete alpha/fixed/save/random/hash phase contracts all checked and publicly promoted"
+  ],
+  "axiom_audit": "Public SamplerProgram direct public-o17504 PASS, including layer_stops/fixed/random/hash phase contracts and uniform polynomial clock. Transitive dependencies only propext,Classical.choice,Quot.sound. Public Odometer/Evaluation independently checked earlier. No sorryAx/custom axioms/data holes/unsafe/native_decide.",
+  "route": [
+    "separate unary digit/countdown counters",
+    "actual fixed-code carry and reset",
+    "canonical initialization and modular enumeration",
+    "external-operand wrappers around actual SourceFieldArithmetic",
+    "unrolled fixed-d,k table evaluation and row loop",
+    "root NeighborWriter row emission and SamplerSource binary_sampler_of_source bridge"
+  ],
+  "unresolved": [
+    "No unresolved dependency in owned modules. Final sampler adapter and whole-mission clean build/audit are owned by sampler_assembly/root."
+  ],
+  "scratch": "harness/attempts/sampler_program/",
+  "failed_approaches": [
+    "No failed mathematical approach. Compiler details corrected: finite-PC projections require unfolding source entry; avoid no-whitespace t<=s syntax because <=s parses notation; avoid global simp Nat.succ_mul expanding fixed coefficient 8 inside polynomial bounds.",
+    "Final composition required explicit rewrites of i+k*(0:Fin2).val and i+k*(1:Fin2).val before combining source label types; direct simplifier pass left a dependent label cast. Explicit Nat equalities closed without changing source."
+  ],
+  "coordination": "Root owns NeighborWriter/SamplerSource/RuntimeBounds; field_convolution completed SourceFieldSetup. Fresh sampler_assembly owns new SamplerAssembly.lean only, actual prelude/randomfills/row/outerloops. I own Program/Evaluation/Odometer and concrete layer. Shared Storage namespace exported from Program.",
+  "layouts": {
+    "odometer": "q,tmp and distinct list(digit,countdown) counters, program labels21*d+1/init15*d+1",
+    "lookup": "Fin8: index0,width1 preserved; scratch2..7 with value6 output",
+    "fieldWrappers": "Fin30: arithmeticworkspace0..26, externaloperand27/28,result29; runtime env modulus3,N19,q23,Q24 and operands27/28 preserved; all external counters preserved",
+    "dotProductDraft": "Fin31: wrapperworkspace0..29 and accumulator30; input coefficient/point regs outside workspace"
+  },
+  "global_layout_plan": {
+    "status": "Agreed root/assembly/worker implementation interface; not platform canonical",
+    "registers": "80+4*d+k; B2 forms0/hash1",
+    "field_workspace": "0..31; fieldEnvironment modulus3,N19,q23,Q24; ell20 initially",
+    "parameter_setup": "32..45: n32,p33,ell34,q35,m36,u37,beta38,b39,scratch40..45",
+    "random_fill": "46..52; mayreuse address53..59/lowworkspace before fieldsetup",
+    "scalar_address": "53..59; rowcounter60,odotmp61",
+    "writer": "col62,out63,cmp64,scratch65..67,count68,n32",
+    "layer_saved": "alpha69,a70,u71,v72,hashindex73,bucket74",
+    "points": "80+j digits,80+d+j countdowns,80+2*d+j reused power/random coefficients; spare d block; neighbors80+4*d+i",
+    "form_loader": "a70,q23; mutating scratchlow0,1,2,4,5,6,7,8,9 avoidfieldenv3/19/23/24; coefhighvector",
+    "prelude_order": "size\u2192randomfills\u2192copyell34to20/q35to23\u2192actualSourceFieldSetup\u2192pointodoinit\u2192rowloop"
+  },
+  "next_concrete_steps": [],
+  "final_api": {
+    "layer_stops": "ExpandingCodes.Computation.SamplerProgram.layer_stops at ExpandingCodes/Computation/SamplerProgram.lean:1897; args i hk hb hM caps inp s hs; returns t,e, bound, actualStops, LayerInvariant, SamePayload, exactcolumn,pointframe,countdownframe,protectedlowframe,outputframe,otherneighborframe,LayerFrame",
+    "polynomial": "layerTimeUniform_polynomial d k; layerTimeBound_le_uniform d k i M",
+    "code": "layer d k i depends only fixed d,k,i; separate unary counters and actual physical array reads; runtime n,q,ell,b remain data",
+    "compiler": "No pending serialized compiler; public source frozen after public-o17504 PASS",
+    "ownership": "No other worker files edited"
+  }
+}

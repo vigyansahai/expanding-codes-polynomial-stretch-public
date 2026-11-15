@@ -1,0 +1,532 @@
+{
+  "review_kind": "bounded read-only independent source/transplant review; no compiler run",
+  "result": "passed; two unsubmitted payload hashes rebound after header-only scope restoration",
+  "reviewed_export_count": 12,
+  "source_original_upload_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "helper_count": 10,
+  "reduced_parent_count": 2,
+  "review_method": [
+    "independent byte reconstruction from immutable Upload bytes, original whole-command spans, selected command IDs, and only manifest-declared edits",
+    "validate each rename against actual Stage 2 resolved occurrence spans and original graph names",
+    "validate each scope trim against an exact parser leaf inside selective-open, for the unprovided unused tape_write_scanned alias",
+    "compare actual payload imports with exact Data + Mathlib + used proper child cuts; reject Core/ancestor/project proof imports",
+    "check imported cut body absence, Data body absence, original solution body absence, exact target body retention, automation roots, and DAG acyclicity",
+    "verify frozen published RuntimeData and all ten original canonical Definition source hashes",
+    "check Main frozen bytes and unchanged dual-context preflight reports"
+  ],
+  "exports": [
+    {
+      "key": "tape_compile",
+      "target": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean",
+      "bytes": 108571,
+      "sha256": "98a36a87915e6ae2b67153f3a4389619cb83164ef7e3876c8bd9aadc4e39e657",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib"
+      ],
+      "child_targets": [],
+      "retained_whole_commands": 104,
+      "original_retained_declaration_bytes": 35766,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 0,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "field_setup",
+      "target": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldSetup_setup_stops.lean",
+      "bytes": 261667,
+      "sha256": "7178edcd9eca7d9fb67925fce7f9e2641f28e42b14f8341e2f44fb2501454be4",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib"
+      ],
+      "child_targets": [],
+      "retained_whole_commands": 308,
+      "original_retained_declaration_bytes": 190192,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "field_multiply",
+      "target": "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.lean",
+      "bytes": 224259,
+      "sha256": "884c23fde5001562ff4311cb204b5d76bb223ed719d8d89f0c39ba264b0e4bcf",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib"
+      ],
+      "child_targets": [],
+      "retained_whole_commands": 270,
+      "original_retained_declaration_bytes": 152054,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "field_add",
+      "target": "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.lean",
+      "bytes": 211592,
+      "sha256": "8e86c633678d2bdf35ec063175d17f844d29e1231f5a706f94400ed1035b2939",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib"
+      ],
+      "child_targets": [],
+      "retained_whole_commands": 252,
+      "original_retained_declaration_bytes": 139432,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "field_inverse",
+      "target": "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.lean",
+      "bytes": 254415,
+      "sha256": "5dec0710f647c23ebea1cbe7a6fe87e26e0a0e24a3637ac540c932fda3b9b9d7",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib"
+      ],
+      "child_targets": [],
+      "retained_whole_commands": 314,
+      "original_retained_declaration_bytes": 182959,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "sampler_layer",
+      "target": "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerProgram_layer_stops.lean",
+      "bytes": 255118,
+      "sha256": "4f67b71b5e89514731ee55e047b2ff4e535e0b5fec09098dce930fe7d970e9c5",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+        "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops"
+      ],
+      "retained_whole_commands": 256,
+      "original_retained_declaration_bytes": 182242,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "sampler_frontend",
+      "target": "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean",
+      "bytes": 289220,
+      "sha256": "f448e65c291b37578aed8fb2bacf87b645186348b73f028a4945d1e733bcd2b0",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.SourceFieldSetup.setup_stops"
+      ],
+      "retained_whole_commands": 340,
+      "original_retained_declaration_bytes": 217653,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [
+        3621
+      ],
+      "recorded_export_renames": 2,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "tester_frontend",
+      "target": "ExpandingCodes.Computation.TesterFrontend.program_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TesterFrontend_program_stops.lean",
+      "bytes": 234221,
+      "sha256": "0e0830a135d34d11993d9398b8189aefe65a294cd718a4222def5f84291bf13c",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.SourceFieldSetup.setup_stops"
+      ],
+      "retained_whole_commands": 242,
+      "original_retained_declaration_bytes": 161521,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "tester_gram",
+      "target": "ExpandingCodes.Computation.TesterGram.program_stops",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TesterGram_program_stops.lean",
+      "bytes": 306894,
+      "sha256": "650cb8051949297af2b4945caa94778251eab2d9115bd120039c4d842891d85b",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+        "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops"
+      ],
+      "retained_whole_commands": 267,
+      "original_retained_declaration_bytes": 236194,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "gaussian_rank",
+      "target": "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+      "source": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean",
+      "bytes": 328588,
+      "sha256": "48cfffece092555ef64e3789b99c6f9692b3175539c6ae4acfadaff1a598b95b",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+        "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+        "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops"
+      ],
+      "retained_whole_commands": 335,
+      "original_retained_declaration_bytes": 257574,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true,
+      "previous_reviewed_sha256": "62e4b4559fb6c5b136914228cf028f61845a36290273f6222a2412ef73425a22",
+      "previous_reviewed_bytes": 328598,
+      "generated_header_scope_restoration": {
+        "removed": "Classical ",
+        "removed_bytes": 10,
+        "location": "generated global open scoped header only",
+        "proof_and_statement_suffix_identical": true,
+        "original_module_scope_commands_unchanged": true
+      },
+      "requires_fresh_compiler_check_after_header_restore": true
+    },
+    {
+      "key": "sampler",
+      "target": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+      "source": "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean",
+      "bytes": 245145,
+      "sha256": "017b6230547b7a7c0defed842f3555d25e806901db6ea5f5ce3e224484b42e72",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_SamplerAssembly_prelude_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+        "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+        "ExpandingCodes.Computation.TapeCompiler.compile_halts"
+      ],
+      "retained_whole_commands": 341,
+      "original_retained_declaration_bytes": 172825,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true
+    },
+    {
+      "key": "tester",
+      "target": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+      "source": "harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean",
+      "bytes": 186497,
+      "sha256": "df1feba6bcb5b397d89c844623c19a17806924753ea9cc99c1f77ff808240722",
+      "imports": [
+        "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+        "Mathlib",
+        "Theorems.Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical",
+        "Theorems.Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts",
+        "Theorems.Thm_ExpandingCodes_Computation_TesterFrontend_program_stops",
+        "Theorems.Thm_ExpandingCodes_Computation_TesterGram_program_stops"
+      ],
+      "child_targets": [
+        "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+        "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+        "ExpandingCodes.Computation.TesterFrontend.program_stops",
+        "ExpandingCodes.Computation.TesterGram.program_stops"
+      ],
+      "retained_whole_commands": 236,
+      "original_retained_declaration_bytes": 113197,
+      "retained_commands_with_sanctioned_name_or_visibility_change": [],
+      "recorded_export_renames": 0,
+      "recorded_scope_alias_trims": 1,
+      "byte_for_byte_reconstruction": true,
+      "original_statement_and_proof_bytes_preserved_except_sanctioned_renames": true,
+      "simp_and_nktlb_scope_fallback_roots_present": true,
+      "data_declarations_not_redeclared": true,
+      "no_ancestor_or_core_imports": true,
+      "previous_reviewed_sha256": "9c3cfaa101d341a99535fef0fc0e8c48e391a15b7581f2ee7fa61bf7e7a2e8c0",
+      "previous_reviewed_bytes": 186507,
+      "generated_header_scope_restoration": {
+        "removed": "Classical ",
+        "removed_bytes": 10,
+        "location": "generated global open scoped header only",
+        "proof_and_statement_suffix_identical": true,
+        "original_module_scope_commands_unchanged": true
+      },
+      "requires_fresh_compiler_check_after_header_restore": true
+    }
+  ],
+  "acyclic": true,
+  "topological_order": [
+    "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+    "ExpandingCodes.Computation.SourceFieldSetup.setup_stops",
+    "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops",
+    "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+    "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+    "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+    "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+    "ExpandingCodes.Computation.TesterFrontend.program_stops",
+    "ExpandingCodes.Computation.TesterGram.program_stops",
+    "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+    "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+    "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source"
+  ],
+  "published_runtime_data": {
+    "path": "harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean",
+    "bytes": 296264,
+    "sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+    "definition_id": "58cd55cd-a34b-41b4-9d93-86c52eedfd42",
+    "unchanged": true
+  },
+  "canonical_definition_hashes_unchanged": 10,
+  "approved_export_renames": [
+    {
+      "old": "ExpandingCodes.Computation.SamplerAssembly.prelude",
+      "new": "ExpandingCodes.Computation.SamplerAssembly.samplerFrontendProgram",
+      "refs": [
+        {
+          "start": 1528262,
+          "end": 1528269,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": true
+        },
+        {
+          "start": 1529053,
+          "end": 1529060,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": false
+        },
+        {
+          "start": 1529108,
+          "end": 1529115,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": false
+        },
+        {
+          "start": 1538558,
+          "end": 1538565,
+          "original": "prelude",
+          "replacement": "samplerFrontendProgram",
+          "is_binding": false
+        }
+      ]
+    }
+  ],
+  "statement_type_audit": {
+    "formal_statement_hashes_match_checked_ledger": true,
+    "checked_file": "harness/submission/partition/statement-type-audit.json",
+    "checked_file_sha256": "4989066084cc8872692695ab34d3bcd7b7e562905da1151d881361c1d686b1cc",
+    "all_ten_exact_type_checks": true,
+    "targets": [
+      {
+        "name": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.TapeCompiler.compile_halts"
+      },
+      {
+        "name": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.SourceFieldSetup.setup_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.SamplerProgram.layer_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.SamplerAssembly.prelude_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.TesterFrontend.program_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.TesterFrontend.program_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.TesterGram.program_stops",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.TesterGram.program_stops"
+      },
+      {
+        "name": "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+        "exact_type": true,
+        "closed_original": "_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical"
+      }
+    ],
+    "note": "Existing Lean Meta.isDefEq checks are cited, not rerun in this read-only review."
+  },
+  "main": {
+    "path": "harness/submission/prune/Main.lean",
+    "bytes": 217365,
+    "sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+    "frozen_and_unchanged": true,
+    "exact_type_passed_both_contexts": true,
+    "closed_context_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "statement_context_no_core_or_original_modules": true,
+    "statement_context_is_portability_only": true,
+    "preflight_summary": "harness/submission/prune/main-preflight-summary.json"
+  },
+  "unresolved_dependencies": [
+    "Fresh compiler checks for the two header-restored unsubmitted payloads are pending owner pipelines. Runtime proof nodes still require coordinator server acceptance/status checks. Integrity review does not replace those gates."
+  ],
+  "findings": [],
+  "sources_stable_during_review": true,
+  "output_ownership": "Only harness/submission/prune/partition-integrity-review.json written",
+  "revision_followups": [
+    {
+      "kind": "read-only generated-header scope restoration review",
+      "result": "passed",
+      "changed_unsubmitted_payloads": [
+        {
+          "key": "gaussian_rank",
+          "before_sha256": "62e4b4559fb6c5b136914228cf028f61845a36290273f6222a2412ef73425a22",
+          "after_sha256": "48cfffece092555ef64e3789b99c6f9692b3175539c6ae4acfadaff1a598b95b",
+          "before_bytes": 328598,
+          "after_bytes": 328588,
+          "only_delta": "delete10generatedheaderbytesClassicalSpace",
+          "entire_original_module_command_suffix_identical": true
+        },
+        {
+          "key": "tester",
+          "before_sha256": "9c3cfaa101d341a99535fef0fc0e8c48e391a15b7581f2ee7fa61bf7e7a2e8c0",
+          "after_sha256": "df1feba6bcb5b397d89c844623c19a17806924753ea9cc99c1f77ff808240722",
+          "before_bytes": 186507,
+          "after_bytes": 186497,
+          "only_delta": "delete10generatedheaderbytesClassicalSpace",
+          "entire_original_module_command_suffix_identical": true
+        }
+      ],
+      "gaussian_cache_header_delta_verified": true,
+      "unchanged_other_reviewed_payloads": [
+        "tape_compile",
+        "field_setup",
+        "field_multiply",
+        "field_add",
+        "field_inverse",
+        "sampler_layer",
+        "sampler_frontend",
+        "tester_frontend",
+        "tester_gram",
+        "sampler"
+      ],
+      "accepted_five_covered_by_unchanged_other_payloads": true,
+      "data_and_main_frozen_unchanged": true,
+      "canonical_definitions_unchanged": 10,
+      "actual_imports_and_dependency_DAG_unchanged": true,
+      "generation_manifest_hashes_match": {
+        "gaussian": true,
+        "tester": true
+      },
+      "compiler_status": "Original-scope fragment reported passed; fresh Gaussian/tester payload checks remain pending owner pipelines. No compiler run by reviewer.",
+      "record": "harness/submission/runtime/scope-header-fix.json"
+    }
+  ]
+}

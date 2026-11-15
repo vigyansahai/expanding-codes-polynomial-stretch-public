@@ -1,0 +1,14 @@
+import ExpandingCodes.Construction.Peeling
+set_option autoImplicit false
+#print axioms ExpandingCodes.PolynomialStretch.layeredNeighbors
+#print axioms ExpandingCodes.PolynomialStretch.collisionLayers
+#print axioms ExpandingCodes.PolynomialStretch.layeredNeighbors_erase_card
+#print axioms ExpandingCodes.PolynomialStretch.layeredNeighbors_expansion_of_peeling
+#print axioms ExpandingCodes.PolynomialStretch.exists_collision_core
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_neighbors_eq
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_bad_has_collision_core
+#print axioms ExpandingCodes.PolynomialStretch.preliminaryActivePairs
+#print axioms ExpandingCodes.PolynomialStretch.preliminaryActivePairs_card_le
+#print axioms ExpandingCodes.PolynomialStretch.collisionLayers_subset_activeLayers
+#print axioms ExpandingCodes.PolynomialStretch.collision_core_rows_mem_activePointSet
+#print axioms ExpandingCodes.PolynomialStretch.collision_core_activePairs_nonempty

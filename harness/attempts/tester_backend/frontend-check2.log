@@ -1,0 +1,34 @@
+harness/attempts/tester_backend/TesterFrontend.lean:61:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  s.reg (termWorkspace d 23)
+in the target expression
+  e.reg (low d 65) = ((d - 3) * (s.reg (low d 23) - 1) - 1) / 2
+
+case refine_1.refine_2
+d n M : ℕ
+hd : 4 ≤ d
+inp : Inputs
+y : Word (rowCount d n)
+s : TapeStore (80 + 6 * d) 3
+hs : InputReady d n M y s
+hcover : TesterEnvelopeCovers d n M
+hq : s.reg (degreeLayout d 0) = fieldSize d n
+t : ℕ
+e : TapeCfg (80 + 6 * d) 3 (11 + 2 + 2 + SamplerEvaluation.scaleLabels (d - 3) + 2 + 9)
+ht : t ≤ (d + 1) * (30 * (M + 1))
+he :
+  (TesterEvaluation.degree (degreeLayout d) d).Stops inp (s.toCfg (TesterEvaluation.degree (degreeLayout d) d).entry) t
+    e
+hes : e.store = TesterEvaluation.degreeStore (degreeLayout d) d s
+hframe : ∀ (i : Fin (80 + 6 * d)), (∀ (j : Fin 5), i ≠ degreeLayout d j) → e.reg i = s.reg i
+heb : ∀ (i : Fin (80 + 6 * d)), e.reg i ≤ M
+hed : FieldConvolution.tapeData e.store = FieldConvolution.tapeData s
+hfield : ∀ (j : Fin 80), j ≠ 23 ∧ j ≠ 0 ∧ j ≠ 1 ∧ j ≠ 2 ∧ j ≠ 65 → e.reg (low d j) = s.reg (low d j)
+htapes : e.bufferTape = s.bufferTape
+hheads : e.store.bufferHead = s.bufferHead
+hval : e.reg (low d 65) = ((d - 3) * (s.reg (low d 23) - 1) - 1) / 2
+⊢ e.reg (low d 65) = ((d - 3) * (fieldSize d n - 1) - 1) / 2
+'ExpandingCodes.Computation.TesterFrontend.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterFrontend.clock_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,18 @@
+{
+  "source_sha256": "fa479f86a2c35dba595c7aa4481c05341336ef83d7a2c86aeb8928ef4164ace1",
+  "source_bytes": 2225,
+  "key": "sampler_layer",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 33.386903875,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops.olean"
+}

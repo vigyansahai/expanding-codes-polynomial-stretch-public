@@ -1,0 +1,4 @@
+{"theorem_name":
+ "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+ "exact_statement_type": true,
+ "axioms": ["propext", "Classical.choice", "Quot.sound"]}

@@ -1,0 +1,79 @@
+/-- A reserved bottom marker with no other bottom symbols on this buffer. This
+invariant permits reset after arbitrary indexed reads and thermometer writes. -/
+def BottomMarked (d : TapeStore R B) (b : Fin B) : Prop :=
+  (d.bufferTape b).getD 0 .blank = .bot ∧
+    ∀ k, 0 < k → (d.bufferTape b).getD k .blank ≠ .bot
+
+ theorem BottomMarked.marked {d : TapeStore R B} {b : Fin B} (h : BottomMarked d b) :
+    Marked d b := ⟨h.1, fun k hk _ => h.2 k hk⟩
+
+ theorem BottomMarked.of_payload {d e : TapeStore R B} {b : Fin B}
+    (h : BottomMarked d b) (hp : TapeStore.SamePayload e d) : BottomMarked e b := by
+  constructor
+  · rw [hp.symbol]
+    exact h.1
+  · intro k hk
+    rw [hp.symbol]
+    exact h.2 k hk
+
+ theorem EntryWritten.bottomMarked {d e : TapeStore R B} {b : Fin B} {start w v : ℕ}
+    (h : EntryWritten d e b start w v) (hs : 0 < start) (hm : BottomMarked d b) :
+    BottomMarked e b := by
+  constructor
+  · rw [h.symbol]
+    have hn : ¬ start ≤ 0 := by omega
+    simp [hn, hm.1]
+  · intro k hk
+    rw [h.symbol]
+    split_ifs <;> first | decide | exact hm.2 k hk
+
+/-- Install the reserved marker using one actual cell write. -/
+def initialize (b : Fin B) : TapeProgram R B 2 := TapeMacros.write b .bot .right
+
+ theorem initialize_stops (b : Fin B) (inp : Inputs) (d : TapeStore R B)
+    (hh : d.bufferHead b = 0) (hb : ∀ k, (d.bufferTape b).getD k .blank = .blank) :
+    ∃ e, (initialize b).Stops inp (d.toCfg 0) 1 (e.toCfg 1) ∧
+      e.reg = d.reg ∧ e.roHead = d.roHead ∧ e.output = d.output ∧
+      e.bufferHead = Function.update d.bufferHead b 1 ∧ BottomMarked e b := by
+  let e := painted d b .bot
+  refine ⟨e, cell_stops b (fun _ => (.bot,.right)) inp d, rfl, rfl, rfl, ?_, ?_⟩
+  · simp [e, painted, cellStore, hh, Machine.moveHead]
+  · constructor
+    · simp only [e, painted, cellStore, Function.update_self, hh, getD_writeAt, if_pos rfl]
+    · intro k hk
+      simp only [e, painted, cellStore, Function.update_self, hh, getD_writeAt]
+      rw [if_neg (by omega : k ≠ 0), hb k]
+      decide
+
+/-- A checked physical overwrite updates exactly one logical table entry. -/
+ theorem EntryWritten.table {N : ℕ} {d e : TapeStore R B} {b : Fin B} {w v : ℕ}
+    {a : Fin N → ℕ} {i : Fin N}
+    (h : EntryWritten d e b (entryOffset i.val w) w v) (hv : v ≤ w)
+    (ht : ThermometerTable d b w a) :
+    ThermometerTable e b w (Function.update a i v) := by
+  intro j
+  by_cases hji : j = i
+  · subst j
+    refine ⟨by simpa using hv, ?_⟩
+    intro k hk
+    rw [h.symbol]
+    have h₁ : entryOffset i.val w ≤ entryOffset i.val w+k := by omega
+    have h₂ : entryOffset i.val w+k < entryOffset i.val w+w := by omega
+    have h₃ : entryOffset i.val w+k < entryOffset i.val w+v ↔ k < v := by omega
+    simp [h₁, h₂, h₃]
+  · refine ⟨?_, ?_⟩
+    · simpa [Function.update_of_ne hji] using (ht j).1
+    · intro k hk
+      rw [h.symbol]
+      have hne : j.val ≠ i.val := by intro he; exact hji (Fin.ext he)
+      have hn : ¬(entryOffset i.val w ≤ entryOffset j.val w+k ∧
+          entryOffset j.val w+k < entryOffset i.val w+w) := by
+        rcases lt_or_gt_of_ne hne with hlt | hgt
+        · have hle : (j.val+1)*w ≤ i.val*w := Nat.mul_le_mul_right w (by omega)
+          unfold entryOffset
+          nlinarith
+        · have hle : (i.val+1)*w ≤ j.val*w := Nat.mul_le_mul_right w (by omega)
+          unfold entryOffset
+          nlinarith
+      simp only [true_and, if_neg hn, Function.update_of_ne hji]
+      exact (ht j).2 k hk

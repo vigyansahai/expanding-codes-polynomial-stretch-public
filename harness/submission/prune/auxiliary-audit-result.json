@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 20.71614694595337,
+  "command": "LEAN_PATH=.: EXPANDING_CODES_REPORT_MEMORY=1 ./tools/lake-serial env lean harness/submission/prune/AuxiliaryRateAudit.lean"
+}

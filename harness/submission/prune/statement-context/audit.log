@@ -1,0 +1,19 @@
+solution : ∃ C,
+  And (@LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero)) C)
+    (∀ (ε : Real),
+      @LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero)) ε →
+        @LT.lt Real Real.instLT ε
+            (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+              (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+              (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯))) →
+          ∃ k m P D,
+            And
+              (@LE.le Real Real.instLE (@Nat.cast Real Real.instNatCast k)
+                (@HMul.hMul Real Real Real (@instHMul Real Real.instMul) C
+                  (@HPow.hPow Real Nat Real
+                    (@instHPow Real Nat (@NPow.toPow Real (@Monoid.toNPow Real Real.instMonoid)))
+                    (@Inv.inv Real Real.instInv ε) (@OfNat.ofNat Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))))
+              (EfficientFamily ε k m P D))
+'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+Statement-only target-stub context verified; no closed Core/original modules imported
+Lean check peak resident memory: 4869 MB; cap: 6144 MB

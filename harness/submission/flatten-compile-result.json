@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "elapsed_seconds": 448.2193260192871,
+  "command": "EXPANDING_CODES_REPORT_MEMORY=1 ./tools/lake-serial env lean harness/submission/Flatten.lean"
+}

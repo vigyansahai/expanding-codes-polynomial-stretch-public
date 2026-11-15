@@ -1,0 +1,23 @@
+{
+  "cpu_user_system_seconds": 72.228433,
+  "peak_resident_mib": 3369.109375,
+  "lean_memory_cap_mib": 6144,
+  "source_sha256": "48cfffece092555ef64e3789b99c6f9692b3175539c6ae4acfadaff1a598b95b",
+  "source_bytes": 328588,
+  "key": "gaussian_rank",
+  "mode": "upload",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 152.487869416,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "--setup=./harness/submission/partition/setups/gaussian_rank.json",
+    "-o",
+    "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean",
+    "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean"
+}

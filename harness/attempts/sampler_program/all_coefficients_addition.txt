@@ -1,0 +1,22 @@
+def allCoefficients {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R) (b : Fin B) (c : ℕ) :
+    TapeProgram R B (vectorLabels c (List.finRange d)) := vectorLoad r b c (List.finRange d)
+
+theorem allCoefficients_stops {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R) (hr : Function.Injective r)
+    (b : Fin B) (c : ℕ) (inp : Inputs) (M : ℕ) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (hhead : s.bufferHead b≤M) (hm : TapeArrays.BottomMarked s b)
+    (hmid : s.reg (r (.inl 0))+c*s.reg (r (.inl 1))≤M)
+    (hindex : ∀ j,vectorAddress r c j s≤M)
+    (hend : ∀ j,TapeArrays.entryOffset (vectorAddress r c j s) (s.reg (r (.inl 1)))+s.reg (r (.inl 1))≤M)
+    (values : Fin d → ℕ) (hvalues : ∀ j,TapeArrays.ThermometerAt s b
+      (TapeArrays.entryOffset (vectorAddress r c j s) (s.reg (r (.inl 1)))) (s.reg (r (.inl 1))) (values j)) :
+    ∃ t e, t≤d*(vectorTimeBound c d M+1) ∧
+      (allCoefficients r b c).Stops inp (s.toCfg (allCoefficients (B := B) r b c).entry) t e ∧
+      (∀ j,e.reg (r (.inr j))=values j) ∧
+      e.reg (r (.inl 0))=s.reg (r (.inl 0)) ∧ e.reg (r (.inl 1))=s.reg (r (.inl 1)) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧ (∀ x,e.reg x≤M) ∧ e.bufferHead b≤M ∧
+      TapeStore.SamePayload e.store s ∧ TapeArrays.BottomMarked e.store b := by
+  obtain ⟨t,e,ht,he,hev,hef,hea,heq,heo,heb,heh,hep,hem⟩ := vectorLoad_stops r hr b c (List.finRange d)
+    (by simp) inp M s hs hhead hm hmid (fun j _ => hindex j) (fun j _ => hend j) values (fun j _ => hvalues j)
+  exact ⟨t,e,by simpa using ht,he,fun j => hev j (by simp),hea,heq,heo,heb,heh,hep,hem⟩
+
+#print axioms allCoefficients_stops

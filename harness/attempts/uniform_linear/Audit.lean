@@ -1,0 +1,20 @@
+import ExpandingCodes.Probability.UniformLinear
+
+set_option autoImplicit false
+
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_eq_card_filter
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_eq_card_subtype
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_equiv
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_congr
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_true
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_pi
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_pi_finset
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_eval
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_addHom_eq
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_sum_mul_eq
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_sum_mul_collision
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_linearForm_collision
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_two_linearForm_collision
+#print axioms ExpandingCodes.PolynomialStretch.formsPairEquiv
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_forms_events
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_forms_collisions

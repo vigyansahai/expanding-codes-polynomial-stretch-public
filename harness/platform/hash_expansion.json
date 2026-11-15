@@ -1,0 +1,43 @@
+{
+  "theorem_id": "ca01388c-e3df-4fa5-a27b-3bdfed5b40ad",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.hash_expansion",
+  "theorem_title": "Lemma 2.7 — hashing preserves expansion uniformly in the preliminary matrix",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Lemma 2.7. The little-o envelope is uniform over all admissible preliminary outputs. -/\ntheorem hash_expansion (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)\n    (g : ∀ n, Geometry (dimension ε) n) :\n    ∃ δ : ℕ → ℝ, (∀ n, 0 ≤ δ n) ∧\n      Tendsto (fun n => δ n * (n : ℝ) ^ (1 / ε)) atTop (nhds 0) ∧\n      ∀ᶠ n : ℕ in atTop, ∀ s : Forms (g n).F (dimension ε) (arity ε),\n        PreliminaryGood ε n (g n) s →\n        uniformProb (fun h : Hashes (g n).F (arity ε) (buckets ε n) =>\n          ¬ Expanding (combined (g n) s h) (1 - ε) (arity ε) ((n : ℝ) ^ (1 - ε))) ≤ δ n := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "Fix $0<\\varepsilon<1/2$ and the construction parameters. There is a nonnegative function $\\delta(n)$, independent of the particular preliminary output, such that\n$$\\delta(n)n^{1/\\varepsilon}\\longrightarrow0.$$\nFor all sufficiently large $n$ and every fixed preliminary output $A$ satisfying $|\\Gamma_A(S)|\\ge(k-d+1)|S|$ for every $|S|\\le n^{1-\\varepsilon}$, independent uniform all-functions hashes satisfy\n$$\\Pr_h[G\\text{ is not }(1-\\varepsilon,k,n^{1-\\varepsilon})\\text{-expanding}]\\le\\delta(n).$$\nExact row weight is part of the expansion conclusion. No preliminary output satisfying the source's condition is removed, and no conditioning on hash success is performed.\n\nThis supplies the uniform little-o failure estimate for the column-combining step.\n\nDifferences from the source:\n- encoding: condition on any A satisfying Lemma 2.6 with failure o(n^{−1/ε}) → a single nonnegative little-o envelope chosen before n and before every admissible preliminary seed; reason: this makes the source proof’s uniformity in A explicit and prevents output-dependent asymptotic constants\n- encoding: uniform independent functions h_i → the uniform law on the complete finite product of all hash tables; reason: every value of every layer hash remains independent and uniform\n",
+  "created_at": "2026-11-08T19:11:16.47938+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_Sampler\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 13 / PDF p. 14, Lemma 2.7.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "d62391fa-0688-4e5e-bc70-ed6647c28159",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "54b959d8-1b74-4c98-8e37-4bcbbdb9f1bc",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

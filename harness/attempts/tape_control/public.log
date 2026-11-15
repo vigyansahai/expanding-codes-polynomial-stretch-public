@@ -1,0 +1,35 @@
+ExpandingCodes/Computation/TapeControl.lean:57:35: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeCfg.mapPC, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeControl.lean:71:53: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeStore.toCfg, c, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeControl.lean:75:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeCfg.mapPC, c, decStore, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeControl.lean:75:71: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeStore.toCfg, TapeCfg.mapPC, c, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TapeProgram.branchZero_stops_zero' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.branchZero_stops_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.branchZero_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

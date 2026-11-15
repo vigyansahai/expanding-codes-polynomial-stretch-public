@@ -1,0 +1,19 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/TesterSuffix.lean",
+  "status": "complete, direct and public-o checks passed, standard axioms only",
+  "program": "program theta r, injective Fin8\u2192ambientFinR, any buffer count. Actual static \u03b7.den/\u03b7.numNat load byclear+fixedincrements then actual54labelrankThreshold lifted via TapeRename. \u03b7=1/2\u2212\u03b8/2.",
+  "layout": "r0=rank,r1=m,r2/r3 loaded rationalconstants,r4..7 scalar scratch",
+  "proofs": [
+    "program_stops exactcrossmultiplicationbool, alltruephysicalsource time includingconstants",
+    "timeBound_polynomial in arbitraryincoming counterboundM",
+    "program_canonical emits exact frozen rankTest under suppliedactual encodedrank,m andtheta\u22641"
+  ],
+  "limitations": [
+    "Earlier stages mustactuallycompute/physicallystore encodedrank and m; this theorem doesnot assumeexistence of thoseprograms."
+  ],
+  "logs": [
+    "harness/attempts/tester_suffix/check2.log",
+    "harness/attempts/tester_suffix/public.log"
+  ]
+}

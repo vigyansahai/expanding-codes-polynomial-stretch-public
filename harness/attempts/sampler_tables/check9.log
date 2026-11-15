@@ -1,0 +1,25 @@
+harness/attempts/sampler_tables/SamplerTables.lean:193:44: error(lean.unknownIdentifier): Unknown constant `Fin.cast_trans`
+harness/attempts/sampler_tables/SamplerTables.lean:192:2: error: Type mismatch: After simplification, term
+  hh
+ has type
+  @Eq (List Bool) (List.ofFn (((finCongr ⋯).arrowCongr (Equiv.refl Bool)) ω))
+    (List.ofFn fun i => ω ((finCongr ⋯).symm (Fin.cast ⋯ i)))
+but is expected to have type
+  @Eq (List Bool) (List.ofFn (((finCongr ⋯).arrowCongr (Equiv.refl Bool)) ω)) (List.ofFn ω)
+'ExpandingCodes.PolynomialStretch.SamplerTables.flatFour_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.formsEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.hashesEquiv_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.uniform_decodeCoins' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.decodeCoins_physical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.generator_law' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.SamplerTables.fromTape_law' depends on axioms: [propext, Classical.choice, Quot.sound]

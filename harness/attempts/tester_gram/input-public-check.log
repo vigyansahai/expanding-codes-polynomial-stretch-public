@@ -1,0 +1,20 @@
+ExpandingCodes/Computation/TesterInput.lean:65:48: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ExpandingCodes/Computation/TesterInput.lean:244:29: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+ExpandingCodes/Computation/TesterInput.lean:221:22: warning: This simp argument is unused:
+  Nat.add_lt_add_iff_left
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h₁, h₂]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterInput.block_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterInput.load_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterInput.loadStore_output' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterInput.word_symbols' depends on axioms: [propext, Classical.choice, Quot.sound]

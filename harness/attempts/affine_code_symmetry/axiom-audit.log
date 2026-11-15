@@ -1,0 +1,16 @@
+'ExpandingCodes.PolynomialStretch.pow_reducedPower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.eval_mem_reedMuller' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.reedMuller_comp_affine_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.erasureExpectation_codeReindex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.codeReindex_doublyTransitive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.reedMuller_pair_transitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.doublyTransitive_reindexed_auxiliaryCode' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_halfErasure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,12 @@
+import ExpandingCodes.Construction.SamplerSupport
+set_option autoImplicit false
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_rowWeight
+#print axioms ExpandingCodes.PolynomialStretch.rowNeighbor
+#print axioms ExpandingCodes.PolynomialStretch.rowNeighbor_injective
+#print axioms ExpandingCodes.PolynomialStretch.combined_row_support
+#print axioms ExpandingCodes.PolynomialStretch.combined_rowWeight
+#print axioms ExpandingCodes.PolynomialStretch.sampleLaw_ne_zero_iff
+#print axioms ExpandingCodes.PolynomialStretch.sampler_buckets_pos
+#print axioms ExpandingCodes.PolynomialStretch.arity_mul_buckets_le
+#print axioms ExpandingCodes.PolynomialStretch.sampleLaw_output_rowWeight
+#print axioms ExpandingCodes.PolynomialStretch.eventual_sampleLaw_rowWeight

@@ -1,0 +1,36 @@
+ExpandingCodes/Computation/ParameterSetup.lean:145:13: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.snd, show setupFloorLayout r 1 = r 5 from rfl, setupStage₄_u r hr] at hfb hfl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/ParameterSetup.lean:145:22: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.fst, show setupFloorLayout r 1 = r 5 from rfl, setupStage₄_u r hr] at hfb hfl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/ParameterSetup.lean:254:22: warning: Variable name `hn` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ExpandingCodes/Computation/ParameterSetup.lean:254:33: warning: Variable name `hnk` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hnk
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'ExpandingCodes.Computation.ParameterPrograms.setupStore_values' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_uniform_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setupInput_unary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

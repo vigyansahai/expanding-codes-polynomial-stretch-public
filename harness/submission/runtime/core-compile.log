@@ -1,0 +1,2081 @@
+harness/submission/runtime/ProofCore.lean:1874:51: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hq, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:1874:55: warning: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hs, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2046:76: warning: This simp argument is unused:
+  eq_self_iff_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [normal, transition, hc, TapeProgram.step, hscan, hz, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2479:2: warning: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:2628:43: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2630:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2644:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2648:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2657:45: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2658:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2679:32: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2684:12: warning: This simp argument is unused:
+  Function.update_of_ne hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2699:44: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2701:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2716:48: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2717:71: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2719:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2740:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2740:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2740:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2740:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2745:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2745:57: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2745:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2750:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2750:36: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2750:41: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2808:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2808:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2808:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2808:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2811:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2811:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2811:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2811:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2811:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2814:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2814:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2854:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2854:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2854:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2854:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2857:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2857:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2857:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2857:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2857:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2860:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2860:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2860:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2875:53: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, distributeStore, TapeStore.setReg, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2900:38: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, cell]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2902:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, cell]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2958:23: warning: Variable name `hdc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hdc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:2958:43: warning: Variable name `htc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _htc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:2971:49: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, htc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2971:54: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2972:8: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:2972:21: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdt, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3015:34: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, hac, htc, ht]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3038:17: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3087:34: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:31: warning: This simp argument is unused:
+  had
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hat, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:36: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:41: warning: This simp argument is unused:
+  hac
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:46: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:51: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:56: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3090:61: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, hdc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3093:48: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3093:53: warning: This simp argument is unused:
+  hbt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3093:58: warning: This simp argument is unused:
+  hbc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3093:73: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3094:12: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3094:25: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3097:63: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, Ne.symm hdc, Ne.symm hdt, hbd, hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3130:5: warning: Variable name `hsq` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hsq
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:3142:29: warning: This simp argument is unused:
+  Ne.symm hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3177:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:3204:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:3309:64: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, seekRight, TapeStore.toCfg, d₂, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3317:20: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, cellStore, TapeStore.setReg, Machine.moveHead, Function.update_idem, Nat.add_assoc,
+    Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3346:70: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, reset, TapeStore.toCfg, hd, hm0, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3348:15: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, cellStore, hd, Machine.moveHead]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3353:51: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, cellStore, hd, Machine.moveHead]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3367:66: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, reset, TapeStore.toCfg, hs, d₁, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3371:16: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, cellStore, Function.update_idem]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3582:16: warning: This simp argument is unused:
+  Function.update_of_ne hc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3605:45: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₁, cellStore, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3610:60: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeRun, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3648:53: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₂, d₁, cellStore, TapeStore.setReg, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3657:62: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeDebit, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3665:31: warning: This simp argument is unused:
+  hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, Ne.symm hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3665:36: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3668:38: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3675:42: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+harness/submission/runtime/ProofCore.lean:3675:42: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:3806:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [moved, cellStore, TapeProgram.decStore, Function.update_of_ne (Ne.symm hne)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3806:46: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, moved, cellStore, Function.update_of_ne (Ne.symm hne)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3816:64: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, hd, d₁]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3821:66: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, d₂, d₁, moved, cellStore, hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3822:8: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, d₂, d₁, TapeProgram.decStore, cellStore, hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3826:44: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, hs', d₂, d₁, moved, cellStore,
+    TapeStore.setReg, Function.update_of_ne (Ne.symm hne)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3835:73: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, d₁, TapeProgram.decStore, moved, cellStore,
+    hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3836:8: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, hs, d₁, moved, cellStore, hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3892:38: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:3882:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:4004:39: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4007:31: warning: This simp argument is unused:
+  hot
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hoc, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4007:36: warning: This simp argument is unused:
+  hoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4007:59: warning: This simp argument is unused:
+  Ne.symm hoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4007:72: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm hoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4010:33: warning: This simp argument is unused:
+  hot
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hoc, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4010:38: warning: This simp argument is unused:
+  hoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4010:43: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4010:48: warning: This simp argument is unused:
+  Ne.symm hot
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4010:74: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm hoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4343:35: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeCfg.mapPC, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4357:53: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeStore.toCfg, c, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4361:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeCfg.mapPC, c, decStore, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4361:71: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeStore.toCfg, TapeCfg.mapPC, c, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4452:29: warning: This simp argument is unused:
+  Ne.symm hqp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4568:59: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcsrc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4569:21: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4569:64: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4674:10: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4740:13: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4792:41: warning: This simp argument is unused:
+  Nat.add_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:4902:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:5018:13: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:5795:14: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:5839:34: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:6209:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+harness/submission/runtime/ProofCore.lean:7193:2: warning: Try `simp at hx` instead of `simpa using hx`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:9378:25: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:9464:10: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:9583:30: warning: This simp argument is unused:
+  Ne.symm hxp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, toggle, toggleStore, hx, hy, hp, d₃, d₂, d₁, TapeStore.setReg, Ne.symm hyp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:9583:43: warning: This simp argument is unused:
+  Ne.symm hyp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, toggle, toggleStore, hx, hy, hp, d₃, d₂, d₁, TapeStore.setReg, Ne.symm hxp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:9596:22: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:9613:66: warning: Variable name `hyp` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hyp
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:9841:4: warning: Unused tactic linter: `change 1 + s + 1 + t ≤ (n + 1) * (128 * (M + 1) ^ 2 + 10) + 1` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:9991:51: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:10286:52: warning: Variable name `hxf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hxf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:10779:36: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:10910:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hne 18]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:12047:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:12177:43: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+harness/submission/runtime/ProofCore.lean:12177:43: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:12547:56: warning: This simp argument is unused:
+  hx
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, oneTest, oneTestStore, h1, c, TapeStore.setReg, Ne.symm hxf]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:12555:62: warning: This simp argument is unused:
+  hcpos
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, oneTest, oneTestStore, hx, h1, c, hnpos, TapeStore.setReg, Function.update_idem,
+    Nat.sub_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:12574:38: warning: This simp argument is unused:
+  Ne.symm hxf
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:12581:22: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:12589:51: warning: Variable name `hxf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hxf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:13075:72: warning: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [commitStore, show inverseCommitLayout r 4 = r 6 from rfl, hf, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13311:15: warning: This simp argument is unused:
+  fieldLayout
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.val_mk] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13311:27: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fieldLayout] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13316:15: warning: This simp argument is unused:
+  fieldLayout
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.val_mk] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13316:27: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fieldLayout] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13375:19: warning: This simp argument is unused:
+  fieldLayout
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.val_mk] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13375:31: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fieldLayout] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13471:15: warning: This simp argument is unused:
+  fieldLayout
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.val_mk] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13471:27: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fieldLayout] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13547:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hda, htmp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13561:34: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdt, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:13686:10: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hcv, hdv]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:14096:4: warning: Unused tactic linter: `change z₃.reg column + i * z₃.reg (r 1) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:14106:4: warning: Unused tactic linter: `change z₂.reg x = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:14108:4: warning: Unused tactic linter: `change z₁.store.reg x = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:14579:44: warning: This simp argument is unused:
+  hpc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [advanceStore, TapeStore.setReg, Ne.symm hpc, hqp, hqc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:15255:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.EncodedGaussian.schur_decode`:
+  [DecidableEq α]
+  [DecidableEq F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] [DecidableEq F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:15671:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+harness/submission/runtime/ProofCore.lean:16153:16: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [TapeStore.setReg, Function.update, hr.eq_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:16171:17: warning: This simp argument is unused:
+  workspace
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.val_mk] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:16171:27: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [workspace] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:16218:4: warning: Unused tactic linter: `change c₂.store.reg j = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:16401:13: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:16498:6: warning: Unused tactic linter: `change u + 1 + t ≤ (j + 1) * (13400 * (M + 1) ^ 6 + 1)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:17242:10: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:17398:4: warning: This simp argument is unused:
+  Function.comp_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [SamplerProgram.fixedFieldLayout, SamplerProgram.powerWorkspace, SamplerProgram.powerField,
+    SamplerProgram.fixedPowerLayout, SamplerProgram.fixedPowerIndex, fixedLayout, fixedCommon, hi, field, low]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:17562:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+harness/submission/runtime/ProofCore.lean:17562:8: warning: Unused tactic linter: `simpa only [Storage.formLayout, Storage.formCommon, Storage.address] using
+  writable_low d k i (70 : Fin 80) (by decide)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:18070:13: warning: This simp argument is unused:
+  scalar
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.val_mk] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18070:20: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [scalar] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18465:75: warning: This simp argument is unused:
+  hcr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [comparison, hr.eq_iff, hc.eq_iff, Ne.symm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18556:17: warning: This simp argument is unused:
+  powerWorkspace
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [scalar, Fin.val_mk] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18556:32: warning: This simp argument is unused:
+  scalar
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [powerWorkspace, Fin.val_mk] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18556:39: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [powerWorkspace, scalar] at hval
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18598:24: warning: This simp argument is unused:
+  TapeCfg.mapPC
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [value, hle, TapeStore.toCfg, zeroIndex_value]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18598:38: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [value, hle, TapeCfg.mapPC, zeroIndex_value]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18601:14: warning: This simp argument is unused:
+  TapeCfg.mapPC
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.toCfg, TapeStore.setReg, hio]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18601:28: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeCfg.mapPC, TapeStore.setReg, hio]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:18884:56: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:19063:29: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:19040:22: warning: This simp argument is unused:
+  Nat.add_lt_add_iff_left
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h₁, h₂]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19213:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19393:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19431:5: warning: Variable name `hp` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:19547:5: warning: Variable name `hqe` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hqe
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:19548:5: warning: Variable name `hec` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hec
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:19548:22: warning: Variable name `het` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _het
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:19563:54: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [htmp, hcopy]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19688:23: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, two_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19688:63: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, two_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19692:25: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19692:65: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19696:27: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19696:67: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19700:29: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19700:69: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19704:31: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19704:71: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19708:33: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19708:73: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19711:24: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg, h₀, h₂, h₃, h₄, h₅, h₆]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19711:64: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg, h₀, h₂, h₃, h₄, h₅, h₆]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19713:39: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore,
+    lessPrepare, ltLoopStore, ceilCompareLayout, hlt, TapeStore.setReg, h₀, h₂, h₃, h₄, h₅, h₆]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19716:20: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19716:60: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19718:25: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore,
+    lessPrepare, ltLoopStore, ceilCompareLayout, hlt, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19909:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19910:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19911:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgq, hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19912:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgq, hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19913:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hge, hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19992:62: warning: This simp argument is unused:
+  Nat.add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [divideLoopStore, d₁, TapeStore.setReg, Ne.symm hsq, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20019:41: warning: This simp argument is unused:
+  hdiv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv', hsq, Ne.symm hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20019:52: warning: This simp argument is unused:
+  hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv, hdiv', Ne.symm hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20019:56: warning: This simp argument is unused:
+  Ne.symm hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv, hdiv', hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20021:47: warning: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:19997:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:20027:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:20042:63: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:20045:58: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [divideConstantStore, divideLoopStore, dividePrepare]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20073:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hct, Nat.add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20087:12: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20168:77: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [floorPrepare, floorCeilLayout, floorCeilIndex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20185:27: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:20207:69: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [floorPrepare, floorCeilLayout, floorCeilIndex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20221:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20749:13: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.snd, show setupFloorLayout r 1 = r 5 from rfl, setupStage₄_u r hr] at hfb hfl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:20749:22: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.fst, show setupFloorLayout r 1 = r 5 from rfl, setupStage₄_u r hr] at hfb hfl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:21119:8: warning: This simp argument is unused:
+  TapeStore.setReg_same
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, Nat.sub_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:21131:10: warning: This simp argument is unused:
+  TapeStore.setReg_same
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:21128:43: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+harness/submission/runtime/ProofCore.lean:21128:43: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:21879:45: warning: This simp argument is unused:
+  reg_set r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [c]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22085:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:22458:63: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [evaluationCaller, Matrix.cons_val_zero, Matrix.cons_val_two, Matrix.cons_val_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22487:63: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [evaluationCaller, Matrix.cons_val_zero, Matrix.cons_val_two, Matrix.cons_val_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22457:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:22460:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:22486:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:22489:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:22549:4: warning: Unused tactic linter: `change c₄.store.reg (digit d g i) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:22566:4: warning: Unused tactic linter: `change c₄.store.reg (low d 65) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:22674:27: warning: This simp argument is unused:
+  hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [ht, hh, Function.comp_apply, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22674:30: warning: This simp argument is unused:
+  ht
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [hr, hh, Function.comp_apply, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22674:33: warning: This simp argument is unused:
+  hh
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [hr, ht, Function.comp_apply, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22672:2: warning: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:22947:62: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, searchLoop_tail, TapeStore.toCfg, Nat.ne_of_gt hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:22982:73: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:23015:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:23100:45: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₀, hr0]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23101:45: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₀, hr2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23114:44: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [readPost, TapeStore.setReg, d₀, hr7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23117:44: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [readPost, TapeStore.setReg, d₀, hr8]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23135:16: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₀, h7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23138:43: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update_of_ne hne, d₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23418:12: warning: This simp argument is unused:
+  hd1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd2, hd3, hd4, hd5, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23418:17: warning: This simp argument is unused:
+  hd2
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd3, hd4, hd5, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23418:22: warning: This simp argument is unused:
+  hd3
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd2, hd4, hd5, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23418:32: warning: This simp argument is unused:
+  hd5
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd2, hd3, hd4, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23418:37: warning: This simp argument is unused:
+  hd6
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd2, hd3, hd4, hd5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:23691:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [high_ne_low r hr 2 (by decide)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24169:63: warning: Variable name `hq` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hq
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:24174:15: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.snd] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24174:24: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.fst] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24233:49: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24457:10: warning: This simp argument is unused:
+  e
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, hzi₃]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24610:8: warning: Unused tactic linter: `change c'.reg (low d i) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:24726:23: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:24710:15: warning: This simp argument is unused:
+  h70
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [s₂, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24917:10: warning: This simp argument is unused:
+  e
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, hi₄]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:24880:6: warning: Unused tactic linter: `change c₂.store.bufferHead = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:24885:6: warning: Unused tactic linter: `change (c₂.store.bufferTape c).getD k .blank = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:24976:6: warning: Unused tactic linter: `change e.store.bufferHead 0 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:24980:6: warning: Unused tactic linter: `change e.store.bufferHead 1 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:25003:15: warning: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hleft, hright, and_self, if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:25127:23: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:25207:28: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:25207:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/ProofCore.lean:25289:10: warning: This simp argument is unused:
+  e
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, hi₁]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:25386:23: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:26518:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hk]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:26549:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hs47]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:26706:22: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:26809:74: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hk]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:26829:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hs46]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:27021:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+harness/submission/runtime/ProofCore.lean:27373:43: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:27414:43: warning: This simp argument is unused:
+  Nat.add_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, hd, hp, run, Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:27432:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Computation.PaddedGaussian.pivot_none_rank`:
+  [DecidableEq F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:28101:17: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:28101:53: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:28101:89: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:28107:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hs62]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/ProofCore.lean:28712:2: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/ProofCore.lean:31870:2: warning: Unused tactic linter: `change _ + _ + 1 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/submission/runtime/ProofCore.lean:34395:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.expectationOn_mono`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34404:16: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.expectationOn_const`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34413:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.expectationOn_eq_expectation_subtype`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34433:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.expectationOn_permute`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34459:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.expectationOn_insert`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34485:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.extrinsicFailure_mono`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34492:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.Erasure.extrinsicFailure_permute`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34900:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.indicator_nonneg`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34906:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.indicator_le_one`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:34931:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.gradient_indicator_nonneg`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35045:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.gradient_indicator_values`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35389:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.expectationOn_congr`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35396:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.expectationOn_add`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35400:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.expectationOn_mul_left`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35413:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.coordinate_insert_of_ne`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35471:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.coordinate_mul_eq`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35507:8: warning: automatically included section variable(s) unused in theorem `_private.harness.submission.runtime.ProofCore.0.ExpandingCodes.SharpThreshold.expectationOn_mixed_norm`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/runtime/ProofCore.lean:35609:5: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:35609:18: warning: Variable name `hr'` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr'
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/runtime/ProofCore.lean:36467:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`

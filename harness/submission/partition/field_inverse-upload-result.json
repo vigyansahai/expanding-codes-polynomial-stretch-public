@@ -1,0 +1,19 @@
+{
+  "source_sha256": "5dec0710f647c23ebea1cbe7a6fe87e26e0a0e24a3637ac540c932fda3b9b9d7",
+  "source_bytes": 254415,
+  "key": "field_inverse",
+  "mode": "upload",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 78.210385375,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.olean",
+    "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.olean"
+}

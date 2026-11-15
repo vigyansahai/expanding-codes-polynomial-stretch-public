@@ -1,0 +1,6 @@
+ExpandingCodes/Computation/ZeroTables.lean:25:2: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'ExpandingCodes.Computation.ZeroTables.result_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.ZeroTables.program_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.ZeroTables.result_other_table' depends on axioms: [propext, Classical.choice, Quot.sound]

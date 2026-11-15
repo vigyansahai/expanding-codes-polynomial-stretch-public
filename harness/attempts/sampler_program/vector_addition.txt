@@ -1,0 +1,122 @@
+def vectorIndex {d : ℕ} (j : Fin d) (i : Fin 12) : Fin 11 ⊕ Fin d :=
+  if hi : i.val<11 then .inl ⟨i.val,hi⟩ else .inr j
+
+def vectorLayout {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R) (j : Fin d) : Fin 12 → Fin R :=
+  r ∘ vectorIndex j
+
+theorem vectorLayout_injective {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R)
+    (hr : Function.Injective r) (j : Fin d) : Function.Injective (vectorLayout r j) := by
+  intro u v huv
+  have heq : vectorIndex j u=vectorIndex j v := hr huv
+  by_cases hu : u.val<11 <;> by_cases hv : v.val<11
+  · simp only [vectorIndex,if_pos hu,if_pos hv] at heq
+    have hvv := congrArg Fin.val (Sum.inl.inj heq)
+    exact Fin.ext hvv
+  · simp only [vectorIndex,if_pos hu,if_neg hv] at heq
+    cases heq
+  · simp only [vectorIndex,if_neg hu,if_pos hv] at heq
+    cases heq
+  · exact Fin.ext (by have := u.isLt; have := v.isLt; omega)
+
+theorem vectorLayout_coefficient_fresh {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R)
+    (hr : Function.Injective r) (j a : Fin d) (haj : a≠j) :
+    ∀ i,r (.inr a)≠vectorLayout r j i := by
+  intro i heq
+  have hi : Sum.inr a=vectorIndex j i := hr heq
+  unfold vectorIndex at hi
+  split at hi
+  · cases hi
+  · exact haj (Sum.inr.inj hi)
+
+def vectorLabels {d : ℕ} (c : ℕ) : List (Fin d) → ℕ
+  | [] => 1
+  | j::js => coefficientLoadLabels c d j.val+vectorLabels c js
+
+/-- Static coefficient-vector loader. A separate caller counter stores each
+coordinate, while each coefficient is found by a real physical table lookup. -/
+def vectorLoad {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R) (b : Fin B) (c : ℕ) :
+    (js : List (Fin d)) → TapeProgram R B (vectorLabels c js)
+  | [] => TapeProgram.skip
+  | j::js => TapeProgram.seq (coefficientLoad (vectorLayout r j) b c d j.val) (vectorLoad r b c js)
+
+def vectorAddress {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R) (c : ℕ) (j : Fin d)
+    (s : TapeStore R B) : ℕ := d*(s.reg (r (.inl 0))+c*s.reg (r (.inl 1)))+j.val
+
+def vectorTimeBound (c d M : ℕ) : ℕ := (112+6*c+6*d*(c+1)+2*d)*(M+1)^2
+
+theorem vectorLoad_stops {d : ℕ} (r : Fin 11 ⊕ Fin d → Fin R) (hr : Function.Injective r)
+    (b : Fin B) (c : ℕ) (js : List (Fin d)) (hjs : js.Nodup)
+    (inp : Inputs) (M : ℕ) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (hhead : s.bufferHead b≤M) (hm : TapeArrays.BottomMarked s b)
+    (hmid : s.reg (r (.inl 0))+c*s.reg (r (.inl 1))≤M)
+    (hindex : ∀ j∈js,vectorAddress r c j s≤M)
+    (hend : ∀ j∈js,TapeArrays.entryOffset (vectorAddress r c j s) (s.reg (r (.inl 1)))+s.reg (r (.inl 1))≤M)
+    (values : Fin d → ℕ) (hvalues : ∀ j∈js,TapeArrays.ThermometerAt s b
+      (TapeArrays.entryOffset (vectorAddress r c j s) (s.reg (r (.inl 1)))) (s.reg (r (.inl 1))) (values j)) :
+    ∃ t e, t≤js.length*(vectorTimeBound c d M+1) ∧
+      (vectorLoad r b c js).Stops inp (s.toCfg (vectorLoad (B := B) r b c js).entry) t e ∧
+      (∀ j∈js,e.reg (r (.inr j))=values j) ∧
+      (∀ j,j∉js → e.reg (r (.inr j))=s.reg (r (.inr j))) ∧
+      e.reg (r (.inl 0))=s.reg (r (.inl 0)) ∧ e.reg (r (.inl 1))=s.reg (r (.inl 1)) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧ (∀ x,e.reg x≤M) ∧ e.bufferHead b≤M ∧
+      TapeStore.SamePayload e.store s ∧ TapeArrays.BottomMarked e.store b := by
+  induction js generalizing s with
+  | nil =>
+    exact ⟨0,s.toCfg ⟨0,by simp [vectorLabels]⟩,by simp,TapeProgram.skip_stops inp s,
+      by simp,fun _ _ => rfl,rfl,rfl,fun _ _ => rfl,hs,hhead,TapeStore.SamePayload.refl s,hm⟩
+  | cons j js ih =>
+    have hjtail : j∉js := (List.nodup_cons.mp hjs).1
+    have htail : js.Nodup := (List.nodup_cons.mp hjs).2
+    have haddr (a : Fin d) (z : TapeStore R B) : coefficientAddress (vectorLayout r a) c d a.val z=vectorAddress r c a z := by
+      simp [coefficientAddress,vectorAddress,vectorLayout,vectorIndex]
+    obtain ⟨u,z,hu,hz,hzv,hza,hzq,hzo,hzb,hzh,hzp,hzm⟩ := coefficientLoad_stops
+      (vectorLayout r j) (vectorLayout_injective r hr j) b c d j.val inp M s hs hhead hm hmid
+      (by rw [haddr]; exact hindex j (by simp)) (values j)
+      (by rw [haddr]; exact hvalues j (by simp))
+    have hza' : z.reg (r (.inl 0))=s.reg (r (.inl 0)) := hza
+    have hzq' : z.reg (r (.inl 1))=s.reg (r (.inl 1)) := hzq
+    have hzv' : z.reg (r (.inr j))=values j := hzv
+    have hzhead : z.bufferHead b≤M := by
+      rw [hzh]
+      simpa [haddr] using hend j (by simp)
+    have hmidz : z.store.reg (r (.inl 0))+c*z.store.reg (r (.inl 1))≤M := by
+      change z.reg (r (.inl 0))+c*z.reg (r (.inl 1))≤M
+      rw [hza',hzq']; exact hmid
+    have hindexz : ∀ a∈js,vectorAddress r c a z.store≤M := by
+      intro a ha
+      simpa [vectorAddress,hza',hzq'] using hindex a (by simp [ha])
+    have hendz : ∀ a∈js,TapeArrays.entryOffset (vectorAddress r c a z.store)
+        (z.store.reg (r (.inl 1)))+z.store.reg (r (.inl 1))≤M := by
+      intro a ha
+      simpa [vectorAddress,hza',hzq'] using hend a (by simp [ha])
+    have hvaluesz : ∀ a∈js,TapeArrays.ThermometerAt z.store b
+        (TapeArrays.entryOffset (vectorAddress r c a z.store) (z.store.reg (r (.inl 1))))
+        (z.store.reg (r (.inl 1))) (values a) := by
+      intro a ha
+      have hh := (hvalues a (by simp [ha])).of_payload hzp
+      simpa [vectorAddress,hza',hzq'] using hh
+    obtain ⟨t,e,ht,he,hev,hef,hea,heq,heo,heb,heh,hep,hem⟩ := ih htail z.store hzb hzhead hzm
+      hmidz hindexz hendz hvaluesz
+    have hall := hz.seq he
+    refine ⟨u+1+t,_,?_,hall,?_,?_,hea.trans hza',heq.trans hzq',?_,heb,heh,hep.trans hzp,hem⟩
+    · have htj : u≤vectorTimeBound c d M := hu.trans (by
+        unfold vectorTimeBound
+        apply Nat.mul_le_mul_right
+        have hj := j.isLt
+        omega)
+      change u+1+t≤(js.length+1)*(vectorTimeBound c d M+1)
+      rw [Nat.add_mul,Nat.one_mul]
+      omega
+    · intro a ha
+      simp only [List.mem_cons] at ha
+      rcases ha with rfl|ha
+      · exact (hef _ hjtail).trans hzv'
+      · exact hev a ha
+    · intro a ha
+      have haj : a≠j := fun he => ha (by simp [he])
+      have hat : a∉js := fun he => ha (by simp [he])
+      exact (hef a hat).trans (hzo (r (.inr a)) (vectorLayout_coefficient_fresh r hr j a haj))
+    · intro x hx
+      exact (heo x hx).trans (hzo x (fun i => hx (vectorIndex j i)))
+
+#print axioms vectorLoad_stops

@@ -1,0 +1,18 @@
+'ExpandingCodes.Computation.FieldConvolution.convolution_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldCertificates.certificate_divMatches_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceModulus.construct_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SourceFieldSetup.setup_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+(true, 1, 2, 4, 2, 4, 0, [])

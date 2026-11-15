@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "owner": "uniform_linear",
+  "owned_files": [
+    "ExpandingCodes/Probability/FiniteUniform.lean",
+    "ExpandingCodes/Probability/UniformLinear.lean",
+    "harness/attempts/uniform_linear/*.lean",
+    "harness/tasks/uniform_linear.json"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean"
+  ],
+  "interface_status": "Local supporting lemmas over unchanged canonical definitions; theorem names are local, not platform-canonical.",
+  "source": {
+    "path": "tmp/feasibility/paper.txt",
+    "section": "2.3, Lemma 2.6",
+    "role": "Exact collision probabilities and independent random-form coordinates used in active-pair bounds.",
+    "lines": "640-679; single-pair probability and independence at 665-670"
+  },
+  "nodes": [
+    {
+      "id": "uniformProb_eq_card_filter",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_eq_card_filter",
+      "statement": "For finite nonempty Ω and E : Ω → Prop, uniformProb E = card(univ.filter E) / card Ω over ℝ.",
+      "proof_route": "Unfold canonical uniformProb and eventProb; Mathlib PMF.uniformOfFintype_apply; toReal of inverse natural cardinality; sum a constant over the event filter.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_eq_card_filter {Ω : Type*} [Fintype Ω] [Nonempty Ω]\n    (E : Ω → Prop) :\n    uniformProb E = ((Finset.univ.filter E).card : ℝ) / Fintype.card Ω",
+      "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+      "line": 8,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    },
+    {
+      "id": "uniformProb_pi_finset",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_pi_finset",
+      "statement": "For finite independently uniform function coordinates, probability of all E_i on coordinates in S equals the product of individual probabilities over S.",
+      "proof_route": "Bijection between functions satisfying coordinate predicates and the product of event subtypes; Fintype.card_pi; cancel coordinates outside S by probability True = 1.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [
+        "uniformProb_eq_card_filter"
+      ],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_pi_finset {I : Type*} [Fintype I] [DecidableEq I] {Ω : I → Type*}\n    [∀ i, Fintype (Ω i)] [∀ i, Nonempty (Ω i)] (S : Finset I)\n    (E : ∀ i, Ω i → Prop) :\n    uniformProb (fun ω : ∀ i, Ω i => ∀ i ∈ S, E i (ω i)) =\n      ∏ i ∈ S, uniformProb (E i)",
+      "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+      "line": 65,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    },
+    {
+      "id": "uniformProb_addHom_eq",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_addHom_eq",
+      "statement": "A surjective additive homomorphism between finite additive groups sends the uniform distribution to the uniform distribution: Pr[f x = y] = 1/card H.",
+      "proof_route": "Mathlib AddMonoidHom.card_fiber_eq_of_mem_range identifies all fiber cardinalities. Finset.card_eq_sum_card_fiberwise counts the domain as |H| times one nonempty fiber. Divide the canonical cardinal ratio.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [
+        "uniformProb_eq_card_filter"
+      ],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_addHom_eq {G H : Type*} [AddGroup G] [AddGroup H]\n    [Fintype G] [Fintype H] (f : G →+ H) (hf : Function.Surjective f) (y : H) :\n    uniformProb (fun x => f x = y) = 1 / (Fintype.card H : ℝ)",
+      "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+      "line": 88,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    },
+    {
+      "id": "uniformProb_linearForm_collision",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_linearForm_collision",
+      "statement": "For finite field F and distinct z,z' : Fin d → F, Pr_a[linearForm a z = linearForm a z'] = 1/card F.",
+      "proof_route": "Subtract z' from z. A nonzero difference coordinate j gives surjectivity of a ↦ sum_i a_i*(z_i-z'_i), witnessed by a single nonzero coordinate a_j = t/(z_j-z'_j). Apply the generic additive-hom fiber theorem at 0.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [
+        "uniformProb_addHom_eq"
+      ],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_linearForm_collision {F : Type*} [Field F] [Fintype F]\n    {d : ℕ} (z z' : Fin d → F) (hne : z ≠ z') :\n    uniformProb (fun a : Fin d → F => linearForm a z = linearForm a z') =\n      1 / (Fintype.card F : ℝ)",
+      "file": "ExpandingCodes/Probability/UniformLinear.lean",
+      "line": 40,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    },
+    {
+      "id": "uniformProb_two_linearForm_collision",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_two_linearForm_collision",
+      "statement": "Two independent uniform coefficient vectors collide on distinct z,z' with probability exactly 1/(card F)^2.",
+      "proof_route": "Finite function-coordinate product factorization on Fin 2 and the exact single-form collision formula.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [
+        "uniformProb_pi_finset",
+        "uniformProb_linearForm_collision"
+      ],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_two_linearForm_collision {F : Type*} [Field F] [Fintype F]\n    {d : ℕ} (z z' : Fin d → F) (hne : z ≠ z') :\n    uniformProb (fun a : Fin 2 → Fin d → F =>\n      linearForm (a 0) z = linearForm (a 0) z' ∧\n      linearForm (a 1) z = linearForm (a 1) z') =\n      1 / (Fintype.card F : ℝ) ^ 2",
+      "file": "ExpandingCodes/Probability/UniformLinear.lean",
+      "line": 46,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    },
+    {
+      "id": "uniformProb_forms_events",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_forms_events",
+      "statement": "For exact canonical Forms F d k, arbitrary events E_p on the two coefficient vectors at each layer/level pair p in A satisfy Pr[all E_p] = product_{p in A} Pr[E_p].",
+      "proof_route": "Explicit bijective re-indexing formsPairEquiv: (Fin 2 → Fin k → F → Fin d → F) ≃ ((Fin k × F) → Fin 2 → Fin d → F), followed by uniformProb_equiv and finite-coordinate product factorization.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [
+        "uniformProb_pi_finset"
+      ],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_forms_events {F : Type*} [Field F] [Fintype F]\n    {d k : ℕ} (A : Finset (Fin k × F))\n    (E : (Fin k × F) → (Fin 2 → Fin d → F) → Prop) :\n    uniformProb (fun s : Forms F d k =>\n      ∀ p ∈ A, E p (fun j => s j p.1 p.2)) =\n      ∏ p ∈ A, uniformProb (E p)",
+      "file": "ExpandingCodes/Probability/UniformLinear.lean",
+      "line": 76,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    },
+    {
+      "id": "uniformProb_forms_collisions",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_forms_collisions",
+      "statement": "For exact canonical Forms, if z_p ≠ z_p′ for every p in A, the event that both forms at every p collide on z_p,z_p′ has probability exactly (1/(card F)^2)^(card A).",
+      "proof_route": "Apply uniformProb_forms_events to collision predicates at each pair, then exact two-form probability and product of a constant.",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "dependencies": [
+        "uniformProb_forms_events",
+        "uniformProb_two_linearForm_collision"
+      ],
+      "holes": [],
+      "lean_statement": "theorem uniformProb_forms_collisions {F : Type*} [Field F] [Fintype F]\n    {d k : ℕ} (A : Finset (Fin k × F)) (z z' : (Fin k × F) → Fin d → F)\n    (hne : ∀ p ∈ A, z p ≠ z' p) :\n    uniformProb (fun s : Forms F d k => ∀ p ∈ A,\n      linearForm (s 0 p.1 p.2) (z p) = linearForm (s 0 p.1 p.2) (z' p) ∧\n      linearForm (s 1 p.1 p.2) (z p) = linearForm (s 1 p.1 p.2) (z' p)) =\n      (1 / (Fintype.card F : ℝ) ^ 2) ^ A.card",
+      "file": "ExpandingCodes/Probability/UniformLinear.lean",
+      "line": 86,
+      "interface": "local_support_over_exact_canonical_definitions",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Canonical definitions unchanged; local helper names do not claim platform-canonical theorem identity."
+      }
+    }
+  ],
+  "worker_result": {
+    "status": "complete_all_sources_built_and_axiom_audited",
+    "open_theorem_bodies": [],
+    "compiler_policy": "Only short-lived tools/lake-serial env lean/build calls; default 6144 MB, one thread, one pending compiler job. No persistent REPL.",
+    "failed_attempts": [
+      "Direct rw of Fintype.card_congr in the dependent Pi event failed because canonical subtype cardinality used Classical.propDecidable whereas local synthesis used decidableForallFintype. Fix uses convert with equality of Fintype instances by subsingleton elimination.",
+      "UniformLinear first direct check: needed Pi.zero_apply to turn function zero application into field zero. Generic linear/probability helper specialization also froze classical DecidableEq index while canonical Fin vectors used native Fin equality; exact/rw attempted expensive definal reduction of different Fintype instances.",
+      "UniformLinear second direct check: an 800000-heartbeat retry confirmed the exact Fintype data mismatch. Broad convert likewise unfolded too much; replaced this approach with explicit DecidableEq index parameters on generic Pi and linear-sum helper interfaces. All such instances are classically available; canonical definitions remain untouched. The heartbeat override was removed."
+    ],
+    "unresolved_proof_dependencies": [],
+    "tested_commands": [
+      "./tools/lake-serial env lean harness/attempts/uniform_linear/FiniteUniform.lean",
+      "./tools/lake-serial build ExpandingCodes.Probability.FiniteUniform",
+      "./tools/lake-serial env lean harness/attempts/uniform_linear/UniformLinear.lean",
+      "./tools/lake-serial build ExpandingCodes.Probability.UniformLinear",
+      "./tools/lake-serial env lean harness/attempts/uniform_linear/Audit.lean"
+    ],
+    "promotion": "Both public sources promoted only after their exact final scratch copies passed direct checking. Fresh source builds of both public modules passed without warnings. No heartbeat override remains.",
+    "interface_note": "Generic finite-function product/evaluation and linear-sum helpers expose a DecidableEq index instance. This avoids freezing classical index equality when specializing to the native canonical Fin index; such instances are classically available for all finite types. No new mathematical hypothesis.",
+    "clean_build_result": "FiniteUniform (8710 jobs, final module compilation 12s) and UniformLinear (8713 jobs, final module compilation 5.9s) built successfully with no warnings.",
+    "source_sha256": {
+      "ExpandingCodes/Probability/FiniteUniform.lean": "63c1056cf7981ad73de2154f2fe679dc399c8bcd8ccab03896429f13c48f0599",
+      "ExpandingCodes/Probability/UniformLinear.lean": "c55b572101f001768f8071778046ad196e00fda43275a872c0c99512403bc85e"
+    },
+    "all_public_theorem_headers": {
+      "uniformProb_eq_card_filter": {
+        "lean_statement": "theorem uniformProb_eq_card_filter {Ω : Type*} [Fintype Ω] [Nonempty Ω]\n    (E : Ω → Prop) :\n    uniformProb E = ((Finset.univ.filter E).card : ℝ) / Fintype.card Ω",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 8
+      },
+      "uniformProb_eq_card_subtype": {
+        "lean_statement": "theorem uniformProb_eq_card_subtype {Ω : Type*} [Fintype Ω] [Nonempty Ω]\n    (E : Ω → Prop) :\n    uniformProb E = (Fintype.card {ω // E ω} : ℝ) / Fintype.card Ω",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 14
+      },
+      "uniformProb_equiv": {
+        "lean_statement": "theorem uniformProb_equiv {Ω Ξ : Type*} [Fintype Ω] [Fintype Ξ]\n    [Nonempty Ω] [Nonempty Ξ] (e : Ω ≃ Ξ) (E : Ξ → Prop) :\n    uniformProb (fun ω => E (e ω)) = uniformProb E",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 21
+      },
+      "uniformProb_congr": {
+        "lean_statement": "theorem uniformProb_congr {Ω : Type*} [Fintype Ω] [Nonempty Ω]\n    {E D : Ω → Prop} (h : ∀ ω, E ω ↔ D ω) : uniformProb E = uniformProb D",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 33
+      },
+      "uniformProb_true": {
+        "lean_statement": "theorem uniformProb_true {Ω : Type*} [Fintype Ω] [Nonempty Ω] :\n    uniformProb (fun _ : Ω => True) = 1",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 39
+      },
+      "uniformProb_pi": {
+        "lean_statement": "theorem uniformProb_pi {I : Type*} [Fintype I] [DecidableEq I] {Ω : I → Type*}\n    [∀ i, Fintype (Ω i)] [∀ i, Nonempty (Ω i)] (E : ∀ i, Ω i → Prop) :\n    uniformProb (fun ω : ∀ i, Ω i => ∀ i, E i (ω i)) =\n      ∏ i, uniformProb (E i)",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 44
+      },
+      "uniformProb_pi_finset": {
+        "lean_statement": "theorem uniformProb_pi_finset {I : Type*} [Fintype I] [DecidableEq I] {Ω : I → Type*}\n    [∀ i, Fintype (Ω i)] [∀ i, Nonempty (Ω i)] (S : Finset I)\n    (E : ∀ i, Ω i → Prop) :\n    uniformProb (fun ω : ∀ i, Ω i => ∀ i ∈ S, E i (ω i)) =\n      ∏ i ∈ S, uniformProb (E i)",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 65
+      },
+      "uniformProb_eval": {
+        "lean_statement": "theorem uniformProb_eval {I Ω : Type*} [Fintype I] [DecidableEq I]\n    [Fintype Ω] [Nonempty Ω]\n    (i : I) (E : Ω → Prop) :\n    uniformProb (fun ω : I → Ω => E (ω i)) = uniformProb E",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 81
+      },
+      "uniformProb_addHom_eq": {
+        "lean_statement": "theorem uniformProb_addHom_eq {G H : Type*} [AddGroup G] [AddGroup H]\n    [Fintype G] [Fintype H] (f : G →+ H) (hf : Function.Surjective f) (y : H) :\n    uniformProb (fun x => f x = y) = 1 / (Fintype.card H : ℝ)",
+        "file": "ExpandingCodes/Probability/FiniteUniform.lean",
+        "line": 88
+      },
+      "uniformProb_sum_mul_eq": {
+        "lean_statement": "theorem uniformProb_sum_mul_eq {I F : Type*} [Fintype I] [DecidableEq I]\n    [Field F] [Fintype F]\n    (z : I → F) (hz : z ≠ 0) (y : F) :\n    uniformProb (fun a : I → F => ∑ i, a i * z i = y) =\n      1 / (Fintype.card F : ℝ)",
+        "file": "ExpandingCodes/Probability/UniformLinear.lean",
+        "line": 9
+      },
+      "uniformProb_sum_mul_collision": {
+        "lean_statement": "theorem uniformProb_sum_mul_collision {I F : Type*} [Fintype I] [DecidableEq I]\n    [Field F] [Fintype F]\n    (z z' : I → F) (hne : z ≠ z') :\n    uniformProb (fun a : I → F => ∑ i, a i * z i = ∑ i, a i * z' i) =\n      1 / (Fintype.card F : ℝ)",
+        "file": "ExpandingCodes/Probability/UniformLinear.lean",
+        "line": 27
+      },
+      "uniformProb_linearForm_collision": {
+        "lean_statement": "theorem uniformProb_linearForm_collision {F : Type*} [Field F] [Fintype F]\n    {d : ℕ} (z z' : Fin d → F) (hne : z ≠ z') :\n    uniformProb (fun a : Fin d → F => linearForm a z = linearForm a z') =\n      1 / (Fintype.card F : ℝ)",
+        "file": "ExpandingCodes/Probability/UniformLinear.lean",
+        "line": 40
+      },
+      "uniformProb_two_linearForm_collision": {
+        "lean_statement": "theorem uniformProb_two_linearForm_collision {F : Type*} [Field F] [Fintype F]\n    {d : ℕ} (z z' : Fin d → F) (hne : z ≠ z') :\n    uniformProb (fun a : Fin 2 → Fin d → F =>\n      linearForm (a 0) z = linearForm (a 0) z' ∧\n      linearForm (a 1) z = linearForm (a 1) z') =\n      1 / (Fintype.card F : ℝ) ^ 2",
+        "file": "ExpandingCodes/Probability/UniformLinear.lean",
+        "line": 46
+      },
+      "uniformProb_forms_events": {
+        "lean_statement": "theorem uniformProb_forms_events {F : Type*} [Field F] [Fintype F]\n    {d k : ℕ} (A : Finset (Fin k × F))\n    (E : (Fin k × F) → (Fin 2 → Fin d → F) → Prop) :\n    uniformProb (fun s : Forms F d k =>\n      ∀ p ∈ A, E p (fun j => s j p.1 p.2)) =\n      ∏ p ∈ A, uniformProb (E p)",
+        "file": "ExpandingCodes/Probability/UniformLinear.lean",
+        "line": 76
+      },
+      "uniformProb_forms_collisions": {
+        "lean_statement": "theorem uniformProb_forms_collisions {F : Type*} [Field F] [Fintype F]\n    {d k : ℕ} (A : Finset (Fin k × F)) (z z' : (Fin k × F) → Fin d → F)\n    (hne : ∀ p ∈ A, z p ≠ z' p) :\n    uniformProb (fun s : Forms F d k => ∀ p ∈ A,\n      linearForm (s 0 p.1 p.2) (z p) = linearForm (s 0 p.1 p.2) (z' p) ∧\n      linearForm (s 1 p.1 p.2) (z p) = linearForm (s 1 p.1 p.2) (z' p)) =\n      (1 / (Fintype.card F : ℝ) ^ 2) ^ A.card",
+        "file": "ExpandingCodes/Probability/UniformLinear.lean",
+        "line": 86
+      }
+    },
+    "integration_note": "For any fixed finite active-pair set A and any fixed distinct witness choices z_p,z_p_prime, uniformProb_forms_collisions proves the exact product probability. Points may overlap between distinct pairs; no conditioning on the random actual active set is used.",
+    "pending_compilation": [],
+    "axiom_audit": {
+      "exit_code": 0,
+      "file": "harness/attempts/uniform_linear/Audit.lean",
+      "command": "./tools/lake-serial env lean harness/attempts/uniform_linear/Audit.lean",
+      "declarations": [
+        "uniformProb_eq_card_filter",
+        "uniformProb_eq_card_subtype",
+        "uniformProb_equiv",
+        "uniformProb_congr",
+        "uniformProb_true",
+        "uniformProb_pi",
+        "uniformProb_pi_finset",
+        "uniformProb_eval",
+        "uniformProb_addHom_eq",
+        "uniformProb_sum_mul_eq",
+        "uniformProb_sum_mul_collision",
+        "uniformProb_linearForm_collision",
+        "uniformProb_two_linearForm_collision",
+        "uniformProb_forms_events",
+        "uniformProb_forms_collisions",
+        "formsPairEquiv"
+      ],
+      "all_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_free_declarations": [
+        "formsPairEquiv"
+      ],
+      "forbidden_axioms": [],
+      "result": "All fifteen public theorems depend transitively only on the three allowed standard axioms. The formsPairEquiv data equivalence has no axiom dependencies. No sorryAx or custom axioms."
+    },
+    "proof_status": "All assigned exact finite-uniform/counting, linear collision, two-form collision, and canonical Forms product obligations are fully proved. No expansion, collision probability, or main target theorem is assumed. Shared definitions and other workers files were not modified.",
+    "next_integration": "Root-owned active-pair finite union bounds may import ExpandingCodes.Probability.UniformLinear and use uniformProb_forms_collisions, or use uniformProb_forms_events for arbitrary independent pair events."
+  }
+}

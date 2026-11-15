@@ -1,0 +1,97 @@
+harness/attempts/neighbor_writer/NeighborWriter.lean:436:14: error: unsolved goals
+case succ
+R B k : ℕ
+l : Layout R k
+n : ℕ
+ih :
+  ∀ (d : TapeStore R B),
+    d.reg l.out = 0 →
+      (loopStore l n d).output = d.output ++ List.ofFn fun j => decide (∃ i, d.reg l.col + ↑j = d.reg (l.neighbor i))
+d : TapeStore R B
+ho : d.reg l.out = 0
+⊢ (d.output ++
+      decide
+          (∃ i,
+            Function.update d.reg l.count (d.reg l.count - 1) l.col =
+              Function.update d.reg l.count (d.reg l.count - 1) (l.neighbor i)) ::
+        List.ofFn fun j =>
+          decide
+            (∃ i,
+              ↑j + (1 + Function.update d.reg l.count (d.reg l.count - 1) l.col) =
+                Function.update d.reg l.count (d.reg l.count - 1) (l.neighbor i))) =
+    d.output ++
+      decide (∃ i, 0 + d.reg l.col = d.reg (l.neighbor i)) ::
+        List.ofFn fun i => decide (∃ i_1, ↑i + (1 + d.reg l.col) = d.reg (l.neighbor i_1))
+harness/attempts/neighbor_writer/NeighborWriter.lean:535:38: error: Application type mismatch: The argument
+  hall
+has type
+  (((TapeMacros.clear l.col).seq (TapeMacros.clear l.out)).seq (TapeMacros.copy l.n l.count (l.reg (Sum.inl 6)))).Stops
+    inp (TapeCfg.mapPC (leftLabel 11) (TapeCfg.mapPC (leftLabel 2) (d.toCfg 0)))
+    (d.reg l.col + 1 + 1 + (d₁.reg l.out + 1) + 1 + (d₂.reg l.count + d₂.reg (l.reg (Sum.inl 6)) + 5 * d₂.reg l.n + 7))
+    (TapeCfg.mapPC (rightLabel (2 + 2)) e)
+but is expected to have type
+  (prepare l).Stops inp (d.toCfg (prepare l).entry) ?m.228 (TapeCfg.mapPC ?m.239 e)
+in the application
+  And.intro hall
+harness/attempts/neighbor_writer/NeighborWriter.lean:519:101: error: unsolved goals
+R B k : ℕ
+l : Layout R k
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hd : ∀ (j : Fin R), d.reg j ≤ M
+h₁ : (TapeMacros.clear l.col).Stops inp (d.toCfg 0) (d.reg l.col + 1) ((d.setReg l.col 0).toCfg 1)
+d₁ : TapeStore R B := d.setReg l.col 0
+h₂ : (TapeMacros.clear l.out).Stops inp (d₁.toCfg 0) (d₁.reg l.out + 1) ((d₁.setReg l.out 0).toCfg 1)
+d₂ : TapeStore R B := d₁.setReg l.out 0
+e : TapeCfg R B 11
+he :
+  (TapeMacros.copy l.n l.count (l.reg (Sum.inl 6))).Stops inp
+    (d₂.toCfg (TapeMacros.copy l.n l.count (l.reg (Sum.inl 6))).entry)
+    (d₂.reg l.count + d₂.reg (l.reg (Sum.inl 6)) + 5 * d₂.reg l.n + 7) e
+hes : e.store = (d₂.setReg l.count (d₂.reg l.n)).setReg (l.reg (Sum.inl 6)) 0
+hn₂ : d₂.reg l.n = d.reg l.n
+hc₂ : d₂.reg l.count = d.reg l.count
+ht₂ : d₂.reg (l.reg (Sum.inl 6)) = d.reg (l.reg (Sum.inl 6))
+ho₁ : d₁.reg l.out = d.reg l.out
+hall :
+  (((TapeMacros.clear l.col).seq (TapeMacros.clear l.out)).seq (TapeMacros.copy l.n l.count (l.reg (Sum.inl 6)))).Stops
+    inp (TapeCfg.mapPC (leftLabel 11) (TapeCfg.mapPC (leftLabel 2) (d.toCfg 0)))
+    (d.reg l.col + 1 + 1 + (d₁.reg l.out + 1) + 1 + (d₂.reg l.count + d₂.reg (l.reg (Sum.inl 6)) + 5 * d₂.reg l.n + 7))
+    (TapeCfg.mapPC (rightLabel (2 + 2)) e)
+⊢ ∃ t e, t ≤ 16 * (M + 1) ∧ (prepare l).Stops inp (d.toCfg (prepare l).entry) t e ∧ e.store = prepareStore l d
+harness/attempts/neighbor_writer/NeighborWriter.lean:579:91: error: unsolved goals
+R B k : ℕ
+l : Layout R k
+d : TapeStore R B
+⊢ (d.output ++
+      List.ofFn fun j =>
+        decide
+          (∃ i,
+            Function.update
+                  (Function.update (Function.update (Function.update d.reg l.col 0) l.out 0) l.count (d.reg l.n))
+                  (l.reg (Sum.inl 6)) 0 l.col +
+                ↑j =
+              Function.update
+                (Function.update (Function.update (Function.update d.reg l.col 0) l.out 0) l.count (d.reg l.n))
+                (l.reg (Sum.inl 6)) 0 (l.neighbor i))) =
+    d.output ++ List.ofFn fun j => decide (∃ i, ↑j = d.reg (l.neighbor i))
+'ExpandingCodes.Computation.NeighborWriter.markStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.markEq_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.emitFlag_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.marksStore_out' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.marks_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.body_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.loopStore_output' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.loop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.writeRow_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.writeRow_output' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

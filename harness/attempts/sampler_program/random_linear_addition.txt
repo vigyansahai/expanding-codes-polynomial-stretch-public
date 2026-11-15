@@ -1,0 +1,71 @@
+theorem tapeData_components {s e : TapeStore R B} (h : FieldConvolution.tapeData e=FieldConvolution.tapeData s) :
+    e.roHead=s.roHead ∧ e.output=s.output ∧ e.bufferTape=s.bufferTape ∧ e.bufferHead=s.bufferHead := by
+  simpa only [FieldConvolution.tapeData,Prod.mk.injEq] using h
+
+theorem tapeData_payload {s e : TapeStore R B} (h : FieldConvolution.tapeData e=FieldConvolution.tapeData s) :
+    TapeStore.SamePayload e s := by
+  have hh := tapeData_components h
+  exact ⟨hh.1,hh.2.1,fun b k => by rw [hh.2.2.1]⟩
+
+def randomLinearLabels {d : ℕ} (v : Fin 11 ⊕ Fin d → Fin R) (point : Fin d → Fin R) (c : ℕ) : ℕ :=
+  vectorLabels c (List.finRange d)+(2+dotLabels (List.ofFn (fun j => (v (.inr j),point j))))
+
+/-- Actual runtime-addressed random linear form: load all d coefficients from
+physical tape cells, then execute the finite scalar linear-form evaluator. -/
+def randomLinear {d : ℕ} (v : Fin 11 ⊕ Fin d → Fin R) (f : Fin 31 → Fin R)
+    (point : Fin d → Fin R) (b : Fin B) (c : ℕ) : TapeProgram R B (randomLinearLabels v point c) :=
+  TapeProgram.seq (allCoefficients v b c) (linear f (fun j => v (.inr j)) point)
+
+def randomLinearTimeBound (c d M : ℕ) : ℕ := d*(vectorTimeBound c d M+1)+1+(d+1)*(13320*(M+1)^6)
+
+theorem randomLinear_stops {d : ℕ} (v : Fin 11 ⊕ Fin d → Fin R) (hv : Function.Injective v)
+    (f : Fin 31 → Fin R) (hf : Function.Injective f) (point : Fin d → Fin R)
+    (hcf : ∀ j i,v (.inr j)≠f i) (hpf : ∀ j i,point j≠f i) (hpv : ∀ j i,point j≠v i)
+    (haddr : ∀ i,v (.inl 0)≠f i) (hq : f 23=v (.inl 1))
+    (hmod : ∀ i,f 3≠v i) (hN : ∀ i,f 19≠v i) (hQ : ∀ i,f 24≠v i)
+    (b : Fin B) (c : ℕ) (inp : Inputs) (ell : ℕ) (h : 0<ell) (a z : Fin d → Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment f ell (selectedIndex ell h) s) (hz : ∀ j,s.reg (point j)=(z j).val)
+    (hhead : s.bufferHead b≤M) (hm : TapeArrays.BottomMarked s b)
+    (hmid : s.reg (v (.inl 0))+c*s.reg (v (.inl 1))≤M)
+    (hindex : ∀ j,vectorAddress v c j s≤M)
+    (hend : ∀ j,TapeArrays.entryOffset (vectorAddress v c j s) (s.reg (v (.inl 1)))+s.reg (v (.inl 1))≤M)
+    (hvalues : ∀ j,TapeArrays.ThermometerAt s b
+      (TapeArrays.entryOffset (vectorAddress v c j s) (s.reg (v (.inl 1)))) (s.reg (v (.inl 1))) (a j).val) :
+    ∃ t e, t≤randomLinearTimeBound c d M ∧
+      (randomLinear v f point b c).Stops inp (s.toCfg (randomLinear (B := B) v f point b c).entry) t e ∧
+      e.reg (f 30)=(EncodedSampler.linear (BinaryField.indexOperations ell h) a z).1.val ∧
+      Environment f ell (selectedIndex ell h) e.store ∧
+      e.reg (v (.inl 0))=s.reg (v (.inl 0)) ∧ e.reg (v (.inl 1))=s.reg (v (.inl 1)) ∧
+      (∀ j,e.reg (point j)=s.reg (point j)) ∧
+      (∀ x,(∀ i,x≠f i) → (∀ i,x≠v i) → e.reg x=s.reg x) ∧
+      (∀ x,e.reg x≤M) ∧ e.bufferHead b≤M ∧
+      (∀ b',b'≠b → e.bufferHead b'=s.bufferHead b') ∧
+      TapeStore.SamePayload e.store s ∧ TapeArrays.BottomMarked e.store b := by
+  obtain ⟨u,cfg,hu,hc,hcv,hca,hcq,hco,hcb,hch,hchd,hcp,hcm⟩ := allCoefficients_stops v hv b c inp M s hs
+    hhead hm hmid hindex hend (fun j => (a j).val) hvalues
+  have hce : Environment f ell (selectedIndex ell h) cfg.store := henv.frame (by
+    intro i hi
+    rcases hi with rfl|rfl|rfl|rfl
+    · exact hco _ hmod
+    · exact hco _ hN
+    · simpa only [hq] using hcq
+    · exact hco _ hQ)
+  have hcz : ∀ j,cfg.reg (point j)=(z j).val := by
+    intro j; rw [hco _ (hpv j)]; exact hz j
+  obtain ⟨t,e,ht,he,hev,hee,heo,heb,het⟩ := linear_stops_values f hf (fun j => v (.inr j)) point hcf hpf
+    inp ell h a z M hM cfg.store hcb hce hcv hcz
+  have hall := hc.seq he
+  have hh : e.bufferHead=cfg.bufferHead := (tapeData_components het).2.2.2
+  have hp : TapeStore.SamePayload e.store s := (tapeData_payload het).trans hcp
+  refine ⟨u+1+t,_,?_,hall,hev,hee,?_,?_,?_,?_,heb,?_,?_,hp,hm.of_payload hp⟩
+  · unfold randomLinearTimeBound; omega
+  · exact (heo _ haddr).trans hca
+  · have hqs : e.reg (f 23)=s.reg (f 23) := hee.cardinal.trans henv.cardinal.symm
+    simpa only [hq] using hqs
+  · intro j; exact (heo _ (hpf j)).trans (hco _ (hpv j))
+  · intro x hxf hxv; exact (heo x hxf).trans (hco x hxv)
+  · rw [hh]; exact hch
+  · intro b' hne; rw [hh]; exact hchd b' hne
+
+#print axioms randomLinear_stops

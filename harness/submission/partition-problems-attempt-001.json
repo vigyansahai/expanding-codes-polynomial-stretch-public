@@ -1,0 +1,322 @@
+{
+  "created_at": 1794701545.008509,
+  "kind": "problem",
+  "payload_path": "harness/submission/partition-problems-payload.json",
+  "payload_sha256": "d24898e87663d9ab07f5f5a11fa4f43996531b0cfa53f511aebea63dc3a82fa3",
+  "payload_bytes": 31872,
+  "phase": "queued",
+  "submitted_payload_archive": "harness/submission/submitted/partition-problems-attempt-001.json",
+  "http_status": 202,
+  "response": {
+    "jobs": [
+      {
+        "job_id": "5fca783a-e0a6-47fd-bc3e-96ffd59a5c76",
+        "name": "ExpandingCodes.Computation.TapeCompiler.compile_halts"
+      },
+      {
+        "job_id": "03aabef2-25f5-44ad-89bb-0aaa03a2aba4",
+        "name": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops"
+      },
+      {
+        "job_id": "a394bbc7-3bbd-40af-877c-5689026803de",
+        "name": "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops"
+      },
+      {
+        "job_id": "2fc359e3-1713-44d7-b60f-2ca9b42d7fbb",
+        "name": "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops"
+      },
+      {
+        "job_id": "c9474b4a-a06a-4703-ad6b-c584d2a96721",
+        "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops"
+      },
+      {
+        "job_id": "6a687c12-3ff0-4158-b4e6-d6ca5e9d783a",
+        "name": "ExpandingCodes.Computation.SamplerProgram.layer_stops"
+      },
+      {
+        "job_id": "f708ec23-d1b2-4f21-b557-5526c64a19fb",
+        "name": "ExpandingCodes.Computation.SamplerAssembly.prelude_stops"
+      },
+      {
+        "job_id": "6ef226f0-6c89-42ea-8a2a-3bec7f1c0375",
+        "name": "ExpandingCodes.Computation.TesterFrontend.program_stops"
+      },
+      {
+        "job_id": "e854d5be-6cde-4a06-8f97-21b85bc36729",
+        "name": "ExpandingCodes.Computation.TesterGram.program_stops"
+      },
+      {
+        "job_id": "3ec49295-4d66-40d2-a80f-b9011dd9c09e",
+        "name": "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical"
+      }
+    ],
+    "errors": [],
+    "message": "10/10 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+    "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+  },
+  "job_ids": [
+    "5fca783a-e0a6-47fd-bc3e-96ffd59a5c76",
+    "03aabef2-25f5-44ad-89bb-0aaa03a2aba4",
+    "a394bbc7-3bbd-40af-877c-5689026803de",
+    "2fc359e3-1713-44d7-b60f-2ca9b42d7fbb",
+    "c9474b4a-a06a-4703-ad6b-c584d2a96721",
+    "6a687c12-3ff0-4158-b4e6-d6ca5e9d783a",
+    "f708ec23-d1b2-4f21-b557-5526c64a19fb",
+    "6ef226f0-6c89-42ea-8a2a-3bec7f1c0375",
+    "e854d5be-6cde-4a06-8f97-21b85bc36729",
+    "3ec49295-4d66-40d2-a80f-b9011dd9c09e"
+  ],
+  "last_poll_at": 1794701691.1695051,
+  "last_verdicts": [
+    {
+      "http_status": 200,
+      "job_id": "5fca783a-e0a6-47fd-bc3e-96ffd59a5c76",
+      "result": {
+        "id": "5fca783a-e0a6-47fd-bc3e-96ffd59a5c76",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+        "theorem_title": "Constant-overhead simulation of finite tape programs",
+        "formal_statement": "theorem ExpandingCodes.Computation.TapeCompiler.compile_halts {R B L : ℕ} (P : ExpandingCodes.Computation.TapeProgram R B L) (O : Set (List Bool)) (inp : Inputs)\n    (t : ℕ) (hh : P.halted (P.run inp t)) :\n    (ExpandingCodes.Computation.TapeCompiler.compile P).HaltsWith O inp (1+2*t) (bitsSym (P.run inp t).output) := by sorry\n",
+        "natural_language_statement": "Let $P$ be a finite source program with $R$ registers, $B$ buffers and $L$ instruction labels. Let $I$ be any input, $O$ any oracle, and $t$ a natural number. If the source execution halts after $t$ instructions with binary output $w$, its compiled canonical machine satisfies\n\n$$\\operatorname{compile}(P)(I,O)\\downarrow w\n\\quad\\text{within }1+2t\\text{ machine steps}.$$\n\nThe output uses the canonical bit-to-symbol encoding. This theorem supplies a uniform, constant-overhead bridge from finite source executions to the machine model used by the expanding-code mission.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.TapeCompiler. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/TapeCompiler.lean, declaration ExpandingCodes.Computation.TapeCompiler.compile_halts; source file SHA256 f440840078896ca879d015e964d8dbe8e7b88735222475fe194d758cacfe2170. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "58ed3394-d35a-498e-b065-32da69ac7607",
+        "created_at": "2026-11-15T00:12:25.405205+00:00",
+        "updated_at": "2026-11-15T00:13:28.395742+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "03aabef2-25f5-44ad-89bb-0aaa03a2aba4",
+      "result": {
+        "id": "03aabef2-25f5-44ad-89bb-0aaa03a2aba4",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops",
+        "theorem_title": "Construction of a canonical binary field environment",
+        "formal_statement": "theorem ExpandingCodes.Computation.SourceFieldSetup.setup_stops {R B : ℕ} (r : Fin 32 → Fin R) (hr : Function.Injective r) (inp : Inputs)\n    (ell : ℕ) (h : 0 < ell) (M : ℕ) (d : ExpandingCodes.Computation.TapeStore R B) (hd : ∀ j,d.reg j ≤ M)\n    (hell : d.reg (r 20) = ell) (hq : d.reg (r 23) = 2^ell)\n    (hN : 3*ell+1 ≤ M) (h2q : 2*(2^ell) ≤ M) (hQ : 2^(2*ell) ≤ M) :\n    ∃ t e,t ≤ 40000*(M+1)^7 ∧ (ExpandingCodes.Computation.SourceFieldSetup.setup r).Stops inp (d.toCfg (ExpandingCodes.Computation.SourceFieldSetup.setup (B:=B) r).entry) t e ∧\n      e.store = ExpandingCodes.Computation.SourceFieldSetup.setupStore r d ∧ ExpandingCodes.Computation.SourceFieldSetup.Environment r ell h e.store ∧\n      (∀ j,(∀ i,j ≠ r i) → e.reg j = d.reg j) ∧ (∀ j,e.reg j ≤ M) ∧ ExpandingCodes.Computation.FieldConvolution.tapeData e.store = ExpandingCodes.Computation.FieldConvolution.tapeData d := by sorry\n",
+        "natural_language_statement": "Let $\\ell>0$, $q=2^\\ell$, and let $s$ be a source-machine store with $R$ registers and $B$ buffers. Let $r$ injectively place a 32-register workspace in its register bank, and let $I$ be any input. Initially every register is at most $M$, workspace registers 20 and 23 contain $\\ell$ and $q$, and\n\n$$3\\ell+1\\le M,\\qquad 2q\\le M,\\qquad q^2\\le M.$$\n\nThe field-setup program reaches its specified final store and the canonical binary-field environment in time\n\n$$t\\le 40000(M+1)^7.$$\n\nAll registers remain at most $M$. Registers outside the workspace and the read heads, buffer contents, buffer heads and output are preserved. This provides field construction from runtime size parameters for both the sampler and the tester.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.SourceFieldSetup. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/SourceFieldSetup.lean, declaration ExpandingCodes.Computation.SourceFieldSetup.setup_stops; source file SHA256 c4b3734751e49abfbcdb60b20015f726d583a9eb75323343af23f73b179261c1. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "58e416e1-39ea-4723-bb4e-17f05517cbf8",
+        "created_at": "2026-11-15T00:12:25.521254+00:00",
+        "updated_at": "2026-11-15T00:14:05.048495+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "a394bbc7-3bbd-40af-877c-5689026803de",
+      "result": {
+        "id": "a394bbc7-3bbd-40af-877c-5689026803de",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops",
+        "theorem_title": "Correctness and running time of source field multiplication",
+        "formal_statement": "theorem ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops {R B : ℕ} (r : Fin 27 → Fin R) (hr : Function.Injective r)\n    (inp : Inputs) (ell : ℕ) (h : 0 < ell) (m a b : Fin (2^ell))\n    (M : ℕ) (hM : 1 ≤ M) (d : ExpandingCodes.Computation.TapeStore R B) (hd : ∀ j, d.reg j ≤ M)\n    (ha : d.reg (r 0) = a.val) (hb : d.reg (r 1) = b.val)\n    (hm : d.reg (r 3) = 2^ell+m.val) (hN : d.reg (r 19) = 3*ell+1)\n    (hq : d.reg (r 23) = 2^ell) (hQ : d.reg (r 24) = 2^(2*ell)) :\n    ∃ t e, t ≤ 10000*(M+1)^6 ∧\n      (ExpandingCodes.Computation.SourceFieldArithmetic.multiply r).Stops inp (d.toCfg (ExpandingCodes.Computation.SourceFieldArithmetic.multiply (B := B) r).entry) t e ∧\n      e.store = ExpandingCodes.Computation.SourceFieldArithmetic.multiplyResult r d ∧\n      e.reg (r 20) = (ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex ell h m (ExpandingCodes.PolynomialStretch.BinaryPolynomial.indexEquiv ell a) (ExpandingCodes.PolynomialStretch.BinaryPolynomial.indexEquiv ell b)).val ∧\n      (∀ i, i < 2 ∨ i = 3 ∨ i = 19 ∨ i = 23 ∨ i = 24 → e.reg (r i) = d.reg (r i)) ∧\n      (∀ j, (∀ i, j ≠ r i) → e.reg j = d.reg j) ∧\n      (∀ j, e.reg j ≤ M) ∧ ExpandingCodes.Computation.FieldConvolution.tapeData e.store = ExpandingCodes.Computation.FieldConvolution.tapeData d := by sorry\n",
+        "natural_language_statement": "Let $\\ell>0$ and $q=2^\\ell$. Encode polynomials of degree below $\\ell$ by integers below $q$. Let $a,b$ be two such encodings and let $\\mu<q$ encode the lower coefficients of a monic polynomial $p_\\mu$ of degree $\\ell$. No irreducibility assumption on $p_\\mu$ is required.\n\nLet $s$ be a store with $R$ registers and $B$ buffers, $r$ an injective placement of a 27-register workspace, and $I$ any input. Assume $M\\ge1$, all registers are at most $M$, and workspace registers $0,1,3,19,23,24$ contain $a,b,q+\\mu,3\\ell+1,q,q^2$, respectively. The multiplication program halts with\n\n$$t\\le10000(M+1)^6,\\qquad\ns'[r(20)]=\\operatorname{enc}\\bigl(a(X)b(X)\\bmod p_\\mu(X)\\bigr).$$\n\nIts entire final store is the specified multiplication-result store. The input and parameter registers above, registers outside the workspace, and all tape payload are preserved; every register remains at most $M$. For the canonical irreducible modulus this computes multiplication in the binary extension field. The general modular-polynomial contract is reusable by both algorithms.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.SourceFieldArithmetic. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/SourceFieldArithmetic.lean, declaration ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops; source file SHA256 82fb97d5572b62ae185bb5c6e4cda9100cd6cbac79b43d2f1a3514ef69bc0b6a. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "d0337443-310c-4104-8c50-68d99effd5d0",
+        "created_at": "2026-11-15T00:12:25.592047+00:00",
+        "updated_at": "2026-11-15T00:14:03.645208+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "2fc359e3-1713-44d7-b60f-2ca9b42d7fbb",
+      "result": {
+        "id": "2fc359e3-1713-44d7-b60f-2ca9b42d7fbb",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+        "theorem_title": "Correctness and running time of source field addition",
+        "formal_statement": "theorem ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops {R B : ℕ} (r : Fin 27 → Fin R) (hr : Function.Injective r)\n    (inp : Inputs) (ell : ℕ) (a b : Fin (2^ell)) (M : ℕ) (hM : 1 ≤ M)\n    (d : ExpandingCodes.Computation.TapeStore R B) (hd : ∀ j,d.reg j ≤ M) (ha : d.reg (r 0) = a.val) (hb : d.reg (r 3) = b.val)\n    (hN : d.reg (r 19) = 3*ell+1) (hq : d.reg (r 23) = 2^ell) :\n    ∃ t e,t ≤ 3000*(M+1)^5 ∧\n      (ExpandingCodes.Computation.SourceFieldArithmetic.addition r).Stops inp (d.toCfg (ExpandingCodes.Computation.SourceFieldArithmetic.addition (B:=B) r).entry) t e ∧ e.store = ExpandingCodes.Computation.SourceFieldArithmetic.additionResult r d ∧\n      e.reg (r 20) = (ExpandingCodes.PolynomialStretch.BinaryField.addIndex ell a b).val ∧\n      (∀ i,i = 0 ∨ i = 3 ∨ i = 19 ∨ 23 ≤ i → i ≠ 25 → e.reg (r i) = d.reg (r i)) ∧\n      (∀ j,(∀ i,j ≠ r i) → e.reg j = d.reg j) ∧ (∀ j,e.reg j ≤ M) ∧ ExpandingCodes.Computation.FieldConvolution.tapeData e.store = ExpandingCodes.Computation.FieldConvolution.tapeData d := by sorry\n",
+        "natural_language_statement": "Let $\\ell\\ge0$, $q=2^\\ell$, and let $a,b<q$ encode binary coefficient vectors of length $\\ell$. Let $s$ be a store with $R$ registers and $B$ buffers, $r$ an injective placement of a 27-register workspace, and $I$ any input. Suppose $M\\ge1$, every register is at most $M$, and workspace registers $0,3,19,23$ contain $a,b,3\\ell+1,q$.\n\nThe addition program reaches its specified result store with\n\n$$t\\le3000(M+1)^5,\\qquad\ns'[r(20)]=\\operatorname{enc}(a\\oplus b).$$\n\nHere $\\oplus$ is coefficientwise addition modulo two, including the empty-vector case $\\ell=0$. The designated input and parameter registers, registers outside the workspace, and tape payload are preserved, and all registers remain at most $M$. When $\\ell>0$, this is addition in the corresponding binary extension field.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.SourceFieldArithmetic. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/SourceFieldArithmetic.lean, declaration ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops; source file SHA256 82fb97d5572b62ae185bb5c6e4cda9100cd6cbac79b43d2f1a3514ef69bc0b6a. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "212bf247-a1cd-4c82-a71c-2c7ef9089e7c",
+        "created_at": "2026-11-15T00:12:25.64818+00:00",
+        "updated_at": "2026-11-15T00:12:50.176487+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "c9474b4a-a06a-4703-ad6b-c584d2a96721",
+      "result": {
+        "id": "c9474b4a-a06a-4703-ad6b-c584d2a96721",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+        "theorem_title": "Total correctness of source field inversion",
+        "formal_statement": "theorem ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops {R B : ℕ} (r : Fin 31 → Fin R) (hr : Function.Injective r) (inp : Inputs)\n    (ell : ℕ) (h : 0 < ell) (a : Fin (2^ell)) (M : ℕ) (hM : 1 ≤ M)\n    (d : ExpandingCodes.Computation.TapeStore R B) (hd : ∀ j,d.reg j ≤ M) (hs : ExpandingCodes.Computation.SourceFieldArithmetic.InverseSetup r ell h a d) :\n    ∃ t e,t ≤ 20000*(M+1)^7 ∧ (ExpandingCodes.Computation.SourceFieldArithmetic.inverse r).Stops inp (d.toCfg (ExpandingCodes.Computation.SourceFieldArithmetic.inverse (B:=B) r).entry) t e ∧\n      e.store = ExpandingCodes.Computation.SourceFieldArithmetic.inverseResult r d ∧ e.reg (r 27) = (ExpandingCodes.PolynomialStretch.BinaryField.inverseIndex ell h a).val ∧\n      (∀ i,i = 0 ∨ i = 3 ∨ i = 19 ∨ i = 23 ∨ i = 24 → e.reg (r i) = d.reg (r i)) ∧\n      (∀ j,(∀ i,j ≠ r i) → e.reg j = d.reg j) ∧ (∀ j,e.reg j ≤ M) ∧ ExpandingCodes.Computation.FieldConvolution.tapeData e.store = ExpandingCodes.Computation.FieldConvolution.tapeData d := by sorry\n",
+        "natural_language_statement": "Let $\\ell>0$, $q=2^\\ell$, and let $a<q$ encode an element of the canonical binary extension field. Let $s$ be a store with $R$ registers and $B$ buffers, $r$ an injective placement of a 31-register workspace, and $I$ any input. Suppose $M\\ge1$, every register is at most $M$, and the initial workspace satisfies the inversion setup conditions, including the canonical field parameters and encoded operand.\n\nThe inversion program reaches its specified result store with\n\n$$t\\le20000(M+1)^7,\\qquad\ns'[r(27)]=\\operatorname{enc}(a^{-1}).$$\n\nThe operation is total, with $0^{-1}=0$. The designated input and parameter registers, registers outside the workspace, and tape payload are preserved, and every register remains at most $M$. This supplies the physical inverse operation used by Gaussian elimination.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.SourceFieldArithmetic. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/SourceFieldArithmetic.lean, declaration ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops; source file SHA256 82fb97d5572b62ae185bb5c6e4cda9100cd6cbac79b43d2f1a3514ef69bc0b6a. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "730eaac7-f5c8-48ae-be13-fd2f6338542a",
+        "created_at": "2026-11-15T00:12:25.718932+00:00",
+        "updated_at": "2026-11-15T00:13:21.321279+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "6a687c12-3ff0-4158-b4e6-d6ca5e9d783a",
+      "result": {
+        "id": "6a687c12-3ff0-4158-b4e6-d6ca5e9d783a",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+        "theorem_title": "Correctness of one expanding-code sampler layer",
+        "formal_statement": "theorem ExpandingCodes.Computation.SamplerProgram.layer_stops {d k ell b M : ℕ} {h : 0<ell}\n    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}\n    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}\n    (i : Fin k) (hk : k≤2^ell) (hb : 0<b) (hM : 1≤M) (caps : ExpandingCodes.Computation.SamplerProgram.LayerCaps d k ell b M)\n    (inp : Inputs) (s : ExpandingCodes.Computation.TapeStore (ExpandingCodes.Computation.SamplerProgram.Storage.registers d k) 2)\n    (hs : ExpandingCodes.Computation.SamplerProgram.LayerInvariant d k ell b h forms hashes z M s) :\n    ∃ t e,t≤ExpandingCodes.Computation.SamplerProgram.layerTimeBound d k i M ∧\n      (ExpandingCodes.Computation.SamplerProgram.layer d k i).Stops inp (s.toCfg (ExpandingCodes.Computation.SamplerProgram.layer d k i).entry) t e ∧\n      ExpandingCodes.Computation.SamplerProgram.LayerInvariant d k ell b h forms hashes z M e.store ∧ ExpandingCodes.Computation.TapeStore.SamePayload e.store s ∧\n      e.reg (ExpandingCodes.Computation.SamplerProgram.Storage.neighbor d k i)=i.val*b+\n        (ExpandingCodes.Computation.EncodedSampler.neighbor (ExpandingCodes.PolynomialStretch.BinaryField.indexOperations ell h) forms hashes i z).val ∧\n      (∀ j,e.reg (ExpandingCodes.Computation.SamplerProgram.Storage.point d k j)=s.reg (ExpandingCodes.Computation.SamplerProgram.Storage.point d k j)) ∧\n      (∀ j,e.reg (ExpandingCodes.Computation.SamplerProgram.Storage.countdown d k j)=s.reg (ExpandingCodes.Computation.SamplerProgram.Storage.countdown d k j)) ∧\n      (∀ a : Fin 80,(32≤a.val ∧ a.val<46) ∨ (60≤a.val ∧ a.val<69) →\n        e.reg (ExpandingCodes.Computation.SamplerProgram.Storage.low d k a)=s.reg (ExpandingCodes.Computation.SamplerProgram.Storage.low d k a)) ∧\n      e.output=s.output ∧\n      (∀ a : Fin k,a≠i → e.reg (ExpandingCodes.Computation.SamplerProgram.Storage.neighbor d k a)=s.reg (ExpandingCodes.Computation.SamplerProgram.Storage.neighbor d k a)) ∧\n      ExpandingCodes.Computation.SamplerProgram.LayerFrame d k i s e.store := by sorry\n",
+        "natural_language_statement": "Let $q=2^\\ell$ with $\\ell>0$, let $d$ be the point dimension, $k\\le q$ the number of layers, $b>0$ the number of buckets, and $M\\ge1$ a valid layer-capacity bound. Fix the encoded coefficient table of the two sampled linear forms per layer and fiber, the layer hash tables, a point $z\\in\\mathbb F_q^d$, and a layer index $i<k$.\n\nFor any input $I$ and store $s$ satisfying the sampler layer invariant, the layer program has an execution to $s'$ such that\n\n$$t\\le T_{\\rm layer}(d,k,i,M),\\qquad\ns'[\\operatorname{neighbor}(i)]=ib+h_i\\bigl(\\lambda_i(z),\\mu_{i,\\lambda_i(z)}(z),\\nu_{i,\\lambda_i(z)}(z)\\bigr).$$\n\nHere $T_{\\rm layer}$ is the defined layer clock, $\\lambda_i$ is the fixed first form, and the two other forms and $h_i$ are read from the supplied tables. The final store retains the layer invariant and the precise frame contract: the point, countdowns, other layers' neighbor registers, designated caller registers, output and tape payload are preserved. This isolates the actual execution of one sampler layer.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.SamplerProgram. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/SamplerProgram.lean, declaration ExpandingCodes.Computation.SamplerProgram.layer_stops; source file SHA256 2ed3be865bd9ea5d61b95adc541be8ba458cfc3d9647d0f0526575d3e41df5a8. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "2a9ca630-f674-4369-baab-1e798526f13e",
+        "created_at": "2026-11-15T00:12:25.781201+00:00",
+        "updated_at": "2026-11-15T00:14:00.629624+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "f708ec23-d1b2-4f21-b557-5526c64a19fb",
+      "result": {
+        "id": "f708ec23-d1b2-4f21-b557-5526c64a19fb",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+        "theorem_title": "Correctness of the sampler initialization program",
+        "formal_statement": "theorem ExpandingCodes.Computation.SamplerAssembly.prelude_stops {R : ℕ} (r : Fin 80 → Fin R) (hr : Function.Injective r)\n    (d n k : ℕ) (hd : 1 ≤ d) (hk : 0<k) (hn : 2 ≤ n) (hnk : k ≤ n)\n    (inp : Inputs) (hi : inp.input=ExpandingCodes.PolynomialStretch.sizeInput n) (M : ℕ) (hM : ExpandingCodes.PolynomialStretch.SamplerEnvelopeCovers d k n M) :\n    ∃ t e,t ≤ ExpandingCodes.Computation.SamplerAssembly.preludeTime d n M ∧\n      (ExpandingCodes.Computation.SamplerAssembly.samplerFrontendProgram r hr d k).Stops inp ((ExpandingCodes.Computation.SamplerAssembly.initialStore R 2).toCfg (ExpandingCodes.Computation.SamplerAssembly.samplerFrontendProgram r hr d k).entry) t e ∧\n      e.store=ExpandingCodes.Computation.SamplerAssembly.preludeStore r hr d n k inp ∧ ExpandingCodes.Computation.SamplerAssembly.RuntimeReady r d n k inp M e.store ∧ e.output=[] := by sorry\n",
+        "natural_language_statement": "Let $d\\ge1$, $k>0$, and $n\\ge\\max\\{2,k\\}$. Let $r$ injectively place the sampler's 80-register workspace in a bank of $R$ registers. Give the machine the canonical unary encoding of $n$ and arbitrary remaining input tapes. Suppose $M$ satisfies the sampler-envelope conditions for $d,k,n$.\n\nStarting from its specified initial store, the sampler frontend reaches exactly its specified initialization store and satisfies\n\n$$t\\le T_{\\rm init}(d,n,M),\\qquad\n\\mathcal R(s'),\\qquad \\operatorname{output}(s')=[\\,].$$\n\nThe clock $T_{\\rm init}$ is the defined frontend time. The readiness predicate $\\mathcal R$ includes the size parameters, canonical field environment, random tables and register bounds needed by the row-writing phase. This separates initialization from the sampler's subsequent row and layer loops.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.SamplerAssembly. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/SamplerAssembly.lean, declaration ExpandingCodes.Computation.SamplerAssembly.prelude_stops; source file SHA256 4a05e86060667bfd347b86e8c15ff03a21a6d9a7162509564a5e7e8c0af229b1. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "6e18dff8-2dea-42fc-a697-f6a6c5f31fab",
+        "created_at": "2026-11-15T00:12:25.848341+00:00",
+        "updated_at": "2026-11-15T00:13:35.619472+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "6ef226f0-6c89-42ea-8a2a-3bec7f1c0375",
+      "result": {
+        "id": "6ef226f0-6c89-42ea-8a2a-3bec7f1c0375",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.TesterFrontend.program_stops",
+        "theorem_title": "Correctness of the tester input and parameter program",
+        "formal_statement": "theorem ExpandingCodes.Computation.TesterFrontend.program_stops (d n M : ℕ) (hd : 4 ≤ d) (hn : 2 ≤ n)\n    (inp : Inputs) (y : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount d n)) (hi : inp.input=ExpandingCodes.PolynomialStretch.sizeInput n++ExpandingCodes.PolynomialStretch.wordBits y)\n    (hcover : ExpandingCodes.PolynomialStretch.TesterEnvelopeCovers d n M) :\n    ∃ t e,t ≤ ExpandingCodes.Computation.TesterFrontend.time d n M ∧\n      (ExpandingCodes.Computation.TesterFrontend.program d).Stops inp ((ExpandingCodes.Computation.TesterPrefix.initialStore d).toCfg (ExpandingCodes.Computation.TesterFrontend.program d).entry) t e ∧\n      ExpandingCodes.Computation.TesterGram.Core d (ExpandingCodes.PolynomialStretch.fieldExponent d n) (ExpandingCodes.PolynomialStretch.fieldExponent_pos d n) (ExpandingCodes.PolynomialStretch.auxiliaryDegree (ExpandingCodes.PolynomialStretch.fieldSize d n) d) M\n        (fun z => decide (y z≠0)) e.store ∧\n      e.output=[] ∧ e.bufferHead 0=1 ∧ e.bufferHead 1=1 ∧\n      (∀ b,ExpandingCodes.Computation.TapeArrays.BottomMarked e.store b) := by sorry\n",
+        "natural_language_statement": "Let $d\\ge4$, $n\\ge2$, and let $y$ be a binary word of length $m=\\operatorname{rowCount}(d,n)$. Supply the canonical encoding of $n$ followed by the bits of $y$, and suppose $M$ satisfies the tester-envelope conditions.\n\nThe tester frontend starts in its specified initial store and has an execution satisfying\n\n$$t\\le T_{\\rm front}(d,n,M),\\qquad \\mathcal C(s'),\n\\qquad \\operatorname{output}(s')=[\\,].$$\n\nHere $T_{\\rm front}$ is the defined frontend clock. The core predicate $\\mathcal C$ records the canonical field, auxiliary degree, word encoding and bounded workspace used by the Gram construction. The first two buffer heads equal one, and every buffer retains its bottom marker. This is the initialization interface for deterministic rank testing.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.TesterFrontend. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/TesterFrontend.lean, declaration ExpandingCodes.Computation.TesterFrontend.program_stops; source file SHA256 409ef568c314d742c163f97640cf36e887e6e4e2e632549ed442249c01726fcd. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "0be6dea5-f326-4ec3-8ff9-2ca1b42b985e",
+        "created_at": "2026-11-15T00:12:25.911631+00:00",
+        "updated_at": "2026-11-15T00:13:24.750177+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "e854d5be-6cde-4a06-8f97-21b85bc36729",
+      "result": {
+        "id": "e854d5be-6cde-4a06-8f97-21b85bc36729",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.TesterGram.program_stops",
+        "theorem_title": "Correctness of the tester Gram-matrix construction program",
+        "formal_statement": "theorem ExpandingCodes.Computation.TesterGram.program_stops (d ell : ℕ) (h : 0<ell) (D M : ℕ) (hM : 1 ≤ M)\n    (y : Fin ((2^ell)^d) → Bool) (inp : Inputs) (s : ExpandingCodes.Computation.TapeStore (80+6*d) 3)\n    (hc : ExpandingCodes.Computation.TesterGram.Core d ell h D M y s) (hh : s.bufferHead 0=1)\n    (hm : ExpandingCodes.Computation.TapeArrays.BottomMarked s 0) (hsp : ExpandingCodes.Computation.TapeArrays.BottomMarked s 1)\n    (hdM : d*((2^ell)-1) ≤ M) (hhead : 1+(2^ell)^d*(2^ell) ≤ M)\n    (hmatrix : (2^ell)^d*(2^ell)^d ≤ M) :\n    ∃ t e,t ≤ ExpandingCodes.Computation.TesterGram.programTime d M ((2^ell)^d) ∧ (ExpandingCodes.Computation.TesterGram.program d).Stops inp (s.toCfg (ExpandingCodes.Computation.TesterGram.program d).entry) t e ∧\n      ExpandingCodes.Computation.TesterGram.BuildState d ell h D M y s ((2^ell)^d*(2^ell)^d) e.store := by sorry\n",
+        "natural_language_statement": "Let $q=2^\\ell$ with $\\ell>0$, let $d$ be the point dimension, $D$ the monomial degree cutoff, $m=q^d$, and $y:\\mathbb F_q^d\\to\\{0,1\\}$ the received word. Let $s$ satisfy the tester core contract for these parameters, using $80+6d$ registers and three buffers. Assume its first buffer head equals one, the first two buffers have bottom markers, and\n\n$$M\\ge1,\\qquad d(q-1)\\le M,\\qquad 1+mq\\le M,\\qquad m^2\\le M.$$\n\nFor any input $I$, the Gram construction reaches the complete specified build state after\n\n$$t\\le T_{\\rm Gram}(d,M,m).$$\n\nThe build state certifies all $m^2$ entries of the full padded Gram representation together with its storage and preservation invariants. The clock $T_{\\rm Gram}$ is the defined program bound. This isolates construction of the matrix from its later rank computation.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.TesterGramCorrectness. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/TesterGramCorrectness.lean, declaration ExpandingCodes.Computation.TesterGram.program_stops; source file SHA256 dbb5aa866a876da3ff2770c131d50afa586b9ceb6b528cd0e568b35848e1a380. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "8e8b97bb-f9a2-4d18-9797-fe064f54f590",
+        "created_at": "2026-11-15T00:12:26.009286+00:00",
+        "updated_at": "2026-11-15T00:14:02.230219+00:00"
+      }
+    },
+    {
+      "http_status": 200,
+      "job_id": "3ec49295-4d66-40d2-a80f-b9011dd9c09e",
+      "result": {
+        "id": "3ec49295-4d66-40d2-a80f-b9011dd9c09e",
+        "kind": "problem",
+        "theorem_name": "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+        "theorem_title": "Correctness and time bound of the canonical rank program",
+        "formal_statement": "theorem ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical (degree n M : ℕ) (inp : Inputs) (d : ExpandingCodes.Computation.GaussianProgram.Store)\n    (y : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount degree n))\n    (hc : ExpandingCodes.Computation.GaussianDriver.Common (ExpandingCodes.PolynomialStretch.fieldExponent degree n) (ExpandingCodes.PolynomialStretch.fieldExponent_pos degree n) (ExpandingCodes.PolynomialStretch.rowCount degree n) M d)\n    (B : ExpandingCodes.Computation.Gaussian.Table (Fin (ExpandingCodes.PolynomialStretch.fieldSize degree n)) (ExpandingCodes.PolynomialStretch.rowCount degree n) (ExpandingCodes.PolynomialStretch.rowCount degree n))\n    (ha : ExpandingCodes.Computation.GaussianProgram.MatrixStored d 0 (ExpandingCodes.PolynomialStretch.binaryTestTable degree n y)) (hb : ExpandingCodes.Computation.GaussianProgram.MatrixStored d 1 B) :\n    ∃ (t : ℕ) (e : ExpandingCodes.Computation.TapeCfg 64 2 4260),t ≤ 100000*(M+1)^9 ∧\n      ExpandingCodes.Computation.GaussianDriver.rankProgram.Stops inp (d.toCfg ExpandingCodes.Computation.GaussianDriver.rankProgram.entry) t e ∧\n      ExpandingCodes.Computation.GaussianDriver.Common (ExpandingCodes.PolynomialStretch.fieldExponent degree n) (ExpandingCodes.PolynomialStretch.fieldExponent_pos degree n) (ExpandingCodes.PolynomialStretch.rowCount degree n) M e.store ∧\n      e.reg 48 = (ExpandingCodes.PolynomialStretch.testMatrix (ExpandingCodes.PolynomialStretch.binaryGeometry degree n) y).rank ∧\n      e.reg 62 = 0 ∧ e.roHead = d.roHead ∧ e.output = d.output := by sorry\n",
+        "natural_language_statement": "Fix a point dimension $d$, an input size $n$, and a binary word $y$ of length $m=\\operatorname{rowCount}(d,n)$. Let $s$ be a Gaussian-program store satisfying the common field, size and workspace invariant with bound $M$. Assume buffer zero contains the canonical encoded binary test table for $y$ and buffer one contains an arbitrary $m\\times m$ workspace table. Let $I$ be any input.\n\nThe finite rank program has an execution to $s'$ satisfying\n\n$$t\\le100000(M+1)^9,\\qquad\ns'[48]=\\operatorname{rank}_{\\mathbb F_q}\\!\\left(V\\operatorname{diag}(y)V^{\\mathsf T}\\right).$$\n\nHere $q$ is the specified field size and $V$ is the canonical auxiliary-monomial evaluation matrix. The common invariant is preserved, register 62 is zero, and the read heads and output are unchanged. This certifies the physical Gaussian-elimination stage used by the rank test.",
+        "definitions": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+        "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.GaussianDriverBounds. Supporting formal implementation contract, rather than a verbatim statement in the paper. Exact local source: ExpandingCodes/Computation/GaussianDriverBounds.lean, declaration ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical; source file SHA256 21ac36267db9cb35247b70f64f4de0e4809631950f41bd79dad4d7348ddc0b7c. The public construction is at https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch.",
+        "tags": [
+          "expanding-codes-polynomial-stretch",
+          "complexity-theory",
+          "coding-theory"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "d2ef7d93-ddaf-43d8-994f-78b913ed17c4",
+        "created_at": "2026-11-15T00:12:26.078637+00:00",
+        "updated_at": "2026-11-15T00:14:09.339182+00:00"
+      }
+    }
+  ]
+}

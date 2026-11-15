@@ -1,0 +1,2 @@
+import ExpandingCodes.Computation.ProgramObligations
+#print axioms ExpandingCodes.PolynomialStretch.binary_tester_implementation

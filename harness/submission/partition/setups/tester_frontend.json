@@ -1,0 +1,16 @@
+{
+  "name": "Solutions.Sol_ExpandingCodes_Computation_TesterFrontend_program_stops",
+  "isModule": false,
+  "options": {
+    "autoImplicit": false
+  },
+  "importArts": {
+    "Theorems.Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldSetup_setup_stops.olean"
+      ]
+    ]
+  },
+  "dynlibs": [],
+  "plugins": []
+}

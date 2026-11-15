@@ -1,0 +1,43 @@
+{
+  "theorem_id": "bd13c0a8-3111-40a4-a3aa-8c28287c369c",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.erasure_ambiguity",
+  "theorem_title": "Lemma 2.3 — vanishing expected ambiguity for doubly transitive code families",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Lemma 2.3: the field, alphabet size and invariant group may vary with j. -/\ntheorem erasure_ambiguity\n    (F : ℕ → Type) [∀ j, Field (F j)] [∀ j, Fintype (F j)]\n    (M : ℕ → ℕ) (C : ∀ j, Submodule (F j) (Fin (M j) → F j))\n    (ρ p : ℝ) (hρ : 0 < ρ ∧ ρ < 1) (hp : 0 ≤ p ∧ p < 1 - ρ)\n    (hsym : ∀ j, DoublyTransitiveCode (M j) (C j))\n    (hlength : Tendsto M atTop atTop)\n    (hrate : Tendsto (fun j => (Module.finrank (F j) (C j) : ℝ) / M j) atTop (nhds ρ)) :\n    Tendsto (fun j => erasureExpectation (C j) p / M j) atTop (nhds 0) := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "Let $F_j$ be any sequence of finite fields, let $M_j\\to\\infty$, and let $C_j\\subseteq F_j^{M_j}$ be linear codes invariant under doubly transitive groups of coordinate permutations. Suppose their rates converge to $\\rho\\in(0,1)$. Fix a valid erasure probability $0\\le p<1-\\rho$ and erase each coordinate independently. Then\n$$\\frac{\\mathbb E\\dim_{F_j}(C_j)_E}{M_j}\\longrightarrow0.$$\nThe fields and their cardinalities may vary arbitrarily with $j$. Ambiguity is the subspace supported on the erased set in the original coordinates.\n\nThis supplies the expected-dimension conclusion needed for the auxiliary generalized Reed–Muller code without any extra capacity hypothesis.\n\nDifferences from the source:\n- encoding: codes over F_{q_j}, independent erasures at a probability p<1−ρ, and o(M_j) → arbitrary finite-field types, an explicit valid probability 0≤p<1−ρ, a finite Bernoulli sum, and convergence of the ratio to zero; reason: finite fields are represented up to isomorphism; probability validity is standing context and M_j is eventually positive\n- encoding: invariance under doubly transitive groups → existence of a preserving subgroup with the ordered-pair transitivity property; reason: this spells out both requirements and adds no group or alphabet restriction\n",
+  "created_at": "2026-11-08T19:13:08.798651+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 10 / PDF p. 11, Lemma 2.3.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "262c01e7-345d-42c6-87ed-962d323f38a4",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "a433f57f-84fc-4f79-9968-8a6c85fac12a",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

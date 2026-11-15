@@ -1,0 +1,118 @@
+def coefficientIndexLayout (r : Fin 12 → Fin R) : Fin 5 → Fin R := ![r 0,r 1,r 2,r 3,r 4]
+def coefficientReadLayout (r : Fin 12 → Fin R) : Fin 8 → Fin R :=
+  ![r 3,r 1,r 5,r 6,r 7,r 8,r 9,r 10]
+
+theorem coefficientIndexLayout_injective (r : Fin 12 → Fin R) (hr : Function.Injective r) :
+    Function.Injective (coefficientIndexLayout r) := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;> simpa [coefficientIndexLayout,hr.eq_iff] using hij
+
+theorem coefficientReadLayout_injective (r : Fin 12 → Fin R) (hr : Function.Injective r) :
+    Function.Injective (coefficientReadLayout r) := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;> simpa [coefficientReadLayout,hr.eq_iff] using hij
+
+def coefficientLoadLabels (c d j : ℕ) : ℕ := (formIndexLabels c d j+48)+11
+
+/-- Actual form-table coefficient load, including physical address arithmetic,
+indexed seek/read, and copying the scalar coefficient into its caller register.
+Layout a0,q1,scratch2..10,coefficient destination11. -/
+def coefficientLoad (r : Fin 12 → Fin R) (b : Fin B) (c d j : ℕ) :
+    TapeProgram R B (coefficientLoadLabels c d j) :=
+  TapeProgram.seq (TapeProgram.seq (formIndex (coefficientIndexLayout r) c d j)
+    (lookup (coefficientReadLayout r) b)) (TapeMacros.copy (r 9) (r 11) (r 10))
+
+def coefficientAddress (r : Fin 12 → Fin R) (c d j : ℕ) (s : TapeStore R B) : ℕ :=
+  d*(s.reg (r 0)+c*s.reg (r 1))+j
+
+theorem coefficientLoad_stops (r : Fin 12 → Fin R) (hr : Function.Injective r)
+    (b : Fin B) (c d j : ℕ) (inp : Inputs) (M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) (hhead : s.bufferHead b≤M) (hm : TapeArrays.BottomMarked s b)
+    (hmid : s.reg (r 0)+c*s.reg (r 1)≤M) (hindex : coefficientAddress r c d j s≤M)
+    (v : ℕ) (hv : TapeArrays.ThermometerAt s b
+      (TapeArrays.entryOffset (coefficientAddress r c d j s) (s.reg (r 1))) (s.reg (r 1)) v) :
+    ∃ t e, t≤(112+6*c+6*d*(c+1)+2*j)*(M+1)^2 ∧
+      (coefficientLoad r b c d j).Stops inp (s.toCfg (coefficientLoad (B := B) r b c d j).entry) t e ∧
+      e.reg (r 11)=v ∧ e.reg (r 0)=s.reg (r 0) ∧ e.reg (r 1)=s.reg (r 1) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧ (∀ x,e.reg x≤M) ∧
+      e.bufferHead=Function.update s.bufferHead b
+        (TapeArrays.entryOffset (coefficientAddress r c d j s) (s.reg (r 1))+s.reg (r 1)) ∧
+      TapeStore.SamePayload e.store s ∧ TapeArrays.BottomMarked e.store b := by
+  have hir := coefficientIndexLayout_injective r hr
+  have hrr := coefficientReadLayout_injective r hr
+  obtain ⟨u,e₁,hu,h₁,hs₁⟩ := formIndex_stops (coefficientIndexLayout r) hir c d j inp s
+  have hv₁ (i : Fin 12) : e₁.reg (r i)=if i=4 then 0 else if i=3 then coefficientAddress r c d j s
+      else if i=2 then s.reg (r 0)+c*s.reg (r 1) else s.reg (r i) := by
+    change e₁.store.reg (r i)=_
+    rw [hs₁]
+    simp [formIndexStore,coefficientIndexLayout,reg_layout r hr,coefficientAddress]
+  have hb₁ : ∀ x,e₁.reg x≤M := by
+    change ∀ x,e₁.store.reg x≤M
+    rw [hs₁]
+    unfold formIndexStore
+    apply setReg_bound
+    · apply setReg_bound
+      · apply setReg_bound
+        · exact hs
+        · exact hmid
+      · exact hindex
+    · omega
+  have hp₁ : TapeStore.SamePayload e₁.store s := by rw [hs₁]; exact ⟨rfl,rfl,fun _ _ => rfl⟩
+  have hh₁ : e₁.bufferHead b≤M := by change e₁.store.bufferHead b≤M; rw [hs₁]; exact hhead
+  have hm₁ : TapeArrays.BottomMarked e₁.store b := hm.of_payload hp₁
+  have hidx : e₁.store.reg ((coefficientReadLayout r) 0)=coefficientAddress r c d j s := by change e₁.reg ((coefficientReadLayout r) 0)=_; simp [coefficientReadLayout,hv₁]
+  have hwidth : e₁.store.reg ((coefficientReadLayout r) 1)=s.reg (r 1) := by
+    change e₁.reg ((coefficientReadLayout r) 1)=_; simp [coefficientReadLayout,hv₁]
+  have hblock : TapeArrays.ThermometerAt e₁.store b
+      (TapeArrays.entryOffset (e₁.store.reg ((coefficientReadLayout r) 0)) (e₁.store.reg ((coefficientReadLayout r) 1)))
+      (e₁.store.reg ((coefficientReadLayout r) 1)) v := by
+    rw [hidx,hwidth]
+    exact hv.of_payload hp₁
+  obtain ⟨w,e₂,hw,h₂,hs₂,hvalue,hidx₂,hwidth₂,hout₂,hb₂,hh₂,hp₂⟩ := lookup_stops
+    (coefficientReadLayout r) hrr b inp M e₁.store hb₁ hh₁ hm₁.marked v hblock
+  obtain ⟨z,e,hz,he,hes,heb⟩ := copy_stops_bound (r 9) (r 11) (r 10)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M e₂.store hb₂
+  have hall := (h₁.seq h₂).seq he
+  have hp : TapeStore.SamePayload e.store s := by
+    have hh : TapeStore.SamePayload e.store e₂.store := by rw [hes]; exact ⟨rfl,rfl,fun _ _ => rfl⟩
+    exact (hh.trans hp₂).trans hp₁
+  refine ⟨u+1+w+1+z,_,?_,hall,?_,?_,?_,?_,heb,?_,hp,hm.of_payload hp⟩
+  · have hpw : M+1≤(M+1)^2 := by nlinarith
+    have hti := formIndexTime_bound (coefficientIndexLayout r) c d j M s hs
+    have hti' := hti.trans (Nat.mul_le_mul_left (32+6*c+6*d*(c+1)+2*j) hpw)
+    rw [hu] at *
+    nlinarith
+  · change e.store.reg (r 11)=_
+    rw [hes]
+    simpa [reg_layout r hr,coefficientReadLayout] using hvalue
+  · change e.store.reg (r 0)=_
+    rw [hes]
+    simp only [reg_layout r hr,show (0:Fin 12)≠10 by decide,show (0:Fin 12)≠11 by decide,if_false]
+    have hne : ∀ i : Fin 8,r 0≠coefficientReadLayout r i := by
+      intro i; fin_cases i <;> simp [coefficientReadLayout,hr.eq_iff]
+    rw [hout₂ (r 0) hne]
+    change e₁.reg (r 0)=_
+    simp [hv₁]
+  · change e.store.reg (r 1)=_
+    rw [hes]
+    simp only [reg_layout r hr,show (1:Fin 12)≠10 by decide,show (1:Fin 12)≠11 by decide,if_false]
+    simpa [coefficientReadLayout,hv₁] using hwidth₂
+  · intro x hx
+    change e.store.reg x=_
+    rw [hes]
+    simp only [TapeStore.setReg,Function.update_of_ne (hx 10),Function.update_of_ne (hx 11)]
+    have hne : ∀ i : Fin 8,x≠coefficientReadLayout r i := by
+      intro i; fin_cases i <;> simp [coefficientReadLayout,hx]
+    rw [hout₂ x hne]
+    change e₁.store.reg x=_
+    rw [hs₁]
+    simp [formIndexStore,coefficientIndexLayout,TapeStore.setReg,hx]
+  · change e.store.bufferHead=_
+    rw [hes]
+    change e₂.bufferHead=_
+    rw [hh₂,hidx,hwidth]
+    change Function.update e₁.store.bufferHead b _=_
+    rw [hs₁]
+    rfl
+
+#print axioms coefficientLoad_stops

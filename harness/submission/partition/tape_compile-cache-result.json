@@ -1,0 +1,18 @@
+{
+  "source_sha256": "03a113d5b4cbf0f647f04641928671d19b503d6814376209d764972e2c3dda96",
+  "source_bytes": 110535,
+  "key": "tape_compile",
+  "mode": "cache",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 106.220831,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./.lake/build/lib/lean/harness/submission/partition/cache/Cache_tape_compile.olean",
+    "./harness/submission/partition/cache/Cache_tape_compile.lean"
+  ],
+  "output": "./.lake/build/lib/lean/harness/submission/partition/cache/Cache_tape_compile.olean"
+}

@@ -1,0 +1,11 @@
+harness/attempts/tester_backend/TesterPrefix.lean:248:6: warning: Unused tactic linter: `change c.store.output = []` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/tester_backend/TesterPrefix.lean:256:6: warning: Unused tactic linter: `change c.store.bufferHead 0 = 1` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/tester_backend/TesterPrefix.lean:260:6: warning: Unused tactic linter: `change c.store.bufferHead 1 = 1` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterPrefix.setup_initial_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterPrefix.input_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

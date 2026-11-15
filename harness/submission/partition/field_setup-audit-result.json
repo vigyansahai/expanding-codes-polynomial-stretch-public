@@ -1,0 +1,17 @@
+{
+  "source_sha256": "78ab9871e6ac4ffb4c7344c0a39412b562b3a7e8ccf0e770a93af8ce621fc0d1",
+  "source_bytes": 1090,
+  "key": "field_setup",
+  "mode": "audit",
+  "exit_code": 0,
+  "elapsed_seconds": 90.361773167,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./harness/submission/partition/audit-cache/Audit_field_setup.olean",
+    "./harness/submission/partition/Audit_field_setup.lean"
+  ],
+  "output": "./harness/submission/partition/audit-cache/Audit_field_setup.olean"
+}

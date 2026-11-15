@@ -1,0 +1,117 @@
+/-- Exact support encoding for every binary word. -/
+noncomputable def wordSupportEquiv (m : ℕ) : Word m ≃ Finset (Fin m) where
+  toFun e := Finset.univ.filter (fun i => e i ≠ 0)
+  invFun S i := if i ∈ S then 1 else 0
+  left_inv e := by
+    funext i
+    simpa only [Finset.mem_filter, Finset.mem_univ, true_and, boolBitEquiv,
+      Equiv.coe_fn_mk, Bool.decide_coe] using boolBitEquiv.apply_symm_apply (e i)
+  right_inv S := by
+    ext i
+    by_cases hi : i ∈ S <;> simp [hi]
+
+@[simp] theorem wordSupportEquiv_card (m : ℕ) (e : Word m) :
+    (wordSupportEquiv m e).card = weight e := by
+  unfold wordSupportEquiv weight
+  congr 1
+  ext i
+  simp
+
+/-- The exact binary Bernoulli weights sum to one. -/
+theorem sum_bernoulliWord (m : ℕ) (p : ℝ) :
+    ∑ e : Word m, bernoulliWord m p e = 1 := by
+  have hs := Fintype.sum_equiv (wordSupportEquiv m)
+    (bernoulliWord m p)
+    (fun E : Finset (Fin m) => p^E.card*(1-p)^(m-E.card))
+    (by intro e; simp only [bernoulliWord, wordSupportEquiv_card])
+  rw [hs]
+  simpa using Fintype.sum_pow_mul_eq_add_pow (Fin m) p (1-p)
+
+theorem bernoulliWord_nonneg (m : ℕ) (p : ℝ) (hp : 0 ≤ p) (hp' : p ≤ 1)
+    (e : Word m) : 0 ≤ bernoulliWord m p e :=
+  mul_nonneg (pow_nonneg hp _) (pow_nonneg (sub_nonneg.mpr hp') _)
+
+/-- Exact centered generating function for finite Bernoulli subsets. -/
+theorem bernoulli_subsets_mgf (m : ℕ) (p s : ℝ) :
+    (∑ E : Finset (Fin m), p^E.card*(1-p)^(m-E.card) *
+      Real.exp (s*((E.card : ℝ)-p*m))) =
+      (p*Real.exp (s*(1-p)) + (1-p)*Real.exp (-s*p))^m := by
+  have ht (E : Finset (Fin m)) :
+      p^E.card*(1-p)^(m-E.card)*Real.exp (s*((E.card : ℝ)-p*m)) =
+        (p*Real.exp (s*(1-p)))^E.card *
+          ((1-p)*Real.exp (-s*p))^(m-E.card) := by
+    have hcard : E.card ≤ m := by simpa using Finset.card_le_univ E
+    have he : Real.exp (s*((E.card : ℝ)-p*m)) =
+        (Real.exp (s*(1-p)))^E.card * (Real.exp (-s*p))^(m-E.card) := by
+      rw [← Real.exp_nat_mul, ← Real.exp_nat_mul, ← Real.exp_add]
+      congr 1
+      rw [Nat.cast_sub hcard]
+      ring
+    rw [he, mul_pow, mul_pow]
+    ring
+  simp_rw [ht]
+  simpa using Fintype.sum_pow_mul_eq_add_pow (Fin m)
+    (p*Real.exp (s*(1-p))) ((1-p)*Real.exp (-s*p))
+
+/-- Sharp centered MGF bound for exact binary Bernoulli weights. -/
+theorem bernoulli_weight_mgf_le (m : ℕ) (p s : ℝ) (hp : 0 ≤ p) (hp' : p ≤ 1) :
+    (∑ e : Word m, bernoulliWord m p e *
+      Real.exp (s*((weight e : ℝ)-p*m))) ≤ Real.exp ((m : ℝ)*s^2/8) := by
+  have hs := Fintype.sum_equiv (wordSupportEquiv m)
+    (fun e : Word m => bernoulliWord m p e * Real.exp (s*((weight e : ℝ)-p*m)))
+    (fun E : Finset (Fin m) => p^E.card*(1-p)^(m-E.card)*Real.exp(s*((E.card : ℝ)-p*m)))
+    (by intro e; simp only [bernoulliWord, wordSupportEquiv_card])
+  rw [hs, bernoulli_subsets_mgf]
+  calc
+    _ ≤ (Real.exp (s^2/8))^m := by
+      have hscalar := bernoulli_two_point_mgf_le p s hp hp'
+      have hbase : 0 ≤ p*Real.exp (s*(1-p))+(1-p)*Real.exp (-s*p) := by positivity
+      exact pow_le_pow_left₀ hbase (by simpa only [add_comm] using hscalar) m
+    _ = _ := by
+      rw [← Real.exp_nat_mul]
+      congr 1
+      ring
+
+/-- Finite Bernoulli Hoeffding upper tail, proved from the exact generating function. -/
+theorem bernoulli_weight_upper_tail (m : ℕ) (hm : 0 < m) (p : ℝ)
+    (hp : 0 ≤ p) (hp' : p ≤ 1) (t : ℝ) (ht : 0 ≤ t) :
+    (∑ e : Word m, bernoulliWord m p e *
+      (if p*m+t ≤ (weight e : ℝ) then (1 : ℝ) else 0)) ≤
+        Real.exp (-2*t^2/(m : ℝ)) := by
+  classical
+  have hmR : (0 : ℝ) < m := by exact_mod_cast hm
+  let s := 4*t/(m : ℝ)
+  have hs : 0 ≤ s := by positivity
+  let tail := ∑ e : Word m, bernoulliWord m p e *
+    (if p*m+t ≤ (weight e : ℝ) then (1 : ℝ) else 0)
+  have hmark : Real.exp (s*t)*tail ≤
+      ∑ e : Word m, bernoulliWord m p e*Real.exp(s*((weight e : ℝ)-p*m)) := by
+    dsimp only [tail]
+    rw [Finset.mul_sum]
+    apply Finset.sum_le_sum
+    intro e _
+    have hw := bernoulliWord_nonneg m p hp hp' e
+    by_cases he : p*m+t ≤ (weight e : ℝ)
+    · simp only [if_pos he, mul_one]
+      rw [mul_comm (Real.exp (s*t))]
+      apply mul_le_mul_of_nonneg_left _ hw
+      apply Real.exp_le_exp.mpr
+      nlinarith [mul_nonneg hs (show 0 ≤ (weight e : ℝ)-p*m-t by linarith)]
+    · simp only [if_neg he, mul_zero]
+      exact mul_nonneg hw (Real.exp_nonneg _)
+  calc
+    _ = Real.exp (-s*t)*(Real.exp (s*t)*tail) := by
+      change tail = _
+      rw [← mul_assoc, ← Real.exp_add]
+      simp
+    _ ≤ Real.exp (-s*t)*
+        (∑ e : Word m, bernoulliWord m p e*Real.exp(s*((weight e : ℝ)-p*m))) :=
+      mul_le_mul_of_nonneg_left hmark (Real.exp_nonneg _)
+    _ ≤ Real.exp (-s*t)*Real.exp ((m : ℝ)*s^2/8) :=
+      mul_le_mul_of_nonneg_left (bernoulli_weight_mgf_le m p s hp hp') (Real.exp_nonneg _)
+    _ = _ := by
+      rw [← Real.exp_add]
+      congr 1
+      dsimp [s]
+      field_simp
+      ring

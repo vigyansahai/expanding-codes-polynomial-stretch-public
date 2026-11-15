@@ -1,0 +1,31 @@
+theorem step_contract (d n k M : ℕ) (hd : 1 ≤ d) (hn : 2 ≤ n) (hkn : k ≤ n)
+    (hM : SamplerEnvelopeCovers d k n M) (inp : NKtLB.Inputs) :
+    StepContract d n k M inp (SamplerProgram.layerTimeUniform d k M) := by
+  intro i s z hs hz
+  have hkq := fieldSize_covers_arity d n k hd hn hkn
+  have hI := layerInvariant_of_ready d n k M inp s hs z hz
+  obtain ⟨t,e,ht,he,hIe,hpay,hvalue,hpoints,hcounts,hprotected,hout,hother,hframe⟩ :=
+    SamplerProgram.layer_stops i hkq (show 0<2^Nat.log 2 (n/k) from pow_pos (by decide) _)
+      (show 1 ≤ M from by have := hM.two;omega) (layerCaps_of_envelope d n k M hd hM) inp s hI
+  have heReady : RuntimeReady (SamplerProgram.Storage.low d k) d n k inp M e.store := by
+    apply ready_of_layerInvariant d n k M inp s e.store hs z hIe
+    intro j hj hj'
+    exact hprotected j (Or.inl ⟨hj,by omega⟩)
+  have hstable : StablePost d n k M inp s e.store :=
+    ⟨heReady,hpoints,hcounts,hprotected 60 (Or.inr (by decide)),hout⟩
+  refine ⟨t,e,ht.trans (SamplerProgram.layerTimeBound_le_uniform d k M i),he,⟨hstable,?_,hother⟩⟩
+  simpa only [operations] using hvalue
+
+/-- The complete concrete sampler really halts and emits the frozen indexed
+matrix on every finite random tape, with a polynomial source-step bound. -/
+theorem sampler_source (d n k : ℕ) (hd : 1 ≤ d) (hk : 0<k) (hn : 2 ≤ n) (hnk : k ≤ n)
+    (ω : List Bool) :
+    ∃ t ≤ sourceTime d n k,
+      (sampler d k).halted ((sampler d k).run ⟨sizeInput n,[],[],ω⟩ t) ∧
+      ((sampler d k).run ⟨sizeInput n,[],[],ω⟩ t).output=
+        matrixBits (binarySamplerFromInput d n k (Nat.log 2 (n/k)) ⟨sizeInput n,[],[],ω⟩) := by
+  exact sampler_source_of_step d n k hd hk hn hnk ω
+    (step_contract d n k (samplerEnvelope d k n) hd hn hnk (samplerEnvelope_covers d k n) _)
+
+#print axioms step_contract
+#print axioms sampler_source

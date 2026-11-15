@@ -1,0 +1,89 @@
+/-- Conservative finite write footprint of one layer. Point data, countdowns,
+setup counters, row controls and every other neighbor lie outside it. -/
+def LayerWritable (d k : ℕ) (i : Fin k) (x : Fin (Storage.registers d k)) : Prop :=
+  x.val<32 ∨ (53≤x.val ∧ x.val<60) ∨ (69≤x.val ∧ x.val<75) ∨
+    (80+2*d≤x.val ∧ x.val<80+3*d) ∨ x=Storage.neighbor d k i
+
+def LayerFrame (d k : ℕ) (i : Fin k) (s e : TapeStore (Storage.registers d k) 2) : Prop :=
+  ∀ x,¬LayerWritable d k i x → e.reg x=s.reg x
+
+theorem LayerFrame.trans {d k : ℕ} {i : Fin k} {s e z : TapeStore (Storage.registers d k) 2}
+    (h : LayerFrame d k i s e) (g : LayerFrame d k i e z) : LayerFrame d k i s z :=
+  fun x hx => (g x hx).trans (h x hx)
+
+theorem writable_field (d k : ℕ) (i : Fin k) (a : Fin 31) : LayerWritable d k i (Storage.field d k a) := by
+  left
+  change a.val<32
+  have := a.isLt
+  omega
+
+theorem writable_low (d k : ℕ) (i : Fin k) (a : Fin 80)
+    (ha : a.val<32 ∨ (53≤a.val ∧ a.val<60) ∨ (69≤a.val ∧ a.val<75)) :
+    LayerWritable d k i (Storage.low d k a) := by
+  unfold LayerWritable
+  rcases ha with ha|ha|ha
+  · exact Or.inl ha
+  · exact Or.inr (Or.inl ha)
+  · exact Or.inr (Or.inr (Or.inl ha))
+
+theorem writable_coefficient (d k : ℕ) (i : Fin k) (j : Fin d) :
+    LayerWritable d k i (Storage.coefficient d k j) := by
+  right; right; right; left
+  simp only [Storage.coefficient_val]
+  have := j.isLt
+  omega
+
+theorem writable_fixedCommon (d k : ℕ) (i : Fin k) (j : Fin 33) :
+    LayerWritable d k i (Storage.fixedCommon d k j) := by
+  rcases Storage.fixedCommon_cases d k j with hj|hj
+  · exact Or.inl hj
+  · right; right; left; omega
+
+theorem writable_formLayout (d k : ℕ) (i : Fin k) :
+    ∀ a,LayerWritable d k i (Storage.formLayout d k a) := by
+  intro a
+  cases a with
+  | inl a =>
+    fin_cases a <;> first
+      | exact writable_low d k i _ (by decide)
+      | simpa only [Storage.formLayout,Storage.formCommon,Storage.address] using writable_low d k i (70 : Fin 80) (by decide)
+  | inr j => exact writable_coefficient d k i j
+
+theorem point_not_writable (d k : ℕ) (i : Fin k) (j : Fin d) :
+    ¬LayerWritable d k i (Storage.point d k j) := by
+  have hj := j.isLt
+  simp only [LayerWritable,Storage.point_val,Fin.ext_iff,Storage.neighbor_val]
+  omega
+
+theorem countdown_not_writable (d k : ℕ) (i : Fin k) (j : Fin d) :
+    ¬LayerWritable d k i (Storage.countdown d k j) := by
+  have hj := j.isLt
+  simp only [LayerWritable,Storage.countdown_val,Fin.ext_iff,Storage.neighbor_val]
+  omega
+
+theorem protected_low_not_writable (d k : ℕ) (i : Fin k) (a : Fin 80)
+    (ha : (32≤a.val ∧ a.val<46) ∨ (60≤a.val ∧ a.val<69)) :
+    ¬LayerWritable d k i (Storage.low d k a) := by
+  simp only [LayerWritable,Storage.low_val,Fin.ext_iff,Storage.neighbor_val]
+  omega
+
+theorem other_neighbor_not_writable (d k : ℕ) (i a : Fin k) (ha : a≠i) :
+    ¬LayerWritable d k i (Storage.neighbor d k a) := by
+  have hn : Storage.neighbor d k a≠Storage.neighbor d k i := (Storage.neighbor_injective d k).ne ha
+  simp only [LayerWritable,Storage.neighbor_val,hn,or_false]
+  omega
+
+theorem LayerInvariant.transport {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    {i : Fin k} {s e : TapeStore (Storage.registers d k) 2}
+    (hs : LayerInvariant d k ell b h forms hashes z M s) (hf : LayerFrame d k i s e)
+    (he : Environment (Storage.field d k) ell (selectedIndex ell h) e)
+    (hc : ∀ x,e.reg x≤M) (hh : ∀ t,e.bufferHead t≤M) (hp : TapeStore.SamePayload e s) :
+    LayerInvariant d k ell b h forms hashes z M e := by
+  refine ⟨he,?_,?_,hc,hh,hs.tables.of_payload hp⟩
+  · rw [hf _ (protected_low_not_writable d k i 39 (by decide))]
+    exact hs.buckets
+  · intro j
+    rw [hf _ (point_not_writable d k i j)]
+    exact hs.points j

@@ -1,0 +1,16 @@
+{
+  "name": "harness.submission.prune.ScopeCacheB",
+  "isModule": true,
+  "options": {
+    "autoImplicit": false
+  },
+  "importArts": {
+    "harness.submission.prune.ScopeCacheA": [
+      [
+        "./harness/submission/prune/ScopeCacheA.olean"
+      ]
+    ]
+  },
+  "dynlibs": [],
+  "plugins": []
+}

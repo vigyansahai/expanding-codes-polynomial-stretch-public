@@ -1,0 +1,8 @@
+harness/attempts/tester_backend/TesterFrontend.lean:65:6: warning: Unused tactic linter: `change TapeArrays.BottomMarked e.store 2` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/tester_backend/TesterFrontend.lean:69:6: warning: Unused tactic linter: `change e.store.bufferHead 2 ≤ M` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterFrontend.program_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterFrontend.clock_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]

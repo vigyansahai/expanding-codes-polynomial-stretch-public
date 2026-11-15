@@ -1,0 +1,43 @@
+{
+  "theorem_id": "ac6f56d7-9985-4160-9c5d-84b2bccf5082",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.auxiliary_rate",
+  "theorem_title": "Lemma 2.4 — exact limiting rate and half-erasure ambiguity",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Lemma 2.4: the exact continuous-uniform limiting rate and the half-erasure limit. -/\ntheorem auxiliary_rate (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)\n    (g : ∀ n, Geometry (dimension ε) n) :\n    1 / 2 - ε / 8 ≤ limitingRate (dimension ε) ∧\n    limitingRate (dimension ε) < 1 / 2 ∧\n    Tendsto (fun n => (Module.finrank (g n).F (auxiliaryCode (g n)) : ℝ) /\n      rowCount (dimension ε) n) atTop (nhds (limitingRate (dimension ε))) ∧\n    Tendsto (fun n => erasureExpectation (auxiliaryCode (g n)) (1 / 2) /\n      rowCount (dimension ε) n) atTop (nhds 0) := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "Fix $0<\\varepsilon<1/2$ and the parameter $d=2\\lceil512\\varepsilon^{-2}\\rceil$. For the auxiliary code $B$ in equation (5), put $r=\\dim_{F_q}B$ and $m=q^d$. Along the construction as $n\\to\\infty$,\n$$\\frac r m\\longrightarrow\\rho_d=\\Pr\\!\\left[\\sum_{j=1}^dX_j\\le(d-3)/2\\right],\\qquad \\frac12-\\frac\\varepsilon8\\le\\rho_d<\\frac12,$$\nwhere the $X_j$ are independent uniform variables on $[0,1]$. If each coordinate is erased independently with probability $1/2$, then\n$$\\frac{\\mathbb E\\dim_{F_q}B_E}{m}\\longrightarrow0.$$\nThese assertions hold for every compatible family of finite fields and public row orders. The rate is computed from the actual evaluation subspace, not fixed by definition to one half.\n\nThis result supplies both the exact rate bound and the erasure-dimension estimate needed by the distinguisher.\n\nDifferences from the source:\n- encoding: independent continuous uniforms and asymptotic ratios for the code B → Lebesgue volume of a measurable subset of the unit cube and limits along the construction n→∞; reason: the unit cube has product-uniform probability one, and the construction field sizes tend to infinity\n- encoding: r=dim B and E dim B_E → Mathlib finrank of the generalized evaluation span and a finite Bernoulli-weighted sum; reason: these compute the same dimensions and expectation without an integrability premise\n",
+  "created_at": "2026-11-08T19:12:49.040187+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 10 / PDF p. 11, Lemma 2.4.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "259ae34c-dc36-4067-a4ee-ad707855cbcb",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "50184052-9168-4737-88ab-06fd1430942a",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

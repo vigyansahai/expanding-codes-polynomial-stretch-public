@@ -1,0 +1,18 @@
+harness/attempts/tester_backend/TesterBackendPrep.lean:61:37: error: Tactic `subst` failed: invalid equality proof, it is not of the form (x = t) or (t = x)
+  p = (70, 49) ∨ p ∈ []
+
+case inr.inr.inr.inr.inr
+p : Pair
+h✝ : p = (70, 49) ∨ p ∈ []
+⊢ p.1 ≠ p.2 ∧ p.1 ≠ 79 ∧ p.2 ≠ 79
+harness/attempts/tester_backend/TesterBackendPrep.lean:60:41: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [metadataPairs, List.mem_cons] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterBackendPrep.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

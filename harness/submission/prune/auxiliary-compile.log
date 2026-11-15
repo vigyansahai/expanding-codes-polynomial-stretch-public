@@ -1,0 +1,126 @@
+harness/submission/prune/AuxiliaryRate.lean:467:2: warning: Try `simp at hx` instead of `simpa using hx`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/prune/AuxiliaryRate.lean:2378:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.expectationOn_mono`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2387:8: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.expectationOn_const`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2396:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.expectationOn_eq_expectation_subtype`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2416:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.expectationOn_permute`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2442:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.expectationOn_insert`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2468:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.extrinsicFailure_mono`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2475:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Erasure.extrinsicFailure_permute`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2883:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.indicator_nonneg`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2889:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.indicator_le_one`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:2914:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.gradient_indicator_nonneg`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3028:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.gradient_indicator_values`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3372:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.expectationOn_congr`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3379:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.expectationOn_add`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3383:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.expectationOn_mul_left`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3396:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.coordinate_insert_of_ne`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3454:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.coordinate_mul_eq`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3490:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.SharpThreshold.expectationOn_mixed_norm`:
+  [Fintype I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+harness/submission/prune/AuxiliaryRate.lean:3592:5: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/prune/AuxiliaryRate.lean:3592:18: warning: Variable name `hr'` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr'
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/submission/prune/AuxiliaryRate.lean:4450:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Lean check peak resident memory: 5407 MB; cap: 6144 MB

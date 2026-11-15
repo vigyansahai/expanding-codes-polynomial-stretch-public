@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "nodes": [
+    {
+      "id": "finite_field_triple_orthogonality",
+      "declaration": "ExpandingCodes.sum_eval_triple_eq_zero",
+      "file": "ExpandingCodes/Algebra/PolynomialSum.lean",
+      "statement": "∀ {K σ : Type*} [Field K] [Fintype K] [Fintype σ] [DecidableEq σ]\n    (p q a : MvPolynomial σ K) (R S : ℕ),\n    p.totalDegree ≤ R → q.totalDegree ≤ R → a.totalDegree ≤ S →\n    2 * R + S < Fintype.card σ * (Fintype.card K - 1) →\n    (∑ x : σ → K, MvPolynomial.eval x p * MvPolynomial.eval x q * MvPolynomial.eval x a) = 0",
+      "statement_sha256": "5c794538199bdb38d76f580e5aeaf45c276432775d9154d1a2d0ede765779873",
+      "proof_route": "Expand each polynomial into monomials. Below d(q-1), every supported exponent vector has one coordinate <q-1. Factor each monomial evaluation sum into a product of coordinate power sums; that coordinate factor is zero. Apply totalDegree_mul twice and the three separate degree bounds.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "tmp/feasibility/paper.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "470-515",
+          "role": "Paper Section 2.2 and Lemma 2.2: each column is a product of three affine equation indicators and has degree at most 3(q-1)."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+          "lines": "311-325",
+          "declaration": "FiniteField.sum_pow_lt_card_sub_one",
+          "role": "Univariate power-sum orthogonality."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+          "lines": "301-302",
+          "declaration": "Fintype.prod_sum",
+          "role": "Independent-coordinate sum factorization."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/ChevalleyWarning.lean",
+          "lines": "53-103",
+          "declaration": "MvPolynomial.sum_eval_eq_zero",
+          "role": "Existing equivalent orthogonality theorem discovered after the direct factorization proof; local proof does not depend on this theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Initial declarations without DecidableEq σ",
+          "result": "Fintype (σ → K) was not synthesized; made the standard variable-index decidable equality assumption explicit. In finite applications classical supplies it."
+        },
+        {
+          "approach": "Initial indicator evaluation statement without DecidableEq K",
+          "result": "The if-expression requires a decidable equality instance; added it only to evaluation theorems with if-expressions."
+        },
+        {
+          "approach": "Unparenthesized constant summand ∑ i, card K - 1",
+          "result": "Lean parsed subtraction outside the sum; parenthesized the summand. No mathematical obstruction."
+        }
+      ],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      }
+    },
+    {
+      "id": "affine_flat_pair_orthogonality",
+      "declaration": "ExpandingCodes.sum_eval_pair_mul_flatIndicator_eq_zero",
+      "file": "ExpandingCodes/Algebra/FlatIndicator.lean",
+      "statement": "∀ {K σ ι : Type*} [Field K] [Fintype K] [Fintype σ] [DecidableEq σ] [Fintype ι]\n    (p q : MvPolynomial σ K) (forms : ι → MvPolynomial σ K) (values : ι → K) (R : ℕ),\n    p.totalDegree ≤ R → q.totalDegree ≤ R → (∀ i, (forms i).totalDegree ≤ 1) →\n    2 * R + Fintype.card ι * (Fintype.card K - 1) < Fintype.card σ * (Fintype.card K - 1) →\n    (∑ x : σ → K, MvPolynomial.eval x p * MvPolynomial.eval x q *\n      MvPolynomial.eval x (ExpandingCodes.flatIndicator forms values)) = 0",
+      "statement_sha256": "355b533427fd43096db74fcbfe990b78669c5121a650b3f8917242b77555d7df",
+      "proof_route": "Build equationIndicator p a=1-(p-C a)^(q-1), prove its exact 0/1 evaluation by finite-field Fermat, multiply indicators, and bound total degree by card ι*(q-1). Then apply the independently proved triple-polynomial orthogonality theorem. The application ι=Fin 3 gives paper Lemma 2.2 column orthogonality.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "finite_field_triple_orthogonality"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "tmp/feasibility/paper.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "470-515",
+          "role": "Paper Section 2.2 and Lemma 2.2: each column is a product of three affine equation indicators and has degree at most 3(q-1)."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+          "lines": "311-325",
+          "declaration": "FiniteField.sum_pow_lt_card_sub_one",
+          "role": "Univariate power-sum orthogonality."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+          "lines": "301-302",
+          "declaration": "Fintype.prod_sum",
+          "role": "Independent-coordinate sum factorization."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/ChevalleyWarning.lean",
+          "lines": "53-103",
+          "declaration": "MvPolynomial.sum_eval_eq_zero",
+          "role": "Existing equivalent orthogonality theorem discovered after the direct factorization proof; local proof does not depend on this theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Initial declarations without DecidableEq σ",
+          "result": "Fintype (σ → K) was not synthesized; made the standard variable-index decidable equality assumption explicit. In finite applications classical supplies it."
+        },
+        {
+          "approach": "Initial indicator evaluation statement without DecidableEq K",
+          "result": "The if-expression requires a decidable equality instance; added it only to evaluation theorems with if-expressions."
+        },
+        {
+          "approach": "Unparenthesized constant summand ∑ i, card K - 1",
+          "result": "Lean parsed subtraction outside the sum; parenthesized the summand. No mathematical obstruction."
+        }
+      ],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      },
+      "decomposition": {
+        "parent_proof_route": "Build equationIndicator p a=1-(p-C a)^(q-1), prove its exact 0/1 evaluation by finite-field Fermat, multiply indicators, and bound total degree by card ι*(q-1). Then apply the independently proved triple-polynomial orthogonality theorem. The application ι=Fin 3 gives paper Lemma 2.2 column orthogonality.",
+        "children": [
+          {
+            "id": "finite_field_triple_orthogonality",
+            "purpose": "Separates universal finite-field summation from the construction of affine-flat indicator polynomials.",
+            "proof_route": "Expand each polynomial into monomials. Below d(q-1), every supported exponent vector has one coordinate <q-1. Factor each monomial evaluation sum into a product of coordinate power sums; that coordinate factor is zero. Apply totalDegree_mul twice and the three separate degree bounds.",
+            "strictly_useful": "Works for arbitrary triples of polynomials, without flat indicators, Reed–Muller code assumptions, or the codeword/matrix conclusion."
+          }
+        ]
+      }
+    },
+    {
+      "id": "auxiliary_degree_strict_bound",
+      "declaration": "ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound",
+      "file": "ExpandingCodes/Algebra/AuxiliaryDegree.lean",
+      "statement": "∀ (q d : ℕ), 4 ≤ d → 2 ≤ q → 2 * ExpandingCodes.PolynomialStretch.auxiliaryDegree q d + 3 * (q - 1) < d * (q - 1)",
+      "statement_sha256": "bd6d20fe34e65169b25628be2e2afd65465037ebcaf6f350e8c303269d9daa2f",
+      "proof_route": "Cast the exact integer-floor definition to integers, prove numerator nonnegative, use 2*(N/2)≤N, and recast the strict inequality to naturals.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      }
+    },
+    {
+      "id": "preliminary_pair_orthogonality",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal",
+      "file": "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean",
+      "statement": "∀ {d n k R : ℕ} (g : ExpandingCodes.PolynomialStretch.Geometry d n) (s : ExpandingCodes.PolynomialStretch.Forms g.F d k)\n (c : Fin k × (g.F × g.F × g.F)) (a b : ExpandingCodes.PolynomialStretch.Monomials g.F d R),\n 2 * R + 3 * (Fintype.card g.F - 1) < d * (Fintype.card g.F - 1) →\n (∑ z : Fin (ExpandingCodes.PolynomialStretch.rowCount d n), ExpandingCodes.PolynomialStretch.monomialEval a (g.rowOrder z) * ExpandingCodes.PolynomialStretch.monomialEval b (g.rowOrder z) *\n (if ExpandingCodes.PolynomialStretch.preliminary g s z c = 0 then (0 : g.F) else 1)) = 0",
+      "statement_sha256": "33c3a7bae24289989842b5e826842ff00fd2fd31e606d08aefef8698736a23ac",
+      "proof_route": "Construct the fixed-column polynomial from the fixed Vandermonde form and the two sampled forms indexed at the column a-value. Prove exact 0/1 evaluation by rewriting dependent form selection under fixedForm=a. Represent monomial rows as products of variables; apply triple polynomial orthogonality and reindex by rowOrder.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "finite_field_triple_orthogonality"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "rw [hpred] to rewrite equivalent indicator predicates inside if",
+          "result": "Dependent Decidable motive rejected; replaced by simp only [hpred]."
+        },
+        {
+          "approach": "split_ifs <;> norm_num for Bit 0/1 evaluation",
+          "result": "norm_num did not consume impossible context hypotheses; replaced by an address equality split and simp."
+        }
+      ],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      },
+      "decomposition": {
+        "parent_proof_route": "Construct the fixed-column polynomial from the fixed Vandermonde form and the two sampled forms indexed at the column a-value. Prove exact 0/1 evaluation by rewriting dependent form selection under fixedForm=a. Represent monomial rows as products of variables; apply triple polynomial orthogonality and reindex by rowOrder.",
+        "children": [
+          {
+            "id": "finite_field_triple_orthogonality",
+            "purpose": "Universal polynomial sum vanishing, isolated from the canonical sampling model.",
+            "proof_route": "Monomial factorization and finite-field power sum.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "combined_codeword_annihilation",
+      "declaration": "ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero",
+      "file": "ExpandingCodes/Algebra/CombinedOrthogonality.lean",
+      "statement": "∀ {d n k b : ℕ} (g : ExpandingCodes.PolynomialStretch.Geometry d n) (s : ExpandingCodes.PolynomialStretch.Forms g.F d k) (h : ExpandingCodes.PolynomialStretch.Hashes g.F k b) (x : ExpandingCodes.PolynomialStretch.Word n),\n 4 ≤ d → 0 < b → ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x) = 0",
+      "statement_sha256": "fb398126bb09b587289658b90313be3b2d70d9f506d9f7b93ad8c04b8123da71",
+      "proof_route": "Use the characteristic-two prime-field ring map. Show each combined column is a binary sum of preliminary columns: the address indicator collapses the address sum, and positive b makes flattened layer positions unique by division by b. Distribute evaluation-pair sums and mulVec sums to obtain exact testMatrix annihilation.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "preliminary_pair_orthogonality",
+        "auxiliary_degree_strict_bound"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "First combined module check",
+          "result": "Two local normalization issues only: fin_cases on Bit required explicit change to canonical 0/1 numerals, and Nat.add_mul_div_right rather than left matches i*b. Corrected; module passed warm iteration and fresh build."
+        }
+      ],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      },
+      "decomposition": {
+        "parent_proof_route": "Use the characteristic-two prime-field ring map. Show each combined column is a binary sum of preliminary columns: the address indicator collapses the address sum, and positive b makes flattened layer positions unique by division by b. Distribute evaluation-pair sums and mulVec sums to obtain exact testMatrix annihilation.",
+        "children": [
+          {
+            "id": "preliminary_pair_orthogonality",
+            "purpose": "Exact preliminary column indicator-to-polynomial bridge.",
+            "proof_route": "Freeze the sampled forms at the column address and represent the three equations by flatIndicator.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          },
+          {
+            "id": "auxiliary_degree_strict_bound",
+            "purpose": "Integer-floor arithmetic supplying the explicit strict degree bound.",
+            "proof_route": "Nonnegative integer numerator and floor-division bound.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "combined_corruption_rank",
+      "declaration": "ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight",
+      "file": "ExpandingCodes/Algebra/CombinedOrthogonality.lean",
+      "statement": "∀ {d n k b : ℕ} (g : ExpandingCodes.PolynomialStretch.Geometry d n) (s : ExpandingCodes.PolynomialStretch.Forms g.F d k) (h : ExpandingCodes.PolynomialStretch.Hashes g.F k b) (x : ExpandingCodes.PolynomialStretch.Word n)\n (e : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount d n)), 4 ≤ d → 0 < b →\n (ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x + e)).rank ≤ ExpandingCodes.PolynomialStretch.weight e",
+      "statement_sha256": "efe2ab4cf8047e67d34af3a341064b7abdaee5459ca7a29a8812d3e216582e62",
+      "proof_route": "Prove testMatrix additivity via the prime-field ring map; codeword annihilation reduces the corrupted test matrix to the error test matrix. Bound rank by the rank of its support diagonal, whose rank equals binary Hamming weight.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "preliminary_pair_orthogonality",
+        "auxiliary_degree_strict_bound"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "First combined module check",
+          "result": "Two local normalization issues only: fin_cases on Bit required explicit change to canonical 0/1 numerals, and Nat.add_mul_div_right rather than left matches i*b. Corrected; module passed warm iteration and fresh build."
+        }
+      ],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      },
+      "decomposition": {
+        "parent_proof_route": "Prove testMatrix additivity via the prime-field ring map; codeword annihilation reduces the corrupted test matrix to the error test matrix. Bound rank by the rank of its support diagonal, whose rank equals binary Hamming weight.",
+        "children": [
+          {
+            "id": "preliminary_pair_orthogonality",
+            "purpose": "Exact preliminary column indicator-to-polynomial bridge.",
+            "proof_route": "Freeze the sampled forms at the column address and represent the three equations by flatIndicator.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          },
+          {
+            "id": "auxiliary_degree_strict_bound",
+            "purpose": "Integer-floor arithmetic supplying the explicit strict degree bound.",
+            "proof_route": "Nonnegative integer numerator and floor-division bound.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "codeword_annihilation",
+      "declaration": "ExpandingCodes.PolynomialStretch.codeword_annihilation",
+      "file": "ExpandingCodes/Algebra/CodewordAnnihilation.lean",
+      "statement": "∀ (ε : ℝ), (0 < ε ∧ ε < 1 / 2) →\n    ∀ᶠ n : ℕ in Filter.atTop, ∀ (g : ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n)\n      (s : ExpandingCodes.PolynomialStretch.Forms g.F (ExpandingCodes.PolynomialStretch.dimension ε) (ExpandingCodes.PolynomialStretch.arity ε))\n      (h : ExpandingCodes.PolynomialStretch.Hashes g.F (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n)) (x : ExpandingCodes.PolynomialStretch.Word n),\n      ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x) = 0 ∧\n      ∀ e : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n),\n        (ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x + e)).rank ≤ ExpandingCodes.PolynomialStretch.weight e",
+      "statement_sha256": "e0fdbbb879737a1574db1ec58704e5caa1df86db75fd135e41d1df16ae22e4ca",
+      "proof_route": "Apply Filter.Eventually.of_forall. Root-proved dimension_ge_four supplies d≥4 and buckets is a positive power of two for every n. Instantiate the complete conditional codeword-annihilation and arbitrary-error-rank lemmas. No sampler output or coefficient/error choice is excluded.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "canonical",
+      "dependencies": [
+        "combined_codeword_annihilation",
+        "combined_corruption_rank"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json",
+        "harness/platform/definition-manifest.json",
+        "ExpandingCodes/Construction/ParameterBounds.lean"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact platform statement, theorem ID a62f8feb-bc30-4f5f-8cc4-da7d651f34c0"
+        },
+        {
+          "path": "ExpandingCodes/Construction/ParameterBounds.lean",
+          "declaration": "ExpandingCodes.PolynomialStretch.dimension_ge_four",
+          "role": "Root-owned elementary parameter bound, imported and included in the final transitive axiom audit."
+        }
+      ],
+      "failed_attempts": [],
+      "review": {
+        "reviewer": "pending root coordinator review",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Worker proof complete: fresh Lake build passed, full recorded Lean type compatibility example passed, and transitive axiom audit contains only propext, Classical.choice, Quot.sound. Awaiting root semantic review/harness receipts; administrative open status does not indicate a source hole."
+      },
+      "decomposition": {
+        "parent_proof_route": "Dimension and bucket positivity allow exact instantiation of the algebraic guarantee for all n, hence eventually.",
+        "children": [
+          {
+            "id": "combined_codeword_annihilation",
+            "purpose": "Proves the first conjunct for arbitrary canonical sampled forms, hashes and binary coefficients.",
+            "proof_route": "Sum preliminary-column polynomial orthogonality through column combining and mulVec.",
+            "strictly_useful": "Eliminates the algebraic content of testMatrix(codeword)=0 without using the canonical eventual theorem."
+          },
+          {
+            "id": "combined_corruption_rank",
+            "purpose": "Proves the second conjunct for arbitrary binary error vectors.",
+            "proof_route": "Additivity, codeword annihilation, and the diagonal support-rank bound.",
+            "strictly_useful": "Separates field-linear rank control from asymptotic parameters and sampler behavior."
+          }
+        ]
+      },
+      "platform_theorem_id": "a62f8feb-bc30-4f5f-8cc4-da7d651f34c0",
+      "platform_formal_statement_sha256": "a6ef8b08988099398519e1c526843559d1edefb5ff54d9d169d4084bac907cdd"
+    }
+  ],
+  "worker_result": {
+    "status": "exact_canonical_theorem_proved_fresh_build_and_axiom_audit_passed",
+    "platform_status": "All interfaces remain provisional; unavailable exact platform preamble was not invented.",
+    "owned_files": [
+      "ExpandingCodes/Algebra/PolynomialSum.lean",
+      "ExpandingCodes/Algebra/FlatIndicator.lean",
+      "harness/tasks/finite_field_algebra.json",
+      "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean",
+      "ExpandingCodes/Algebra/AuxiliaryDegree.lean",
+      "ExpandingCodes/Algebra/CombinedOrthogonality.lean",
+      "ExpandingCodes/Algebra/CodewordAnnihilation.lean"
+    ],
+    "open_theorem_bodies": [],
+    "unresolved_dependencies": [],
+    "tested_commands": [
+      "$HOME/.elan/bin/lake env lean -o .lake/build/lib/lean/ExpandingCodes/Algebra/PolynomialSum.olean ExpandingCodes/Algebra/PolynomialSum.lean",
+      "$HOME/.elan/bin/lake env lean -o .lake/build/lib/lean/ExpandingCodes/Algebra/FlatIndicator.olean ExpandingCodes/Algebra/FlatIndicator.lean",
+      "$HOME/.elan/bin/lake env lean -DautoImplicit=false /private/tmp/finite_field_algebra_audit.lean",
+      "$HOME/.elan/bin/lake build ExpandingCodes.Algebra.PolynomialSum ExpandingCodes.Algebra.FlatIndicator",
+      "./tools/lake-serial build ExpandingCodes.Algebra.CodewordAnnihilation",
+      "python3 harness/warm_repl.py check --file ExpandingCodes/Algebra/CombinedOrthogonality.lean (iteration only)",
+      "./tools/lake-serial env lean -DautoImplicit=false /private/tmp/canonical_algebra_audit.lean"
+    ],
+    "axiom_audit": {
+      "declarations": [
+        "ExpandingCodes.sum_eval_monomial",
+        "ExpandingCodes.sum_eval_monomial_eq_zero",
+        "ExpandingCodes.sum_eval_eq_zero_of_totalDegree_lt",
+        "ExpandingCodes.sum_eval_mul_eq_zero",
+        "ExpandingCodes.sum_eval_triple_eq_zero",
+        "ExpandingCodes.eval_affinePolynomial",
+        "ExpandingCodes.totalDegree_affinePolynomial_le",
+        "ExpandingCodes.eval_equationIndicator",
+        "ExpandingCodes.totalDegree_equationIndicator",
+        "ExpandingCodes.eval_flatIndicator",
+        "ExpandingCodes.totalDegree_flatIndicator_le",
+        "ExpandingCodes.sum_eval_pair_mul_flatIndicator_eq_zero"
+      ],
+      "all_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "forbidden_axioms": []
+    },
+    "proof_file_layout": "Same-file helper theorem calls are documented in routes; graph edges only represent separate-file proof tasks, as required by harness ancestor-file scan.",
+    "useful_supporting_declarations": {
+      "ExpandingCodes.sum_eval_eq_zero_of_totalDegree_lt": "p.totalDegree < card σ*(card K-1) implies ∑x,eval x p=0.",
+      "ExpandingCodes.affinePolynomial": "C constant + ∑i,C(coefficients i)*X i; eval and degree≤1 proved.",
+      "ExpandingCodes.eval_flatIndicator": "eval x (flatIndicator forms values) = if ∀i,eval x(forms i)=values i then 1 else 0.",
+      "ExpandingCodes.totalDegree_flatIndicator_le": "If every form has degree≤1 then indicator degree≤card ι*(card K-1)."
+    },
+    "clean_build_result": "Build completed successfully (1935 jobs); both assigned modules rebuilt with no warnings.",
+    "canonical_target_read": "harness/platform/codeword_annihilation.json: ExpandingCodes.PolynomialStretch.codeword_annihilation. Generic interfaces remain local support lemmas; canonical target not altered.",
+    "next_integration": "Root semantic review and merge into main harness graph; execute harness verify to attach coordinator-owned receipts. No proof obligation remains in this branch.",
+    "pending_compilation": [],
+    "compiler_coordination": "Root requested cancellation of duplicate canonical-closure builds; waiting for closure-ready before running tools/lake-serial. This is administrative, not a proof failure.",
+    "canonical_compile_progress": {
+      "auxiliaryDegree_strict_degree_bound": "Fresh lake rebuild checked successfully (50s).",
+      "preliminary_monomial_pair_orthogonal": "Fresh lake build checked successfully (50s).",
+      "combined_codeword_annihilation": "Fresh lake build passed (47s), along with all corruption/additivity/rank helpers.",
+      "codeword_annihilation": "Exact canonical signature checked by fresh Lake build and standalone full-type compatibility example. Transitive axiom audit permits only propext, Classical.choice, Quot.sound."
+    },
+    "canonical_clean_build_result": "Build completed successfully (8719 jobs): AuxiliaryDegree, PreliminaryOrthogonality, CombinedOrthogonality, CodewordAnnihilation and all imported exact definitions checked.",
+    "canonical_axiom_audit": {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false /private/tmp/canonical_algebra_audit.lean",
+      "exit_code": 0,
+      "full_recorded_type_examples_checked": 7,
+      "declarations": [
+        "ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound",
+        "ExpandingCodes.PolynomialStretch.totalDegree_preliminaryColumnPolynomial_le",
+        "ExpandingCodes.PolynomialStretch.eval_preliminaryColumnPolynomial",
+        "ExpandingCodes.PolynomialStretch.eval_preliminaryColumnPolynomial_row",
+        "ExpandingCodes.PolynomialStretch.eval_rowMonomialPolynomial",
+        "ExpandingCodes.PolynomialStretch.totalDegree_rowMonomialPolynomial_le",
+        "ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal",
+        "ExpandingCodes.PolynomialStretch.bitToField_apply",
+        "ExpandingCodes.PolynomialStretch.combined_eq_sum_preliminary",
+        "ExpandingCodes.PolynomialStretch.preliminary_auxiliary_pair_orthogonal",
+        "ExpandingCodes.PolynomialStretch.combined_auxiliary_pair_orthogonal",
+        "ExpandingCodes.PolynomialStretch.testMatrix_apply",
+        "ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero",
+        "ExpandingCodes.PolynomialStretch.testMatrix_add",
+        "ExpandingCodes.PolynomialStretch.testMatrix_rank_le_weight",
+        "ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight",
+        "ExpandingCodes.PolynomialStretch.codeword_annihilation"
+      ],
+      "all_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "forbidden_axioms": [],
+      "canonical_output": "'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "verification_scope": "Fresh imported module artifacts were built immediately before this audit; the audit checked all seven graph declaration full types and printed all seventeen new theorem transitive axiom closures."
+    },
+    "completed_source_route": "Finite-field power sums → monomial factorization → polynomial triple orthogonality → exact preliminary-column polynomial bridge → binary prime-field map and unique flattened combined-column sum → test matrix annihilation and support-diagonal rank bound → exact canonical eventual theorem via dimension_ge_four and positive buckets."
+  }
+}

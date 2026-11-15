@@ -1,0 +1,35 @@
+'ExpandingCodes.Computation.TesterGram.program' depends on axioms: [propext, Quot.sound]
+ExpandingCodes/Computation/TesterGram.lean:210:63: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [evaluationCaller, Matrix.cons_val_zero, Matrix.cons_val_two, Matrix.cons_val_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterGram.lean:239:63: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [evaluationCaller, Matrix.cons_val_zero, Matrix.cons_val_two, Matrix.cons_val_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TesterGram.lean:209:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ExpandingCodes/Computation/TesterGram.lean:212:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ExpandingCodes/Computation/TesterGram.lean:238:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ExpandingCodes/Computation/TesterGram.lean:241:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ExpandingCodes/Computation/TesterGram.lean:301:4: warning: Unused tactic linter: `change c₄.store.reg (digit d g i) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+ExpandingCodes/Computation/TesterGram.lean:318:4: warning: Unused tactic linter: `change c₄.store.reg (low d 65) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterGram.maskedTerm_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.construct' depends on axioms: [propext, Classical.choice, Quot.sound]

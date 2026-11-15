@@ -1,0 +1,124 @@
+/-- A syntactic sufficient condition for an instruction to preserve a register. -/
+def preservesRegister (r : Fin R) : CounterInstr R L → Prop
+  | .inc s _ => s ≠ r
+  | .dec s _ _ => s ≠ r
+  | _ => True
+
+/-- A loop counter is fresh when the body never increments or decrements it. -/
+def Fresh (P : CounterProgram R L) (r : Fin R) : Prop :=
+  ∀ j, preservesRegister r (P.code j)
+
+ theorem step_reg_of_fresh (P : CounterProgram R L) (r : Fin R) (hf : P.Fresh r)
+    (inp : Inputs) (c : CounterCfg R L) : (P.step inp c).reg r = c.reg r := by
+  have h := hf c.pc
+  cases hc : P.code c.pc <;> simp only [hc, preservesRegister] at h
+  all_goals simp only [step, hc]
+  all_goals try rfl
+  case inc s j => simp [Function.update_of_ne (Ne.symm h)]
+  case dec s z p => split <;> simp [Function.update_of_ne (Ne.symm h)]
+
+ theorem Exec.reg_of_fresh {P : CounterProgram R L} {r : Fin R} (hf : P.Fresh r)
+    {inp : Inputs} {c d : CounterCfg R L} {t : ℕ} (h : P.Exec inp c t d) :
+    d.reg r = c.reg r := by
+  induction h with
+  | refl c => rfl
+  | step active next tail ih =>
+    rw [ih, ← next]
+    exact step_reg_of_fresh P r hf inp _
+
+/-- The body occupies the first L labels, followed by a decrement/test header and halt exit. -/
+def loopHeader (L : ℕ) : Fin (L+2) := rightLabel L (0 : Fin 2)
+def loopExit (L : ℕ) : Fin (L+2) := rightLabel L (1 : Fin 2)
+
+def countedLoop (P : CounterProgram R L) (r : Fin R) : CounterProgram R (L+2) where
+  entry := loopHeader L
+  code := fun j => match finSumFinEquiv.symm j with
+    | .inl i => match P.code i with
+      | .halt => .jump (loopHeader L)
+      | a => a.relabel (leftLabel 2)
+    | .inr i => if i = 0 then .dec r (loopExit L) (leftLabel 2 P.entry) else .halt
+
+ theorem loop_code_body_active (P : CounterProgram R L) (r : Fin R)
+    (j : Fin L) (hj : P.code j ≠ .halt) :
+    (countedLoop P r).code (leftLabel 2 j) = (P.code j).relabel (leftLabel 2) := by
+  simp only [countedLoop, leftLabel, Equiv.symm_apply_apply]
+
+ theorem loop_code_body_halt (P : CounterProgram R L) (r : Fin R)
+    (j : Fin L) (hj : P.code j = .halt) :
+    (countedLoop P r).code (leftLabel 2 j) = .jump (loopHeader L) := by
+  simp [countedLoop, leftLabel, hj]
+
+ theorem loop_code_header (P : CounterProgram R L) (r : Fin R) :
+    (countedLoop P r).code (loopHeader L) = .dec r (loopExit L) (leftLabel 2 P.entry) := by
+  simp [countedLoop, loopHeader, rightLabel]
+
+ theorem loop_code_exit (P : CounterProgram R L) (r : Fin R) :
+    (countedLoop P r).code (loopExit L) = .halt := by
+  simp [countedLoop, loopExit, rightLabel]
+
+/-- Store after the loop's positive decrement instruction. -/
+def decStore (r : Fin R) (d : CounterStore R) : CounterStore R :=
+  { d with reg := Function.update d.reg r (d.reg r - 1) }
+
+ theorem loop_zero (P : CounterProgram R L) (r : Fin R) (inp : Inputs)
+    (d : CounterStore R) (hd : d.reg r = 0) :
+    (countedLoop P r).Stops inp (d.toCfg (loopHeader L)) 1 (d.toCfg (loopExit L)) := by
+  constructor
+  · apply Exec.one
+    · change (countedLoop P r).code (loopHeader L) ≠ .halt
+      rw [loop_code_header]
+      simp
+    · simp only [step, CounterStore.toCfg, loop_code_header, hd, ite_true]
+  · exact loop_code_exit P r
+
+ theorem loop_positive_header (P : CounterProgram R L) (r : Fin R) (inp : Inputs)
+    (d : CounterStore R) (hd : d.reg r ≠ 0) :
+    (countedLoop P r).Exec inp (d.toCfg (loopHeader L)) 1
+      (((decStore r d).toCfg P.entry).mapPC (leftLabel 2)) := by
+  apply Exec.one
+  · change (countedLoop P r).code (loopHeader L) ≠ .halt
+    rw [loop_code_header]
+    simp
+  · simp only [step, CounterStore.toCfg, loop_code_header, if_neg hd]
+    rfl
+
+ theorem loop_body_return (P : CounterProgram R L) (r : Fin R) (inp : Inputs)
+    (c : CounterCfg R L) (hc : P.halted c) :
+    (countedLoop P r).Exec inp (c.mapPC (leftLabel 2)) 1 (c.store.toCfg (loopHeader L)) := by
+  apply Exec.one
+  · change (countedLoop P r).code (leftLabel 2 c.pc) ≠ .halt
+    rw [loop_code_body_halt P r c.pc hc]
+    simp
+  · simp only [step, CounterCfg.mapPC]
+    rw [loop_code_body_halt P r c.pc hc]
+    rfl
+
+/-- A modular loop rule with an explicit source-step bound. The body is an actual
+finite program, and `hbody` consists of checked finite executions of that program.
+The indexed invariant describes the payload after each remaining iteration. -/
+ theorem countedLoop_stops (P : CounterProgram R L) (r : Fin R) (hf : P.Fresh r)
+    (inp : Inputs) (B : ℕ) (Inv : ℕ → CounterStore R → Prop)
+    (hbody : ∀ n d, d.reg r = n+1 → Inv (n+1) d →
+      ∃ t c, t ≤ B ∧ P.Stops inp ((decStore r d).toCfg P.entry) t c ∧ Inv n c.store)
+    (n : ℕ) (d : CounterStore R) (hd : d.reg r = n) (hi : Inv n d) :
+    ∃ t e, t ≤ n*(B+2)+1 ∧
+      (countedLoop P r).Stops inp (d.toCfg (loopHeader L)) t (e.toCfg (loopExit L)) ∧
+      Inv 0 e ∧ e.reg r = 0 := by
+  induction n generalizing d with
+  | zero =>
+    exact ⟨1, d, by omega, loop_zero P r inp d hd, hi, hd⟩
+  | succ n ih =>
+    obtain ⟨s, c, hs, hstop, hInv⟩ := hbody n d hd hi
+    have hc : c.reg r = n := by
+      have hh := hstop.exec.reg_of_fresh hf
+      simpa [CounterStore.toCfg, decStore, hd] using hh
+    obtain ⟨t, e, ht, he, hIe, hzero⟩ := ih c.store hc hInv
+    have hheader := loop_positive_header P r inp d (by omega)
+    have hrun := hstop.exec.relabel (leftLabel 2) (loop_code_body_active P r)
+    have hreturn := loop_body_return P r inp c hstop.halted
+    refine ⟨1+s+1+t, e, ?_, ⟨?_, he.halted⟩, hIe, hzero⟩
+    · simp only [Nat.succ_mul]
+      omega
+    · exact ((hheader.trans hrun).trans hreturn).trans he.exec
+
+#print axioms countedLoop_stops

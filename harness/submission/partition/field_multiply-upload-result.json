@@ -1,0 +1,18 @@
+{
+  "source_sha256": "884c23fde5001562ff4311cb204b5d76bb223ed719d8d89f0c39ba264b0e4bcf",
+  "source_bytes": 224259,
+  "key": "field_multiply",
+  "mode": "upload",
+  "exit_code": 0,
+  "elapsed_seconds": 52.194533417,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.olean",
+    "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.olean"
+}

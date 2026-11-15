@@ -1,0 +1,2410 @@
+{
+  "base_sha256": "47cc86864020a4fca00a56605576294587bb7945bb6fb98d0bb0d27096690060",
+  "upload_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "upload_bytes": 1789284,
+  "upload_lines": 37327,
+  "removed_diagnostic_commands": 341,
+  "edits": [
+    {
+      "reason": "duplicate_public_helper",
+      "start": 1636947,
+      "end": 1637380,
+      "oracle": "rank-expectation-sketch-info.jsonl",
+      "original": "ExpandingCodes/Probability/RankExpectation.lean",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_mono"
+    },
+    {
+      "reason": "separate_local_audit",
+      "start": 1801009,
+      "end": 1801508
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 37351,
+      "end": 37372,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 40699,
+      "end": 40720,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 46311,
+      "end": 46337,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 46338,
+      "end": 46371,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 46372,
+      "end": 46404,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 71018,
+      "end": 71047,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 71048,
+      "end": 71075,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 71076,
+      "end": 71106,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 71107,
+      "end": 71141,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 97648,
+      "end": 97677,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 97678,
+      "end": 97705,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 97706,
+      "end": 97736,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 97737,
+      "end": 97771,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 110752,
+      "end": 110783,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 110785,
+      "end": 110808,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 110809,
+      "end": 110836,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 125485,
+      "end": 125510,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 125511,
+      "end": 125539,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 125540,
+      "end": 125564,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 125565,
+      "end": 125595,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 125596,
+      "end": 125620,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 125621,
+      "end": 125654,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 139230,
+      "end": 139259,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 139260,
+      "end": 139287,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 139288,
+      "end": 139316,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 139317,
+      "end": 139356,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189284,
+      "end": 189313,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189314,
+      "end": 189339,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189340,
+      "end": 189368,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189416,
+      "end": 189483,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189485,
+      "end": 189558,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189560,
+      "end": 189628,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189630,
+      "end": 189697,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189698,
+      "end": 189777,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189779,
+      "end": 189846,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189848,
+      "end": 189930,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 189932,
+      "end": 189999,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 190000,
+      "end": 190068,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 190069,
+      "end": 190140,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 190142,
+      "end": 190216,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 190217,
+      "end": 190287,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 195746,
+      "end": 195781,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 195782,
+      "end": 195821,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 195822,
+      "end": 195852,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 211939,
+      "end": 211964,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 211965,
+      "end": 211993,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 211994,
+      "end": 212024,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 212025,
+      "end": 212053,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 212054,
+      "end": 212081,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 212082,
+      "end": 212112,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 224730,
+      "end": 224762,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 224763,
+      "end": 224789,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 224790,
+      "end": 224818,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 260268,
+      "end": 260299,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 260300,
+      "end": 260336,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 260337,
+      "end": 260369,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 260370,
+      "end": 260401,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 262726,
+      "end": 262759,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 285434,
+      "end": 285459,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 285460,
+      "end": 285484,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 285485,
+      "end": 285514,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 285515,
+      "end": 285547,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 285548,
+      "end": 285583,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 285584,
+      "end": 285621,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419771,
+      "end": 419797,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419798,
+      "end": 419828,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419829,
+      "end": 419860,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419861,
+      "end": 419894,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419895,
+      "end": 419929,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419930,
+      "end": 419957,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 419958,
+      "end": 419984,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 424348,
+      "end": 424387,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 424388,
+      "end": 424428,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 427677,
+      "end": 427705,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 427706,
+      "end": 427744,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 427745,
+      "end": 427776,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 460071,
+      "end": 460108,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 460109,
+      "end": 460140,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 460141,
+      "end": 460184,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 460185,
+      "end": 460235,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 506689,
+      "end": 506731,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 506732,
+      "end": 506769,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 506770,
+      "end": 506809,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 506810,
+      "end": 506845,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 506846,
+      "end": 506883,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 506884,
+      "end": 506919,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616457,
+      "end": 616484,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616485,
+      "end": 616518,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616519,
+      "end": 616554,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616555,
+      "end": 616596,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616597,
+      "end": 616630,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616631,
+      "end": 616659,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616660,
+      "end": 616694,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616695,
+      "end": 616723,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616724,
+      "end": 616758,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616759,
+      "end": 616794,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616795,
+      "end": 616829,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616830,
+      "end": 616859,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616860,
+      "end": 616889,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616890,
+      "end": 616914,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616915,
+      "end": 616941,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 616942,
+      "end": 616981,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 637140,
+      "end": 637168,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 652653,
+      "end": 652696,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 652698,
+      "end": 652738,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 652739,
+      "end": 652776,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666186,
+      "end": 666232,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666234,
+      "end": 666266,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666268,
+      "end": 666303,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666305,
+      "end": 666334,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666335,
+      "end": 666369,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666371,
+      "end": 666401,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666402,
+      "end": 666432,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666434,
+      "end": 666467,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666469,
+      "end": 666498,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666500,
+      "end": 666532,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666534,
+      "end": 666561,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 666563,
+      "end": 666589,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693553,
+      "end": 693586,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693588,
+      "end": 693618,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693619,
+      "end": 693647,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693649,
+      "end": 693679,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693680,
+      "end": 693708,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693710,
+      "end": 693737,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693738,
+      "end": 693765,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693767,
+      "end": 693797,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693798,
+      "end": 693833,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693835,
+      "end": 693862,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 693863,
+      "end": 693893,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 701148,
+      "end": 701173,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 707486,
+      "end": 707512,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 707658,
+      "end": 707683,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 713789,
+      "end": 713833,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 713834,
+      "end": 713887,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 713888,
+      "end": 713941,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 720900,
+      "end": 720933,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 720934,
+      "end": 720966,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 720967,
+      "end": 721000,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 733253,
+      "end": 733287,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 733288,
+      "end": 733319,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 733320,
+      "end": 733367,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 742533,
+      "end": 742569,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 742570,
+      "end": 742605,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 745449,
+      "end": 745478,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 745479,
+      "end": 745501,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 745502,
+      "end": 745524,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 745525,
+      "end": 745548,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 757464,
+      "end": 757487,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 762952,
+      "end": 762978,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 767396,
+      "end": 767425,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 783512,
+      "end": 783545,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 788539,
+      "end": 788575,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 802553,
+      "end": 802585,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 816220,
+      "end": 816263,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 816264,
+      "end": 816306,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 818880,
+      "end": 818918,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 818920,
+      "end": 818961,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 831285,
+      "end": 831316,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 837823,
+      "end": 837855,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 844084,
+      "end": 844114,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849421,
+      "end": 849446,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849449,
+      "end": 849474,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849476,
+      "end": 849505,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849507,
+      "end": 849542,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849544,
+      "end": 849574,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849576,
+      "end": 849605,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849606,
+      "end": 849638,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849640,
+      "end": 849671,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849672,
+      "end": 849698,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 849700,
+      "end": 849724,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 857179,
+      "end": 857208,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 857209,
+      "end": 857234,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 866437,
+      "end": 866463,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 866464,
+      "end": 866491,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 885583,
+      "end": 885610,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 885611,
+      "end": 885640,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 885641,
+      "end": 885669,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 885670,
+      "end": 885708,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 892418,
+      "end": 892444,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 905032,
+      "end": 905057,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 905058,
+      "end": 905082,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 908517,
+      "end": 908547,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 908548,
+      "end": 908574,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 920666,
+      "end": 920695,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 920696,
+      "end": 920730,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 920731,
+      "end": 920760,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 920761,
+      "end": 920791,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 925362,
+      "end": 925394,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 925395,
+      "end": 925423,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 925424,
+      "end": 925460,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 925461,
+      "end": 925494,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 925495,
+      "end": 925524,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945512,
+      "end": 945542,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945543,
+      "end": 945578,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945579,
+      "end": 945610,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945611,
+      "end": 945646,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945647,
+      "end": 945682,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945683,
+      "end": 945714,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945715,
+      "end": 945752,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 945753,
+      "end": 945788,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 953332,
+      "end": 953362,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 953363,
+      "end": 953397,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 959723,
+      "end": 959758,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 959759,
+      "end": 959792,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 967068,
+      "end": 967103,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 967104,
+      "end": 967141,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 967142,
+      "end": 967179,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 967180,
+      "end": 967219,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 967220,
+      "end": 967255,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 967256,
+      "end": 967293,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 972418,
+      "end": 972455,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 977090,
+      "end": 977119,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 977120,
+      "end": 977144,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 977145,
+      "end": 977174,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 993632,
+      "end": 993663,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 993664,
+      "end": 993689,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 993690,
+      "end": 993728,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 993729,
+      "end": 993759,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1000641,
+      "end": 1000672,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1000673,
+      "end": 1000711,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1000712,
+      "end": 1000750,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1057239,
+      "end": 1057268,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1057269,
+      "end": 1057304,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1057305,
+      "end": 1057340,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1057341,
+      "end": 1057374,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1057375,
+      "end": 1057404,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1057405,
+      "end": 1057434,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1070453,
+      "end": 1070478,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1070479,
+      "end": 1070515,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1070516,
+      "end": 1070552,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1070553,
+      "end": 1070582,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1076854,
+      "end": 1076875,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1088726,
+      "end": 1088756,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1090057,
+      "end": 1090080,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1097487,
+      "end": 1097520,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1097521,
+      "end": 1097552,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1097553,
+      "end": 1097593,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1097594,
+      "end": 1097633,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1097634,
+      "end": 1097681,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1102652,
+      "end": 1102683,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1120038,
+      "end": 1120067,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1122524,
+      "end": 1122559,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1130817,
+      "end": 1130842,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1134956,
+      "end": 1134988,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1139736,
+      "end": 1139771,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1143261,
+      "end": 1143300,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1143301,
+      "end": 1143340,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1150424,
+      "end": 1150454,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1156063,
+      "end": 1156093,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1160221,
+      "end": 1160257,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1160258,
+      "end": 1160296,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1164130,
+      "end": 1164165,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1183485,
+      "end": 1183514,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1193061,
+      "end": 1193090,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1199849,
+      "end": 1199880,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1209368,
+      "end": 1209403,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1213123,
+      "end": 1213151,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1221661,
+      "end": 1221691,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1226069,
+      "end": 1226096,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1231265,
+      "end": 1231292,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1239920,
+      "end": 1239947,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1239948,
+      "end": 1239978,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1242324,
+      "end": 1242360,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1242361,
+      "end": 1242393,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1242394,
+      "end": 1242424,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1244686,
+      "end": 1244726,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1244727,
+      "end": 1244776,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1248193,
+      "end": 1248228,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1248229,
+      "end": 1248268,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1261766,
+      "end": 1261799,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1261800,
+      "end": 1261825,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1268567,
+      "end": 1268594,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1268595,
+      "end": 1268625,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1274843,
+      "end": 1274879,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1281267,
+      "end": 1281302,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1282827,
+      "end": 1282866,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1288509,
+      "end": 1288537,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1290878,
+      "end": 1290912,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1297268,
+      "end": 1297298,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1306570,
+      "end": 1306597,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1316348,
+      "end": 1316383,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1334097,
+      "end": 1334128,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1334129,
+      "end": 1334163,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1334164,
+      "end": 1334195,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1334196,
+      "end": 1334228,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1342505,
+      "end": 1342533,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1342534,
+      "end": 1342559,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1342560,
+      "end": 1342589,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1342590,
+      "end": 1342623,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1349141,
+      "end": 1349176,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1349177,
+      "end": 1349216,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1353034,
+      "end": 1353063,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1353064,
+      "end": 1353094,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1366518,
+      "end": 1366548,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1371503,
+      "end": 1371532,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1374119,
+      "end": 1374144,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1380335,
+      "end": 1380359,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1380360,
+      "end": 1380391,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1385725,
+      "end": 1385754,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1385755,
+      "end": 1385791,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1385792,
+      "end": 1385833,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1391117,
+      "end": 1391146,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1391147,
+      "end": 1391183,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1394519,
+      "end": 1394552,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1396259,
+      "end": 1396296,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1401716,
+      "end": 1401743,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1401744,
+      "end": 1401778,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1401779,
+      "end": 1401810,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1404398,
+      "end": 1404425,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1404426,
+      "end": 1404460,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1408232,
+      "end": 1408258,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1408259,
+      "end": 1408286,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1408287,
+      "end": 1408319,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1414524,
+      "end": 1414551,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1422119,
+      "end": 1422146,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1422147,
+      "end": 1422181,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1425296,
+      "end": 1425323,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1425324,
+      "end": 1425364,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1431129,
+      "end": 1431166,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1436065,
+      "end": 1436114,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470400,
+      "end": 1470427,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470428,
+      "end": 1470454,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470455,
+      "end": 1470483,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470484,
+      "end": 1470512,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470513,
+      "end": 1470538,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470539,
+      "end": 1470563,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470564,
+      "end": 1470594,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470595,
+      "end": 1470619,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470620,
+      "end": 1470648,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470649,
+      "end": 1470678,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470679,
+      "end": 1470707,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470708,
+      "end": 1470746,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1470747,
+      "end": 1470780,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1474006,
+      "end": 1474042,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1474043,
+      "end": 1474083,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1477432,
+      "end": 1477464,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1585398,
+      "end": 1585425,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1585426,
+      "end": 1585454,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1587903,
+      "end": 1587941,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1589433,
+      "end": 1589484,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    },
+    {
+      "reason": "standalone_diagnostic",
+      "start": 1590261,
+      "end": 1590311,
+      "syntax_kind": "Lean.Parser.Command.printAxioms",
+      "oracle": "flatten-command-spans.jsonl"
+    }
+  ],
+  "audit_sha256": "b1a1debcddf538f3536de89d9b06c43387e5bef9a878dfe177067107be45ca42"
+}

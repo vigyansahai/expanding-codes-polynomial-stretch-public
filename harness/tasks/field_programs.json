@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "owner": "field_programs",
+  "owned_files": [
+    "ExpandingCodes/Computation/UnaryArithmetic.lean",
+    "ExpandingCodes/Computation/FieldPrograms.lean",
+    "ExpandingCodes/Computation/FieldCoefficients.lean",
+    "harness/attempts/field_programs/*",
+    "harness/tasks/field_programs.json"
+  ],
+  "status": "Completed checked narrow source arithmetic leaf: uniform multiplication, pair-peeling, runtime shifts, exact binary coefficient extraction; full source field operations remain open",
+  "canonical_definitions": [
+    "Definitions/Def_NKtLB_Machine.lean"
+  ],
+  "interface": "Local concrete finite TapeProgram routines over unchanged canonical NKtLB semantics; not platform mission definitions",
+  "uniformity": "Program labels/register layout are fixed independently of runtime n, ell, q. Unary counters hold individual values and offsets only; whole arrays remain on explicit symbol buffers.",
+  "proof_route": [
+    "Compose actual clear/copy/addPreserving finite code tables; prove repeated-addition execution by direct induction over runtime count.",
+    "Use fixed five-label pair peeling to compute quotient by two and parity, then repeat to extract a binary coefficient.",
+    "Use coefficient extraction and nested bounded runtime loops for convolution and finite quotient/remainder search; no assumed efficient arithmetic primitive."
+  ],
+  "completed": [
+    {
+      "declaration": "UnaryArithmetic.multiply_stops",
+      "statement": "24-label finite TapeProgram preserving both operands computes their product; exact post-store, tapes unchanged; source time at most oldDst+oldCount+oldTmp+5*b+b*(5*a+7)+11.",
+      "artifact": "ExpandingCodes/Computation/UnaryArithmetic.lean",
+      "check_log": "harness/attempts/field_programs/unary-public-check.log",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "UnaryArithmetic.multiply_stops_polynomial",
+      "statement": "If the five involved input counters are at most M, multiplication stops within 32*(M+1)^2 source steps.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "UnaryArithmetic.halveLoop_stops",
+      "statement": "Fixed5label pair-peeling program destructively computes quotient by2 and parity, adding to output counters; exact3*(n/2)+2*(n%2)+1 source steps, at most2*n+1.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.halve_stops",
+      "statement": "Fixed9label program clears outputs and computes n/2,n%2, source input consumed.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.halfStep_stops",
+      "statement": "Fixed12label program computes destructive runtime right shift by1 with explicit unary quotient transfer.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.shiftRight_stops",
+      "statement": "Fixed14label counted runtime loop computes x/2^j, source time at mostj*(5*M+9)+1 when1<=M and working counters<=M.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.testBit_stops",
+      "statement": "Fixed45label program preserves inputx and bit indexj, writes Nat.testBitxj to output counter, source time at most64*(M+1)^2 when all counters<=M and1<=M.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.indexEquiv_bit",
+      "statement": "The exact BinaryPolynomial.indexEquiv coefficient equals bitEquiv of Nat.testBit of the index; not a new encoding.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.candidateCoefficient_bit",
+      "statement": "Every monic candidate coefficient, including high zero padding, is bitEquiv(testBit(2^ell+a)j).",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "FieldPrograms.coefficient_stops",
+      "statement": "Actual45label TapeProgram returns the exact BinaryPolynomial.indexEquiv coefficient as ZMod2 while preserving runtime index input and coefficient position; t<=64*(M+1)^2.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "open_theorem_bodies": [],
+  "failed_approaches": [],
+  "unresolved_dependencies": [
+    "Actual finite conditional/search program combinators for coefficient predicates",
+    "Nested source convolution and finite remainder search",
+    "Least irreducible modulus search finite program",
+    "Source field add/multiply/inverse correctness linked to BinaryField index operations"
+  ],
+  "checked_artifacts": [
+    "harness/attempts/field_programs/unary-check.log",
+    "harness/attempts/field_programs/unary-halve-check.log",
+    "harness/attempts/field_programs/unary-public-check.log",
+    "harness/attempts/field_programs/field-check.log",
+    "harness/attempts/field_programs/field-bit-check.log",
+    "harness/attempts/field_programs/field-public-check.log",
+    "harness/attempts/field_programs/coeff-check.log",
+    "harness/attempts/field_programs/coeff-public-check.log"
+  ],
+  "source_locations": {
+    "multiply": "ExpandingCodes/Computation/UnaryArithmetic.lean:121",
+    "multiply_stops_polynomial": "ExpandingCodes/Computation/UnaryArithmetic.lean:179",
+    "halveLoop_stops": "ExpandingCodes/Computation/UnaryArithmetic.lean:226",
+    "shiftRight_stops": "ExpandingCodes/Computation/FieldPrograms.lean:125",
+    "testBit_stops": "ExpandingCodes/Computation/FieldPrograms.lean:280",
+    "coefficient_stops": "ExpandingCodes/Computation/FieldCoefficients.lean:53"
+  },
+  "testBit_register_layout": {
+    "0": "preserved input value",
+    "1": "preserved coefficient index",
+    "2": "working copy",
+    "3": "quotient scratch",
+    "4": "output bit",
+    "5": "runtime loop counter, cleared",
+    "6": "copy scratch, cleared"
+  },
+  "remaining_proof_route": [
+    "A candidate monic polynomial can be represented by runtime indexq+a, using existing checked copy/addPreserving, then coefficient_stops at arbitraryj via candidateCoefficient_bit.",
+    "Build finite conditional branch combinators and parity/xor flags; loop coefficient positions with runtime unary counters to compute characteristic-two convolution.",
+    "Enumerate remainder<q and quotient<q^2 in actual runtime counted loops, evaluating bounded coefficient certificates; prove first accepted remainder agrees with BinaryField.multiplyIndex via remainder uniqueness.",
+    "Implement and bound least irreducible modulus search and inverse scan similarly; no semantic Polynomial operations may appear as source instructions."
+  ],
+  "lake_trace_refresh_required": [
+    "ExpandingCodes.Computation.UnaryArithmetic",
+    "ExpandingCodes.Computation.FieldPrograms",
+    "ExpandingCodes.Computation.FieldCoefficients"
+  ],
+  "validation": "Each final public source compiled directly through tools/lake-serial with autoImplicit false, -M6144 -j1, and emitted its public .olean. Axiom audits printed in the public logs. No sorry/custom axioms/unsafe declarations. Root central Lake trace refresh still required."
+}

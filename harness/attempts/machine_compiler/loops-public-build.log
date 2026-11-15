@@ -1,0 +1,105 @@
+Build completed successfully (8706 jobs).
+ℹ [8707/8707] Replayed ExpandingCodes.Computation.CounterMachine
+info: ExpandingCodes/Computation/CounterMachine.lean:95:0: 'ExpandingCodes.Computation.CounterProgram.time_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (8707 jobs).
+ℹ [8707/8707] Replayed ExpandingCodes.Computation.CounterTape
+info: ExpandingCodes/Computation/CounterTape.lean:141:0: 'ExpandingCodes.Computation.getD_writeAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterTape.lean:142:0: 'ExpandingCodes.Computation.unary_inc_two_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterTape.lean:143:0: 'ExpandingCodes.Computation.unary_dec_one_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (8707 jobs).
+Build completed successfully (8707 jobs).
+ℹ [8707/8710] Replayed ExpandingCodes.Computation.CounterMachine
+info: ExpandingCodes/Computation/CounterMachine.lean:95:0: 'ExpandingCodes.Computation.CounterProgram.time_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8708/8710] Replayed ExpandingCodes.Computation.CounterTape
+info: ExpandingCodes/Computation/CounterTape.lean:141:0: 'ExpandingCodes.Computation.getD_writeAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterTape.lean:142:0: 'ExpandingCodes.Computation.unary_inc_two_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterTape.lean:143:0: 'ExpandingCodes.Computation.unary_dec_one_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8710/8710] Replayed ExpandingCodes.Computation.CounterCompiler
+warning: ExpandingCodes/Computation/CounterCompiler.lean:122:17: This simp argument is unused:
+  if_neg ih
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: ExpandingCodes/Computation/CounterCompiler.lean:164:51: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hq, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: ExpandingCodes/Computation/CounterCompiler.lean:164:55: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hs, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: ExpandingCodes/Computation/CounterCompiler.lean:327:79: This simp argument is unused:
+  eq_self_iff_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [normal, transition, hc, CounterProgram.step, hscan, hz, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: ExpandingCodes/Computation/CounterCompiler.lean:501:0: 'ExpandingCodes.Computation.CounterCompiler.localSimulation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterCompiler.lean:502:0: 'ExpandingCodes.Computation.CounterCompiler.compile_halts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterCompiler.lean:503:0: 'ExpandingCodes.Computation.CounterCompiler.compile_computes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterCompiler.lean:504:0: 'ExpandingCodes.Computation.CounterCompiler.compile_run_ne_query' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (8710 jobs).
+ℹ [8707/8711] Replayed ExpandingCodes.Computation.CounterMachine
+info: ExpandingCodes/Computation/CounterMachine.lean:95:0: 'ExpandingCodes.Computation.CounterProgram.time_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8708/8711] Replayed ExpandingCodes.Computation.CounterTape
+info: ExpandingCodes/Computation/CounterTape.lean:141:0: 'ExpandingCodes.Computation.getD_writeAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterTape.lean:142:0: 'ExpandingCodes.Computation.unary_inc_two_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterTape.lean:143:0: 'ExpandingCodes.Computation.unary_dec_one_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8710/8711] Replayed ExpandingCodes.Computation.CounterCompiler
+warning: ExpandingCodes/Computation/CounterCompiler.lean:122:17: This simp argument is unused:
+  if_neg ih
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: ExpandingCodes/Computation/CounterCompiler.lean:164:51: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hq, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: ExpandingCodes/Computation/CounterCompiler.lean:164:55: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hs, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: ExpandingCodes/Computation/CounterCompiler.lean:327:79: This simp argument is unused:
+  eq_self_iff_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [normal, transition, hc, CounterProgram.step, hscan, hz, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: ExpandingCodes/Computation/CounterCompiler.lean:501:0: 'ExpandingCodes.Computation.CounterCompiler.localSimulation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterCompiler.lean:502:0: 'ExpandingCodes.Computation.CounterCompiler.compile_halts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterCompiler.lean:503:0: 'ExpandingCodes.Computation.CounterCompiler.compile_computes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterCompiler.lean:504:0: 'ExpandingCodes.Computation.CounterCompiler.compile_run_ne_query' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [8711/8711] Built ExpandingCodes.Computation.CounterLoops (5.1s)
+warning: ExpandingCodes/Computation/CounterLoops.lean:188:2: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: ExpandingCodes/Computation/CounterLoops.lean:294:0: 'ExpandingCodes.Computation.CounterProgram.countedLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ExpandingCodes/Computation/CounterLoops.lean:296:0: 'ExpandingCodes.Computation.CounterProgram.Stops.seq' depends on axioms: [propext, Quot.sound]
+info: ExpandingCodes/Computation/CounterLoops.lean:297:0: 'ExpandingCodes.Computation.CounterProgram.Stops.compile' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (8711 jobs).

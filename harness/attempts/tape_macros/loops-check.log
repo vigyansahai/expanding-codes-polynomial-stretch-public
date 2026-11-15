@@ -1,0 +1,6 @@
+harness/attempts/tape_macros/TapeLoops.lean:191:2: warning: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TapeProgram.countedLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.Stops.seq' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.Stops.compile' depends on axioms: [propext, Classical.choice, Quot.sound]

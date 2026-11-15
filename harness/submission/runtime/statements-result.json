@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 18.694200958,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "harness/submission/runtime/StatementCheck.lean"
+  ]
+}

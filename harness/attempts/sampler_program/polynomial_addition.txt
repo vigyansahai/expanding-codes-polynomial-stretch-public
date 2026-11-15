@@ -1,0 +1,14 @@
+theorem hashEnvelope_polynomial (i t : ℕ) : PolynomialBound (fun M => hashEnvelope i M t) := by
+  induction t with
+  | zero =>
+    simpa only [hashEnvelope] using (PolynomialBound.identity.add (PolynomialBound.const i)).add (PolynomialBound.const 1)
+  | succ t ih =>
+    simpa only [hashEnvelope] using (ih.add (PolynomialBound.const 1)).pow 2
+
+theorem hashIndexTimeBound_polynomial (i : ℕ) : PolynomialBound (hashIndexTimeBound i) := by
+  exact (((((PolynomialBound.identity.add (PolynomialBound.const (2*i))).add (PolynomialBound.const 5)).add
+    ((PolynomialBound.const 32).mul (hashEnvelope_polynomial i 1))).add
+      ((PolynomialBound.const 32).mul (hashEnvelope_polynomial i 2))).add
+        ((PolynomialBound.const 32).mul (hashEnvelope_polynomial i 3)))
+
+#print axioms hashIndexTimeBound_polynomial

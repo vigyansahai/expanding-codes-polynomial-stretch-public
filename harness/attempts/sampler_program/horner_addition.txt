@@ -1,0 +1,81 @@
+/-- Runtime unary Horner arithmetic acc := radix*acc+digit. Layout radix0,
+acc1,digit2,product3,tmp4,count5. All work is explicit unary multiplication,
+preserving copy and preserving addition. -/
+def hornerStep (r : Fin 6 → Fin R) : TapeProgram R B 44 :=
+  TapeProgram.seq (TapeProgram.seq (UnaryArithmetic.multiply (r 1) (r 0) (r 3) (r 4) (r 5))
+    (TapeMacros.copy (r 3) (r 1) (r 4))) (TapeMacros.addPreserving (r 2) (r 1) (r 4))
+
+def hornerStore (r : Fin 6 → Fin R) (s : TapeStore R B) : TapeStore R B :=
+  ((((s.setReg (r 3) (s.reg (r 1)*s.reg (r 0))).setReg (r 4) 0).setReg (r 5) 0).
+    setReg (r 1) (s.reg (r 1)*s.reg (r 0)+s.reg (r 2))
+
+def hornerTime (r : Fin 6 → Fin R) (s : TapeStore R B) : ℕ :=
+  s.reg (r 3)+s.reg (r 5)+s.reg (r 4)+10*s.reg (r 1)*s.reg (r 0)+12*s.reg (r 0)+
+    s.reg (r 1)+5*s.reg (r 2)+25
+
+theorem hornerStep_stops (r : Fin 6 → Fin R) (hr : Function.Injective r)
+    (inp : Inputs) (s : TapeStore R B) :
+    ∃ t e, t≤hornerTime r s ∧
+      (hornerStep r).Stops inp (s.toCfg (hornerStep (B := B) r).entry) t e ∧
+      e.store=hornerStore r s := by
+  obtain ⟨a,c,ha,hc,hcs⟩ := UnaryArithmetic.multiply_stops (r 1) (r 0) (r 3) (r 4) (r 5)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide))
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide))
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp s
+  have hcv (i : Fin 6) : c.reg (r i)=if i=5 then 0 else if i=4 then 0
+      else if i=3 then s.reg (r 1)*s.reg (r 0) else s.reg (r i) := by
+    change c.store.reg (r i)=_; rw [hcs]; simp [multiplyStore,reg_layout r hr]
+  obtain ⟨d,hd,hds⟩ := TapeMacros.copy_stops (r 3) (r 1) (r 4)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp c.store
+  have hdv (i : Fin 6) : d.reg (r i)=if i=4 then 0 else if i=1 then s.reg (r 1)*s.reg (r 0)
+      else if i=5 then 0 else if i=3 then s.reg (r 1)*s.reg (r 0) else s.reg (r i) := by
+    change d.store.reg (r i)=_; rw [hds]
+    simp [reg_layout r hr,hcv]
+    by_cases h₁ : i=1 <;> by_cases h₃ : i=3 <;> by_cases h₄ : i=4 <;> by_cases h₅ : i=5 <;> simp_all
+  obtain ⟨e,he,hes⟩ := TapeMacros.addPreserving_stops (r 2) (r 1) (r 4)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp d.store
+  have hall := (hc.seq hd).seq he
+  refine ⟨_,_,?_,hall,?_⟩
+  · simp only [TapeCfg.store,hcv,hdv,if_false,if_true]
+    unfold hornerTime
+    nlinarith
+  · change e.store=_
+    rw [hes,hds,hcs]
+    unfold multiplyStore hornerStore
+    simp only [TapeStore.setReg]
+    congr 1
+    funext i
+    by_cases h₁ : i=r 1
+    · subst i; simp [Function.update,hr.eq_iff]
+    by_cases h₃ : i=r 3
+    · subst i; simp [Function.update,hr.eq_iff]
+    by_cases h₄ : i=r 4
+    · subst i; simp [Function.update,hr.eq_iff]
+    by_cases h₅ : i=r 5
+    · subst i; simp [Function.update,hr.eq_iff]
+    simp [Function.update,h₁,h₃,h₄,h₅]
+
+theorem hornerTime_bound (r : Fin 6 → Fin R) (M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) : hornerTime r s≤32*(M+1)^2 := by
+  have h₀ := hs (r 0); have h₁ := hs (r 1); have h₂ := hs (r 2)
+  have h₃ := hs (r 3); have h₄ := hs (r 4); have h₅ := hs (r 5)
+  have hm := Nat.mul_le_mul h₁ h₀
+  unfold hornerTime
+  nlinarith
+
+theorem hornerStore_bound (r : Fin 6 → Fin R) (M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) : ∀ i,(hornerStore r s).reg i≤(M+1)^2 := by
+  have hm := Nat.mul_le_mul (hs (r 1)) (hs (r 0))
+  unfold hornerStore
+  apply FieldPrograms.setReg_bound
+  · apply FieldPrograms.setReg_bound
+    · apply FieldPrograms.setReg_bound
+      · apply FieldPrograms.setReg_bound
+        · exact fun i => (hs i).trans (by nlinarith)
+        · nlinarith
+      · omega
+    · omega
+  · have h₂ := hs (r 2); nlinarith
+
+#print axioms hornerStep_stops
+#print axioms hornerTime_bound

@@ -1,0 +1,23 @@
+{
+  "scope": "Public source snapshot and the history reachable from main",
+  "metadata_redacted_files": 200,
+  "excluded_scratch_inputs": [
+    "tmp/feasibility/paper.txt",
+    "tmp/feasibility/erasure-capacity.txt",
+    "tmp/feasibility/mission-visible.txt"
+  ],
+  "source_comparison": {
+    "lean_files_compared": 511,
+    "changed_lean_files": [],
+    "standalone_proof_zip_unchanged": true,
+    "accepted_upload_archives_unchanged": 14
+  },
+  "redactions": [
+    "workstation paths",
+    "API account identifiers",
+    "reviewer usernames",
+    "contact information in excluded reading material",
+    "personal Git author/committer metadata"
+  ],
+  "evidence_note": "Historical metadata was redacted. Exact Lean source/statement hashes and acceptance statuses are preserved. Current graph receipts are independently refreshed by Lean."
+}

@@ -1,0 +1,22 @@
+/-- Transport an honest doubly transitive code symmetry action to numbered coordinates. -/
+theorem codeReindex_doublyTransitive {F I : Type*} [Field F] {M : ℕ}
+    (e : Fin M ≃ I) (C : Submodule F (I → F))
+    (hpair : ∀ a b a' b' : I, a ≠ b → a' ≠ b' →
+      ∃ σ ∈ codePreservingSubgroup C, σ a = a' ∧ σ b = b') :
+    DoublyTransitiveCode M (codeReindex e C) := by
+  refine ⟨codePreservingSubgroup (codeReindex e C), ?_, ?_⟩
+  · intro σ hσ c hc
+    exact (hσ c).mp hc
+  · intro a b a' b' hab hab'
+    obtain ⟨σ, hσ, ha, hb⟩ := hpair (e a) (e b) (e a') (e b')
+      (e.injective.ne hab) (e.injective.ne hab')
+    let τ : Equiv.Perm (Fin M) := (e.trans σ).trans e.symm
+    refine ⟨τ, ?_, ?_, ?_⟩
+    · intro c
+      simp only [mem_codeReindex]
+      have h := hσ (fun i => c (e.symm i))
+      simpa only [τ, Equiv.trans_apply, Equiv.apply_symm_apply] using h
+    · apply e.injective
+      simpa [τ] using ha
+    · apply e.injective
+      simpa [τ] using hb

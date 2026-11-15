@@ -1,0 +1,11 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/TesterSource.lean",
+  "status": "complete, direct and public-o check passed, standard axioms only",
+  "theorem": "binary_tester_of_source",
+  "route": "Given one actual finite sourceP and sourcehalting/output proof with true numeric time(m+n), a PolynomialBound numericenvelope supplies canonical B(m+n+1)^b and actual TapeCompiler1+2t overhead; exact TesterImplementation follows. This theorem doesnot constructthe earlierGram/driver source stages.",
+  "logs": [
+    "harness/attempts/tester_source/check.log",
+    "harness/attempts/tester_source/public.log"
+  ]
+}

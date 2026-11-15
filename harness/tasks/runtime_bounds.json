@@ -1,0 +1,17 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/RuntimeBounds.lean",
+  "status": "complete, direct and public-o checks passed, standard axioms only",
+  "proofs": [
+    "PolynomialMajorant.toPolynomialBound restrictsto n\u22652",
+    "PolynomialBound.toMajorant absorb finite n0/n1 into coefficient",
+    "PolynomialBound.comp via universalnumericmajorants",
+    "sampler_runtime_envelope_polynomial forC(rowCount+n+1)^a",
+    "tester_runtime_envelope_polynomial forC(x+1)^a"
+  ],
+  "scope": "Numerical closure only. Every source execution/timebound muststillbe supplied by actual programproof. No annotations replace programs.",
+  "logs": [
+    "harness/attempts/runtime_bounds/check.log",
+    "harness/attempts/runtime_bounds/public.log"
+  ]
+}

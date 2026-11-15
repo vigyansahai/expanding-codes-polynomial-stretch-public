@@ -1,0 +1,6 @@
+{"theorem_name": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops",
+ "source_sha256":
+ "7178edcd9eca7d9fb67925fce7f9e2641f28e42b14f8341e2f44fb2501454be4",
+ "source_bytes": 261667,
+ "exact_solution_type": true,
+ "axioms": ["propext", "Classical.choice", "Quot.sound"]}

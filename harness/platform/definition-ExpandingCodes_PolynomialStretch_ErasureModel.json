@@ -1,0 +1,24 @@
+{
+  "definition_id": "c8675505-f7bc-49e0-a1dd-36f3e2df54a9",
+  "definition_name": "ExpandingCodes_PolynomialStretch_ErasureModel",
+  "definition_title": "Shortened ambiguity subspaces and the continuous-uniform rate",
+  "natural_language_statement": "Let $C\\subseteq F^I$ be a linear code on a finite coordinate set and let $E\\subseteq I$. Its erasure ambiguity is the subspace in the original coordinates\n$$C_E=\\{c\\in C:\\operatorname{supp}(c)\\subseteq E\\}.$$\nWhen coordinates are erased independently with probability $p$, the expected dimension is the finite sum over $E$ with weight $p^{|E|}(1-p)^{|I|-|E|}$. A doubly transitive code is preserved by a subgroup of coordinate permutations that sends any ordered pair of distinct coordinates to any other. The auxiliary code $B$ is the generalized Reed–Muller code of equation (5). Its proposed limiting rate is\n$$\\rho_d=\\Pr\\!\\left[\\sum_{j=1}^d X_j\\le(d-3)/2\\right],\\qquad X_j\\text{ independent uniform on }[0,1].$$\nThis provides the ambiguity notion required for varying-alphabet code families and for the rank test's auxiliary code.\n\n**Formalization Note** A code is a Mathlib submodule. The probability defining $\\rho_d$ is Lebesgue volume of the indicated measurable subset of $[0,1]^d$, whose total volume is one. In zero dimension the threshold is negative, so this set is empty. No Bochner integral or empty-set extremum is used. The finite erasure sum is evaluated only with $0\\le p<1$ in theorems.\n",
+  "created_at": "2026-11-08T19:11:55.659636+00:00",
+  "vote_count": 0,
+  "definition": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_PolynomialTest\nset_option autoImplicit false\nopen scoped Classical\n\nnamespace ExpandingCodes.PolynomialStretch\n\nopen scoped BigOperators\nnoncomputable def ambiguity {F I : Type*} [Field F] [Fintype I]\n    (C : Submodule F (I → F)) (E : Finset I) : Submodule F (I → F) where\n  carrier := {v | v ∈ C ∧ ∀ i, i ∉ E → v i = 0}\n  zero_mem' := ⟨C.zero_mem, by simp⟩\n  add_mem' := by\n    intro v w hv hw\n    exact ⟨C.add_mem hv.1 hw.1, fun i hi => by simp [hv.2 i hi, hw.2 i hi]⟩\n  smul_mem' := by\n    intro a v hv\n    exact ⟨C.smul_mem a hv.1, fun i hi => by simp [hv.2 i hi]⟩\nnoncomputable def erasureExpectation {F I : Type*} [Field F] [Fintype I]\n    (C : Submodule F (I → F)) (p : ℝ) : ℝ := by\n  classical\n  exact ∑ E : Finset I, p ^ E.card * (1 - p) ^ (Fintype.card I - E.card) *\n    (Module.finrank F (ambiguity C E) : ℝ)\nnoncomputable def DoublyTransitiveCode {F : Type*} [Field F] (M : ℕ)\n    (C : Submodule F (Fin M → F)) : Prop :=\n  ∃ H : Subgroup (Equiv.Perm (Fin M)),\n    (∀ σ ∈ H, ∀ c ∈ C, (fun i => c (σ i)) ∈ C) ∧\n    ∀ a b a' b' : Fin M, a ≠ b → a' ≠ b' →\n      ∃ σ ∈ H, σ a = a' ∧ σ b = b'\nnoncomputable def limitingRate (d : ℕ) : ℝ :=\n  (MeasureTheory.volume {x : Fin d → ℝ |\n    (∀ i, 0 ≤ x i ∧ x i ≤ 1) ∧ ∑ i, x i ≤ ((d : ℝ) - 3) / 2}).toReal\nnoncomputable def auxiliaryCode {d n : ℕ} (g : Geometry d n) :=\n  reedMuller g.F d (auxiliaryDegree (Fintype.card g.F) d)\n\nend ExpandingCodes.PolynomialStretch\n",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 10 / PDF p. 11, §2.2, erasure ambiguity, coordinate symmetries and Lemma 2.4 rate definition.",
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "created_by": "[REDACTED_ACCOUNT]",
+  "created_by_username": "mikedeng1",
+  "deprecated_at": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+}

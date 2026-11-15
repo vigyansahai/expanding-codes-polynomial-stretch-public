@@ -1,0 +1,18 @@
+{
+  "source_sha256": "a851b2ad2e2577dbec4fcfb1f4c6e50c353cf70e9ad0b1be7989bef78275d4d1",
+  "source_bytes": 1759,
+  "key": "gaussian_rank",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 92.13792070800001,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean"
+}

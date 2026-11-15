@@ -1,0 +1,78 @@
+{
+  "ready_for_api": true,
+  "theorem_name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+  "source_path": "./harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean",
+  "source_bytes": 245145,
+  "source_sha256": "017b6230547b7a7c0defed842f3555d25e806901db6ea5f5ce3e224484b42e72",
+  "compile": {
+    "exit_code": 0,
+    "elapsed_seconds": 182.372605209,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=harness/submission/runtime/staged",
+      "--setup=harness/submission/runtime/sampler-closed.setup.json",
+      "-o",
+      "harness/submission/runtime/SamplerReductionClosed.olean",
+      "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean"
+    ]
+  },
+  "exact_type_and_axiom_audit_compile": {
+    "exit_code": 0,
+    "elapsed_seconds": 165.764334625,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=harness/submission/runtime/sampler-closed-audit.setup.json",
+      "harness/submission/runtime/SamplerClosedAudit.lean"
+    ]
+  },
+  "closed_source_audit": {
+    "type": "∀ (θ : Rat),\n  And\n      (@LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero))\n        (@Rat.cast Real Real.instRatCast θ))\n      (@LT.lt Real Real.instLT (@Rat.cast Real Real.instRatCast θ)\n        (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))\n          (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))\n          (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯)))) →\n    ExpandingCodes.PolynomialStretch.SamplerImplementation θ fun n =>\n      ExpandingCodes.PolynomialStretch.binaryGeometry\n        (ExpandingCodes.PolynomialStretch.dimension (@Rat.cast Real Real.instRatCast θ)) n",
+    "name": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "exact_original_type_equal": true,
+  "no_ancestor_or_original_project_proof_imports": true,
+  "pure_statement_portability_compile": {
+    "exit_code": 0,
+    "elapsed_seconds": 94.262464084,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=harness/submission/runtime/staged",
+      "--setup=harness/submission/runtime/sampler-portability.setup.json",
+      "-o",
+      "harness/submission/runtime/SamplerReductionPortability.olean",
+      "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean"
+    ]
+  },
+  "child_dependencies": [
+    "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+    "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+    "ExpandingCodes.Computation.TapeCompiler.compile_halts"
+  ],
+  "child_closed_artifacts": {
+    "Theorems.Thm_ExpandingCodes_Computation_SamplerAssembly_prelude_stops": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.olean",
+      "sha256": "5ce97f39f058e1b64ea1a88859f1fa220d4bcee7c1667a0d7dca621a9cc0a5d1"
+    },
+    "Theorems.Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_SamplerProgram_layer_stops.olean",
+      "sha256": "e369ad5f62403071cb51fa780f443819084933bde5083274eee00254a2b80090"
+    },
+    "Theorems.Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.olean",
+      "sha256": "d155bfec74715208a8aff2d68e5109efa0177f2135aaf4645be8ebfb6bc027b2"
+    }
+  },
+  "frozen_runtime_definition_sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+  "local_gate": "identical actual source portable with pure registered child stubs; exact original type and standard-three-axiom closed proof using proper acyclic child caches"
+}

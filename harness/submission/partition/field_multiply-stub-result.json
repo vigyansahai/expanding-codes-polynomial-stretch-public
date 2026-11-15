@@ -1,0 +1,18 @@
+{
+  "source_sha256": "ec018b10b2d599b3033c296ac7ceb1cc6727fee63d89c4827d2d684002af335b",
+  "source_bytes": 1488,
+  "key": "field_multiply",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 32.562629,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.olean"
+}

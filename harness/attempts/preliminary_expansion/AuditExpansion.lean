@@ -1,0 +1,3 @@
+import ExpandingCodes.Probability.PreliminaryExpansion
+set_option autoImplicit false
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_expansion_limit

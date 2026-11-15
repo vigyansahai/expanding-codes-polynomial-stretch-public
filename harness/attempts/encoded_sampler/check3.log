@@ -1,0 +1,42 @@
+harness/attempts/encoded_sampler/EncodedSampler.lean:161:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  EncodedSampler.matrix n (BinaryField.indexOperations (fieldExponent d n) ⋯) ?m.20 ?m.21
+in the target expression
+  EncodedSampler.matrix n (BinaryField.indexOperations (fieldExponent d n) ⋯)
+      (RandomTables.sampledValues { input := inp.input, aux := inp.aux, guess := inp.guess, rand := List.ofFn ω }
+        (SamplerTables.formEntries d n k) (fieldExponent d n) 0)
+      (RandomTables.sampledValues { input := inp.input, aux := inp.aux, guess := inp.guess, rand := List.ofFn ω }
+        (SamplerTables.hashEntries d n k) beta (SamplerTables.formEntries d n k * fieldExponent d n)) =
+    SamplerTables.generator (binaryGeometry d n) k beta extra ω
+
+d n k beta extra : ℕ
+inp : NKtLB.Inputs
+ω : Fin (SamplerTables.entropy d n k beta + extra) → Bool
+hk : k ≤ fieldSize d n
+⊢ EncodedSampler.matrix n (BinaryField.indexOperations (fieldExponent d n) ⋯)
+      (RandomTables.sampledValues { input := inp.input, aux := inp.aux, guess := inp.guess, rand := List.ofFn ω }
+        (SamplerTables.formEntries d n k) (fieldExponent d n) 0)
+      (RandomTables.sampledValues { input := inp.input, aux := inp.aux, guess := inp.guess, rand := List.ofFn ω }
+        (SamplerTables.hashEntries d n k) beta (SamplerTables.formEntries d n k * fieldExponent d n)) =
+    SamplerTables.generator (binaryGeometry d n) k beta extra ω
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    BinaryField.indexOperations (fieldExponent d n) ⋯
+  has type
+    Operations (Fin (2 ^ fieldExponent d n))
+  but is expected to have type
+    Operations (Fin (fieldSize d n))
+  in the application
+    EncodedSampler.matrix n (BinaryField.indexOperations (fieldExponent d n) ⋯)
+harness/attempts/encoded_sampler/EncodedSampler.lean:170:31: error(lean.unknownIdentifier): Unknown identifier `sizeInput`
+
+Note: It is not possible to treat `sizeInput` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+harness/attempts/encoded_sampler/EncodedSampler.lean:173:31: error(lean.unknownIdentifier): Unknown identifier `sizeInput`
+harness/attempts/encoded_sampler/EncodedSampler.lean:177:8: error(lean.unknownIdentifier): Unknown identifier `sizeInput`
+'ExpandingCodes.PolynomialStretch.encodedSampler_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.encodedSampler_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.binarySamplerFromInput_law' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

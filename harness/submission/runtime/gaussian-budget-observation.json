@@ -1,0 +1,16 @@
+{
+  "exit_code": 1,
+  "wall_seconds_including_lock_wait": 151.18272995799998,
+  "child_user_cpu_seconds": 56.53928,
+  "child_system_cpu_seconds": 12.865423999999999,
+  "child_cpu_seconds_excluding_lock_wait": 69.404704,
+  "max_rss_mb": 3816.03125,
+  "command": [
+    "python3",
+    "harness/submission/partition/check.py",
+    "upload",
+    "gaussian_rank",
+    "--quiet"
+  ],
+  "note": "CPU includes check.py/lake/Lean process tree; serial-lock waiting contributes no CPU. Wall time includes lock waiting and IO."
+}

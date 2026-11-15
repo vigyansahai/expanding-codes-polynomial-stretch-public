@@ -1,0 +1,15 @@
+{
+  "key": "tape_compile",
+  "mode": "audit",
+  "exit_code": 0,
+  "elapsed_seconds": 45.145704583,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./harness/submission/partition/audit-cache/Audit_tape_compile.olean",
+    "./harness/submission/partition/Audit_tape_compile.lean"
+  ],
+  "output": "./harness/submission/partition/audit-cache/Audit_tape_compile.olean"
+}

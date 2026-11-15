@@ -1,0 +1,92 @@
+harness/attempts/encoded_sampler/EncodedSampler.lean:74:69: error: unsolved goals
+q d : ℕ
+F : Type u_1
+inst✝ : Field F
+O : Operations (Fin q)
+decode : Fin q → F
+h : Interpretation O decode
+a : Fin q
+z : Fin d → Fin q
+⊢ ∑ i, ((fun x => decode x.1) ∘ fun j => (O.mul (power O a ↑j).1 (z j), (power O a ↑j).2 + 1)) i =
+    ∑ j, decode a ^ ↑j * decode (z j)
+harness/attempts/encoded_sampler/EncodedSampler.lean:77:43: warning: This simp argument is unused:
+  h.mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_ofFn, List.sum_ofFn, power_decode h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/encoded_sampler/EncodedSampler.lean:77:50: warning: This simp argument is unused:
+  power_decode h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_ofFn, List.sum_ofFn, h.mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/encoded_sampler/EncodedSampler.lean:80:66: error: unsolved goals
+q d : ℕ
+F : Type u_1
+inst✝ : Field F
+O : Operations (Fin q)
+decode : Fin q → F
+h : Interpretation O decode
+s z : Fin d → Fin q
+⊢ ∑ i, ((fun x => decode x.1) ∘ fun j => (O.mul (s j) (z j), 1)) i = ∑ j, decode (s j) * decode (z j)
+harness/attempts/encoded_sampler/EncodedSampler.lean:83:43: warning: This simp argument is unused:
+  h.mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_ofFn, List.sum_ofFn]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/encoded_sampler/EncodedSampler.lean:88:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+harness/attempts/encoded_sampler/EncodedSampler.lean:96:82: error: unsolved goals
+d n k : ℕ
+g : Geometry d n
+O : Operations (Fin (fieldSize d n))
+hO : Interpretation O ⇑g.elements
+s : Fin (SamplerTables.formEntries d n k) → Fin (fieldSize d n)
+hk : k ≤ fieldSize d n
+i : Fin k
+z : Fin d → Fin (fieldSize d n)
+hi : ↑i < fieldSize d n
+⊢ (∑ j, g.elements ⟨↑i, hi⟩ ^ ↑j * g.elements (z j),
+      ∑ j,
+        g.elements
+            (s ((SamplerTables.flatFour 2 k (fieldSize d n) d) (((0, i), (EncodedSampler.fixed O ⟨↑i, hi⟩ z).1), j))) *
+          g.elements (z j),
+      ∑ j,
+        g.elements
+            (s ((SamplerTables.flatFour 2 k (fieldSize d n) d) (((1, i), (EncodedSampler.fixed O ⟨↑i, hi⟩ z).1), j))) *
+          g.elements (z j)) =
+    (∑ j, g.elements ⟨↑i, hi⟩ ^ ↑j * g.elements (z j),
+      ∑ x,
+        g.elements
+            (s
+              ((SamplerTables.flatFour 2 k (fieldSize d n) d)
+                (((0, i), g.elements.symm (∑ j, g.elements ⟨↑i, hi⟩ ^ ↑j * g.elements (z j))), x))) *
+          g.elements (z x),
+      ∑ x,
+        g.elements
+            (s
+              ((SamplerTables.flatFour 2 k (fieldSize d n) d)
+                (((1, i), g.elements.symm (∑ j, g.elements ⟨↑i, hi⟩ ^ ↑j * g.elements (z j))), x))) *
+          g.elements (z x))
+harness/attempts/encoded_sampler/EncodedSampler.lean:101:36: warning: This simp argument is unused:
+  Equiv.symm_apply_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [EncodedSampler.fixed_decode hO, EncodedSampler.linear_decode hO, SamplerTables.formsEquiv_apply,
+    fixedForm, linearForm, alpha, dif_pos hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.PolynomialStretch.encodedSampler_address' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.encodedSampler_matrix' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

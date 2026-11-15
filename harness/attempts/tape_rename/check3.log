@@ -1,0 +1,60 @@
+harness/attempts/tape_rename/TapeRename.lean:68:27: warning: This simp argument is unused:
+  hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [ht, hh, Function.comp_apply, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tape_rename/TapeRename.lean:68:30: warning: This simp argument is unused:
+  ht
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [hr, hh, Function.comp_apply, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tape_rename/TapeRename.lean:68:33: warning: This simp argument is unused:
+  hh
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [hr, ht, Function.comp_apply, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tape_rename/TapeRename.lean:66:2: warning: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/tape_rename/TapeRename.lean:140:74: error: unsolved goals
+case dec
+R B S C L : ℕ
+ρ : Fin R → Fin S
+σ : Fin B → Fin C
+P : TapeProgram R B L
+inp : Inputs
+c : TapeCfg S C L
+b : Fin C
+hb : ∀ (i : Fin B), b ≠ σ i
+reg✝ : Fin R
+zero✝ positive✝ : Fin L
+hc : P.code c.pc = TapeInstr.dec reg✝ zero✝ positive✝
+⊢ (if c.reg (ρ reg✝) = 0 then
+            { pc := zero✝, reg := c.reg, roHead := c.roHead, output := c.output, bufferTape := c.bufferTape,
+              bufferHead := c.bufferHead }
+          else
+            { pc := positive✝, reg := Function.update c.reg (ρ reg✝) (c.reg (ρ reg✝) - 1), roHead := c.roHead,
+              output := c.output, bufferTape := c.bufferTape, bufferHead := c.bufferHead }).bufferTape
+        b =
+      c.bufferTape b ∧
+    (if c.reg (ρ reg✝) = 0 then
+            { pc := zero✝, reg := c.reg, roHead := c.roHead, output := c.output, bufferTape := c.bufferTape,
+              bufferHead := c.bufferHead }
+          else
+            { pc := positive✝, reg := Function.update c.reg (ρ reg✝) (c.reg (ρ reg✝) - 1), roHead := c.roHead,
+              output := c.output, bufferTape := c.bufferTape, bufferHead := c.bufferHead }).bufferHead
+        b =
+      c.bufferHead b
+'ExpandingCodes.Computation.TapeProgram.step_projectStorage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.Stops.liftStorage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.Exec.renameStorage_outside' depends on axioms: [propext]
+'ExpandingCodes.Computation.TapeProgram.Stops.liftStorage_bounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TapeProgram.Exec.renameStorage_buffer_outside' depends on axioms: [propext, sorryAx]

@@ -1,0 +1,26 @@
+import ExpandingCodes.Algebra.CombinedOrthogonality
+import ExpandingCodes.Algebra.ReedMullerDimension
+import Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel
+import ExpandingCodes.Probability.BoundedDifferences
+set_option autoImplicit false
+#check LinearMap.range_domRestrict
+#check LinearMap.ker_domRestrict
+#check Submodule.comapSubtypeEquivOfLe
+#check LinearMap.finrank_le_finrank_of_injective
+#check Submodule.finrank_add_le_finrank_add_finrank
+#check LinearMap.range_add_le
+#check LinearMap.range_add_le_sup_range
+#check Matrix.mulVecLin_add
+#check Matrix.rank_submatrix
+#check Matrix.rank_eq_finrank_span_row
+#check LinearEquiv.arrowCongr
+#check LinearEquiv.funCongrLeft
+#check LinearEquiv.piCongrLeft
+#check LinearMap.range_comp
+#check LinearMap.range_eq_map
+#check LinearMap.finrank_range_of_surjective
+#check Matrix.vecMulLinear
+#check Matrix.range_vecMulLinear
+#check LinearMap.range_restrict
+#check Submodule.map_span
+#check LinearMap.map_span

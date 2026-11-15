@@ -1,0 +1,1 @@
+Exact solution type checked; transitive axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,66 @@
+theorem labels_eq (ps : List (Digit R)) : labels ps=21*ps.length+1 := by
+  induction ps with
+  | nil => rfl
+  | cons p ps ih => simp only [labels,List.length_cons,ih]; omega
+
+theorem initializeLabels_eq (ps : List (Digit R)) : initializeLabels ps=15*ps.length+1 := by
+  induction ps with
+  | nil => rfl
+  | cons p ps ih => simp only [initializeLabels,List.length_cons,ih]; omega
+
+theorem used_mem_iff (ps : List (Digit R)) (j : Fin R) :
+    j∈used ps ↔ ∃ p∈ps,j=p.1 ∨ j=p.2 := by
+  induction ps with
+  | nil => simp [used]
+  | cons p ps ih => simp [used,ih]; tauto
+
+theorem nextStore_tmp_le (q tmp : Fin R) (ps : List (Digit R))
+    (s : TapeStore R B) (ht : tmp∉used ps) :
+    (nextStore q tmp ps s).reg tmp≤s.reg tmp := by
+  induction ps generalizing s with
+  | nil => rfl
+  | cons p ps ih =>
+    simp only [used,List.mem_cons,not_or] at ht
+    rw [nextStore]
+    split
+    · have hh := ih (resetStore q tmp p s) ht.2.2
+      simpa [resetStore,TapeStore.setReg] using hh
+    · simp [advanceStore,TapeStore.setReg,ht.1,ht.2.1]
+
+/-- Canonical digits never require a growing caller counter envelope. -/
+theorem nextStore_bound (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (hv : Valid q ps s)
+    (M : ℕ) (hs : ∀ j,s.reg j≤M) : ∀ j,(nextStore q tmp ps s).reg j≤M := by
+  have hqt : q≠tmp := by
+    intro he; exact (List.nodup_cons.mp huniq).1 (by simp [he])
+  have hqps : q∉used ps := by
+    intro he; exact (List.nodup_cons.mp huniq).1 (by simp [he])
+  have htps : tmp∉used ps := (List.nodup_cons.mp (List.nodup_cons.mp huniq).2).1
+  have hvnext := program_valid q tmp ps huniq s hv
+  have hqnext := nextStore_fresh q tmp ps s q hqt hqps
+  intro j
+  by_cases ht : j=tmp
+  · subst j
+    exact (nextStore_tmp_le q tmp ps s htps).trans (hs tmp)
+  by_cases hj : j∈used ps
+  · obtain ⟨p,hp,hj⟩ := (used_mem_iff ps j).mp hj
+    have hpair := hvnext p hp
+    rw [hqnext] at hpair
+    have hbound := hs q
+    rcases hj with rfl|rfl <;> omega
+  · rw [nextStore_fresh q tmp ps s j ht hj]
+    exact hs j
+
+theorem program_stops_valid (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (inp : Inputs)
+    (M : ℕ) (s : TapeStore R B) (hs : ∀ j,s.reg j≤M) (hv : Valid q ps s) :
+    ∃ t e, t ≤ ps.length*(8*M+20) ∧
+      (program q tmp ps).Stops inp (s.toCfg (program (B := B) q tmp ps).entry) t e ∧
+      e.store=nextStore q tmp ps s ∧ ∀ j,e.reg j≤M := by
+  obtain ⟨t,e,ht,he,hes,heb⟩ := program_stops q tmp ps huniq inp M s hs
+  refine ⟨t,e,ht,he,hes,?_⟩
+  change ∀ j,e.store.reg j≤M
+  rw [hes]
+  exact nextStore_bound q tmp ps huniq s hv M hs
+
+#print axioms program_stops_valid

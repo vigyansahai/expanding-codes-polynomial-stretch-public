@@ -1,0 +1,11 @@
+import ExpandingCodes.Algebra.RankBounds
+set_option autoImplicit false
+#check @ExpandingCodes.PolynomialStretch.matrix_rank_add_rank_le_rank_mul_add
+#check @ExpandingCodes.PolynomialStretch.restrictedEvaluationMatrix_rank
+#check @ExpandingCodes.PolynomialStretch.testMatrix_rank_lower
+#check @ExpandingCodes.PolynomialStretch.testMatrix_rank_boundedDifferences
+#print axioms ExpandingCodes.PolynomialStretch.matrix_rank_add_rank_le_rank_mul_add
+#print axioms ExpandingCodes.PolynomialStretch.evaluationMatrix_rank
+#print axioms ExpandingCodes.PolynomialStretch.restrictedEvaluationMatrix_rank
+#print axioms ExpandingCodes.PolynomialStretch.testMatrix_rank_lower
+#print axioms ExpandingCodes.PolynomialStretch.testMatrix_rank_boundedDifferences

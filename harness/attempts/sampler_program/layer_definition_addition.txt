@@ -1,0 +1,49 @@
+namespace Storage
+
+def fixedCommon (d k : ℕ) (i : Fin 33) : Fin (registers d k) :=
+  if hi : i.val<32 then low d k ⟨i.val,by omega⟩ else alpha d k
+
+def fixedLayout (d k : ℕ) : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin (registers d k)
+  | .inl i => fixedCommon d k i
+  | .inr (.inl j) => coefficient d k j
+  | .inr (.inr j) => point d k j
+
+def formCommon (d k : ℕ) : Fin 11 → Fin (registers d k) :=
+  ![address d k,low d k 23,low d k 0,low d k 1,low d k 2,low d k 4,
+    low d k 5,low d k 6,low d k 7,low d k 8,low d k 9]
+
+def formLayout (d k : ℕ) : Fin 11 ⊕ Fin d → Fin (registers d k)
+  | .inl i => formCommon d k i
+  | .inr j => coefficient d k j
+
+def hashLayout (d k : ℕ) : Fin 8 → Fin (registers d k) :=
+  ![low d k 23,address d k,u d k,v d k,hashIndex d k,low d k 53,low d k 54,low d k 55]
+
+def hashReadLayout (d k : ℕ) : Fin 8 → Fin (registers d k) :=
+  ![hashIndex d k,low d k 39,low d k 56,low d k 57,low d k 58,low d k 59,bucket d k,low d k 53]
+end Storage
+
+def saveField (d k : ℕ) (dst : Fin 80) : TapeProgram (Storage.registers d k) 2 11 :=
+  TapeMacros.copy (Storage.low d k 30) (Storage.low d k dst) (Storage.low d k 53)
+
+def layerLabels (d k : ℕ) (i : Fin k) : ℕ :=
+  (((((((2+ParameterPrograms.raiseLabels i.val)+fixedLabels (Storage.fixedLayout d k))+11)+
+    randomLinearLabels (Storage.formLayout d k) (Storage.point d k) i.val)+11)+
+      randomLinearLabels (Storage.formLayout d k) (Storage.point d k) (i.val+k))+11)+hashedColumnLabels i.val
+
+/-- Concrete finite sampler layer. All labels and register locations depend
+only on fixed d,k,i. Runtime n,q,ell,b and table values are data throughout. -/
+def layer (d k : ℕ) (i : Fin k) : TapeProgram (Storage.registers d k) 2 (layerLabels d k i) :=
+  TapeProgram.seq (TapeProgram.seq (TapeProgram.seq (TapeProgram.seq (TapeProgram.seq (TapeProgram.seq
+    (TapeProgram.seq (ParameterPrograms.loadConstant (Storage.alpha d k) i.val)
+      (fixed (Storage.fixedLayout d k))) (saveField d k 70))
+        (randomLinear (Storage.formLayout d k) (Storage.field d k) (Storage.point d k) (0 : Fin 2) i.val))
+          (saveField d k 71))
+            (randomLinear (Storage.formLayout d k) (Storage.field d k) (Storage.point d k) (0 : Fin 2) (i.val+k)))
+              (saveField d k 72))
+                (hashedColumn (Storage.hashLayout d k) (Storage.hashReadLayout d k)
+                  (Storage.neighbor d k i) (Storage.low d k 53) (1 : Fin 2) i.val)
+
+def layerTimeBound (d k : ℕ) (i : Fin k) (M : ℕ) : ℕ :=
+  fixedTimeBound d M+randomLinearTimeBound i.val d M+randomLinearTimeBound (i.val+k) d M+
+    hashedColumnTimeBound i.val M+22*M+2*i.val+30

@@ -1,0 +1,79 @@
+{
+  "id": "boolean_russo",
+  "declaration": "ExpandingCodes.SharpThreshold.russo",
+  "file": "ExpandingCodes/Probability/SharpThreshold/Russo.lean",
+  "statement": "\u2200 {I : Type*} [Fintype I] (\u03a9 : Finset I \u2192 Prop) (p : \u211d), HasDerivAt (fun q => ExpandingCodes.SharpThreshold.probability q \u03a9) (ExpandingCodes.SharpThreshold.totalInfluence p \u03a9) p",
+  "statement_sha256": "9bc90fe24cee12f071a76ac0a54893a1812e111650dc626f1f9168bbc6785769",
+  "interface": "provisional; exact dispatched signature preserved",
+  "status": "proved",
+  "owner": "russo",
+  "file_ownership": [
+    "ExpandingCodes/Probability/SharpThreshold/Russo.lean",
+    "harness/tasks/russo.json",
+    "harness/attempts/russo/*.lean"
+  ],
+  "proof_route": "Induct over a finite coordinate universe s. Differentiate the existing expectationOn_insert identity by the scalar product rule. The new coordinate's expected gradient is the difference between its two conditional expectations. Every other coordinate gradient commutes with inserting the new coordinate. Summing those identities matches the product-rule derivative. Specialize s to univ and f to the event indicator.",
+  "helpers": [
+    {
+      "name": "expectationOn_gradient_insert",
+      "purpose": "Calculate the expectation of the newly inserted coordinate gradient as the difference of the two conditional expectations.",
+      "status": "proved"
+    },
+    {
+      "name": "gradient_insert_other",
+      "purpose": "Commute a residual coordinate gradient through insertion of a different coordinate.",
+      "status": "proved"
+    },
+    {
+      "name": "ExpandingCodes.SharpThreshold.hasDerivAt_expectationOn",
+      "purpose": "Prove the finite-coordinate real-valued derivative identity by induction, providing a reusable strengthening of Russo.",
+      "status": "proved"
+    }
+  ],
+  "failed_approaches": [
+    {
+      "approach": "Explicit DecidableEq I helper binders around the existing classical gradient definition.",
+      "result": "Direct build exposed instance mismatch in erase/insert rewrites because gradient freezes Classical.decEq; isolated draft now removes those binders and uses the Classical scope."
+    },
+    {
+      "approach": "Plain convert on the derivative proof.",
+      "result": "Generated nontrivial-looking Real structure-instance equality goals because convert used insufficient transparency; convert! avoids them, after which dsimp and ring close the sole scalar derivative equality."
+    }
+  ],
+  "verification": {
+    "warm_iteration": "Initial import environment was empty because shared Erasure.olean was temporarily missing; not a mathematical proof failure.",
+    "initial_build": "Blocked by shared Erasure.lean:400 coercion mismatch in puncturedFailure_map; shared owner is repairing this dependency.",
+    "final_build": {
+      "command": "./tools/lake-serial build ExpandingCodes.Probability.SharpThreshold.Russo",
+      "exit_code": 0,
+      "result": "Built Russo successfully (2648 jobs); only existing dependency lint warnings replayed."
+    },
+    "axiom_audit": {
+      "command": "./tools/lake-serial env lean harness/attempts/russo/Audit.lean",
+      "exit_code": 0,
+      "declarations": {
+        "ExpandingCodes.SharpThreshold.hasDerivAt_expectationOn": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.SharpThreshold.russo": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "sorryAx": false,
+      "custom_axioms": false
+    },
+    "draft_isolation": "Draft passed ./tools/lake-serial env lean harness/attempts/russo/Russo.lean with exit 0 and no warnings before promotion.",
+    "source_sha256": "2e82aeb03d5871b43e62915fa4827e3891653a634da6d33babc6252996b5f94d",
+    "note": "Standalone worker record; coordinator owns graph integration and harness proof receipts."
+  },
+  "source_locations": [
+    "ExpandingCodes/Probability/Erasure.lean: expectationOn, expectationOn_univ, expectationOn_insert",
+    "ExpandingCodes/Probability/SharpThreshold/Basic.lean: gradient, probability, influence, totalInfluence"
+  ],
+  "unresolved_dependencies": [],
+  "draft_file": "harness/attempts/russo/Russo.lean"
+}

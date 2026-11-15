@@ -1,0 +1,39 @@
+harness/attempts/field_convolution/SourceModulus.lean:63:8: warning: This simp argument is unused:
+  TapeStore.setReg_same
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, Nat.sub_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_convolution/SourceModulus.lean:75:10: warning: This simp argument is unused:
+  TapeStore.setReg_same
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_convolution/SourceModulus.lean:72:43: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/field_convolution/SourceModulus.lean:72:43: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+harness/attempts/field_convolution/SourceModulus.lean:823:45: warning: This simp argument is unused:
+  reg_set r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [c]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.SourceModulus.construct_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SourceModulus.constructResult_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceModulus.construct_stops_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceModulus.candidateLoop_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceModulus.outerLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SourceModulus.innerLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

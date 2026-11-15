@@ -1,0 +1,46 @@
+{
+  "id": "boolean_two_point_uniform",
+  "declaration": "ExpandingCodes.SharpThreshold.two_point_uniform",
+  "file": "ExpandingCodes/Probability/SharpThreshold/Scalar.lean",
+  "owner": "scalar",
+  "status": "proved",
+  "interface": "provisional",
+  "statement": "∀ (a b : ℝ), 0 < a → a ≤ b → b < 1 → ∃ r : ℝ, 0 < r ∧ r < 1 ∧ ∀ p ∈ Set.Icc a b, ExpandingCodes.SharpThreshold.TwoPointContraction p r",
+  "file_ownership": [
+    "ExpandingCodes/Probability/SharpThreshold/Scalar.lean",
+    "ExpandingCodes/Probability/SharpThreshold/StrongConvexity.lean",
+    "harness/attempts/scalar/*.lean",
+    "harness/tasks/scalar.json"
+  ],
+  "scratch": "harness/attempts/scalar/Algebra.lean",
+  "proof_route": "An elementary polynomial strong-convexity proof replaces the calculus route. If |u|,|v|≤1, factor u⁴−v⁴−(4/3)v(u³−v³) as (u−v)²(u²+(2/3)uv+v²/3). Put Q=u²+uv+v². Then 0≤Q≤3, Q²≤3Q, and Q/6≤u²+(2/3)uv+v²/3, giving tangent gap≥(u³−v³)²/18. Signed cube roots convert this to a tangent bound for |x|^(4/3) on [-1,1], including crossing zero. Weighted tangent bounds at the mean give a Jensen gap≥p(1−p)(x−y)²/18. For 0≤B≤A and δ≤A, A^(3/2)−B^(3/2)≥√δ(A−B), proved by factoring square roots. Normalize arbitrary x,y by M=max(|x|,|y|). The normalized moment A is at least min(p,1−p), since one absolute value is one. Combining these facts proves the desired noise contraction whenever r²≤√δ/18. Set δ=min(a,1−b), r=√(√δ/18). Both are positive and r<1. Rescale by M²; handle M=0 separately.",
+  "components": [
+    "cube_tangent_bound: explicit degree-six polynomial inequality on signed cube roots",
+    "exists_bounded_cube: bounded signed cube-root parametrization using real rpow",
+    "bounded_rpow_tangent: global supporting quadratic on [-1,1]",
+    "bounded_rpow_jensen: weighted quadratic Jensen gap on [-1,1]",
+    "rpow_three_halves and rpow_gap: monotone square-root conversion of Jensen gap",
+    "bounded_noise_contraction: variance identity plus the two gap bounds",
+    "two_point_of_sq_le: max-norm normalization and homogeneity",
+    "two_point_uniform: explicit interval-uniform contraction parameter"
+  ],
+  "open_dependencies": [],
+  "failed_approaches": [
+    "The earlier calculus/compactness route was not needed; no obstruction was found.",
+    "Initial nlinarith square-bound attempt omitted the product (1−|u|)(1+|u|)≥0; supplying that factor repairs it.",
+    "simp [neg_pow] recursed in the signed-root cases; polynomial ring normalization replaces it."
+  ],
+  "source_locations": [
+    "ExpandingCodes/Probability/SharpThreshold/Basic.lean:70 (exact TwoPointContraction definition)",
+    ".lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Real.lean (rpow algebra and monotonicity)",
+    "harness/attempts/scalar/Algebra.lean (complete polynomial proof draft)",
+    "ExpandingCodes/Probability/SharpThreshold/Scalar.lean (promoted after clean direct compiler check)"
+  ],
+  "verification": {
+    "warm_repl": "Main inequalities checked during iteration; persistent REPL discontinued by coordinator for memory use.",
+    "direct_lean": "PASS: ./tools/lake-serial env lean harness/attempts/scalar/Algebra.lean, exit 0, no diagnostics",
+    "fresh_public_build": "PASS: ./tools/lake-serial build ExpandingCodes.Probability.SharpThreshold.Scalar; Built Scalar (4.6s); Build completed successfully (2648 jobs). Only pre-existing imported linter warnings.",
+    "axiom_audit": "PASS: ./tools/lake-serial env lean harness/attempts/scalar/Audit.lean, exit 0. two_point_uniform depends only on [propext, Classical.choice, Quot.sound]. Exact original signature printed and preserved.",
+    "sorry_or_custom_axioms": false
+  }
+}

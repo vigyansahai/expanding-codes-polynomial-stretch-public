@@ -1,0 +1,30 @@
+{
+  "owner": "root coordinator",
+  "source": "ExpandingCodes/Computation/TapeRename.lean",
+  "status": "complete, direct and public-o checks passed, standard axioms only",
+  "purpose": "Embed fixed64register/2buffer Gaussian source in larger fixed ambientR/B3 tester storage with extra static digit registers and yinputbuffer, without changing source step count/output.",
+  "definitions": [
+    "TapeInstr.renameStorage rho sigma",
+    "TapeProgram.renameStorage rho sigma P",
+    "TapeCfg.projectStorage rho sigma big",
+    "TapeStore.projectStorage rho sigma d"
+  ],
+  "proofs": [
+    "step_projectStorage for injective rho/sigma",
+    "Exec.liftStorage exactt steps and projection",
+    "Stops.liftStorage exacthalts/time/projection/output",
+    "Exec.renameStorage_outside unmappedregister preserved",
+    "Stops.liftStorage_bounded keeps globalallcounterM fromsmallfinalM andbig initialM",
+    "Exec.renameStorage_buffer_outside unmappedbuffer contents/head exactlypreserved",
+    "TapeStore.projectStorage_toCfg"
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "logs": [
+    "harness/attempts/tape_rename/check5.log",
+    "harness/attempts/tape_rename/public.log"
+  ]
+}

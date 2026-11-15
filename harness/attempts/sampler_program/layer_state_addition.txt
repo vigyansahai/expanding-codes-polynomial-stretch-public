@@ -1,0 +1,36 @@
+/-- The two sampler tables as actual explicit thermometer-buffer cells. -/
+structure PhysicalTables (d k ell b : ℕ)
+    (forms : Fin (2*k*(2^ell)*d) → Fin (2^ell))
+    (hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b) (s : TapeStore R 2) : Prop where
+  formMarked : TapeArrays.BottomMarked s 0
+  hashMarked : TapeArrays.BottomMarked s 1
+  formTable : TapeArrays.ThermometerTable s 0 (2^ell) (fun i => (forms i).val)
+  hashTable : TapeArrays.ThermometerTable s 1 b (fun i => (hashes i).val)
+
+theorem PhysicalTables.of_payload {d k ell b : ℕ}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {s e : TapeStore R 2}
+    (h : PhysicalTables d k ell b forms hashes s) (hp : TapeStore.SamePayload e s) :
+    PhysicalTables d k ell b forms hashes e := by
+  exact ⟨h.formMarked.of_payload hp,h.hashMarked.of_payload hp,
+    fun i => (h.formTable i).of_payload hp,fun i => (h.hashTable i).of_payload hp⟩
+
+/-- Stable phase invariant for the concrete sampler layer. All input-dependent
+quantities here are semantic counter/buffer values, not finite-code parameters. -/
+structure LayerInvariant (d k ell b : ℕ) (h : 0<ell)
+    (forms : Fin (2*k*(2^ell)*d) → Fin (2^ell))
+    (hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b) (z : Fin d → Fin (2^ell))
+    (M : ℕ) (s : TapeStore (Storage.registers d k) 2) : Prop where
+  field : Environment (Storage.field d k) ell (selectedIndex ell h) s
+  buckets : s.reg (Storage.low d k 39)=b
+  points : ∀ j,s.reg (Storage.point d k j)=(z j).val
+  counters : ∀ r,s.reg r ≤ M
+  heads : ∀ t,s.bufferHead t ≤ M
+  tables : PhysicalTables d k ell b forms hashes s
+
+/-- Uniform scalar/table caps sufficient for all accesses in any one layer. -/
+structure LayerCaps (d k ell b M : ℕ) : Prop where
+  formHead : 1+(2*k*(2^ell)*d)*(2^ell) ≤ M
+  hashHead : 1+(k*(2^ell)*(2^ell)*(2^ell))*b ≤ M
+  middle : 2*k*(2^ell) ≤ M
+  columns : k*b ≤ M

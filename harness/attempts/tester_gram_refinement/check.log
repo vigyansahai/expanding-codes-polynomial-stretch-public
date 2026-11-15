@@ -1,0 +1,105 @@
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:93:55: warning: Variable name `hq` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hq
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:98:15: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.snd] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:98:24: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.fst] at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:157:49: warning: This simp argument is unused:
+  Fin.val_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only at hh
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:381:10: warning: This simp argument is unused:
+  e
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, hzi₃]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterGram.pointBody_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:534:8: warning: Unused tactic linter: `change c'.reg (low d i) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterGram.pointLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:650:23: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:634:15: warning: This simp argument is unused:
+  h70
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [s₂, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterGram.pairPrepare_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:841:10: warning: This simp argument is unused:
+  e
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, hi₄]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:804:6: warning: Unused tactic linter: `change c₂.store.bufferHead = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:809:6: warning: Unused tactic linter: `change (c₂.store.bufferTape c).getD k .blank = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterGram.pairFinishAfter_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:900:6: warning: Unused tactic linter: `change e.store.bufferHead 0 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:904:6: warning: Unused tactic linter: `change e.store.bufferHead 1 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TesterGram.pairBody_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:927:15: warning: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hleft, hright, and_self, if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:1051:23: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'ExpandingCodes.Computation.TesterGram.rowPrepare_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:1131:28: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:1131:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ExpandingCodes.Computation.TesterGram.rowLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:1213:10: warning: This simp argument is unused:
+  e
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, hi₁]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.TesterGram.rowBody_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/attempts/tester_gram_refinement/TesterGramCorrectness.lean:1310:23: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'ExpandingCodes.Computation.TesterGram.program_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.BuildState.table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.programTime_polynomial' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.programTime_mono_m' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TesterGram.programTime_mono' depends on axioms: [propext, Quot.sound]

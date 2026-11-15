@@ -1,0 +1,65 @@
+We prove the stated existence theorem with the absolute constant
+$$
+C=2^{31}.
+$$
+For every real parameter $0<\varepsilon<1/2$, the construction supplies a fixed arity $k\le C\varepsilon^{-6}$, a deterministic row-count function, an exact randomized matrix sampler, and a deterministic test satisfying all clauses of `EfficientFamily`.
+
+Choose a rational parameter strictly between $\varepsilon/2$ and $\varepsilon$ and write it as $\theta$. Set
+$$
+d=2\lceil512\theta^{-2}\rceil,
+\qquad
+k=\lceil4d^2\theta^{-2}\rceil.
+$$
+The rounding estimates give
+$$
+d\le8192\varepsilon^{-2},
+\qquad
+k\le2^{31}\varepsilon^{-6}.
+$$
+These parameters, the two machine programs, and the eventual input-size threshold are fixed before the runtime input size and random tape.
+
+For a sufficiently large input size $n$, use a binary field of size
+$$
+q=2^{\max\{1,\lceil\log_2(n^{2d})\rceil\}},
+\qquad
+m(n)=q^d.
+$$
+The rows enumerate the points of the field's $d$-dimensional affine space. Each of the $k$ layers uses the prescribed fixed linear form, two independently sampled linear forms for each fiber, and an independently sampled hash table on triples of field elements. The layers occupy disjoint blocks of columns, with the remaining columns padded by zero. The resulting distribution is exactly the canonical `sampleLaw`. Eventually every output has row weight exactly $k$, and
+$$
+n<m(n)<n^k.
+$$
+The stronger asymptotic identity
+$$
+\frac{\log m(n)}{\log n}\longrightarrow2d^2
+$$
+is proved as part of the construction.
+
+Expansion follows in two stages. The affine-geometry and peeling arguments bound the number of point sets whose preliminary images are too small. Conditional hash-occupancy estimates then bound the additional collisions introduced by the final hash tables. Applying the bounds at the rational construction parameter and restricting to the requested set sizes gives
+$$
+\Pr\!\left[G\text{ is }(1-\varepsilon,k,n^{1-\varepsilon})\text{-expanding}\right]
+\ge1-n^{-1/\varepsilon}
+$$
+for all sufficiently large $n$.
+
+The test uses the auxiliary Reed--Muller evaluation space at the exact integer-floor cutoff in the problem statement. It accepts precisely when the associated masked Gram matrix has rank at most
+$$
+\left(\frac12-\frac\theta2\right)m(n).
+$$
+Column orthogonality annihilates the contribution of every encoded message. A corruption supported on a set of coordinates changes the Gram matrix by a matrix whose rank is at most the number of corrupted coordinates. Therefore, for every sampler output and every message and error satisfying the requested weight bound,
+$$
+D(Gx+e)=1
+\quad\text{whenever}\quad
+|\operatorname{supp}(e)|\le\left(\frac12-\varepsilon\right)m(n).
+$$
+This argument is pointwise in the message, the sampled matrix, and the error, so it permits arbitrary dependence among them.
+
+For a uniform received word, the auxiliary-code rate estimates and the half-erasure argument give the required rank expectation gap. The erasure result is established from affine symmetry and a Boolean sharp-threshold argument, including its Fourier, noise-energy, tensorization, and Russo components. A one-coordinate change alters the relevant rank by at most one, so bounded differences yields the exponential lower-tail estimate. The choice $\theta>\varepsilon/2$ gives
+$$
+\Pr[D(U_{m(n)})=1]
+\le\exp\!\left(-\frac{\varepsilon^2}{128}m(n)\right)
+$$
+eventually.
+
+The algorithmic clauses are witnessed by actual fixed finite transition tables. The sampler reads the unary input size, computes the parameters, constructs the canonical binary-field modulus by finite search, samples the coefficient and hash tables from fair bits, enumerates the points, evaluates each neighbor, and emits every matrix entry. Exact finite-product counting proves its output law, including independence of unused random-tape suffixes.
+
+The tester reads the received word into physical work tapes, constructs the full zero-padded Gram matrix by explicit nested loops, performs finite-field Gaussian elimination, and evaluates the final rational inequality by integer cross multiplication. The proofs refine individual counter and tape instructions and bound their actual executions by polynomials. A proved source-to-machine compiler preserves halting and output with an explicit linear transition overhead. Combining the finitely many size thresholds gives every clause of `EfficientFamily` simultaneously, and the headline theorem selects these witnesses.

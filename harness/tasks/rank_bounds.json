@@ -1,0 +1,58 @@
+{
+  "id": "polynomial_test_rank_bounds",
+  "owner": "concentration",
+  "status": "proved",
+  "interface": "Helpers over unchanged canonical evaluationMatrix, testMatrix, auxiliaryCode and ambiguity",
+  "file": "ExpandingCodes/Algebra/RankBounds.lean",
+  "file_ownership": [
+    "ExpandingCodes/Algebra/RankBounds.lean",
+    "ExpandingCodes/Algebra/RankRestriction.lean",
+    "harness/attempts/concentration_rank/*.lean",
+    "harness/tasks/rank_bounds.json"
+  ],
+  "declarations": [
+    "ExpandingCodes.PolynomialStretch.matrix_rank_add_rank_le_rank_mul_add",
+    "ExpandingCodes.PolynomialStretch.restrictedEvaluationMatrix_rank_add_ambiguity",
+    "ExpandingCodes.PolynomialStretch.testMatrix_rank_lower",
+    "ExpandingCodes.PolynomialStretch.testMatrix_rank_boundedDifferences"
+  ],
+  "exact_goals": [
+    "For A:I\u00d7J and B:J\u00d7K, rank A+rank B\u2264rank(A*B)+card J.",
+    "For C\u2286F^I and S\u2286I, dim(range restriction_S C)+dim(ambiguity C S\u1d9c)=dim C, and the corresponding generator-matrix restriction rank formula.",
+    "supportPoints g y is the image under the exact rowOrder equivalence of the actual nonzero coordinates of y. For r=dim(auxiliaryCode g), b=dim(ambiguity(auxiliaryCode g)(supportPoints g y)\u1d9c), prove 2r\u22122b\u2212weight y\u2264rank(testMatrix g y).",
+    "The real-valued rank of the canonical testMatrix on boolWord x has unit bounded differences under one Boolean coordinate update."
+  ],
+  "proof_route": "Sylvester: restrict A.mulVecLin to range(B), apply rank-nullity, and inject its kernel into ker(A). Restriction: identify the coordinate restriction kernel with ambiguity(complement) via the code subtype and use rank-nullity; rows of a restricted matrix span the image code. Factor testMatrix exactly as the evaluation matrix on its nonzero point support times its transpose, reindexing through rowOrder. Sylvester and restriction give the rank lower bound. For Lipschitz, a one-coordinate word difference has weight\u22641, its testMatrix rank\u22641 by CombinedOrthogonality, and matrix-rank subadditivity gives both rank inequalities.",
+  "open_dependencies": [],
+  "source_locations": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+    "ExpandingCodes/Algebra/CombinedOrthogonality.lean:testMatrix_add,testMatrix_rank_le_weight",
+    ".lake/packages/mathlib/Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.lean:173",
+    ".lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Rank.lean:rank_transpose,rank_eq_finrank_span_row"
+  ],
+  "failed_approaches": [
+    "First elaboration found differing synthesized DecidableEq instances in specialized Finset complements; generic restriction lemmas now expose DecidableEq I explicitly, so their complements specialize consistently.",
+    "Finite sum reindexing initially used sum_coe_sort backwards and a mismatched sum_filter rewrite; replaced by forward subtype-sum conversion and sum_subset with zero terms outside actual support.",
+    "Canonical weight uses a classical decision procedure in its filter while supportPoints initially uses the available finite decision procedure. An extensional equality of filters resolves the difference; no definition was altered."
+  ],
+  "verification": {
+    "direct_lean": "PASS: ./tools/lake-serial env lean harness/attempts/concentration_rank/RankBounds.lean, exit 0, no diagnostics. Includes evaluationMatrix_rank and the full final public source.",
+    "fresh_public_build": "PASS: ./tools/lake-serial build ExpandingCodes.Algebra.RankBounds, exit 0. Target built in 5.7s; 8720 jobs successful.",
+    "axiom_audit": "PASS: ./tools/lake-serial env lean harness/attempts/concentration_rank/Audit.lean, exit 0. Exact requested signatures checked. Sylvester, evaluation rank, restriction rank, rank lower bound and Boolean rank bounded differences depend only on [propext, Classical.choice, Quot.sound].",
+    "sorry_or_custom_axioms": false
+  },
+  "components": [
+    "matrix_rank_add_rank_le_rank_mul_add: general Sylvester inequality",
+    "matrix_rank_add_le: matrix-rank subadditivity",
+    "codeRestriction, codeRestriction_ker, finrank_codeRestriction_add_ambiguity: exact restriction rank-nullity",
+    "matrix_restriction_rank_add_ambiguity: generator matrix specialization",
+    "supportPoints, mem_supportPoints, card_supportPoints: exact support/weight transport",
+    "restrictedEvaluationMatrix and evaluationMatrix_rank: exact canonical evaluation interfaces",
+    "restrictedEvaluationMatrix_rank_add_ambiguity and restrictedEvaluationMatrix_rank: additive and subtractive rank restriction identities",
+    "testMatrix_eq_restricted_mul_transpose: exact nonzero-column Gram factorization",
+    "testMatrix_rank_lower_additive, testMatrix_rank_lower: desired algebraic lower bounds",
+    "weight_le_one_of_eq_zero_off and testMatrix_rank_abs_sub_le_one: deterministic rank Lipschitz",
+    "boolWord and testMatrix_rank_boundedDifferences: Boolean cube interface"
+  ]
+}

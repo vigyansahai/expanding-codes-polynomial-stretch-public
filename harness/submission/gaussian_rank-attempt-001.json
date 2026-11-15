@@ -1,0 +1,32 @@
+{
+  "created_at": 1794705691.440546,
+  "theorem_id": "d2ef7d93-ddaf-43d8-994f-78b913ed17c4",
+  "proof_path": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean",
+  "proof_sha256": "48cfffece092555ef64e3789b99c6f9692b3175539c6ae4acfadaff1a598b95b",
+  "proof_bytes": 328588,
+  "phase": "submitted",
+  "proof_type": "prove",
+  "submitted_proof_archive": "harness/submission/submitted/gaussian_rank-attempt-001.lean",
+  "preflight_path": "harness/submission/partition/gaussian_rank-preflight.json",
+  "preflight_sha256": "3bfccd92dd57631efe5e8873155ba9f53e164ba99d73972b409ce69f28f4c21b",
+  "http_status": 200,
+  "response": {
+    "submission_id": "b9d42b0f-4002-46a9-9834-dabbbd1c4902",
+    "status": "PENDING",
+    "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+    "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+  },
+  "submission_id": "b9d42b0f-4002-46a9-9834-dabbbd1c4902",
+  "last_poll_at": 1794706160.709444,
+  "last_http_status": 200,
+  "last_verdict": {
+    "id": "b9d42b0f-4002-46a9-9834-dabbbd1c4902",
+    "theorem_id": "d2ef7d93-ddaf-43d8-994f-78b913ed17c4",
+    "user_id": "[REDACTED_ACCOUNT]",
+    "status": "ACCEPTED",
+    "error_message": "",
+    "file_path": "d2ef7d93-ddaf-43d8-994f-78b913ed17c4/[REDACTED_ACCOUNT]/b9d42b0f-4002-46a9-9834-dabbbd1c4902.lean",
+    "created_at": "2026-11-15T01:21:32.159534+00:00",
+    "updated_at": "2026-11-15T01:25:57.962438+00:00"
+  }
+}

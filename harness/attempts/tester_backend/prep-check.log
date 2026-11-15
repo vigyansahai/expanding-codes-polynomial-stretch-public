@@ -1,0 +1,108 @@
+harness/attempts/tester_backend/TesterBackendPrep.lean:36:28: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat (Fin (copyLabels [])) 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Fin (copyLabels [])
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+harness/attempts/tester_backend/TesterBackendPrep.lean:45:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ j ≤ 78
+  0 ≤ i ≤ 78
+  i - j ≥ 1
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - g ≥ 0
+  b ≥ 0
+  a ≥ 0
+  7*a - b ≥ -7
+  7*a - b - g + h ≤ -8
+where
+ a := ↑M
+ b := ↑t
+ f := ↑ps.length * ↑(7 * M + 8)
+ g := ↑s
+ h := ↑ps.length * ↑(0 * M + M + M + M + M + M + M + M + 8)
+ i := ↑↑p.2
+ j := ↑↑p.1
+harness/attempts/tester_backend/TesterBackendPrep.lean:58:56: error: failed to synthesize
+  Decidable (Valid metadataPairs)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+harness/attempts/tester_backend/TesterBackendPrep.lean:74:15: error: Function expected at
+  (((TapeStore.setReg d 0 (d.reg 23)).setReg 36 (d.reg 24)).setReg 37 (d.reg 19)).setReg 38 (d.reg 3)
+but this term has type
+  TapeStore 80 3
+
+Note: Expected a function because this term is being applied to the argument
+  .setReg
+harness/attempts/tester_backend/TesterBackendPrep.lean:77:82: error: unsolved goals
+d : BigStore
+r : Fin 80
+⊢ (if r = 56 then 0
+    else
+      if r = 55 then 0
+      else
+        if r = 54 then d.reg 70 * d.reg 70 * d.reg 23
+        else
+          if r = 53 then 0
+          else
+            if r = 52 then 0
+            else
+              if r = 51 then d.reg 70 * d.reg 70
+              else
+                if r = 79 then 0
+                else
+                  if r = 49 then d.reg 70
+                  else
+                    if r = 79 then 0
+                    else
+                      if r = 40 then d.reg 70
+                      else
+                        if r = 79 then 0
+                        else
+                          if r = 38 then d.reg 3
+                          else
+                            if r = 79 then 0
+                            else
+                              if r = 37 then d.reg 19
+                              else
+                                if r = 79 then 0
+                                else
+                                  if r = 36 then d.reg 24
+                                  else if r = 79 then 0 else if r = 0 then d.reg 23 else d.reg r) =
+    sorry () r
+harness/attempts/tester_backend/TesterBackendPrep.lean:120:55: error: unsolved goals
+inp : Inputs
+d : BigStore
+M : ℕ
+hd : ∀ (r : Fin 80), d.reg r ≤ M
+hq : 0 < d.reg 23
+hn : d.reg 70 * d.reg 70 * d.reg 23 ≤ M
+hsq : d.reg 70 * d.reg 70 ≤ M
+t₁ : ℕ
+c₁ : TapeCfg 80 3 (copyLabels metadataPairs)
+ht₁ : t₁ ≤ metadataPairs.length * (7 * M + 8)
+h₁ : (copies metadataPairs).Stops inp (TapeStore.toCfg d (copies metadataPairs).entry) t₁ c₁
+hs₁ : c₁.store = copyResult metadataPairs d
+hb₁ : ∀ (r : Fin 80), c₁.reg r ≤ M
+t₂ : ℕ
+c₂ : TapeCfg 80 3 24
+ht₂ : t₂ ≤ 32 * (M + 1) ^ 2
+h₂ : (multiply 70 70 51 52 53).Stops inp (c₁.store.toCfg (multiply 70 70 51 52 53).entry) t₂ c₂
+hs₂ : c₂.store = multiplyStore c₁.store 70 70 51 52 53
+h70 : c₁.reg 70 = d.reg 70
+hb₂ : ∀ (r : Fin 80), c₂.reg r ≤ M
+t₃ : ℕ
+c₃ : TapeCfg 80 3 24
+ht₃ : t₃ ≤ 32 * (M + 1) ^ 2
+h₃ : (multiply 51 0 54 55 56).Stops inp (c₂.store.toCfg (multiply 51 0 54 55 56).entry) t₃ c₃
+hs₃ : c₃.store = multiplyStore c₂.store 51 0 54 55 56
+hpre : c₃.store = beforeZero d
+hpreBound : ∀ (r : Fin 80), (beforeZero d).reg r ≤ M
+⊢ sorry () 54 = d.reg 70 * d.reg 70 * d.reg 23
+'ExpandingCodes.Computation.TesterBackendPrep.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

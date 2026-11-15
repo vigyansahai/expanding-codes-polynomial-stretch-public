@@ -1,0 +1,94 @@
+def initializeLabels : List (Digit R) → ℕ
+  | [] => 1
+  | _::ps => 15+initializeLabels ps
+
+/-- Initialize every separate digit to zero and every countdown to runtime q-1
+using copies of the runtime radix. This is finite code for any fixed dimension. -/
+def initialize (q tmp : Fin R) : (ps : List (Digit R)) → TapeProgram R B (initializeLabels ps)
+  | [] => TapeProgram.skip
+  | p::ps => TapeProgram.seq (reset q tmp p) (initialize q tmp ps)
+
+def initializeStore (q tmp : Fin R) : List (Digit R) → TapeStore R B → TapeStore R B
+  | [],s => s
+  | p::ps,s => initializeStore q tmp ps (resetStore q tmp p s)
+
+theorem initializeStore_fresh (q tmp : Fin R) (ps : List (Digit R))
+    (s : TapeStore R B) (j : Fin R) (hjt : j≠tmp) (hj : j∉used ps) :
+    (initializeStore q tmp ps s).reg j=s.reg j := by
+  induction ps generalizing s with
+  | nil => rfl
+  | cons p ps ih =>
+    simp only [used,List.mem_cons,not_or] at hj
+    rw [initializeStore,ih _ hj.2.2]
+    simp [resetStore,TapeStore.setReg,hjt,hj.1,hj.2.1]
+
+theorem initialize_stops (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (inp : Inputs)
+    (M : ℕ) (s : TapeStore R B) (hs : ∀ j,s.reg j≤M) :
+    ∃ t e, t ≤ ps.length*(8*M+20) ∧
+      (initialize q tmp ps).Stops inp (s.toCfg (initialize (B := B) q tmp ps).entry) t e ∧
+      e.store=initializeStore q tmp ps s ∧ ∀ j,e.reg j≤M := by
+  induction ps generalizing s with
+  | nil =>
+    exact ⟨0,s.toCfg ⟨0,by simp [initializeLabels]⟩,by simp,
+      TapeProgram.skip_stops inp s,rfl,hs⟩
+  | cons p ps ih =>
+    have hu : q≠tmp ∧ q≠p.1 ∧ q≠p.2 ∧ q∉used ps ∧
+        tmp≠p.1 ∧ tmp≠p.2 ∧ tmp∉used ps ∧
+        p.1≠p.2 ∧ p.1∉used ps ∧ p.2∉used ps ∧ (used ps).Nodup := by
+      simp only [used,List.nodup_cons,List.mem_cons,not_or] at huniq
+      tauto
+    rcases hu with ⟨hqt,hqp,hqc,hqps,htp,htc,htps,hpc,hpps,hcps,hps⟩
+    have hut : (q::tmp::used ps).Nodup := by
+      simp only [List.nodup_cons,List.mem_cons,not_or]
+      exact ⟨⟨hqt,hqps⟩,htps,hps⟩
+    obtain ⟨a,c,ha,hc,hcs⟩ := reset_stops q tmp p hqp hqc hqt hpc (Ne.symm htp) (Ne.symm htc) inp s
+    obtain ⟨b,e,hb,he,hes,heb⟩ := ih hut (resetStore q tmp p s)
+      (resetStore_bound q tmp p s M hs)
+    rw [← hcs] at he
+    have hall := hc.seq he
+    refine ⟨a+1+b,_,?_,hall,hes,heb⟩
+    change a+1+b ≤ (ps.length+1)*(8*M+20)
+    rw [Nat.add_mul,Nat.one_mul]
+    have h₁ := hs p.1; have h₂ := hs p.2; have h₃ := hs tmp; have h₄ := hs q
+    omega
+
+theorem initializeStore_values (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) :
+    ∀ p∈ps,(initializeStore q tmp ps s).reg p.1=0 ∧
+      (initializeStore q tmp ps s).reg p.2=s.reg q-1 := by
+  induction ps generalizing s with
+  | nil => simp
+  | cons p ps ih =>
+    have hu : q≠tmp ∧ q≠p.1 ∧ q≠p.2 ∧ q∉used ps ∧
+        tmp≠p.1 ∧ tmp≠p.2 ∧ tmp∉used ps ∧
+        p.1≠p.2 ∧ p.1∉used ps ∧ p.2∉used ps ∧ (used ps).Nodup := by
+      simp only [used,List.nodup_cons,List.mem_cons,not_or] at huniq
+      tauto
+    rcases hu with ⟨hqt,hqp,hqc,hqps,htp,htc,htps,hpc,hpps,hcps,hps⟩
+    have hut : (q::tmp::used ps).Nodup := by
+      simp only [List.nodup_cons,List.mem_cons,not_or]
+      exact ⟨⟨hqt,hqps⟩,htps,hps⟩
+    intro a ha
+    simp only [List.mem_cons] at ha
+    rcases ha with rfl|ha
+    · rw [initializeStore,initializeStore_fresh q tmp ps _ p.1 (Ne.symm htp) hpps,
+        initializeStore_fresh q tmp ps _ p.2 (Ne.symm htc) hcps]
+      simp [resetStore,TapeStore.setReg,Ne.symm htp,Ne.symm htc,hpc]
+    · have hh := ih hut (resetStore q tmp p s) a ha
+      simpa [initializeStore,resetStore,TapeStore.setReg,hqt,hqp,hqc] using hh
+
+theorem initializeStore_valid (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (hq : 0<s.reg q) :
+    Valid q ps (initializeStore q tmp ps s) := by
+  intro p hp
+  have hv := initializeStore_values q tmp ps huniq s p hp
+  have hfresh : (initializeStore q tmp ps s).reg q=s.reg q := by
+    apply initializeStore_fresh
+    · exact fun he => (List.nodup_cons.mp huniq).1 (by simp [he])
+    · exact fun he => (List.nodup_cons.mp huniq).1 (by simp [he])
+  rw [hv.1,hv.2,hfresh]
+  omega
+
+#print axioms initialize_stops
+#print axioms initializeStore_valid

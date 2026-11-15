@@ -1,0 +1,82 @@
+def hashLayout (r : Fin 8 → Fin R) (t : Fin 3) : Fin 6 → Fin R :=
+  ![r 0,r 4,r ⟨t.val+1,by omega⟩,r 5,r 6,r 7]
+
+theorem hashLayout_injective (r : Fin 8 → Fin R) (hr : Function.Injective r) (t : Fin 3) :
+    Function.Injective (hashLayout r t) := by
+  fin_cases t <;> intro i j hij <;> fin_cases i <;> fin_cases j <;>
+    simpa [hashLayout,hr.eq_iff] using hij
+
+def hashIndexLabels (i : ℕ) : ℕ := (((2+ParameterPrograms.raiseLabels i)+44)+44)+44
+
+/-- Exact physical base-q flattening v+q*(u+q*(a+q*i)), with layer i a static
+program parameter. The runtime q multiplications are all actual unary loops. -/
+def hashIndex (r : Fin 8 → Fin R) (i : ℕ) : TapeProgram R B (hashIndexLabels i) :=
+  TapeProgram.seq (TapeProgram.seq (TapeProgram.seq (ParameterPrograms.loadConstant (r 4) i)
+    (hornerStep (hashLayout r 0))) (hornerStep (hashLayout r 1))) (hornerStep (hashLayout r 2))
+
+def hashIndexStore (r : Fin 8 → Fin R) (i : ℕ) (s : TapeStore R B) : TapeStore R B :=
+  hornerStore (hashLayout r 2) (hornerStore (hashLayout r 1)
+    (hornerStore (hashLayout r 0) (s.setReg (r 4) i)))
+
+def hashEnvelope (i M : ℕ) : ℕ → ℕ
+  | 0 => M+i+1
+  | t+1 => (hashEnvelope i M t+1)^2
+
+def hashIndexTimeBound (i M : ℕ) : ℕ :=
+  M+2*i+5+32*hashEnvelope i M 1+32*hashEnvelope i M 2+32*hashEnvelope i M 3
+
+theorem hashIndexStore_value (r : Fin 8 → Fin R) (hr : Function.Injective r)
+    (i : ℕ) (s : TapeStore R B) :
+    (hashIndexStore r i s).reg (r 4)=s.reg (r 3)+s.reg (r 0)*
+      (s.reg (r 2)+s.reg (r 0)*(s.reg (r 1)+s.reg (r 0)*i)) := by
+  simp [hashIndexStore,hornerStore,hashLayout,reg_layout r hr]
+  ring
+
+theorem hashIndexStore_input (r : Fin 8 → Fin R) (hr : Function.Injective r)
+    (i : ℕ) (s : TapeStore R B) (j : Fin 8) (hj : j.val<4) :
+    (hashIndexStore r i s).reg (r j)=s.reg (r j) := by
+  have h₄ : j≠4 := by intro he; subst j; omega
+  have h₅ : j≠5 := by intro he; subst j; omega
+  have h₆ : j≠6 := by intro he; subst j; omega
+  have h₇ : j≠7 := by intro he; subst j; omega
+  simp [hashIndexStore,hornerStore,hashLayout,reg_layout r hr,h₄,h₅,h₆,h₇]
+
+theorem hashIndex_stops (r : Fin 8 → Fin R) (hr : Function.Injective r)
+    (i : ℕ) (inp : Inputs) (M : ℕ) (s : TapeStore R B) (hs : ∀ j,s.reg j≤M) :
+    ∃ t e, t≤hashIndexTimeBound i M ∧
+      (hashIndex r i).Stops inp (s.toCfg (hashIndex (B := B) r i).entry) t e ∧
+      e.store=hashIndexStore r i s ∧ ∀ j,e.reg j≤hashEnvelope i M 3 := by
+  obtain ⟨e₀,h₀,hs₀⟩ := ParameterPrograms.loadConstant_stops (r 4) i inp s
+  have hb₀ : ∀ j,e₀.reg j≤hashEnvelope i M 0 := by
+    change ∀ j,e₀.store.reg j≤_
+    rw [hs₀]
+    exact setReg_bound s _ i _ (fun j => (hs j).trans (by simp [hashEnvelope]; omega)) (by simp [hashEnvelope]; omega)
+  obtain ⟨t₁,e₁,ht₁,h₁,hs₁⟩ := hornerStep_stops (hashLayout r 0) (hashLayout_injective r hr 0) inp e₀.store
+  have hb₁ : ∀ j,e₁.reg j≤hashEnvelope i M 1 := by
+    change ∀ j,e₁.store.reg j≤_
+    rw [hs₁]
+    exact hornerStore_bound _ (hashEnvelope i M 0) e₀.store hb₀
+  have hbt₁ : t₁≤32*hashEnvelope i M 1 := ht₁.trans (hornerTime_bound _ _ _ hb₀)
+  obtain ⟨t₂,e₂,ht₂,h₂,hs₂⟩ := hornerStep_stops (hashLayout r 1) (hashLayout_injective r hr 1) inp e₁.store
+  have hb₂ : ∀ j,e₂.reg j≤hashEnvelope i M 2 := by
+    change ∀ j,e₂.store.reg j≤_
+    rw [hs₂]
+    exact hornerStore_bound _ (hashEnvelope i M 1) e₁.store hb₁
+  have hbt₂ : t₂≤32*hashEnvelope i M 2 := ht₂.trans (hornerTime_bound _ _ _ hb₁)
+  obtain ⟨t₃,e₃,ht₃,h₃,hs₃⟩ := hornerStep_stops (hashLayout r 2) (hashLayout_injective r hr 2) inp e₂.store
+  have hb₃ : ∀ j,e₃.reg j≤hashEnvelope i M 3 := by
+    change ∀ j,e₃.store.reg j≤_
+    rw [hs₃]
+    exact hornerStore_bound _ (hashEnvelope i M 2) e₂.store hb₂
+  have hbt₃ : t₃≤32*hashEnvelope i M 3 := ht₃.trans (hornerTime_bound _ _ _ hb₂)
+  have hall := ((h₀.seq h₁).seq h₂).seq h₃
+  refine ⟨s.reg (r 4)+2*i+2+1+t₁+1+t₂+1+t₃,_,?_,hall,?_,hb₃⟩
+  · have hcounter := hs (r 4)
+    unfold hashIndexTimeBound
+    omega
+  · change e₃.store=_
+    rw [hs₃,hs₂,hs₁,hs₀]
+    rfl
+
+#print axioms hashIndex_stops
+#print axioms hashIndexStore_value

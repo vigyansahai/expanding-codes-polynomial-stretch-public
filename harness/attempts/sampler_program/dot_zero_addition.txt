@@ -1,0 +1,61 @@
+theorem zeroIndex_value (ell : ℕ) : (BinaryField.zeroIndex ell).val=0 := by
+  rw [BinaryField.zeroIndex,BinaryPolynomial.indexEquiv_inverse_value]
+  simp [BinaryField.zero]
+
+theorem dotValue_sum (ell : ℕ) (h : 0<ell) (values : Fin R → Fin (2^ell))
+    (ps : List (Fin R × Fin R)) :
+    dotValue ell h (BinaryField.selectedIndex ell h) values ps (BinaryField.zeroIndex ell)=
+      (EncodedTester.sum (BinaryField.indexOperations ell h) (ps.map fun p =>
+        ((BinaryField.indexOperations ell h).mul (values p.1) (values p.2),1))).1 := by
+  induction ps with
+  | nil => rfl
+  | cons p ps ih => simpa [dotValue,EncodedTester.sum,BinaryField.indexOperations] using
+      congrArg (BinaryField.addIndex ell
+        (BinaryField.multiplyIndex ell h (BinaryField.selectedIndex ell h)
+          (indexEquiv ell (values p.1)) (indexEquiv ell (values p.2)))) ih
+
+def dotFromZero (r : Fin 31 → Fin R) (ps : List (Fin R × Fin R)) :
+    TapeProgram R B (2+dotLabels ps) := TapeProgram.seq (TapeMacros.clear (r 30)) (dot r ps)
+
+/-- Actual source evaluation of the exact canonical encoded sum of products. -/
+theorem dotFromZero_stops (r : Fin 31 → Fin R) (hr : Function.Injective r)
+    (ps : List (Fin R × Fin R)) (hp : ∀ p∈ps,(∀ i,p.1≠r i) ∧ (∀ i,p.2≠r i))
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (values : Fin R → Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ j,s.reg j≤M)
+    (henv : Environment r ell (BinaryField.selectedIndex ell h) s)
+    (hv : ∀ p∈ps,s.reg p.1=(values p.1).val ∧ s.reg p.2=(values p.2).val) :
+    ∃ t e, t≤(ps.length+1)*(13320*(M+1)^6) ∧
+      (dotFromZero r ps).Stops inp (s.toCfg (dotFromZero (B := B) r ps).entry) t e ∧
+      e.reg (r 30)=(EncodedTester.sum (BinaryField.indexOperations ell h) (ps.map fun p =>
+        ((BinaryField.indexOperations ell h).mul (values p.1) (values p.2),1))).1.val ∧
+      Environment r ell (BinaryField.selectedIndex ell h) e.store ∧
+      (∀ j,(∀ i,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  have hclear := TapeMacros.clear_stops (r 30) inp (s.reg (r 30)) s rfl
+  have hb : ∀ j,(s.setReg (r 30) 0).reg j≤M := setReg_bound s _ 0 M hs (by omega)
+  have he := henv.setReg hr 30 0 (by decide)
+  have hv' : ∀ p∈ps,(s.setReg (r 30) 0).reg p.1=(values p.1).val ∧
+      (s.setReg (r 30) 0).reg p.2=(values p.2).val := by
+    intro p hp'
+    simpa [TapeStore.setReg,(hp p hp').1 30,(hp p hp').2 30] using hv p hp'
+  obtain ⟨t,e,ht,hstop,hev,henv',hframe,heb,het⟩ := dot_stops r hr ps hp inp ell h
+    (BinaryField.selectedIndex ell h) (BinaryField.zeroIndex ell) values M hM
+    (s.setReg (r 30) 0) hb he hv' (by simp [zeroIndex_value])
+  have hall := hclear.seq hstop
+  refine ⟨s.reg (r 30)+1+1+t,_,?_,hall,?_,henv',?_,heb,het⟩
+  · have hp₁ : M+1≤(M+1)^6 := by
+      simpa only [pow_one] using Nat.pow_le_pow_right (show 0<M+1 by omega) (show 1≤6 by decide)
+    have hcounter := hs (r 30)
+    have hfactor : 13300*(M+1)^6+1≤13320*(M+1)^6 := by
+      have hpos : 1≤(M+1)^6 := by positivity
+      omega
+    have htime := ht.trans (Nat.mul_le_mul_left ps.length hfactor)
+    rw [Nat.add_mul,Nat.one_mul]
+    omega
+  · rw [← dotValue_sum ell h values ps]
+    exact hev
+  · intro j hj
+    exact (hframe j hj).trans (by simp [TapeStore.setReg,hj 30])
+
+#print axioms dotFromZero_stops
+#print axioms dotValue_sum

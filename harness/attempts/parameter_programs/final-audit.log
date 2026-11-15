@@ -1,0 +1,23 @@
+'ExpandingCodes.Computation.ParameterPrograms.setupStore_values' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_uniform_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setupInput_unary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setupStore_payload' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setupStore_fresh' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_running_counters_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setupInput_compiled' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.setup_bounds_polynomial' depends on axioms: [propext, Quot.sound]

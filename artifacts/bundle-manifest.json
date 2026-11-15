@@ -1,0 +1,8 @@
+{
+  "archive": "artifacts/expanding-codes-proof-lean-4.33.1.zip",
+  "archive_sha256": "694ed62f8511cd5a41c6354a96349e0a72f820296592e4f312215e403a2722d5",
+  "bytes": 497675,
+  "source_files": 171,
+  "zip_integrity": "passed",
+  "source_hashes": "all match frozen verified source"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "harness.submission.prune.Main",
+  "isModule": false,
+  "options": {
+    "autoImplicit": false
+  },
+  "importArts": {
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source": [
+      [
+        "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source": [
+      [
+        "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate": [
+      [
+        "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean"
+      ]
+    ],
+    "harness.submission.runtime.ProofCore": [
+      [
+        "./harness/submission/runtime/closed-cache/harness/submission/runtime/ProofCore.olean"
+      ]
+    ],
+    "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime": [
+      [
+        "./harness/submission/runtime/closed-cache/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.olean"
+      ]
+    ]
+  }
+}

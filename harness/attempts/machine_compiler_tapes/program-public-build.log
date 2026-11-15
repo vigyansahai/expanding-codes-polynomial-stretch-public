@@ -1,0 +1,4 @@
+Build completed successfully (8706 jobs).
+ℹ [8707/8707] Built ExpandingCodes.Computation.TapeProgram (4.7s)
+info: ExpandingCodes/Computation/TapeProgram.lean:108:0: 'ExpandingCodes.Computation.TapeProgram.time_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (8707 jobs).

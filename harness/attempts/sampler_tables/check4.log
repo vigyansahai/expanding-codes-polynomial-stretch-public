@@ -1,0 +1,19 @@
+harness/attempts/sampler_tables/SamplerTables.lean:90:38: error: Function expected at
+  List.ofFn_add
+but this term has type
+  List.ofFn ?m.27 = (List.ofFn fun i => ?m.27 (Fin.castLE ⋯ i)) ++ List.ofFn fun i => ?m.27 (Fin.natAdd ?m.25 i)
+
+Note: Expected a function because this term is being applied to the argument
+  ω
+harness/attempts/sampler_tables/SamplerTables.lean:136:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  uniformProb fun ω => ?E (decodeCoins ?g ?k ?beta ?extra ω)
+in the target expression
+  (uniformProb fun ω => (fun p => combined g p.1 p.2 = G) (decodeCoins g (arity θ) (Nat.log 2 (n / arity θ)) extra ω)) =
+    ((sampleLaw θ n g) G).toReal
+
+θ : ℝ
+n extra : ℕ
+g : Geometry (dimension θ) n
+G : Generator (rowCount (dimension θ) n) n
+⊢ (uniformProb fun ω => (fun p => combined g p.1 p.2 = G) (decodeCoins g (arity θ) (Nat.log 2 (n / arity θ)) extra ω)) =
+    ((sampleLaw θ n g) G).toReal

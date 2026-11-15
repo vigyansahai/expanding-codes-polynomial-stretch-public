@@ -1,0 +1,32 @@
+/-- Semantic interpretation of one scalar caller counter, used only in proofs;
+the physical evaluator still consists solely of the finite source routines. -/
+def scalarValue (ell : ℕ) (s : TapeStore R B) (i : Fin R) : Fin (2^ell) :=
+  if h : s.reg i<2^ell then ⟨s.reg i,h⟩ else ⟨0,Nat.two_pow_pos ell⟩
+
+theorem scalarValue_eq (ell : ℕ) (s : TapeStore R B) (i : Fin R) (a : Fin (2^ell))
+    (ha : s.reg i=a.val) : scalarValue ell s i=a := by
+  apply Fin.ext
+  simp [scalarValue,ha,a.isLt]
+
+/-- Typed caller interface for the same actual linear-form source. -/
+theorem linear_stops_values {d : ℕ} (r : Fin 31 → Fin R) (hr : Function.Injective r)
+    (coeff point : Fin d → Fin R) (hc : ∀ j i,coeff j≠r i) (hp : ∀ j i,point j≠r i)
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (a z : Fin d → Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment r ell (selectedIndex ell h) s)
+    (hvc : ∀ j,s.reg (coeff j)=(a j).val) (hvp : ∀ j,s.reg (point j)=(z j).val) :
+    ∃ t e, t≤(d+1)*(13320*(M+1)^6) ∧
+      (linear r coeff point).Stops inp (s.toCfg (linear (B := B) r coeff point).entry) t e ∧
+      e.reg (r 30)=(EncodedSampler.linear (BinaryField.indexOperations ell h) a z).1.val ∧
+      Environment r ell (selectedIndex ell h) e.store ∧
+      (∀ j,(∀ i,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  have hac : ∀ j,scalarValue ell s (coeff j)=a j := fun j => scalarValue_eq ell s _ _ (hvc j)
+  have haz : ∀ j,scalarValue ell s (point j)=z j := fun j => scalarValue_eq ell s _ _ (hvp j)
+  obtain ⟨t,e,ht,he,hev,hee,heo,heb,het⟩ := linear_stops r hr coeff point hc hp inp ell h
+    (scalarValue ell s) M hM s hs henv (by intro j; rw [hac j]; exact hvc j)
+    (by intro j; rw [haz j]; exact hvp j)
+  refine ⟨t,e,ht,he,?_,hee,heo,heb,het⟩
+  simpa only [hac,haz] using hev
+
+#print axioms linear_stops_values

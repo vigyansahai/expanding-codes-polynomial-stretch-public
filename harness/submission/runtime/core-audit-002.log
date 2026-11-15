@@ -1,0 +1,8 @@
+'ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.binary_tester_implementation_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.auxiliary_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+harness/submission/runtime/CoreAudit.lean:11:0: error: Cache Core exports an extra simp attribute _private.harness.submission.runtime.ProofCore.0.ExpandingCodes.PolynomialStretch.finrank_codeReindex

@@ -1,0 +1,46 @@
+theorem successor_length (q : ℕ) (xs : List ℕ) : (successor q xs).length=xs.length := by
+  induction xs with
+  | nil => rfl
+  | cons x xs ih => simp only [successor]; split <;> simp [ih]
+
+/-- The finite carry routine enumerates integers modulo q^d in the same
+least-significant-coordinate-first order as finFunctionFinEquiv. -/
+theorem successor_number (q : ℕ) (hq : 1<q) (xs : List ℕ)
+    (hx : ∀ x∈xs,x<q) :
+    Nat.ofDigits q (successor q xs)=(Nat.ofDigits q xs+1)%q^xs.length := by
+  induction xs with
+  | nil => simp [successor]
+  | cons x xs ih =>
+    have h₀ : x<q := hx x (by simp)
+    have ht : ∀ z∈xs,z<q := fun z hz => hx z (by simp [hz])
+    have hb := Nat.ofDigits_lt_base_pow_length hq ht
+    simp only [successor,List.length_cons]
+    by_cases heq : x+1=q
+    · rw [if_pos heq,Nat.ofDigits_cons,ih ht,Nat.ofDigits_cons]
+      have hnum : x+q*Nat.ofDigits q xs+1=q*(Nat.ofDigits q xs+1) := by omega
+      rw [hnum,pow_succ',Nat.mul_mod_mul_left]
+      simp
+    · rw [if_neg heq,Nat.ofDigits_cons,Nat.ofDigits_cons]
+      have hb' : x+q*Nat.ofDigits q xs+1<q^(xs.length+1) := by
+        rw [pow_succ']
+        nlinarith
+      rw [Nat.mod_eq_of_lt hb']
+      omega
+
+theorem readings_bounded (q : Fin R) (ps : List (Digit R))
+    (s : TapeStore R B) (hv : Valid q ps s) : ∀ x∈readings ps s,x<s.reg q := by
+  intro x hx
+  obtain ⟨p,hp,rfl⟩ := List.mem_map.mp hx
+  have := hv p hp
+  omega
+
+theorem program_number (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (hv : Valid q ps s)
+    (hq : 1<s.reg q) :
+    Nat.ofDigits (s.reg q) (readings ps (nextStore q tmp ps s))=
+      (Nat.ofDigits (s.reg q) (readings ps s)+1)%(s.reg q)^ps.length := by
+  rw [program_readings q tmp ps huniq s hv,successor_number _ hq _ (readings_bounded q ps s hv)]
+  simp [readings]
+
+#print axioms successor_number
+#print axioms program_number

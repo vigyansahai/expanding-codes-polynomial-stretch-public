@@ -1,0 +1,12 @@
+{
+  "exit_code": 1,
+  "elapsed_seconds": 54.042539833,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.olean",
+    "harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean"
+  ]
+}

@@ -1,0 +1,304 @@
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2632:43: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2634:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2648:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2652:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2661:45: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2662:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2683:32: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2688:12: warning: This simp argument is unused:
+  Function.update_of_ne hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2703:44: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2705:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2720:48: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2721:71: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2723:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2744:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2744:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2744:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2744:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2749:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2749:57: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2749:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2754:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2754:36: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2754:41: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2812:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2812:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2812:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2812:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2815:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2815:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2815:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2815:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2815:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2818:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:2818:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:4347:35: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeCfg.mapPC, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:4361:53: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeStore.toCfg, c, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:4365:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeCfg.mapPC, c, decStore, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:4365:71: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeStore.toCfg, TapeCfg.mapPC, c, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:4796:41: warning: This simp argument is unused:
+  Nat.add_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:4906:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:5022:13: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:5799:14: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:5843:34: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:14583:44: warning: This simp argument is unused:
+  hpc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [advanceStore, TapeStore.setReg, Ne.symm hpc, hqp, hqc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:15675:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean:31874:2: warning: Unused tactic linter: `change _ + _ + 1 = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

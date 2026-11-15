@@ -1,0 +1,221 @@
+{
+  "task": "field_convolution",
+  "owner": "/root/field_convolution",
+  "status": "complete: actual finite source convolution, exact division certificate, total add/multiply/inverse, canonical least modulus construction, and shared field environment setup all checked and publicly promoted",
+  "owned_public_files": [
+    "ExpandingCodes/Computation/FieldConvolution.lean",
+    "ExpandingCodes/Computation/FieldCertificates.lean",
+    "ExpandingCodes/Computation/SourceFieldArithmetic.lean",
+    "ExpandingCodes/Computation/SourceModulus.lean",
+    "ExpandingCodes/Computation/SourceFieldSetup.lean"
+  ],
+  "draft_directory": "harness/attempts/field_convolution",
+  "exact_local_goal": "Implement uniform actual finite TapePrograms for raw binary convolution, exact BinaryField division certificates, bounded source add/multiply/inverse, canonical least irreducible modulus search, and runtime field setup. Prove Stops, polynomial source cost, all counter bounds, caller/tape frames, and semantic equality to the existing exact BinaryPolynomial/BinaryField interfaces.",
+  "interface_status": "Provisional implementation interface, not platform canonical",
+  "register_layout": {
+    "0": "preserved a",
+    "1": "preserved b",
+    "2": "preserved k",
+    "3": "output parity",
+    "4": "ascending j",
+    "5": "descending counted-loop counter",
+    "6": "left extracted bit",
+    "7": "right extracted bit",
+    "8": "testBit working input",
+    "9": "testBit quotient scratch",
+    "10": "testBit shift counter",
+    "11": "testBit copy scratch"
+  },
+  "proof_route": [
+    "One runtime counted loop of k+1 iterations; its header decrements count before invoking the body, so the two testBit positions are ascending j and remaining count without source subtraction.",
+    "Each 97-label body uses two existing actual 45-label testBit routines, a five-label destructive conditional parity update, and a two-label increment.",
+    "Initialize runtime counters with clear/copy/increment routines; no source code or register count depends on a,b,k,q,ell.",
+    "Use a bounded loop invariant for progress, parity sum and frames, then rewrite the raw-bit coefficient sums to exact BinaryPolynomial/BinaryField definitions."
+  ],
+  "open_theorem_bodies": [],
+  "failed_approaches": [
+    {
+      "approach": "Use TapeProgram.countedLoop_stops Fresh condition while testBit uses the counted-loop counter as its bit-position input.",
+      "obstruction": "testBit preserves its input semantically but its copy routine temporarily decrements and restores it, so the syntactic Fresh predicate is stronger than required.",
+      "resolution": "Proved SourceFieldArithmetic.loop_stops, an exact source execution rule requiring the body restore its counter before returning; all concrete loops instantiate this with checked body Stops/store semantics."
+    },
+    {
+      "approach": "Enumerate modulus factors by varying factor degrees and corresponding2^k bounds.",
+      "obstruction": "Unnecessary runtime degree/exponent/subtraction machinery.",
+      "resolution": "Root supplied RawIrreducibility equivalence for raw binary factor words. Actual source startsbothfactors at2 with runtimecountq-2 and visitscandidatep descending, so overwrite-on-success yields the exact minimum."
+    }
+  ],
+  "unresolved_dependencies": [],
+  "checks": [
+    "harness/attempts/field_convolution/check.log: complete draft check passed",
+    "harness/attempts/field_convolution/public-check.log: public source check and emitted .olean passed",
+    "harness/attempts/field_convolution/cert-check.log: final319-label draft and DivMatches bridge pass",
+    "harness/attempts/field_convolution/cert-public-check.log: public source check and emitted .olean",
+    "harness/attempts/field_convolution/source-check.log: actual374-label multiplication execution/cost draft passed",
+    "harness/attempts/field_convolution/source-public-check.log: public source emitted .olean and standard axiom audits",
+    "harness/attempts/field_convolution/source-check.log: final totaladd/multiply/inverse source and semantics pass",
+    "harness/attempts/field_convolution/source-public-check.log: finalpublicsource .olean refresh and axiom audits",
+    "harness/attempts/field_convolution/modulus-check.log: final canonical constructor, allsource Stops/cost/frames passed",
+    "harness/attempts/field_convolution/modulus-public-check.log: emitted finalpublicSourceModulus.olean, standardaxioms only",
+    "harness/attempts/field_convolution/setup-check.log: final516-label sourcefield setup passed",
+    "harness/attempts/field_convolution/setup-public-check.log: emitted finalpublicSourceFieldSetup.olean, standardaxioms only",
+    "harness/attempts/field_convolution/final-audit.log: all7 maincontracts transitiveaxiom audits passed, no sorryAx/customaxioms; actualsource setup ell1/q2 after2000steps gives(true,1,2,4,2,4,0,[])"
+  ],
+  "completed": [
+    {
+      "declaration": "FieldConvolution.convolution_stops_exact",
+      "statement": "Uniform 116-label actual TapeProgram computes raw binary convolution coefficient; exact post-store and source t <= 1000*(M+1)^3 for all initial counters <= M, 1 <= M.",
+      "artifact": "ExpandingCodes/Computation/FieldConvolution.lean"
+    },
+    {
+      "declaration": "FieldConvolution.convolution_stops",
+      "statement": "Full output semantic contract, bit-valued parity, three preserved inputs, all final counters <= M+1, unchanged read-only heads/output/buffer contents and heads."
+    },
+    {
+      "declaration": "FieldConvolution.convolutionStore_bound_of",
+      "statement": "When input coefficient index + 1 <= M, final counters stay <= M, suitable for nested source loops."
+    },
+    {
+      "declaration": "FieldConvolution.convolutionStore_fresh",
+      "statement": "All registers outside the nine modified local registers are preserved, including caller state."
+    },
+    {
+      "declaration": "FieldConvolution.rawConvolution_eq_convolution",
+      "statement": "Ordinary input indices implement the exact BinaryField.convolution on BinaryPolynomial.indexEquiv, including high zero coefficients."
+    },
+    {
+      "declaration": "FieldConvolution.rawConvolution_eq_productCoefficient",
+      "statement": "Raw monic indices 2^ell+a implement the exact BinaryPolynomial.productCoefficient."
+    },
+    {
+      "declaration": "FieldCertificates.coefficient_stops_exact",
+      "statement": "Actual298-label per-coefficient equation check, exact store, all runtime counters stay <= M, t <=2200*(M+1)^3."
+    },
+    {
+      "declaration": "FieldCertificates.coefficientStore_flag",
+      "statement": "Accumulator success flag retained iff exact coefficient equation holds; else cleared. Five polynomial indices and position preserved."
+    },
+    {
+      "declaration": "FieldCertificates.certificateLoop_stops",
+      "statement": "Actual302-label runtime coefficient loop, initialized position0/success1/countN: t<=2210*(M+1)^4 and success iff all coefficient positions below N match. Inputs preserved, all counters <=M, tapes unchanged."
+    },
+    {
+      "declaration": "FieldCertificates.certificate_stops_exact",
+      "statement": "Fully initialized319-label source certificate. Runtime bound register19 preserved; all working registers initialized by actual clear/copy/increment code; t<=2300*(M+1)^4."
+    },
+    {
+      "declaration": "FieldCertificates.certificate_divMatches_stops",
+      "statement": "Actual319-label source certificate success iff exact BinaryField.DivMatches, using inputs a,b,r,m,s and runtime N=3ell+1."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.commit_stops",
+      "statement": "Actual17-label conditional candidate commit, source time<=8*M+12; zero flag skips in one step, positive flag copies candidate and sets found=1."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.accepted_remainder_unique",
+      "statement": "Every successful bounded DivMatches remainder equals exact BinaryField.multiplyIndex."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.loop_stops",
+      "statement": "Generic exact actual counted-loop theorem allows temporarily using but restoring its loop counter, and carries explicit indexed invariants."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.multiply_stops_exact",
+      "statement": "Actual374-label program runs q-by-q\u00b2 nested candidate scans calling319-label certificate and conditional commits. Exact multiplyResult post-store, allcounters<=M, t<=10000*(M+1)^6. Final output semantic equality still external."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.multiply_stops",
+      "statement": "Complete374-label physical source multiplication exactlyBinaryField.multiplyIndex, source<=10000*(M+1)^6; allframes/allcounters<=M."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.addition_stops",
+      "statement": "Complete365-label physical source addition exactlyBinaryField.addIndex, source<=3000*(M+1)^5. Preservedoperand slots0 and3; unitoperands1/4 initializedinactualsource."
+    },
+    {
+      "declaration": "SourceFieldArithmetic.inverse_stops",
+      "statement": "Complete418-label physical source totalinverse exactlyBinaryField.inverseIndex, includingzero. Source<=20000*(M+1)^7. Fin31layout, inputA0/setup3,19,23,24preserved; output27; alloutside/tape frames, allcounters<=M."
+    },
+    {
+      "declaration": "SourceModulus.construct_stops",
+      "statement": "Actual441-label descending modulus search scans all nonconstant rawfactor pairs via319-label certificate; result27 is exact canonicalBinaryPolynomial.selectedIndex. Source<=30000*(M+1)^7, allfinalregs<=M under2q<=M. Runtimeq23/N19/ell20 andoutsidecaller/tapes preserved."
+    },
+    {
+      "declaration": "SourceFieldSetup.setup_stops",
+      "statement": "Actual516-label sharedfield setup frompreserved runtimeell20/q23. OutputsN19=3ell+1,monic3=q+selectedIndex,q\u00b224=2^(2ell),selectedp27. Source<=40000*(M+1)^7, allfinalregs<=M under numericbounds3ell+1,2q,q\u00b2<=M; alloutsidecaller/tapes preserved."
+    }
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "lake_trace_refresh_required": [
+    "ExpandingCodes.Computation.FieldConvolution",
+    "ExpandingCodes.Computation.FieldCertificates",
+    "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "ExpandingCodes.Computation.SourceModulus",
+    "ExpandingCodes.Computation.SourceFieldSetup"
+  ],
+  "certificate_register_layout": {
+    "0": "preserved a",
+    "1": "preserved b",
+    "2": "preserved candidate remainder",
+    "3": "preserved monic modulus word q+m",
+    "4": "preserved candidate quotient",
+    "5": "position initialized0",
+    "6": "success flag initialized1",
+    "7": "left coefficient / xor accumulator",
+    "8": "right product coefficient",
+    "9": "remainder coefficient",
+    "10": "convolution ascending index",
+    "11": "convolution descending count",
+    "12": "convolution left bit",
+    "13": "convolution right bit",
+    "14": "testBit work",
+    "15": "testBit quotient",
+    "16": "testBit shift count / xor unit scratch",
+    "17": "copy scratch",
+    "18": "outer coefficient loop count",
+    "19": "preserved runtime coefficient bound N"
+  },
+  "remaining_proof_route": [],
+  "source_field_layout": {
+    "multiply": "Fin27: A0/B1/monic3/N19/q23/qSquared24 preserved, output20; candidates2/4 andscratch5..18/21/22/25/26 mutable",
+    "addition": "Fin27: A0/B3/N19/q23/qSquared24/unused26 preserved, output20; unit1/4initialized1; candidate2,scratch5..18/21/22/25 mutable",
+    "inverse": "Fin31: A0/monic3/N19/q23/qSquared24 preserved, output27; multiplyinternal0..26 withcandidateB1mutable, tmp28/found29/count30",
+    "modulus": "Fin32: runtimeq23/N19/ell20/unused21,22 preserved; factors0/1 ascend2..q-1, candidateword2=q+p, zeros3/4, factorremaining24=q-2, valid25, outerfactorcount26, answer27, tmp28, found29, innerfactorcount30, descendingcandidatecount31.",
+    "setup": "Fin32: inputell20 andq23 preserved; outputmonic3=q+selectedIndex,N19=3ell+1,q\u00b224=2^(2ell),selectedp27. Remaininglayoutslots scratch; alloutside-layout registers andallread-only/output/buffer data preserved."
+  },
+  "modulus_route": [
+    "Completed: raw factor equivalence root-owned RawIrreducibility; actual441-label source enumerates factorwords2..q-1 withq-2 counters andcandidatesq-1..0; semantic validity fold and descendingminimum proof returnexactselectedIndex."
+  ],
+  "source_step_bounds": {
+    "convolution116": "1000*(M+1)^3",
+    "certificate319": "2300*(M+1)^4",
+    "addition365": "3000*(M+1)^5",
+    "multiply374": "10000*(M+1)^6",
+    "inverse418": "20000*(M+1)^7",
+    "modulus441": "30000*(M+1)^7",
+    "setup516": "40000*(M+1)^7"
+  },
+  "source_locations": {
+    "convolution": "ExpandingCodes/Computation/FieldConvolution.lean:646",
+    "certificate": "ExpandingCodes/Computation/FieldCertificates.lean:880",
+    "addition": "ExpandingCodes/Computation/SourceFieldArithmetic.lean:1390",
+    "multiply": "ExpandingCodes/Computation/SourceFieldArithmetic.lean:1034",
+    "inverse": "ExpandingCodes/Computation/SourceFieldArithmetic.lean:2001",
+    "modulus": "ExpandingCodes/Computation/SourceModulus.lean:927",
+    "setup": "ExpandingCodes/Computation/SourceFieldSetup.lean:210"
+  },
+  "validation": "Every final draft passed direct serialized Lean4.33.1 check before public promotion; every finalpublic source emitted its .olean and printed standard-only axioms. Final combined Audit importsSourceFieldSetup and auditsconvolution,certificate,add,multiply,totalinverse,modulus,setup; actualfinite source evaluation also passed. No sorry/customaxiom/unsafe occurrences inownedpublicmodules.",
+  "external_integration_obligations": [
+    "Coordinator central Lake trace refresh/build of publicmodules after workers stop.",
+    "Sampler/tester parser/program assembly and canonical end-to-end mission theorems remain external; these source arithmetic routines do not bythemselves complete those endpoints."
+  ],
+  "runtime_audit": {
+    "ell": 1,
+    "q": 2,
+    "source_steps": 2000,
+    "observed": "halted=true,ell20=1,q23=2,N19=4,monic3=2,q\u00b224=4,selectedp27=0,output=[]"
+  }
+}

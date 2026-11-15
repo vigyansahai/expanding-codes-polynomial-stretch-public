@@ -1,0 +1,26 @@
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean:1875:51: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hq, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean:1875:55: warning: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Machine.run, Machine.init, Machine.step, hs, compile, transition, startControl, haltControl,
+    queryControl, roIdle, Machine.moveHead, Machine.writeAt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean:2047:76: warning: This simp argument is unused:
+  eq_self_iff_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [normal, transition, hc, TapeProgram.step, hscan, hz, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean:15672:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`

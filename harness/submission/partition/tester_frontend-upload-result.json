@@ -1,0 +1,23 @@
+{
+  "cpu_user_system_seconds": 48.136468,
+  "peak_resident_mib": 2945.796875,
+  "lean_memory_cap_mib": 6144,
+  "source_sha256": "0e0830a135d34d11993d9398b8189aefe65a294cd718a4222def5f84291bf13c",
+  "source_bytes": 234221,
+  "key": "tester_frontend",
+  "mode": "upload",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 109.71605337499999,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "--setup=./harness/submission/partition/setups/tester_frontend.json",
+    "-o",
+    "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_TesterFrontend_program_stops.olean",
+    "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TesterFrontend_program_stops.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_TesterFrontend_program_stops.olean"
+}

@@ -1,0 +1,72 @@
+harness/attempts/gaussian_pivot/GaussianPivot.lean:81:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+harness/attempts/gaussian_pivot/GaussianPivot.lean:191:53: error: failed to synthesize
+  Decidable (OutsideCoordinates 40)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+harness/attempts/gaussian_pivot/GaussianPivot.lean:223:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  c.reg 2
+in the target expression
+  (c.store.setReg 55 (c.store.reg 2)).setReg 58 0 = coordinateInitStore d
+
+case refine_3
+d : Store
+inp : Inputs
+M : ℕ
+hd : ∀ (r : Fin 64), d.reg r ≤ M
+s : ℕ
+c : TapeCfg 64 2 (SamplerOdometer.initializeLabels coordinateDigits)
+hs : s ≤ coordinateDigits.length * (8 * M + 20)
+hc :
+  (SamplerOdometer.initDigits 40 59 coordinateDigits).Stops inp
+    (TapeStore.toCfg d (SamplerOdometer.initDigits 40 59 coordinateDigits).entry) s c
+hcs : c.store = SamplerOdometer.initializeStore 40 59 coordinateDigits d
+hb : ∀ (j : Fin 64), c.reg j ≤ M
+e : TapeCfg 64 2 11
+he :
+  (TapeMacros.copy 2 55 58).Stops inp (c.store.toCfg (TapeMacros.copy 2 55 58).entry)
+    (c.store.reg 55 + c.store.reg 58 + 5 * c.store.reg 2 + 7) e
+hes : e.store = (c.store.setReg 55 (c.store.reg 2)).setReg 58 0
+hindex : c.reg 2 = d.reg 2
+⊢ (c.store.setReg 55 (c.store.reg 2)).setReg 58 0 = coordinateInitStore d
+harness/attempts/gaussian_pivot/GaussianPivot.lean:253:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  l ≥ 0
+  k ≥ 0
+  j ≥ 0
+  j + k ≥ 1
+  j + k - l ≤ -1
+  i ≥ 0
+  h ≥ 0
+  h - i ≥ -1
+  g ≥ 0
+  e ≥ 0
+  b ≥ 0
+  64*b - e ≥ -64
+  a ≥ 0
+  a - g ≥ 1
+where
+ a := ↑(d.reg 40 ^ 2)
+ b := ↑M
+ e := ↑s
+ g := ↑(c.store.reg 55)
+ h := ↑(d.reg 2) * ↑(2 * (8 * M + 20) + 2)
+ i := ↑t
+ j := ↑(f.reg (43, 52).1)
+ k := ↑(f.reg (43, 52).2)
+ l := ↑(f.reg 43)
+harness/attempts/gaussian_pivot/GaussianPivot.lean:261:4: error: `simp` made no progress
+'ExpandingCodes.Computation.GaussianPivot.invertPivot_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.GaussianPivot.coordinateLoop_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.GaussianPivot.coordinates_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

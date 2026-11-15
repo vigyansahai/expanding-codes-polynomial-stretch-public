@@ -1,0 +1,18 @@
+{
+  "source_sha256": "276ae6f9a3f0e327b1a97a1ac51e1ba5a0f3562ebf3120e671faad85f5632600",
+  "source_bytes": 1239,
+  "key": "field_add",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 95.128996417,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.olean"
+}

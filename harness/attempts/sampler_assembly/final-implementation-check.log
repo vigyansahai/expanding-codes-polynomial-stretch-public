@@ -1,0 +1,6 @@
+'ExpandingCodes.PolynomialStretch.binary_sampler_implementation_of_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.PolynomialStretch.binary_sampler_implementation_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

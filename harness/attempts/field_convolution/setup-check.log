@@ -1,0 +1,11 @@
+harness/attempts/field_convolution/SourceFieldSetup.lean:71:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ExpandingCodes.Computation.SourceFieldSetup.setup_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.SourceFieldSetup.setupStore_environment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceFieldSetup.coefficientBound_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.SourceFieldSetup.monicWord_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

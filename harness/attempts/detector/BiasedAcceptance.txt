@@ -1,0 +1,68 @@
+/-- The exact biased Bernoulli acceptance clause, with exponent `ε²*m/2`. -/
+theorem rankTest_bernoulli_acceptance (ε : ℝ) (hε : 0 < ε ∧ ε < 1/2)
+    (n : ℕ) (g : Geometry (dimension ε) n)
+    (s : Forms g.F (dimension ε) (arity ε))
+    (h : Hashes g.F (arity ε) (buckets ε n)) (x : Word n) :
+    (∑ e : Word (rowCount (dimension ε) n),
+      bernoulliWord (rowCount (dimension ε) n) (1/2-ε) e *
+        (if rankTest ε g ((combined g s h).mulVec x+e) then (1 : ℝ) else 0)) ≥
+      1-Real.exp (-(ε^2/2)*(rowCount (dimension ε) n : ℝ)) := by
+  classical
+  let m := rowCount (dimension ε) n
+  let p := (1/2 : ℝ)-ε
+  let t := ε*(m : ℝ)/2
+  let acc := fun e : Word m => rankTest ε g ((combined g s h).mulVec x+e)
+  have hm : 0 < m := pow_pos (fieldSize_pos (dimension ε) n) (dimension ε)
+  have hmR : (0 : ℝ) < m := by exact_mod_cast hm
+  have hp : 0 ≤ p := by dsimp [p]; linarith [hε.2]
+  have hp' : p ≤ 1 := by dsimp [p]; linarith [hε.1]
+  have ht : 0 ≤ t := by dsimp [t]; positivity
+  have htail := bernoulli_weight_upper_tail m hm p hp hp' t ht
+  have hthresh : p*(m : ℝ)+t = (1/2-ε/2)*(m : ℝ) := by dsimp [p,t]; ring
+  rw [hthresh] at htail
+  have hexp : Real.exp (-2*t^2/(m : ℝ)) = Real.exp (-(ε^2/2)*(m : ℝ)) := by
+    congr 1
+    dsimp [t]
+    field_simp
+    ring
+  rw [hexp] at htail
+  have hrej : 1-(∑ e : Word m, bernoulliWord m p e * (if acc e then (1 : ℝ) else 0)) ≤
+      ∑ e : Word m, bernoulliWord m p e *
+        (if (1/2-ε/2)*(m : ℝ) ≤ (weight e : ℝ) then (1 : ℝ) else 0) := by
+    rw [← sum_bernoulliWord m p, ← Finset.sum_sub_distrib]
+    apply Finset.sum_le_sum
+    intro e _
+    have hw := bernoulliWord_nonneg m p hp hp' e
+    by_cases ha : acc e = true
+    · simp only [ha, if_true, mul_one, sub_self]
+      exact mul_nonneg hw (by split_ifs <;> norm_num)
+    · have he : (1/2-ε/2)*(m : ℝ) ≤ (weight e : ℝ) := by
+        by_contra hweight
+        have he' : (weight e : ℝ) ≤ (1/2-ε/2)*(m : ℝ) :=
+          (lt_of_not_ge hweight).le
+        exact ha (rankTest_accepts_weight_threshold ε hε n g s h x e he')
+      simp [ha, he]
+  change (∑ e : Word m, bernoulliWord m p e * (if acc e then (1 : ℝ) else 0)) ≥ _
+  linarith
+
+/-- Proposition 2.5 assembled from exact finite concentration and the canonical
+registered auxiliary-rate theorem. -/
+theorem rankTest_distinguishing (ε : ℝ) (hε : 0 < ε ∧ ε < 1/2) :
+    ∀ᶠ n : ℕ in atTop, ∀ g : Geometry (dimension ε) n,
+      uniformProb (fun y : Word (rowCount (dimension ε) n) => rankTest ε g y = true) ≤
+        Real.exp (-(ε^2/32)*(rowCount (dimension ε) n : ℝ)) ∧
+      ∀ (s : Forms g.F (dimension ε) (arity ε))
+        (h : Hashes g.F (arity ε) (buckets ε n)) (x : Word n),
+        (∀ e : Word (rowCount (dimension ε) n),
+          (weight e : ℝ) ≤ (1/2-ε)*(rowCount (dimension ε) n : ℝ) →
+            rankTest ε g ((combined g s h).mulVec x+e) = true) ∧
+        (∑ e : Word (rowCount (dimension ε) n),
+          bernoulliWord (rowCount (dimension ε) n) (1/2-ε) e *
+            (if rankTest ε g ((combined g s h).mulVec x+e) then (1 : ℝ) else 0)) ≥
+          1-Real.exp (-(ε^2/2)*(rowCount (dimension ε) n : ℝ)) := by
+  filter_upwards [eventual_rankTest_uniform_acceptance ε hε] with n hn
+  intro g
+  refine ⟨hn g, ?_⟩
+  intro s h x
+  exact ⟨fun e he => rankTest_accepts_arbitrary_errors ε hε n g s h x e he,
+    rankTest_bernoulli_acceptance ε hε n g s h x⟩

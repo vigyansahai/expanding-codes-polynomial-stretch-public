@@ -1,0 +1,70 @@
+namespace Storage
+
+theorem countdown_injective (d k : ℕ) : Function.Injective (countdown d k) := by
+  intro i j hij; apply Fin.ext
+  have hh := congrArg Fin.val hij
+  simp only [countdown_val] at hh
+  omega
+
+theorem point_ne_countdown (d k : ℕ) (j a : Fin d) : point d k j≠countdown d k a := by
+  intro hij
+  have hh := congrArg Fin.val hij
+  simp only [point_val,countdown_val] at hh
+  have := j.isLt
+  omega
+
+theorem used_map_pairs (d k : ℕ) (js : List (Fin d)) :
+    SamplerOdometer.used (js.map (fun j => (point d k j,countdown d k j)))=
+      js.flatMap (fun j => [point d k j,countdown d k j]) := by
+  induction js with
+  | nil => rfl
+  | cons j js ih => simp [SamplerOdometer.used,ih]
+
+@[simp] theorem pointPairs_length (d k : ℕ) : (pointPairs d k).length=d := by simp [pointPairs]
+
+theorem pointPairs_readings (d k : ℕ) (s : TapeStore (registers d k) B) :
+    SamplerOdometer.readings (pointPairs d k) s=List.ofFn (fun j => s.reg (point d k j)) := by
+  rw [SamplerOdometer.readings,pointPairs,List.map_map]
+  change (List.finRange d).map (fun j => s.reg (point d k j))=_
+  exact List.ofFn_eq_map.symm
+
+theorem used_pointPairs_nodup (d k : ℕ) : (SamplerOdometer.used (pointPairs d k)).Nodup := by
+  rw [pointPairs,used_map_pairs]
+  apply List.nodup_flatMap.mpr
+  constructor
+  · intro j hj
+    simp [point_ne_countdown d k j j]
+  · apply (List.nodup_finRange d).imp
+    intro a b hab
+    apply List.disjoint_left.mpr
+    intro x hx hy
+    simp only [List.mem_cons,List.mem_singleton] at hx hy
+    rcases hx with rfl|rfl
+    · rcases hy with hp|hc
+      · exact hab (point_injective d k hp)
+      · exact point_ne_countdown d k a b hc
+    · rcases hy with hp|hc
+      · exact point_ne_countdown d k b a hp.symm
+      · exact hab (countdown_injective d k hc)
+
+theorem used_pointPairs_high (d k : ℕ) :
+    ∀ x∈SamplerOdometer.used (pointPairs d k),80≤x.val := by
+  rw [pointPairs,used_map_pairs]
+  intro x hx
+  obtain ⟨j,hj,hx⟩ := List.mem_flatMap.mp hx
+  simp only [List.mem_cons,List.mem_singleton] at hx
+  rcases hx with rfl|rfl <;> simp only [point_val,countdown_val] <;> omega
+
+theorem pointPairs_nodup (d k : ℕ) :
+    (low d k 35::low d k 61::SamplerOdometer.used (pointPairs d k)).Nodup := by
+  simp only [List.nodup_cons,List.mem_cons,not_or]
+  refine ⟨⟨(low_injective d k).ne (by decide),?_⟩,?_,used_pointPairs_nodup d k⟩
+  · intro hx
+    have hh := used_pointPairs_high d k _ hx
+    simp [low] at hh
+  · intro hx
+    have hh := used_pointPairs_high d k _ hx
+    simp [low] at hh
+end Storage
+
+#print axioms Storage.pointPairs_nodup

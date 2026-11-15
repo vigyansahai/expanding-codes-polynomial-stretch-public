@@ -1,0 +1,2824 @@
+[
+  {
+    "name": "ExpandingCodes.Computation.TesterImplementation.source_stops",
+    "module": "ExpandingCodes.Computation.TesterImplementation",
+    "saving": {
+      "sampler": 0,
+      "tester": 771387
+    },
+    "child": {
+      "names": 999,
+      "commands": 929,
+      "raw_declaration_bytes": 782836
+    },
+    "source_lines": [
+      29321,
+      29374
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 634052,
+      "tester": 0
+    },
+    "child": {
+      "names": 968,
+      "commands": 900,
+      "raw_declaration_bytes": 649973
+    },
+    "source_lines": [
+      32316,
+      32325
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_source_of_step",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 318183,
+      "tester": 0
+    },
+    "child": {
+      "names": 713,
+      "commands": 658,
+      "raw_declaration_bytes": 443770
+    },
+    "source_lines": [
+      32276,
+      32287
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.sampler_stops_of_step",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 317098,
+      "tester": 0
+    },
+    "child": {
+      "names": 711,
+      "commands": 656,
+      "raw_declaration_bytes": 442685
+    },
+    "source_lines": [
+      32259,
+      32274
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterAssembly.program_stops_of_construct",
+    "module": "ExpandingCodes.Computation.TesterAssembly",
+    "saving": {
+      "sampler": 0,
+      "tester": 230359
+    },
+    "child": {
+      "names": 675,
+      "commands": 630,
+      "raw_declaration_bytes": 468276
+    },
+    "source_lines": [
+      29130,
+      29148
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterAssembly.backend_stops",
+    "module": "ExpandingCodes.Computation.TesterAssembly",
+    "saving": {
+      "sampler": 0,
+      "tester": 229099
+    },
+    "child": {
+      "names": 674,
+      "commands": 629,
+      "raw_declaration_bytes": 467016
+    },
+    "source_lines": [
+      29115,
+      29128
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterBackendComplete.program_stops",
+    "module": "ExpandingCodes.Computation.TesterBackendComplete",
+    "saving": {
+      "sampler": 0,
+      "tester": 224937
+    },
+    "child": {
+      "names": 672,
+      "commands": 627,
+      "raw_declaration_bytes": 465854
+    },
+    "source_lines": [
+      29049,
+      29077
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.prelude_stops",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 223549,
+      "tester": 0
+    },
+    "child": {
+      "names": 568,
+      "commands": 526,
+      "raw_declaration_bytes": 357300
+    },
+    "source_lines": [
+      31443,
+      31543
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterBackend.program_stops",
+    "module": "ExpandingCodes.Computation.TesterBackend",
+    "saving": {
+      "sampler": 0,
+      "tester": 211862
+    },
+    "child": {
+      "names": 642,
+      "commands": 600,
+      "raw_declaration_bytes": 451865
+    },
+    "source_lines": [
+      28650,
+      28673
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.step_contract",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 201041,
+      "tester": 0
+    },
+    "child": {
+      "names": 496,
+      "commands": 468,
+      "raw_declaration_bytes": 330945
+    },
+    "source_lines": [
+      32298,
+      32314
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.layer_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 197396,
+      "tester": 0
+    },
+    "child": {
+      "names": 488,
+      "commands": 460,
+      "raw_declaration_bytes": 326788
+    },
+    "source_lines": [
+      17953,
+      18021
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+    "module": "ExpandingCodes.Computation.GaussianDriverBounds",
+    "saving": {
+      "sampler": 0,
+      "tester": 183049
+    },
+    "child": {
+      "names": 623,
+      "commands": 582,
+      "raw_declaration_bytes": 434011
+    },
+    "source_lines": [
+      28264,
+      28279
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops",
+    "module": "ExpandingCodes.Computation.GaussianDriver",
+    "saving": {
+      "sampler": 0,
+      "tester": 169106
+    },
+    "child": {
+      "names": 568,
+      "commands": 530,
+      "raw_declaration_bytes": 404080
+    },
+    "source_lines": [
+      28118,
+      28149
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianDriver.loop_stops",
+    "module": "ExpandingCodes.Computation.GaussianDriver",
+    "saving": {
+      "sampler": 0,
+      "tester": 161928
+    },
+    "child": {
+      "names": 562,
+      "commands": 524,
+      "raw_declaration_bytes": 399505
+    },
+    "source_lines": [
+      28086,
+      28116
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterFrontend.program_stops",
+    "module": "ExpandingCodes.Computation.TesterFrontend",
+    "saving": {
+      "sampler": 0,
+      "tester": 160738
+    },
+    "child": {
+      "names": 479,
+      "commands": 445,
+      "raw_declaration_bytes": 306924
+    },
+    "source_lines": [
+      26006,
+      26019
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianDriver.round_stops",
+    "module": "ExpandingCodes.Computation.GaussianDriver",
+    "saving": {
+      "sampler": 0,
+      "tester": 157082
+    },
+    "child": {
+      "names": 560,
+      "commands": 522,
+      "raw_declaration_bytes": 397198
+    },
+    "source_lines": [
+      28013,
+      28058
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianDriver.scanRound_stops",
+    "module": "ExpandingCodes.Computation.GaussianDriver",
+    "saving": {
+      "sampler": 0,
+      "tester": 152303
+    },
+    "child": {
+      "names": 558,
+      "commands": 520,
+      "raw_declaration_bytes": 394488
+    },
+    "source_lines": [
+      27954,
+      28009
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.program_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 138115
+    },
+    "child": {
+      "names": 508,
+      "commands": 471,
+      "raw_declaration_bytes": 380740
+    },
+    "source_lines": [
+      25446,
+      25457
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldSetup",
+    "saving": {
+      "sampler": 65601,
+      "tester": 66385
+    },
+    "child": {
+      "names": 330,
+      "commands": 308,
+      "raw_declaration_bytes": 190192
+    },
+    "source_lines": [
+      22222,
+      22237
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterPrefix.setup_initial_stops",
+    "module": "ExpandingCodes.Computation.TesterPrefix",
+    "saving": {
+      "sampler": 0,
+      "tester": 130793
+    },
+    "child": {
+      "names": 424,
+      "commands": 398,
+      "raw_declaration_bytes": 265268
+    },
+    "source_lines": [
+      25695,
+      25787
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.programLoop_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 125268
+    },
+    "child": {
+      "names": 506,
+      "commands": 469,
+      "raw_declaration_bytes": 375876
+    },
+    "source_lines": [
+      25400,
+      25442
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianDriver.afterPivot_stops",
+    "module": "ExpandingCodes.Computation.GaussianDriver",
+    "saving": {
+      "sampler": 0,
+      "tester": 123860
+    },
+    "child": {
+      "names": 530,
+      "commands": 492,
+      "raw_declaration_bytes": 364586
+    },
+    "source_lines": [
+      27848,
+      27940
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.rowBody_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 119239
+    },
+    "child": {
+      "names": 505,
+      "commands": 468,
+      "raw_declaration_bytes": 373323
+    },
+    "source_lines": [
+      25293,
+      25314
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.rowLoop_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 109325
+    },
+    "child": {
+      "names": 502,
+      "commands": 465,
+      "raw_declaration_bytes": 364954
+    },
+    "source_lines": [
+      25165,
+      25226
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.pairBody_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 102475
+    },
+    "child": {
+      "names": 495,
+      "commands": 459,
+      "raw_declaration_bytes": 357426
+    },
+    "source_lines": [
+      24941,
+      24985
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.term_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 73899,
+      "tester": 16463
+    },
+    "child": {
+      "names": 329,
+      "commands": 306,
+      "raw_declaration_bytes": 189131
+    },
+    "source_lines": [
+      16130,
+      16227
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.pointLoop_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 85391
+    },
+    "child": {
+      "names": 468,
+      "commands": 434,
+      "raw_declaration_bytes": 325731
+    },
+    "source_lines": [
+      24563,
+      24631
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.pointBody_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 80107
+    },
+    "child": {
+      "names": 461,
+      "commands": 428,
+      "raw_declaration_bytes": 317596
+    },
+    "source_lines": [
+      24289,
+      24460
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.finish_stops_of_layers",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 76847,
+      "tester": 0
+    },
+    "child": {
+      "names": 237,
+      "commands": 220,
+      "raw_declaration_bytes": 114936
+    },
+    "source_lines": [
+      32036,
+      32128
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianGrid.materializeGrid_stops",
+    "module": "ExpandingCodes.Computation.GaussianGrid",
+    "saving": {
+      "sampler": 0,
+      "tester": 70853
+    },
+    "child": {
+      "names": 415,
+      "commands": 388,
+      "raw_declaration_bytes": 284340
+    },
+    "source_lines": [
+      26873,
+      26931
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.fieldSetup_stops",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 68220,
+      "tester": 0
+    },
+    "child": {
+      "names": 335,
+      "commands": 313,
+      "raw_declaration_bytes": 193975
+    },
+    "source_lines": [
+      31072,
+      31099
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianGrid.rowLoop_stops",
+    "module": "ExpandingCodes.Computation.GaussianGrid",
+    "saving": {
+      "sampler": 0,
+      "tester": 65258
+    },
+    "child": {
+      "names": 411,
+      "commands": 384,
+      "raw_declaration_bytes": 278745
+    },
+    "source_lines": [
+      26795,
+      26844
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.maskedTerm_stops",
+    "module": "ExpandingCodes.Computation.TesterGram",
+    "saving": {
+      "sampler": 0,
+      "tester": 63990
+    },
+    "child": {
+      "names": 393,
+      "commands": 364,
+      "raw_declaration_bytes": 253537
+    },
+    "source_lines": [
+      22418,
+      22570
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianGrid.rowBody_stops",
+    "module": "ExpandingCodes.Computation.GaussianGrid",
+    "saving": {
+      "sampler": 0,
+      "tester": 62041
+    },
+    "child": {
+      "names": 410,
+      "commands": 383,
+      "raw_declaration_bytes": 275809
+    },
+    "source_lines": [
+      26677,
+      26770
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.setup_stops",
+    "module": "ExpandingCodes.Computation.ParameterSetup",
+    "saving": {
+      "sampler": 30609,
+      "tester": 30609
+    },
+    "child": {
+      "names": 172,
+      "commands": 165,
+      "raw_declaration_bytes": 96639
+    },
+    "source_lines": [
+      20791,
+      20836
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldSetup.setup_stops_exact",
+    "module": "ExpandingCodes.Computation.SourceFieldSetup",
+    "saving": {
+      "sampler": 30735,
+      "tester": 28891
+    },
+    "child": {
+      "names": 325,
+      "commands": 303,
+      "raw_declaration_bytes": 186462
+    },
+    "source_lines": [
+      22159,
+      22204
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.rowBody_stops_of_layers",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 57756,
+      "tester": 0
+    },
+    "child": {
+      "names": 217,
+      "commands": 203,
+      "raw_declaration_bytes": 99703
+    },
+    "source_lines": [
+      31926,
+      31983
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianGrid.columnLoop_stops",
+    "module": "ExpandingCodes.Computation.GaussianGrid",
+    "saving": {
+      "sampler": 0,
+      "tester": 55587
+    },
+    "child": {
+      "names": 404,
+      "commands": 379,
+      "raw_declaration_bytes": 268677
+    },
+    "source_lines": [
+      26503,
+      26596
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldCertificates.certificate_stops_exact",
+    "module": "ExpandingCodes.Computation.FieldCertificates",
+    "saving": {
+      "sampler": 25269,
+      "tester": 25192
+    },
+    "child": {
+      "names": 163,
+      "commands": 153,
+      "raw_declaration_bytes": 77096
+    },
+    "source_lines": [
+      10985,
+      11020
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+    "module": "ExpandingCodes.Computation.TapeCompiler",
+    "saving": {
+      "sampler": 24317,
+      "tester": 24317
+    },
+    "child": {
+      "names": 104,
+      "commands": 104,
+      "raw_declaration_bytes": 35766
+    },
+    "source_lines": [
+      2266,
+      2271
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.construct_stops",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 24564,
+      "tester": 22720
+    },
+    "child": {
+      "names": 316,
+      "commands": 294,
+      "raw_declaration_bytes": 172844
+    },
+    "source_lines": [
+      21981,
+      22001
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianGrid.cellTick_stops",
+    "module": "ExpandingCodes.Computation.GaussianGrid",
+    "saving": {
+      "sampler": 0,
+      "tester": 46980
+    },
+    "child": {
+      "names": 397,
+      "commands": 372,
+      "raw_declaration_bytes": 258733
+    },
+    "source_lines": [
+      26339,
+      26422
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.binary_sampler_of_source",
+    "module": "ExpandingCodes.Computation.SamplerSource",
+    "saving": {
+      "sampler": 46580,
+      "tester": 0
+    },
+    "child": {
+      "names": 166,
+      "commands": 165,
+      "raw_declaration_bytes": 66070
+    },
+    "source_lines": [
+      32346,
+      32382
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianPivot.preparePivot_stops",
+    "module": "ExpandingCodes.Computation.GaussianPivot",
+    "saving": {
+      "sampler": 0,
+      "tester": 45395
+    },
+    "child": {
+      "names": 400,
+      "commands": 370,
+      "raw_declaration_bytes": 229993
+    },
+    "source_lines": [
+      27259,
+      27287
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.constructResult_index",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 22395,
+      "tester": 22395
+    },
+    "child": {
+      "names": 186,
+      "commands": 173,
+      "raw_declaration_bytes": 74236
+    },
+    "source_lines": [
+      21893,
+      21910
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.construct_stops_exact",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 23224,
+      "tester": 21380
+    },
+    "child": {
+      "names": 218,
+      "commands": 206,
+      "raw_declaration_bytes": 120159
+    },
+    "source_lines": [
+      21579,
+      21608
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldCertificates.certificateLoop_stops_exact",
+    "module": "ExpandingCodes.Computation.FieldCertificates",
+    "saving": {
+      "sampler": 22168,
+      "tester": 22091
+    },
+    "child": {
+      "names": 157,
+      "commands": 147,
+      "raw_declaration_bytes": 72759
+    },
+    "source_lines": [
+      10688,
+      10726
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianGrid.materializeCell_stops",
+    "module": "ExpandingCodes.Computation.GaussianGrid",
+    "saving": {
+      "sampler": 0,
+      "tester": 42044
+    },
+    "child": {
+      "names": 395,
+      "commands": 370,
+      "raw_declaration_bytes": 253572
+    },
+    "source_lines": [
+      26213,
+      26291
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.tables_stops",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 39143,
+      "tester": 0
+    },
+    "child": {
+      "names": 180,
+      "commands": 166,
+      "raw_declaration_bytes": 87528
+    },
+    "source_lines": [
+      31006,
+      31033
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerEvaluation.multiplyFrom_stops",
+    "module": "ExpandingCodes.Computation.SamplerEvaluation",
+    "saving": {
+      "sampler": 34503,
+      "tester": 4639
+    },
+    "child": {
+      "names": 293,
+      "commands": 274,
+      "raw_declaration_bytes": 158054
+    },
+    "source_lines": [
+      13423,
+      13509
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldCertificates.step_stops",
+    "module": "ExpandingCodes.Computation.FieldCertificates",
+    "saving": {
+      "sampler": 19067,
+      "tester": 18990
+    },
+    "child": {
+      "names": 142,
+      "commands": 134,
+      "raw_declaration_bytes": 64318
+    },
+    "source_lines": [
+      10612,
+      10624
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeCompiler.localSimulation",
+    "module": "ExpandingCodes.Computation.TapeCompiler",
+    "saving": {
+      "sampler": 18765,
+      "tester": 18765
+    },
+    "child": {
+      "names": 91,
+      "commands": 91,
+      "raw_declaration_bytes": 30214
+    },
+    "source_lines": [
+      2227,
+      2239
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldCertificates.coefficient_stops_exact",
+    "module": "ExpandingCodes.Computation.FieldCertificates",
+    "saving": {
+      "sampler": 18438,
+      "tester": 18361
+    },
+    "child": {
+      "names": 140,
+      "commands": 132,
+      "raw_declaration_bytes": 63488
+    },
+    "source_lines": [
+      10402,
+      10440
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 17887,
+      "tester": 17887
+    },
+    "child": {
+      "names": 270,
+      "commands": 252,
+      "raw_declaration_bytes": 139432
+    },
+    "source_lines": [
+      12497,
+      12516
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.sizeStage_stops",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 35374,
+      "tester": 0
+    },
+    "child": {
+      "names": 177,
+      "commands": 170,
+      "raw_declaration_bytes": 101646
+    },
+    "source_lines": [
+      31175,
+      31195
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.candidateLoop_stops",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 18514,
+      "tester": 16670
+    },
+    "child": {
+      "names": 213,
+      "commands": 201,
+      "raw_declaration_bytes": 115117
+    },
+    "source_lines": [
+      21499,
+      21528
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterEvaluation.evaluate_canonical_stops",
+    "module": "ExpandingCodes.Computation.TesterEvaluation",
+    "saving": {
+      "sampler": 0,
+      "tester": 34673
+    },
+    "child": {
+      "names": 383,
+      "commands": 356,
+      "raw_declaration_bytes": 241554
+    },
+    "source_lines": [
+      18636,
+      18683
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianProgram.concreteSchurEntry_stops",
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 31823
+    },
+    "child": {
+      "names": 385,
+      "commands": 361,
+      "raw_declaration_bytes": 242886
+    },
+    "source_lines": [
+      23984,
+      24003
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 29864,
+      "tester": 1621
+    },
+    "child": {
+      "names": 289,
+      "commands": 270,
+      "raw_declaration_bytes": 152054
+    },
+    "source_lines": [
+      12138,
+      12165
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianPivot.invertPivot_stops",
+    "module": "ExpandingCodes.Computation.GaussianPivot",
+    "saving": {
+      "sampler": 0,
+      "tester": 31335
+    },
+    "child": {
+      "names": 341,
+      "commands": 317,
+      "raw_declaration_bytes": 184859
+    },
+    "source_lines": [
+      26974,
+      27005
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.candidateBody_stops",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 16350,
+      "tester": 14506
+    },
+    "child": {
+      "names": 209,
+      "commands": 197,
+      "raw_declaration_bytes": 111224
+    },
+    "source_lines": [
+      21465,
+      21494
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterEvaluation.evaluate_stops",
+    "module": "ExpandingCodes.Computation.TesterEvaluation",
+    "saving": {
+      "sampler": 0,
+      "tester": 29787
+    },
+    "child": {
+      "names": 379,
+      "commands": 353,
+      "raw_declaration_bytes": 236668
+    },
+    "source_lines": [
+      18494,
+      18611
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 0,
+      "tester": 29435
+    },
+    "child": {
+      "names": 338,
+      "commands": 314,
+      "raw_declaration_bytes": 182959
+    },
+    "source_lines": [
+      13107,
+      13125
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.constructResult_answer",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 14425,
+      "tester": 14425
+    },
+    "child": {
+      "names": 161,
+      "commands": 152,
+      "raw_declaration_bytes": 63674
+    },
+    "source_lines": [
+      21886,
+      21891
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianProgram.schurEntry_stops",
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 28186
+    },
+    "child": {
+      "names": 352,
+      "commands": 331,
+      "raw_declaration_bytes": 220652
+    },
+    "source_lines": [
+      23845,
+      23927
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerEvaluation.addFrom_stops",
+    "module": "ExpandingCodes.Computation.SamplerEvaluation",
+    "saving": {
+      "sampler": 23031,
+      "tester": 5144
+    },
+    "child": {
+      "names": 276,
+      "commands": 257,
+      "raw_declaration_bytes": 145937
+    },
+    "source_lines": [
+      13328,
+      13415
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.tablesStore_ready",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 28117,
+      "tester": 0
+    },
+    "child": {
+      "names": 143,
+      "commands": 133,
+      "raw_declaration_bytes": 52133
+    },
+    "source_lines": [
+      31347,
+      31422
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldCertificates.stepStore_flag",
+    "module": "ExpandingCodes.Computation.FieldCertificates",
+    "saving": {
+      "sampler": 13982,
+      "tester": 13982
+    },
+    "child": {
+      "names": 106,
+      "commands": 102,
+      "raw_declaration_bytes": 32759
+    },
+    "source_lines": [
+      10658,
+      10665
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.candidateResult_answer",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 13918,
+      "tester": 13918
+    },
+    "child": {
+      "names": 158,
+      "commands": 150,
+      "raw_declaration_bytes": 62835
+    },
+    "source_lines": [
+      21871,
+      21884
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.random_phase_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 27469,
+      "tester": 0
+    },
+    "child": {
+      "names": 409,
+      "commands": 382,
+      "raw_declaration_bytes": 263526
+    },
+    "source_lines": [
+      17769,
+      17839
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.samplerImplementation_of_tape",
+    "module": "ExpandingCodes.Computation.SourceBridge",
+    "saving": {
+      "sampler": 27181,
+      "tester": 0
+    },
+    "child": {
+      "names": 108,
+      "commands": 108,
+      "raw_declaration_bytes": 38830
+    },
+    "source_lines": [
+      29219,
+      29255
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldCertificates.coefficientStore_flag",
+    "module": "ExpandingCodes.Computation.FieldCertificates",
+    "saving": {
+      "sampler": 13505,
+      "tester": 13505
+    },
+    "child": {
+      "names": 103,
+      "commands": 99,
+      "raw_declaration_bytes": 31807
+    },
+    "source_lines": [
+      10480,
+      10558
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.binary_tester_of_source",
+    "module": "ExpandingCodes.Computation.TesterSource",
+    "saving": {
+      "sampler": 0,
+      "tester": 26883
+    },
+    "child": {
+      "names": 107,
+      "commands": 107,
+      "raw_declaration_bytes": 38332
+    },
+    "source_lines": [
+      29272,
+      29290
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerEvaluation.lookup_stops",
+    "module": "ExpandingCodes.Computation.SamplerEvaluation",
+    "saving": {
+      "sampler": 21985,
+      "tester": 4368
+    },
+    "child": {
+      "names": 121,
+      "commands": 117,
+      "raw_declaration_bytes": 57922
+    },
+    "source_lines": [
+      13203,
+      13287
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.testerImplementation_of_tape",
+    "module": "ExpandingCodes.Computation.SourceBridge",
+    "saving": {
+      "sampler": 0,
+      "tester": 25712
+    },
+    "child": {
+      "names": 106,
+      "commands": 106,
+      "raw_declaration_bytes": 37161
+    },
+    "source_lines": [
+      29199,
+      29217
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeArrays.readEntry_stops",
+    "module": "ExpandingCodes.Computation.TapeArrays",
+    "saving": {
+      "sampler": 17048,
+      "tester": 8544
+    },
+    "child": {
+      "names": 115,
+      "commands": 111,
+      "raw_declaration_bytes": 51564
+    },
+    "source_lines": [
+      4061,
+      4107
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.fixed_phase_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 25425,
+      "tester": 0
+    },
+    "child": {
+      "names": 395,
+      "commands": 369,
+      "raw_declaration_bytes": 231628
+    },
+    "source_lines": [
+      17682,
+      17724
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeCompiler.compile_computes",
+    "module": "ExpandingCodes.Computation.TapeCompiler",
+    "saving": {
+      "sampler": 0,
+      "tester": 24565
+    },
+    "child": {
+      "names": 105,
+      "commands": 105,
+      "raw_declaration_bytes": 36014
+    },
+    "source_lines": [
+      2273,
+      2276
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.markedFill_stops_bound",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 24361,
+      "tester": 0
+    },
+    "child": {
+      "names": 133,
+      "commands": 123,
+      "raw_declaration_bytes": 53706
+    },
+    "source_lines": [
+      30708,
+      30719
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.candidateBodyStore_answer",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 12106,
+      "tester": 12106
+    },
+    "child": {
+      "names": 152,
+      "commands": 144,
+      "raw_declaration_bytes": 59742
+    },
+    "source_lines": [
+      21809,
+      21837
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.markedFill_stops",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 23501,
+      "tester": 0
+    },
+    "child": {
+      "names": 131,
+      "commands": 121,
+      "raw_declaration_bytes": 52846
+    },
+    "source_lines": [
+      30383,
+      30394
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops_exact",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 11525,
+      "tester": 11525
+    },
+    "child": {
+      "names": 206,
+      "commands": 194,
+      "raw_declaration_bytes": 106643
+    },
+    "source_lines": [
+      11759,
+      11794
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.ceilingPowerTwo_stops",
+    "module": "ExpandingCodes.Computation.ParameterRounding",
+    "saving": {
+      "sampler": 11345,
+      "tester": 11345
+    },
+    "child": {
+      "names": 118,
+      "commands": 114,
+      "raw_declaration_bytes": 52622
+    },
+    "source_lines": [
+      19875,
+      19928
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.RandomTables.fill_stops",
+    "module": "ExpandingCodes.Computation.RandomTables",
+    "saving": {
+      "sampler": 22314,
+      "tester": 0
+    },
+    "child": {
+      "names": 129,
+      "commands": 119,
+      "raw_declaration_bytes": 51659
+    },
+    "source_lines": [
+      6045,
+      6088
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.candidateValid_correct",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 10313,
+      "tester": 10313
+    },
+    "child": {
+      "names": 150,
+      "commands": 142,
+      "raw_declaration_bytes": 57501
+    },
+    "source_lines": [
+      21784,
+      21797
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.fixed_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 20512,
+      "tester": 0
+    },
+    "child": {
+      "names": 377,
+      "commands": 351,
+      "raw_declaration_bytes": 223321
+    },
+    "source_lines": [
+      16973,
+      17007
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.hash_phase_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 20157,
+      "tester": 0
+    },
+    "child": {
+      "names": 159,
+      "commands": 154,
+      "raw_declaration_bytes": 84535
+    },
+    "source_lines": [
+      17874,
+      17949
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.RandomTables.entry_stops",
+    "module": "ExpandingCodes.Computation.RandomTables",
+    "saving": {
+      "sampler": 19514,
+      "tester": 0
+    },
+    "child": {
+      "names": 122,
+      "commands": 113,
+      "raw_declaration_bytes": 46687
+    },
+    "source_lines": [
+      5929,
+      5968
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.outerLoop_stops",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 10665,
+      "tester": 8821
+    },
+    "child": {
+      "names": 196,
+      "commands": 184,
+      "raw_declaration_bytes": 99128
+    },
+    "source_lines": [
+      21342,
+      21367
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.randomLinear_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 19279,
+      "tester": 0
+    },
+    "child": {
+      "names": 383,
+      "commands": 356,
+      "raw_declaration_bytes": 252194
+    },
+    "source_lines": [
+      17029,
+      17077
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.multiplyResult_index",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 9550,
+      "tester": 9550
+    },
+    "child": {
+      "names": 172,
+      "commands": 160,
+      "raw_declaration_bytes": 66518
+    },
+    "source_lines": [
+      12049,
+      12081
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.outerLoop_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 9531,
+      "tester": 9531
+    },
+    "child": {
+      "names": 202,
+      "commands": 190,
+      "raw_declaration_bytes": 102785
+    },
+    "source_lines": [
+      11667,
+      11694
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterPrefix.input_stops",
+    "module": "ExpandingCodes.Computation.TesterPrefix",
+    "saving": {
+      "sampler": 0,
+      "tester": 18056
+    },
+    "child": {
+      "names": 142,
+      "commands": 129,
+      "raw_declaration_bytes": 57536
+    },
+    "source_lines": [
+      25841,
+      25915
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterPowers.product_stops",
+    "module": "ExpandingCodes.Computation.TesterPowers",
+    "saving": {
+      "sampler": 0,
+      "tester": 17446
+    },
+    "child": {
+      "names": 358,
+      "commands": 333,
+      "raw_declaration_bytes": 210892
+    },
+    "source_lines": [
+      18305,
+      18342
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.ceilingLoop_stops",
+    "module": "ExpandingCodes.Computation.ParameterRounding",
+    "saving": {
+      "sampler": 8556,
+      "tester": 8556
+    },
+    "child": {
+      "names": 115,
+      "commands": 111,
+      "raw_declaration_bytes": 48557
+    },
+    "source_lines": [
+      19787,
+      19852
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.outerResult_valid",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 8497,
+      "tester": 8497
+    },
+    "child": {
+      "names": 147,
+      "commands": 139,
+      "raw_declaration_bytes": 55269
+    },
+    "source_lines": [
+      21724,
+      21748
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.binarySamplerFromInput_law",
+    "module": "ExpandingCodes.Computation.EncodedSampler",
+    "saving": {
+      "sampler": 16439,
+      "tester": 0
+    },
+    "child": {
+      "names": 108,
+      "commands": 107,
+      "raw_declaration_bytes": 31543
+    },
+    "source_lines": [
+      15958,
+      15976
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.fixedPower_stops",
+    "module": "ExpandingCodes.Computation.ParameterPower",
+    "saving": {
+      "sampler": 8182,
+      "tester": 8182
+    },
+    "child": {
+      "names": 110,
+      "commands": 106,
+      "raw_declaration_bytes": 44453
+    },
+    "source_lines": [
+      19335,
+      19399
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.allCoefficients_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 16046,
+      "tester": 0
+    },
+    "child": {
+      "names": 136,
+      "commands": 131,
+      "raw_declaration_bytes": 76856
+    },
+    "source_lines": [
+      16692,
+      16709
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeArrays.positionEntry_stops",
+    "module": "ExpandingCodes.Computation.TapeArrays",
+    "saving": {
+      "sampler": 8010,
+      "tester": 8010
+    },
+    "child": {
+      "names": 107,
+      "commands": 103,
+      "raw_declaration_bytes": 42755
+    },
+    "source_lines": [
+      3945,
+      4012
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.allPowers_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 15930,
+      "tester": 0
+    },
+    "child": {
+      "names": 359,
+      "commands": 334,
+      "raw_declaration_bytes": 209413
+    },
+    "source_lines": [
+      16892,
+      16906
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianProgram.pivotScan_table_stops",
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 15692
+    },
+    "child": {
+      "names": 132,
+      "commands": 127,
+      "raw_declaration_bytes": 71901
+    },
+    "source_lines": [
+      23246,
+      23267
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterPowers.productCore_stops",
+    "module": "ExpandingCodes.Computation.TesterPowers",
+    "saving": {
+      "sampler": 0,
+      "tester": 15129
+    },
+    "child": {
+      "names": 357,
+      "commands": 332,
+      "raw_declaration_bytes": 208575
+    },
+    "source_lines": [
+      18264,
+      18297
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.powerVector_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 14711,
+      "tester": 0
+    },
+    "child": {
+      "names": 358,
+      "commands": 333,
+      "raw_declaration_bytes": 208194
+    },
+    "source_lines": [
+      16849,
+      16887
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.vectorLoad_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 14356,
+      "tester": 0
+    },
+    "child": {
+      "names": 135,
+      "commands": 130,
+      "raw_declaration_bytes": 75166
+    },
+    "source_lines": [
+      16609,
+      16687
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.setupStore_values",
+    "module": "ExpandingCodes.Computation.ParameterSetup",
+    "saving": {
+      "sampler": 6208,
+      "tester": 7583
+    },
+    "child": {
+      "names": 116,
+      "commands": 112,
+      "raw_declaration_bytes": 32767
+    },
+    "source_lines": [
+      20716,
+      20765
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.lessThan_stops",
+    "module": "ExpandingCodes.Computation.ParameterPrograms",
+    "saving": {
+      "sampler": 6838,
+      "tester": 6838
+    },
+    "child": {
+      "names": 89,
+      "commands": 86,
+      "raw_declaration_bytes": 30135
+    },
+    "source_lines": [
+      4968,
+      5019
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldConvolution.convolution_stops_exact",
+    "module": "ExpandingCodes.Computation.FieldConvolution",
+    "saving": {
+      "sampler": 6759,
+      "tester": 6759
+    },
+    "child": {
+      "names": 126,
+      "commands": 119,
+      "raw_declaration_bytes": 54995
+    },
+    "source_lines": [
+      9976,
+      10007
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianProgram.pivotScan_stops",
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 13241
+    },
+    "child": {
+      "names": 129,
+      "commands": 125,
+      "raw_declaration_bytes": 69450
+    },
+    "source_lines": [
+      23079,
+      23211
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerEvaluation.hashedColumn_stops",
+    "module": "ExpandingCodes.Computation.SamplerEvaluation",
+    "saving": {
+      "sampler": 13162,
+      "tester": 0
+    },
+    "child": {
+      "names": 139,
+      "commands": 134,
+      "raw_declaration_bytes": 74365
+    },
+    "source_lines": [
+      14022,
+      14118
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.Concrete.sourceTime_polynomial",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 12802,
+      "tester": 0
+    },
+    "child": {
+      "names": 111,
+      "commands": 111,
+      "raw_declaration_bytes": 26414
+    },
+    "source_lines": [
+      32238,
+      32257
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverseResult_index",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 0,
+      "tester": 12749
+    },
+    "child": {
+      "names": 209,
+      "commands": 194,
+      "raw_declaration_bytes": 87327
+    },
+    "source_lines": [
+      13095,
+      13105
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops_exact",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 6326,
+      "tester": 6326
+    },
+    "child": {
+      "names": 199,
+      "commands": 187,
+      "raw_declaration_bytes": 100304
+    },
+    "source_lines": [
+      12303,
+      12328
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterPowers.factor_stops",
+    "module": "ExpandingCodes.Computation.TesterPowers",
+    "saving": {
+      "sampler": 0,
+      "tester": 12640
+    },
+    "child": {
+      "names": 355,
+      "commands": 330,
+      "raw_declaration_bytes": 206306
+    },
+    "source_lines": [
+      18191,
+      18237
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeArrays.readBlock_stops",
+    "module": "ExpandingCodes.Computation.TapeArrays",
+    "saving": {
+      "sampler": 6210,
+      "tester": 6210
+    },
+    "child": {
+      "names": 79,
+      "commands": 78,
+      "raw_declaration_bytes": 19003
+    },
+    "source_lines": [
+      3841,
+      3895
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.powerCoefficient_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 12405,
+      "tester": 0
+    },
+    "child": {
+      "names": 357,
+      "commands": 332,
+      "raw_declaration_bytes": 205888
+    },
+    "source_lines": [
+      16778,
+      16836
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.additionResult_index",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 6143,
+      "tester": 6143
+    },
+    "child": {
+      "names": 161,
+      "commands": 151,
+      "raw_declaration_bytes": 60102
+    },
+    "source_lines": [
+      12424,
+      12449
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianPivot.coordinates_stops",
+    "module": "ExpandingCodes.Computation.GaussianPivot",
+    "saving": {
+      "sampler": 0,
+      "tester": 12110
+    },
+    "child": {
+      "names": 152,
+      "commands": 141,
+      "raw_declaration_bytes": 68454
+    },
+    "source_lines": [
+      27187,
+      27241
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterSuffix.program_canonical",
+    "module": "ExpandingCodes.Computation.TesterSuffix",
+    "saving": {
+      "sampler": 0,
+      "tester": 12048
+    },
+    "child": {
+      "names": 156,
+      "commands": 150,
+      "raw_declaration_bytes": 69170
+    },
+    "source_lines": [
+      28598,
+      28618
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.NeighborWriter.writeRow_stops",
+    "module": "ExpandingCodes.Computation.NeighborWriter",
+    "saving": {
+      "sampler": 12002,
+      "tester": 0
+    },
+    "child": {
+      "names": 145,
+      "commands": 138,
+      "raw_declaration_bytes": 58825
+    },
+    "source_lines": [
+      29960,
+      29979
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.UnaryArithmetic.multiply_stops",
+    "module": "ExpandingCodes.Computation.UnaryArithmetic",
+    "saving": {
+      "sampler": 5983,
+      "tester": 5983
+    },
+    "child": {
+      "names": 96,
+      "commands": 93,
+      "raw_declaration_bytes": 32700
+    },
+    "source_lines": [
+      3051,
+      3100
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldPrograms.halve_stops",
+    "module": "ExpandingCodes.Computation.FieldPrograms",
+    "saving": {
+      "sampler": 5980,
+      "tester": 5980
+    },
+    "child": {
+      "names": 80,
+      "commands": 78,
+      "raw_declaration_bytes": 21273
+    },
+    "source_lines": [
+      4430,
+      4465
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.FieldPrograms.testBit_stops",
+    "module": "ExpandingCodes.Computation.FieldPrograms",
+    "saving": {
+      "sampler": 5844,
+      "tester": 5767
+    },
+    "child": {
+      "names": 104,
+      "commands": 100,
+      "raw_declaration_bytes": 39787
+    },
+    "source_lines": [
+      4689,
+      4741
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterFrontend.degree_stops",
+    "module": "ExpandingCodes.Computation.TesterFrontend",
+    "saving": {
+      "sampler": 0,
+      "tester": 10846
+    },
+    "child": {
+      "names": 105,
+      "commands": 99,
+      "raw_declaration_bytes": 43588
+    },
+    "source_lines": [
+      25946,
+      26002
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterImplementation.clock_polynomial",
+    "module": "ExpandingCodes.Computation.TesterImplementation",
+    "saving": {
+      "sampler": 0,
+      "tester": 10774
+    },
+    "child": {
+      "names": 95,
+      "commands": 95,
+      "raw_declaration_bytes": 21393
+    },
+    "source_lines": [
+      29315,
+      29319
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.outerBody_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 5384,
+      "tester": 5384
+    },
+    "child": {
+      "names": 195,
+      "commands": 183,
+      "raw_declaration_bytes": 97899
+    },
+    "source_lines": [
+      11626,
+      11660
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianProgram.fetchSchur_stops",
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 10740
+    },
+    "child": {
+      "names": 127,
+      "commands": 123,
+      "raw_declaration_bytes": 67258
+    },
+    "source_lines": [
+      23725,
+      23821
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceModulus.outerBody_stops",
+    "module": "ExpandingCodes.Computation.SourceModulus",
+    "saving": {
+      "sampler": 6268,
+      "tester": 4424
+    },
+    "child": {
+      "names": 189,
+      "commands": 177,
+      "raw_declaration_bytes": 94183
+    },
+    "source_lines": [
+      21311,
+      21337
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.divideConstant_stops",
+    "module": "ExpandingCodes.Computation.ParameterDivision",
+    "saving": {
+      "sampler": 5341,
+      "tester": 5341
+    },
+    "child": {
+      "names": 88,
+      "commands": 85,
+      "raw_declaration_bytes": 28638
+    },
+    "source_lines": [
+      20052,
+      20088
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.RawIrreducibility.factorFree_iff_canonical",
+    "module": "ExpandingCodes.Computation.RawIrreducibility",
+    "saving": {
+      "sampler": 5231,
+      "tester": 5231
+    },
+    "child": {
+      "names": 83,
+      "commands": 80,
+      "raw_declaration_bytes": 18442
+    },
+    "source_lines": [
+      21036,
+      21038
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeCompiler.haltsWith_of_localSimulation",
+    "module": "ExpandingCodes.Computation.TapeCompiler",
+    "saving": {
+      "sampler": 5154,
+      "tester": 5154
+    },
+    "child": {
+      "names": 77,
+      "commands": 77,
+      "raw_declaration_bytes": 15773
+    },
+    "source_lines": [
+      2253,
+      2264
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.RandomBits.randomIndex_polynomial",
+    "module": "ExpandingCodes.Computation.RandomBits",
+    "saving": {
+      "sampler": 10301,
+      "tester": 0
+    },
+    "child": {
+      "names": 105,
+      "commands": 99,
+      "raw_declaration_bytes": 36396
+    },
+    "source_lines": [
+      5736,
+      5748
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.ParameterPrograms.powerLoop_stops",
+    "module": "ExpandingCodes.Computation.ParameterPower",
+    "saving": {
+      "sampler": 5141,
+      "tester": 5141
+    },
+    "child": {
+      "names": 106,
+      "commands": 102,
+      "raw_declaration_bytes": 39736
+    },
+    "source_lines": [
+      19253,
+      19309
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.RandomBits.randomIndex_stops",
+    "module": "ExpandingCodes.Computation.RandomBits",
+    "saving": {
+      "sampler": 9551,
+      "tester": 0
+    },
+    "child": {
+      "names": 104,
+      "commands": 98,
+      "raw_declaration_bytes": 35646
+    },
+    "source_lines": [
+      5658,
+      5686
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.binarySamplerFromInput_eq",
+    "module": "ExpandingCodes.Computation.EncodedSampler",
+    "saving": {
+      "sampler": 9513,
+      "tester": 0
+    },
+    "child": {
+      "names": 96,
+      "commands": 95,
+      "raw_declaration_bytes": 24417
+    },
+    "source_lines": [
+      15949,
+      15956
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerOdometer.program_stops_valid",
+    "module": "ExpandingCodes.Computation.SamplerOdometer",
+    "saving": {
+      "sampler": 5522,
+      "tester": 3890
+    },
+    "child": {
+      "names": 113,
+      "commands": 105,
+      "raw_declaration_bytes": 37899
+    },
+    "source_lines": [
+      14755,
+      14765
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops_exact",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 0,
+      "tester": 9300
+    },
+    "child": {
+      "names": 232,
+      "commands": 219,
+      "raw_declaration_bytes": 124600
+    },
+    "source_lines": [
+      12796,
+      12823
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.NeighborWriter.loop_stops",
+    "module": "ExpandingCodes.Computation.NeighborWriter",
+    "saving": {
+      "sampler": 9145,
+      "tester": 0
+    },
+    "child": {
+      "names": 139,
+      "commands": 132,
+      "raw_declaration_bytes": 55141
+    },
+    "source_lines": [
+      29843,
+      29880
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterInput.load_stops",
+    "module": "ExpandingCodes.Computation.TesterInput",
+    "saving": {
+      "sampler": 0,
+      "tester": 9031
+    },
+    "child": {
+      "names": 126,
+      "commands": 115,
+      "raw_declaration_bytes": 48287
+    },
+    "source_lines": [
+      18971,
+      19063
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterSuffix.program_stops",
+    "module": "ExpandingCodes.Computation.TesterSuffix",
+    "saving": {
+      "sampler": 0,
+      "tester": 8936
+    },
+    "child": {
+      "names": 111,
+      "commands": 107,
+      "raw_declaration_bytes": 47453
+    },
+    "source_lines": [
+      28548,
+      28588
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TapeArrays.writeBlock_stops",
+    "module": "ExpandingCodes.Computation.TapeArrays",
+    "saving": {
+      "sampler": 5183,
+      "tester": 3692
+    },
+    "child": {
+      "names": 83,
+      "commands": 78,
+      "raw_declaration_bytes": 19672
+    },
+    "source_lines": [
+      3687,
+      3700
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.linear_stops_values",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 8785,
+      "tester": 0
+    },
+    "child": {
+      "names": 340,
+      "commands": 315,
+      "raw_declaration_bytes": 198379
+    },
+    "source_lines": [
+      16721,
+      16740
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterGram.pairFinishAfter_stops",
+    "module": "ExpandingCodes.Computation.TesterGramCorrectness",
+    "saving": {
+      "sampler": 0,
+      "tester": 8624
+    },
+    "child": {
+      "names": 153,
+      "commands": 142,
+      "raw_declaration_bytes": 69617
+    },
+    "source_lines": [
+      24795,
+      24925
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerEvaluation.coefficientLoad_stops",
+    "module": "ExpandingCodes.Computation.SamplerEvaluation",
+    "saving": {
+      "sampler": 8514,
+      "tester": 0
+    },
+    "child": {
+      "names": 131,
+      "commands": 126,
+      "raw_declaration_bytes": 69186
+    },
+    "source_lines": [
+      13905,
+      13993
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.PaddedGaussian.binary_iterate_rank",
+    "module": "ExpandingCodes.Computation.PaddedGaussian",
+    "saving": {
+      "sampler": 0,
+      "tester": 8369
+    },
+    "child": {
+      "names": 125,
+      "commands": 121,
+      "raw_declaration_bytes": 39265
+    },
+    "source_lines": [
+      27482,
+      27487
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.powerFromOne_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 8196,
+      "tester": 0
+    },
+    "child": {
+      "names": 353,
+      "commands": 328,
+      "raw_declaration_bytes": 201432
+    },
+    "source_lines": [
+      16526,
+      16561
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.PaddedGaussian.binaryTest_rank",
+    "module": "ExpandingCodes.Computation.PaddedGaussian",
+    "saving": {
+      "sampler": 0,
+      "tester": 7543
+    },
+    "child": {
+      "names": 123,
+      "commands": 119,
+      "raw_declaration_bytes": 38439
+    },
+    "source_lines": [
+      27469,
+      27473
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.sizeStageStore_sizes",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 7303,
+      "tester": 0
+    },
+    "child": {
+      "names": 118,
+      "commands": 114,
+      "raw_declaration_bytes": 34104
+    },
+    "source_lines": [
+      31158,
+      31173
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.NeighborWriter.body_stops",
+    "module": "ExpandingCodes.Computation.NeighborWriter",
+    "saving": {
+      "sampler": 7124,
+      "tester": 0
+    },
+    "child": {
+      "names": 123,
+      "commands": 116,
+      "raw_declaration_bytes": 48296
+    },
+    "source_lines": [
+      29773,
+      29791
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.linear_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 7066,
+      "tester": 0
+    },
+    "child": {
+      "names": 338,
+      "commands": 313,
+      "raw_declaration_bytes": 196660
+    },
+    "source_lines": [
+      16352,
+      16376
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.PaddedGaussian.run_eq_encodedRun",
+    "module": "ExpandingCodes.Computation.PaddedGaussian",
+    "saving": {
+      "sampler": 0,
+      "tester": 6924
+    },
+    "child": {
+      "names": 95,
+      "commands": 92,
+      "raw_declaration_bytes": 26999
+    },
+    "source_lines": [
+      27465,
+      27467
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterEvaluation.degree_stops",
+    "module": "ExpandingCodes.Computation.TesterEvaluation",
+    "saving": {
+      "sampler": 0,
+      "tester": 6829
+    },
+    "child": {
+      "names": 100,
+      "commands": 94,
+      "raw_declaration_bytes": 39348
+    },
+    "source_lines": [
+      18723,
+      18810
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.PaddedGaussian.run_rows_correct",
+    "module": "ExpandingCodes.Computation.PaddedGaussian",
+    "saving": {
+      "sampler": 0,
+      "tester": 6703
+    },
+    "child": {
+      "names": 83,
+      "commands": 81,
+      "raw_declaration_bytes": 23580
+    },
+    "source_lines": [
+      27459,
+      27463
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterProgram.rankThreshold_stops",
+    "module": "ExpandingCodes.Computation.TesterProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 6617
+    },
+    "child": {
+      "names": 100,
+      "commands": 97,
+      "raw_declaration_bytes": 40201
+    },
+    "source_lines": [
+      28419,
+      28479
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianProgram.writeCurrent_stops",
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "saving": {
+      "sampler": 0,
+      "tester": 6484
+    },
+    "child": {
+      "names": 129,
+      "commands": 122,
+      "raw_declaration_bytes": 59301
+    },
+    "source_lines": [
+      23444,
+      23524
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.TesterPowers.power_stops",
+    "module": "ExpandingCodes.Computation.TesterPowers",
+    "saving": {
+      "sampler": 0,
+      "tester": 6403
+    },
+    "child": {
+      "names": 354,
+      "commands": 329,
+      "raw_declaration_bytes": 203519
+    },
+    "source_lines": [
+      18135,
+      18180
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.PaddedGaussian.run_correct",
+    "module": "ExpandingCodes.Computation.PaddedGaussian",
+    "saving": {
+      "sampler": 0,
+      "tester": 6391
+    },
+    "child": {
+      "names": 82,
+      "commands": 80,
+      "raw_declaration_bytes": 23268
+    },
+    "source_lines": [
+      27442,
+      27457
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.GaussianPivot.coordinateLoop_stops",
+    "module": "ExpandingCodes.Computation.GaussianPivot",
+    "saving": {
+      "sampler": 0,
+      "tester": 6290
+    },
+    "child": {
+      "names": 137,
+      "commands": 127,
+      "raw_declaration_bytes": 52362
+    },
+    "source_lines": [
+      27092,
+      27110
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverseResult_index_nonzero",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 0,
+      "tester": 6289
+    },
+    "child": {
+      "names": 203,
+      "commands": 189,
+      "raw_declaration_bytes": 83402
+    },
+    "source_lines": [
+      12949,
+      12973
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SourceFieldArithmetic.inverseLoop_stops",
+    "module": "ExpandingCodes.Computation.SourceFieldArithmetic",
+    "saving": {
+      "sampler": 0,
+      "tester": 5901
+    },
+    "child": {
+      "names": 228,
+      "commands": 215,
+      "raw_declaration_bytes": 120860
+    },
+    "source_lines": [
+      12748,
+      12756
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerEvaluation.hashIndex_stops",
+    "module": "ExpandingCodes.Computation.SamplerEvaluation",
+    "saving": {
+      "sampler": 5454,
+      "tester": 0
+    },
+    "child": {
+      "names": 106,
+      "commands": 103,
+      "raw_declaration_bytes": 40337
+    },
+    "source_lines": [
+      13770,
+      13805
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerAssembly.hashFill_stops",
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "saving": {
+      "sampler": 5421,
+      "tester": 0
+    },
+    "child": {
+      "names": 169,
+      "commands": 156,
+      "raw_declaration_bytes": 79674
+    },
+    "source_lines": [
+      30837,
+      30873
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.SamplerProgram.dotFromZero_stops",
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "saving": {
+      "sampler": 5364,
+      "tester": 0
+    },
+    "child": {
+      "names": 337,
+      "commands": 312,
+      "raw_declaration_bytes": 194958
+    },
+    "source_lines": [
+      16307,
+      16345
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.SamplerTables.fromTape_law",
+    "module": "ExpandingCodes.Computation.SamplerTables",
+    "saving": {
+      "sampler": 5299,
+      "tester": 0
+    },
+    "child": {
+      "names": 74,
+      "commands": 74,
+      "raw_declaration_bytes": 15918
+    },
+    "source_lines": [
+      9293,
+      9303
+    ]
+  },
+  {
+    "name": "ExpandingCodes.Computation.RandomBits.readBits_stops",
+    "module": "ExpandingCodes.Computation.RandomBits",
+    "saving": {
+      "sampler": 5216,
+      "tester": 0
+    },
+    "child": {
+      "names": 100,
+      "commands": 95,
+      "raw_declaration_bytes": 31311
+    },
+    "source_lines": [
+      5490,
+      5520
+    ]
+  },
+  {
+    "name": "ExpandingCodes.PolynomialStretch.SamplerTables.decodeCoins_physical",
+    "module": "ExpandingCodes.Computation.SamplerTables",
+    "saving": {
+      "sampler": 5161,
+      "tester": 0
+    },
+    "child": {
+      "names": 75,
+      "commands": 74,
+      "raw_declaration_bytes": 15931
+    },
+    "source_lines": [
+      9210,
+      9239
+    ]
+  }
+]

@@ -1,0 +1,34 @@
+ExpandingCodes/Computation/FieldCertificates.lean:91:44: warning: Variable name `hxf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hxf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ExpandingCodes/Computation/FieldCertificates.lean:584:36: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ExpandingCodes/Computation/FieldCertificates.lean:715:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hne 18]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.FieldCertificates.certificate_divMatches_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldCertificates.certificate_stops_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldCertificates.certificateResult_correct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldCertificates.certificateLoop_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldCertificates.coefficient_stops_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldCertificates.coefficientStore_flag' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

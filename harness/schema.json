@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coordinator-managed Lean proof dependency graph",
+  "description": "Structural schema only. engine.py also enforces DAG, statement hashes, ownership, review and receipt consistency. Receipts never replace an independent verify invocation.",
+  "type": "object",
+  "required": ["schema_version", "versions", "nodes"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "versions": {
+      "type": "object",
+      "required": ["lean", "mathlib"],
+      "additionalProperties": false,
+      "properties": {
+        "lean": {"const": "leanprover/lean4:v4.33.1"},
+        "mathlib": {"const": "0df444a360eaa60ab8c11dca51a86af692955474"}
+      }
+    },
+    "allowed_axioms": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["propext", "Classical.choice", "Quot.sound"]}
+    },
+    "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "review": {
+      "type": "object",
+      "required": ["reviewer", "statement_preserved", "strictly_useful", "notes"],
+      "properties": {
+        "reviewer": {"$ref": "#/$defs/text"},
+        "statement_preserved": {"type": "boolean"},
+        "strictly_useful": {"type": "boolean"},
+        "notes": {"$ref": "#/$defs/text"}
+      }
+    },
+    "child": {
+      "type": "object",
+      "required": ["id", "purpose", "proof_route", "strictly_useful"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "purpose": {"$ref": "#/$defs/text"},
+        "proof_route": {"$ref": "#/$defs/text"},
+        "strictly_useful": {"$ref": "#/$defs/text"}
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "declaration", "file", "statement", "statement_sha256", "status", "dependencies", "context_files", "sources", "proof_route", "failed_attempts", "owner", "interface", "review"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "declaration": {"$ref": "#/$defs/text"},
+        "file": {"type": "string", "pattern": "\\.lean$"},
+        "statement": {"$ref": "#/$defs/text", "description": "Full closed Lean proposition including all forall binders. No local context is implicit. Exact metadata bytes are frozen; Lean checks compatibility with @declaration and coordinator reviews intended interface."},
+        "statement_sha256": {"$ref": "#/$defs/hash"},
+        "status": {"enum": ["open", "reduction_checked", "proved"]},
+        "dependencies": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+        "context_files": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+        "sources": {"type": "array"},
+        "proof_route": {"$ref": "#/$defs/text"},
+        "failed_attempts": {"type": "array"},
+        "owner": {"$ref": "#/$defs/text"},
+        "interface": {"enum": ["provisional", "canonical"]},
+        "review": {"$ref": "#/$defs/review"},
+        "decomposition": {
+          "type": "object",
+          "required": ["parent_proof_route", "children"],
+          "properties": {
+            "parent_proof_route": {"$ref": "#/$defs/text"},
+            "children": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/child"}}
+          }
+        },
+        "verification": {
+          "type": "object",
+          "required": ["mode", "checked_at", "signature_sha256", "closure_signatures", "files", "axioms", "axiom_output", "signature_check", "trust_note"],
+          "properties": {
+            "mode": {"enum": ["prove", "reduction"]},
+            "checked_at": {"type": "string"},
+            "signature_sha256": {"$ref": "#/$defs/hash"},
+            "closure_signatures": {"type": "object", "additionalProperties": {"$ref": "#/$defs/hash"}},
+            "files": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/hash"}},
+            "axioms": {"type": "array", "items": {"type": "string"}},
+            "axiom_output": {"type": "string"},
+            "signature_check": {"const": "Lean full type compatibility with @declaration"},
+            "trust_note": {"type": "string"}
+          }
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"dependencies": {"minItems": 1}}}, "then": {"required": ["decomposition"]}},
+        {"if": {"properties": {"status": {"enum": ["reduction_checked", "proved"]}}}, "then": {"required": ["verification"]}}
+      ]
+    }
+  }
+}

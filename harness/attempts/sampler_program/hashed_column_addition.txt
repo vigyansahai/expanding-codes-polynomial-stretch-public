@@ -1,0 +1,126 @@
+theorem hashIndexStore_fresh_write (r : Fin 8 → Fin R) (hr : Function.Injective r)
+    (i : ℕ) (s : TapeStore R B) (x : Fin R) (hx : ∀ j : Fin 8,4≤j.val → x≠r j) :
+    (hashIndexStore r i s).reg x=s.reg x := by
+  rw [hashIndexStore_flat r hr]
+  simp [TapeStore.setReg,hx 4 (by decide),hx 5 (by decide),hx 6 (by decide),hx 7 (by decide)]
+
+theorem lookupRegisters_fresh_write (r : Fin 8 → Fin R) (v : ℕ) (s : TapeStore R B)
+    (x : Fin R) (hx : ∀ j : Fin 8,2≤j.val → x≠r j) : lookupRegisters r v s x=s.reg x := by
+  simp [lookupRegisters,TapeStore.setReg,hx 2 (by decide),hx 3 (by decide),hx 4 (by decide),
+    hx 5 (by decide),hx 6 (by decide),hx 7 (by decide)]
+
+def hashAddress (r : Fin 8 → Fin R) (i : ℕ) (s : TapeStore R B) : ℕ :=
+  s.reg (r 3)+s.reg (r 0)*(s.reg (r 2)+s.reg (r 0)*(s.reg (r 1)+s.reg (r 0)*i))
+
+def hashedColumnLabels (i : ℕ) : ℕ := ((hashIndexLabels i+48)+11)+scaleLabels i
+
+/-- Actual hash-table read and block-column offset. The layer number i is
+static, while field size, bucket width, address digits and bucket are runtime
+counter/buffer data. -/
+def hashedColumn (h r : Fin 8 → Fin R) (column tmp : Fin R) (b : Fin B) (i : ℕ) :
+    TapeProgram R B (hashedColumnLabels i) :=
+  TapeProgram.seq (TapeProgram.seq (TapeProgram.seq (hashIndex h i) (lookup r b))
+    (TapeMacros.copy (r 6) column tmp)) (scaleAdd (r 1) column tmp i)
+
+def hashedColumnTimeBound (i M : ℕ) : ℕ :=
+  hashIndexTimeBound i M+64*(M+1)^2+7*M+10+i*(5*M+6)
+
+theorem hashedColumn_stops (h r : Fin 8 → Fin R) (hh : Function.Injective h) (hr : Function.Injective r)
+    (column tmp : Fin R) (hindex : r 0=h 4)
+    (hwidth : ∀ j : Fin 8,4≤j.val → r 1≠h j)
+    (hcv : r 6≠column) (hct : r 6≠tmp) (hcoltmp : column≠tmp)
+    (hwc : r 1≠column) (hwt : r 1≠tmp)
+    (b : Fin B) (i : ℕ) (inp : Inputs) (M : ℕ) (s : TapeStore R B)
+    (hs : ∀ x,s.reg x≤M) (hhead : s.bufferHead b≤M) (hm : TapeArrays.BottomMarked s b)
+    (haddr : hashAddress h i s≤M) (v : ℕ) (hcolumn : v+i*s.reg (r 1)≤M)
+    (hend : TapeArrays.entryOffset (hashAddress h i s) (s.reg (r 1))+s.reg (r 1)≤M)
+    (hblock : TapeArrays.ThermometerAt s b (TapeArrays.entryOffset (hashAddress h i s) (s.reg (r 1))) (s.reg (r 1)) v) :
+    ∃ t e, t≤hashedColumnTimeBound i M ∧
+      (hashedColumn h r column tmp b i).Stops inp (s.toCfg (hashedColumn (B := B) h r column tmp b i).entry) t e ∧
+      e.reg column=i*s.reg (r 1)+v ∧
+      (∀ x,(∀ j : Fin 8,4≤j.val → x≠h j) → (∀ j : Fin 8,2≤j.val → x≠r j) →
+        x≠column → x≠tmp → e.reg x=s.reg x) ∧
+      (∀ x,e.reg x≤M) ∧
+      e.bufferHead=Function.update s.bufferHead b
+        (TapeArrays.entryOffset (hashAddress h i s) (s.reg (r 1))+s.reg (r 1)) ∧
+      e.bufferHead b≤M ∧ TapeStore.SamePayload e.store s ∧ TapeArrays.BottomMarked e.store b := by
+  obtain ⟨a,z₁,ha,h₁,hs₁,hb₁old⟩ := hashIndex_stops h hh i inp M s hs
+  have hb₁ : ∀ x,z₁.reg x≤M := by
+    change ∀ x,z₁.store.reg x≤M
+    rw [hs₁]
+    exact hashIndexStore_bound_exact h hh i M s hs haddr
+  have hp₁ : TapeStore.SamePayload z₁.store s := by rw [hs₁]; exact ⟨rfl,rfl,fun _ _ => rfl⟩
+  have hh₁ : z₁.bufferHead b≤M := by change z₁.store.bufferHead b≤M; rw [hs₁]; exact hhead
+  have hidx₁ : z₁.store.reg (r 0)=hashAddress h i s := by
+    rw [hindex,hs₁]
+    exact hashIndexStore_value h hh i s
+  have hw₁ : z₁.store.reg (r 1)=s.reg (r 1) := by
+    rw [hs₁]
+    exact hashIndexStore_fresh_write h hh i s _ hwidth
+  have hblock₁ : TapeArrays.ThermometerAt z₁.store b
+      (TapeArrays.entryOffset (z₁.store.reg (r 0)) (z₁.store.reg (r 1))) (z₁.store.reg (r 1)) v := by
+    rw [hidx₁,hw₁]
+    exact hblock.of_payload hp₁
+  obtain ⟨w,z₂,hw,h₂,hs₂,hvalue,hidx₂,hwidth₂,hout₂,hb₂,hh₂,hp₂⟩ := lookup_stops r hr b inp M z₁.store
+    hb₁ hh₁ (hm.of_payload hp₁).marked v hblock₁
+  obtain ⟨u,z₃,hu,h₃,hs₃,hb₃⟩ := copy_stops_bound (r 6) column tmp hcv hct hcoltmp inp M z₂.store hb₂
+  have hv₃ : z₃.reg column=v := by
+    change z₃.store.reg column=_
+    rw [hs₃]
+    simpa only [TapeStore.setReg,Function.update_of_ne (Ne.symm hcoltmp),Function.update_self] using hvalue
+  have hw₃ : z₃.reg (r 1)=s.reg (r 1) := by
+    change z₃.store.reg (r 1)=_
+    rw [hs₃]
+    simp only [TapeStore.setReg,Function.update_of_ne hwt,Function.update_of_ne hwc]
+    exact hwidth₂.trans hw₁
+  have ht₃ : z₃.reg tmp=0 := by change z₃.store.reg tmp=0; rw [hs₃]; simp
+  obtain ⟨e,he,hes⟩ := scaleAdd_stops (r 1) column tmp hwc hwt hcoltmp i inp z₃.store ht₃
+  have hall := ((h₁.seq h₂).seq h₃).seq he
+  have hp : TapeStore.SamePayload e.store s := by
+    have hc : TapeStore.SamePayload e.store z₂.store := by rw [hes,hs₃]; exact ⟨rfl,rfl,fun _ _ => rfl⟩
+    exact (hc.trans hp₂).trans hp₁
+  have hheads : e.bufferHead=Function.update s.bufferHead b
+      (TapeArrays.entryOffset (hashAddress h i s) (s.reg (r 1))+s.reg (r 1)) := by
+    change e.store.bufferHead=_
+    rw [hes]
+    change z₃.store.bufferHead=_
+    rw [hs₃]
+    change z₂.bufferHead=_
+    rw [hh₂,hidx₁,hw₁]
+    change Function.update z₁.store.bufferHead b _=_
+    rw [hs₁]
+    rfl
+  refine ⟨a+1+w+1+u+1+i*(5*z₃.store.reg (r 1)+6),_,?_,hall,?_,?_,?_,hheads,?_,hp,hm.of_payload hp⟩
+  · have hscale := Nat.mul_le_mul_left i (show 5*s.reg (r 1)+6≤5*M+6 by have := hs (r 1); omega)
+    unfold hashedColumnTimeBound
+    change a+1+w+1+u+1+i*(5*z₃.reg (r 1)+6)≤_
+    rw [hw₃]
+    omega
+  · change e.store.reg column=_
+    rw [hes]
+    simp only [scaleStore,TapeStore.setReg,Function.update_of_ne (Ne.symm hcoltmp),Function.update_self]
+    change z₃.reg column+i*z₃.reg (r 1)=_
+    rw [hv₃,hw₃]
+    omega
+  · intro x hxh hxr hxc hxt
+    change e.store.reg x=_
+    rw [hes]
+    simp only [scaleStore,TapeStore.setReg,Function.update_of_ne hxt,Function.update_of_ne hxc]
+    change z₃.store.reg x=_
+    rw [hs₃]
+    simp only [TapeStore.setReg,Function.update_of_ne hxt,Function.update_of_ne hxc]
+    change z₂.reg x=_
+    rw [hs₂,lookupRegisters_fresh_write r v z₁.store x hxr]
+    change z₁.store.reg x=_
+    rw [hs₁]
+    exact hashIndexStore_fresh_write h hh i s x hxh
+  · change ∀ x,e.store.reg x≤M
+    rw [hes]
+    apply scaleStore_bound_exact _ _ _ _ M z₃.store hb₃
+    change z₃.reg column+i*z₃.reg (r 1)≤M
+    rw [hv₃,hw₃]
+    exact hcolumn
+  · rw [hheads]
+    simpa using hend
+
+#print axioms hashedColumn_stops

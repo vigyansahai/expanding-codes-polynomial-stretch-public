@@ -1,0 +1,968 @@
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2483:2: warning: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2632:43: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2634:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2648:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2652:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2661:45: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2662:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2683:32: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2688:12: warning: This simp argument is unused:
+  Function.update_of_ne hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2703:44: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2705:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2720:48: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2721:71: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2723:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2744:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2744:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2744:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2744:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2749:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2749:57: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2749:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2754:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2754:36: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2754:41: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2812:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2812:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2812:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2812:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2815:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2815:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2815:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2815:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2815:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2818:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2818:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2858:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2858:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2858:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2858:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2861:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2861:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2861:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2861:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2861:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2864:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2864:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2864:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2879:53: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, distributeStore, TapeStore.setReg, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2962:23: warning: Variable name `hdc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hdc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2962:43: warning: Variable name `htc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _htc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2975:49: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, htc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2975:54: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2976:8: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:2976:21: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdt, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3019:34: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, hac, htc, ht]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3042:17: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3091:34: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:31: warning: This simp argument is unused:
+  had
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hat, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:36: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:41: warning: This simp argument is unused:
+  hac
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:46: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:51: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:56: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3094:61: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, hdc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3097:48: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3097:53: warning: This simp argument is unused:
+  hbt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3097:58: warning: This simp argument is unused:
+  hbc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3097:73: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3098:12: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3098:25: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3101:63: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, Ne.symm hdc, Ne.symm hdt, hbd, hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3313:64: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, seekRight, TapeStore.toCfg, d₂, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3321:20: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, cellStore, TapeStore.setReg, Machine.moveHead, Function.update_idem, Nat.add_assoc,
+    Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3350:70: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, reset, TapeStore.toCfg, hd, hm0, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3352:15: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, cellStore, hd, Machine.moveHead]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3357:51: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, cellStore, hd, Machine.moveHead]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3371:66: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, reset, TapeStore.toCfg, hs, d₁, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3375:16: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, cellStore, Function.update_idem]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3586:16: warning: This simp argument is unused:
+  Function.update_of_ne hc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3609:45: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₁, cellStore, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3614:60: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeRun, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3652:53: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₂, d₁, cellStore, TapeStore.setReg, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3661:62: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeDebit, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3669:31: warning: This simp argument is unused:
+  hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, Ne.symm hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3669:36: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3672:38: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3679:42: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3679:42: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3810:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [moved, cellStore, TapeProgram.decStore, Function.update_of_ne (Ne.symm hne)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3810:46: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeStore.setReg, moved, cellStore, Function.update_of_ne (Ne.symm hne)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3820:64: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, hd, d₁]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3825:66: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, d₂, d₁, moved, cellStore, hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3826:8: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, d₂, d₁, TapeProgram.decStore, cellStore, hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3830:44: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, hs', d₂, d₁, moved, cellStore,
+    TapeStore.setReg, Function.update_of_ne (Ne.symm hne)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3839:73: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, d₁, TapeProgram.decStore, moved, cellStore,
+    hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3840:8: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, hs, d₁, moved, cellStore, hs']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3896:38: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:3886:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4008:39: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4011:31: warning: This simp argument is unused:
+  hot
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hoc, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4011:36: warning: This simp argument is unused:
+  hoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4011:59: warning: This simp argument is unused:
+  Ne.symm hoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4011:72: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm hoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4014:33: warning: This simp argument is unused:
+  hot
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hoc, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4014:38: warning: This simp argument is unused:
+  hoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, htc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4014:43: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, Ne.symm hot, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4014:48: warning: This simp argument is unused:
+  Ne.symm hot
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hoc, Ne.symm htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4014:74: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hot, hoc, htc, Ne.symm hot, Ne.symm hoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4347:35: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeCfg.mapPC, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4361:53: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_test, TapeStore.toCfg, c, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4365:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeCfg.mapPC, c, decStore, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:4365:71: warning: This simp argument is unused:
+  decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, branchZero_restore, TapeStore.toCfg, TapeCfg.mapPC, c, Function.update_idem, hr₁,
+    Function.update_eq_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:14583:44: warning: This simp argument is unused:
+  hpc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [advanceStore, TapeStore.setReg, Ne.symm hpc, hqp, hqc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:15259:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Computation.EncodedGaussian.schur_decode`:
+  [DecidableEq α]
+  [DecidableEq F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] [DecidableEq F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:15675:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:22951:62: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, searchLoop_tail, TapeStore.toCfg, Nat.ne_of_gt hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:22986:73: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23019:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23104:45: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₀, hr0]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23105:45: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₀, hr2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23118:44: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [readPost, TapeStore.setReg, d₀, hr7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23121:44: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [readPost, TapeStore.setReg, d₀, hr8]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23139:16: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₀, h7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23142:43: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update_of_ne hne, d₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23422:12: warning: This simp argument is unused:
+  hd1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd2, hd3, hd4, hd5, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23422:17: warning: This simp argument is unused:
+  hd2
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd3, hd4, hd5, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23422:22: warning: This simp argument is unused:
+  hd3
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd2, hd4, hd5, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23422:32: warning: This simp argument is unused:
+  hd5
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd2, hd3, hd4, hd6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23422:37: warning: This simp argument is unused:
+  hd6
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd1, hd2, hd3, hd4, hd5]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:23695:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [high_ne_low r hr 2 (by decide)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:26522:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hk]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:26553:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hs47]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:26710:22: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:26813:74: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hk]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:26833:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hs46]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:27025:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:27377:43: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:27418:43: warning: This simp argument is unused:
+  Nat.add_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, hd, hp, run, Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:27436:0: warning: automatically included section variable(s) unused in theorem `ExpandingCodes.Computation.PaddedGaussian.pivot_none_rank`:
+  [DecidableEq F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:28105:17: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:28105:53: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:28105:89: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean:28111:13: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [s₀, hs62]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

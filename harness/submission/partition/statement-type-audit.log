@@ -1,0 +1,11 @@
+harness/submission/partition/StatementTypeAudit.lean:10:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:14:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:22:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:36:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:46:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:54:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:73:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:80:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:90:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:99:8: warning: declaration uses `sorry`
+harness/submission/partition/StatementTypeAudit.lean:129:7: error: unexpected token 'matches'; expected '(', ':=', 'rec', '|', identifier or term

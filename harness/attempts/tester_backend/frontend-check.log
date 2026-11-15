@@ -1,0 +1,41 @@
+harness/attempts/tester_backend/TesterFrontend.lean:40:20: error: Tactic `simp` failed with a nested error:
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+harness/attempts/tester_backend/TesterFrontend.lean:54:6: error: Type mismatch: After simplification, term
+  hval
+ has type
+  @Eq ℕ (e.reg (degreeLayout d 4)) (((d - 3) * (fieldSize d n - 1) - 1) / 2)
+but is expected to have type
+  @Eq ℕ (e.reg (low d 65)) (((d - 3) * (fieldSize d n - 1) - 1) / 2)
+harness/attempts/tester_backend/TesterFrontend.lean:57:6: error: Type mismatch: After simplification, term
+  hs.marked 2
+ has type
+  (s.bufferTape 2).getD 0 Sym.blank = Sym.bot ∧ ∀ (k : ℕ), 0 < k → (s.bufferTape 2).getD k Sym.blank ≠ Sym.bot
+but is expected to have type
+  (e.bufferTape 2).getD 0 Sym.blank = Sym.bot ∧ ∀ (k : ℕ), 0 < k → (e.bufferTape 2).getD k Sym.blank ≠ Sym.bot
+harness/attempts/tester_backend/TesterFrontend.lean:58:6: error: Type mismatch: After simplification, term
+  hs.table
+ has type
+  ∀ (i : Fin (rowCount d n)),
+    (if y i ≠ 0 then 1 else 0) ≤ fieldSize d n ∧
+      ∀ j < fieldSize d n,
+        (s.bufferTape 2).getD (TapeArrays.entryOffset (↑i) (fieldSize d n) + j) Sym.blank =
+          if j < if y i ≠ 0 then 1 else 0 then Sym.one else Sym.zero
+but is expected to have type
+  ∀ (i : Fin ((2 ^ fieldExponent d n) ^ d)),
+    (if y i ≠ 0 then 1 else 0) ≤ 2 ^ fieldExponent d n ∧
+      ∀ j < 2 ^ fieldExponent d n,
+        (e.bufferTape 2).getD (TapeArrays.entryOffset (↑i) (2 ^ fieldExponent d n) + j) Sym.blank =
+          if j < if y i ≠ 0 then 1 else 0 then Sym.one else Sym.zero
+harness/attempts/tester_backend/TesterFrontend.lean:71:4: error: Type mismatch: After simplification, term
+  hs.marked b
+ has type
+  (s.bufferTape b).getD 0 Sym.blank = Sym.bot ∧ ∀ (k : ℕ), 0 < k → (s.bufferTape b).getD k Sym.blank ≠ Sym.bot
+but is expected to have type
+  (e.bufferTape b).getD 0 Sym.blank = Sym.bot ∧ ∀ (k : ℕ), 0 < k → (e.bufferTape b).getD k Sym.blank ≠ Sym.bot
+'ExpandingCodes.Computation.TesterFrontend.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterFrontend.clock_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]

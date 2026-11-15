@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 369.65189003944397,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "harness/submission/Upload.olean",
+    "harness/submission/Upload.lean"
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "node": {
+    "id": "boolean_fourier_parseval",
+    "declaration": "ExpandingCodes.SharpThreshold.fourier_parseval",
+    "file": "ExpandingCodes/Probability/SharpThreshold/Parseval.lean",
+    "statement": "\u2200 {I : Type*} [Fintype I] (p : \u211d), 0 < p \u2192 p < 1 \u2192 \u2200 f : Finset I \u2192 \u211d, ExpandingCodes.SharpThreshold.variance p f = \u2211 S : Finset I, if S.Nonempty then ExpandingCodes.SharpThreshold.fourier p f S ^ 2 else 0",
+    "statement_sha256": "6ab9a62ee05d1f275eaca93a72de45ce253322881903630f331fea602782f145",
+    "proof_route": "Explicit finite tensor kernel; no analytic or Boolean-analysis axioms",
+    "owner": "fourier",
+    "status": "proved",
+    "interface": "provisional",
+    "dependencies": [],
+    "context_files": [
+      "AGENTS.md",
+      "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+      "ExpandingCodes/Probability/Erasure.lean"
+    ],
+    "sources": [
+      {
+        "path": "tmp/feasibility/erasure-capacity.txt",
+        "lines": "500-635",
+        "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+      }
+    ],
+    "failed_attempts": [
+      {
+        "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+        "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+      }
+    ],
+    "review": {
+      "reviewer": "root coordinator",
+      "statement_preserved": true,
+      "strictly_useful": true,
+      "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+    }
+  },
+  "file_ownership": {
+    "owner": "fourier",
+    "editable": [
+      "ExpandingCodes/Probability/SharpThreshold/Parseval.lean",
+      "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean",
+      "harness/tasks/fourier.json"
+    ],
+    "scratch_directory": "harness/attempts/fourier"
+  },
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "proof_route": {
+    "method": "Explicit finite tensor kernel; no analytic or Boolean-analysis axioms",
+    "steps": [
+      "Factor patternWeight into per-coordinate Bernoulli weights.",
+      "Apply mathlib Finset.prod_one_add to factor the character kernel sum.",
+      "Check the four membership cases of the weighted one-coordinate kernel, using sqrt(p*(1-p))^2=p*(1-p).",
+      "Multiply coordinate delta kernels to obtain the weighted full delta kernel.",
+      "Represent the character kernel by a finite square matrix M and weighted transpose N; M*N=1 implies N*M=1, proving character orthogonality.",
+      "Interchange finite sums to obtain Fourier inversion.",
+      "Interchange finite sums again to obtain bilinear Parseval.",
+      "The empty Fourier coefficient is the expectation, so subtracting its square gives precisely the frozen variance statement."
+    ],
+    "strictly_useful": "The scalar coordinate calculation and tensor kernel are elementary independent identities. Inversion and bilinear Parseval supply reusable identities for energy and noise. No step assumes the Parseval target or a sharp-threshold ancestor."
+  },
+  "draft_checks": [
+    {
+      "command": "python3 harness/warm_repl.py check --file harness/attempts/fourier/Orthog.lean",
+      "result": "Success: no messages, elapsed_seconds 1.33; iteration-only evidence."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/fourier/Orthog.lean",
+      "result": "Success, exit code 0, empty stdout/stderr."
+    }
+  ],
+  "unresolved_dependencies": [],
+  "sources": [
+    {
+      "path": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+      "declaration": "Finset.prod_one_add",
+      "lines": "196-198",
+      "role": "Finite expansion of a product into a sum over subsets."
+    },
+    {
+      "path": ".lake/packages/mathlib/Mathlib/Data/Matrix/Mul.lean",
+      "declaration": "mul_eq_one_comm and Matrix multiplication",
+      "role": "Stable finiteness of real square matrices permits reversing a proved one-sided inverse."
+    }
+  ],
+  "failed_approaches": [
+    {
+      "approach": "Initial broad simp for the scalar coordinate kernel",
+      "result": "simp split equality-to-zero into propositional alternatives before denominator clearing; replaced by a controlled simp-only list followed by field_simp and elementary polynomial arithmetic."
+    },
+    {
+      "approach": "Initial product form normalization via simp alone",
+      "result": "Needed explicit equality univ.filter (fun x => x\u2209E)=E\u1d9c and Finset.card_compl."
+    }
+  ],
+  "promoted_helpers": [
+    "patternWeight_prod",
+    "character_kernel",
+    "coordinate_kernel",
+    "weighted_character_kernel",
+    "character_orthogonality",
+    "fourier_inversion",
+    "fourier_inner_product",
+    "fourier_empty"
+  ],
+  "public_build": {
+    "command": "./tools/lake-serial build ExpandingCodes.Probability.SharpThreshold.Parseval",
+    "exit_code": 0,
+    "result": "Built FourierBasis (3.3s) and Parseval (2.3s), 2649 jobs. Only pre-existing replayed warnings in Basic/Erasure; no warnings in owned files."
+  },
+  "axiom_audit": {
+    "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/fourier/Audit.lean",
+    "exit_code": 0,
+    "declarations": [
+      "ExpandingCodes.SharpThreshold.fourier_parseval",
+      "ExpandingCodes.SharpThreshold.fourier_inversion",
+      "ExpandingCodes.SharpThreshold.character_orthogonality",
+      "ExpandingCodes.SharpThreshold.fourier_inner_product"
+    ],
+    "transitive_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "contains_sorryAx": false,
+    "custom_axioms": []
+  },
+  "final_source_locations": {
+    "exact_target": "ExpandingCodes/Probability/SharpThreshold/Parseval.lean:13",
+    "weighted_character_kernel": "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean:49",
+    "character_orthogonality": "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean:63",
+    "fourier_inversion": "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean:86",
+    "fourier_inner_product": "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean:110"
+  }
+}

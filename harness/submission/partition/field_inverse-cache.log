@@ -1,0 +1,408 @@
+./harness/submission/partition/cache/Cache_field_inverse.lean:2629:43: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2631:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2645:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2649:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2658:45: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2659:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2680:32: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2685:12: warning: This simp argument is unused:
+  Function.update_of_ne hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2700:44: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2702:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2717:48: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2718:71: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2720:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2741:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2741:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2741:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2741:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2746:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2746:57: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2746:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2751:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2751:36: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2751:41: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2809:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2809:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2809:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2809:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2812:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2812:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2812:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2812:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2812:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2815:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:2815:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:3131:5: warning: Variable name `hsq` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hsq
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:3143:29: warning: This simp argument is unused:
+  Ne.symm hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:3178:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:3205:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:4453:29: warning: This simp argument is unused:
+  Ne.symm hqp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:4569:59: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcsrc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:4570:21: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:4570:64: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:4675:10: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:4741:13: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9465:10: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9584:30: warning: This simp argument is unused:
+  Ne.symm hxp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, toggle, toggleStore, hx, hy, hp, d₃, d₂, d₁, TapeStore.setReg, Ne.symm hyp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9584:43: warning: This simp argument is unused:
+  Ne.symm hyp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, toggle, toggleStore, hx, hy, hp, d₃, d₂, d₁, TapeStore.setReg, Ne.symm hxp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9597:22: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9614:66: warning: Variable name `hyp` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hyp
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9842:4: warning: Unused tactic linter: `change 1 + s + 1 + t ≤ (n + 1) * (128 * (M + 1) ^ 2 + 10) + 1` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:9992:51: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:10287:52: warning: Variable name `hxf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hxf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:10780:36: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:10911:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hne 18]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:12048:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:12548:56: warning: This simp argument is unused:
+  hx
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, oneTest, oneTestStore, h1, c, TapeStore.setReg, Ne.symm hxf]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:12556:62: warning: This simp argument is unused:
+  hcpos
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, oneTest, oneTestStore, hx, h1, c, hnpos, TapeStore.setReg, Function.update_idem,
+    Nat.sub_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:12575:38: warning: This simp argument is unused:
+  Ne.symm hxf
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:12582:22: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:12590:51: warning: Variable name `hxf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hxf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:13076:72: warning: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [commitStore, show inverseCommitLayout r 4 = r 6 from rfl, hf, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/cache/Cache_field_inverse.lean:15672:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+Closed helper target exact type and standard axioms only: [propext, Classical.choice, Quot.sound]

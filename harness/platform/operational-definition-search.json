@@ -1,0 +1,29 @@
+{
+  "definitions": [
+    {
+      "definition_id": "41466d1d-9260-4086-8a89-553a06a7254f",
+      "definition_name": "ExpandingCodes_PolynomialStretch_OperationalFamily",
+      "definition_title": "Finite-machine realization of expanding-code families",
+      "natural_language_statement": "An expanding-code family has a deterministic row count $m(n)$, a probability law $P_n$ on binary $m(n)\\times n$ matrices, and one deterministic test $D_n$ on ordered binary words of length $m(n)$. Efficiency and correctness are the existence of two fixed finite Turing-machine transition tables and natural constants $A,a,B,b,N$, chosen before $n$ or any random outcome. The sampler receives a unary size prefix and exactly $T=A(n+1)^a$ independent unbiased random bits. For every such tape it halts within $T$ transitions and writes a matrix, and its exact output law equals $P_n$. The tester receives only the size prefix and ordered word, and writes $D_n(y)$ within $B(m(n)+n+1)^b$ transitions.\n\nFor every $n\\ge N\\ge2$, require $n<m(n)<n^k$, exact row weight $k$ for every positive-mass output, expansion with probability at least $1-n^{-1/\\varepsilon}$, acceptance of every $Gx+e$ with $|\\operatorname{supp}(e)|\\le(1/2-\\varepsilon)m$, and\n$$\\Pr[D_n(U_m)=1]\\le\\exp(-\\varepsilon^2m/128).$$\nThese are conclusions of the family specification, including the finite-program realization, rather than hypotheses supplied by a constructor. The last exponent is a disclosed instantiation from the paper's proof using an internal rational witness between $\\varepsilon/2$ and $\\varepsilon$.\n\n**Formalization Note** The published sequential-access bit-machine semantics are reused with the empty oracle, no auxiliary string and no guess. The tester has no random tape. Each transition writes only finitely many tape symbols, so producing the matrix and all test computation is charged. Random tape length is the explicit computable step bound, avoiding size-dependent advice. Matrices are flattened in row-major order. Machine witnesses, their correctness and their resource bounds remain obligations of the construction theorem; no executable implementation or proof is asserted by this definition alone.\n",
+      "created_at": "2026-11-08T19:12:52.515278+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel\nimport Definitions.Def_NKtLB_Machine\nset_option autoImplicit false\nopen scoped Classical\n\nnamespace ExpandingCodes.PolynomialStretch\n\nopen scoped BigOperators\n/-- Unary size prefix, followed by the received word when present. -/\ndef sizeInput (n : ℕ) : List Bool := List.replicate n true ++ [false]\ndef wordBits {m : ℕ} (y : Word m) : List Bool := List.ofFn fun i => decide (y i ≠ 0)\ndef matrixBits {m n : ℕ} (G : Generator m n) : List Bool :=\n  (List.ofFn fun i => List.ofFn fun j => decide (G i j ≠ 0)).flatten\nnoncomputable def sampledRun (M : NKtLB.Machine) (n T L : ℕ) (ω : Fin L → Bool)\n    (out : List Bool) : Prop :=\n  M.HaltsWith ∅ ⟨sizeInput n, [], [], List.ofFn ω⟩ T (NKtLB.bitsSym out)\n/-- Actual transition-table implementations, including output-writing cost. All bounds\nare fixed before n, the random tape, G, and y. No implementation property is a premise. -/\nnoncomputable def EfficientFamily (ε : ℝ) (k : ℕ) (m : ℕ → ℕ)\n    (P : ∀ n, PMF (Generator (m n) n)) (D : ∀ n, Word (m n) → Bool) : Prop :=\n  ∃ (sampler tester : NKtLB.Machine) (A a B b N : ℕ),\n    0 < A ∧ 0 < B ∧ 2 ≤ N ∧\n    ∀ n ≥ N,\n      n < m n ∧ m n < n ^ k ∧\n      (∀ ω : Fin (A * (n + 1) ^ a) → Bool, ∃ G : Generator (m n) n,\n        sampledRun sampler n (A * (n + 1) ^ a) (A * (n + 1) ^ a) ω (matrixBits G)) ∧\n      (∀ G : Generator (m n) n,\n        uniformProb (fun ω : Fin (A * (n + 1) ^ a) → Bool =>\n          sampledRun sampler n (A * (n + 1) ^ a) (A * (n + 1) ^ a) ω (matrixBits G)) = (P n G).toReal) ∧\n      (∀ y : Word (m n), tester.Computes (B * (m n + n + 1) ^ b)\n        (sizeInput n ++ wordBits y) [D n y]) ∧\n      (∀ G : Generator (m n) n, P n G ≠ 0 → RowWeight G k) ∧\n      1 - (n : ℝ) ^ (-1 / ε) ≤ eventProb (P n)\n        (fun G => Expanding G (1 - ε) k ((n : ℝ) ^ (1 - ε))) ∧\n      (∀ G : Generator (m n) n, P n G ≠ 0 →\n        ∀ (x : Word n) (e : Word (m n)),\n          (weight e : ℝ) ≤ (1 / 2 - ε) * m n → D n (G.mulVec x + e) = true) ∧\n      uniformProb (fun y : Word (m n) => D n y = true) ≤\n        Real.exp (-(ε ^ 2 / 128) * m n)\n\nend ExpandingCodes.PolynomialStretch\n",
+      "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 2 / PDF p. 3, Theorem 1.1; printed pp. 8–9 / PDF pp. 9–10, §2.1 sampler and §2.2 test; printed p. 11 / PDF p. 12, proof-derived rates.",
+      "tags": [
+        "coding-theory",
+        "expanding-codes",
+        "p2o-batch-stoc27a",
+        "p2o-gran-per-chapter",
+        "p2o-plan-paper",
+        "p2o-v1"
+      ],
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_by_username": "mikedeng1",
+      "deprecated_at": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+    }
+  ],
+  "total": 1
+}

@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 97.215533917,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=harness/submission/runtime/staged",
+    "--setup=harness/submission/runtime/tester-portability.setup.json",
+    "-o",
+    "harness/submission/runtime/TesterReductionPortability.olean",
+    "harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean"
+  ]
+}

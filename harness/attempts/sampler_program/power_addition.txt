@@ -1,0 +1,84 @@
+theorem Environment.setExternal {r : Fin 31 → Fin R} {ell : ℕ} {m : Fin (2^ell)}
+    {s : TapeStore R B} (h : Environment r ell m s) (j : Fin R) (n : ℕ)
+    (hj : ∀ i,j≠r i) : Environment r ell m (s.setReg j n) := by
+  apply h.frame
+  intro i hi
+  simp [TapeStore.setReg,Ne.symm (hj i)]
+
+def powerWorkspace (r : Fin 32 → Fin R) (i : Fin 31) : Fin R := r ⟨i.val,by omega⟩
+
+theorem powerWorkspace_injective (r : Fin 32 → Fin R) (hr : Function.Injective r) :
+    Function.Injective (powerWorkspace r) := by
+  intro i j h
+  have hh := congrArg Fin.val (hr h)
+  exact Fin.ext hh
+
+theorem powerOutside (r : Fin 32 → Fin R) (hr : Function.Injective r) :
+    ∀ i : Fin 31,r 31≠powerWorkspace r i := by
+  intro i heq
+  have hh := congrArg Fin.val (hr heq)
+  have := i.isLt
+  omega
+
+theorem add_zeroIndex_right (ell : ℕ) (h : 0<ell) (a : Fin (2^ell)) :
+    BinaryField.addIndex ell a (BinaryField.zeroIndex ell)=a := by
+  have hi := BinaryField.indexOperations_interpretation ell h
+  apply hi.injective
+  change BinaryField.elements ell h ((BinaryField.indexOperations ell h).add a
+    (BinaryField.indexOperations ell h).zero)=_
+  rw [hi.add,hi.zero,add_zero]
+
+/-- One actual power multiplication. Register31 keeps the successive power;
+all runtime arithmetic still executes the shared physical field routines. -/
+def powerStep (r : Fin 32 → Fin R) (x : Fin R) : TapeProgram R B 862 :=
+  TapeProgram.seq (TapeProgram.seq (TapeMacros.clear (r 30))
+    (term (powerWorkspace r) (r 31) x)) (TapeMacros.copy (r 30) (r 31) (r 2))
+
+theorem powerStep_stops (r : Fin 32 → Fin R) (hr : Function.Injective r)
+    (x : Fin R) (hx : ∀ i,x≠r i) (inp : Inputs) (ell : ℕ) (h : 0<ell)
+    (a alpha : Fin (2^ell)) (M : ℕ) (hM : 1≤M) (s : TapeStore R B)
+    (hs : ∀ j,s.reg j≤M) (henv : Environment (powerWorkspace r) ell (selectedIndex ell h) s)
+    (ha : s.reg (r 31)=a.val) (hxv : s.reg x=alpha.val) :
+    ∃ t e, t≤13400*(M+1)^6 ∧
+      (powerStep r x).Stops inp (s.toCfg (powerStep (B := B) r x).entry) t e ∧
+      e.reg (r 31)=((BinaryField.indexOperations ell h).mul a alpha).val ∧
+      Environment (powerWorkspace r) ell (selectedIndex ell h) e.store ∧
+      (∀ j,(∀ i,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  have hwr := powerWorkspace_injective r hr
+  have hclear := TapeMacros.clear_stops (r 30) inp (s.reg (r 30)) s rfl
+  have hs₁ : ∀ j,(s.setReg (r 30) 0).reg j≤M := setReg_bound s _ 0 M hs (by omega)
+  have he₁ : Environment (powerWorkspace r) ell (selectedIndex ell h) (s.setReg (r 30) 0) :=
+    henv.setReg hwr 30 0 (by decide)
+  obtain ⟨t,d,ht,hd,hdv,hde,hdo,hdb,hdt⟩ := term_stops (powerWorkspace r) hwr (r 31) x
+    (powerOutside r hr) (fun i => hx ⟨i.val,by omega⟩) inp ell h (selectedIndex ell h)
+    a alpha (BinaryField.zeroIndex ell) M hM (s.setReg (r 30) 0) hs₁ he₁
+    (by simpa [reg_layout r hr] using ha)
+    (by simpa [TapeStore.setReg,hx 30] using hxv)
+    (by simp [powerWorkspace,zeroIndex_value])
+  obtain ⟨u,e,hu,he,hes,heb⟩ := copy_stops_bound (r 30) (r 31) (r 2)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M d.store hdb
+  have hall := (hclear.seq hd).seq he
+  refine ⟨s.reg (r 30)+1+1+t+1+u,_,?_,hall,?_,?_,?_,heb,?_⟩
+  · have hp : M+1≤(M+1)^6 := by
+      simpa only [pow_one] using Nat.pow_le_pow_right (show 0<M+1 by omega) (show 1≤6 by decide)
+    have hcounter := hs (r 30)
+    omega
+  · change e.store.reg (r 31)=_
+    rw [hes]
+    simp only [reg_layout r hr,show (31:Fin 32)≠2 by decide,if_false,if_true]
+    rw [add_zeroIndex_right ell h] at hdv
+    exact hdv
+  · rw [hes]
+    exact (hde.setExternal (r 31) _ (powerOutside r hr)).setReg hwr 2 0 (by decide)
+  · intro j hj
+    change e.store.reg j=_
+    rw [hes]
+    simp only [TapeStore.setReg,Function.update_of_ne (hj 2),Function.update_of_ne (hj 31)]
+    rw [hdo j (fun i => hj ⟨i.val,by omega⟩)]
+    simp [TapeStore.setReg,hj 30]
+  · change FieldConvolution.tapeData e.store=_
+    rw [hes]
+    simpa only [FieldConvolution.tapeData_setReg] using hdt
+
+#print axioms powerStep_stops

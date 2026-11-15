@@ -1,0 +1,80 @@
+{
+  "owner": "parameter_programs",
+  "status": "Complete checked actual arithmetic setup; handed to root for sampler integration and central Lake refresh",
+  "files": [
+    "ExpandingCodes/Computation/ParameterPrograms.lean",
+    "ExpandingCodes/Computation/ParameterPower.lean",
+    "ExpandingCodes/Computation/SizeParameters.lean",
+    "ExpandingCodes/Computation/ParameterRounding.lean",
+    "ExpandingCodes/Computation/ParameterDivision.lean",
+    "ExpandingCodes/Computation/ParameterFloor.lean",
+    "ExpandingCodes/Computation/ParameterFrames.lean",
+    "ExpandingCodes/Computation/ParameterPolynomial.lean",
+    "ExpandingCodes/Computation/ParameterSetup.lean",
+    "ExpandingCodes/Computation/ParameterSetupBounds.lean"
+  ],
+  "exact_goal": "Actual finite TapeProgram computing runtime n^(2d), ell=max 1 (Nat.clog 2 p), q=2^ell, m=q^d, beta=Nat.log2(n/k), b=2^beta for fixed d>=1,k>0, with uniform polynomial execution time and preserved payload",
+  "checked": [
+    "raise/loadConstant: statically fixed increments only, exact store and exact source cost",
+    "ltLoop: actual fixed five-label paired-decrement comparison, exact store and exact trace",
+    "lessThan: actual fixed 33-label preserving comparison, output0/1, all three scratch registers zero, exact store, source bound64*(M+1), all counters<=M for M>=1",
+    "fixedPower: actual constant-exponent loader and37label multiplication loop; exact preserved-base^e output; source time<=512*(e+1)^3*(M+1)^(2*(e+1)); final counters<=(e+1)*(M+1)^(e+1)",
+    "ceilingPowerTwo: actual77label uniform program; p-step compare/double counted loop; exact q=2^clog2p,ell=clog2p forp>=1; source time<=512*(M+1)^2 and final counters<=2*M+2",
+    "SizeParameters ceilIter/floorIter scalar invariant/specification lemmas and exact bridge to frozen fieldExponent; floor machine still open",
+    "divideConstant: actual13+(k+2)label fixed-k finite-control scanner; preservesn, quotientn/k, scratchzero; runtime<=16*(M+1), finalcounters<=M",
+    "floorPowerTwo: actual104label ceiling(u+1), unary halfStep, decrement; exactb=2^Nat.log2u,beta=Nat.log2u; runtime<=4096*(M+1)^2, finalcounters<=2*M+4",
+    "ParameterFrames: exact SamePayload and untouched-register frame for all composed routines",
+    "ParameterPolynomial: closure proof for explicit proved source-time/counter bounds, producing staticC,a",
+    "setup: actual finite composition of allfivearithmeticroutines, labels depend onlyfixed d,k; full frozen mission counter values proved",
+    "setup_stops/setup_uniform_polynomial: exact actualsource execution and runtime bound; allfinalcounters bounded",
+    "setupInput_unary: actualfive-label unary frontend followedby setup; uniform polynomial ininputn and exactpost-parserphysicalpayloadframe",
+    "ParameterSetupBounds.source_exec_reg_le: generic every-register intermediate growth<=initial+steps",
+    "setup_running_counters_polynomial: every intermediate unary register has a uniform polynomial envelope",
+    "setupInput_compiled: actual NKtLB compiled unary setup halts with1+2t overhead and exact finalstore"
+  ],
+  "axiom_audit": "Fresh import AuditParameterSetup.lean succeeded. setupStore_values,setup_stops,setup_uniform_polynomial,setupInput_unary,setupStore_payload,setupStore_fresh,setup_running_counters_polynomial,setupInput_compiled,setup_bounds_polynomial all use only propext,Classical.choice,Quot.sound; no sorryAx.",
+  "route": [
+    "fixed constant loader",
+    "preserving comparison",
+    "fixed-exponent counted power via real multiplication",
+    "ceiling/floor powers using runtime bounded loops",
+    "division by fixed positive k",
+    "compose exact mission setup"
+  ],
+  "unresolved": [],
+  "proof_integrity": "No data holes, custom axioms, native_decide, or hidden runtime arithmetic instructions. Static constant code accepts only compile-time parameters.",
+  "scratch": "harness/attempts/parameter_programs/",
+  "failed_approaches": [
+    "Naive full store simplification unfolded setReg too early and prevented register layout rewrites; resolve conditional flag using checked lessThanStore_value before extensional flattening.",
+    "Congruence/rw arithmetic must normalize pairprojections and parenthesized Nat division numerators explicitly; allsuchdraftfailures fixed beforepromotion.",
+    "Lean tokenizes adjacency\u2264setup as\u2264s notation; addspacesbefore setup-bound names."
+  ],
+  "layout": {
+    "api": "injective r:Fin14\u2192FinR, B arbitrary",
+    "outputs": {
+      "0": "n preserved",
+      "1": "p=n^(2*d)",
+      "2": "ell=fieldExponent d n",
+      "3": "q=fieldSize d n",
+      "4": "m=rowCount d n=q^d",
+      "5": "u=n/k",
+      "6": "beta=Nat.log 2 (n/k)=Nat.log2(n/k) byNat.log2_eq_log_two",
+      "7": "b=2^beta"
+    },
+    "scratch": "8,9,10,11,12,13; all outside-image registers preserved"
+  },
+  "assumptions": [
+    "d>=1,k>0,n>=max2k for exact frozen mission values",
+    "setup_stops also works for d=0,n>=1 withk<=n; allinitialcounters<=M>=1",
+    "unary frontend requiresallinitialcounterszero,inputhead0,inputtrue^n,false::tail; matchescanonicalsourceinit"
+  ],
+  "source_bound": "setupTimeBound d M: exact sum of proved primitive costs; setup_bounds_polynomial givesC,a. InitialM=n+1 afterunaryread. Finalbound setupCounterBound d M. No runtime values affectcode labels.",
+  "explicit_exclusions": [
+    "No irreducibility search/modulusconstruction execution asserted",
+    "No fullsampler/testersourceimplementation claim; root integration remainsseparate"
+  ],
+  "public_validation": "ParameterPrograms fullserializedLakebuildsuccess. Every otherpublicmodule checked withserializedenvlean -o aftersuccessfulscratchcheck; finalfresh-importauditsuccess. RootownscentralLakegraphrefresh.",
+  "audit_file": "harness/attempts/parameter_programs/AuditParameterSetup.lean",
+  "audit_log": "harness/attempts/parameter_programs/final-audit.log",
+  "handoff": "Import ExpandingCodes.Computation.ParameterSetup or ParameterSetupBounds. Use setup(r:Fin14\u2192FinR)d k afterSizeReader; setupInput for unaryfrontend. Stablesetupframe preservesalltapes/heads/output, alloutsideimagecounters. Exact mission values insetupStore_values; runtime envelope setupTimeBound dependsd,M only, so polynomialexponent canbechosenfromd beforek."
+}

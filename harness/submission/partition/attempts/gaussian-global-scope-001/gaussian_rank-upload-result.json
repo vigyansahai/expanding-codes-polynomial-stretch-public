@@ -1,0 +1,20 @@
+{
+  "source_sha256": "62e4b4559fb6c5b136914228cf028f61845a36290273f6222a2412ef73425a22",
+  "source_bytes": 328598,
+  "key": "gaussian_rank",
+  "mode": "upload",
+  "exit_code": 1,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 151.12791820799998,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "--setup=./harness/submission/partition/setups/gaussian_rank.json",
+    "-o",
+    "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean",
+    "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean"
+}

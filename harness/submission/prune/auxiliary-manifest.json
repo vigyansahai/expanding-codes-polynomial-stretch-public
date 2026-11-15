@@ -1,0 +1,324 @@
+{
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "candidate_sha256": "b47a65ecc943ebb4c9b3f81c36f096a10e224d1af9d253910102d9cfd62d40f8",
+  "candidate_bytes": 174406,
+  "instance_roots": [],
+  "restored_source_reference_declarations": [
+    "ExpandingCodes.PolynomialStretch.erasureExpectation_eq_expectedAmbiguity"
+  ],
+  "module_count": 35,
+  "modules": [
+    {
+      "module": "ExpandingCodes.Construction.Geometry",
+      "source_segment_start": 30283,
+      "source_segment_end": 31990,
+      "removed_commands": [
+        122,
+        123,
+        124,
+        126,
+        127
+      ],
+      "retained_bytes": 431
+    },
+    {
+      "module": "ExpandingCodes.Construction.ParameterBounds",
+      "source_segment_start": 222860,
+      "source_segment_end": 226055,
+      "removed_commands": [
+        641,
+        642,
+        643
+      ],
+      "retained_bytes": 884
+    },
+    {
+      "module": "ExpandingCodes.Construction.Growth",
+      "source_segment_start": 226055,
+      "source_segment_end": 229421,
+      "removed_commands": [
+        652,
+        654,
+        655,
+        656
+      ],
+      "retained_bytes": 703
+    },
+    {
+      "module": "ExpandingCodes.Probability.FiniteUniform",
+      "source_segment_start": 229421,
+      "source_segment_end": 234064,
+      "removed_commands": [
+        669,
+        670,
+        671,
+        672
+      ],
+      "retained_bytes": 1817
+    },
+    {
+      "module": "ExpandingCodes.Probability.FiniteEvents",
+      "source_segment_start": 303641,
+      "source_segment_end": 305085,
+      "removed_commands": [],
+      "retained_bytes": 1444
+    },
+    {
+      "module": "ExpandingCodes.Probability.HalfspaceVolume",
+      "source_segment_start": 316576,
+      "source_segment_end": 323197,
+      "removed_commands": [
+        904
+      ],
+      "retained_bytes": 6489
+    },
+    {
+      "module": "ExpandingCodes.Probability.GridVolume",
+      "source_segment_start": 323197,
+      "source_segment_end": 330808,
+      "removed_commands": [
+        918
+      ],
+      "retained_bytes": 7457
+    },
+    {
+      "module": "ExpandingCodes.Algebra.ReedMullerDimension",
+      "source_segment_start": 330808,
+      "source_segment_end": 336048,
+      "removed_commands": [
+        939
+      ],
+      "retained_bytes": 5066
+    },
+    {
+      "module": "ExpandingCodes.Probability.RateLimit",
+      "source_segment_start": 336048,
+      "source_segment_end": 340378,
+      "removed_commands": [
+        958
+      ],
+      "retained_bytes": 3667
+    },
+    {
+      "module": "ExpandingCodes.Probability.BinomialAtom",
+      "source_segment_start": 385270,
+      "source_segment_end": 387769,
+      "removed_commands": [],
+      "retained_bytes": 2499
+    },
+    {
+      "module": "ExpandingCodes.Probability.BinomialInterval",
+      "source_segment_start": 387769,
+      "source_segment_end": 390458,
+      "removed_commands": [],
+      "retained_bytes": 2689
+    },
+    {
+      "module": "ExpandingCodes.Probability.BoundedDifferences",
+      "source_segment_start": 390458,
+      "source_segment_end": 399305,
+      "removed_commands": [
+        1106,
+        1107,
+        1108,
+        1111,
+        1112,
+        1113,
+        1114,
+        1115,
+        1116,
+        1117,
+        1118
+      ],
+      "retained_bytes": 2194
+    },
+    {
+      "module": "ExpandingCodes.Probability.GridBand",
+      "source_segment_start": 399305,
+      "source_segment_end": 402390,
+      "removed_commands": [],
+      "retained_bytes": 3085
+    },
+    {
+      "module": "ExpandingCodes.Algebra.PolynomialSum",
+      "source_segment_start": 1583830,
+      "source_segment_end": 1587322,
+      "removed_commands": [
+        3741,
+        3742,
+        3743,
+        3744,
+        3745
+      ],
+      "retained_bytes": 524
+    },
+    {
+      "module": "ExpandingCodes.Algebra.FlatIndicator",
+      "source_segment_start": 1587322,
+      "source_segment_end": 1592359,
+      "removed_commands": [
+        3759,
+        3760,
+        3761,
+        3762,
+        3763,
+        3764,
+        3765
+      ],
+      "retained_bytes": 1475
+    },
+    {
+      "module": "ExpandingCodes.Probability.RateDiscrete",
+      "source_segment_start": 1625718,
+      "source_segment_end": 1631068,
+      "removed_commands": [],
+      "retained_bytes": 5350
+    },
+    {
+      "module": "ExpandingCodes.Probability.RateNumerical",
+      "source_segment_start": 1631068,
+      "source_segment_end": 1633547,
+      "removed_commands": [],
+      "retained_bytes": 2479
+    },
+    {
+      "module": "ExpandingCodes.Probability.CubeSymmetry",
+      "source_segment_start": 1633547,
+      "source_segment_end": 1638812,
+      "removed_commands": [],
+      "retained_bytes": 5265
+    },
+    {
+      "module": "ExpandingCodes.Algebra.CodeReindex",
+      "source_segment_start": 1638812,
+      "source_segment_end": 1642964,
+      "removed_commands": [],
+      "retained_bytes": 4152
+    },
+    {
+      "module": "ExpandingCodes.Algebra.ReedMullerAffine",
+      "source_segment_start": 1642964,
+      "source_segment_end": 1651570,
+      "removed_commands": [],
+      "retained_bytes": 8606
+    },
+    {
+      "module": "ExpandingCodes.Probability.Erasure",
+      "source_segment_start": 1651570,
+      "source_segment_end": 1680499,
+      "removed_commands": [
+        3937,
+        3938,
+        3940,
+        3941,
+        3942,
+        3943,
+        3944,
+        3954,
+        3955,
+        4008
+      ],
+      "retained_bytes": 25871
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.Basic",
+      "source_segment_start": 1680499,
+      "source_segment_end": 1690179,
+      "removed_commands": [],
+      "retained_bytes": 9680
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.Scalar",
+      "source_segment_start": 1690179,
+      "source_segment_end": 1699855,
+      "removed_commands": [],
+      "retained_bytes": 9676
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.ProductNoise",
+      "source_segment_start": 1699855,
+      "source_segment_end": 1715845,
+      "removed_commands": [],
+      "retained_bytes": 15990
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.Tensorization",
+      "source_segment_start": 1715845,
+      "source_segment_end": 1716647,
+      "removed_commands": [],
+      "retained_bytes": 802
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.FourierBasis",
+      "source_segment_start": 1716647,
+      "source_segment_end": 1722194,
+      "removed_commands": [],
+      "retained_bytes": 5547
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.Parseval",
+      "source_segment_start": 1722194,
+      "source_segment_end": 1723449,
+      "removed_commands": [],
+      "retained_bytes": 1255
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.GradientFourier",
+      "source_segment_start": 1723449,
+      "source_segment_end": 1731171,
+      "removed_commands": [],
+      "retained_bytes": 7722
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.Energy",
+      "source_segment_start": 1731171,
+      "source_segment_end": 1732097,
+      "removed_commands": [],
+      "retained_bytes": 926
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.NoisedEnergy",
+      "source_segment_start": 1732097,
+      "source_segment_end": 1733212,
+      "removed_commands": [],
+      "retained_bytes": 1115
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold.Russo",
+      "source_segment_start": 1733212,
+      "source_segment_end": 1736665,
+      "removed_commands": [],
+      "retained_bytes": 3453
+    },
+    {
+      "module": "ExpandingCodes.Probability.SharpThreshold",
+      "source_segment_start": 1736665,
+      "source_segment_end": 1748395,
+      "removed_commands": [],
+      "retained_bytes": 11730
+    },
+    {
+      "module": "ExpandingCodes.Probability.ErasureCapacity",
+      "source_segment_start": 1748395,
+      "source_segment_end": 1759065,
+      "removed_commands": [
+        4208
+      ],
+      "retained_bytes": 10494
+    },
+    {
+      "module": "ExpandingCodes.Probability.AuxiliaryErasure",
+      "source_segment_start": 1759065,
+      "source_segment_end": 1761049,
+      "removed_commands": [],
+      "retained_bytes": 1984
+    },
+    {
+      "module": "ExpandingCodes.Probability.AuxiliaryRate",
+      "source_segment_start": 1761049,
+      "source_segment_end": 1762231,
+      "removed_commands": [],
+      "retained_bytes": 1182
+    }
+  ]
+}

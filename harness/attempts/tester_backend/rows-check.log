@@ -1,0 +1,31 @@
+harness/attempts/tester_backend/SamplerRows.lean:14:54: error(lean.unknownIdentifier): Unknown identifier `digits`
+harness/attempts/tester_backend/SamplerRows.lean:16:3: error: unexpected token 'prefix'; expected identifier
+harness/attempts/tester_backend/SamplerRows.lean:24:50: error: unsolved goals
+case pos
+q d k b n : ℕ
+O : EncodedGaussian.Operations (Fin q)
+s : Fin (2 * k * q * d) → Fin q
+h : Fin (k * q * q * q) → Fin b
+z : Fin (q ^ d)
+j : Fin n
+h✝ : ∃ i, ↑j = ↑i * b + ↑(EncodedSampler.neighbor O s h i ((EncodedTester.digits q d) z))
+⊢ ∃ i, ↑j = ↑i * b + ↑(EncodedSampler.neighbor O s h i (sorry ()))
+
+case neg
+q d k b n : ℕ
+O : EncodedGaussian.Operations (Fin q)
+s : Fin (2 * k * q * d) → Fin q
+h : Fin (k * q * q * q) → Fin b
+z : Fin (q ^ d)
+j : Fin n
+h✝ : ∀ (x : Fin k), ¬↑j = ↑x * b + ↑(EncodedSampler.neighbor O s h x ((EncodedTester.digits q d) z))
+⊢ ∀ (x : Fin k), ¬↑j = ↑x * b + ↑(EncodedSampler.neighbor O s h x (sorry ()))
+harness/attempts/tester_backend/SamplerRows.lean:36:20: error: unexpected token 'prefix'; expected term
+harness/attempts/tester_backend/SamplerRows.lean:36:27: error: unexpected token '('; expected ':'
+harness/attempts/tester_backend/SamplerRows.lean:37:14: error: unexpected token ']'; expected ':'
+harness/attempts/tester_backend/SamplerRows.lean:41:30: error: unexpected token 'prefix'; expected term
+harness/attempts/tester_backend/SamplerRows.lean:42:10: error: unexpected token '('; expected ':'
+harness/attempts/tester_backend/SamplerRows.lean:43:12: error: unexpected token '('; expected ':'
+harness/attempts/tester_backend/SamplerRows.lean:44:15: error: unexpected identifier; expected ':'
+harness/attempts/tester_backend/SamplerRows.lean:50:61: error: unexpected token 'prefix'; expected term
+harness/attempts/tester_backend/SamplerRows.lean:51:10: error: unexpected token '('; expected ':'

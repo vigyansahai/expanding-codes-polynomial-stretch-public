@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "owner": "machine_compiler",
+  "owned_files": [
+    "ExpandingCodes/Computation/TapeProgram.lean",
+    "ExpandingCodes/Computation/TapeCompiler.lean",
+    "ExpandingCodes/Computation/TapeBounds.lean",
+    "harness/attempts/machine_compiler_tapes/*",
+    "harness/tasks/tape_compiler.json"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_NKtLB_Machine.lean"
+  ],
+  "interface": "local finite tape-program language and verified compiler over unchanged canonical NKtLB machine; source syntax is not claimed mission canonical",
+  "status": "complete: core compiler and physical buffer-space bound publicly compiled and transitively audited",
+  "source_language": {
+    "parameters": "R fixed unary registers, B fixed explicit symbol buffers, L finite labels",
+    "instructions": [
+      "halt",
+      "jump finite label",
+      "increment unary register",
+      "decrement unary register or branch at zero",
+      "emit constant bit",
+      "read/advance one canonical RO tape, branch on one symbol",
+      "buffer action: choose one buffer; inspect exactly its scanned Sym; use a four-entry Sym -> Sym x Move x Fin L table to write one symbol, move at most one cell, and choose one finite next label"
+    ],
+    "buffer_representation": "Fin B -> List Sym with Fin B -> Nat head positions; no entire array is encoded as a unary natural",
+    "initial_state": "all registers and heads zero, all buffers/output empty, entry control label",
+    "cost": "halt=0, inc=2, every other instruction including buffer=1"
+  },
+  "target_machine": {
+    "works": "R+B",
+    "nStates": "L+L+3",
+    "oracle": "query state unreachable for every oracle and input",
+    "time": "1+2*t target steps for a halting source execution of t steps"
+  },
+  "proof_route": [
+    "Reuse the completed CounterCompiler constructive finite-control encoding, CounterTape.getD_writeAt and unary microsteps, and CounterTape exact output-normalization theorem.",
+    "Place counters in canonical tapes 0..R-1, buffers in tapes R..R+B-1, output in R+B, and query in R+B+1. Prove disjointness and injectivity of the index maps.",
+    "Represent each buffer by extensional getD equality to its source list and exact head equality. Every idle canonical write preserves this invariant despite finite-list trailing-blank differences.",
+    "Extend every counter instruction simulation with buffer preservation. Prove a buffer instruction from scan-symbol equality, the canonical pointwise writeAt update, and the exact canonical Move rule.",
+    "Prove initialization, localSimulation for all seven instruction forms, exact accumulated-time run simulation, exact halting output, time padding, and no-query reachability."
+  ],
+  "nodes": [
+    {
+      "id": "source_time",
+      "declaration": "ExpandingCodes.Computation.TapeProgram.time_le",
+      "statement": "P.time inp t <= 2*t",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "buffer_cell_simulation",
+      "declaration": "ExpandingCodes.Computation.TapeCompiler.local_buffer",
+      "statement": "For code c.pc=buffer b action and Represents P c m, exactly one canonical target step represents the exact source cell update/Move/finite branch.",
+      "status": "proved; included transitively in localSimulation audit",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "local_simulation",
+      "declaration": "ExpandingCodes.Computation.TapeCompiler.localSimulation",
+      "statement": "For every actual finite TapeProgram P, every input/oracle, and every represented source/target configuration pair, P.cost c target steps represent P.step inp c.",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "compiler_halts",
+      "declaration": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+      "statement": "forall (P : TapeProgram R B L) O inp t, P.halted (P.run inp t) -> (compile P).HaltsWith O inp (1+2*t) (bitsSym (P.run inp t).output)",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "compiler_computes",
+      "declaration": "ExpandingCodes.Computation.TapeCompiler.compile_computes",
+      "statement": "forall P u t, P.halted (P.run <u,[],[],[]> t) -> (compile P).Computes (1+2*t) u (P.run <u,[],[],[]> t).output",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "no_query",
+      "declaration": "ExpandingCodes.Computation.TapeCompiler.compile_run_ne_query",
+      "statement": "forall P O inp t, ((compile P).run O inp t).state != (compile P).query",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "physical_buffer_space",
+      "declaration": "ExpandingCodes.Computation.TapeProgram.bufferBounded_run",
+      "statement": "forall P inp t b, (P.run inp t).bufferHead b <= t and ((P.run inp t).bufferTape b).length <= t",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "public_build": "./tools/lake-serial build ExpandingCodes.Computation.TapeCompiler: exit 0, 8712 jobs; final audits contain allowed axioms only",
+  "checked_artifacts": [
+    "harness/attempts/machine_compiler_tapes/program-check.log",
+    "harness/attempts/machine_compiler_tapes/program-public-build.log",
+    "harness/attempts/machine_compiler_tapes/compiler-check.log",
+    "harness/attempts/machine_compiler_tapes/compiler-public-build.log",
+    "harness/attempts/machine_compiler_tapes/bounds-check.log",
+    "harness/attempts/machine_compiler_tapes/bounds-public-check.log"
+  ],
+  "open_theorem_bodies": [],
+  "unresolved_dependencies": [],
+  "bounded_tape_macro_api_outline": [
+    {
+      "stage": "Source trace layer",
+      "code": "Port CounterProgram.Exec/Stops to TapeCfg, with every buffer field carried in the store. Relabel buffer action table targets by composing only its finite label component.",
+      "intended_bound": "Exact source steps; Stops from source init transfers through TapeCompiler.compile_halts."
+    },
+    {
+      "stage": "Finite sequencing and counted loops",
+      "code": "Reuse the explicit disjoint-code-table sequencing and header/body/exit loop construction from CounterLoops. Buffer instructions preserve all counters, so the Fresh counter check accepts them directly.",
+      "intended_bound": "Sequencing tP+1+tQ. A fresh-counter loop with body bound C has source bound n*(C+2)+1."
+    },
+    {
+      "stage": "Single-cell macros",
+      "code": "Build finite buffer tables for move preserving the scanned symbol, write-constant/stay or write-constant/right, and branch-on-bit. Each is an actual TapeInstr.buffer, not a new abstract instruction.",
+      "intended_bound": "Exactly one source step per cell operation."
+    },
+    {
+      "stage": "Seek and reset",
+      "code": "Reserve bot at cell zero; use a fresh unary count to repeat right moves. Reset by a finite buffer table that preserves cells and moves left until bot. State array invariants using extensional getD equality, not literal trailing-blank list equality.",
+      "intended_bound": "Counted right seek with a one-step body <=3*n+1 source steps. Reset from head h with bot at zero <=h+1 source steps."
+    },
+    {
+      "stage": "Flat-array read/write",
+      "code": "Store m fixed-width w-bit entries explicitly on one buffer after the bottom marker. Compute the bounded unary offset i*w using counter routines, traverse actual cells, and read/write w cells. Use separate bounded unary registers for one field value or polynomial candidate; never pack all m entries into one register.",
+      "intended_bound": "Traversal is charged per cell, O(i*w+w); unary value arithmetic may use a loose polynomial in q, with q polynomial in the mission input length."
+    },
+    {
+      "stage": "Gaussian elimination and sampler tables",
+      "code": "Store variable-size matrices/form/hash tables in the explicit flat buffers, using fixed finitely many heads/buffers and loop/index registers. Instantiate invariants and actual finite body-program traces for each row/column operation.",
+      "intended_bound": "Combine bounded loop iteration counts, charged array traversals, and proved finite-field arithmetic routine costs into a source polynomial; the existing compiler supplies constant target overhead."
+    }
+  ],
+  "limitations": [
+    "No array-access macro is treated as a primitive. The outlined seek/read/write/arithmetic programs and their proofs remain future work.",
+    "Sampler/tester code, exact fair-bit distribution, finite-field algorithm correctness, and their source polynomial bounds are not established by this generic compiler.",
+    "R, B, and L are parameters of a fixed finite source program; mission uses must choose one such program independently of the varying input length."
+  ],
+  "bounds_public_check": "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Computation/TapeBounds.olean ExpandingCodes/Computation/TapeBounds.lean: exit 0; current built TapeProgram dependency; only allowed axioms",
+  "lake_trace_refresh_required": [
+    "ExpandingCodes.Computation.TapeBounds (explicit -o public compile accepted by coordinator; central final Lake build must refresh trace)"
+  ]
+}

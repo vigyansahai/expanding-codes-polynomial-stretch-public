@@ -1,0 +1,87 @@
+harness/attempts/tester_backend/TesterPrefix.lean:206:4: error: `simp` made no progress
+harness/attempts/tester_backend/TesterPrefix.lean:230:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  c.reg (inputLayout d 0)
+in the target expression
+  1 ≤ c.store.reg (inputLayout d 0)
+
+d n M : ℕ
+inp : Inputs
+y : Word (rowCount d n)
+hi : inp.input = sizeInput n ++ wordBits y
+s : TapeStore (80 + 6 * d) 3
+hs : SetupReady d n M s
+hcover : TesterEnvelopeCovers d n M
+hmarks : (markers d).Stops inp (s.toCfg (markers d).entry) 5 ((markedStore d s).toCfg (TapeProgram.rightLabel 4 1))
+marked : TapeStore (80 + 6 * d) 3 := markedStore d s
+htapes : ((markedStore d s).bufferTape = fun x => [Sym.bot]) ∧ (markedStore d s).bufferHead = fun x => 1
+hb : ∀ (j : Fin (80 + 6 * d)), marked.reg j ≤ M
+t : ℕ
+c : TapeCfg (80 + 6 * d) 3 11
+ht : t ≤ 7 * M + 7
+hc :
+  (TapeMacros.copy (low d 70) (low d 76) (low d 2)).Stops inp
+    (marked.toCfg (TapeMacros.copy (low d 70) (low d 76) (low d 2)).entry) t c
+hcs : c.store = (marked.setReg (low d 76) (marked.reg (low d 70))).setReg (low d 2) 0
+hcb : ∀ (j : Fin (80 + 6 * d)), c.reg j ≤ M
+hr : ∀ (j : Fin 80), j ≠ 76 → j ≠ 2 → c.reg (low d j) = s.reg (low d j)
+hcount : c.reg (inputLayout d 4) = rowCount d n
+hwidth : c.reg (inputLayout d 0) = fieldSize d n
+hro : c.roHead 0 = n + 1
+hhead : c.bufferHead 2 = 1
+hmarked : ∀ (b : Fin 3), TapeArrays.BottomMarked c.store b
+hri : Function.Injective (inputLayout d)
+⊢ 1 ≤ c.store.reg (inputLayout d 0)
+harness/attempts/tester_backend/TesterPrefix.lean:253:17: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  c.reg (inputLayout d 0)
+in the target expression
+  1 + rowCount d n * c.store.reg (inputLayout d 0) ≤ M
+
+case refine_2.refine_4
+d n M : ℕ
+inp : Inputs
+y : Word (rowCount d n)
+hi : inp.input = sizeInput n ++ wordBits y
+s : TapeStore (80 + 6 * d) 3
+hs : SetupReady d n M s
+hcover : TesterEnvelopeCovers d n M
+hmarks : (markers d).Stops inp (s.toCfg (markers d).entry) 5 ((markedStore d s).toCfg (TapeProgram.rightLabel 4 1))
+marked : TapeStore (80 + 6 * d) 3 := markedStore d s
+htapes : ((markedStore d s).bufferTape = fun x => [Sym.bot]) ∧ (markedStore d s).bufferHead = fun x => 1
+hb : ∀ (j : Fin (80 + 6 * d)), marked.reg j ≤ M
+t : ℕ
+c : TapeCfg (80 + 6 * d) 3 11
+ht : t ≤ 7 * M + 7
+hc :
+  (TapeMacros.copy (low d 70) (low d 76) (low d 2)).Stops inp
+    (marked.toCfg (TapeMacros.copy (low d 70) (low d 76) (low d 2)).entry) t c
+hcs : c.store = (marked.setReg (low d 76) (marked.reg (low d 70))).setReg (low d 2) 0
+hcb : ∀ (j : Fin (80 + 6 * d)), c.reg j ≤ M
+hr : ∀ (j : Fin 80), j ≠ 76 → j ≠ 2 → c.reg (low d j) = s.reg (low d j)
+hcount : c.reg (inputLayout d 4) = rowCount d n
+hwidth : c.reg (inputLayout d 0) = fieldSize d n
+hro : c.roHead 0 = n + 1
+hhead : c.bufferHead 2 = 1
+hmarked : ∀ (b : Fin 3), TapeArrays.BottomMarked c.store b
+hri : Function.Injective (inputLayout d)
+u : ℕ
+hu : u ≤ rowCount d n * (20 * (M + 1) + 2) + 1
+hload :
+  (TesterInput.load (inputLayout d) 2).Stops inp (c.store.toCfg (TesterInput.load (inputLayout d) 2).entry) u
+    ((TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store).toCfg (TapeProgram.loopExit 24))
+hloadB : ∀ (j : Fin (80 + 6 * d)), (TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store).reg j ≤ M
+hloadRO : (TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store).roHead 0 = n + 1 + rowCount d n
+hloadH :
+  (TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store).bufferHead 2 =
+    1 + rowCount d n * c.store.reg (inputLayout d 0)
+hloadMark : TapeArrays.BottomMarked (TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store) 2
+hloadTable :
+  TapeArrays.ThermometerTable (TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store) 2
+    (c.store.reg (inputLayout d 0)) fun j => if decide (y j ≠ 0) = true then 1 else 0
+post : TapeStore (80 + 6 * d) 3 := TesterInput.loadStore (inputLayout d) 2 inp (rowCount d n) c.store
+hframe : ∀ (j : Fin 80), j ≠ 79 → j ≠ 78 → j ≠ 5 → j ≠ 76 → j ≠ 2 → post.reg (low d j) = s.reg (low d j)
+⊢ 1 + rowCount d n * c.store.reg (inputLayout d 0) ≤ M
+'ExpandingCodes.Computation.TesterPrefix.setup_initial_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterPrefix.input_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

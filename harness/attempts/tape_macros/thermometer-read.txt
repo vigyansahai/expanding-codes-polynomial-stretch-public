@@ -1,0 +1,133 @@
+/-- Read a fixed-width thermometer entry by explicitly scanning every cell and
+incrementing the value counter once for each one. -/
+def readBlock (width value : Fin R) (b : Fin B) : TapeProgram R B 4 where
+  entry := 0
+  code j := if j = 0 then .dec width 3 1
+    else if j = 1 then .buffer b (fun s => (s,.right, if s = .one then 2 else 0))
+    else if j = 2 then .inc value 0 else .halt
+
+/-- Value added by the one scanned symbol in a read iteration. -/
+def readDelta (d : TapeStore R B) (b : Fin B) : ℕ :=
+  if (d.bufferTape b).getD (d.bufferHead b) .blank = .one then 1 else 0
+
+def readTickStore (width value : Fin R) (b : Fin B) (d : TapeStore R B) : TapeStore R B :=
+  let e := moved (TapeProgram.decStore width d) b .right
+  if (d.bufferTape b).getD (d.bufferHead b) .blank = .one then
+    e.setReg value (d.reg value+1) else e
+
+ theorem readTick_payload (width value : Fin R) (b : Fin B) (d : TapeStore R B) :
+    TapeStore.SamePayload (readTickStore width value b d) d := by
+  have hp := (moved_payload (TapeProgram.decStore width d) b .right).trans
+    (TapeStore.setReg_payload d width (d.reg width-1))
+  unfold readTickStore
+  split
+  · exact (TapeStore.setReg_payload _ value (d.reg value+1)).trans hp
+  · exact hp
+
+ theorem readTick_head (width value : Fin R) (b : Fin B) (d : TapeStore R B) :
+    (readTickStore width value b d).bufferHead =
+      Function.update d.bufferHead b (d.bufferHead b+1) := by
+  unfold readTickStore
+  split <;> rfl
+
+ theorem readTick_reg (width value : Fin R) (hne : width ≠ value) (b : Fin B) (d : TapeStore R B) :
+    (readTickStore width value b d).reg =
+      Function.update (Function.update d.reg width (d.reg width-1)) value
+        (d.reg value + readDelta d b) := by
+  unfold readTickStore readDelta
+  split
+  · rfl
+  · simp [TapeStore.setReg, moved, cellStore, TapeProgram.decStore,
+      Function.update_of_ne (Ne.symm hne)]
+
+ theorem readTick_exec (width value : Fin R) (hne : width ≠ value) (b : Fin B)
+    (inp : Inputs) (d : TapeStore R B) (hd : d.reg width ≠ 0) :
+    (readBlock width value b).Exec inp (d.toCfg 0) (2+readDelta d b)
+      ((readTickStore width value b d).toCfg 0) := by
+  let d₁ := TapeProgram.decStore width d
+  let d₂ := moved d₁ b .right
+  have hs₁ : (readBlock width value b).step inp (d.toCfg 0) = d₁.toCfg 1 := by
+    simp [TapeProgram.step, readBlock, TapeStore.toCfg, hd, d₁, TapeProgram.decStore]
+  by_cases hs : (d.bufferTape b).getD (d.bufferHead b) .blank = .one
+  · have hs' := hs
+    change ((d.bufferTape b)[d.bufferHead b]?).getD .blank = .one at hs'
+    have hs₂ : (readBlock width value b).step inp (d₁.toCfg 1) = d₂.toCfg 2 := by
+      simp [TapeProgram.step, readBlock, TapeStore.toCfg, d₂, d₁, TapeProgram.decStore,
+        moved, cellStore, hs']
+    have hs₃ : (readBlock width value b).step inp (d₂.toCfg 2) =
+        (readTickStore width value b d).toCfg 0 := by
+      simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, hs, d₂, d₁,
+        moved, cellStore, TapeProgram.decStore, Function.update_of_ne (Ne.symm hne)]
+    have h := TapeProgram.Exec.step (by simp [TapeProgram.halted, readBlock]) hs₁
+      (TapeProgram.Exec.step (by simp [TapeProgram.halted, readBlock]) hs₂
+        (TapeProgram.Exec.one (by simp [TapeProgram.halted, readBlock]) hs₃))
+    simpa [readDelta, hs] using h
+  · have hs' := hs
+    change ((d.bufferTape b)[d.bufferHead b]?).getD .blank ≠ .one at hs'
+    have hs₂ : (readBlock width value b).step inp (d₁.toCfg 1) =
+        (readTickStore width value b d).toCfg 0 := by
+      simp [TapeProgram.step, readBlock, TapeStore.toCfg, readTickStore, hs, d₁,
+        TapeProgram.decStore, moved, cellStore, hs']
+    have h := TapeProgram.Exec.step (by simp [TapeProgram.halted, readBlock]) hs₁
+      (TapeProgram.Exec.one (by simp [TapeProgram.halted, readBlock]) hs₂)
+    simpa [readDelta, hs] using h
+
+ theorem readBlock_stops (width value : Fin R) (hne : width ≠ value) (b : Fin B)
+    (inp : Inputs) (w v : ℕ) (d : TapeStore R B) (hw : d.reg width = w)
+    (ht : ThermometerAt d b (d.bufferHead b) w v) :
+    ∃ e, (readBlock width value b).Stops inp (d.toCfg 0) (2*w+v+1) (e.toCfg 3) ∧
+      e.reg = Function.update (Function.update d.reg width 0) value (d.reg value+v) ∧
+      e.bufferHead = Function.update d.bufferHead b (d.bufferHead b+w) ∧
+      TapeStore.SamePayload e d := by
+  induction w generalizing d v with
+  | zero =>
+    have hv : v = 0 := by have := ht.1; omega
+    refine ⟨d, ?_, ?_, ?_, TapeStore.SamePayload.refl d⟩
+    · constructor
+      · simpa [hv] using TapeProgram.Exec.one
+          (by simp [TapeProgram.halted, readBlock])
+          (show (readBlock width value b).step inp (d.toCfg 0) = d.toCfg 3 by
+            simp [TapeProgram.step, readBlock, TapeStore.toCfg, hw])
+      · simp [TapeProgram.halted, readBlock]
+    · rw [show Function.update d.reg width 0 = d.reg by simp [← hw]]
+      simp [hv]
+    · simp
+  | succ w ih =>
+    let d₁ := readTickStore width value b d
+    have hd₁ : d₁.reg width = w := by
+      rw [readTick_reg width value hne]
+      simp [Function.update_of_ne hne, hw]
+    have hh : d₁.bufferHead b = d.bufferHead b+1 := by
+      rw [readTick_head]
+      simp
+    have hp := readTick_payload width value b d
+    have ht₁ := ht.tail hp hh
+    obtain ⟨e, he, her, heh, hep⟩ := ih (v-1) d₁ hd₁ ht₁
+    have hδ : readDelta d b+(v-1) = v := by
+      have hfirst := ht.2 0 (by omega)
+      simp only [Nat.add_zero] at hfirst
+      cases v with
+      | zero => simp [readDelta, hfirst]
+      | succ v => simp [readDelta, hfirst]
+    refine ⟨e, ?_, ?_, ?_, hep.trans hp⟩
+    · constructor
+      · have hprefix := readTick_exec width value hne b inp d (by omega)
+        have h := hprefix.trans he.exec
+        convert h using 1 <;> first | rfl | omega
+      · exact he.halted
+    · rw [her, readTick_reg width value hne]
+      funext j
+      by_cases hv : j = value
+      · subst j
+        simp only [Function.update_self]
+        have hevalue : d₁.reg value = d.reg value+readDelta d b := by
+          rw [readTick_reg width value hne]
+          simp
+        rw [hevalue]
+        omega
+      · by_cases hw' : j = width
+        · subst j
+          simp [Function.update, hne, Ne.symm hne]
+        · simp [Function.update, hv, hw']
+    · rw [heh, readTick_head]
+      simp [Function.update_idem, Nat.add_assoc, Nat.add_comm]

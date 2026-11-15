@@ -1,0 +1,6 @@
+{"theorem_name": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+ "source_sha256":
+ "98a36a87915e6ae2b67153f3a4389619cb83164ef7e3876c8bd9aadc4e39e657",
+ "source_bytes": 108571,
+ "exact_solution_type": true,
+ "axioms": ["propext", "Classical.choice", "Quot.sound"]}

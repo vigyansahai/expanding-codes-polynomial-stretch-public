@@ -1,0 +1,95 @@
+/-- Actual finite field multiplication into an external register. -/
+def multiplyFrom (r : Fin 30 → Fin R) : TapeProgram R B 407 :=
+  TapeProgram.seq (TapeProgram.seq (TapeProgram.seq
+    (TapeMacros.copy (r 27) (r 0) (r 2)) (TapeMacros.copy (r 28) (r 1) (r 2)))
+      (SourceFieldArithmetic.multiply (fieldLayout r))) (TapeMacros.copy (r 20) (r 29) (r 2))
+
+theorem multiplyFrom_stops (r : Fin 30 → Fin R) (hr : Function.Injective r)
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (m a b : Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ j,s.reg j≤M)
+    (ha : s.reg (r 27)=a.val) (hb : s.reg (r 28)=b.val)
+    (hm : s.reg (r 3)=2^ell+m.val) (hN : s.reg (r 19)=3*ell+1)
+    (hq : s.reg (r 23)=2^ell) (hQ : s.reg (r 24)=2^(2*ell)) :
+    ∃ t e, t≤10100*(M+1)^6 ∧
+      (multiplyFrom r).Stops inp (s.toCfg (multiplyFrom (B := B) r).entry) t e ∧
+      e.reg (r 29)=(ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex ell h m
+        (ExpandingCodes.PolynomialStretch.BinaryField.indexEquiv ell a)
+        (ExpandingCodes.PolynomialStretch.BinaryField.indexEquiv ell b)).val ∧
+      (∀ i : Fin 30,i=3 ∨ i=19 ∨ i=23 ∨ i=24 ∨ i=27 ∨ i=28 → e.reg (r i)=s.reg (r i)) ∧
+      (∀ j,(∀ i : Fin 30,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  obtain ⟨u,c,hu,hc,hcs,hcb⟩ := copy_stops_bound (r 27) (r 0) (r 2)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M s hs
+  obtain ⟨v,f,hv,hf,hfs,hfb⟩ := copy_stops_bound (r 28) (r 1) (r 2)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M c.store hcb
+  have hfval (i : Fin 30) : f.reg (r i)=
+      if i=1 then s.reg (r 28) else if i=2 then 0 else if i=0 then s.reg (r 27) else s.reg (r i) := by
+    change f.store.reg (r i)=_
+    rw [hfs,hcs]
+    simp [reg_layout r hr]
+    split <;> split <;> split <;> simp_all
+  obtain ⟨vtime,d,hvt,hd,hds,hdv,hdi,hdo,hdb,hdt⟩ := SourceFieldArithmetic.multiply_stops
+    (fieldLayout r) (fieldLayout_injective r hr) inp ell h m a b M hM f.store hfb
+    (by simpa [fieldLayout,hfval] using ha)
+    (by simpa [fieldLayout,hfval] using hb)
+    (by simpa [fieldLayout,hfval] using hm)
+    (by simpa [fieldLayout,hfval] using hN)
+    (by simpa [fieldLayout,hfval] using hq)
+    (by simpa [fieldLayout,hfval] using hQ)
+  obtain ⟨w,e,hw,he,hes,heb⟩ := copy_stops_bound (r 20) (r 29) (r 2)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M d.store hdb
+  have hall := ((hc.seq hf).seq hd).seq he
+  have hd20 : d.reg (r 20)=(ExpandingCodes.PolynomialStretch.BinaryField.multiplyIndex ell h m
+        (ExpandingCodes.PolynomialStretch.BinaryField.indexEquiv ell a)
+        (ExpandingCodes.PolynomialStretch.BinaryField.indexEquiv ell b)).val := by
+    simpa [fieldLayout] using hdv
+  have heval (i : Fin 30) : e.reg (r i)=if i=29 then d.reg (r 20) else if i=2 then 0 else d.reg (r i) := by
+    change e.store.reg (r i)=_
+    rw [hes]
+    simp [reg_layout r hr]
+    split <;> split <;> simp_all
+  have houtside (i : Fin 30) (hi : 27≤i.val) : ∀ j : Fin 27,r i≠fieldLayout r j := by
+    intro j hj
+    have hval := congrArg Fin.val (hr hj)
+    have := j.isLt
+    simp only [fieldLayout,Fin.val_mk] at hval
+    omega
+  refine ⟨u+1+v+1+vtime+1+w,_,?_,hall,?_,?_,?_,heb,?_⟩
+  · have hp : M+1≤(M+1)^6 := by
+      simpa only [pow_one] using Nat.pow_le_pow_right (show 0<M+1 by omega) (show 1≤6 by decide)
+    omega
+  · rw [heval]; simp [hd20]
+  · intro i hi
+    rcases hi with rfl|rfl|rfl|rfl|rfl|rfl
+    · have hh := hdi 3 (by decide)
+      simpa [heval,fieldLayout,hfval] using hh
+    · have hh := hdi 19 (by decide)
+      simpa [heval,fieldLayout,hfval] using hh
+    · have hh := hdi 23 (by decide)
+      simpa [heval,fieldLayout,hfval] using hh
+    · have hh := hdi 24 (by decide)
+      simpa [heval,fieldLayout,hfval] using hh
+    · rw [heval]; simp only [show (27:Fin 30)≠29 by decide,show (27:Fin 30)≠2 by decide,if_false]
+      rw [hdo (r 27) (houtside 27 (by decide))]
+      change f.reg (r 27)=_
+      simp [hfval]
+    · rw [heval]; simp only [show (28:Fin 30)≠29 by decide,show (28:Fin 30)≠2 by decide,if_false]
+      rw [hdo (r 28) (houtside 28 (by decide))]
+      change f.reg (r 28)=_
+      simp [hfval]
+  · intro j hj
+    change e.store.reg j=_
+    rw [hes]
+    simp only [TapeStore.setReg,Function.update_of_ne (hj 2),Function.update_of_ne (hj 29)]
+    have hjfield : ∀ i : Fin 27,j≠fieldLayout r i := by
+      intro i
+      exact hj ⟨i.val,by omega⟩
+    rw [hdo j hjfield]
+    change f.store.reg j=_
+    rw [hfs,hcs]
+    simp [TapeStore.setReg,hj]
+  · change FieldConvolution.tapeData e.store=_
+    rw [hes]
+    simpa only [FieldConvolution.tapeData_setReg,hfs,hcs,FieldConvolution.tapeData_setReg] using hdt
+
+#print axioms multiplyFrom_stops

@@ -1,0 +1,24 @@
+{
+  "definition_id": "1563cc63-5a0d-48a8-bdab-46756533d258",
+  "definition_name": "ExpandingCodes_PolynomialStretch_Sampler",
+  "definition_title": "Affine-partition sampler and independent column hashing",
+  "natural_language_statement": "For each layer $i$ and field element $a$, independently choose the coefficient vectors of two uniform linear forms $\\mu_{i,a},\\nu_{i,a}:F^d\\to F$. Put $\\lambda_i(z)=\\sum_{j=0}^{d-1}\\alpha_i^jz_j$. The preliminary column indexed by $(i,a,u,v)$ has value one at $z$ exactly when\n$$\\lambda_i(z)=a,\\qquad\\mu_{i,a}(z)=u,\\qquad\\nu_{i,a}(z)=v.$$\nIndependently choose each function $h_i:F^3\\to\\{0,\\ldots,b-1\\}$ uniformly from all functions. In row $z$ the final matrix has a one in position $ib+h_i(\\lambda_i(z),\\mu_{i,\\lambda_i(z)}(z),\\nu_{i,\\lambda_i(z)}(z))$ for each layer $i$; all other columns, including the padding up to $n$, are zero. This is the binary column sum of equation (4), since each row had just one neighbor in each layer.\n\nThe sampler law is the pushforward of the uniform law on the complete product of coefficient vectors and hash tables. It is unconditioned. The preliminary-good event requires $|\\Gamma_A(S)|\\ge(k-d+1)|S|$ simultaneously for all $|S|\\le n^{1-\\varepsilon}$.\n\n**Formalization Note** The tables include every level set and every hash argument, so product uniformity gives precisely the independence stipulated in the source. No full-rank requirement is imposed on random forms. Outside the eventual range $kb\\le n$, the matrix formula simply drops out-of-range column positions; theorems make no correctness claim about those sizes.\n",
+  "created_at": "2026-11-08T19:10:22.989296+00:00",
+  "vote_count": 0,
+  "definition": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_Parameters\nset_option autoImplicit false\nopen scoped Classical\n\nnamespace ExpandingCodes.PolynomialStretch\n\nopen scoped BigOperators\nabbrev Forms (F : Type*) (d k : ℕ) := Fin 2 → Fin k → F → Fin d → F\nabbrev Hashes (F : Type*) (k b : ℕ) := Fin k → (F × F × F) → Fin b\nnoncomputable instance bucketNonempty (ε : ℝ) (n : ℕ) : Nonempty (Fin (buckets ε n)) :=\n  ⟨⟨0, by unfold buckets; exact pow_pos (by decide) _⟩⟩\nnoncomputable def fixedForm {d n k : ℕ} (g : Geometry d n) (i : Fin k) (z : Fin d → g.F) : g.F :=\n  ∑ j, alpha g i ^ j.val * z j\nnoncomputable def linearForm {F : Type*} [Field F] {d : ℕ} (a z : Fin d → F) : F :=\n  ∑ j, a j * z j\nnoncomputable def address {d n k : ℕ} (g : Geometry d n) (s : Forms g.F d k)\n    (i : Fin k) (z : Fin d → g.F) : g.F × g.F × g.F :=\n  let a := fixedForm g i z\n  (a, linearForm (s 0 i a) z, linearForm (s 1 i a) z)\nnoncomputable def preliminary {d n k : ℕ} (g : Geometry d n) (s : Forms g.F d k) :\n    Matrix (Fin (rowCount d n)) (Fin k × (g.F × g.F × g.F)) Bit := by\n  classical\n  exact fun z c => if address g s c.1 (g.rowOrder z) = c.2 then 1 else 0\nnoncomputable def combined {d n k b : ℕ} (g : Geometry d n) (s : Forms g.F d k)\n    (h : Hashes g.F k b) : Generator (rowCount d n) n := by\n  classical\n  exact fun z j => if ∃ i : Fin k, ∃ u : Fin b,\n    j.val = i.val * b + u.val ∧ h i (address g s i (g.rowOrder z)) = u then 1 else 0\nnoncomputable def sampleLaw (ε : ℝ) (n : ℕ) (g : Geometry (dimension ε) n) :\n    PMF (Generator (rowCount (dimension ε) n) n) :=\n  (PMF.uniformOfFintype _ : PMF (Forms g.F (dimension ε) (arity ε) ×\n    Hashes g.F (arity ε) (buckets ε n))).map fun s => combined g s.1 s.2\nnoncomputable def PreliminaryGood (ε : ℝ) (n : ℕ) (g : Geometry (dimension ε) n)\n    (s : Forms g.F (dimension ε) (arity ε)) : Prop :=\n  ∀ S : Finset (Fin (rowCount (dimension ε) n)),\n    (S.card : ℝ) ≤ (n : ℝ) ^ (1 - ε) →\n    ((arity ε : ℝ) - dimension ε + 1) * S.card ≤ ((neighbors (preliminary g s) S).card : ℝ)\n\nend ExpandingCodes.PolynomialStretch\n",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 8 / PDF p. 9, §2.1, equations (3)–(4); printed p. 9 / PDF p. 10, sampling law and padding.",
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "created_by": "[REDACTED_ACCOUNT]",
+  "created_by_username": "mikedeng1",
+  "deprecated_at": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+}

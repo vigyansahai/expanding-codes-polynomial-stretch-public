@@ -1,0 +1,4 @@
+import ExpandingCodes.Probability.SharpThreshold.Scalar
+set_option autoImplicit false
+#print axioms ExpandingCodes.SharpThreshold.two_point_uniform
+#check ExpandingCodes.SharpThreshold.two_point_uniform

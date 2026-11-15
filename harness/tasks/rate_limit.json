@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "owner": "rate_limit",
+  "file_ownership": [
+    "ExpandingCodes/Probability/RateLimit.lean",
+    "ExpandingCodes/Probability/GridVolume.lean",
+    "ExpandingCodes/Probability/HalfspaceVolume.lean",
+    "harness/attempts/rate_limit/",
+    "harness/tasks/rate_limit.json"
+  ],
+  "nodes": [
+    {
+      "id": "auxiliary_monomial_rate_limit",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_auxiliary_monomialCount_div",
+      "file": "ExpandingCodes/Probability/RateLimit.lean",
+      "statement": "\u2200 (d : \u2115), 4 \u2264 d \u2192 Filter.Tendsto (fun q : \u2115 => (Fintype.card {a : Fin d \u2192 Fin q // \u2211 i, (a i).val \u2264 ExpandingCodes.PolynomialStretch.auxiliaryDegree q d} : \u211d) / (q : \u211d) ^ d) Filter.atTop (nhds (ExpandingCodes.PolynomialStretch.limitingRate d))",
+      "statement_sha256": "96cdf9ebe5d8121f42c6e5dc3e0eb3adf8a895424d8bb070c25d784e9d42ac36",
+      "proof_route": "Use exact integer division inequalities to bound auxiliaryDegree(q,d)/q between (d-3)/2-d/q and (d-3)/2. Prove the coordinate-sum level set is a proper affine subspace and hence Lebesgue null. Dominated indicator convergence yields continuity of the actual cube-halfspace volume in its threshold. Partition the half-open unit cube into pairwise disjoint boxes [a_i/q,(a_i+1)/q). Their selected union has exact Lebesgue volume card(GridIndices)/q^d. Coordinatewise floors give the lower inclusion of the halfspace at R/q, after null upper faces are removed; summing box upper bounds gives the upper inclusion in the halfspace at (R+d)/q. Both thresholds converge to the same target, so real-valued volume squeeze proves the moving-degree natural-count limit. Finally apply the independently proved exact finite Reed--Muller dimension equality and fieldSize growth, preserving arbitrary mission Geometry choices and the exact rowCount denominator.",
+      "owner": "rate_limit",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "ExpandingCodes/Probability/HalfspaceVolume.lean",
+        "ExpandingCodes/Probability/GridVolume.lean",
+        "ExpandingCodes/Probability/RateLimit.lean",
+        "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+        "ExpandingCodes/Construction/Growth.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "555-575",
+          "role": "Paper Lemma 2.4 identifies the normalized reduced-monomial count with the continuous-uniform cube-halfspace mass."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "lines": "8-18",
+          "role": "Unchanged exact canonical Monomials, reedMuller and auxiliaryDegree definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "lines": "35-40",
+          "role": "Unchanged limitingRate as actual ambient Lebesgue volume, and exact auxiliaryCode."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Lebesgue/EqHaar.lean",
+          "lines": "195-207",
+          "declaration": "MeasureTheory.Measure.addHaar_affineSubspace",
+          "role": "A proper coordinate-sum affine hyperplane is Lebesgue null."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Integral/Indicator.lean",
+          "lines": "45-61",
+          "declaration": "MeasureTheory.tendsto_measure_of_ae_tendsto_indicator",
+          "role": "Continuous moving-halfspace volume from eventual pointwise membership outside the null hyperplane, dominated by the unit cube."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.lean",
+          "lines": "268-275",
+          "declaration": "Real.volume_pi_Ico",
+          "role": "Every half-open mesh box has exact product volume q^(-d)."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Constructions/Pi.lean",
+          "lines": "505-511",
+          "declaration": "MeasureTheory.Measure.univ_pi_Ico_ae_eq_Icc",
+          "role": "Removing the upper faces from the canonical closed cube does not alter volume."
+        },
+        {
+          "path": "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+          "declaration": "ExpandingCodes.PolynomialStretch.finrank_reedMuller",
+          "role": "Checked independent algebraic dimension equality; used only after the pure natural-count limit is proved."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Use the library lattice-point Riemann-sum theorem tendsto_card_div_pow_atTop_volume.",
+          "result": "A viable alternate route was found in Mathlib.Analysis.BoxIntegral.UnitPartition. It requires a separate lattice-subtype/finite-exponent equivalence and a moving-threshold extension. Replaced before proof work by the direct finite box partition, whose floor inclusions give the moving-threshold result directly."
+        },
+        {
+          "approach": "Treat half-open/closed cube a.e. equality as a membership iff without coercions.",
+          "result": "Lean ae equality is equality of predicates. Resolved by explicit set type annotation, propext, and Iff.of_eq. No mathematical obstruction."
+        },
+        {
+          "approach": "Transfer count convergence with simp only omitting Function.comp_apply, and instantiate the generic finite-field family theorem directly at Geometry.F.",
+          "result": "The analytic squeeze and natural-count limit elaborated; two final simp steps failed under dependent function binders despite pointwise canonical bridge examples compiling exactly. Resolved by convert/funext, then direct rw of finrank_reedMuller and geometry_card; the rewrites close both goals without extra instance-congruence arguments."
+        }
+      ],
+      "review": {
+        "reviewer": "rate_limit self-review; independent coordinator review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Every platform definition and the exact Lebesgue target remain unchanged. Full direct proof, fresh public target build, four final exact signature examples, and ten transitive axiom audits passed, with only propext/Classical.choice/Quot.sound. No altered distribution, fixed alphabet, fixed Geometry, hypothesis weakening, custom axiom or proof hole. Local interface metadata remains provisional and administrative status open solely for independent coordinator registration/review/verify receipt."
+      }
+    },
+    {
+      "id": "auxiliary_rate_limit",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_rate",
+      "file": "ExpandingCodes/Probability/RateLimit.lean",
+      "statement": "\u2200 (d : \u2115), 4 \u2264 d \u2192 \u2200 (g : \u2200 n : \u2115, ExpandingCodes.PolynomialStretch.Geometry d n), Filter.Tendsto (fun n : \u2115 => (Module.finrank (g n).F (ExpandingCodes.PolynomialStretch.auxiliaryCode (g n)) : \u211d) / ExpandingCodes.PolynomialStretch.rowCount d n) Filter.atTop (nhds (ExpandingCodes.PolynomialStretch.limitingRate d))",
+      "statement_sha256": "3c31a1eebd7cbaaddc6923114f35f2d27c02c5951fd0fda9a85a58ea32c804dc",
+      "proof_route": "Use exact integer division inequalities to bound auxiliaryDegree(q,d)/q between (d-3)/2-d/q and (d-3)/2. Prove the coordinate-sum level set is a proper affine subspace and hence Lebesgue null. Dominated indicator convergence yields continuity of the actual cube-halfspace volume in its threshold. Partition the half-open unit cube into pairwise disjoint boxes [a_i/q,(a_i+1)/q). Their selected union has exact Lebesgue volume card(GridIndices)/q^d. Coordinatewise floors give the lower inclusion of the halfspace at R/q, after null upper faces are removed; summing box upper bounds gives the upper inclusion in the halfspace at (R+d)/q. Both thresholds converge to the same target, so real-valued volume squeeze proves the moving-degree natural-count limit. Finally apply the independently proved exact finite Reed--Muller dimension equality and fieldSize growth, preserving arbitrary mission Geometry choices and the exact rowCount denominator.",
+      "owner": "rate_limit",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "ExpandingCodes/Probability/HalfspaceVolume.lean",
+        "ExpandingCodes/Probability/GridVolume.lean",
+        "ExpandingCodes/Probability/RateLimit.lean",
+        "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+        "ExpandingCodes/Construction/Growth.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "555-575",
+          "role": "Paper Lemma 2.4 identifies the normalized reduced-monomial count with the continuous-uniform cube-halfspace mass."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "lines": "8-18",
+          "role": "Unchanged exact canonical Monomials, reedMuller and auxiliaryDegree definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "lines": "35-40",
+          "role": "Unchanged limitingRate as actual ambient Lebesgue volume, and exact auxiliaryCode."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Lebesgue/EqHaar.lean",
+          "lines": "195-207",
+          "declaration": "MeasureTheory.Measure.addHaar_affineSubspace",
+          "role": "A proper coordinate-sum affine hyperplane is Lebesgue null."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Integral/Indicator.lean",
+          "lines": "45-61",
+          "declaration": "MeasureTheory.tendsto_measure_of_ae_tendsto_indicator",
+          "role": "Continuous moving-halfspace volume from eventual pointwise membership outside the null hyperplane, dominated by the unit cube."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.lean",
+          "lines": "268-275",
+          "declaration": "Real.volume_pi_Ico",
+          "role": "Every half-open mesh box has exact product volume q^(-d)."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/MeasureTheory/Constructions/Pi.lean",
+          "lines": "505-511",
+          "declaration": "MeasureTheory.Measure.univ_pi_Ico_ae_eq_Icc",
+          "role": "Removing the upper faces from the canonical closed cube does not alter volume."
+        },
+        {
+          "path": "ExpandingCodes/Algebra/ReedMullerDimension.lean",
+          "declaration": "ExpandingCodes.PolynomialStretch.finrank_reedMuller",
+          "role": "Checked independent algebraic dimension equality; used only after the pure natural-count limit is proved."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Use the library lattice-point Riemann-sum theorem tendsto_card_div_pow_atTop_volume.",
+          "result": "A viable alternate route was found in Mathlib.Analysis.BoxIntegral.UnitPartition. It requires a separate lattice-subtype/finite-exponent equivalence and a moving-threshold extension. Replaced before proof work by the direct finite box partition, whose floor inclusions give the moving-threshold result directly."
+        },
+        {
+          "approach": "Treat half-open/closed cube a.e. equality as a membership iff without coercions.",
+          "result": "Lean ae equality is equality of predicates. Resolved by explicit set type annotation, propext, and Iff.of_eq. No mathematical obstruction."
+        },
+        {
+          "approach": "Transfer count convergence with simp only omitting Function.comp_apply, and instantiate the generic finite-field family theorem directly at Geometry.F.",
+          "result": "The analytic squeeze and natural-count limit elaborated; two final simp steps failed under dependent function binders despite pointwise canonical bridge examples compiling exactly. Resolved by convert/funext, then direct rw of finrank_reedMuller and geometry_card; the rewrites close both goals without extra instance-congruence arguments."
+        }
+      ],
+      "review": {
+        "reviewer": "rate_limit self-review; independent coordinator review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Every platform definition and the exact Lebesgue target remain unchanged. Full direct proof, fresh public target build, four final exact signature examples, and ten transitive axiom audits passed, with only propext/Classical.choice/Quot.sound. No altered distribution, fixed alphabet, fixed Geometry, hypothesis weakening, custom axiom or proof hole. Local interface metadata remains provisional and administrative status open solely for independent coordinator registration/review/verify receipt."
+      }
+    }
+  ],
+  "worker_result": {
+    "status": "complete_exact_canonical_rate_limit_fresh_build_and_axiom_audit_passed",
+    "open_theorem_bodies": [],
+    "unresolved_dependencies": [],
+    "scope": "Exact limiting-rate convergence only; the lower/upper numerical limitingRate bounds and erasure-expectation decay remain independent branches.",
+    "supporting_declarations": [
+      "auxiliaryDegree_scaled_bounds",
+      "tendsto_auxiliaryDegree_div",
+      "volume_coordinateSum_eq_zero",
+      "tendsto_volume_cubeHalfspace",
+      "continuous_cubeHalfspace_volume",
+      "pairwiseDisjoint_gridBox",
+      "volume_truncatedGrid",
+      "truncatedGrid_subset_cubeHalfspace",
+      "cubeHalfspace_inter_halfOpenCube_subset_truncatedGrid",
+      "cubeHalfspace_inter_halfOpenCube_ae",
+      "tendsto_gridCount_div",
+      "tendsto_reedMuller_rate",
+      "tendsto_fieldSize_atTop"
+    ],
+    "compiler_policy": "Only short-lived serialized tools/lake-serial compiler jobs at the coordinator-approved 6144 MB default and one thread. No persistent REPL. Worker never changes memory cap.",
+    "checked_commands": [
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/rate_limit/RateLimit.lean",
+        "exit_code": 0,
+        "scope": "Canonical initial HalfspaceVolume draft before promotion."
+      },
+      {
+        "command": "./tools/lake-serial build ExpandingCodes.Probability.HalfspaceVolume",
+        "exit_code": 0
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/rate_limit/GridVolume.lean",
+        "exit_code": 0,
+        "scope": "Canonical GridVolume draft before promotion."
+      },
+      {
+        "command": "./tools/lake-serial build ExpandingCodes.Probability.GridVolume",
+        "exit_code": 0
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/rate_limit/InstanceTest.lean",
+        "exit_code": 0,
+        "scope": "Exact pointwise canonical Geometry/auxiliaryCode/Monomials/GridIndices bridge examples."
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/rate_limit/FinalRateLimit.lean",
+        "exit_code": 0,
+        "scope": "Complete canonical final draft, including exact arbitrary Geometry convergence, before promotion."
+      },
+      {
+        "command": "python3 harness/engine.py --graph harness/tasks/rate_limit.json validate",
+        "exit_code": 0,
+        "scope": "Two registered local full theorem interfaces and exact statement hashes; no fabricated verification receipt."
+      },
+      {
+        "command": "./tools/lake-serial build ExpandingCodes.Probability.RateLimit",
+        "exit_code": 0,
+        "result": "Built ExpandingCodes.Probability.RateLimit (9.4s); Build completed successfully (8720 jobs).",
+        "scope": "Fresh public target build after canonical complete draft passed."
+      },
+      {
+        "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/rate_limit/PublicAudit.lean > harness/attempts/rate_limit/PublicAudit.log",
+        "exit_code": 0,
+        "scope": "Final imported public module, ten transitive axiom audits, exact mission epsilon/Geometry convergence example, and both exact task-record closed signatures."
+      }
+    ],
+    "public_source_sha256": {
+      "ExpandingCodes/Probability/RateLimit.lean": "81d37e0c7930083faf4c6850f57a288247670efb8e917b979595c6cf2b05232e",
+      "ExpandingCodes/Probability/GridVolume.lean": "7c0717d2b6c88e63cf102b4970f6c25e61bddb464b3f9b6127c0928ef266f9d3",
+      "ExpandingCodes/Probability/HalfspaceVolume.lean": "b76a8badea20575444b360d9afb2ae55e798bde0f53488971272c14c3cd62c68"
+    },
+    "proof_draft": "harness/attempts/rate_limit/FinalRateLimit.lean",
+    "supporting_drafts": [
+      "harness/attempts/rate_limit/RateLimit.lean",
+      "harness/attempts/rate_limit/GridVolume.lean"
+    ],
+    "axiom_audit": {
+      "scope": "Final imported public RateLimit module after successful fresh target build.",
+      "audit_file": "harness/attempts/rate_limit/PublicAudit.lean",
+      "audit_log": "harness/attempts/rate_limit/PublicAudit.log",
+      "declaration_axioms": {
+        "ExpandingCodes.PolynomialStretch.auxiliaryDegree_scaled_bounds": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryDegree_div": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.volume_coordinateSum_eq_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.continuous_cubeHalfspace_volume": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.volume_truncatedGrid": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.cubeHalfspace_inter_halfOpenCube_subset_truncatedGrid": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.tendsto_gridCount_div": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.tendsto_auxiliary_monomialCount_div": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.tendsto_reedMuller_rate": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_rate": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "all_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "forbidden_axioms": [],
+      "signature_examples_checked": 4,
+      "canonical_output": "'ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_rate' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "next_integration": "Coordinator semantic review, registration in central graph, and independent engine verify/receipt. Main exact mission convergence conjunct is tendsto_auxiliaryCode_rate (dimension \u03b5) (dimension_ge_four \u03b5 h\u03b5) g. No open Lean theorem body or unresolved proof dependency in this branch."
+  }
+}

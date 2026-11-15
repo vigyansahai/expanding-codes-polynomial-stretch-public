@@ -1,0 +1,6 @@
+harness/attempts/machine_compiler/CounterLoops.lean:188:2: warning: Unused tactic linter: `all_goals try rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.CounterProgram.countedLoop_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.CounterProgram.Stops.seq' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.CounterProgram.Stops.compile' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,28 @@
+{
+  "owner": "root coordinator",
+  "status": "complete, direct and public-o check passed, standard axioms only",
+  "source": "ExpandingCodes/Computation/RawIrreducibility.lean",
+  "import": "FieldCertificates only, acyclic with SourceFieldArithmetic/SourceModulus",
+  "predicates": {
+    "FactorMatches": "forall j<3ell+1,CoefficientMatches a.val b.val (2^ell+p.val)0 0 j",
+    "FactorFree": "forall a b:Fin(2^ell),1<a.val ->1<b.val ->not FactorMatches ell p a b"
+  },
+  "results": [
+    "factorMatches_iff exact raw-polynomial product equality",
+    "poly_isUnit_iff rawindex=1",
+    "factorFree_iff_irreducible",
+    "factorFree_iff_canonical",
+    "selectedIndex_factorFree",
+    "selectedIndex_le"
+  ],
+  "proof_route": "Use exact coefficient-bit/convolution bridges and degree bounds to reflect the actual source certificate. Over F2, polynomial units are exactly the raw index1. Any proper factorization of the monic degree-ell candidate has nonzero factors of degrees between1 andell-1, hence indices in[2,q); conversely any accepted nonunit raw pair contradicts irreducibility. Transfer canonical least-index properties.",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "logs": [
+    "harness/attempts/raw_irreducibility/check3.log",
+    "harness/attempts/raw_irreducibility/public.log"
+  ]
+}

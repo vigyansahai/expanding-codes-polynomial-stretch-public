@@ -1,0 +1,34 @@
+{
+  "owner": "root",
+  "status": "complete",
+  "files": [
+    "ExpandingCodes/Computation/TesterBackend.lean",
+    "ExpandingCodes/Computation/TesterBackendPrep.lean",
+    "ExpandingCodes/Computation/SamplerRows.lean",
+    "ExpandingCodes/Computation/TesterBackendComplete.lean",
+    "ExpandingCodes/Computation/TesterAssembly.lean",
+    "ExpandingCodes/Computation/TesterEnvelope.lean",
+    "ExpandingCodes/Computation/TesterPrefix.lean",
+    "ExpandingCodes/Computation/SamplerLayerBounds.lean",
+    "ExpandingCodes/Computation/TesterFrontend.lean",
+    "ExpandingCodes/Computation/TesterImplementation.lean"
+  ],
+  "checked": [
+    "TesterBackend: exact actual4260-label Gaussian + rational suffix output and polynomial clock; scratch/public-o PASS, standard axioms.",
+    "TesterBackendPrep: actual118-label metadata copies, two unary multiplications and physical sparezero fill; exact final store, true150(M+1)^2 source bound and same scalar envelope; scratch/public-o PASS, standard axioms.",
+    "SamplerRows: exact matrixBits row enumeration, prefix append/full bridges; scratch/public-o PASS.",
+    "TesterBackendComplete: full actual metadata/sparezero/Gaussian/acceptance pipeline fixed80 registers and3 buffers; exact physical Common/matrices bridges, source clock polynomial, exact canonical output; scratch/public-o PASS, standard axioms.",
+    "SamplerRows.readings_eq_digits: actual odometer Valid/number invariant gives exact canonical point digits; scratch/public-o PASS, standard axioms.",
+    "TesterAssembly scratch/public-o PASS: full backend lifted into exact ambient80+6d and composed against existing actual construct trace.",
+    "TesterEnvelope scratch/public-o PASS: polynomial in m+n covers runtime parameter setup, physical Gram/spare/word cells, field metadata and digit/cutoff sums.",
+    "TesterPrefix.setup_initial_stops scratch/public-o PASS: exact existing actual size parser, parameter arithmetic, three copies and field setup from zero initial state; selected modulus/allscalar bounds/full tape frames.",
+    "SamplerLayerBounds scratch/public-o PASS: exact form/hash flat indices, physical table slice end bounds and neighbor column bound.",
+    "TesterPrefix actual input_stops: three physical markers + real m-word tape reader/table fill; same scalarM, canonical field/m, exact input table/head/markers/output; scratch/public-o PASS clean standard axiom audit.",
+    "TesterFrontend scratch/public-o PASS: actual complete existing setup/input/degree prefix from initial tape yields canonical Core, exact cutoff and all backend-needed frames; clock polynomial in m+n after fixed testerEnvelope substitution. Clean standardaxioms.",
+    "Exact binary_tester_implementation_source scratch/public-o PASS: actual finite machine and canonical TesterImplementation \u03b8, true polynomial runtime/exact output; only propext/Classical.choice/Quot.sound. ProgramObligations tester stub replaced by this closed theorem and direct public-o PASS. Only sampler registered sorry remains."
+  ],
+  "current": "Exact tester and complete headline proved by final strict central54-node audit and fresh159module build.",
+  "remaining": [],
+  "compiler": "tools/lake-serial,6144MB,j1,shortlived only; no persistent REPL.",
+  "final_verification": "harness/runs/final-verification.log"
+}

@@ -1,0 +1,4 @@
+ExpandingCodes.PolynomialStretch.binary_tester_implementation_source (θ : ℚ) (hθ : 0 < ↑θ ∧ ↑θ < 1 / 2) :
+  ExpandingCodes.PolynomialStretch.TesterImplementation θ fun n =>
+    ExpandingCodes.PolynomialStretch.binaryGeometry (ExpandingCodes.PolynomialStretch.dimension ↑θ) n
+Lean check peak resident memory: 5480 MB; cap: 6144 MB

@@ -1,0 +1,47 @@
+{
+  "purpose": "closed proof certificate; pair with independent statement-stub portability check",
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "modules": {
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source": {
+      "path": "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.olean",
+      "sha256": "90d1c3fd2a0bcadd95d273322c488069c23a64640ed94b79361f6cc4065b2f3f",
+      "bytes": 1624
+    },
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source": {
+      "path": "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.olean",
+      "sha256": "b9a76f2e3617c35c5740ddae7b757061f0e39f69536bb80f8a9a4b9177acd005",
+      "bytes": 1624
+    },
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate": {
+      "path": "./harness/submission/runtime/closed-cache/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+      "sha256": "695f6a9dd839c26c47158d75d4ca6ec0b9a8cf0a737d7f29c0f4c50da00bc1b7",
+      "bytes": 1624
+    },
+    "harness.submission.runtime.ProofCore": {
+      "path": "./harness/submission/runtime/closed-cache/harness/submission/runtime/ProofCore.olean",
+      "sha256": "e366f21a03b9682ddbc6fef3b494b2318a6d9906c7ce8ed75e5a5f5c9dddc680",
+      "bytes": 84919800
+    },
+    "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime": {
+      "path": "./harness/submission/runtime/closed-cache/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.olean",
+      "sha256": "72332f263f4102a7917ca6027b7f8299ee9daea6d3c9979084fc899aa023b3e4",
+      "bytes": 10042776
+    }
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "private_helper_simp_annotations": 73,
+  "canonical_aux_cache_unchanged": [
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.ilean",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.ilean.hash",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean.hash",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.trace"
+  ],
+  "data_source_sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+  "core_source_sha256": "f33403ae42f3f890eff909319ca610fae1a6fc604eab93318753b9878c9e6d57"
+}

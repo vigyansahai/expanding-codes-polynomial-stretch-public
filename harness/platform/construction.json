@@ -1,0 +1,43 @@
+{
+  "theorem_id": "9afe7db9-6470-4d2a-9b35-c888c1130f06",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.construction",
+  "theorem_title": "Theorem 2.1 — the full polynomial-stretch construction and its finite programs",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Theorem 2.1. Rational witnesses choose finite programs for every external real ε.\nThe d- and k-bounds have absolute constants, fixed before ε. -/\ntheorem construction :\n    ∃ Cd Ck : ℝ, 0 < Cd ∧ 0 < Ck ∧\n      ∀ ε : ℝ, 0 < ε → ε < 1 / 2 →\n        ∃ θ : ℚ, ε / 2 < (θ : ℝ) ∧ (θ : ℝ) < ε ∧\n          (dimension (θ : ℝ) : ℝ) ≤ Cd * ε⁻¹ ^ 2 ∧\n          (arity (θ : ℝ) : ℝ) ≤ Ck * ε⁻¹ ^ 6 ∧\n          ∃ g : ∀ n, Geometry (dimension (θ : ℝ)) n,\n            EfficientFamily ε (arity (θ : ℝ)) (rowCount (dimension (θ : ℝ)))\n              (fun n => sampleLaw (θ : ℝ) n (g n)) (fun n => rankTest (θ : ℝ) (g n)) ∧\n            Tendsto (fun n => Real.log (rowCount (dimension (θ : ℝ)) n) / Real.log n -\n              2 * (dimension (θ : ℝ) : ℝ) ^ 2) atTop (nhds 0) := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "There are absolute constants $C_d,C_k>0$ such that for every real $0<\\varepsilon<1/2$ there are integers $d\\le C_d\\varepsilon^{-2}$ and $k\\le C_k\\varepsilon^{-6}$, compatible finite fields and public row orders, and fixed randomized sampler and deterministic test programs. For every sufficiently large $n$, the exact sampler law is the affine-partition and independent-hashing construction, with deterministic row count\n$$m=q^d=n^{2d^2+o(1)},\\qquad n<m<n^k.$$\nEvery output has row weight $k$, and expansion is $(1-\\varepsilon,k,n^{1-\\varepsilon})$ except with probability at most $n^{-1/\\varepsilon}$. For every output $G$, binary codeword $c$ in its column image and error $e$ with $|\\operatorname{supp}(e)|\\le(1/2-\\varepsilon)m$,\n$$D(c+e)=1,\\qquad \\Pr[D(U_m)=1]\\le\\exp(-\\varepsilon^2m/128).$$\nThe sampler runs in $\\operatorname{poly}_\\varepsilon(n)$ bit-machine steps on every random tape and writes its complete output. The test runs in $\\operatorname{poly}_\\varepsilon(m,n)$ steps, uses the public row order and takes no sampler randomness or matrix transcript.\n\n**Formalization Note** For the existential program witnesses, fix a rational $\\theta$ with $\\varepsilon/2<\\theta<\\varepsilon$, and take $d,k,q,b,G,D$ from the source construction at $\\theta$. All external guarantees remain at $\\varepsilon$; $\\theta$ is not an input or a restriction on $\\varepsilon$. The explicit false-acceptance rate follows from $\\theta^2/32\\ge\\varepsilon^2/128$. Finite machine realization, exact law and polynomial bounds are conclusions, not assumptions. The logarithmic row-count limit states the complete little-o exponent.\n\nDifferences from the source:\n- encoding: existential algorithms for every fixed real ε → one internal rational ε/2<θ<ε fixes finite sampler/test programs; d,k are the construction parameters at θ; reason: the source conclusions transfer monotonically; θ⁻²<4ε⁻² and θ⁻⁶<64ε⁻⁶ preserve absolute parameter orders\n- encoding: m=n^{2d²+o(1)} and polynomial runtime → log(m)/log(n)−2d²→0 and fixed finite Turing programs with actual polynomial transition bounds; reason: eventual n≥2 makes the growth formulations equivalent; all computation and output costs are charged\n- encoding: exp(−Ω_ε(m)) → exp(−ε²m/128) eventually; reason: the source proof gives θ²/32 and θ>ε/2; the eventual threshold precedes every outcome\n",
+  "created_at": "2026-11-08T19:13:43.639198+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_OperationalFamily\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 8 / PDF p. 9, Theorem 2.1.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "44510158-4b20-4784-9b05-d5bee5c328e8",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "d791baa3-ef63-40de-b0fd-4b67111ec6ea",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

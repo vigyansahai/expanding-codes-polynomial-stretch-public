@@ -1,0 +1,74 @@
+{
+  "task": "bit_sampler",
+  "status": "completed_checked_source_components",
+  "owner": "/root/bit_sampler",
+  "files": [
+    "ExpandingCodes/Computation/RandomBits.lean",
+    "ExpandingCodes/Computation/RandomTables.lean",
+    "ExpandingCodes/Computation/SizeReader.lean"
+  ],
+  "scratch": "harness/attempts/bit_sampler/",
+  "exact_goals": [
+    "Fixed finite source randomIndex, runtime ell and q preserved, ell reads from RO3 at arbitrary offset, unary output less than q=2^ell, polynomial source bound",
+    "Exact uniform law and unused-suffix independence",
+    "Fixed finite table fill using thermometer writer when API available"
+  ],
+  "proof_route": "Compose actual preserving copy, destructive transfer, constant-cost RO read/conditional increment; counted loop over copied ell. Derive explicit binary recurrence, then identify with reversed finite bit expansion and transport uniform law through a finite equivalence.",
+  "interfaces": "Generic injected six-register layout ell,q,acc,count,tmp,scratch. q is preserved, not embedded in finite labels. Source program code independent of ell and q.",
+  "dependencies": [
+    "TapeMacros.copy_stops",
+    "TapeMacros.transfer_stops",
+    "TapeLoops source Exec/Stops and countedLoop rules",
+    "BinaryPolynomial.indexEquiv",
+    "FiniteUniform.uniformProb_equiv",
+    "TapeArrays thermometer writer pending from tape_macros"
+  ],
+  "failed_approaches": [
+    "Finite singleton probability via cardinal filter met decidable-instance rewrite mismatch; proved with a Unique equality subtype instead.",
+    "Generic piCongrLeft reversal did not reduce cleanly through dependent transport; replaced by explicit self-inverse finite bit reversal.",
+    "Source bound rewrites require normalizing TapeCfg.store.reg projections explicitly before omega; fixed with change at hypotheses."
+  ],
+  "integrity": "No proof claimed before direct check; no sorry/axioms in executable data. Public file promoted only after scratch direct compiler check.",
+  "completed": [
+    "RandomBits fixed35label actual source with exact Stops and quadratic q bound",
+    "Exact prefix/suffix independent finite uniform law via BinaryPolynomial.indexEquiv",
+    "Direct RandomBits file check, transitive #print axioms standard only",
+    "Public RandomBits lake build exit0 with standard-only axiom audits",
+    "RandomTables direct check exit0: actual53label entry,55label runtime counted fill; exact K*ell consumed bits, K*q cells and block semantics; exact joint finite uniform law",
+    "Public RandomTables explicit -o/audit exit0; two boundary lemma extension direct-check exit0",
+    "SizeReader fixed5label actual source, canonical unary input theorem, direct and public -o exit0; standard-only audits",
+    "Final public RandomTables -o after fillStore_count/fillStore_clean passed; all main declaration audits standard only"
+  ],
+  "pending": [],
+  "checks": [
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/bit_sampler/RandomBits.lean",
+      "result": "exit0; main audits propext Classical.choice Quot.sound only"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Computation.RandomBits",
+      "result": "running; serialized local dependency refresh"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/bit_sampler/RandomTables.lean",
+      "result": "exit0; entry_stops/fill_stops/fillStore_table/uniform_sampledValues/fillStore_sampledValues standard axioms only"
+    },
+    {
+      "command": "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Computation/RandomTables.olean ExpandingCodes/Computation/RandomTables.lean",
+      "result": "both public promotions exit0; final two-lemma extension also public -o checked"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/bit_sampler/SizeReader.lean and corresponding public -o",
+      "result": "both exit0; sizeInput_unary/scan_stops/sizeInput_stops axioms propext Classical.choice Quot.sound only"
+    }
+  ],
+  "unresolved_dependencies": [
+    "Root integrates these components into whole sampler, casts/reindexes uniform finite tables to canonical Forms\u00d7Hashes, and refreshes central Lake traces. No wholeSamplerImplementation or TesterImplementation completion claimed."
+  ],
+  "source_locations": {
+    "RandomBits": "ExpandingCodes/Computation/RandomBits.lean:358 randomIndex; :364 Stops; :444 polynomial; :571 direct finite source law",
+    "RandomTables": "ExpandingCodes/Computation/RandomTables.lean:76 fill; :150 Stops; per-cell table + sampledValues uniform bridge later in module",
+    "SizeReader": "ExpandingCodes/Computation/SizeReader.lean:58 sizeInput; :64 Stops; :74 canonical unary input theorem"
+  },
+  "axiom_audit": "All printed declarations depend only on propext, Classical.choice, Quot.sound. No sorry, custom axioms, unsafe declarations, or executable data holes added."
+}

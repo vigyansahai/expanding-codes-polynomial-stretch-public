@@ -1,0 +1,31 @@
+{
+  "reason": "Restore original non-Classical body context; globally enabled Classical changed ext lemma selection",
+  "fragment_check": "gaussian-original-scope-result.json",
+  "changes": [
+    {
+      "path": "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.lean",
+      "before_sha256": "62e4b4559fb6c5b136914228cf028f61845a36290273f6222a2412ef73425a22",
+      "after_sha256": "48cfffece092555ef64e3789b99c6f9692b3175539c6ae4acfadaff1a598b95b",
+      "bytes": 328588,
+      "removed_generated_header_bytes": 10,
+      "original_commands_unchanged": true
+    },
+    {
+      "path": "./harness/submission/partition/cache/Cache_gaussian_rank.lean",
+      "before_sha256": "18f92443a61627e21b23b40100986080f93f76e150b336d67cff4949c1f64d02",
+      "after_sha256": "cea10d10ec97a29895d564f338dee45f31d330d4e8516599eb3de2c56fc56299",
+      "bytes": 332443,
+      "removed_generated_header_bytes": 10,
+      "original_commands_unchanged": true
+    },
+    {
+      "path": "./harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean",
+      "before_sha256": "9c3cfaa101d341a99535fef0fc0e8c48e391a15b7581f2ee7fa61bf7e7a2e8c0",
+      "after_sha256": "df1feba6bcb5b397d89c844623c19a17806924753ea9cc99c1f77ff808240722",
+      "bytes": 186497,
+      "removed_generated_header_bytes": 10,
+      "original_commands_unchanged": true
+    }
+  ],
+  "accepted_sources_untouched": true
+}

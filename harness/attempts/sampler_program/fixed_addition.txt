@@ -1,0 +1,102 @@
+def fixedPowerIndex {d : ℕ} : Fin 33 ⊕ Fin d → Fin 33 ⊕ (Fin d ⊕ Fin d)
+  | .inl i => .inl i
+  | .inr j => .inr (.inl j)
+
+def fixedPowerLayout {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) : Fin 33 ⊕ Fin d → Fin R :=
+  r ∘ fixedPowerIndex
+
+def fixedFieldLayout {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) : Fin 31 → Fin R :=
+  powerWorkspace (powerField (fixedPowerLayout r))
+
+def fixedCoeff {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) (j : Fin d) : Fin R := r (.inr (.inl j))
+def fixedPoint {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) (j : Fin d) : Fin R := r (.inr (.inr j))
+
+theorem fixedPowerLayout_injective {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R)
+    (hr : Function.Injective r) : Function.Injective (fixedPowerLayout r) := by
+  intro a b hab
+  have hh : fixedPowerIndex a=fixedPowerIndex b := hr hab
+  cases a <;> cases b <;> simp_all [fixedPowerIndex]
+
+theorem fixedFieldLayout_injective {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R)
+    (hr : Function.Injective r) : Function.Injective (fixedFieldLayout r) :=
+  powerWorkspace_injective _ (powerField_injective _ (fixedPowerLayout_injective r hr))
+
+theorem fixedCoeff_fresh {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R)
+    (hr : Function.Injective r) : ∀ j i,fixedCoeff r j≠fixedFieldLayout r i := by
+  intro j i hij
+  have hh := hr hij
+  cases hh
+
+theorem fixedPoint_fresh {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R)
+    (hr : Function.Injective r) : ∀ j i,fixedPoint r j≠fixedFieldLayout r i := by
+  intro j i hij
+  have hh := hr hij
+  cases hh
+
+theorem fixedPoint_power_fresh {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R)
+    (hr : Function.Injective r) : ∀ j i,fixedPoint r j≠fixedPowerLayout r i := by
+  intro j i hij
+  cases i with
+  | inl i =>
+    have hh : Sum.inr (Sum.inr j)=Sum.inl i := hr hij
+    cases hh
+  | inr i =>
+    have hh : Sum.inr (Sum.inr j)=Sum.inr (Sum.inl i) := hr hij
+    cases Sum.inr.inj hh
+
+theorem power_linear_eq_fixed (ell : ℕ) (h : 0<ell) {d : ℕ} (alpha : Fin (2^ell)) (z : Fin d → Fin (2^ell)) :
+    (EncodedSampler.linear (BinaryField.indexOperations ell h)
+      (fun j => (EncodedTester.power (BinaryField.indexOperations ell h) alpha j.val).1) z).1=
+        (EncodedSampler.fixed (BinaryField.indexOperations ell h) alpha z).1 := by
+  have hi := BinaryField.indexOperations_interpretation ell h
+  apply hi.injective
+  rw [EncodedSampler.linear_decode hi,EncodedSampler.fixed_decode hi]
+  simp only [EncodedTester.power_decode hi]
+
+def fixedLabels {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) : ℕ :=
+  powerVectorLabels (List.finRange d)+(2+dotLabels (List.ofFn (fun i => (fixedCoeff r i,fixedPoint r i))))
+
+/-- Actual fixed-form evaluator: compute the statically many powers of the
+runtime layer element, then evaluate the exact encoded sum of scalar products. -/
+def fixed {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) : TapeProgram R B (fixedLabels r) :=
+  TapeProgram.seq (allPowers (fixedPowerLayout r)) (linear (fixedFieldLayout r) (fixedCoeff r) (fixedPoint r))
+
+def fixedTimeBound (d M : ℕ) : ℕ := d*(powerCoefficientTimeBound d M+1)+1+(d+1)*(13320*(M+1)^6)
+
+theorem fixed_stops {d : ℕ} (r : Fin 33 ⊕ (Fin d ⊕ Fin d) → Fin R) (hr : Function.Injective r)
+    (inp : Inputs) (ell : ℕ) (h : 0<ell) (alpha : Fin (2^ell)) (z : Fin d → Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ i,s.reg i≤M)
+    (henv : Environment (fixedFieldLayout r) ell (selectedIndex ell h) s)
+    (halpha : s.reg (r (.inl 32))=alpha.val) (hz : ∀ j,s.reg (fixedPoint r j)=(z j).val) :
+    ∃ t e, t≤fixedTimeBound d M ∧
+      (fixed r).Stops inp (s.toCfg (fixed (B := B) r).entry) t e ∧
+      e.reg (r (.inl 30))=(EncodedSampler.fixed (BinaryField.indexOperations ell h) alpha z).1.val ∧
+      Environment (fixedFieldLayout r) ell (selectedIndex ell h) e.store ∧
+      (∀ j,e.reg (fixedPoint r j)=s.reg (fixedPoint r j)) ∧
+      (∀ x,(∀ i,x≠r i) → e.reg x=s.reg x) ∧
+      (∀ x,e.reg x≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  have hpr := fixedPowerLayout_injective r hr
+  have hfr := fixedFieldLayout_injective r hr
+  obtain ⟨u,c,hu,hc,hcv,hce,hca,hco,hcb,hct⟩ := allPowers_stops (fixedPowerLayout r) hpr inp ell h alpha M hM s hs henv halpha
+  have hpoints : ∀ j,c.reg (fixedPoint r j)=(z j).val := by
+    intro j
+    rw [hco _ (fixedPoint_power_fresh r hr j)]
+    exact hz j
+  obtain ⟨t,e,ht,he,hev,hee,heo,heb,het⟩ := linear_stops_values (fixedFieldLayout r) hfr
+    (fixedCoeff r) (fixedPoint r) (fixedCoeff_fresh r hr) (fixedPoint_fresh r hr) inp ell h
+    (fun j => (EncodedTester.power (BinaryField.indexOperations ell h) alpha j.val).1) z
+    M hM c.store hcb hce hcv hpoints
+  have hall := hc.seq he
+  refine ⟨u+1+t,_,?_,hall,?_,hee,?_,?_,heb,het.trans hct⟩
+  · unfold fixedTimeBound
+    omega
+  · rw [power_linear_eq_fixed ell h alpha z] at hev
+    exact hev
+  · intro j
+    exact (heo _ (fixedPoint_fresh r hr j)).trans (hco _ (fixedPoint_power_fresh r hr j))
+  · intro x hx
+    have hxf : ∀ i : Fin 31,x≠fixedFieldLayout r i := fun i => hx (.inl ⟨i.val,by omega⟩)
+    have hxp : ∀ i : Fin 33 ⊕ Fin d,x≠fixedPowerLayout r i := fun i => hx (fixedPowerIndex i)
+    exact (heo x hxf).trans (hco x hxp)
+
+#print axioms fixed_stops

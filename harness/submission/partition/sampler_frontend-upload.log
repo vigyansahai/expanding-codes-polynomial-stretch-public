@@ -1,0 +1,966 @@
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2630:43: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2632:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, increment]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2646:41: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2650:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2659:45: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2660:39: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, clear]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2681:32: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2686:12: warning: This simp argument is unused:
+  Function.update_of_ne hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2701:44: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2703:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2718:48: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2719:71: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2721:42: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, transfer]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2742:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2742:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2742:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2742:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2747:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2747:57: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2747:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2752:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2752:36: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2752:41: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2810:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2810:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2810:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2810:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2813:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2813:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2813:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2813:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2813:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2816:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2816:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2856:37: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2856:42: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2856:55: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2856:68: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2859:29: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2859:34: warning: This simp argument is unused:
+  hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2859:39: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2859:44: warning: This simp argument is unused:
+  Ne.symm hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2859:70: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2862:31: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hst, hdt, Ne.symm hsd, Ne.symm hst, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2862:59: warning: This simp argument is unused:
+  Ne.symm hst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2862:72: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsd, hst, hdt, Ne.symm hsd, Ne.symm hst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2877:53: warning: This simp argument is unused:
+  hsd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, distributeStore, TapeStore.setReg, hst, hdt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2902:38: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, cell]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2904:36: warning: This simp argument is unused:
+  TapeStore.toCfg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, cell]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2960:23: warning: Variable name `hdc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hdc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2960:43: warning: Variable name `htc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _htc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2973:49: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, htc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2973:54: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2974:8: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdc, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:2974:21: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm hdt, Nat.succ_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3017:34: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, hac, htc, ht]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3040:17: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3089:34: warning: This simp argument is unused:
+  Ne.symm htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, htc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:31: warning: This simp argument is unused:
+  had
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hat, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:36: warning: This simp argument is unused:
+  hat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hac, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:41: warning: This simp argument is unused:
+  hac
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hbd, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:46: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hdt, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:51: warning: This simp argument is unused:
+  hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdc, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:56: warning: This simp argument is unused:
+  hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, htc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3092:61: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hdt, hdc, Ne.symm htc, Ne.symm hdc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3095:48: warning: This simp argument is unused:
+  hbd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3095:53: warning: This simp argument is unused:
+  hbt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbc, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3095:58: warning: This simp argument is unused:
+  hbc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hdt, hdc, htc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3095:73: warning: This simp argument is unused:
+  htc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, Ne.symm hdt, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3096:12: warning: This simp argument is unused:
+  Ne.symm hdt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdc, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3096:25: warning: This simp argument is unused:
+  Ne.symm hdc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, had, hat, hac, hbd, hbt, hbc, hdt, hdc, htc, Ne.symm hdt, Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3099:63: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, TapeStore.setReg, Ne.symm hdc, Ne.symm hdt, hbd, hca]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3132:5: warning: Variable name `hsq` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hsq
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3144:29: warning: This simp argument is unused:
+  Ne.symm hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3179:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3206:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3584:16: warning: This simp argument is unused:
+  Function.update_of_ne hc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3607:45: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₁, cellStore, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3612:60: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeRun, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3650:53: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₂, d₁, cellStore, TapeStore.setReg, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3659:62: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeDebit, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3667:31: warning: This simp argument is unused:
+  hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, Ne.symm hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3667:36: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3670:38: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3677:42: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:3677:42: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:4454:29: warning: This simp argument is unused:
+  Ne.symm hqp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:4794:41: warning: This simp argument is unused:
+  Nat.add_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:4904:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:5020:13: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:6211:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:9598:22: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:10912:10: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hne 18]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:15673:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19215:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19395:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19433:5: warning: Variable name `hp` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19549:5: warning: Variable name `hqe` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hqe
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19550:5: warning: Variable name `hec` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hec
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19550:22: warning: Variable name `het` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _het
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19565:54: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [htmp, hcopy]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19690:23: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, two_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19690:63: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, two_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19694:25: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19694:65: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19698:27: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19698:67: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19702:29: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19702:69: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19706:31: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19706:71: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19710:33: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19710:73: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19713:24: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg, h₀, h₂, h₃, h₄, h₅, h₆]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19713:64: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg, h₀, h₂, h₃, h₄, h₅, h₆]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19715:39: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore,
+    lessPrepare, ltLoopStore, ceilCompareLayout, hlt, TapeStore.setReg, h₀, h₂, h₃, h₄, h₅, h₆]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19718:20: warning: This simp argument is unused:
+  ceilingStepStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19718:60: warning: This simp argument is unused:
+  ceilConditionalStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, doubleBodyStore, lessThanStore, lessCore, lessPrepare,
+    ltLoopStore, ceilCompareLayout, reg_layout r hr, hlt, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19720:25: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ceilingStepStore, ceilingStepFlatStore, ceilConditionalStore, doubleBodyStore, lessThanStore, lessCore,
+    lessPrepare, ltLoopStore, ceilCompareLayout, hlt, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19911:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19912:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19913:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgq, hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19914:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hgq, hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19915:19: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hge, hgp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19994:62: warning: This simp argument is unused:
+  Nat.add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [divideLoopStore, d₁, TapeStore.setReg, Ne.symm hsq, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20021:41: warning: This simp argument is unused:
+  hdiv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv', hsq, Ne.symm hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20021:52: warning: This simp argument is unused:
+  hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv, hdiv', Ne.symm hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20021:56: warning: This simp argument is unused:
+  Ne.symm hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv, hdiv', hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20023:47: warning: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:19999:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20029:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20044:55: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20047:58: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [divideConstantStore, divideLoopStore, dividePrepare]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20075:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hct, Nat.add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20089:12: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20170:77: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [floorPrepare, floorCeilLayout, floorCeilIndex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20187:27: warning: Variable name `hu` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20209:69: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [floorPrepare, floorCeilLayout, floorCeilIndex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20223:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20751:13: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.snd, show setupFloorLayout r 1 = r 5 from rfl, setupStage₄_u r hr] at hfb hfl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SamplerAssembly_prelude_stops.lean:20751:22: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Prod.fst, show setupFloorLayout r 1 = r 5 from rfl, setupStage₄_u r hr] at hfb hfl
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

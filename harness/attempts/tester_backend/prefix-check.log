@@ -1,0 +1,69 @@
+harness/attempts/tester_backend/TesterPrefix.lean:25:182: error: unexpected token 'def'; expected ')', ',' or ':'
+harness/attempts/tester_backend/TesterPrefix.lean:95:4: error: Type mismatch: After simplification, term
+  hv3
+ has type
+  @Eq ℕ (c₀.reg ⟨3, ⋯⟩) (fieldSize d n)
+but is expected to have type
+  @Eq ℕ (c₀.reg ⟨3, ⋯⟩) (2 ^ fieldExponent d n)
+harness/attempts/tester_backend/TesterPrefix.lean:117:28: error: Application type mismatch: The argument
+  Eq.symm h.left
+has type
+  (SizeReader.sizeStore (low d 0) n (initialStore d)).roHead =
+    (ParameterPrograms.setupStore (parameterLayout d) d 1 (SizeReader.sizeStore (low d 0) n (initialStore d))).roHead
+but is expected to have type
+  (ParameterPrograms.setupStore (parameterLayout d) d 1 (SizeReader.sizeStore (low d 0) n (initialStore d))).roHead =
+    (SizeReader.sizeStore (low d 0) n (initialStore d)).roHead
+in the application
+  congrArg₂ Prod.mk (Eq.symm h.left)
+harness/attempts/tester_backend/TesterPrefix.lean:117:56: error: Application type mismatch: The argument
+  Eq.symm h.right.left
+has type
+  (SizeReader.sizeStore (low d 0) n (initialStore d)).output =
+    (ParameterPrograms.setupStore (parameterLayout d) d 1 (SizeReader.sizeStore (low d 0) n (initialStore d))).output
+but is expected to have type
+  (ParameterPrograms.setupStore (parameterLayout d) d 1 (SizeReader.sizeStore (low d 0) n (initialStore d))).output =
+    (SizeReader.sizeStore (low d 0) n (initialStore d)).output
+in the application
+  congrArg₂ Prod.mk (Eq.symm h.right.left)
+harness/attempts/tester_backend/TesterPrefix.lean:118:25: error: Application type mismatch: The argument
+  Eq.symm h.right.right.left
+has type
+  (SizeReader.sizeStore (low d 0) n (initialStore d)).bufferTape =
+    (ParameterPrograms.setupStore (parameterLayout d) d 1
+        (SizeReader.sizeStore (low d 0) n (initialStore d))).bufferTape
+but is expected to have type
+  (ParameterPrograms.setupStore (parameterLayout d) d 1
+        (SizeReader.sizeStore (low d 0) n (initialStore d))).bufferTape =
+    (SizeReader.sizeStore (low d 0) n (initialStore d)).bufferTape
+in the application
+  congrArg₂ Prod.mk (Eq.symm h.right.right.left)
+harness/attempts/tester_backend/TesterPrefix.lean:132:6: error: Type mismatch: After simplification, term
+  hh
+ has type
+  @Eq ℕ ((FieldConvolution.tapeData c₄.store).1 0)
+    ((FieldConvolution.tapeData
+          {
+            reg :=
+              ({ reg := fun x => 0, roHead := fun x => 0, output := [], bufferTape := fun x => [],
+                      bufferHead := fun x => 0 }.setReg
+                  (low d 0) n).reg,
+            roHead := Function.update (fun x => 0) 0 (n + 1),
+            output :=
+              ({ reg := fun x => 0, roHead := fun x => 0, output := [], bufferTape := fun x => [],
+                      bufferHead := fun x => 0 }.setReg
+                  (low d 0) n).output,
+            bufferTape :=
+              ({ reg := fun x => 0, roHead := fun x => 0, output := [], bufferTape := fun x => [],
+                      bufferHead := fun x => 0 }.setReg
+                  (low d 0) n).bufferTape,
+            bufferHead :=
+              ({ reg := fun x => 0, roHead := fun x => 0, output := [], bufferTape := fun x => [],
+                      bufferHead := fun x => 0 }.setReg
+                  (low d 0) n).bufferHead }).1
+      0)
+but is expected to have type
+  @Eq ℕ (c₄.roHead 0) (n + 1)
+'ExpandingCodes.Computation.TesterPrefix.setup_initial_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

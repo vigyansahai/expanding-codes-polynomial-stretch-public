@@ -1,0 +1,22 @@
+{
+  "cpu_user_system_seconds": 14.667565999999999,
+  "peak_resident_mib": 2964.6875,
+  "lean_memory_cap_mib": 6144,
+  "source_sha256": "2a952426c2623cfb3223f846d9c1715ca0d6d21772979721b1c99044d37d70cc",
+  "source_bytes": 64,
+  "key": "tester_frontend",
+  "mode": "forwarder",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 75.408227375,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/closed-forwarders",
+    "-o",
+    "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TesterFrontend_program_stops.olean",
+    "./harness/submission/partition/closed-forwarders/Theorems/Thm_ExpandingCodes_Computation_TesterFrontend_program_stops.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TesterFrontend_program_stops.olean"
+}

@@ -1,0 +1,71 @@
+/-- A counted finite program copying an arbitrary number of read-only symbols
+into consecutive buffer cells. Its code size is independent of that number. -/
+def copyCells (r : Fin R) (i : Fin 4) (b : Fin B) : TapeProgram R B 8 :=
+  TapeProgram.countedLoop (copyCell i b) r
+
+/-- Data-only specification of the successive explicit one-cell copies. -/
+def copyCellsStore (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs) :
+    ℕ → TapeStore R B → TapeStore R B
+  | 0, d => d
+  | n+1, d => copyCellsStore r i b inp n
+      (copyCellStore (TapeProgram.decStore r d) inp i b)
+
+ theorem copyCells_stops (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) (hd : d.reg r = n) :
+    (copyCells r i b).Stops inp (d.toCfg (TapeProgram.loopHeader 6)) (4*n+1)
+      ((copyCellsStore r i b inp n d).toCfg (TapeProgram.loopExit 6)) := by
+  induction n generalizing d with
+  | zero => exact TapeProgram.loop_zero (copyCell i b) r inp d hd
+  | succ n ih =>
+    let d₁ := TapeProgram.decStore r d
+    let d₂ := copyCellStore d₁ inp i b
+    have hr : d₂.reg r = n := by
+      simp [d₂, d₁, copyCellStore, cellStore, TapeProgram.decStore, hd]
+    have ht := ih d₂ hr
+    have hc := copyCell_stops i b inp d₁
+    have hh := TapeProgram.loop_positive_header (copyCell i b) r inp d (by omega)
+    have hb := hc.exec.relabel (TapeProgram.leftLabel 2)
+      (TapeProgram.loop_code_body_active (copyCell i b) r)
+    have hx := TapeProgram.loop_body_return (copyCell i b) r inp
+      (d₂.toCfg 5) hc.halted
+    constructor
+    · have h := ((hh.trans hb).trans hx).trans ht.exec
+      simpa [copyCells, copyCellsStore, d₂, d₁, Nat.mul_succ, Nat.add_assoc] using h
+    · exact ht.halted
+
+ theorem copyCellsStore_reg (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) :
+    (copyCellsStore r i b inp n d).reg = Function.update d.reg r (d.reg r-n) := by
+  induction n generalizing d with
+  | zero => simp [copyCellsStore]
+  | succ n ih =>
+    rw [copyCellsStore, ih]
+    simp [copyCellStore, cellStore, TapeProgram.decStore, Function.update_idem, Nat.sub_sub]
+
+ theorem copyCellsStore_roHead (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) :
+    (copyCellsStore r i b inp n d).roHead = Function.update d.roHead i (d.roHead i+n) := by
+  induction n generalizing d with
+  | zero => simp [copyCellsStore]
+  | succ n ih =>
+    rw [copyCellsStore, ih]
+    simp [copyCellStore, cellStore, TapeProgram.decStore, Function.update_idem,
+      Nat.add_assoc, Nat.add_comm]
+
+ theorem copyCellsStore_head (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) :
+    (copyCellsStore r i b inp n d).bufferHead =
+      Function.update d.bufferHead b (d.bufferHead b+n) := by
+  induction n generalizing d with
+  | zero => simp [copyCellsStore]
+  | succ n ih =>
+    rw [copyCellsStore, ih]
+    simp [copyCellStore, cellStore, TapeProgram.decStore, Function.update_idem,
+      Machine.moveHead, Nat.add_assoc, Nat.add_comm]
+
+ theorem copyCellsStore_output (r : Fin R) (i : Fin 4) (b : Fin B) (inp : Inputs)
+    (n : ℕ) (d : TapeStore R B) :
+    (copyCellsStore r i b inp n d).output = d.output := by
+  induction n generalizing d with
+  | zero => rfl
+  | succ n ih => exact ih _

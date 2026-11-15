@@ -1,0 +1,1505 @@
+{
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "commands": [
+    {
+      "command": 197,
+      "nameText": "unary_zero",
+      "attribute_simp_tokens": [
+        {
+          "start": 42543,
+          "end": 42547
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 1018,
+        "offset": 42541
+      },
+      "declaration_end": {
+        "col": 72,
+        "line": 1018,
+        "offset": 42615
+      }
+    },
+    {
+      "command": 198,
+      "nameText": "unary_self_succ",
+      "attribute_simp_tokens": [
+        {
+          "start": 42618,
+          "end": 42622
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 1019,
+        "offset": 42616
+      },
+      "declaration_end": {
+        "col": 85,
+        "line": 1019,
+        "offset": 42703
+      }
+    },
+    {
+      "command": 199,
+      "nameText": "unary_after",
+      "attribute_simp_tokens": [
+        {
+          "start": 42706,
+          "end": 42710
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 1020,
+        "offset": 42704
+      },
+      "declaration_end": {
+        "col": 79,
+        "line": 1020,
+        "offset": 42785
+      }
+    },
+    {
+      "command": 266,
+      "nameText": "workIdx_eq_iff",
+      "attribute_simp_tokens": [
+        {
+          "start": 61770,
+          "end": 61774
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 1493,
+        "offset": 61768
+      },
+      "declaration_end": {
+        "col": 29,
+        "line": 1494,
+        "offset": 61882
+      }
+    },
+    {
+      "command": 295,
+      "nameText": "bufferIdx_eq_iff",
+      "attribute_simp_tokens": [
+        {
+          "start": 72196,
+          "end": 72200
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 1729,
+        "offset": 72194
+      },
+      "declaration_end": {
+        "col": 31,
+        "line": 1730,
+        "offset": 72320
+      }
+    },
+    {
+      "command": 318,
+      "nameText": "workIdx_eq_iff",
+      "attribute_simp_tokens": [
+        {
+          "start": 85312,
+          "end": 85316
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 2032,
+        "offset": 85310
+      },
+      "declaration_end": {
+        "col": 29,
+        "line": 2033,
+        "offset": 85428
+      }
+    },
+    {
+      "command": 346,
+      "nameText": "store_toCfg",
+      "attribute_simp_tokens": [
+        {
+          "start": 98362,
+          "end": 98366
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 2319,
+        "offset": 98360
+      },
+      "declaration_end": {
+        "col": 5,
+        "line": 2321,
+        "offset": 98465
+      }
+    },
+    {
+      "command": 397,
+      "nameText": "setReg_same",
+      "attribute_simp_tokens": [
+        {
+          "start": 110869,
+          "end": 110873
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 2610,
+        "offset": 110867
+      },
+      "declaration_end": {
+        "col": 37,
+        "line": 2612,
+        "offset": 111029
+      }
+    },
+    {
+      "command": 434,
+      "nameText": "setReg_self",
+      "attribute_simp_tokens": [
+        {
+          "start": 125333,
+          "end": 125337
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 2934,
+        "offset": 125331
+      },
+      "declaration_end": {
+        "col": 58,
+        "line": 2935,
+        "offset": 125451
+      }
+    },
+    {
+      "command": 435,
+      "nameText": "reg_set_same",
+      "attribute_simp_tokens": [
+        {
+          "start": 125455,
+          "end": 125459
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 2937,
+        "offset": 125453
+      },
+      "declaration_end": {
+        "col": 58,
+        "line": 2938,
+        "offset": 125584
+      }
+    },
+    {
+      "command": 471,
+      "nameText": "moved_reg",
+      "attribute_simp_tokens": [
+        {
+          "start": 140392,
+          "end": 140396
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 3271,
+        "offset": 140390
+      },
+      "declaration_end": {
+        "col": 36,
+        "line": 3272,
+        "offset": 140497
+      }
+    },
+    {
+      "command": 472,
+      "nameText": "moved_head",
+      "attribute_simp_tokens": [
+        {
+          "start": 140501,
+          "end": 140505
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 3274,
+        "offset": 140499
+      },
+      "declaration_end": {
+        "col": 106,
+        "line": 3275,
+        "offset": 140677
+      }
+    },
+    {
+      "command": 692,
+      "nameText": "Layout.reg_eq",
+      "attribute_simp_tokens": [
+        {
+          "start": 234819,
+          "end": 234823
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 5321,
+        "offset": 234817
+      },
+      "declaration_end": {
+        "col": 55,
+        "line": 5322,
+        "offset": 234935
+      }
+    },
+    {
+      "command": 821,
+      "nameText": "mem_activeLayers",
+      "attribute_simp_tokens": [
+        {
+          "start": 285828,
+          "end": 285832
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 6406,
+        "offset": 285826
+      },
+      "declaration_end": {
+        "col": 21,
+        "line": 6409,
+        "offset": 286045
+      }
+    },
+    {
+      "command": 822,
+      "nameText": "mem_activePointSet",
+      "attribute_simp_tokens": [
+        {
+          "start": 286049,
+          "end": 286053
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 6411,
+        "offset": 286047
+      },
+      "declaration_end": {
+        "col": 23,
+        "line": 6414,
+        "offset": 286263
+      }
+    },
+    {
+      "command": 834,
+      "nameText": "mem_layeredNeighbors",
+      "attribute_simp_tokens": [
+        {
+          "start": 289000,
+          "end": 289004
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 6480,
+        "offset": 288998
+      },
+      "declaration_end": {
+        "col": 29,
+        "line": 6492,
+        "offset": 289491
+      }
+    },
+    {
+      "command": 835,
+      "nameText": "mem_collisionLayers",
+      "attribute_simp_tokens": [
+        {
+          "start": 289495,
+          "end": 289499
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 6494,
+        "offset": 289493
+      },
+      "declaration_end": {
+        "col": 24,
+        "line": 6498,
+        "offset": 289738
+      }
+    },
+    {
+      "command": 836,
+      "nameText": "layeredNeighbors_empty",
+      "attribute_simp_tokens": [
+        {
+          "start": 289742,
+          "end": 289746
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 6500,
+        "offset": 289740
+      },
+      "declaration_end": {
+        "col": 6,
+        "line": 6504,
+        "offset": 289894
+      }
+    },
+    {
+      "command": 843,
+      "nameText": "mem_preliminaryActivePairs",
+      "attribute_simp_tokens": [
+        {
+          "start": 295446,
+          "end": 295450
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 6624,
+        "offset": 295444
+      },
+      "declaration_end": {
+        "col": 31,
+        "line": 6630,
+        "offset": 295849
+      }
+    },
+    {
+      "command": 939,
+      "nameText": "reducedMonomialExponent_apply",
+      "attribute_simp_tokens": [
+        {
+          "start": 332438,
+          "end": 332442
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 7435,
+        "offset": 332436
+      },
+      "declaration_end": {
+        "col": 54,
+        "line": 7437,
+        "offset": 332612
+      }
+    },
+    {
+      "command": 1103,
+      "nameText": "uniformMean_const",
+      "attribute_simp_tokens": [
+        {
+          "start": 391465,
+          "end": 391469
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 8706,
+        "offset": 391463
+      },
+      "declaration_end": {
+        "col": 42,
+        "line": 8707,
+        "offset": 391591
+      }
+    },
+    {
+      "command": 1270,
+      "nameText": "tapeData_setReg",
+      "attribute_simp_tokens": [
+        {
+          "start": 451112,
+          "end": 451116
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 10051,
+        "offset": 451110
+      },
+      "declaration_end": {
+        "col": 47,
+        "line": 10052,
+        "offset": 451233
+      }
+    },
+    {
+      "command": 1728,
+      "nameText": "toMatrix_ofMatrix",
+      "attribute_simp_tokens": [
+        {
+          "start": 690094,
+          "end": 690098
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 14810,
+        "offset": 690058
+      },
+      "declaration_end": {
+        "col": 27,
+        "line": 14814,
+        "offset": 690244
+      }
+    },
+    {
+      "command": 1730,
+      "nameText": "length_cells",
+      "attribute_simp_tokens": [
+        {
+          "start": 690441,
+          "end": 690445
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 14820,
+        "offset": 690439
+      },
+      "declaration_end": {
+        "col": 57,
+        "line": 14821,
+        "offset": 690570
+      }
+    },
+    {
+      "command": 1731,
+      "nameText": "mem_cells",
+      "attribute_simp_tokens": [
+        {
+          "start": 690574,
+          "end": 690578
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 14823,
+        "offset": 690572
+      },
+      "declaration_end": {
+        "col": 14,
+        "line": 14824,
+        "offset": 690669
+      }
+    },
+    {
+      "command": 1744,
+      "nameText": "Work.total_add",
+      "attribute_simp_tokens": [
+        {
+          "start": 694170,
+          "end": 694174
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 14921,
+        "offset": 694168
+      },
+      "declaration_end": {
+        "col": 36,
+        "line": 14923,
+        "offset": 694296
+      }
+    },
+    {
+      "command": 1765,
+      "nameText": "pivotEquiv_inl",
+      "attribute_simp_tokens": [
+        {
+          "start": 700145,
+          "end": 700149
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 15083,
+        "offset": 700143
+      },
+      "declaration_end": {
+        "col": 19,
+        "line": 15085,
+        "offset": 700276
+      }
+    },
+    {
+      "command": 1766,
+      "nameText": "pivotEquiv_inr",
+      "attribute_simp_tokens": [
+        {
+          "start": 700280,
+          "end": 700284
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 15087,
+        "offset": 700278
+      },
+      "declaration_end": {
+        "col": 19,
+        "line": 15089,
+        "offset": 700419
+      }
+    },
+    {
+      "command": 1780,
+      "nameText": "toMatrix_mapTable",
+      "attribute_simp_tokens": [
+        {
+          "start": 704218,
+          "end": 704222
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 15197,
+        "offset": 704216
+      },
+      "declaration_end": {
+        "col": 37,
+        "line": 15200,
+        "offset": 704439
+      }
+    },
+    {
+      "command": 1810,
+      "nameText": "fullEvaluationMatrix_good",
+      "attribute_simp_tokens": [
+        {
+          "start": 709922,
+          "end": 709926
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 15356,
+        "offset": 709920
+      },
+      "declaration_end": {
+        "col": 66,
+        "line": 15360,
+        "offset": 710219
+      }
+    },
+    {
+      "command": 1835,
+      "nameText": "power_cost",
+      "attribute_simp_tokens": [
+        {
+          "start": 716995,
+          "end": 716999
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 15523,
+        "offset": 716993
+      },
+      "declaration_end": {
+        "col": 33,
+        "line": 15527,
+        "offset": 717159
+      }
+    },
+    {
+      "command": 1858,
+      "nameText": "encodedExponentOrder_val",
+      "attribute_simp_tokens": [
+        {
+          "start": 723050,
+          "end": 723054
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 15680,
+        "offset": 723048
+      },
+      "declaration_end": {
+        "col": 80,
+        "line": 15682,
+        "offset": 723243
+      }
+    },
+    {
+      "command": 2026,
+      "nameText": "low_val",
+      "attribute_simp_tokens": [
+        {
+          "start": 799237,
+          "end": 799241
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 17119,
+        "offset": 799235
+      },
+      "declaration_end": {
+        "col": 77,
+        "line": 17119,
+        "offset": 799314
+      }
+    },
+    {
+      "command": 2027,
+      "nameText": "point_val",
+      "attribute_simp_tokens": [
+        {
+          "start": 799317,
+          "end": 799321
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 17120,
+        "offset": 799315
+      },
+      "declaration_end": {
+        "col": 83,
+        "line": 17120,
+        "offset": 799400
+      }
+    },
+    {
+      "command": 2028,
+      "nameText": "countdown_val",
+      "attribute_simp_tokens": [
+        {
+          "start": 799403,
+          "end": 799407
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 17121,
+        "offset": 799401
+      },
+      "declaration_end": {
+        "col": 93,
+        "line": 17121,
+        "offset": 799496
+      }
+    },
+    {
+      "command": 2029,
+      "nameText": "coefficient_val",
+      "attribute_simp_tokens": [
+        {
+          "start": 799499,
+          "end": 799503
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 17122,
+        "offset": 799497
+      },
+      "declaration_end": {
+        "col": 99,
+        "line": 17122,
+        "offset": 799598
+      }
+    },
+    {
+      "command": 2030,
+      "nameText": "neighbor_val",
+      "attribute_simp_tokens": [
+        {
+          "start": 799601,
+          "end": 799605
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 17123,
+        "offset": 799599
+      },
+      "declaration_end": {
+        "col": 93,
+        "line": 17123,
+        "offset": 799694
+      }
+    },
+    {
+      "command": 2077,
+      "nameText": "pointPairs_length",
+      "attribute_simp_tokens": [
+        {
+          "start": 811631,
+          "end": 811635
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 17426,
+        "offset": 811629
+      },
+      "declaration_end": {
+        "col": 95,
+        "line": 17426,
+        "offset": 811726
+      }
+    },
+    {
+      "command": 2669,
+      "nameText": "low_eq_iff",
+      "attribute_simp_tokens": [
+        {
+          "start": 1069093,
+          "end": 1069097
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 22377,
+        "offset": 1069091
+      },
+      "declaration_end": {
+        "col": 26,
+        "line": 22381,
+        "offset": 1069296
+      }
+    },
+    {
+      "command": 2736,
+      "nameText": "searchLoop_tail",
+      "attribute_simp_tokens": [
+        {
+          "start": 1096291,
+          "end": 1096295
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 22921,
+        "offset": 1096289
+      },
+      "declaration_end": {
+        "col": 56,
+        "line": 22929,
+        "offset": 1096867
+      }
+    },
+    {
+      "command": 2802,
+      "nameText": "paddedSchur_apply",
+      "attribute_simp_tokens": [
+        {
+          "start": 1152366,
+          "end": 1152370
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 24017,
+        "offset": 1152364
+      },
+      "declaration_end": {
+        "col": 58,
+        "line": 24022,
+        "offset": 1152806
+      }
+    },
+    {
+      "command": 2814,
+      "nameText": "tuple_zero",
+      "attribute_simp_tokens": [
+        {
+          "start": 1156186,
+          "end": 1156190
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 24089,
+        "offset": 1156184
+      },
+      "declaration_end": {
+        "col": 63,
+        "line": 24089,
+        "offset": 1156249
+      }
+    },
+    {
+      "command": 2815,
+      "nameText": "tuple_one",
+      "attribute_simp_tokens": [
+        {
+          "start": 1156252,
+          "end": 1156256
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 24090,
+        "offset": 1156250
+      },
+      "declaration_end": {
+        "col": 62,
+        "line": 24090,
+        "offset": 1156314
+      }
+    },
+    {
+      "command": 2816,
+      "nameText": "tuple_two",
+      "attribute_simp_tokens": [
+        {
+          "start": 1156317,
+          "end": 1156321
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 24091,
+        "offset": 1156315
+      },
+      "declaration_end": {
+        "col": 62,
+        "line": 24091,
+        "offset": 1156379
+      }
+    },
+    {
+      "command": 2838,
+      "nameText": "pointPrefix_zero",
+      "attribute_simp_tokens": [
+        {
+          "start": 1175348,
+          "end": 1175352
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 24470,
+        "offset": 1175346
+      },
+      "declaration_end": {
+        "col": 66,
+        "line": 24472,
+        "offset": 1175542
+      }
+    },
+    {
+      "command": 2840,
+      "nameText": "pointPrefix_full",
+      "attribute_simp_tokens": [
+        {
+          "start": 1176584,
+          "end": 1176588
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 24491,
+        "offset": 1176582
+      },
+      "declaration_end": {
+        "col": 39,
+        "line": 24496,
+        "offset": 1176917
+      }
+    },
+    {
+      "command": 2967,
+      "nameText": "addressStore_D",
+      "attribute_simp_tokens": [
+        {
+          "start": 1264670,
+          "end": 1264674
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 26159,
+        "offset": 1264668
+      },
+      "declaration_end": {
+        "col": 46,
+        "line": 26160,
+        "offset": 1264808
+      }
+    },
+    {
+      "command": 2968,
+      "nameText": "addressStore_C",
+      "attribute_simp_tokens": [
+        {
+          "start": 1264811,
+          "end": 1264815
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 26161,
+        "offset": 1264809
+      },
+      "declaration_end": {
+        "col": 46,
+        "line": 26162,
+        "offset": 1264950
+      }
+    },
+    {
+      "command": 2969,
+      "nameText": "addressStore_B",
+      "attribute_simp_tokens": [
+        {
+          "start": 1264953,
+          "end": 1264957
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 26163,
+        "offset": 1264951
+      },
+      "declaration_end": {
+        "col": 46,
+        "line": 26164,
+        "offset": 1265092
+      }
+    },
+    {
+      "command": 2970,
+      "nameText": "addressStore_target",
+      "attribute_simp_tokens": [
+        {
+          "start": 1265095,
+          "end": 1265099
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 26165,
+        "offset": 1265093
+      },
+      "declaration_end": {
+        "col": 46,
+        "line": 26166,
+        "offset": 1265230
+      }
+    },
+    {
+      "command": 3075,
+      "nameText": "step_done",
+      "attribute_simp_tokens": [
+        {
+          "start": 1329126,
+          "end": 1329130
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 27403,
+        "offset": 1329124
+      },
+      "declaration_end": {
+        "col": 37,
+        "line": 27404,
+        "offset": 1329253
+      }
+    },
+    {
+      "command": 3100,
+      "nameText": "branchZero_code_zero",
+      "attribute_simp_tokens": [
+        {
+          "start": 1334250,
+          "end": 1334254
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 27530,
+        "offset": 1334248
+      },
+      "declaration_end": {
+        "col": 51,
+        "line": 27532,
+        "offset": 1334495
+      }
+    },
+    {
+      "command": 3101,
+      "nameText": "branchZero_code_positive",
+      "attribute_simp_tokens": [
+        {
+          "start": 1334499,
+          "end": 1334503
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 27534,
+        "offset": 1334497
+      },
+      "declaration_end": {
+        "col": 78,
+        "line": 27536,
+        "offset": 1334783
+      }
+    },
+    {
+      "command": 3102,
+      "nameText": "branchZero_code_header",
+      "attribute_simp_tokens": [
+        {
+          "start": 1334787,
+          "end": 1334791
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 27538,
+        "offset": 1334785
+      },
+      "declaration_end": {
+        "col": 54,
+        "line": 27542,
+        "offset": 1335121
+      }
+    },
+    {
+      "command": 3112,
+      "nameText": "inputBuffer_not",
+      "attribute_simp_tokens": [
+        {
+          "start": 1337757,
+          "end": 1337761
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 27599,
+        "offset": 1337755
+      },
+      "declaration_end": {
+        "col": 100,
+        "line": 27599,
+        "offset": 1337855
+      }
+    },
+    {
+      "command": 3113,
+      "nameText": "outputBuffer_not",
+      "attribute_simp_tokens": [
+        {
+          "start": 1337858,
+          "end": 1337862
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 27600,
+        "offset": 1337856
+      },
+      "declaration_end": {
+        "col": 101,
+        "line": 27600,
+        "offset": 1337957
+      }
+    },
+    {
+      "command": 3365,
+      "nameText": "reverse_zero",
+      "attribute_simp_tokens": [
+        {
+          "start": 1426082,
+          "end": 1426086
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 29419,
+        "offset": 1426080
+      },
+      "declaration_end": {
+        "col": 89,
+        "line": 29419,
+        "offset": 1426171
+      }
+    },
+    {
+      "command": 3366,
+      "nameText": "reverse_one",
+      "attribute_simp_tokens": [
+        {
+          "start": 1426174,
+          "end": 1426178
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 29420,
+        "offset": 1426172
+      },
+      "declaration_end": {
+        "col": 88,
+        "line": 29420,
+        "offset": 1426262
+      }
+    },
+    {
+      "command": 3367,
+      "nameText": "reverse_two",
+      "attribute_simp_tokens": [
+        {
+          "start": 1426265,
+          "end": 1426269
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 29421,
+        "offset": 1426263
+      },
+      "declaration_end": {
+        "col": 110,
+        "line": 29421,
+        "offset": 1426375
+      }
+    },
+    {
+      "command": 3368,
+      "nameText": "reverse_three",
+      "attribute_simp_tokens": [
+        {
+          "start": 1426378,
+          "end": 1426382
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 29422,
+        "offset": 1426376
+      },
+      "declaration_end": {
+        "col": 112,
+        "line": 29422,
+        "offset": 1426490
+      }
+    },
+    {
+      "command": 3369,
+      "nameText": "reverse_four",
+      "attribute_simp_tokens": [
+        {
+          "start": 1426493,
+          "end": 1426497
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 29423,
+        "offset": 1426491
+      },
+      "declaration_end": {
+        "col": 111,
+        "line": 29423,
+        "offset": 1426604
+      }
+    },
+    {
+      "command": 3370,
+      "nameText": "reverse_five",
+      "attribute_simp_tokens": [
+        {
+          "start": 1426607,
+          "end": 1426611
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 29424,
+        "offset": 1426605
+      },
+      "declaration_end": {
+        "col": 111,
+        "line": 29424,
+        "offset": 1426718
+      }
+    },
+    {
+      "command": 3482,
+      "nameText": "prefix_zero",
+      "attribute_simp_tokens": [
+        {
+          "start": 1464266,
+          "end": 1464270
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 30233,
+        "offset": 1464264
+      },
+      "declaration_end": {
+        "col": 19,
+        "line": 30236,
+        "offset": 1464481
+      }
+    },
+    {
+      "command": 3823,
+      "nameText": "mem_supportPoints",
+      "attribute_simp_tokens": [
+        {
+          "start": 1612480,
+          "end": 1612484
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 33213,
+        "offset": 1612478
+      },
+      "declaration_end": {
+        "col": 64,
+        "line": 33221,
+        "offset": 1612941
+      }
+    },
+    {
+      "command": 3824,
+      "nameText": "card_supportPoints",
+      "attribute_simp_tokens": [
+        {
+          "start": 1612945,
+          "end": 1612949
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 33223,
+        "offset": 1612943
+      },
+      "declaration_end": {
+        "col": 6,
+        "line": 33230,
+        "offset": 1613207
+      }
+    },
+    {
+      "command": 3848,
+      "nameText": "boolWordEquiv_apply",
+      "attribute_simp_tokens": [
+        {
+          "start": 1621174,
+          "end": 1621178
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 33408,
+        "offset": 1621172
+      },
+      "declaration_end": {
+        "col": 41,
+        "line": 33409,
+        "offset": 1621282
+      }
+    },
+    {
+      "command": 3900,
+      "nameText": "mem_codeReindex",
+      "attribute_simp_tokens": [
+        {
+          "start": 1639486,
+          "end": 1639490
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 33872,
+        "offset": 1639484
+      },
+      "declaration_end": {
+        "col": 32,
+        "line": 33881,
+        "offset": 1639864
+      }
+    },
+    {
+      "command": 3901,
+      "nameText": "finrank_codeReindex",
+      "attribute_simp_tokens": [
+        {
+          "start": 1639868,
+          "end": 1639872
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 33883,
+        "offset": 1639866
+      },
+      "declaration_end": {
+        "col": 53,
+        "line": 33886,
+        "offset": 1640092
+      }
+    },
+    {
+      "command": 3937,
+      "nameText": "mem_ambiguity",
+      "attribute_simp_tokens": [
+        {
+          "start": 1652679,
+          "end": 1652683
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 34194,
+        "offset": 1652677
+      },
+      "declaration_end": {
+        "col": 59,
+        "line": 34195,
+        "offset": 1652834
+      }
+    },
+    {
+      "command": 3940,
+      "nameText": "ambiguity_empty",
+      "attribute_simp_tokens": [
+        {
+          "start": 1653140,
+          "end": 1653144
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 34205,
+        "offset": 1653138
+      },
+      "declaration_end": {
+        "col": 16,
+        "line": 34210,
+        "offset": 1653344
+      }
+    },
+    {
+      "command": 3941,
+      "nameText": "ambiguity_univ",
+      "attribute_simp_tokens": [
+        {
+          "start": 1653348,
+          "end": 1653352
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 34212,
+        "offset": 1653346
+      },
+      "declaration_end": {
+        "col": 6,
+        "line": 34215,
+        "offset": 1653456
+      }
+    },
+    {
+      "command": 3965,
+      "nameText": "expectationOn_const",
+      "attribute_simp_tokens": [
+        {
+          "start": 1661679,
+          "end": 1661683
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 34404,
+        "offset": 1661677
+      },
+      "declaration_end": {
+        "col": 6,
+        "line": 34409,
+        "offset": 1661885
+      }
+    },
+    {
+      "command": 3988,
+      "nameText": "expectation_const",
+      "attribute_simp_tokens": [
+        {
+          "start": 1672550,
+          "end": 1672554
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 34649,
+        "offset": 1672548
+      },
+      "declaration_end": {
+        "col": 64,
+        "line": 34651,
+        "offset": 1672720
+      }
+    },
+    {
+      "command": 4117,
+      "nameText": "fourier_empty",
+      "attribute_simp_tokens": [
+        {
+          "start": 1722003,
+          "end": 1722007
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 35758,
+        "offset": 1722001
+      },
+      "declaration_end": {
+        "col": 27,
+        "line": 35760,
+        "offset": 1722135
+      }
+    },
+    {
+      "command": 4261,
+      "nameText": "wordSupportEquiv_card",
+      "attribute_simp_tokens": [
+        {
+          "start": 1770307,
+          "end": 1770311
+        }
+      ],
+      "declaration_start": {
+        "col": 0,
+        "line": 36885,
+        "offset": 1770305
+      },
+      "declaration_end": {
+        "col": 6,
+        "line": 36890,
+        "offset": 1770474
+      }
+    }
+  ]
+}

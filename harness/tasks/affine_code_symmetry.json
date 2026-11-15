@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "owner": "affine_code_symmetry",
+  "file_ownership": [
+    "ExpandingCodes/Algebra/ReedMullerAffine.lean",
+    "ExpandingCodes/Algebra/CodeReindex.lean",
+    "ExpandingCodes/Probability/AuxiliaryErasure.lean",
+    "harness/attempts/affine_code_symmetry/",
+    "harness/tasks/affine_code_symmetry.json"
+  ],
+  "exact_goal": "Prove canonical auxiliaryCode doubly transitive after geometry.rowOrder coordinate reindexing, and deduce canonical half-erasure expectation/rowCount tends to zero from 0 < limitingRate d < 1/2 and exact rate convergence.",
+  "definition_integrity": "Canonical PolynomialTest, ErasureModel, Parameters unchanged; all new helpers are local rather than platform-canonical.",
+  "proof_route": [
+    "For positive exponent n reduce to 1+(n-1)%(q-1), preserving zero separately. Fermat's identity preserves evaluation and reduced exponent is \u2264n and <q.",
+    "Expand arbitrary polynomial into support monomials. Each reduced exponent vector is a canonical Monomials F d R index, so each evaluated term and their finite sum belongs canonical reedMuller.",
+    "For canonical generator compose with affine scalar forms and bound total degree by sum of generator exponents. Extend by Submodule.span_induction.",
+    "Extend a linear equivalence between spans of two nonzero difference vectors to a full linear automorphism, then translate to obtain affine pair transitivity.",
+    "Use exact coordinate linear equivalence c \u21a6 c\u2218rowOrder. Prove ambiguity reindex equality and finite erasure-expectation reindex identity, then apply canonical erasure_ambiguity to Fin(rowCount)."
+  ],
+  "open_theorem_bodies": [],
+  "status": "complete_exact_half_erasure_helper_proved_public_compile_and_transitive_audit_passed",
+  "failed_approaches": [
+    {
+      "approach": "Initial polynomial support sum proof by bare simp",
+      "result": "Needed explicit congrArg eval p.as_sum and Finset.sum_apply; fixed."
+    },
+    {
+      "approach": "simp rewrite of ambiguity_codeReindex beneath finrank",
+      "result": "simp does not rewrite the dependent type argument of finrank. Resolved by congrArg on Submodule-to-finrank then explicit Finset.sum_equiv and congr 2."
+    },
+    {
+      "approach": "simp normalize affine permutation to linear-add form",
+      "result": "Coercions from LinearEquiv.toLinearMap were not unfolded by targeted simp, and simp expanded T(b-a) before using hT. Resolved with explicit change and direct rw hT before simplification."
+    }
+  ],
+  "unresolved_dependencies": [],
+  "sources": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+    ".lake/packages/mathlib/Mathlib/LinearAlgebra/FiniteDimensional/Basic.lean:90",
+    ".lake/packages/mathlib/Mathlib/LinearAlgebra/Span/Basic.lean:888",
+    ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean:218",
+    "ExpandingCodes/Probability/ErasureCapacity.lean"
+  ],
+  "checked_commands": [
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/affine_code_symmetry/ReedMullerAffine.lean",
+      "exit_code": 0,
+      "scope": "Core exponent reduction, arbitrary bounded-degree polynomial membership, affine substitutions; before geometry fragment appended."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/affine_code_symmetry/CodeReindex.lean",
+      "exit_code": 0,
+      "scope": "All generic code transport, erasureExpectation identity, subgroup and double-transitivity transport."
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Algebra.CodeReindex ExpandingCodes.Algebra.ReedMullerAffine",
+      "exit_code": 0,
+      "scope": "Promoted generic reindex module and finite-algebra affine-substitution core."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/affine_code_symmetry/ReedMullerAffine.lean",
+      "exit_code": 0,
+      "scope": "Complete affine invariance and affine pair transitivity with no warnings or holes."
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Algebra.ReedMullerAffine",
+      "exit_code": 0,
+      "scope": "Complete promoted public affine-invariance and pair-transitivity module; Built in 5.9s."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/affine_code_symmetry/AuxiliaryErasure.lean",
+      "exit_code": 0,
+      "scope": "Exact canonical half-erasure assembly draft; first attempt passed."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false -o .lake/build/lib/lean/ExpandingCodes/Probability/AuxiliaryErasure.olean ExpandingCodes/Probability/AuxiliaryErasure.lean",
+      "exit_code": 0,
+      "scope": "Promoted public source compiled with current imports, per coordinator authorization; Lake trace refresh delegated to central final build."
+    },
+    {
+      "command": "./tools/lake-serial env lean -DautoImplicit=false harness/attempts/affine_code_symmetry/PublicAudit.lean",
+      "exit_code": 0,
+      "scope": "All eight principal helpers transitive-axiom audited; exact final half-erasure signature example checked."
+    }
+  ],
+  "useful_supporting_declarations": {
+    "ExpandingCodes.PolynomialStretch.eval_mem_reedMuller": "Any finite-field MvPolynomial of totalDegree \u2264R evaluates into the exact canonical reedMuller F d R, including unreduced individual exponents.",
+    "ExpandingCodes.PolynomialStretch.reedMuller_comp_affine_mem": "Every coordinatewise affine substitution preserves the exact canonical Reed-Muller code.",
+    "ExpandingCodes.PolynomialStretch.erasureExpectation_codeReindex": "Exact finite Bernoulli erasure expectation is invariant under arbitrary coordinate equivalence.",
+    "ExpandingCodes.PolynomialStretch.codeReindex_doublyTransitive": "Any code-preserving pair-transitive permutation subgroup on an arbitrary coordinate type transports to canonical DoublyTransitiveCode on Fin M."
+  },
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_audit": {
+    "file": "harness/attempts/affine_code_symmetry/PublicAudit.lean",
+    "log": "harness/attempts/affine_code_symmetry/axiom-audit.log",
+    "declarations": [
+      "ExpandingCodes.PolynomialStretch.pow_reducedPower",
+      "ExpandingCodes.PolynomialStretch.eval_mem_reedMuller",
+      "ExpandingCodes.PolynomialStretch.reedMuller_comp_affine_mem",
+      "ExpandingCodes.PolynomialStretch.erasureExpectation_codeReindex",
+      "ExpandingCodes.PolynomialStretch.codeReindex_doublyTransitive",
+      "ExpandingCodes.PolynomialStretch.reedMuller_pair_transitive",
+      "ExpandingCodes.PolynomialStretch.doublyTransitive_reindexed_auxiliaryCode",
+      "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_halfErasure"
+    ],
+    "all_transitive_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden_axioms": [],
+    "exact_signature_examples_checked": 1,
+    "output": "'ExpandingCodes.PolynomialStretch.pow_reducedPower' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.eval_mem_reedMuller' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.reedMuller_comp_affine_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.erasureExpectation_codeReindex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeReindex_doublyTransitive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.reedMuller_pair_transitive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.doublyTransitive_reindexed_auxiliaryCode' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_halfErasure' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n"
+  },
+  "public_source_sha256": {
+    "ExpandingCodes/Algebra/ReedMullerAffine.lean": "b65fc68449945226a7167e35ce4428027cc62fa9efd88c84c06e979c3a4a7304",
+    "ExpandingCodes/Algebra/CodeReindex.lean": "1bd4747ff76fcb66c775ac21b6be115d31cb7e3932e31a2c346b0fe95dfaba20",
+    "ExpandingCodes/Probability/AuxiliaryErasure.lean": "9397e269c2d14ad18241a523a298db6ac5fe7ef285753cc3c1d84218949dbd9f"
+  },
+  "worker_result": {
+    "status": "proved_no_holes_and_allowed_axioms_only",
+    "open_theorem_bodies": [],
+    "unresolved_dependencies": [],
+    "canonical_definitions_unchanged": true,
+    "theorem_or_ancestor_imports": [],
+    "central_integration_pending": "Root full Lake trace refresh for AuxiliaryErasure and canonical auxiliary_rate build/audit. This is final independent verification, not an unresolved proof obligation.",
+    "next_integration": "Import ExpandingCodes.Probability.AuxiliaryErasure and apply tendsto_auxiliaryCode_halfErasure d hd h\u03c1 g. At d=dimension \u03b5, positivity follows by linarith from limitingRate_lower_parameter and \u03b5<1/2; strict upper bound comes from limitingRate_lt_half."
+  },
+  "nodes": [
+    {
+      "id": "auxiliary_half_erasure",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_halfErasure",
+      "file": "ExpandingCodes/Probability/AuxiliaryErasure.lean",
+      "statement": "\u2200 (d : \u2115) (hd : 4 \u2264 d) (h\u03c1 : 0 < ExpandingCodes.PolynomialStretch.limitingRate d \u2227 ExpandingCodes.PolynomialStretch.limitingRate d < 1 / 2) (g : \u2200 n, ExpandingCodes.PolynomialStretch.Geometry d n), Filter.Tendsto (fun n => ExpandingCodes.PolynomialStretch.erasureExpectation (ExpandingCodes.PolynomialStretch.auxiliaryCode (g n)) (1 / 2) / ExpandingCodes.PolynomialStretch.rowCount d n) Filter.atTop (nhds 0)",
+      "statement_sha256": "09b30016bfd56586e5807ffb82607c4d3a4aa3c2f4b986595b2631aa58c09136",
+      "status": "open",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "ExpandingCodes/Algebra/ReedMullerAffine.lean",
+        "ExpandingCodes/Algebra/CodeReindex.lean",
+        "ExpandingCodes/Probability/RateLimit.lean",
+        "ExpandingCodes/Probability/ErasureCapacity.lean"
+      ],
+      "sources": [
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        ".lake/packages/mathlib/Mathlib/LinearAlgebra/FiniteDimensional/Basic.lean:90",
+        ".lake/packages/mathlib/Mathlib/LinearAlgebra/Span/Basic.lean:888",
+        ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean:218",
+        "ExpandingCodes/Probability/ErasureCapacity.lean"
+      ],
+      "proof_route": "For positive exponent n reduce to 1+(n-1)%(q-1), preserving zero separately. Fermat's identity preserves evaluation and reduced exponent is \u2264n and <q. Expand arbitrary polynomial into support monomials. Each reduced exponent vector is a canonical Monomials F d R index, so each evaluated term and their finite sum belongs canonical reedMuller. For canonical generator compose with affine scalar forms and bound total degree by sum of generator exponents. Extend by Submodule.span_induction. Extend a linear equivalence between spans of two nonzero difference vectors to a full linear automorphism, then translate to obtain affine pair transitivity. Use exact coordinate linear equivalence c \u21a6 c\u2218rowOrder. Prove ambiguity reindex equality and finite erasure-expectation reindex identity, then apply canonical erasure_ambiguity to Fin(rowCount). Apply the already proved exact erasure_ambiguity to the reindexed auxiliary code, rowCount length growth, and tendsto_auxiliaryCode_rate; transfer erasureExpectation back along rowOrder.",
+      "failed_attempts": [
+        {
+          "approach": "Initial polynomial support sum proof by bare simp",
+          "result": "Needed explicit congrArg eval p.as_sum and Finset.sum_apply; fixed."
+        },
+        {
+          "approach": "simp rewrite of ambiguity_codeReindex beneath finrank",
+          "result": "simp does not rewrite the dependent type argument of finrank. Resolved by congrArg on Submodule-to-finrank then explicit Finset.sum_equiv and congr 2."
+        },
+        {
+          "approach": "simp normalize affine permutation to linear-add form",
+          "result": "Coercions from LinearEquiv.toLinearMap were not unfolded by targeted simp, and simp expanded T(b-a) before using hT. Resolved with explicit change and direct rw hT before simplification."
+        }
+      ],
+      "owner": "affine_code_symmetry",
+      "interface": "provisional",
+      "review": {
+        "reviewer": "affine_code_symmetry self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Complete theorem over exact immutable canonical code and expectation definitions, without any symmetry or erasure-conclusion premise. Direct draft and public-source compiles passed; eight helper/final declarations audited with only allowed axioms. Administrative open status is for coordinator registration/independent receipt, and there is no open Lean theorem body."
+      }
+    }
+  ]
+}

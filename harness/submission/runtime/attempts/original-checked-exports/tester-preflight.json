@@ -1,0 +1,14 @@
+{
+  "kind": "tester",
+  "source": "harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean",
+  "bytes": 884899,
+  "sha256": "f8f15d52a5369813ae32df8d62d7293d71e487c369982f3167d0541429051230",
+  "exact_original_type_equal": true,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "compile_result": "tester-compile-result.json",
+  "audit_result": "tester-audit-result.json"
+}

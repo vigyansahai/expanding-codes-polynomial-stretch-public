@@ -1,0 +1,26 @@
+{
+  "compile_result": {
+    "exit_code": 0,
+    "elapsed_seconds": 19.574823584,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "harness/submission/partition/StatementTypeAudit.lean"
+    ]
+  },
+  "audit_source_sha256": "3d70fbfa4e9328f4636faedaeb04c5d0e6858b18c2e0f6346d2d7d87b9ce0ba1",
+  "formal_statement_sha256": {
+    "ExpandingCodes.Computation.TapeCompiler.compile_halts": "0c60f4e50872d426aa1dda02de1306f229562a4bf560d9f24cf997b766639e9e",
+    "ExpandingCodes.Computation.SourceFieldSetup.setup_stops": "e4d955eba9d0d1c6a55036cf64ee410cf97783887b43b56f3c5b18ef1df7f49d",
+    "ExpandingCodes.Computation.SourceFieldArithmetic.multiply_stops": "45874140702a1547c98f9fe423022afbbef16ca7023b29bb06b6a6bafd534cc9",
+    "ExpandingCodes.Computation.SourceFieldArithmetic.addition_stops": "57dd547fa0a29c3f98f03896dfbf6b6c4e2ffed664c723e32e9e13fbf906c17e",
+    "ExpandingCodes.Computation.SourceFieldArithmetic.inverse_stops": "06ceeeaa63b24a375d20a9da2ad00d8f5af094a6767b099a659db069a10f76e6",
+    "ExpandingCodes.Computation.SamplerProgram.layer_stops": "d980b0ea9e2c0a496f1b3450ff4bb342eb8219a49b85974ecaa30cc097dec16f",
+    "ExpandingCodes.Computation.SamplerAssembly.prelude_stops": "e849a31ff130e2a6364af82380199fbf7c7cf68d4a1f2297bc0ac7301c6171ca",
+    "ExpandingCodes.Computation.TesterFrontend.program_stops": "4da179e70bcb9063d0cd2dc5ef2c1e5ebaac2757c1745cd3899c41d90be0eace",
+    "ExpandingCodes.Computation.TesterGram.program_stops": "0808a3c9560bc7dbf461930ce3eb9d3e8950e4ad23ad5c868c20d57608db2425",
+    "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical": "6541e26efb44841c0dd34d8ce1d23f8db826455fcfe2ee99664ca12989c19512"
+  },
+  "note": "All formal statements occur verbatim in the passing exact-type metadata-only audit source; no formal statement edits after check."
+}

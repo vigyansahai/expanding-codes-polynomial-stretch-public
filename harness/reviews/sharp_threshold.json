@@ -1,0 +1,58 @@
+{
+  "reviewer": "sharp_threshold worker self-assessment; independent coordinator review pending",
+  "canonical_statement_preserved": true,
+  "completion_claim": false,
+  "uniformity_audit": [
+    "The noise radius is selected by two_point_uniform from a,b only.",
+    "uniform_cross_bound quantifies J/event/symmetry after radius, so dimensions and groups vary arbitrarily.",
+    "No alphabet or field appears in any Boolean lemma.",
+    "All probability intervals satisfy 0<a<b<1; the separate p=0 endpoint is handled by elementary erasure identities."
+  ],
+  "integrity_audit": [
+    "All definitions have complete values, with no holes.",
+    "Exactly six named theorem bodies contain sorry, each registered with an explicit full statement and proof route.",
+    "The finite reduction depends transitively on sorryAx and is not a completed proof.",
+    "The cutoff algebra and zero-one probability lemmas can be audited independently without sorryAx."
+  ],
+  "source_and_scope": "Theorem 19 of supplied erasure-capacity text motivates sharpness. The weaker fixed-cutoff proof is explicitly derived here, not represented as a formalized source result.",
+  "obstruction": "A full proof requires scalar two-point contraction, tensorization and finite biased Fourier identities; these are genuine missing mathematical formalizations. No equivalently difficult capacity assertion is assumed.",
+  "build_audit": "Split full build passed (2654 jobs).",
+  "signature_audit": "All seven registered statements were checked against @declaration in Lean with autoImplicit=false.",
+  "axiom_audit": {
+    "hole_free_component_count": 13,
+    "hole_free_components": [
+      "indicator_nonneg",
+      "indicator_le_one",
+      "probability_mem_Icc",
+      "variance_indicator",
+      "gradient_indicator_nonneg",
+      "influence_nonneg",
+      "weighted_cutoff",
+      "weighted_low_degree",
+      "influence_moment_bound",
+      "cutoff_variance_bound",
+      "equal_influences_bound",
+      "differentiable_probability",
+      "gradient_indicator_values"
+    ],
+    "hole_free_transitive_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "reduction_declarations": [
+      "ExpandingCodes.SharpThreshold.noisy_gradient_bound",
+      "ExpandingCodes.SharpThreshold.variance_le_cutoff",
+      "ExpandingCodes.SharpThreshold.uniform_cross_bound",
+      "ExpandingCodes.SharpThreshold.cross_tendsto_zero"
+    ],
+    "reduction_transitive_axioms": [
+      "propext",
+      "sorryAx",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "interpretation": "The finite and asymptotic assemblies are checked reductions only. Six registered named leaf bodies remain open. No other forbidden axioms appeared."
+  },
+  "graph_audit": "Structural DAG validation passed: seven nodes, six separate leaf files importing only hole-free Basic; root assembly imports leaves. Coordinator independent reduction verification still pending."
+}

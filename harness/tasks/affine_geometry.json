@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "owner": "affine_geometry",
+  "owned_files": [
+    "ExpandingCodes/Construction/AffineGeometry.lean",
+    "ExpandingCodes/Construction/ActivePairs.lean",
+    "harness/attempts/affine_geometry/*.lean",
+    "harness/tasks/affine_geometry.json"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean"
+  ],
+  "interface": "local_support_over_exact_canonical_definitions",
+  "nodes": [
+    {
+      "id": "alpha_injective",
+      "declaration": "ExpandingCodes.PolynomialStretch.alpha_injective",
+      "statement": "∀ {d n k : ℕ} (g : Geometry d n), k ≤ fieldSize d n → Function.Injective (alpha g : Fin k → g.F)",
+      "status": "proved_and_audited",
+      "proof_route": "All Fin k values satisfy alpha branch condition. Apply injectivity of public field enumeration g.elements, then take underlying natural values.",
+      "dependencies": [],
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "fixedForm_layers_injective",
+      "declaration": "ExpandingCodes.PolynomialStretch.fixedForm_layers_injective",
+      "statement": "∀ {d n k : ℕ} (g : Geometry d n), k ≤ fieldSize d n → ∀ layers : Fin d ↪ Fin k, Function.Injective (fun z : Fin d → g.F => fun j : Fin d => fixedForm g (layers j) z)",
+      "status": "proved_and_audited",
+      "proof_route": "Distinct layers and alpha injectivity give distinct Vandermonde row parameters. Mathlib Matrix.det_vandermonde_ne_zero_iff and Matrix.mulVec_injective_of_det_ne_zero prove injectivity; fixedForm is definitionally this matrix-vector product.",
+      "dependencies": [
+        "alpha_injective"
+      ],
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "eq_of_fixedForm_eq",
+      "declaration": "ExpandingCodes.PolynomialStretch.eq_of_fixedForm_eq",
+      "statement": "∀ g hk layers {z z' : Fin d → g.F}, (∀ j, fixedForm g (layers j) z = fixedForm g (layers j) z') → z = z'",
+      "status": "proved_and_audited",
+      "proof_route": "Function extensionality then fixedForm_layers_injective.",
+      "dependencies": [
+        "fixedForm_layers_injective"
+      ],
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "exists_active_layers",
+      "declaration": "ExpandingCodes.PolynomialStretch.exists_active_layers",
+      "statement": "z ∈ activePointSet g A → ∃ layers : Fin d ↪ Fin k, ∀ j, (layers j, fixedForm g (layers j) z) ∈ A",
+      "status": "proved_and_audited",
+      "proof_route": "Fintype card Fin d equals d; Function.Embedding.exists_of_card_le_finset embeds d indices into activeLayers g A z.",
+      "dependencies": [],
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "activePointSet_card_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.activePointSet_card_le",
+      "statement": "∀ {d n k : ℕ} (g : Geometry d n), k ≤ fieldSize d n → ∀ A : Finset (Fin k × g.F), (activePointSet g A).card ≤ A.card ^ d",
+      "status": "proved_and_audited",
+      "proof_route": "Choose d distinct active layers per candidate z. Encode z by Fin d → A of the corresponding active pairs. Equal encodings give equal layer indices and fixedForm values, so Vandermonde uniqueness makes this encoding injective. Compare Fintype cards.",
+      "dependencies": [
+        "exists_active_layers",
+        "eq_of_fixedForm_eq"
+      ],
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "source": {
+    "path": "tmp/feasibility/paper.txt",
+    "lines": "640-699",
+    "role": "Lemma 2.6 deterministic Vandermonde and W_A counting step"
+  },
+  "worker_result": {
+    "status": "complete",
+    "open_theorem_bodies": [],
+    "checks": [
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/affine_geometry/AffineGeometry.lean",
+        "result": "pass"
+      },
+      {
+        "command": "./tools/lake-serial build ExpandingCodes.Construction.AffineGeometry",
+        "result": "pass"
+      },
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/affine_geometry/ActivePairs.lean",
+        "result": "pass"
+      },
+      {
+        "command": "./tools/lake-serial build ExpandingCodes.Construction.ActivePairs",
+        "result": "pass"
+      },
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/affine_geometry/Audit.lean",
+        "result": "pass; all 9 inspected declarations depend exactly on propext, Classical.choice, Quot.sound"
+      }
+    ],
+    "failed_attempts": [
+      {
+        "detail": "Initial alpha_injective final congrArg Fin.val inferred Fin k as the Fin.val domain, not Fin(fieldSize d n). Fixed explicit domain. No mathematical obstruction."
+      }
+    ],
+    "pending_compilation": [],
+    "unresolved_dependencies": [],
+    "promotion": "Both checked drafts promoted to public modules; both fresh public module builds passed; all public declarations audited.",
+    "axiom_audit": {
+      "file": "harness/attempts/affine_geometry/Audit.lean",
+      "declarations": [
+        "alpha_injective",
+        "fixedForm_layers_injective",
+        "eq_of_fixedForm_eq",
+        "activeLayers",
+        "activePointSet",
+        "mem_activeLayers",
+        "mem_activePointSet",
+        "exists_active_layers",
+        "activePointSet_card_le"
+      ],
+      "result": "Every listed declaration has transitive axioms exactly [propext, Classical.choice, Quot.sound]; no sorryAx or custom axioms."
+    }
+  }
+}

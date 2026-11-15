@@ -1,0 +1,28 @@
+harness/attempts/sampler_tables/SamplerTables.lean:21:2: error: No goals to be solved
+harness/attempts/sampler_tables/SamplerTables.lean:66:6: error: Type mismatch
+  (Equiv.curry (Fin (fieldSize d n)) (Fin (fieldSize d n) × Fin (fieldSize d n)) (Fin b)).symm.trans
+    ((g.elements.prodCongr (g.elements.prodCongr g.elements)).arrowCongr (Equiv.refl (Fin b)))
+has type
+  (Fin (fieldSize d n) → Fin (fieldSize d n) × Fin (fieldSize d n) → Fin b) ≃ (g.F × g.F × g.F → Fin b)
+but is expected to have type
+  (Fin (fieldSize d n) → Fin (fieldSize d n) → Fin (fieldSize d n) → Fin b) ≃ (g.F × g.F × g.F → Fin b)
+harness/attempts/sampler_tables/SamplerTables.lean:102:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+harness/attempts/sampler_tables/SamplerTables.lean:105:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  uniformProb fun ω => ?E ((coinsEquiv g k beta extra) ω)
+in the target expression
+  (uniformProb fun ω => (fun p => E p.1) ((coinsEquiv g k beta extra) ω)) = uniformProb E
+
+d n : ℕ
+g : Geometry d n
+k beta extra : ℕ
+E : Forms g.F d k × Hashes g.F k (2 ^ beta) → Prop
+this : Nonempty (Fin (2 ^ beta)) :=
+  Nonempty.intro ⟨0, pow_pos (Decidable.byContradiction fun a => uniform_decodeCoins._proof_1_1 a) beta⟩
+⊢ (uniformProb fun ω => (fun p => E p.1) ((coinsEquiv g k beta extra) ω)) = uniformProb E

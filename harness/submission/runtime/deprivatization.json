@@ -1,0 +1,116 @@
+[
+  {
+    "declaration": "_private.harness.submission.Upload.0.ExpandingCodes.Computation.Gaussian.prodSubmoduleEquiv",
+    "public_name": "ExpandingCodes.Computation.Gaussian.prodSubmoduleEquiv",
+    "private_token": {
+      "end": {
+        "col": 7,
+        "line": 15021,
+        "offset": 696972
+      },
+      "start": {
+        "col": 0,
+        "line": 15021,
+        "offset": 696965
+      }
+    },
+    "references": [
+      {
+        "original": {
+          "const": "_private.0.ExpandingCodes.Computation.Gaussian.prodSubmoduleEquiv",
+          "end": {
+            "col": 30,
+            "line": 17,
+            "offset": 428
+          },
+          "kind": "ref",
+          "start": {
+            "col": 12,
+            "line": 17,
+            "offset": 410
+          }
+        },
+        "upload_start": 696977,
+        "upload_end": 696995,
+        "rewrite_required": false
+      },
+      {
+        "original": {
+          "const": "_private.0.ExpandingCodes.Computation.Gaussian.prodSubmoduleEquiv",
+          "end": {
+            "col": 25,
+            "line": 47,
+            "offset": 1957
+          },
+          "kind": "ref",
+          "start": {
+            "col": 7,
+            "line": 47,
+            "offset": 1939
+          }
+        },
+        "upload_start": 698506,
+        "upload_end": 698524,
+        "rewrite_required": false
+      }
+    ],
+    "collision_in_original_graph": false
+  },
+  {
+    "declaration": "_private.harness.submission.Upload.0.ExpandingCodes.Computation.GaussianPivot.decidablePreserves",
+    "public_name": "ExpandingCodes.Computation.GaussianPivot.decidablePreserves",
+    "private_token": {
+      "end": {
+        "col": 7,
+        "line": 27014,
+        "offset": 1310292
+      },
+      "start": {
+        "col": 0,
+        "line": 27014,
+        "offset": 1310285
+      }
+    },
+    "references": [
+      {
+        "original": {
+          "const": "_private.0.ExpandingCodes.Computation.GaussianPivot.decidablePreserves",
+          "end": {
+            "col": 30,
+            "line": 74,
+            "offset": 3264
+          },
+          "kind": "ref",
+          "start": {
+            "col": 12,
+            "line": 74,
+            "offset": 3246
+          }
+        },
+        "upload_start": 1310297,
+        "upload_end": 1310315,
+        "rewrite_required": false
+      },
+      {
+        "original": {
+          "const": "_private.0.ExpandingCodes.Computation.GaussianPivot.decidablePreserves",
+          "end": {
+            "col": 22,
+            "line": 82,
+            "offset": 3683
+          },
+          "kind": "ref",
+          "start": {
+            "col": 4,
+            "line": 82,
+            "offset": 3665
+          }
+        },
+        "upload_start": 1310716,
+        "upload_end": 1310734,
+        "rewrite_required": false
+      }
+    ],
+    "collision_in_original_graph": false
+  }
+]

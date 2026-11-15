@@ -1,0 +1,10 @@
+'ExpandingCodes.Computation.ParameterPrograms.fixedPowerStore_fresh' depends on axioms: [propext]
+'ExpandingCodes.Computation.ParameterPrograms.fixedPowerStore_payload' depends on axioms: [propext]
+'ExpandingCodes.Computation.ParameterPrograms.ceilingPowerStore_fresh' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.ceilingPowerStore_payload' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.floorPowerStore_fresh' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.floorPowerStore_payload' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

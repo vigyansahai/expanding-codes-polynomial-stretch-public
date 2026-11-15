@@ -1,0 +1,62 @@
+{
+  "id": "polynomial_rank_detector",
+  "owner": "concentration",
+  "status": "checked_reduction",
+  "file_ownership": [
+    "ExpandingCodes/Probability/RankExpectation.lean",
+    "ExpandingCodes/Probability/Distinguishing.lean",
+    "harness/attempts/detector/*",
+    "harness/tasks/detector.json"
+  ],
+  "exact_goals": [
+    "Exact Bool\u2194Word uniform equivalence; exact expectation of supportPoints complement ambiguity equals canonical erasureExpectation at 1/2; mean Hamming weight=m/2.",
+    "Mean rank\u22652dim(auxiliaryCode)\u22122erasureExpectation(1/2)\u2212m/2.",
+    "For each arbitrary geometry family, eventually uniformProb(rankTest \u03b5=true)\u2264exp(\u2212\u03b5\u00b2*m/32), using only canonical registered auxiliary_rate as the rate/erasure dependency.",
+    "Classical uniformization over all public geometries, deterministic arbitrary-error acceptance, and biased Bernoulli acceptance with exp(\u2212\u03b5\u00b2*m/2)."
+  ],
+  "proof_route": "Build exact finite equivalences and normalized-sum identities, then average the checked algebraic rank bound. Canonical auxiliary_rate yields eventual rank mean\u2265(1/2\u22123\u03b5/8)m. Unit bounded differences with t=\u03b5*m/8 gives exponent \u03b5\u00b2*m/32. A bad-geometry choice family uniformizes the familywise statement. Biased acceptance reduces to a finite Bernoulli Hamming-weight upper tail. The biased branch is now fully implemented: apply Mathlib Hoeffding to the centered two-point Bernoulli measure with endpoints -p,1-p; reindex exact Word sums by support subsets; use Fintype.sum_pow_mul_eq_add_pow to compute the centered generating function; apply finite exponential Markov with s=4t/m; specialize t=\u03b5*m/2. No additional open primitive was introduced.",
+  "open_dependencies": [
+    "ExpandingCodes.PolynomialStretch.auxiliary_rate (existing canonical registered theorem; no redefinition)"
+  ],
+  "new_open_theorem_bodies": [],
+  "source_locations": [
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.lean",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_distinguishing.lean",
+    "ExpandingCodes/Algebra/RankBounds.lean",
+    "ExpandingCodes/Probability/BoundedDifferences.lean",
+    "ExpandingCodes/Probability/FiniteUniform.lean",
+    "ExpandingCodes/Probability/RankExpectation.lean:127 (exact finite mean rank bound)",
+    "ExpandingCodes/Probability/Distinguishing.lean:61 (familywise exact 1/32 bound)",
+    "ExpandingCodes/Probability/Distinguishing.lean:241 (finite Bernoulli upper tail)",
+    "ExpandingCodes/Probability/Distinguishing.lean:336 (exact full Proposition 2.5 assembly)",
+    "harness/attempts/detector/Audit.lean (exact signatures and transitive axiom dependencies)"
+  ],
+  "failed_approaches": [
+    "Finite sums and indicators require explicit extensional equality when computational and classical Decidable instances differ. Resolved by pointwise case splitting and rewriting exact finite-set equalities inside finrank. No model definition was changed.",
+    "A direct dependency import initially failed because canonical Theorems...auxiliary_rate had no .olean; built that unchanged explicitly registered open dependency.",
+    "Backward rewriting sum_bernoulliWord into numeral 1 rewrote every literal 1 in the weighted event; restricted the normalization rewrite to the leading constant with conv_lhs.",
+    "Broad simp normalized 1/2 into 2\u207b\u00b9 inside a tail if-condition before applying its hypothesis; direct if_neg/if_pos rewrites preserve the exact predicate."
+  ],
+  "verification": {
+    "RankExpectation": "PASS: direct serialized Lean exit 0, no diagnostics; public build ExpandingCodes.Probability.RankExpectation exit 0, target 5.2s, 8722 successful jobs.",
+    "Distinguishing": "PASS: final direct serialized Lean exit 0, no diagnostics. Public build ./tools/lake-serial build ExpandingCodes.Probability.Distinguishing exit 0; target 7.2s; 8726 jobs successful. Only warning is replayed existing canonical auxiliary_rate sorry.",
+    "axiom_audit": "PASS: ./tools/lake-serial env lean harness/attempts/detector/Audit.lean, exit 0. Exact mean-rank, familywise uniform, Bernoulli tail and full Proposition 2.5 signatures checked. uniformMean_ambiguity_support_compl, testMatrix_rank_mean_lower, rankTest_uniformProb_le_of_mean, bernoulli_two_point_mgf_le, bernoulli_weight_upper_tail, rankTest_accepts_arbitrary_errors and rankTest_bernoulli_acceptance use only [propext, Classical.choice, Quot.sound]. Familywise uniform and rankTest_distinguishing additionally contain sorryAx solely through the existing canonical auxiliary_rate dependency, itself audited.",
+    "new_sorry_or_custom_axioms": false
+  },
+  "declarations": [
+    "ExpandingCodes.PolynomialStretch.testMatrix_rank_mean_lower",
+    "ExpandingCodes.PolynomialStretch.rankTest_uniformProb_le_of_mean",
+    "ExpandingCodes.PolynomialStretch.eventual_rankTest_uniform_acceptance_family",
+    "ExpandingCodes.PolynomialStretch.eventual_rankTest_uniform_acceptance",
+    "ExpandingCodes.PolynomialStretch.rankTest_accepts_arbitrary_errors",
+    "ExpandingCodes.PolynomialStretch.bernoulli_two_point_mgf_le",
+    "ExpandingCodes.PolynomialStretch.bernoulli_subsets_mgf",
+    "ExpandingCodes.PolynomialStretch.bernoulli_weight_upper_tail",
+    "ExpandingCodes.PolynomialStretch.rankTest_bernoulli_acceptance",
+    "ExpandingCodes.PolynomialStretch.rankTest_distinguishing"
+  ],
+  "integration": {
+    "canonical_distinguishing": "Import ExpandingCodes.Probability.Distinguishing and close the exact canonical distinguishing body with rankTest_distinguishing \u03b5 h\u03b5. Do not mark the mission proof complete before auxiliary_rate is closed and a final fresh transitive audit removes sorryAx.",
+    "construction_uniform_rank": "Apply eventual_rankTest_uniform_acceptance_family \u03b8 h\u03b8 g, then compare exponentials using \u03b5/2<\u03b8, positivity, and \u03b8^2/32\u2265\u03b5^2/128."
+  }
+}

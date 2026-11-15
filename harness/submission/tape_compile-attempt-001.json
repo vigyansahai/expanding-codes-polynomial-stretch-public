@@ -1,0 +1,30 @@
+{
+  "created_at": 1794701840.0129962,
+  "theorem_id": "58ed3394-d35a-498e-b065-32da69ac7607",
+  "proof_path": "harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean",
+  "proof_sha256": "98a36a87915e6ae2b67153f3a4389619cb83164ef7e3876c8bd9aadc4e39e657",
+  "proof_bytes": 108571,
+  "phase": "submitted",
+  "proof_type": "prove",
+  "submitted_proof_archive": "harness/submission/submitted/tape_compile-attempt-001.lean",
+  "http_status": 200,
+  "response": {
+    "submission_id": "c181466d-860c-4142-b798-90f0a511b314",
+    "status": "PENDING",
+    "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+    "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+  },
+  "submission_id": "c181466d-860c-4142-b798-90f0a511b314",
+  "last_poll_at": 1794702140.1667452,
+  "last_http_status": 200,
+  "last_verdict": {
+    "id": "c181466d-860c-4142-b798-90f0a511b314",
+    "theorem_id": "58ed3394-d35a-498e-b065-32da69ac7607",
+    "user_id": "[REDACTED_ACCOUNT]",
+    "status": "ACCEPTED",
+    "error_message": "",
+    "file_path": "58ed3394-d35a-498e-b065-32da69ac7607/[REDACTED_ACCOUNT]/c181466d-860c-4142-b798-90f0a511b314.lean",
+    "created_at": "2026-11-15T00:17:20.512143+00:00",
+    "updated_at": "2026-11-15T00:18:48.323121+00:00"
+  }
+}

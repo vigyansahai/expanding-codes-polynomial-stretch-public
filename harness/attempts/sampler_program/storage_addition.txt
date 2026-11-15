@@ -1,0 +1,44 @@
+namespace Storage
+/-- Concrete finite sampler storage; dimensions and arity are static program
+parameters. All input-dependent quantities remain counter or buffer data. -/
+def registers (d k : ℕ) : ℕ := 80+4*d+k
+
+def low (d k : ℕ) (i : Fin 80) : Fin (registers d k) := ⟨i.val,by unfold registers; omega⟩
+def point (d k : ℕ) (j : Fin d) : Fin (registers d k) := ⟨80+j.val,by unfold registers; have := j.isLt; omega⟩
+def countdown (d k : ℕ) (j : Fin d) : Fin (registers d k) := ⟨80+d+j.val,by unfold registers; have := j.isLt; omega⟩
+def coefficient (d k : ℕ) (j : Fin d) : Fin (registers d k) := ⟨80+2*d+j.val,by unfold registers; have := j.isLt; omega⟩
+def neighbor (d k : ℕ) (i : Fin k) : Fin (registers d k) := ⟨80+4*d+i.val,by unfold registers; have := i.isLt; omega⟩
+
+def field (d k : ℕ) (i : Fin 31) : Fin (registers d k) := low d k ⟨i.val,by have := i.isLt; omega⟩
+def power (d k : ℕ) (i : Fin 32) : Fin (registers d k) := low d k ⟨i.val,by have := i.isLt; omega⟩
+def alpha (d k : ℕ) : Fin (registers d k) := low d k 69
+def address (d k : ℕ) : Fin (registers d k) := low d k 70
+def u (d k : ℕ) : Fin (registers d k) := low d k 71
+def v (d k : ℕ) : Fin (registers d k) := low d k 72
+def hashIndex (d k : ℕ) : Fin (registers d k) := low d k 73
+def bucket (d k : ℕ) : Fin (registers d k) := low d k 74
+
+def pointPairs (d k : ℕ) : List (Fin (registers d k) × Fin (registers d k)) :=
+  (List.finRange d).map (fun j => (point d k j,countdown d k j))
+
+theorem low_injective (d k : ℕ) : Function.Injective (low d k) := by
+  intro i j hij
+  have hh := congrArg Fin.val hij
+  exact Fin.ext hh
+
+theorem field_injective (d k : ℕ) : Function.Injective (field d k) := by
+  intro i j hij
+  have hh := congrArg Fin.val hij
+  exact Fin.ext hh
+
+theorem power_injective (d k : ℕ) : Function.Injective (power d k) := by
+  intro i j hij
+  have hh := congrArg Fin.val hij
+  exact Fin.ext hh
+
+@[simp] theorem low_val (d k : ℕ) (i : Fin 80) : (low d k i).val=i.val := rfl
+@[simp] theorem point_val (d k : ℕ) (j : Fin d) : (point d k j).val=80+j.val := rfl
+@[simp] theorem countdown_val (d k : ℕ) (j : Fin d) : (countdown d k j).val=80+d+j.val := rfl
+@[simp] theorem coefficient_val (d k : ℕ) (j : Fin d) : (coefficient d k j).val=80+2*d+j.val := rfl
+@[simp] theorem neighbor_val (d k : ℕ) (i : Fin k) : (neighbor d k i).val=80+4*d+i.val := rfl
+end Storage

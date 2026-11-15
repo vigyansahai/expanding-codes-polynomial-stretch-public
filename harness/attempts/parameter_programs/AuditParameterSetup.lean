@@ -1,0 +1,11 @@
+import ExpandingCodes.Computation.ParameterSetupBounds
+set_option autoImplicit false
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setupStore_values
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setup_stops
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setup_uniform_polynomial
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setupInput_unary
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setupStore_payload
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setupStore_fresh
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setup_running_counters_polynomial
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setupInput_compiled
+#print axioms ExpandingCodes.Computation.ParameterPrograms.setup_bounds_polynomial

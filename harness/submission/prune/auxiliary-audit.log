@@ -1,0 +1,121 @@
+harness/submission/prune/AuxiliaryRateAudit.lean:6:21: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+solution : ∀ (ε : Real),
+  And (@LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero)) ε)
+      (@LT.lt Real Real.instLT ε
+        (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+          (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+          (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯)))) →
+    ∀ (g : (n : Nat) → Geometry (dimension ε) n),
+      And
+        (@LE.le Real Real.instLE
+          (@HSub.hSub Real Real Real (@instHSub Real Real.instSub)
+            (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+              (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+              (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯)))
+            (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid)) ε
+              (@OfNat.ofNat Real (nat_lit 8) (@instOfNatAtLeastTwo Real (nat_lit 8) Real.instNatCast ⋯))))
+          (limitingRate (dimension ε)))
+        (And
+          (@LT.lt Real Real.instLT (limitingRate (dimension ε))
+            (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+              (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+              (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯))))
+          (And
+            (@Tendsto Nat Real
+              (fun n =>
+                @HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+                  (@Nat.cast Real Real.instNatCast
+                    (@Module.finrank (@Geometry.F (dimension ε) n (g n)) (↥(@auxiliaryCode (dimension ε) n (g n)))
+                      (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                        (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                          (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                            (@Geometry.field (dimension ε) n (g n)))))
+                      (@Submodule.addCommMonoid (@Geometry.F (dimension ε) n (g n))
+                        ((Fin (dimension ε) → @Geometry.F (dimension ε) n (g n)) → @Geometry.F (dimension ε) n (g n))
+                        (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                          (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                            (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                              (@Geometry.field (dimension ε) n (g n)))))
+                        (@Pi.addCommMonoid (Fin (dimension ε) → @Geometry.F (dimension ε) n (g n))
+                          (fun a => @Geometry.F (dimension ε) n (g n)) fun i =>
+                          @Semiring.toAddCommMonoid (@Geometry.F (dimension ε) n (g n))
+                            (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                                (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                  (@Geometry.field (dimension ε) n (g n))))))
+                        (@Pi.Function.module (Fin (dimension ε) → @Geometry.F (dimension ε) n (g n))
+                          (@Geometry.F (dimension ε) n (g n)) (@Geometry.F (dimension ε) n (g n))
+                          (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                            (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                (@Geometry.field (dimension ε) n (g n)))))
+                          (@Semiring.toAddCommMonoid (@Geometry.F (dimension ε) n (g n))
+                            (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                                (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                  (@Geometry.field (dimension ε) n (g n))))))
+                          (@Semiring.toModule (@Geometry.F (dimension ε) n (g n))
+                            (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                                (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                  (@Geometry.field (dimension ε) n (g n)))))))
+                        (@auxiliaryCode (dimension ε) n (g n)))
+                      (@Submodule.module (@Geometry.F (dimension ε) n (g n))
+                        ((Fin (dimension ε) → @Geometry.F (dimension ε) n (g n)) → @Geometry.F (dimension ε) n (g n))
+                        (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                          (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                            (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                              (@Geometry.field (dimension ε) n (g n)))))
+                        (@Pi.addCommMonoid (Fin (dimension ε) → @Geometry.F (dimension ε) n (g n))
+                          (fun a => @Geometry.F (dimension ε) n (g n)) fun i =>
+                          @Semiring.toAddCommMonoid (@Geometry.F (dimension ε) n (g n))
+                            (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                                (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                  (@Geometry.field (dimension ε) n (g n))))))
+                        (@Pi.Function.module (Fin (dimension ε) → @Geometry.F (dimension ε) n (g n))
+                          (@Geometry.F (dimension ε) n (g n)) (@Geometry.F (dimension ε) n (g n))
+                          (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                            (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                (@Geometry.field (dimension ε) n (g n)))))
+                          (@Semiring.toAddCommMonoid (@Geometry.F (dimension ε) n (g n))
+                            (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                                (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                  (@Geometry.field (dimension ε) n (g n))))))
+                          (@Semiring.toModule (@Geometry.F (dimension ε) n (g n))
+                            (@DivisionSemiring.toSemiring (@Geometry.F (dimension ε) n (g n))
+                              (@Semifield.toDivisionSemiring (@Geometry.F (dimension ε) n (g n))
+                                (@Field.toSemifield (@Geometry.F (dimension ε) n (g n))
+                                  (@Geometry.field (dimension ε) n (g n)))))))
+                        (@auxiliaryCode (dimension ε) n (g n)))))
+                  (@Nat.cast Real Real.instNatCast (rowCount (dimension ε) n)))
+              (@atTop Nat Nat.instPreorder)
+              (@nhds Real
+                (@UniformSpace.toTopologicalSpace Real (@PseudoMetricSpace.toUniformSpace Real Real.pseudoMetricSpace))
+                (limitingRate (dimension ε))))
+            (@Tendsto Nat Real
+              (fun n =>
+                @HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+                  (@erasureExpectation (@Geometry.F (dimension ε) n (g n))
+                    (Fin (dimension ε) → @Geometry.F (dimension ε) n (g n)) (@Geometry.field (dimension ε) n (g n))
+                    (@Pi.instFintype (Fin (dimension ε)) (fun a => @Geometry.F (dimension ε) n (g n))
+                      (instDecidableEqFin (dimension ε)) (Fin.fintype (dimension ε)) fun a =>
+                      @Geometry.finite (dimension ε) n (g n))
+                    (@auxiliaryCode (dimension ε) n (g n))
+                    (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))
+                      (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+                      (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯))))
+                  (@Nat.cast Real Real.instNatCast (rowCount (dimension ε) n)))
+              (@atTop Nat Nat.instPreorder)
+              (@nhds Real
+                (@UniformSpace.toTopologicalSpace Real (@PseudoMetricSpace.toUniformSpace Real Real.pseudoMetricSpace))
+                (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero))))))
+'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean check peak resident memory: 5304 MB; cap: 6144 MB

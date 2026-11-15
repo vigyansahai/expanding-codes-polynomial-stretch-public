@@ -1,0 +1,102 @@
+theorem layerInvariant_of_ready (d n k M : ℕ) (inp : Inputs)
+    (s : TapeStore (Storage.registers d k) 2)
+    (hs : RuntimeReady (Storage.low d k) d n k inp M s) (z : Fin ((fieldSize d n)^d))
+    (hz : ∀ j,s.reg (Storage.point d k j)=(EncodedTester.digits (fieldSize d n) d z j).val) :
+    LayerInvariant d k (fieldExponent d n) (2^Nat.log 2 (n/k)) (fieldExponent_pos d n)
+      (formValues d n k inp) (hashValues d n k inp) (EncodedTester.digits (fieldSize d n) d z) M s := by
+  refine ⟨hs.environment,hs.sizes.buckets,hz,hs.counters,hs.tables.heads,?_⟩
+  exact ⟨hs.tables.marked 0,hs.tables.marked 1,hs.tables.forms,hs.tables.hashes⟩
+
+theorem layerCaps_of_envelope (d n k M : ℕ) (hd : 1 ≤ d) (hM : SamplerEnvelopeCovers d k n M) :
+    LayerCaps d k (fieldExponent d n) (2^Nat.log 2 (n/k)) M := by
+  constructor
+  · simpa [fieldSize,Nat.add_comm] using hM.forms
+  · simpa [fieldSize,samplerBucketCount,pow_succ,pow_two,Nat.mul_assoc,Nat.add_comm] using hM.hashes
+  · have hq1 : 1 ≤ fieldSize d n := Nat.one_le_pow _ _ (by decide)
+    have hd' := Nat.mul_le_mul_left (2*k*fieldSize d n) hd
+    have hq' := Nat.mul_le_mul_left (2*k*fieldSize d n*d) hq1
+    change 2*k*fieldSize d n ≤ M
+    have hf := hM.forms
+    nlinarith
+  · exact hM.neighbors
+
+theorem ready_of_layerInvariant (d n k M : ℕ) (inp : Inputs)
+    (s e : TapeStore (Storage.registers d k) 2)
+    (hs : RuntimeReady (Storage.low d k) d n k inp M s) (z : Fin ((fieldSize d n)^d))
+    (he : LayerInvariant d k (fieldExponent d n) (2^Nat.log 2 (n/k)) (fieldExponent_pos d n)
+      (formValues d n k inp) (hashValues d n k inp) (EncodedTester.digits (fieldSize d n) d z) M e)
+    (hf : ∀ j : Fin 80,32 ≤ j.val → j.val<40 → e.reg (Storage.low d k j)=s.reg (Storage.low d k j)) :
+    RuntimeReady (Storage.low d k) d n k inp M e := by
+  refine ⟨hs.sizes.frame hf,he.field,?_,he.counters⟩
+  refine ⟨he.tables.formTable,he.tables.hashTable,?_,he.heads⟩
+  intro b
+  fin_cases b
+  · exact he.tables.formMarked
+  · exact he.tables.hashMarked
+
+structure StablePost (d n k M : ℕ) (inp : Inputs)
+    (s e : TapeStore (Storage.registers d k) 2) : Prop where
+  ready : RuntimeReady (Storage.low d k) d n k inp M e
+  points : ∀ j,e.reg (Storage.point d k j)=s.reg (Storage.point d k j)
+  countdowns : ∀ j,e.reg (Storage.countdown d k j)=s.reg (Storage.countdown d k j)
+  remaining : e.reg (Storage.low d k 60)=s.reg (Storage.low d k 60)
+  output : e.output=s.output
+
+theorem StablePost.refl (d n k M : ℕ) (inp : Inputs) (s : TapeStore (Storage.registers d k) 2)
+    (hs : RuntimeReady (Storage.low d k) d n k inp M s) : StablePost d n k M inp s s :=
+  ⟨hs,fun _ => rfl,fun _ => rfl,rfl,rfl⟩
+
+theorem StablePost.trans {d n k M : ℕ} {inp : Inputs}
+    {s e f : TapeStore (Storage.registers d k) 2}
+    (h : StablePost d n k M inp s e) (g : StablePost d n k M inp e f) : StablePost d n k M inp s f :=
+  ⟨g.ready,fun j => (g.points j).trans (h.points j),fun j => (g.countdowns j).trans (h.countdowns j),
+    g.remaining.trans h.remaining,g.output.trans h.output⟩
+
+structure StepPost (d n k M : ℕ) (inp : Inputs) (i : Fin k)
+    (s : TapeStore (Storage.registers d k) 2) (z : Fin ((fieldSize d n)^d))
+    (e : TapeStore (Storage.registers d k) 2) : Prop where
+  stable : StablePost d n k M inp s e
+  neighbor : e.reg (Storage.neighbor d k i)=i.val*(2^Nat.log 2 (n/k))+
+    (EncodedSampler.neighbor (operations d n) (formValues d n k inp) (hashValues d n k inp) i
+      (EncodedTester.digits (fieldSize d n) d z)).val
+  other : ∀ j,j≠i → e.reg (Storage.neighbor d k j)=s.reg (Storage.neighbor d k j)
+
+def StepContract (d n k M : ℕ) (inp : Inputs) (C : ℕ) : Prop :=
+  ∀ (i : Fin k) (s : TapeStore (Storage.registers d k) 2) (z : Fin ((fieldSize d n)^d)),
+    RuntimeReady (Storage.low d k) d n k inp M s →
+    (∀ j,s.reg (Storage.point d k j)=(EncodedTester.digits (fieldSize d n) d z j).val) →
+    ∃ t e,t ≤ C ∧ (layer d k i).Stops inp (s.toCfg (layer d k i).entry) t e ∧
+      StepPost d n k M inp i s z e.store
+
+theorem block_contract_of_step (d n k M : ℕ) (inp : Inputs) (C : ℕ)
+    (hStep : StepContract d n k M inp C) : LayerBlockContract d n k M inp (k*(C+1)) := by
+  intro s z hs hv hz
+  let Good : TapeStore (Storage.registers d k) 2 → Prop := StablePost d n k M inp s
+  let value : Fin k → ℕ := fun i => i.val*(2^Nat.log 2 (n/k))+
+    (EncodedSampler.neighbor (operations d n) (formValues d n k inp) (hashValues d n k inp) i
+      (EncodedTester.digits (fieldSize d n) d z)).val
+  have hstep : ∀ i c,Good c → ∃ t e,t ≤ C ∧
+      (layer d k i).Stops inp (c.toCfg (layer d k i).entry) t e ∧ Good e.store ∧
+      e.reg (Storage.neighbor d k i)=value i ∧
+      (∀ j,j≠i → e.reg (Storage.neighbor d k j)=c.reg (Storage.neighbor d k j)) := by
+    intro i c hc
+    obtain ⟨t,e,ht,he,hpost⟩ := hStep i c z hc.ready (fun j => (hc.points j).trans (hz j))
+    exact ⟨t,e,ht,he,hc.trans hpost.stable,hpost.neighbor,hpost.other⟩
+  obtain ⟨t,e,ht,he,hstable,hvalues,hframe⟩ := layers_stops_of d k inp C Good value hstep
+    (List.finRange k) s (StablePost.refl d n k M inp s hs)
+  have heValid : SamplerOdometer.Valid (Storage.low d k 35) (Storage.pointPairs d k) e.store := by
+    intro p hp
+    obtain ⟨i,hi,hpi⟩ := List.mem_map.mp hp
+    subst p
+    rw [hstable.points,hstable.countdowns,hstable.ready.sizes.field,← hs.sizes.field]
+    exact hv _ (List.mem_map.mpr ⟨i,hi,rfl⟩)
+  have heRead : SamplerOdometer.readings (Storage.pointPairs d k) e.store=
+      SamplerOdometer.readings (Storage.pointPairs d k) s := by
+    apply SamplerOdometer.readings_congr
+    intro p hp
+    obtain ⟨i,hi,hpi⟩ := List.mem_map.mp hp
+    subst p
+    exact hstable.points i
+  refine ⟨t,e,by simpa using ht,he,⟨hstable.ready,heValid,heRead,hstable.remaining,hstable.output,?_⟩⟩
+  intro i
+  exact hvalues i (List.mem_finRange i)

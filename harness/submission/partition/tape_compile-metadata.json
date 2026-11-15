@@ -1,0 +1,59 @@
+{
+  "key": "tape_compile",
+  "theorem_name": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+  "title": "Constant-overhead simulation of finite tape programs",
+  "preamble": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen NKtLB\n",
+  "formal_statement": "theorem ExpandingCodes.Computation.TapeCompiler.compile_halts {R B L : ℕ} (P : ExpandingCodes.Computation.TapeProgram R B L) (O : Set (List Bool)) (inp : Inputs)\n    (t : ℕ) (hh : P.halted (P.run inp t)) :\n    (ExpandingCodes.Computation.TapeCompiler.compile P).HaltsWith O inp (1+2*t) (bitsSym (P.run inp t).output) := by sorry\n",
+  "natural_statement": "Every finite source tape program has a canonical NKtLB machine simulation. A source execution halting after t instructions is simulated with the same output within 1 + 2t machine steps, for arbitrary oracle and input.",
+  "source": "Algorithmic supporting lemma for Section 2 of Isaac M Hair and Amit Sahai, Expanding Codes with Polynomial Stretch; the explicit tape-machine implementation is formalized in ExpandingCodes.Computation.TapeCompiler.",
+  "proof_route": "The proof establishes each instruction simulation, inducts over source executions, and transfers halting and output to the compiled machine.",
+  "original_declaration": {
+    "name": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+    "module": "harness.submission.Upload",
+    "kind": "theorem",
+    "isPrivate": false,
+    "isInstance": false,
+    "userName": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+    "startLine": 2266,
+    "endLine": 2271,
+    "typeDeps": [
+      "ExpandingCodes.Computation.TapeCompiler.compile",
+      "ExpandingCodes.Computation.TapeProgram.halted",
+      "ExpandingCodes.Computation.TapeCfg.output",
+      "ExpandingCodes.Computation.TapeProgram.run",
+      "ExpandingCodes.Computation.TapeProgram"
+    ],
+    "valueDeps": [
+      "ExpandingCodes.Computation.TapeProgram.halted",
+      "ExpandingCodes.Computation.TapeCompiler.localSimulation",
+      "ExpandingCodes.Computation.TapeCompiler.haltsWith_of_localSimulation",
+      "ExpandingCodes.Computation.TapeProgram.run",
+      "ExpandingCodes.Computation.TapeProgram"
+    ]
+  },
+  "original_module": "ExpandingCodes.Computation.TapeCompiler",
+  "child_dependencies": [],
+  "selection_summary": {
+    "names": 104,
+    "commands": 104,
+    "raw_declaration_bytes": 35766,
+    "label": "tape_compile",
+    "target": "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+    "cuts": 9,
+    "child_dependencies": 0
+  },
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "status": "exact_statement_type_checked; proof_export_pending",
+  "solution_header": "theorem solution {R B L : ℕ} (P : ExpandingCodes.Computation.TapeProgram R B L) (O : Set (List Bool)) (inp : Inputs)\n    (t : ℕ) (hh : P.halted (P.run inp t)) :\n    (ExpandingCodes.Computation.TapeCompiler.compile P).HaltsWith O inp (1+2*t) (bitsSym (P.run inp t).output)",
+  "solution_body": "by\n  exact @ExpandingCodes.Computation.TapeCompiler.compile_halts R B L P O inp t hh\n",
+  "solution_arguments": [
+    "R",
+    "B",
+    "L",
+    "P",
+    "O",
+    "inp",
+    "t",
+    "hh"
+  ]
+}

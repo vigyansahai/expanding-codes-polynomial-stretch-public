@@ -1,0 +1,3 @@
+# Verification receipts and Lean parser spans use exact UTF-8 byte offsets.
+# Preserve original bytes rather than applying platform line-ending conversion.
+* -text

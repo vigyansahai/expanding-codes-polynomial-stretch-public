@@ -1,0 +1,18 @@
+{
+  "source_sha256": "9df007f6606afbd41960bb0a7c326dedc19807f0f8ad6a7102271feafe0094c6",
+  "source_bytes": 265266,
+  "key": "field_setup",
+  "mode": "cache",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 232.555076958,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./.lake/build/lib/lean/harness/submission/partition/cache/Cache_field_setup.olean",
+    "./harness/submission/partition/cache/Cache_field_setup.lean"
+  ],
+  "output": "./.lake/build/lib/lean/harness/submission/partition/cache/Cache_field_setup.olean"
+}

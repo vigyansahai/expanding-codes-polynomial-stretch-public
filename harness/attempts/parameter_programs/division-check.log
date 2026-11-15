@@ -1,0 +1,74 @@
+harness/attempts/parameter_programs/ParameterDivision.lean:48:62: warning: This simp argument is unused:
+  Nat.add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [divideLoopStore, d₁, TapeStore.setReg, Ne.symm hsq, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:75:41: warning: This simp argument is unused:
+  hdiv
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv', hsq, Ne.symm hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:75:52: warning: This simp argument is unused:
+  hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv, hdiv', Ne.symm hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:75:56: warning: This simp argument is unused:
+  Ne.symm hsq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hdiv, hdiv', hsq, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:77:47: warning: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hsq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:53:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/parameter_programs/ParameterDivision.lean:83:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+harness/attempts/parameter_programs/ParameterDivision.lean:98:55: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/parameter_programs/ParameterDivision.lean:101:58: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [divideConstantStore, divideLoopStore, dividePrepare]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:129:15: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hct, Nat.add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/parameter_programs/ParameterDivision.lean:143:12: warning: This simp argument is unused:
+  reg_layout r hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.ParameterPrograms.divideLoop_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.ParameterPrograms.divideConstant_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

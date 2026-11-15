@@ -1,0 +1,14 @@
+{
+  "kind": "sampler",
+  "source": "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean",
+  "bytes": 778658,
+  "sha256": "85a58281f3c5a8a2a277a2b39a95d6cefccb71864891e05b9fcf1842c5620257",
+  "exact_original_type_equal": true,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "compile_result": "sampler-compile-002-result.json",
+  "audit_result": "sampler-audit-result.json"
+}

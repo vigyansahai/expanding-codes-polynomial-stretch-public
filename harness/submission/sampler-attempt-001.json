@@ -1,0 +1,30 @@
+{
+  "created_at": 1794700235.636576,
+  "theorem_id": "54beb6bb-0159-4933-94f6-13bd9bb0abb2",
+  "proof_path": "harness/submission/runtime/staged/Solutions/Sol_binary_sampler_implementation_source.lean",
+  "proof_sha256": "85a58281f3c5a8a2a277a2b39a95d6cefccb71864891e05b9fcf1842c5620257",
+  "proof_bytes": 778658,
+  "phase": "submitted",
+  "proof_type": "prove",
+  "http_status": 200,
+  "response": {
+    "submission_id": "0592cd6c-aa92-4b55-97ea-01f62cb143c4",
+    "status": "PENDING",
+    "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+    "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+  },
+  "submission_id": "0592cd6c-aa92-4b55-97ea-01f62cb143c4",
+  "last_poll_at": 1794700714.012108,
+  "last_http_status": 200,
+  "last_verdict": {
+    "id": "0592cd6c-aa92-4b55-97ea-01f62cb143c4",
+    "theorem_id": "54beb6bb-0159-4933-94f6-13bd9bb0abb2",
+    "user_id": "[REDACTED_ACCOUNT]",
+    "status": "ERROR",
+    "error_message": "Verification timed out after 300s. Try breaking the statement or proof into smaller lemmas or definitions and checking each piece separately before retrying. If imports are heavy, prefer the specific Mathlib modules you need over `import Mathlib`.",
+    "file_path": "54beb6bb-0159-4933-94f6-13bd9bb0abb2/[REDACTED_ACCOUNT]/0592cd6c-aa92-4b55-97ea-01f62cb143c4.lean",
+    "created_at": "2026-11-14T23:50:36.46121+00:00",
+    "updated_at": "2026-11-14T23:57:37.944953+00:00"
+  },
+  "submitted_proof_archive": "harness/submission/submitted/sampler-attempt-001.lean"
+}

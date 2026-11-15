@@ -1,0 +1,28 @@
+{
+  "id": "binary_sampler_random_law",
+  "declaration": "ExpandingCodes.PolynomialStretch.binarySamplerFromInput_law",
+  "file": "ExpandingCodes/Computation/EncodedSampler.lean",
+  "statement": "\u2200 (\u03b8 : \u211d) (n T : \u2115), ExpandingCodes.PolynomialStretch.arity \u03b8 \u2264 ExpandingCodes.PolynomialStretch.fieldSize (ExpandingCodes.PolynomialStretch.dimension \u03b8) n \u2192\n    ExpandingCodes.PolynomialStretch.SamplerTables.entropy (ExpandingCodes.PolynomialStretch.dimension \u03b8) n (ExpandingCodes.PolynomialStretch.arity \u03b8) (Nat.log 2 (n / ExpandingCodes.PolynomialStretch.arity \u03b8)) \u2264 T \u2192\n    \u2200 G : ExpandingCodes.PolynomialStretch.Generator (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension \u03b8) n) n,\n      ExpandingCodes.PolynomialStretch.uniformProb (fun \u03c9 : Fin T \u2192 Bool => ExpandingCodes.PolynomialStretch.binarySamplerFromInput (ExpandingCodes.PolynomialStretch.dimension \u03b8) n (ExpandingCodes.PolynomialStretch.arity \u03b8)\n        (Nat.log 2 (n / ExpandingCodes.PolynomialStretch.arity \u03b8)) \u27e8ExpandingCodes.PolynomialStretch.sizeInput n, [], [], List.ofFn \u03c9\u27e9 = G) =\n        (ExpandingCodes.PolynomialStretch.sampleLaw \u03b8 n (ExpandingCodes.PolynomialStretch.binaryGeometry (ExpandingCodes.PolynomialStretch.dimension \u03b8) n) G).toReal",
+  "statement_sha256": "77b5e6ac3adf28e2d3a304d8b4f17ec9c43e2111570f7797bdb37b7c4e21824f",
+  "status": "open",
+  "dependencies": [],
+  "context_files": [
+    "AGENTS.md"
+  ],
+  "sources": [
+    {
+      "file": "harness/tasks/sampler_tables.json",
+      "description": "Explicit table layout and data semantics; runtime claims separately open"
+    }
+  ],
+  "proof_route": "Split the actual fair bits into coefficient, hash and unused blocks. Compose finite bijections to canonical Forms/Hashes, prove decoded entries equal the physical random reader values, and prove finite-index matrix evaluation equals combined under the fixed binary geometry. Push uniform probability through these bijections.",
+  "failed_attempts": [],
+  "owner": "coordinator",
+  "interface": "provisional",
+  "review": {
+    "reviewer": "root coordinator",
+    "statement_preserved": true,
+    "strictly_useful": true,
+    "notes": "Discharges the exact distribution clause for the actual data function, including arbitrary unused suffix, without claiming source execution or polynomial runtime."
+  }
+}

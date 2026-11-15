@@ -1,0 +1,16 @@
+{
+  "key": "tape_compile",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 30.818758374999998,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.olean"
+}

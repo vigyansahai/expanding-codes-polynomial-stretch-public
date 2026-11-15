@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 116.04184479199999,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "harness/submission/runtime/attempts/gaussian-scope/OriginalScope.lean"
+  ]
+}

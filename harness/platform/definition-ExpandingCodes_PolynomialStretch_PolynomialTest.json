@@ -1,0 +1,24 @@
+{
+  "definition_id": "f28466c6-4f2e-4a2c-8487-ae2bdbd10095",
+  "definition_name": "ExpandingCodes_PolynomialStretch_PolynomialTest",
+  "definition_title": "Generalized Reed–Muller evaluations and the rank test",
+  "natural_language_statement": "For any finite field $F$ with $q$ elements, let $\\operatorname{RM}_q(d,R)$ be the $F$-linear span of the evaluations on all points of $F^d$ of monomials $z^a$ with $0\\le a_j<q$ and $\\sum_ja_j\\le R$. Thus both the total-degree bound and each reduced individual-degree bound are imposed. Set\n$$R=\\left\\lfloor\\frac{(d-3)(q-1)-1}{2}\\right\\rfloor,\\qquad \\mathcal M(y)=V\\operatorname{diag}(y)V^{\\mathsf T},\\qquad D(y)=\\mathbf1\\!\\left[\\operatorname{rank}_F\\mathcal M(y)\\le(1/2-\\varepsilon/2)m\\right].$$\nHere $V$ has one row for every reduced monomial of degree at most $R$, evaluated using the public row order; $y$ is binary and its entries are embedded as zero and one in $F$. The transpose is the ordinary transpose. The code, the evaluation matrix and its rank are computed from this data rather than specified through desired properties.\n\nThese definitions fix the concrete deterministic test, which accepts noisy codewords without attempting to decode a message.\n\n**Formalization Note** The auxiliary degree uses integer floor division; converting a negative degree to a natural number returns zero only on parameter values outside every construction assertion. Construction dimensions are much larger than three. The generalized code is not the binary Boolean-cube code. The rank test receives the ordered word and size, with no sampler seed or transcript.\n",
+  "created_at": "2026-11-08T19:11:17.287791+00:00",
+  "vote_count": 0,
+  "definition": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_Sampler\nset_option autoImplicit false\nopen scoped Classical\n\nnamespace ExpandingCodes.PolynomialStretch\n\nopen scoped BigOperators\nabbrev Monomials (F : Type*) [Fintype F] (d R : ℕ) :=\n  {a : Fin d → Fin (Fintype.card F) // ∑ i, (a i).val ≤ R}\nnoncomputable def monomialEval {F : Type*} [Field F] [Fintype F] {d R : ℕ}\n    (a : Monomials F d R) (z : Fin d → F) : F := ∏ i, z i ^ (a.val i).val\nnoncomputable def reedMuller (F : Type*) [Field F] [Fintype F] (d R : ℕ) :\n    Submodule F ((Fin d → F) → F) :=\n  Submodule.span F (Set.range (monomialEval (F := F) (d := d) (R := R)))\n/-- Integer floor before conversion; construction parameters make the numerator positive. -/\ndef auxiliaryDegree (q d : ℕ) : ℕ :=\n  ((((d : ℤ) - 3) * ((q : ℤ) - 1) - 1) / 2).toNat\nnoncomputable def evaluationMatrix {d n : ℕ} (g : Geometry d n) :\n    Matrix (Monomials g.F d (auxiliaryDegree (Fintype.card g.F) d))\n      (Fin (rowCount d n)) g.F :=\n  fun a z => monomialEval a (g.rowOrder z)\nnoncomputable def testMatrix {d n : ℕ} (g : Geometry d n) (y : Word (rowCount d n)) :=\n  (evaluationMatrix g * Matrix.diagonal (fun z => if y z = 0 then (0 : g.F) else 1)) *\n    (evaluationMatrix g).transpose\nnoncomputable def rankTest (ε : ℝ) {d n : ℕ} (g : Geometry d n)\n    (y : Word (rowCount d n)) : Bool := by\n  classical\n  exact decide ((testMatrix g y).rank ≤ (1 / 2 - ε / 2) * (rowCount d n : ℝ))\n\nend ExpandingCodes.PolynomialStretch\n",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 9 / PDF p. 10, §2.2, equation (5) and the definitions of V, ℳ and D.",
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "created_by": "[REDACTED_ACCOUNT]",
+  "created_by_username": "mikedeng1",
+  "deprecated_at": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+}

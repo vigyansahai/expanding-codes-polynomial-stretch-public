@@ -1,0 +1,497 @@
+[
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.exists_divMatches"
+    ],
+    "bytes": 1303,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      435,
+      458
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.divMatches_iff"
+    ],
+    "bytes": 1245,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      411,
+      433
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.GaussianProgram.scanResult_spec"
+    ],
+    "bytes": 1227,
+    "module": "ExpandingCodes.Computation.GaussianProgram",
+    "lines": [
+      23028,
+      23054
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.factorFree_iff_irreducible"
+    ],
+    "bytes": 1176,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      209,
+      230
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.SamplerAssembly.Concrete.writerRegisters_injective"
+    ],
+    "bytes": 874,
+    "module": "ExpandingCodes.Computation.SamplerAssembly",
+    "lines": [
+      31592,
+      31616
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.exists_inverseIndex"
+    ],
+    "bytes": 771,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      534,
+      549
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productMatches_iff"
+    ],
+    "bytes": 708,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      183,
+      197
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.multiply_certificate"
+    ],
+    "bytes": 705,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      474,
+      485
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.decode_multiply"
+    ],
+    "bytes": 679,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      498,
+      507
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_surjective"
+    ],
+    "bytes": 678,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      133,
+      146
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_irreducible_monic"
+    ],
+    "bytes": 514,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      232,
+      239
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.decode_encode"
+    ],
+    "bytes": 491,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      311,
+      320
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.CounterCompiler.getD_append_singleton"
+    ],
+    "bytes": 474,
+    "module": "ExpandingCodes.Computation.CounterCompiler",
+    "lines": [
+      1453,
+      1462
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidateCoefficient_eq"
+    ],
+    "bytes": 438,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      151,
+      160
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.modulusConvolution_eq"
+    ],
+    "bytes": 410,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      385,
+      390
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.encode_decode"
+    ],
+    "bytes": 397,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      322,
+      329
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.productCoefficient_eq"
+    ],
+    "bytes": 369,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      168,
+      172
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.polynomial_coefficients"
+    ],
+    "bytes": 368,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      105,
+      111
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.RandomBits.value_lt"
+    ],
+    "bytes": 361,
+    "module": "ExpandingCodes.Computation.RandomBits",
+    "lines": [
+      5436,
+      5446
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.convolution_eq"
+    ],
+    "bytes": 343,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      375,
+      379
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.polynomial_one"
+    ],
+    "bytes": 324,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      516,
+      526
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.selectedIndex_factorFree"
+    ],
+    "bytes": 298,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      254,
+      258
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.bufferCoefficient_eq"
+    ],
+    "bytes": 293,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      365,
+      370
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.exists_factorFree"
+    ],
+    "bytes": 277,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      241,
+      245
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.natDegree_polynomial_lt"
+    ],
+    "bytes": 273,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      405,
+      409
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.PaddedGaussian.scan_nonzero_lt"
+    ],
+    "bytes": 273,
+    "module": "ExpandingCodes.Computation.PaddedGaussian",
+    "lines": [
+      27310,
+      27315
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_natDegree"
+    ],
+    "bytes": 237,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      120,
+      124
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.coefficient_polynomial_high"
+    ],
+    "bytes": 221,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      101,
+      103
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.coefficient_polynomial"
+    ],
+    "bytes": 201,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      92,
+      95
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_ne_one"
+    ],
+    "bytes": 192,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      126,
+      131
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.degree_polynomial_lt"
+    ],
+    "bytes": 180,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      97,
+      99
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_irreducible"
+    ],
+    "bytes": 157,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      273,
+      274
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.geometry_card"
+    ],
+    "bytes": 146,
+    "module": "ExpandingCodes.Construction.Geometry",
+    "lines": [
+      691,
+      693
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.SamplerProgram.Storage.low_injective"
+    ],
+    "bytes": 139,
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "lines": [
+      17104,
+      17107
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.charTwo"
+    ],
+    "bytes": 137,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      298,
+      299
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.polynomial_zero"
+    ],
+    "bytes": 133,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      513,
+      514
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.candidate_monic"
+    ],
+    "bytes": 127,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      117,
+      118
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.decode_one"
+    ],
+    "bytes": 124,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      531,
+      532
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.decode_zero"
+    ],
+    "bytes": 122,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      528,
+      529
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryField.modulusFact"
+    ],
+    "bytes": 120,
+    "module": "ExpandingCodes.Computation.BinaryField",
+    "lines": [
+      292,
+      293
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_natDegree"
+    ],
+    "bytes": 114,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      270,
+      271
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.fieldExponent_pos"
+    ],
+    "bytes": 98,
+    "module": "ExpandingCodes.Construction.Geometry",
+    "lines": [
+      677,
+      679
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.PolynomialStretch.BinaryPolynomial.modulus_monic"
+    ],
+    "bytes": 96,
+    "module": "ExpandingCodes.Computation.BinaryPolynomial",
+    "lines": [
+      267,
+      268
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.SamplerProgram.Storage.neighbor_val"
+    ],
+    "bytes": 95,
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "lines": [
+      17123,
+      17123
+    ]
+  },
+  {
+    "names": [
+      "ExpandingCodes.Computation.SamplerProgram.Storage.low_val"
+    ],
+    "bytes": 79,
+    "module": "ExpandingCodes.Computation.SamplerProgram",
+    "lines": [
+      17119,
+      17119
+    ]
+  }
+]

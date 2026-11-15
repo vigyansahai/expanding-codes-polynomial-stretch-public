@@ -1,0 +1,11 @@
+import ExpandingCodes.Computation.TesterGram
+set_option autoImplicit false
+#print axioms ExpandingCodes.Computation.TesterInput.load_stops
+#print axioms ExpandingCodes.Computation.TesterInput.word_symbols
+#print axioms ExpandingCodes.Computation.TesterPowers.power_stops
+#print axioms ExpandingCodes.Computation.TesterPowers.product_stops
+#print axioms ExpandingCodes.Computation.TesterEvaluation.evaluate_canonical_stops
+#print axioms ExpandingCodes.Computation.TesterEvaluation.auxiliaryDegree_nat
+#print axioms ExpandingCodes.Computation.TesterEvaluation.degree_stops
+#print axioms ExpandingCodes.Computation.TesterGram.maskedTerm_stops
+#print axioms ExpandingCodes.Computation.TesterGram.construct

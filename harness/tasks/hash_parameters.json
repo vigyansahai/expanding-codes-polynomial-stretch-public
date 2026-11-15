@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "owner": "hash_parameters",
+  "owned_files": [
+    "ExpandingCodes/Construction/HashParameters.lean",
+    "harness/attempts/hash_parameters/*",
+    "harness/tasks/hash_parameters.json"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean"
+  ],
+  "exact_goal": "Parameter and limit estimates for canonical hash expansion: floor L=floor(\u03b5*k-d+1), ratio B=m*2^k*(2*k\u00b2*n^(-\u03b5))^L.",
+  "interface": "local_support_over_exact_canonical_definitions",
+  "proof_route": [
+    "Nat.floor bounds: floor argument nonnegative, floor lower x-1<L and \u03b5\u00b2*k\u22654*d\u00b2 imply \u03b5*L-2*d\u00b2>1/\u03b5.",
+    "Nat.lt_pow_succ_log_self bounds n/k<2*b; division arithmetic gives n<2*k*b with no n\u2265k restriction.",
+    "Real power addition converts k*n^(1-\u03b5)/b to k*n^(-\u03b5)*(n/b)\u22642*k\u00b2*n^(-\u03b5).",
+    "rowCount upper bound produces B\u2264C\u03b5*n^(2*d\u00b2-\u03b5*L).",
+    "Negative rpow tends to zero even after multiplication by n^(1/\u03b5); squeeze yields exact scaled hashRatio limit."
+  ],
+  "source": {
+    "path": "tmp/feasibility/paper.txt",
+    "role": "hash union bound analytic estimates over canonical exact parameters"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "open_theorem_bodies": [],
+  "failed_approaches": [],
+  "status": "complete",
+  "checks": [
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_parameters/HashParameters.lean",
+      "result": "pass; full module, no diagnostics"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Construction.HashParameters",
+      "result": "pass; final module5.0seconds, 8724jobs; dependency HalfspaceVolume replays existing linter warning"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_parameters/AuditHashParameters.lean",
+      "result": "pass; all14 public definitions and theorems exactly propext, Classical.choice, Quot.sound"
+    }
+  ],
+  "unresolved_dependencies": [],
+  "nodes": [
+    {
+      "id": "hashRepeatThreshold_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.hashRepeatThreshold_le",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "hash_exponent_gap",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_exponent_gap",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "hash_arity_pos",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_arity_pos",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "lt_two_arity_mul_buckets",
+      "declaration": "ExpandingCodes.PolynomialStretch.lt_two_arity_mul_buckets",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "hash_bucket_ratio_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_bucket_ratio_le",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "hashRatio_nonneg",
+      "declaration": "ExpandingCodes.PolynomialStretch.hashRatio_nonneg",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "hashRatio_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.hashRatio_le",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "tendsto_hashRatio_mul_rpow",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_hashRatio_mul_rpow",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "tendsto_hashRatio_scaled",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_hashRatio_scaled",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "tendsto_hashRatio",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_hashRatio",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "eventually_hash_parameters",
+      "declaration": "ExpandingCodes.PolynomialStretch.eventually_hash_parameters",
+      "file": "ExpandingCodes/Construction/HashParameters.lean",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "public_api": {
+    "hashRepeatThreshold": "Nat.floor (\u03b5*(arity \u03b5:\u211d)-(dimension \u03b5:\u211d)+1)",
+    "hashRepeatThreshold_le": "(L:\u211d)\u2264\u03b5*k-d+1 for \u03b5\u2208(0,1/2)",
+    "hash_bucket_ratio_le": "k*n^(1-\u03b5)/b\u22642*k\u00b2*n^(-\u03b5), requires k>0 and n>0",
+    "hashRatio": "m*2^k*(2*k\u00b2*n^(-\u03b5))^L",
+    "tendsto_hashRatio_scaled": "B*n^(1/\u03b5)\u21920",
+    "eventually_hash_parameters": "eventually 0<n \u2227 k*b\u2264n \u2227 B\u22641/2"
+  },
+  "worker_result": {
+    "status": "complete",
+    "open_theorem_bodies": [],
+    "pending_compilation": [],
+    "ownership_preserved": true,
+    "canonical_definitions_preserved": true,
+    "promotion": "Full scratch passed direct check before promotion; public fresh built then all14 public declarations axiom-audited.",
+    "remaining": "Finite probability union bound is owned by hash_expansion; main graph/canonical forwarding remain root-owned."
+  }
+}

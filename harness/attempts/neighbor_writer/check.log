@@ -1,0 +1,346 @@
+harness/attempts/neighbor_writer/NeighborWriter.lean:52:2: error: Tactic `split_ifs` failed: no if-then-else conditions to split
+
+R B : ℕ
+r : Fin 6 → Fin R
+out : Fin R
+d : TapeStore R B
+j : Fin R
+ho : j ≠ out
+h₂ : j ≠ r 2
+h₃ : j ≠ r 3
+h₄ : j ≠ r 4
+h₅ : j ≠ r 5
+hrev : (lessThanStore (reverse r) (lessThanStore r d)).reg j = (lessThanStore r d).reg j
+hdir : (lessThanStore r d).reg j = d.reg j
+⊢ (have c := lessThanStore r d;
+        if c.reg (r 2) = 0 then
+          have e := lessThanStore (reverse r) c;
+          if e.reg (r 2) = 0 then e.setReg out 1 else e
+        else c).reg
+      j =
+    d.reg j
+harness/attempts/neighbor_writer/NeighborWriter.lean:68:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (lessThanStore r d).reg (r 2)
+in the target expression
+  (have c := lessThanStore r d;
+        if c.reg (r 2) = 0 then
+          have e := lessThanStore (reverse r) c;
+          if e.reg (r 2) = 0 then e.setReg out 1 else e
+        else c).reg
+      out =
+    if d.reg (r 0) = d.reg (r 1) then 1 else d.reg out
+
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+ho : ∀ (j : Fin 6), out ≠ r j
+d : TapeStore R B
+hdir : (lessThanStore r d).reg out = d.reg out
+hrev : (lessThanStore (reverse r) (lessThanStore r d)).reg out = (lessThanStore r d).reg out
+hzero : (lessThanStore r d).reg (r 0) = d.reg (r 0)
+hone : (lessThanStore r d).reg (r 1) = d.reg (r 1)
+hv₂ : (lessThanStore (reverse r) (lessThanStore r d)).reg (r 2) = if d.reg (r 1) < d.reg (r 0) then 1 else 0
+⊢ (have c := lessThanStore r d;
+        if c.reg (r 2) = 0 then
+          have e := lessThanStore (reverse r) c;
+          if e.reg (r 2) = 0 then e.setReg out 1 else e
+        else c).reg
+      out =
+    if d.reg (r 0) = d.reg (r 1) then 1 else d.reg out
+harness/attempts/neighbor_writer/NeighborWriter.lean:84:2: error: Tactic `split_ifs` failed: no if-then-else conditions to split
+
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+h₁ : ∀ (j : Fin R), (lessThanStore r d).reg j ≤ M
+h₂ : ∀ (j : Fin R), (lessThanStore (reverse r) (lessThanStore r d)).reg j ≤ M
+⊢ ∀ (j : Fin R),
+    (have c := lessThanStore r d;
+          if c.reg (r 2) = 0 then
+            have e := lessThanStore (reverse r) c;
+            if e.reg (r 2) = 0 then e.setReg out 1 else e
+          else c).reg
+        j ≤
+      M
+harness/attempts/neighbor_writer/NeighborWriter.lean:102:4: error: don't know how to synthesize implicit argument `p`
+  @Exists.intro ℕ (fun t => ∃ e, t ≤ 0 ∧ skip.Stops inp (s.toCfg skip.entry) t e ∧ e.store = s) 0
+    (Exists.intro (s.toCfg 0) ⟨le_rfl, ⟨skip_stops inp s, rfl⟩⟩)
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t : ℕ
+c : TapeCfg R B 33
+ht : t ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+⊢ ℕ → Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:102:4: error: don't know how to synthesize implicit argument `p`
+  @Exists.intro (TapeCfg R B 1) (fun e => 0 ≤ 0 ∧ skip.Stops inp (s.toCfg skip.entry) 0 e ∧ e.store = s) (s.toCfg 0)
+    ⟨le_rfl, ⟨skip_stops inp s, rfl⟩⟩
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t : ℕ
+c : TapeCfg R B 33
+ht : t ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+⊢ TapeCfg R B 1 → Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:102:4: error: don't know how to synthesize implicit argument `b`
+  @And.intro (0 ≤ 0) (skip.Stops inp (s.toCfg skip.entry) 0 (s.toCfg 0) ∧ (s.toCfg 0).store = s) le_rfl
+    ⟨skip_stops inp s, rfl⟩
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t : ℕ
+c : TapeCfg R B 33
+ht : t ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+⊢ Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:102:4: error: don't know how to synthesize implicit argument `a`
+  @And.intro (skip.Stops inp (s.toCfg skip.entry) 0 (s.toCfg 0)) ((s.toCfg 0).store = s) (skip_stops inp s) rfl
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t : ℕ
+c : TapeCfg R B 33
+ht : t ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+⊢ Prop
+harness/attempts/neighbor_writer/NeighborWriter.lean:101:17: error: don't know how to synthesize implicit argument `buffers`
+  @entry (?m.156 s t e) (?m.157 s t e) 1 skip
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t✝ : ℕ
+c : TapeCfg R B 33
+ht : t✝ ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t✝ c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+t : ℕ
+e : TapeCfg R B 1
+⊢ ℕ
+harness/attempts/neighbor_writer/NeighborWriter.lean:101:17: error: don't know how to synthesize implicit argument `registers`
+  @entry (?m.156 s t e) (?m.157 s t e) 1 skip
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t✝ : ℕ
+c : TapeCfg R B 33
+ht : t✝ ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t✝ c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+t : ℕ
+e : TapeCfg R B 1
+⊢ ℕ
+harness/attempts/neighbor_writer/NeighborWriter.lean:101:22: error: don't know how to synthesize placeholder
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t✝ : ℕ
+c : TapeCfg R B 33
+ht : t✝ ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t✝ c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+t : ℕ
+e : TapeCfg R B 1
+⊢ ℕ
+harness/attempts/neighbor_writer/NeighborWriter.lean:101:22: error: don't know how to synthesize placeholder
+context:
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t✝ : ℕ
+c : TapeCfg R B 33
+ht : t✝ ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t✝ c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+s : TapeStore R B
+t : ℕ
+e : TapeCfg R B 1
+⊢ ℕ
+harness/attempts/neighbor_writer/NeighborWriter.lean:94:37: error: unsolved goals
+R B : ℕ
+r : Fin 6 → Fin R
+hr : Function.Injective r
+out : Fin R
+inp : Inputs
+d : TapeStore R B
+M : ℕ
+hM : 1 ≤ M
+hd : ∀ (j : Fin R), d.reg j ≤ M
+t : ℕ
+c : TapeCfg R B 33
+ht : t ≤ 64 * (M + 1)
+hc : (lessThan r).Stops inp (d.toCfg (lessThan r).entry) t c
+hcs : c.store = lessThanStore r d
+hb : ∀ (j : Fin R), c.store.reg j ≤ M
+⊢ ∃ t e, t ≤ 160 * (M + 1) ∧ (markEq r out).Stops inp (d.toCfg (markEq r out).entry) t e ∧ e.store = markStore r out d
+harness/attempts/neighbor_writer/NeighborWriter.lean:158:7: error: unsolved goals
+R B : ℕ
+r : Fin R
+inp : Inputs
+d : TapeStore R B
+h : d.reg r ≤ 1
+hz : d.reg r = 0
+hf :
+  emitStore r d =
+    { reg := d.reg, roHead := d.roHead, output := d.output ++ [false], bufferTape := d.bufferTape,
+      bufferHead := d.bufferHead }
+⊢ { pc := 1, reg := d.reg, roHead := d.roHead, output := d.output, bufferTape := d.bufferTape,
+      bufferHead := d.bufferHead } =
+    ?m.86
+harness/attempts/neighbor_writer/NeighborWriter.lean:159:17: error: unsolved goals
+R B : ℕ
+r : Fin R
+inp : Inputs
+d : TapeStore R B
+h : d.reg r ≤ 1
+hz : d.reg r = 0
+hf :
+  emitStore r d =
+    { reg := d.reg, roHead := d.roHead, output := d.output ++ [false], bufferTape := d.bufferTape,
+      bufferHead := d.bufferHead }
+⊢ ¬(if TapeCfg.pc ?m.86 = 0 then TapeInstr.dec r 1 2
+      else
+        if TapeCfg.pc ?m.86 = 1 then TapeInstr.emit false 3
+        else if TapeCfg.pc ?m.86 = 2 then TapeInstr.emit true 3 else TapeInstr.halt) =
+      TapeInstr.halt
+harness/attempts/neighbor_writer/NeighborWriter.lean:160:9: error: unsolved goals
+R B : ℕ
+r : Fin R
+inp : Inputs
+d : TapeStore R B
+h : d.reg r ≤ 1
+hz : d.reg r = 0
+hf :
+  emitStore r d =
+    { reg := d.reg, roHead := d.roHead, output := d.output ++ [false], bufferTape := d.bufferTape,
+      bufferHead := d.bufferHead }
+⊢ (match
+      if TapeCfg.pc ?m.86 = 0 then TapeInstr.dec r 1 2
+      else
+        if TapeCfg.pc ?m.86 = 1 then TapeInstr.emit false 3
+        else if TapeCfg.pc ?m.86 = 2 then TapeInstr.emit true 3 else TapeInstr.halt with
+    | TapeInstr.halt => ?m.86
+    | TapeInstr.jump j =>
+      { pc := j, reg := TapeCfg.reg ?m.86, roHead := TapeCfg.roHead ?m.86, output := TapeCfg.output ?m.86,
+        bufferTape := TapeCfg.bufferTape ?m.86, bufferHead := TapeCfg.bufferHead ?m.86 }
+    | TapeInstr.inc r j =>
+      { pc := j, reg := Function.update (TapeCfg.reg ?m.86) r (TapeCfg.reg ?m.86 r + 1), roHead := TapeCfg.roHead ?m.86,
+        output := TapeCfg.output ?m.86, bufferTape := TapeCfg.bufferTape ?m.86, bufferHead := TapeCfg.bufferHead ?m.86 }
+    | TapeInstr.dec r z p =>
+      if TapeCfg.reg ?m.86 r = 0 then
+        { pc := z, reg := TapeCfg.reg ?m.86, roHead := TapeCfg.roHead ?m.86, output := TapeCfg.output ?m.86,
+          bufferTape := TapeCfg.bufferTape ?m.86, bufferHead := TapeCfg.bufferHead ?m.86 }
+      else
+        { pc := p, reg := Function.update (TapeCfg.reg ?m.86) r (TapeCfg.reg ?m.86 r - 1),
+          roHead := TapeCfg.roHead ?m.86, output := TapeCfg.output ?m.86, bufferTape := TapeCfg.bufferTape ?m.86,
+          bufferHead := TapeCfg.bufferHead ?m.86 }
+    | TapeInstr.emit b j =>
+      { pc := j, reg := TapeCfg.reg ?m.86, roHead := TapeCfg.roHead ?m.86, output := TapeCfg.output ?m.86 ++ [b],
+        bufferTape := TapeCfg.bufferTape ?m.86, bufferHead := TapeCfg.bufferHead ?m.86 }
+    | TapeInstr.read r next =>
+      { pc := next (Machine.readRO (inp.get r) (TapeCfg.roHead ?m.86 r)), reg := TapeCfg.reg ?m.86,
+        roHead := Function.update (TapeCfg.roHead ?m.86) r (TapeCfg.roHead ?m.86 r + 1), output := TapeCfg.output ?m.86,
+        bufferTape := TapeCfg.bufferTape ?m.86, bufferHead := TapeCfg.bufferHead ?m.86 }
+    | TapeInstr.buffer b action =>
+      { pc := (action ((TapeCfg.bufferTape ?m.86 b)[TapeCfg.bufferHead ?m.86 b]?.getD Sym.blank)).2.2,
+        reg := TapeCfg.reg ?m.86, roHead := TapeCfg.roHead ?m.86, output := TapeCfg.output ?m.86,
+        bufferTape :=
+          Function.update (TapeCfg.bufferTape ?m.86) b
+            (Machine.writeAt (TapeCfg.bufferTape ?m.86 b) (TapeCfg.bufferHead ?m.86 b)
+              (action ((TapeCfg.bufferTape ?m.86 b)[TapeCfg.bufferHead ?m.86 b]?.getD Sym.blank)).1),
+        bufferHead :=
+          Function.update (TapeCfg.bufferHead ?m.86) b
+            (Machine.moveHead (action ((TapeCfg.bufferTape ?m.86 b)[TapeCfg.bufferHead ?m.86 b]?.getD Sym.blank)).2.1
+              (TapeCfg.bufferHead ?m.86 b)) }) =
+    { pc := 3, reg := d.reg, roHead := d.roHead, output := d.output ++ [false], bufferTape := d.bufferTape,
+      bufferHead := d.bufferHead }
+'ExpandingCodes.Computation.NeighborWriter.markStore_out' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.markEq_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.NeighborWriter.emitFlag_stops' depends on axioms: [propext, sorryAx, Quot.sound]

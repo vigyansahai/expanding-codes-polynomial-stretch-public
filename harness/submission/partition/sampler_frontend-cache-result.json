@@ -1,0 +1,21 @@
+{
+  "cpu_user_system_seconds": 60.888664,
+  "peak_resident_mib": 3454.984375,
+  "lean_memory_cap_mib": 6144,
+  "source_sha256": "988cef2a3d9624d6682680f24b4d069421465ecb5e05f429f963e50088e23b84",
+  "source_bytes": 293093,
+  "key": "sampler_frontend",
+  "mode": "cache",
+  "exit_code": 0,
+  "elapsed_includes_serial_lock_wait": true,
+  "elapsed_seconds": 255.453271959,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "-o",
+    "./.lake/build/lib/lean/harness/submission/partition/cache/Cache_sampler_frontend.olean",
+    "./harness/submission/partition/cache/Cache_sampler_frontend.lean"
+  ],
+  "output": "./.lake/build/lib/lean/harness/submission/partition/cache/Cache_sampler_frontend.olean"
+}

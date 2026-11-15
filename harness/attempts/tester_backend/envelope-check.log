@@ -1,0 +1,2 @@
+'ExpandingCodes.PolynomialStretch.testerEnvelope_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.testerEnvelope_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]

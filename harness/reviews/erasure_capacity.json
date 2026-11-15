@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "reviewer": "erasure_capacity self-review; independent coordinator review pending",
+  "status": "compiled_and_axiom_audited_reduction",
+  "canonical_target_complete": false,
+  "statement_preserved": true,
+  "uniform_alphabet": true,
+  "meaningful_children": true,
+  "build": {
+    "command": "./tools/lake-serial build ExpandingCodes.Probability.ErasureCapacity",
+    "exit_code": 0,
+    "result": "Build completed successfully (8723 jobs)."
+  },
+  "signature_audit": {
+    "command": "./tools/lake-serial env lean /tmp/erasure-capacity-audit.lean",
+    "exit_code": 0,
+    "closed_statements_checked": 11,
+    "output": "'ExpandingCodes.Erasure.finrank_ambiguity_le_undetermined' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.Erasure.card_essential_le_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.Erasure.expectationOn_insert' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.Erasure.exit_area_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.Erasure.exit_eq_puncturedProbability' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.Erasure.ambiguity_sublinear_of_exit_crossDecay' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.erasure_ambiguity_of_exit_crossDecay' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.meanExit_eq_exit_of_doublyTransitive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.puncturedFailure_equal_influences' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.meanExit_cross_tendsto_zero' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.erasure_ambiguity' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n"
+  },
+  "pure_kernel_nodes": [
+    "erasure_ambiguity_support_bound",
+    "erasure_observed_witness_dimension",
+    "erasure_independent_coordinate_conditioning",
+    "erasure_exit_one_sided_area",
+    "erasure_punctured_boolean_event",
+    "erasure_subcritical_limit_assembly",
+    "erasure_canonical_conditional_assembly",
+    "erasure_doubly_transitive_exit_symmetry",
+    "erasure_stabilizer_equal_influences"
+  ],
+  "reduction_nodes": [
+    "erasure_mean_exit_cross_decay",
+    "erasure_ambiguity_canonical"
+  ],
+  "remaining_registered_obligations": [
+    "boolean_two_point_uniform",
+    "boolean_tensorize_two_point",
+    "boolean_fourier_parseval",
+    "boolean_fourier_gradient_energy",
+    "boolean_fourier_noise_gradient_energy"
+  ],
+  "notes": [
+    "Both owned Lean source files contain no sorry bodies or custom axioms.",
+    "All eleven closed metadata statements were accepted by Lean against their actual declarations, with autoImplicit=false.",
+    "Nine audited core/helper nodes depend only on propext, Classical.choice and Quot.sound.",
+    "The canonical target and its cross-decay child still depend transitively on sorryAx through six independently registered Boolean-analysis leaves; this is a checked meaningful reduction, not a completed proof.",
+    "The independent-witness argument completely discharges the needed one-sided EXIT area bound, avoiding a separate entropy or integral area theorem.",
+    "The exact canonical finite-field sequence, rates, valid probability range, group invariance and conclusion are preserved; no fixed-alphabet assumption was substituted.",
+    "Node status remains open in the task export pending the coordinator's mandatory independent verify receipts.",
+    "After the recorded parent audit, the Russo owner reported a clean proof promoted with unchanged signature. The parent remains a reduction through the five other open leaves; coordinator final verification must use the latest child source."
+  ],
+  "newly_discharged_after_audit": [
+    "boolean_russo (worker reports clean proof promoted; its final independent audit is in progress)"
+  ]
+}

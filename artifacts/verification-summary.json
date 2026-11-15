@@ -1,0 +1,745 @@
+{
+  "status": "verified",
+  "verified_at": "2026-11-14T14:29:31.795196+00:00",
+  "mission": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch",
+  "lean": "4.33.1",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "declaration": "solution",
+  "entrypoint": "Solutions/Sol_ExpandingCodes_PolynomialStretch_expanding_codes.lean",
+  "exact_statement": "∃ C : ℝ, 0 < C ∧ ∀ ε : ℝ, 0 < ε → ε < 1 / 2 →\n      ∃ (k : ℕ) (m : ℕ → ℕ) (P : ∀ n, PMF (ExpandingCodes.PolynomialStretch.Generator (m n) n))\n        (D : ∀ n, ExpandingCodes.PolynomialStretch.Word (m n) → Bool),\n        (k : ℝ) ≤ C * ε⁻¹ ^ 6 ∧ ExpandingCodes.PolynomialStretch.EfficientFamily ε k m P D",
+  "statement_sha256": "af282a3616664daef7b13bb3362e1faf434b8c5979411c6f5a674c0f9e403f84",
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "registered_propositions_proved": 54,
+  "source_holes": 0,
+  "fresh_project_build": {
+    "local_modules": 159,
+    "peak_resident_mb": 5995,
+    "compiler_cap_mb": 6144,
+    "serialized": true
+  },
+  "independent_checker": {
+    "path": "Verify.lean",
+    "result": "passed",
+    "peak_resident_mb": 5471
+  },
+  "workspace_source_config_hashes_unchanged": 174,
+  "source_files_sha256": {
+    "Definitions/Def_CodingTheory.lean": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean": "a5b19ce5dc52f25e34692d92cf1446743437ceee3f16c170ec2a0e5135b99caa",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_OperationalFamily.lean": "df250f0892281987cdc071cdf214ec6ad3d6283d3bd5acf7ac0c4d76ac809722",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+    "Definitions/Def_NKtLB_Machine.lean": "785889c2be55cdc3a69d2244752ee113e814e39993a6a71e1f3b6dcbba1ef89c",
+    "Definitions/Def_QuantumExpander_Decoder_Setting.lean": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+    "Definitions/Def_TillichZemor_HGP_Setting.lean": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+    "ExpandingCodes/Algebra/AuxiliaryDegree.lean": "6cd98176c911c19d1d83647a1276734a1291b916a362badd4340afe24032df68",
+    "ExpandingCodes/Algebra/CodeReindex.lean": "1bd4747ff76fcb66c775ac21b6be115d31cb7e3932e31a2c346b0fe95dfaba20",
+    "ExpandingCodes/Algebra/CodewordAnnihilation.lean": "9bd92170986d5b8164c456917f0d8d5badf8403a7257e524c3288e1decdeef2a",
+    "ExpandingCodes/Algebra/CombinedOrthogonality.lean": "9947c53156734c0c66a334274b77abd53a0a68b48b612d35f5afe51302c88544",
+    "ExpandingCodes/Algebra/FlatIndicator.lean": "7d6dbf42ce7dd899ed7268ca4fb17773d40344a8f0b230329a31b976c73392da",
+    "ExpandingCodes/Algebra/FullEvaluation.lean": "11c72964916b3f01adcd2098a273d0f5ce5ac7e1542a669498b56d541e35e177",
+    "ExpandingCodes/Algebra/PolynomialSum.lean": "483f27185cafdce09fffb792ca4e0a07e8516bb43dc7ebd1131b90b0c8b2064f",
+    "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean": "e192e8c5976fdebc13d5e725ea865d1672157936b04250cad4f7465d34e2f9e9",
+    "ExpandingCodes/Algebra/RankBounds.lean": "6dd2a0b3724e585e2a276309987c21ed9de7fa6e6b3f0949902bb10a05682537",
+    "ExpandingCodes/Algebra/ReedMullerAffine.lean": "b65fc68449945226a7167e35ce4428027cc62fa9efd88c84c06e979c3a4a7304",
+    "ExpandingCodes/Algebra/ReedMullerDimension.lean": "77e3c4c03462a0ded73c02e937249ce2f57d0f8bf7931ebe97ec379f9e02f1b6",
+    "ExpandingCodes/Basic.lean": "71665b375be21bd79fc28b5d44d3d5eb915da700e2fc8132d2d716a400e584bf",
+    "ExpandingCodes/Computation/Basic.lean": "30e1ea76f283259b4aeaf8112123b3e2569b2e7f406a48782f0fcef96e2c3898",
+    "ExpandingCodes/Computation/BinaryField.lean": "fe1469e8f22879a3cd534f8c18bfdded117c19cdece5b834b56493607f80d0f3",
+    "ExpandingCodes/Computation/BinaryPolynomial.lean": "310da901bf5242fd89817a4e03e732cf34a8681ca6f3295147608132f60e62c7",
+    "ExpandingCodes/Computation/CounterCompiler.lean": "72f805990cb6f4ca3392724ffe7d5e65129898a545b44cc4f4eb4c7c7c6dc503",
+    "ExpandingCodes/Computation/CounterLoops.lean": "765426e6103bf48cb0934a87c7a45d67f7ec10031d2523d865350b3d98af6887",
+    "ExpandingCodes/Computation/CounterMachine.lean": "693ee1e708f96b5ef8f842d44bd607800d004b1eef6dd04d27a9e1d298160066",
+    "ExpandingCodes/Computation/CounterTape.lean": "5419c7840697262a7c6d9283179e13fbe033eeedeff923287e81544dd2f9392c",
+    "ExpandingCodes/Computation/EncodedGaussian.lean": "0d6ad9dccfccad1bfa973d591395191e953be13b85fbeed07bd0cdcdf16488d4",
+    "ExpandingCodes/Computation/EncodedSampler.lean": "e5edeb2a69d00cb2a7be2f38ac764ffb99665c92b8a758282fc3e4a2f7ff31b8",
+    "ExpandingCodes/Computation/EncodedTester.lean": "e85a39bc9a3cd86a971a6ee6a1b16df674a2d8494bdacd27bdbd8ec684bde840",
+    "ExpandingCodes/Computation/FieldCertificates.lean": "9fc16dbe9093cb0dfd8bf7df299ce7dd7d19850ab5fddaf721853d515a41ab9e",
+    "ExpandingCodes/Computation/FieldCoefficients.lean": "74156fc7cdca56678fc6958c088e06bbd3d7aa7fc0537256a299059de1c65487",
+    "ExpandingCodes/Computation/FieldConvolution.lean": "2ba5f1efcd2a748cd8699a5099e0ac9720ebcfc8e6da108d86626bb31ee4218f",
+    "ExpandingCodes/Computation/FieldPrograms.lean": "63025fa28c5556d831969df52b0f1712c058bbe0122fded8d9797e5f0347b54c",
+    "ExpandingCodes/Computation/GaussianCorrectness.lean": "e0e46551e90c75b3bd7a0ee6dce463e5fb7b74ecac5f4a267afccb342467eff0",
+    "ExpandingCodes/Computation/GaussianDriver.lean": "0e0f18bb52c26206f2db35dc39d3cb9f6daaa69305cf5e8c7c0baeae27766ffc",
+    "ExpandingCodes/Computation/GaussianDriverBounds.lean": "21ac36267db9cb35247b70f64f4de0e4809631950f41bd79dad4d7348ddc0b7c",
+    "ExpandingCodes/Computation/GaussianElimination.lean": "df761e35e6e536b20c38080b54034473bf903d726d50db09b12c3e805d549569",
+    "ExpandingCodes/Computation/GaussianGrid.lean": "b3b2d3d18bc8febc1849c50b599762384b055870304aa7fdc7b964bb99d0092c",
+    "ExpandingCodes/Computation/GaussianPivot.lean": "2321391b25f6e9e98f0dfeee569655890d89e03c41104792ab68a435927be7df",
+    "ExpandingCodes/Computation/GaussianProgram.lean": "77207d12787f3171c87452da2cd106174806aef4066666b79911f2efafb43be8",
+    "ExpandingCodes/Computation/NeighborWriter.lean": "98573e8a905245a9ec953299dc7630dbf610cecc80250a80ff548b2a21dae890",
+    "ExpandingCodes/Computation/PaddedGaussian.lean": "16fda6eb3c00484bd0ca05eddda88b4d21fca88b6b265d7a1c6279ac6802aac6",
+    "ExpandingCodes/Computation/ParameterDivision.lean": "c2efb717a8f4734f234e3b438204c0156e32c151dfcb1aef1e7738581f739f20",
+    "ExpandingCodes/Computation/ParameterFloor.lean": "b8e57e4d8d47fdf6efa8c0eed2b610176cd5725fbab0414562a5b552470d6316",
+    "ExpandingCodes/Computation/ParameterFrames.lean": "0e7d4f4ac5de22ffe2f4c9bc013875da3a8b85d2e5b7c7a082e6912043286266",
+    "ExpandingCodes/Computation/ParameterPolynomial.lean": "214502fc71dc84255a5277ed38d4a94f2427a77e99673bfe2d11c9ca57d4acab",
+    "ExpandingCodes/Computation/ParameterPower.lean": "2e7f0c6a0f982d376bdb2450c564e6bbb5b17aeb11cdffc40eacaf3c433053d6",
+    "ExpandingCodes/Computation/ParameterPrograms.lean": "f21f2ca0b58fbdfd005e85e5fda1398ee21cd75bb3719a5c9962e222c6c3d4a1",
+    "ExpandingCodes/Computation/ParameterRounding.lean": "86cb49085822e9aaa55bdc9825ceaf764cf6e64b8b323855c60d47266b04aa8e",
+    "ExpandingCodes/Computation/ParameterSetup.lean": "fc416ddaba03d913293c155b070342314ac21ae189591ec7ec86c1f9e942d141",
+    "ExpandingCodes/Computation/ParameterSetupBounds.lean": "bf465fa74c49b30473fa3e4c49d420a310aa13af1391ad5bef9eba148221cb3e",
+    "ExpandingCodes/Computation/PolynomialBounds.lean": "79dc13979d4ba5dab8ba10bd653edf3ebfedc0acd4c0a5dcde355f04ea42c0aa",
+    "ExpandingCodes/Computation/ProgramObligations.lean": "129192b6182acc553a5b03ba534624271699deca44b181aac74494c727d3e0c5",
+    "ExpandingCodes/Computation/RandomBits.lean": "e843e38254aab26854e56daf51dfd83f311e7a7140a030b58ce8f6ccb7bd8f9a",
+    "ExpandingCodes/Computation/RandomTables.lean": "91bb4770a7fc1850675210c30f1b7096989a0c7a1a48b6d6a9547defde0ab3fd",
+    "ExpandingCodes/Computation/RawIrreducibility.lean": "0220aef606139b0b398f8f93546dd3137c6fd0011f8880830dfa0bb3cbac34a2",
+    "ExpandingCodes/Computation/RuntimeBounds.lean": "7fda6e22ffe0a008f5321a29e7679105c462e138390f3a9643c937cc426243c9",
+    "ExpandingCodes/Computation/SamplerAssembly.lean": "4a05e86060667bfd347b86e8c15ff03a21a6d9a7162509564a5e7e8c0af229b1",
+    "ExpandingCodes/Computation/SamplerEnvelope.lean": "90cfefc7d2079719d41a25608123fede31bd39db52e1b2f136518046a99aafb3",
+    "ExpandingCodes/Computation/SamplerEvaluation.lean": "86d4e0c2c48fdd7533e93f61763fda245ee6a02d24f1a4b889da10399c150bac",
+    "ExpandingCodes/Computation/SamplerImplementation.lean": "8376b678b38e4cd2d2b676bec087d887cc24e2de56e6e77a27270621845eaec3",
+    "ExpandingCodes/Computation/SamplerLayerBounds.lean": "5148052dd864934325332e798374b1803399623f20e8f61d2b7163c401f21342",
+    "ExpandingCodes/Computation/SamplerOdometer.lean": "e7fd1b9d4311e47372635d23621d25abeb2454172aa0c745124171a1ca562bdf",
+    "ExpandingCodes/Computation/SamplerProgram.lean": "2ed3be865bd9ea5d61b95adc541be8ba458cfc3d9647d0f0526575d3e41df5a8",
+    "ExpandingCodes/Computation/SamplerRows.lean": "2b5148154a28b1208275cb29d60579fe9c9f236429690c02932dd45689755246",
+    "ExpandingCodes/Computation/SamplerSource.lean": "208b3641e86eea57760ccc0c0a65e4905f42fc88502638a55ea541174495188e",
+    "ExpandingCodes/Computation/SamplerTables.lean": "8bcd02838297158f2553f310d78c3a7d0aaf032023740d66ded9a3ce2407b697",
+    "ExpandingCodes/Computation/SizeParameters.lean": "a12b4c9d5f3314337c37ad8f6f02405f6bb67a508c6351a748da06e166bc32be",
+    "ExpandingCodes/Computation/SizeReader.lean": "5793c6d7b271f753e29eae19065878a4899004bf973171fdd168bc4406571a35",
+    "ExpandingCodes/Computation/SourceBridge.lean": "dec387c19c7f006ba49a62dc46a415fd06383d384dd95b536e75cb3ff76b6f84",
+    "ExpandingCodes/Computation/SourceFieldArithmetic.lean": "82fb97d5572b62ae185bb5c6e4cda9100cd6cbac79b43d2f1a3514ef69bc0b6a",
+    "ExpandingCodes/Computation/SourceFieldSetup.lean": "c4b3734751e49abfbcdb60b20015f726d583a9eb75323343af23f73b179261c1",
+    "ExpandingCodes/Computation/SourceModulus.lean": "241c010c1fb39bf3bff01a96a85fecd7ce8d8f1ff0f3df2993873cdbb2c3e12e",
+    "ExpandingCodes/Computation/TapeArrays.lean": "937f5dd0d07b0acd8434d0393c70ac3ac960a95bb9514693569ab48863b40b58",
+    "ExpandingCodes/Computation/TapeBounds.lean": "855c3c369b96ea5604e444d492bf12168d49f4b6dd3f54fa32be731bd039644f",
+    "ExpandingCodes/Computation/TapeCompiler.lean": "f440840078896ca879d015e964d8dbe8e7b88735222475fe194d758cacfe2170",
+    "ExpandingCodes/Computation/TapeControl.lean": "41b19f39e5c07560fb4dd1aff4d54dfa16c9d6832d4dfe60f67d3e3c5a091557",
+    "ExpandingCodes/Computation/TapeLoops.lean": "ec84faad0604755a640923646ad863ea522faab80aa1caec8d280c204de09273",
+    "ExpandingCodes/Computation/TapeMacros.lean": "8116c5c3ac1b425076c2864eb92f5dd6db2c102c1f83565ed5c45e96a13a4017",
+    "ExpandingCodes/Computation/TapeProgram.lean": "e41e9b639600f0c80a84149f1294d9ec6ce6d2fe757b8416cd50a7c90f3c21de",
+    "ExpandingCodes/Computation/TapeRename.lean": "7d205be9e1ac071d5b9d7f016dc35913a240f15bebbf86940f8341001e7290a1",
+    "ExpandingCodes/Computation/TesterAssembly.lean": "e2caf02c43ad5826911f60c22a7d02ba233d2d8f9e2fdcd8015f141d211fc4ba",
+    "ExpandingCodes/Computation/TesterBackend.lean": "87eccbfc2311189e869cad47bae5b267d10f49df4dcd0a29831147b31a2ba369",
+    "ExpandingCodes/Computation/TesterBackendComplete.lean": "6f1a9fb01c622c94540098ff2cc245050a655cb23b364c058530ff5bfb64ce77",
+    "ExpandingCodes/Computation/TesterBackendPrep.lean": "090b849a072c55cd18399e56850d4f821d4774171e73c70223a136972a1f8c54",
+    "ExpandingCodes/Computation/TesterEnvelope.lean": "fda76e3803a8e382a0ac5a0e4bc505d976b36781763caaa4d60f63f52bdfe116",
+    "ExpandingCodes/Computation/TesterEvaluation.lean": "9716643149ebe255409ebd8419cc7adfc499eb25e97831171f4361ee3bd416ff",
+    "ExpandingCodes/Computation/TesterFrontend.lean": "409ef568c314d742c163f97640cf36e887e6e4e2e632549ed442249c01726fcd",
+    "ExpandingCodes/Computation/TesterGram.lean": "d27e967c214f2f325d583011c1b038e246b39fe8cf21a430b18c7f2215c507a0",
+    "ExpandingCodes/Computation/TesterGramCorrectness.lean": "dbb5aa866a876da3ff2770c131d50afa586b9ceb6b528cd0e568b35848e1a380",
+    "ExpandingCodes/Computation/TesterImplementation.lean": "017b829e071d10c159cba4c30a7fa251eeedf82a916fbd7d44b947176c215302",
+    "ExpandingCodes/Computation/TesterInput.lean": "1ca3398d6837971e0fa8bacb2d5c44037a6dd89849970bd7f406c6abbba23158",
+    "ExpandingCodes/Computation/TesterPowers.lean": "c514818068f1fd778ddf21aadaf53852c5a6a8b85ef6f00fe0a81a60cdeaa4e8",
+    "ExpandingCodes/Computation/TesterPrefix.lean": "2ee247fa1093ef6fcdccaf20e3856b288444db58e275d660ec423a1fbb9a86f9",
+    "ExpandingCodes/Computation/TesterProgram.lean": "b848d8bca91f2a3ba771649a8d33d63fd727a69ffafe76b4a02f1b6c6ae55af5",
+    "ExpandingCodes/Computation/TesterSource.lean": "d961047ef161f003c8f2fdd40096915b875d7ab945d22d15f5ee2947e0d17852",
+    "ExpandingCodes/Computation/TesterSuffix.lean": "d6b8a61464559eb1dfce42e13b273a8aec7474c2854905ad842c20e1f4e3d31a",
+    "ExpandingCodes/Computation/UnaryArithmetic.lean": "7c07e75c74983a0a93ec0e73a6ad2560addb811f04984a1ef493393c893b2c94",
+    "ExpandingCodes/Computation/ZeroTables.lean": "444ab8b9bdc981db70076aeb24c53539e6e5b621a4803fa421e9b8b9501495bb",
+    "ExpandingCodes/Construction/ActivePairs.lean": "05e7a013a06e7ad11918bb5a28e1f66b68f7be61f5f72159389151914b9379ee",
+    "ExpandingCodes/Construction/Adversarial.lean": "a6c6261fc1af29a6d04f28630f7330e56d6e26a9490894264ab4b9694909dfa9",
+    "ExpandingCodes/Construction/AffineGeometry.lean": "931ffb6189c4e01a09c5443f4f78d9c7bb5bba120a302fcb34a06583ded16283",
+    "ExpandingCodes/Construction/BinaryGeometry.lean": "0c9820c656050c03b21e5ab90c5fb757f314bd579f230efdfcf82052a74f0906",
+    "ExpandingCodes/Construction/Construction.lean": "c091706d4c2b15e523cd006b75f1244abc85d7e35ff0b10242d0434c7ac2bcb4",
+    "ExpandingCodes/Construction/ExpansionParameters.lean": "fec2b33c9f597256cb7749c8de9a3915c35af1032e89a9b01caed28d172824a0",
+    "ExpandingCodes/Construction/ExpansionTransfer.lean": "fd9183025979bad41f9bad0b21a0ba6ea045eeb2ee7c389f4da8d3ec9a676a97",
+    "ExpandingCodes/Construction/Geometry.lean": "cd1c98e446c3a4788e0df82a92439b41bb2b0d0b8f6de9a9bc542e5364e091d6",
+    "ExpandingCodes/Construction/Growth.lean": "0c0850223d71251ed67a9c2dc14f49647600e0ace520e6e563ab974cb40d41f5",
+    "ExpandingCodes/Construction/HashNeighbors.lean": "727c99c82cba39c7f96034a3e678adb630359aa8f08cb974703b76cf7cb499c8",
+    "ExpandingCodes/Construction/HashParameters.lean": "2c0f4c43190ced4baca2a852ec2c06a843d0dc7357065d96eb6fd7025a7f08fd",
+    "ExpandingCodes/Construction/Implementation.lean": "d75d5a12aaf1828827095e39e1e67d3e788d6533ae380d7900f98fae200fc8dd",
+    "ExpandingCodes/Construction/LogGrowth.lean": "414a44627bd94f98d5636582d7b7bc599415cdece3c803e016baf285a7d1dcca",
+    "ExpandingCodes/Construction/Obligations.lean": "faba0a85dbe94f6115dd03373016d6886c827c5f4bdd3e04ccd064054e23642f",
+    "ExpandingCodes/Construction/ParameterBounds.lean": "8506978c68e4eaf79a0e7ca250c43e3a4e8c9f17ef852122f4f332000d4dacd8",
+    "ExpandingCodes/Construction/Peeling.lean": "3ae6b73d2c94d8561d2e8c04df97e9187bde020285c409c711e021214477c904",
+    "ExpandingCodes/Construction/Programs.lean": "7ddee1250a7ba8214635af52b06a783a8a99148dd85ac178c53edda60531f198",
+    "ExpandingCodes/Construction/RowWeight.lean": "c0a370804363f28ece7dad16352248b74e315d996842753b9da734011bdc93ac",
+    "ExpandingCodes/Construction/SamplerExpansion.lean": "def26950ed3fadd603769cecd01de0943fb396475013ee2b9bddef6a21a332de",
+    "ExpandingCodes/Construction/SamplerSupport.lean": "f63b0d832467320782370f5306229d3df4da91313a568d1ceaf97101088c0436",
+    "ExpandingCodes/Construction/UniformAcceptance.lean": "9302ef2ac279f6e68d9d4dc77de5e736829492f7a27856d61226b3af2597a7f4",
+    "ExpandingCodes/Probability/AuxiliaryErasure.lean": "9397e269c2d14ad18241a523a298db6ac5fe7ef285753cc3c1d84218949dbd9f",
+    "ExpandingCodes/Probability/AuxiliaryRate.lean": "7ba09fd8424c49ef69b7845b79edf8870d3292d718e14d1cd65704be6332a05b",
+    "ExpandingCodes/Probability/BinomialAtom.lean": "b0b0531a182e95bcbf3577c8d5f8c14eae91f6f1a937b0533eefe4832e7e98fd",
+    "ExpandingCodes/Probability/BinomialInterval.lean": "50e942c707a2f197174f1f9dd83774c3ef2342c9d277e18aaa213d9a9b6b1e60",
+    "ExpandingCodes/Probability/BoundedDifferences.lean": "f16eb8cf73dd6cb2c751332c867ce4b01b2bc64120ab104440f29d6f131f6c03",
+    "ExpandingCodes/Probability/CubeSymmetry.lean": "4c21eaeb9abe28509e1224f4f808aedf42c5e256f44b07649fdcd301c673cab4",
+    "ExpandingCodes/Probability/Distinguishing.lean": "5b270d6323c506373bc54772301abd5d3f5f0d856f1c1f15af52f5653ebe92c7",
+    "ExpandingCodes/Probability/Erasure.lean": "b60f643917f35ecc7abe579ecd498e51243f46f2b12c3c673970ba8a53e25a47",
+    "ExpandingCodes/Probability/ErasureCapacity.lean": "430d692daacda63fc9b5d65364b31bb594ba91e2f6e2665246bdc8c134fc6643",
+    "ExpandingCodes/Probability/FiniteEvents.lean": "18c313f460e16e070d0e770ad1586e37b6b513bb49feeb5c145dee3049b04996",
+    "ExpandingCodes/Probability/FiniteUniform.lean": "63c1056cf7981ad73de2154f2fe679dc399c8bcd8ccab03896429f13c48f0599",
+    "ExpandingCodes/Probability/GridBand.lean": "61bad58421f1c5260a3a6d50c4605a24fc5349f1bdf892088ebcc06a3d468bcb",
+    "ExpandingCodes/Probability/GridVolume.lean": "7c0717d2b6c88e63cf102b4970f6c25e61bddb464b3f9b6127c0928ef266f9d3",
+    "ExpandingCodes/Probability/HalfspaceVolume.lean": "b76a8badea20575444b360d9afb2ae55e798bde0f53488971272c14c3cd62c68",
+    "ExpandingCodes/Probability/HashExpansion.lean": "8485dc9d2c9a1d7d2878abc12b2d226ab743fc4ac1e0593c8cbe76b0c69caa09",
+    "ExpandingCodes/Probability/HashOccupancy.lean": "84856a255a5eb7bb9374b26218f151e9c337f7bad7636e32ad91135821db6098",
+    "ExpandingCodes/Probability/PreliminaryCounting.lean": "6a36bfa34120e283f36037a44ea96d21ca710812ebf7bae016c83f679d860336",
+    "ExpandingCodes/Probability/PreliminaryExpansion.lean": "f332dd49f8c6d8859369666212c5eb0bf092076f96898ecdbd3c10ed1c4f0187",
+    "ExpandingCodes/Probability/RankExpectation.lean": "5ee45c5b541c27011c102ca350fcddc4e4fc010126e859c616d0eae6ded6b69a",
+    "ExpandingCodes/Probability/RateDiscrete.lean": "9b0db8fd01d09e9b4f47b26cd4b806bd1e4a1e3aec4fb567c10972029d5f5a91",
+    "ExpandingCodes/Probability/RateLimit.lean": "81d37e0c7930083faf4c6850f57a288247670efb8e917b979595c6cf2b05232e",
+    "ExpandingCodes/Probability/RateNumerical.lean": "4772fd7a85e2820505298624bb058ea537b620d254241ed65e058b96122299a6",
+    "ExpandingCodes/Probability/SharpThreshold/Basic.lean": "3dda39b9770915dfa535475a66286c0ffb658b58e80fd1707ddac37ce4c20c76",
+    "ExpandingCodes/Probability/SharpThreshold/Energy.lean": "06c59265d786fbc883b6eb01c933ebddbf868bb0c37bdac3fc7296fb82fbbac9",
+    "ExpandingCodes/Probability/SharpThreshold/FourierBasis.lean": "36df66683937036850a6d344ce35f26b6f3374f3b3ca3724983077f2c77436a2",
+    "ExpandingCodes/Probability/SharpThreshold/GradientFourier.lean": "c8dbaf456f266e56f196450a6b96c87fe855e7f96ecdc807931291fffc280fe1",
+    "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean": "1709f33f9cafc658e2d53a2afbc1115b2c23d11a01febe77f02d900f43201280",
+    "ExpandingCodes/Probability/SharpThreshold/Parseval.lean": "8c3e1a5b3b0ac0ecf3f6cb31253efb7e364d433b6243920ad0a5a0f811023962",
+    "ExpandingCodes/Probability/SharpThreshold/ProductNoise.lean": "290331741034877a90650e542ae9edbed6fcd147766461d5f66e5b3e962dead3",
+    "ExpandingCodes/Probability/SharpThreshold/Russo.lean": "2e82aeb03d5871b43e62915fa4827e3891653a634da6d33babc6252996b5f94d",
+    "ExpandingCodes/Probability/SharpThreshold/Scalar.lean": "410d991c0961bbc05447d8967ab8123cf642f4e607d513690fe95d69faa90f24",
+    "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean": "257cebba2f3125875f9ba6f303272b2be12492cd4c5edf7573e9926be7f2fb9f",
+    "ExpandingCodes/Probability/SharpThreshold.lean": "b42936028ab9879aecc4ddca29a663fa4f341452e82fcb37426ad5dc3fd1ea78",
+    "ExpandingCodes/Probability/UniformLinear.lean": "c55b572101f001768f8071778046ad196e00fda43275a872c0c99512403bc85e",
+    "ExpandingCodes.lean": "d46d0e8cd8a8b741faf8126b187cd0783dd766b0d81d3923d0b68a23f8f7f4bc",
+    "Feasibility.lean": "0e5ed25a2c4ccd7423fc730f74ef5856aae0fb683186e5572413283234db7b86",
+    "Solutions/Sol_ExpandingCodes_PolynomialStretch_expanding_codes.lean": "db1a1386b552b6aea5e6603ddc5588673acfd234a83b0e7d905a40cf5212ef0f",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.lean": "bcd36f0c3f9e033335ed7331a0e38a7665f7ca60d043b5c947abb3acf49ee04d",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_codeword_annihilation.lean": "d544316269c7faa3677b0a66f9a7457a89bfc7ea7c359ca6e19fed2fdfff5b0e",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_construction.lean": "1b05fd0293c07c476b22769d1e10047d945b30db4ccc2842b348a06c09f11236",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_distinguishing.lean": "f8ac8574526af8f0a1ade5cdf3770f9db13ada23669d4a59bbe46a55db900148",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_erasure_ambiguity.lean": "ff109cb97c5aabe288e7e6c91c1992189ddcce9e85aec430d8017a62d26280f3",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_hash_expansion.lean": "6dee28919c85691494b49dcc56f44172c83dff66586e89824de55542dbc34f8c",
+    "Theorems/Thm_ExpandingCodes_PolynomialStretch_preliminary_expansion.lean": "1d713e906e38485fb8bccf34fc4fca69bad10197fa53a2655152eb0f496a171e",
+    "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+    "lakefile.lean": "221a9d62701e4cabdcc890d6cc55ce3b6d6908072d967de082564fa5e686a5dd",
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "tools/lake-serial": "3be4215e7d8f5a0180d30522b189506dc1d92593ce210bad9582fb65598d71c9"
+  },
+  "checked_nodes": [
+    {
+      "id": "construction",
+      "declaration": "ExpandingCodes.PolynomialStretch.construction",
+      "statement_sha256": "127cead23ef5ce4c738b38a42070e676c88a16a3245719efe6f857c0e20be02c",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "codeword_annihilation",
+      "declaration": "ExpandingCodes.PolynomialStretch.codeword_annihilation",
+      "statement_sha256": "e0fdbbb879737a1574db1ec58704e5caa1df86db75fd135e41d1df16ae22e4ca",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_ambiguity",
+      "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity",
+      "statement_sha256": "bd81c6f892bc3af76be5718c965d29bb4248e18b3ef0858187b4d4d5694c382f",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "auxiliary_rate",
+      "declaration": "ExpandingCodes.PolynomialStretch.auxiliary_rate",
+      "statement_sha256": "1fe5f229ae93da4bb4bea97b73abd688a4dfcdf67119f71a182d4e56d16b1e55",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "distinguishing",
+      "declaration": "ExpandingCodes.PolynomialStretch.distinguishing",
+      "statement_sha256": "6e15970f443200d0b8dd4adbe0a434e06b24eb937e673c443b302b8fc2e5ae19",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "preliminary_expansion",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_expansion",
+      "statement_sha256": "e649d15f8fd4b846c623a18abff52549ce557cd4de5c4081720994ad119a1a95",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "hash_expansion",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_expansion",
+      "statement_sha256": "e6d93f0abb05634339cc6922b811e384b44ba14c05d3c72cb06fa74eb9bb1e33",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "headline",
+      "declaration": "solution",
+      "statement_sha256": "af282a3616664daef7b13bb3362e1faf434b8c5979411c6f5a674c0f9e403f84",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "finite_field_triple_orthogonality",
+      "declaration": "ExpandingCodes.sum_eval_triple_eq_zero",
+      "statement_sha256": "5c794538199bdb38d76f580e5aeaf45c276432775d9154d1a2d0ede765779873",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "affine_flat_pair_orthogonality",
+      "declaration": "ExpandingCodes.sum_eval_pair_mul_flatIndicator_eq_zero",
+      "statement_sha256": "355b533427fd43096db74fcbfe990b78669c5121a650b3f8917242b77555d7df",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_two_point_uniform",
+      "declaration": "ExpandingCodes.SharpThreshold.two_point_uniform",
+      "statement_sha256": "96aafc2fcdbcebcb497100c84533cde085445617520126ec6f305a4dcc68a761",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_tensorize_two_point",
+      "declaration": "ExpandingCodes.SharpThreshold.tensorize_two_point",
+      "statement_sha256": "e2fc526ec222ea30a6c85a6b256e6d92b2ec664bc6aca6c585090ab419ca67a6",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_fourier_parseval",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_parseval",
+      "statement_sha256": "6ab9a62ee05d1f275eaca93a72de45ce253322881903630f331fea602782f145",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_fourier_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+      "statement_sha256": "561bcee973759f1b6c3c3a8c9ce11c72ef2742f81180847e78fa1d03df5d7298",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_fourier_noise_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy",
+      "statement_sha256": "dedd343d7188b28508ca5ba96a8cdb10a1fede0a7a630d06f892aa4afc9fbba8",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_russo",
+      "declaration": "ExpandingCodes.SharpThreshold.russo",
+      "statement_sha256": "9bc90fe24cee12f071a76ac0a54893a1812e111650dc626f1f9168bbc6785769",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "boolean_qualitative_sharp_threshold",
+      "declaration": "ExpandingCodes.SharpThreshold.cross_tendsto_zero",
+      "statement_sha256": "c9e591da182c57fc89290a21b7892603285de6433e1125bbd354aa76f61ecd2d",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "auxiliary_degree_strict_bound",
+      "declaration": "ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound",
+      "statement_sha256": "bd6d20fe34e65169b25628be2e2afd65465037ebcaf6f350e8c303269d9daa2f",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "preliminary_pair_orthogonality",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal",
+      "statement_sha256": "33c3a7bae24289989842b5e826842ff00fd2fd31e606d08aefef8698736a23ac",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "combined_codeword_annihilation",
+      "declaration": "ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero",
+      "statement_sha256": "fb398126bb09b587289658b90313be3b2d70d9f506d9f7b93ad8c04b8123da71",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "combined_corruption_rank",
+      "declaration": "ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight",
+      "statement_sha256": "efe2ab4cf8047e67d34af3a341064b7abdaee5459ca7a29a8812d3e216582e62",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_ambiguity_support_bound",
+      "declaration": "ExpandingCodes.Erasure.finrank_ambiguity_le_undetermined",
+      "statement_sha256": "537a44d09781b15f84a6e8fae45df3aefd4c712044807d0c3835110c0892a447",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_observed_witness_dimension",
+      "declaration": "ExpandingCodes.Erasure.card_essential_le_finrank",
+      "statement_sha256": "22e2088e544d5819aad0fce73929d4a006edbdf55a9a44b3c4c0b039678cd2b4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_independent_coordinate_conditioning",
+      "declaration": "ExpandingCodes.Erasure.expectationOn_insert",
+      "statement_sha256": "cb1675c8229d4c42b1e99ebdfc0ac5180041320996c7bbb4bd65e75af777743c",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_exit_one_sided_area",
+      "declaration": "ExpandingCodes.Erasure.exit_area_bound",
+      "statement_sha256": "9cd6a236df1991ad83b16b926e2d6f72d4b943b1fe7c3b1fa7d540d9b6acf1ce",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_punctured_boolean_event",
+      "declaration": "ExpandingCodes.Erasure.exit_eq_puncturedProbability",
+      "statement_sha256": "a48ad1b6ff01d382818f09b50b892c85e3c2b2ce3931d188b6058a712b7e4715",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_subcritical_limit_assembly",
+      "declaration": "ExpandingCodes.Erasure.ambiguity_sublinear_of_exit_crossDecay",
+      "statement_sha256": "0e35998ca271d1faf685b9c43eb3f7cd0c3aacc12c2c6d68cdfed3a1bfe80b44",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_canonical_conditional_assembly",
+      "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity_of_exit_crossDecay",
+      "statement_sha256": "15b5710269b71537fe9879f469b6e841c0bc437735d6877f466dfc2d8ce386a2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_doubly_transitive_exit_symmetry",
+      "declaration": "ExpandingCodes.PolynomialStretch.meanExit_eq_exit_of_doublyTransitive",
+      "statement_sha256": "18e36cf1e440afc5b9dae81bc893be22c226bab738ebc304215cc37b9d35854e",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_stabilizer_equal_influences",
+      "declaration": "ExpandingCodes.PolynomialStretch.puncturedFailure_equal_influences",
+      "statement_sha256": "df1d1806fc99fee6fcf0214dfcf32b018d9f076804456bda680cb1aa1396adf1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "erasure_mean_exit_cross_decay",
+      "declaration": "ExpandingCodes.PolynomialStretch.meanExit_cross_tendsto_zero",
+      "statement_sha256": "7c4e0b80063e8362972c66b61986fed138d3f00bd85f095951547e4312c32dbe",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "reed_muller_dimension",
+      "declaration": "ExpandingCodes.PolynomialStretch.finrank_reedMuller",
+      "statement_sha256": "04ce872b5751b4988da363cf011dc08bddc9994d65ea1b3a26244f4d4436a343",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "finite_boolean_bounded_differences",
+      "declaration": "ExpandingCodes.PolynomialStretch.boundedDifferences_lower_tail",
+      "statement_sha256": "ae0a29f6895ebe2d7def57393441e51f0bf69872973f540788b706f285ba9cdd",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "sampler_eventual_row_weight",
+      "declaration": "ExpandingCodes.PolynomialStretch.eventual_sampleLaw_rowWeight",
+      "statement_sha256": "064780bb06afdd775afc23948e2d6e1ef463b257925d51173906245f8dbdac98",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "active_point_count",
+      "declaration": "ExpandingCodes.PolynomialStretch.activePointSet_card_le",
+      "statement_sha256": "208d89fe559c6fab2b4088df0e16e98d55e3eac48cd22579b9d8b41be1ed87f3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "polynomial_row_growth",
+      "declaration": "ExpandingCodes.PolynomialStretch.eventually_rowCount_bounds",
+      "statement_sha256": "3dab184d0c466d2d806149c06a8bff510820a0b3826289a48f6610564cb141ae",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "absolute_rational_parameters",
+      "declaration": "ExpandingCodes.PolynomialStretch.rational_parameter_bounds",
+      "statement_sha256": "4a837b05b69e5c4674b0b8dc089acc95646c43aa430446839850af5002674a0a",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "binomial_maximum_atom",
+      "declaration": "ExpandingCodes.PolynomialStretch.binomial_atom_le",
+      "statement_sha256": "aa5eeaf9f0880f9ac5e8d13d60a63da26cdd70bc1a02436bca9f5ff841a8a8f2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "rational_geometry_programs",
+      "declaration": "ExpandingCodes.PolynomialStretch.rational_geometry_programs",
+      "statement_sha256": "afbbcb9a793899f58fe7dddf1768c5f6278befda4015f249d089e48bdc5cd11e",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "eventual_sampler_expansion",
+      "declaration": "ExpandingCodes.PolynomialStretch.eventual_sampler_expansion",
+      "statement_sha256": "d31eac4729416252add33acf842d9a8d5e037185f3fbbb921e4d5f759acb7e98",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "eventual_uniform_rank_acceptance",
+      "declaration": "ExpandingCodes.PolynomialStretch.eventual_uniform_rank_acceptance",
+      "statement_sha256": "068d03465524e592bf018062e94fd8769cc621bacf01b38624c88abbe57f6f01",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "auxiliary_monomial_rate_limit",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_auxiliary_monomialCount_div",
+      "statement_sha256": "96cdf9ebe5d8121f42c6e5dc3e0eb3adf8a895424d8bb070c25d784e9d42ac36",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "auxiliary_rate_limit",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_rate",
+      "statement_sha256": "3c31a1eebd7cbaaddc6923114f35f2d27c02c5951fd0fda9a85a58ea32c804dc",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "logarithmic_row_growth",
+      "declaration": "ExpandingCodes.PolynomialStretch.rowCount_log_limit",
+      "statement_sha256": "53e86af7fdd442cf18a83c42bce858424b0d09143764bc4ea408ea94a2a209f4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "adversarial_acceptance_transfer",
+      "declaration": "ExpandingCodes.PolynomialStretch.adversarial_rankTest_acceptance",
+      "statement_sha256": "a5422ca56f155b8412da13f14a6692872878868ae5cf5091477b76e3352b809f",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "preliminary_expansion_limit",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_expansion_limit",
+      "statement_sha256": "e649d15f8fd4b846c623a18abff52549ce557cd4de5c4081720994ad119a1a95",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "detector_core",
+      "declaration": "ExpandingCodes.PolynomialStretch.rankTest_distinguishing",
+      "statement_sha256": "6e15970f443200d0b8dd4adbe0a434e06b24eb937e673c443b302b8fc2e5ae19",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "rate_numerical_lower",
+      "declaration": "ExpandingCodes.PolynomialStretch.limitingRate_lower_parameter",
+      "statement_sha256": "7baf0097546a32252f44a500207fc3f3306afb53bb8d8b8ece37043d45fa3fb1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "rate_strict_upper",
+      "declaration": "ExpandingCodes.PolynomialStretch.limitingRate_lt_half",
+      "statement_sha256": "4f296df4179d344f3466eead65e8f1d49101d37386504a0e0d3f96f0ce493b17",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "auxiliary_half_erasure",
+      "declaration": "ExpandingCodes.PolynomialStretch.tendsto_auxiliaryCode_halfErasure",
+      "statement_sha256": "09b30016bfd56586e5807ffb82607c4d3a4aa3c2f4b986595b2631aa58c09136",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "hash_expansion_envelope",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_expansion_envelope",
+      "statement_sha256": "e6d93f0abb05634339cc6922b811e384b44ba14c05d3c72cb06fa74eb9bb1e33",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "binary_sampler_implementation",
+      "declaration": "ExpandingCodes.PolynomialStretch.binary_sampler_implementation",
+      "statement_sha256": "13deaee8b65c444dcecd259741cd54726ba90ef3c788e4a557996f06e830ec2b",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "binary_tester_implementation",
+      "declaration": "ExpandingCodes.PolynomialStretch.binary_tester_implementation",
+      "statement_sha256": "e7cfdbc5b5a391c0592edbeb091d18b3ea23f9a3ab4f532b5582df3704b42724",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "id": "binary_sampler_random_law",
+      "declaration": "ExpandingCodes.PolynomialStretch.binarySamplerFromInput_law",
+      "statement_sha256": "77b5e6ac3adf28e2d3a304d8b4f17ec9c43e2111570f7797bdb37b7c4e21824f",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ]
+}

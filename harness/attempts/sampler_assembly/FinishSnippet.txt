@@ -1,0 +1,139 @@
+theorem point_ne_low (d k : ℕ) (i : Fin d) (j : Fin 80) : Storage.point d k i≠Storage.low d k j := by
+  intro heq
+  have h := congrArg Fin.val heq
+  have := j.isLt
+  simp only [Storage.point_val,Storage.low_val] at h
+  omega
+
+theorem countdown_ne_low (d k : ℕ) (i : Fin d) (j : Fin 80) : Storage.countdown d k i≠Storage.low d k j := by
+  intro heq
+  have h := congrArg Fin.val heq
+  have := j.isLt
+  simp only [Storage.countdown_val,Storage.low_val] at h
+  omega
+
+theorem RowState.setLow (d n k M : ℕ) (inp : Inputs) (r : ℕ) (hr : r ≤ rowCount d n)
+    (s : TapeStore (Storage.registers d k) 2) (hs : RowState d n k M inp r hr s)
+    (j : Fin 80) (hj : ¬Protected j) (a : ℕ) (ha : a ≤ M) :
+    RowState d n k M inp r hr (s.setReg (Storage.low d k j) a) := by
+  have hf : ∀ i,Protected i → Storage.low d k i≠Storage.low d k j := by
+    intro i hi heq
+    have h := Storage.low_injective d k heq
+    subst i
+    exact hj hi
+  have hq := hf 35 (by right;right;right;right;decide)
+  have hread : SamplerOdometer.readings (Storage.pointPairs d k) (s.setReg (Storage.low d k j) a)=
+      SamplerOdometer.readings (Storage.pointPairs d k) s := by
+    rw [pointPairs_readings,pointPairs_readings]
+    congr 1
+    funext i
+    simp [TapeStore.setReg,point_ne_low d k i j]
+  constructor
+  · exact hs.ready.setReg _ _ ha hf
+  · intro p hp
+    obtain ⟨i,hi,hpi⟩ := List.mem_map.mp hp
+    subst p
+    simpa [TapeStore.setReg,point_ne_low d k i j,countdown_ne_low d k i j,hq] using hs.valid _
+      (List.mem_map.mpr ⟨i,hi,rfl⟩)
+  · rw [hread];exact hs.number
+  · exact hs.output
+
+def LayerBlockContract (d n k M : ℕ) (inp : Inputs) (C : ℕ) : Prop :=
+  ∀ (s : TapeStore (Storage.registers d k) 2) (z : Fin ((fieldSize d n)^d)),
+    RuntimeReady (Storage.low d k) d n k inp M s →
+    SamplerOdometer.Valid (Storage.low d k 35) (Storage.pointPairs d k) s →
+    (∀ j,s.reg (Storage.point d k j)=(EncodedTester.digits (fieldSize d n) d z j).val) →
+    ∃ t e,t ≤ C ∧ (layers d k (List.finRange k)).Stops inp
+      (s.toCfg (layers d k (List.finRange k)).entry) t e ∧ LayerBlockPost d n k M inp s z e.store
+
+def finishTime (d n k C M : ℕ) : ℕ :=
+  d*(8*M+20)+(7*M+7)+2+rowCount d n*(rowBodyTime d k C M+2)+1
+
+/-- Full actual runtime row loop, reduced only to the strictly smaller actual
+layer block. The invariant accounts for every written row and physical carry. -/
+theorem finish_stops_of_layers (d n k M : ℕ) (inp : Inputs) (hM : 1 ≤ M)
+    (huniq : (Storage.low d k 35::Storage.low d k 61::SamplerOdometer.used (Storage.pointPairs d k)).Nodup)
+    (C : ℕ) (hLayers : LayerBlockContract d n k M inp C)
+    (s : TapeStore (Storage.registers d k) 2)
+    (hs : RuntimeReady (Storage.low d k) d n k inp M s) (hout : s.output=[]) :
+    ∃ t e,t ≤ finishTime d n k C M ∧
+      (finish d k).Stops inp (s.toCfg (finish d k).entry) t e ∧
+      e.output=matrixBits (binarySamplerFromInput d n k (Nat.log 2 (n/k)) inp) := by
+  let q := Storage.low d k 35
+  let tmp := Storage.low d k 61
+  let ps := Storage.pointPairs d k
+  obtain ⟨t₁,a,ht₁,ha,has,hab⟩ := SamplerOdometer.initialize_stops q tmp ps huniq inp M s hs.counters
+  have haReady : RuntimeReady (Storage.low d k) d n k inp M a.store := by
+    rw [has]
+    apply initializeStore_ready d n k M inp s hs
+    simpa only [← has] using hab
+  have haValid : SamplerOdometer.Valid q ps a.store := by
+    rw [has]
+    apply SamplerOdometer.initializeStore_valid q tmp ps huniq s
+    rw [hs.sizes.field]
+    exact fieldSize_pos d n
+  have haNumber : Nat.ofDigits (fieldSize d n) (SamplerOdometer.readings ps a.store)=0 := by
+    rw [has]
+    change Nat.ofDigits (fieldSize d n) (SamplerOdometer.readings (Storage.pointPairs d k) _)=0
+    rw [pointPairs_readings,SamplerOdometer.number_ofFn]
+    apply Finset.sum_eq_zero
+    intro i hi
+    have hv := SamplerOdometer.initializeStore_values q tmp ps huniq s
+      (Storage.point d k i,Storage.countdown d k i)
+      (List.mem_map.mpr ⟨i,List.mem_finRange i,rfl⟩)
+    simp only [hv.1,zero_mul]
+  have haOut : a.output=[] := by
+    have ht := initializeStore_payload q tmp ps s
+    change a.store.output=[]
+    rw [has]
+    exact (congrArg (fun z => z.2.1) ht).trans hout
+  have haState : RowState d n k M inp 0 (Nat.zero_le _) a.store := by
+    exact ⟨haReady,haValid,by simpa using haNumber,by simpa using haOut⟩
+  obtain ⟨t₂,b,ht₂,hb,hbs,hbb⟩ := copy_stops_bound (Storage.low d k 36) (Storage.low d k 60)
+    (Storage.low d k 61) ((Storage.low_injective d k).ne (by decide))
+    ((Storage.low_injective d k).ne (by decide)) ((Storage.low_injective d k).ne (by decide)) inp M a.store hab
+  have hmM : rowCount d n ≤ M := by rw [← haReady.sizes.rows];exact hab _
+  have hbState : RowState d n k M inp 0 (Nat.zero_le _) b.store := by
+    rw [hbs,haReady.sizes.rows]
+    exact (haState.setLow d n k M inp 0 (Nat.zero_le _) a.store 60 (by decide) _ hmM).setLow
+      d n k M inp 0 (Nat.zero_le _) _ 61 (by decide) 0 (Nat.zero_le _)
+  have hbCount : b.reg (Storage.low d k 60)=rowCount d n := by
+    change b.store.reg _=_
+    rw [hbs]
+    simpa [SamplerEvaluation.reg_layout (Storage.low d k) (Storage.low_injective d k)] using haReady.sizes.rows
+  let m := rowCount d n
+  let Inv : ℕ → TapeStore (Storage.registers d k) 2 → Prop := fun rem c =>
+    rem ≤ m ∧ RowState d n k M inp (m-rem) (Nat.sub_le m rem) c
+  have hbody : ∀ rem c,c.reg (Storage.low d k 60)=rem+1 → Inv (rem+1) c →
+      ∃ t e,t ≤ rowBodyTime d k C M ∧
+        (rowBody d k).Stops inp ((TapeProgram.decStore (Storage.low d k 60) c).toCfg (rowBody d k).entry) t e ∧
+        Inv rem e.store ∧ e.reg (Storage.low d k 60)=rem := by
+    intro rem c hcr hI
+    rcases hI with ⟨hrem,hstate⟩
+    have hdec : RowState d n k M inp (m-(rem+1)) (Nat.sub_le m (rem+1))
+        (TapeProgram.decStore (Storage.low d k 60) c) :=
+      hstate.setLow d n k M inp _ _ c 60 (by decide) _
+        ((Nat.sub_le _ _).trans (hstate.ready.counters _))
+    have hr : m-(rem+1)<rowCount d n := by change m-(rem+1)<m;omega
+    obtain ⟨t,e,ht,he,hpost,her⟩ := rowBody_stops_of_layers d n k M inp hM huniq C hLayers
+      (m-(rem+1)) hr (TapeProgram.decStore (Storage.low d k 60) c) hdec
+    refine ⟨t,e,ht,he,⟨by omega,?_⟩,?_⟩
+    · have heq : m-(rem+1)+1=m-rem := by omega
+      simpa only [heq] using hpost
+    · rw [her]
+      simp [TapeProgram.decStore,hcr]
+  have hbI : Inv m b.store := by
+    constructor
+    · rfl
+    · simpa [Inv] using hbState
+  obtain ⟨t₃,e,ht₃,he,hIe,her⟩ := countedLoop_stops_frame (rowBody d k) (Storage.low d k 60) inp
+    (rowBodyTime d k C M) Inv hbody m b.store hbCount hbI
+  have heOut : e.output=matrixBits (binarySamplerFromInput d n k (Nat.log 2 (n/k)) inp) := by
+    have ho := hIe.2.output
+    simpa [m,SamplerRows.prefix_full,operations,formValues,hashValues,binarySamplerFromInput,
+      SamplerTables.formEntries,SamplerTables.hashEntries,rowCount] using ho
+  refine ⟨_,_,?_,(ha.seq hb).seq he,heOut⟩
+  unfold finishTime
+  simp only [ps,Storage.pointPairs,List.length_map,List.length_finRange] at ht₁
+  change t₃ ≤ rowCount d n*(rowBodyTime d k C M+2)+1 at ht₃
+  omega

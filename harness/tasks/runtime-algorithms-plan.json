@@ -1,0 +1,54 @@
+{
+  "status": "Open implementation plan, no proof claimed",
+  "context": "Exact SamplerImplementation/TesterImplementation and rational_geometry_programs in Construction/Implementation and Obligations; actual NKtLB finite model mandatory",
+  "completed_foundations": [
+    "CounterMachine/Tape/Compiler: actual finite instructions, constant overhead1+2t, no query",
+    "CounterLoops: actual sequencing and counted-loop source code with explicit bounds",
+    "TapeProgram/Compiler/Bounds: explicit buffers, constant overhead1+2t, exactoutput/noquery; source buffersize/head\u2264t",
+    "Actual uniform unary size parser/setup computes exact n,p,ell,q,m,n/k,beta,b with polynomial source steps and intermediate counters",
+    "Exact finite fair-bit table bijections, physical reader decoding, coherent finite-index full sampler equality and canonical sampleLaw mass",
+    "Actual source field multiplication374labels and addition365labels, exact index semantics and polynomial source-step bounds",
+    "Actual physical pivot scan/access and Schur-cell source composition"
+  ],
+  "array_requirement": "Use explicit symbol buffers; unary registers hold individual polynomially bounded indices or field values. q-cell thermometer field entries (v ones then q-v zeros for v<q), and b-cell bucket entries, are now the preferred physical table representation; these are polynomial size, unlike unary packing of an entire array. Ell-bit coefficient scratch is optional.",
+  "geometry_route": {
+    "field": "For ell=fieldExponent d n\u22651, enumerate q=2^ell monic binary polynomials of degree ell and find least irreducible. Test factors with bounded binary polynomials/remainder, polynomial in q, not in ell. Existence via finite-field irreducible polynomial theorem.",
+    "representation": "Choose AdjoinRoot of that polynomial; encode every field element by ell binary coefficients, get explicit Fin q equivalence, prove arithmetic by binary polynomial remainder. Use the same representation in geometry.elements.",
+    "points": "Explicit base-q tuple enumeration for rowOrder; fixed dimension d.",
+    "honesty": "Existing standardGeometry uses classical enumerations and is not automatically a computable witness."
+  },
+  "sampler_route": [
+    "Compute q,b using unary doubling and size loops; d,k fixed rational-parameter constants embedded in program.",
+    "Read ell fair bits per random field coefficient for every form coefficient (2*k*q*d field coefficients), and log2(b) bits for every hash table entry (k*q^3 entries). Store bit tables on explicit work buffers.",
+    "Uniform bit blocks biject exactly to finite field and bucket values, unused random suffix is independent padding. Prove exact canonical sampleLaw, not just approximate law.",
+    "For each of m=q^d rows compute k actual neighbors via field operations and table scans. Store k neighbors in a fixed number of unary counters or buffers. Emit all n bits in every row including zero padding; output length m*n.",
+    "Worst-case table scans/evaluation/output time is a fixed polynomial in n since q<2*n^(2d), d,k fixed; choose one A(n+1)^a covering both used randomness and time."
+  ],
+  "tester_route": [
+    "Use full q^d exponent tuples as row indices, setting rows above auxiliaryDegree to zero. Prove Gram matrix rank equals actual canonical smaller matrix after zero-padding. This avoids dependent subtype enumeration in the program.",
+    "Construct the m-by-m full evaluation matrix and masked Gram matrix on explicit bit buffers, using the same field representation.",
+    "Implement deterministic Gaussian elimination with buffer cell moves and bounded loops, preserving rank via elementary row operations. Exhaustive minor/span enumeration is exponential and not acceptable.",
+    "Compare rank to rational theta threshold by integer cross multiplication; theta fixed in the finite program. Time can be a loose fixed polynomial in m+n."
+  ],
+  "next_assignments": [
+    "Finish actual inverse and selected-modulus search",
+    "Finish full physical Gaussian grid/outer loops and tester input/Gram construction",
+    "Finish sampler odometer/evaluation/table filling and full matrix output",
+    "Compose concrete programs with checked compiler and global polynomial/time/entropy bridges"
+  ],
+  "library_findings": {
+    "rank_certificate": "Mathlib/LinearAlgebra/Matrix/Echelon/Decomposition.lean provides Echelon.Decomposition.rank_eq and Pivot.lean rank_eq; certificate only, not Gaussian algorithm. Can validate a computed elimination result.",
+    "irreducible_existence": "No direct prescribed-degree existence lemma located by rg. Use GaloisField 2 ell with finrank ell, finite-extension primitive element, and its monic irreducible minpoly of degree ell. Need check exact PrimitiveElement API."
+  },
+  "source_macro_progress": "All scalar and array macros proved; actual field multiply/add, exact setup, random fill and prefix writer complete; final loops in progress.",
+  "physical_field_arrays": {
+    "decision": "Coordinator approved explicit fixed-width thermometer entries on 2026-11-14.",
+    "encoding": "Field index v<q is q physical bit cells: v ones followed by q-v zeros; hash bucket j<b analogously uses b cells. A reserved bot marker occupies cell zero. Entry i starts at cell 1+i*width.",
+    "polynomial_argument": "q<2*n^(2*d), d fixed; q*m*n cells for a field matrix and corresponding scan/seek factors remain fixed polynomials. Unary registers store only bounded values/indices/distances; entire arrays remain explicit buffers.",
+    "macro_owner": "tape_macros",
+    "completed_foundation": "TapeLoops exact traces/composition/counting; TapeMacros clear/transfer/copy/preserving-add; TapeArrays exact thermometer read/write, actual unary offset multiplication/reset/traversal, complete indexed readEntry/writeEntry, marker and logical table-update invariants.",
+    "next": "Compose these actual finite array programs with checked field-index arithmetic, exact random-index sampling and Gaussian semantic loops. Full sampler/tester source correctness and mission polynomial bounds remain open.",
+    "source_bound": "Complete indexed access is implemented by 35-label readEntry or 38-label writeEntry; entryAccessBound<=50*(M+1)^2 when initial individual counters and selected buffer head are bounded by M. Read/write blocks cost exactly 2*w+v+1 and 2*w+v+3 respectively.",
+    "record": "harness/tasks/tape_macros.json"
+  }
+}

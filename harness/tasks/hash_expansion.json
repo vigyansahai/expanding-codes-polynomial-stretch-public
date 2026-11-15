@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "owner": "hash_expansion",
+  "owned_files": [
+    "ExpandingCodes/Probability/HashOccupancy.lean",
+    "ExpandingCodes/Probability/HashExpansion.lean",
+    "ExpandingCodes/Construction/HashNeighbors.lean",
+    "harness/attempts/hash_expansion/*",
+    "harness/tasks/hash_expansion.json"
+  ],
+  "canonical_goal_file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_hash_expansion.lean",
+  "exact_goal": "Canonical Lemma 2.7: uniform little-o envelope for failure of combined expansion conditional on any PreliminaryGood forms, over full independently uniform hash functions and arbitrary public Geometry.",
+  "source": {
+    "path": "tmp/feasibility/paper.txt",
+    "lines": "695-725"
+  },
+  "status": "complete",
+  "interface": "support_over_exact_frozen_canonical_definitions",
+  "proof_route": [
+    "Flatten full hash functions to functions on layer-address pairs. Ignoring the layer tag on hash output only decreases image cardinality, so generic bucket occupancy safely overestimates collision loss.",
+    "If image cardinality plus r is at most domain size a, choose a-r representative inputs covering all output values. For each fixed representative subset, condition on its hash values; independent remaining values land in its image with probability at most (a/b)^r. Union over at most 2^a representative subsets.",
+    "Under PreliminaryGood and failure for row set S, preliminary neighbor cardinal minus combined neighbor cardinal exceeds (epsilon*k-d+1)*|S|. Any fixed natural L at most epsilon*k-d+1 therefore gives at least L*|S| generic occupancy loss.",
+    "Use a<=k*|S| and b>=n/(2k) to bound fixed S by [2^k*(2*k^2*n^(-epsilon))^L]^|S|. Union over at most m^|S| row subsets; bound positive geometric sum by twice its base.",
+    "Choose L=floor(epsilon*k-d+1), prove epsilon*L-2d^2>1/epsilon using exact ceiling parameters, then use the real-power limit. Root is supplying analytic helpers."
+  ],
+  "open_theorem_bodies": [],
+  "nodes": [
+    {
+      "id": "uniformProb_prod_fibers",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_prod_fibers",
+      "file": "ExpandingCodes/Probability/HashOccupancy.lean",
+      "statement": "theorem uniformProb_prod_fibers {A B : Type*} [Fintype A] [Fintype B]\n    [Nonempty A] [Nonempty B] (E : A \u00d7 B \u2192 Prop) :\n    uniformProb E = (\u2211 a : A, uniformProb (fun b : B => E (a, b))) / Fintype.card A",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Rewrite finite uniform probabilities as event cardinalities, split the product cardinality into fiber cardinalities, and normalize by |A|*|B|."
+    },
+    {
+      "id": "uniformProb_prod_le_of_fibers",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_prod_le_of_fibers",
+      "file": "ExpandingCodes/Probability/HashOccupancy.lean",
+      "statement": "theorem uniformProb_prod_le_of_fibers {A B : Type*} [Fintype A] [Fintype B]\n    [Nonempty A] [Nonempty B] (E : A \u00d7 B \u2192 Prop) (C : \u211d)\n    (h : \u2200 a, uniformProb (fun b : B => E (a, b)) \u2264 C) : uniformProb E \u2264 C",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Apply the exact fiber-average identity and bound each fiber probability by C."
+    },
+    {
+      "id": "exists_image_representatives",
+      "declaration": "ExpandingCodes.PolynomialStretch.exists_image_representatives",
+      "file": "ExpandingCodes/Probability/HashOccupancy.lean",
+      "statement": "theorem exists_image_representatives {I V : Type*} [DecidableEq I] [DecidableEq V] (D : Finset I) (f : I \u2192 V) :\n    \u2203 R \u2286 D, R.card = (D.image f).card \u2227 R.image f = D.image f",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Choose an injective subset of the finite input set surjecting onto its image; its cardinality equals image cardinality."
+    },
+    {
+      "id": "exists_image_cover_of_loss",
+      "declaration": "ExpandingCodes.PolynomialStretch.exists_image_cover_of_loss",
+      "file": "ExpandingCodes/Probability/HashOccupancy.lean",
+      "statement": "theorem exists_image_cover_of_loss {I V : Type*} [DecidableEq I] [DecidableEq V] (D : Finset I) (f : I \u2192 V) (r : \u2115)\n    (hloss : (D.image f).card + r \u2264 D.card) :\n    \u2203 R \u2208 D.powersetCard (D.card - r), D.image f \u2286 R.image f",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Extend distinct representatives to a subset of size |D|-r using the assumed loss bound."
+    },
+    {
+      "id": "uniformProb_image_covered_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_image_covered_le",
+      "file": "ExpandingCodes/Probability/HashOccupancy.lean",
+      "statement": "theorem uniformProb_image_covered_le {I V : Type*} [Fintype I] [Fintype V] [DecidableEq I] [DecidableEq V]\n    [Nonempty V] (D R : Finset I) (hRD : R \u2286 D) :\n    uniformProb (fun f : I \u2192 V => D.image f \u2286 R.image f) \u2264\n      ((R.card : \u211d) / Fintype.card V) ^ (D.card - R.card)",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Split the full function space into representative inputs and their complement; condition on the representative values; exact finite-product independence gives one |R|/|V| factor per input of D\\R."
+    },
+    {
+      "id": "uniformProb_image_loss_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_image_loss_le",
+      "file": "ExpandingCodes/Probability/HashOccupancy.lean",
+      "statement": "theorem uniformProb_image_loss_le {I V : Type*} [Fintype I] [Fintype V] [DecidableEq I] [DecidableEq V]\n    [Nonempty V] (D : Finset I) (r : \u2115) :\n    uniformProb (fun f : I \u2192 V => (D.image f).card + r \u2264 D.card) \u2264\n      (2 : \u211d) ^ D.card * ((D.card : \u211d) / Fintype.card V) ^ r",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Cover occupancy-loss event by representative subsets of size |D|-r; union bound at most2^|D| subsets and bound representative cardinality by |D|."
+    },
+    {
+      "id": "preliminary_neighbors_card_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_neighbors_card_le",
+      "file": "ExpandingCodes/Construction/HashNeighbors.lean",
+      "statement": "theorem preliminary_neighbors_card_le {d n k : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (S : Finset (Fin (rowCount d n))) :\n    (neighbors (preliminary g s) S).card \u2264 k * S.card",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Use the exact layered-neighbor description; union bound at most k neighbors for each row."
+    },
+    {
+      "id": "combined_neighbors_eq_hashColumn_image",
+      "declaration": "ExpandingCodes.PolynomialStretch.combined_neighbors_eq_hashColumn_image",
+      "file": "ExpandingCodes/Construction/HashNeighbors.lean",
+      "statement": "theorem combined_neighbors_eq_hashColumn_image {d n k b : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (h : Hashes g.F k b) (hfit : k * b \u2264 n)\n    (S : Finset (Fin (rowCount d n))) :\n    neighbors (combined g s h) S =\n      (neighbors (preliminary g s) S).image (hashColumn h hfit)",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Unfold exact matrix adjacency and show each neighbor is the layer-block hash column of an existing preliminary neighbor; this excludes padding columns exactly."
+    },
+    {
+      "id": "global_hash_image_card_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.global_hash_image_card_le",
+      "file": "ExpandingCodes/Construction/HashNeighbors.lean",
+      "statement": "theorem global_hash_image_card_le {d n k b : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (h : Hashes g.F k b) (hb : 0 < b) (hfit : k * b \u2264 n)\n    (S : Finset (Fin (rowCount d n))) :\n    ((neighbors (preliminary g s) S).image (fun p => h p.1 p.2)).card \u2264\n      (neighbors (combined g s h) S).card",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Reduce combined column indices modulo bucket count to recover untagged bucket values, then use image cardinality monotonicity."
+    },
+    {
+      "id": "combined_not_expanding_witness",
+      "declaration": "ExpandingCodes.PolynomialStretch.combined_not_expanding_witness",
+      "file": "ExpandingCodes/Construction/HashNeighbors.lean",
+      "statement": "theorem combined_not_expanding_witness {d n k b : \u2115} (g : Geometry d n)\n    (s : Forms g.F d k) (h : Hashes g.F k b) (hb : 0 < b) (hfit : k * b \u2264 n)\n    (\u03b5 t : \u211d) (hbad : \u00ac Expanding (combined g s h) (1 - \u03b5) k t) :\n    \u2203 S : Finset (Fin (rowCount d n)), S.Nonempty \u2227 (S.card : \u211d) \u2264 t \u2227\n      ((neighbors (combined g s h) S).card : \u211d) < (1 - \u03b5) * k * S.card",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Exact row weight removes the first failure alternative; unfold canonical IsLeftExpanding, cancel its row-count normalization, and exclude the empty witness."
+    },
+    {
+      "id": "combined_failure_implies_image_loss",
+      "declaration": "ExpandingCodes.PolynomialStretch.combined_failure_implies_image_loss",
+      "file": "ExpandingCodes/Construction/HashNeighbors.lean",
+      "statement": "theorem combined_failure_implies_image_loss (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (s : Forms g.F (dimension \u03b5) (arity \u03b5))\n    (h : Hashes g.F (arity \u03b5) (buckets \u03b5 n)) (hfit : arity \u03b5 * buckets \u03b5 n \u2264 n)\n    (hgood : PreliminaryGood \u03b5 n g s) (L : \u2115)\n    (hL : (L : \u211d) \u2264 \u03b5 * arity \u03b5 - dimension \u03b5 + 1)\n    (S : Finset (Fin (rowCount (dimension \u03b5) n)))\n    (hsize : (S.card : \u211d) \u2264 (n : \u211d) ^ (1 - \u03b5))\n    (hbad : ((neighbors (combined g s h) S).card : \u211d) <\n      (1 - \u03b5) * arity \u03b5 * S.card) :\n    ((neighbors (preliminary g s) S).image (fun p => h p.1 p.2)).card + L * S.card \u2264\n      (neighbors (preliminary g s) S).card",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Combine canonical PreliminaryGood lower neighborhood bound, fixed-row-set expansion failure, and the untagged image cardinal bound. Natural cast arithmetic gives image.card+L*|S|\u2264preliminary.card."
+    },
+    {
+      "id": "uniformProb_combined_fixed_set_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_combined_fixed_set_le",
+      "file": "ExpandingCodes/Probability/HashExpansion.lean",
+      "statement": "theorem uniformProb_combined_fixed_set_le (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (s : Forms g.F (dimension \u03b5) (arity \u03b5))\n    (hfit : arity \u03b5 * buckets \u03b5 n \u2264 n) (hgood : PreliminaryGood \u03b5 n g s)\n    (L : \u2115) (hL : (L : \u211d) \u2264 \u03b5 * arity \u03b5 - dimension \u03b5 + 1)\n    (S : Finset (Fin (rowCount (dimension \u03b5) n)))\n    (hsize : (S.card : \u211d) \u2264 (n : \u211d) ^ (1 - \u03b5)) (C : \u211d)\n    (_hC : 0 \u2264 C) (hbase : (arity \u03b5 : \u211d) * S.card / (buckets \u03b5 n : \u211d) \u2264 C) :\n    uniformProb (fun h : Hashes g.F (arity \u03b5) (buckets \u03b5 n) =>\n      ((neighbors (combined g s h) S).card : \u211d) < (1 - \u03b5) * arity \u03b5 * S.card) \u2264\n      ((2 : \u211d) ^ arity \u03b5 * C ^ L) ^ S.card",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Use the exact full-function hashes equivalence and generic occupancy loss bound; bound the distinct preliminary domain by k*|S| and factor exponents by |S|."
+    },
+    {
+      "id": "uniformProb_exists_combined_sets_le_pow",
+      "declaration": "ExpandingCodes.PolynomialStretch.uniformProb_exists_combined_sets_le_pow",
+      "file": "ExpandingCodes/Probability/HashExpansion.lean",
+      "statement": "theorem uniformProb_exists_combined_sets_le_pow (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (s : Forms g.F (dimension \u03b5) (arity \u03b5))\n    (hfit : arity \u03b5 * buckets \u03b5 n \u2264 n) (hgood : PreliminaryGood \u03b5 n g s)\n    (L : \u2115) (hL : (L : \u211d) \u2264 \u03b5 * arity \u03b5 - dimension \u03b5 + 1)\n    (a : \u2115) (hsize : (a : \u211d) \u2264 (n : \u211d) ^ (1 - \u03b5)) (C : \u211d)\n    (hC : 0 \u2264 C) (hbase : (arity \u03b5 : \u211d) * (n : \u211d) ^ (1 - \u03b5) /\n      (buckets \u03b5 n : \u211d) \u2264 C) :\n    uniformProb (fun h : Hashes g.F (arity \u03b5) (buckets \u03b5 n) =>\n      \u2203 S \u2208 (Finset.univ : Finset (Fin (rowCount (dimension \u03b5) n))).powersetCard a,\n        ((neighbors (combined g s h) S).card : \u211d) < (1 - \u03b5) * arity \u03b5 * S.card) \u2264\n      ((rowCount (dimension \u03b5) n : \u211d) * 2 ^ arity \u03b5 * C ^ L) ^ a",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Union bound over a-element row sets; Nat.choose_le_pow gives at most m^a sets, yielding base m*2^k*C^L."
+    },
+    {
+      "id": "combined_bad_prob_le_two_base",
+      "declaration": "ExpandingCodes.PolynomialStretch.combined_bad_prob_le_two_base",
+      "file": "ExpandingCodes/Probability/HashExpansion.lean",
+      "statement": "theorem combined_bad_prob_le_two_base (\u03b5 : \u211d) (n : \u2115)\n    (g : Geometry (dimension \u03b5) n) (s : Forms g.F (dimension \u03b5) (arity \u03b5))\n    (hfit : arity \u03b5 * buckets \u03b5 n \u2264 n) (hgood : PreliminaryGood \u03b5 n g s)\n    (L : \u2115) (hL : (L : \u211d) \u2264 \u03b5 * arity \u03b5 - dimension \u03b5 + 1)\n    (C : \u211d) (hC : 0 \u2264 C) (hbase : (arity \u03b5 : \u211d) * (n : \u211d) ^ (1 - \u03b5) /\n      (buckets \u03b5 n : \u211d) \u2264 C)\n    (hhalf : (rowCount (dimension \u03b5) n : \u211d) * 2 ^ arity \u03b5 * C ^ L \u2264 1 / 2) :\n    uniformProb (fun h : Hashes g.F (arity \u03b5) (buckets \u03b5 n) =>\n      \u00ac Expanding (combined g s h) (1 - \u03b5) (arity \u03b5) ((n : \u211d) ^ (1 - \u03b5))) \u2264\n      2 * ((rowCount (dimension \u03b5) n : \u211d) * 2 ^ arity \u03b5 * C ^ L)",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Index all nonempty canonically small row-set witnesses by j=|S|-1 below floor(t); sum their finite geometric bound, at most2B when B\u22641/2."
+    },
+    {
+      "id": "hash_expansion_envelope",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_expansion_envelope",
+      "file": "ExpandingCodes/Probability/HashExpansion.lean",
+      "statement": "theorem hash_expansion_envelope (\u03b5 : \u211d) (h\u03b5 : 0 < \u03b5 \u2227 \u03b5 < 1 / 2)\n    (g : \u2200 n, Geometry (dimension \u03b5) n) :\n    \u2203 \u03b4 : \u2115 \u2192 \u211d, (\u2200 n, 0 \u2264 \u03b4 n) \u2227\n      Tendsto (fun n => \u03b4 n * (n : \u211d) ^ (1 / \u03b5)) atTop (nhds 0) \u2227\n      \u2200\u1da0 n : \u2115 in atTop, \u2200 s : Forms (g n).F (dimension \u03b5) (arity \u03b5),\n        PreliminaryGood \u03b5 n (g n) s \u2192\n        uniformProb (fun h : Hashes (g n).F (arity \u03b5) (buckets \u03b5 n) =>\n          \u00ac Expanding (combined (g n) s h) (1 - \u03b5) (arity \u03b5) ((n : \u211d) ^ (1 - \u03b5))) \u2264 \u03b4 n",
+      "status": "proved_and_audited",
+      "holes": [],
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "proof_route": "Choose delta(n)=2*hashRatio epsilon n. Its nonnegativity and scaled limit are exact HashParameters results; eventual hash parameters instantiate the finite quantitative theorem uniformly for every PreliminaryGood form."
+    }
+  ],
+  "checks": [
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_expansion/HashOccupancy.lean",
+      "result": "pass, no holes; public promotion complete, fresh public build pending"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Probability.HashOccupancy",
+      "result": "pass; final public module built5.4sec"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_expansion/HashNeighbors.lean",
+      "result": "pass; no warnings; public promoted and fresh build pending"
+    },
+    {
+      "command": "./tools/lake-serial build ExpandingCodes.Construction.HashNeighbors",
+      "result": "pass; own public module5.2sec, only preexisting Peeling unused-simp warnings replayed"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_expansion/HashOccupancy.lean",
+      "result": "pass after making [DecidableEq V] an explicit generic output parameter; new public build pending"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_expansion/HashOccupancy.lean",
+      "result": "pass with explicit [DecidableEq I] and [DecidableEq V] generic API"
+    },
+    {
+      "command": "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Probability/HashOccupancy.olean ExpandingCodes/Probability/HashOccupancy.lean",
+      "result": "pass; fresh public source rebuild after final API revision; root approved direct serialized -o because all imports are current; central Lake source-trace refresh pending"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_expansion/HashExpansion.lean",
+      "result": "pass; all4 final support theorems, including exact canonical envelope; final cleaned source no warnings"
+    },
+    {
+      "command": "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Probability/HashExpansion.olean ExpandingCodes/Probability/HashExpansion.lean",
+      "result": "pass; fresh public source compile after all final API dependencies rebuilt; no warnings; central Lake source-trace refresh remains root-owned"
+    },
+    {
+      "command": "./tools/lake-serial env lean harness/attempts/hash_expansion/AuditHash.lean",
+      "result": "pass; all17 new public declarations have only permitted axioms; final exact envelope has exactly propext, Classical.choice, Quot.sound",
+      "output": "harness/attempts/hash_expansion/AuditHash.out"
+    }
+  ],
+  "failed_approaches": [
+    {
+      "detail": "No mathematical obstruction. Initial HashOccupancy direct drafts required avoiding finite-set rewrites across independently synthesized decidable instances; solved by general simp lemmas and direct conditional product counting."
+    },
+    {
+      "detail": "First HashNeighbors check exposed instance elaboration in an explicitly restated biUnion expression and a looping Nat.add_mod simp. Replaced by inferred card_biUnion transitivity and one explicit add_mod rewrite."
+    },
+    {
+      "detail": "Final uniformProb_equiv rewrite exposed a hidden generic image equality instance mismatch: generic output V used classical DecidableEq whereas concrete Fin buckets used structural DecidableEq. Repaired generic occupancy API by binding [DecidableEq V] explicitly throughout; full scratch proof rechecked successfully."
+    },
+    {
+      "detail": "Input equality was the decisive hidden instance: generic Pi.instFintype had captured classical equality on I, while concrete layer-address pairs use structural product equality. Explicit pp.all trace in harness/attempts/hash_expansion/Debug.out identified it. Binding [DecidableEq I] alongside [DecidableEq V] fixes the function-space enumeration; complete occupancy proof again passes direct and public rebuild checks."
+    }
+  ],
+  "unresolved_dependencies": [],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "canonical_type_comparison": {
+    "result": "exact binder/type match modulo theorem name and whitespace",
+    "normalized_statement_sha256": "df91e5ad5fe41fd664a2d0d1d67da470a5cfae446e35504152bcd3cf77c930ae"
+  },
+  "proof_route_note": "The global bucket image deliberately forgets layer labels, so its loss is at least the actual combined-neighbor loss. The fixed-set estimate has base k*s/b rather than paper s/b, adding only fixed k to the constant. Union over all nonempty row sets, including harmless singleton overestimates, still decays since exact natural L=floor(epsilon*k-d+1) satisfies epsilon*L-2d^2>1/epsilon. Canonical assumptions/statements/full-function hash distribution and arbitrary Geometry remain exact.",
+  "external_followup": [
+    "Root-owned canonical forwarding from hash_expansion to hash_expansion_envelope",
+    "Root-owned final central Lake source-closure build to refresh changed HashOccupancy and new HashExpansion traces before strict mission receipt"
+  ],
+  "worker_result": {
+    "status": "complete",
+    "mathematical_obligations_remaining": [],
+    "open_theorem_bodies": [],
+    "pending_compilation": [],
+    "ownership_preserved": true,
+    "canonical_statement_preserved": true,
+    "final_declaration": "ExpandingCodes.PolynomialStretch.hash_expansion_envelope",
+    "canonical_forward": "Import ExpandingCodes.Probability.HashExpansion and exact hash_expansion_envelope epsilon h_epsilon g. Worker did not edit canonical Theorems file or root graph.",
+    "public_rebuild": "HashNeighbors passed fresh Lake build. HashOccupancy passed earlier Lake builds and final serialized public -o after explicit equality API revision. HashExpansion passed final serialized public -o with all imported source dependencies current. Parent explicitly accepted this worker check; root central source-closure Lake build refreshes Lake trace metadata.",
+    "axiom_audit": {
+      "file": "harness/attempts/hash_expansion/AuditHash.lean",
+      "output": "harness/attempts/hash_expansion/AuditHash.out",
+      "result": "All15 new theorem declarations have exactly propext, Classical.choice, Quot.sound. hashColumn uses propext, Quot.sound; hashesEquiv has no axioms. Final exact canonical envelope has no sorryAx or custom axioms."
+    }
+  },
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_sha256": {
+    "ExpandingCodes/Probability/HashOccupancy.lean": "84856a255a5eb7bb9374b26218f151e9c337f7bad7636e32ad91135821db6098",
+    "ExpandingCodes/Construction/HashNeighbors.lean": "727c99c82cba39c7f96034a3e678adb630359aa8f08cb974703b76cf7cb499c8",
+    "ExpandingCodes/Probability/HashExpansion.lean": "8485dc9d2c9a1d7d2878abc12b2d226ab743fc4ac1e0593c8cbe76b0c69caa09"
+  }
+}

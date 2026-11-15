@@ -1,0 +1,4 @@
+'ExpandingCodes.Computation.TesterAssembly.backend_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TesterAssembly.program_stops_of_construct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

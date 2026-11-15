@@ -1,0 +1,108 @@
+{
+  "mission_id": "1ca04c32-a49f-4a07-928e-c71acba9323e",
+  "pagination": {
+    "limit": 100,
+    "offset": 0,
+    "total": 7
+  },
+  "milestones": [
+    {
+      "id": "57daa405-2f08-4b79-a499-23b37132b178",
+      "title": "Lemma 2.2 — codeword annihilation and arbitrary-error rank bound",
+      "milestone_description": "Lemma 2.2. Every c ∈ im_{F₂} G satisfies ℳ(c) = 0. Consequently, rank ℳ(c + e) ≤ |supp(e)| for every binary vector e.\n",
+      "sort_order": 0,
+      "completed": false,
+      "theorem": {
+        "id": "a62f8feb-bc30-4f5f-8cc4-da7d651f34c0",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.codeword_annihilation",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    },
+    {
+      "id": "1e90603b-1679-4bba-9ed4-9e8d643cbb48",
+      "title": "Lemma 2.3 — expected erasure ambiguity",
+      "milestone_description": "Lemma 2.3. Let C_j ⊆ F_{q_j}^{M_j} be linear codes invariant under doubly transitive groups of coordinate permutations, with M_j → ∞ and rates tending to ρ ∈ (0, 1). For fixed p < 1 − ρ, let E include each coordinate independently with probability p. Then 𝔼 dim(C_j)_E = o(M_j).\n",
+      "sort_order": 1,
+      "completed": false,
+      "theorem": {
+        "id": "bd13c0a8-3111-40a4-a3aa-8c28287c369c",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.erasure_ambiguity",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    },
+    {
+      "id": "3b000b72-f99a-4437-9c76-7bb9ce9233b8",
+      "title": "Lemma 2.4 — limiting rate and half-erasure ambiguity",
+      "milestone_description": "Lemma 2.4. For the code B in (5), r/m → ρ_d, where\n1/2 − ε/8 ≤ ρ_d = Pr[∑_{j=1}^d X_j ≤ (d − 3)/2] < 1/2,    X_j independent uniform on [0, 1].\nIf E includes each coordinate independently with probability 1/2, then 𝔼 dim B_E = o(m).\n",
+      "sort_order": 2,
+      "completed": false,
+      "theorem": {
+        "id": "ac6f56d7-9985-4160-9c5d-84b2bccf5082",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.auxiliary_rate",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    },
+    {
+      "id": "1c9297b0-8f96-4c39-8d7d-009744edd178",
+      "title": "Proposition 2.5 — distinguishing and Bernoulli errors",
+      "milestone_description": "Proposition 2.5. The test D satisfies the distinguishing guarantee of Theorem 2.1 for every sampled G. It also accepts c + e with probability 1 − exp(−Ω_ε(m)) for every c ∈ im_{F₂} G when e ∼ Ber(1/2 − ε)^m.\n",
+      "sort_order": 3,
+      "completed": false,
+      "theorem": {
+        "id": "3417ace9-afee-46d1-a19c-545d3168127b",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.distinguishing",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    },
+    {
+      "id": "6edfdb96-aea9-47c6-8bb0-53eacfa68d52",
+      "title": "Lemma 2.6 — preliminary expansion",
+      "milestone_description": "Lemma 2.6. Except with probability o(n^{−1/ε}), every set S of at most n^{1−ε} rows satisfies |Γ_A(S)| ≥ (k − d + 1)|S|.\n",
+      "sort_order": 4,
+      "completed": false,
+      "theorem": {
+        "id": "1ce73220-63d1-4c40-b322-2817e04f5120",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.preliminary_expansion",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    },
+    {
+      "id": "0f26405e-1cba-4a90-813f-caa9ef46fcb2",
+      "title": "Lemma 2.7 — expansion after hashing",
+      "milestone_description": "Lemma 2.7. Condition on any A satisfying Lemma 2.6. With probability 1 − o(n^{−1/ε}) over the functions h_i, the matrix G is (1 − ε, k, n^{1−ε})-expanding.\n",
+      "sort_order": 5,
+      "completed": false,
+      "theorem": {
+        "id": "ca01388c-e3df-4fa5-a27b-3bdfed5b40ad",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.hash_expansion",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    },
+    {
+      "id": "d8b6a5f0-7656-4e33-a0cd-4c6cdf33e567",
+      "title": "Theorem 2.1 — polynomial-stretch construction",
+      "milestone_description": "Theorem 2.1. For every constant ε ∈ (0, 1/2), there are integers d = O(ε^{−2}) and k = O(ε^{−6}) with the following properties. For every sufficiently large n, a randomized poly_ε(n)-time algorithm samples a matrix G ∈ F₂^{m×n}, where m = n^{2d²+o(1)} < n^k. Every output has row weight k, and with probability at least 1 − n^{−1/ε} it is (1 − ε, k, n^{1−ε})-expanding. There is a deterministic poly_ε(m, n)-time test D such that, for every output G,\nD(c + e) = 1 for every c ∈ im_{F₂} G, e ∈ F₂^m with |supp(e)| ≤ (1/2 − ε)m,\nand Pr[D(U_m) = 1] ≤ exp(−Ω_ε(m)). The test uses the specified ordering of the rows, but no randomness used to sample G.\n",
+      "sort_order": 6,
+      "completed": false,
+      "theorem": {
+        "id": "9afe7db9-6470-4d2a-9b35-c888c1130f06",
+        "theorem_name": "ExpandingCodes.PolynomialStretch.construction",
+        "status": "Open"
+      },
+      "created_by": "[REDACTED_ACCOUNT]",
+      "created_at": "2026-11-08T20:43:53.729179+00:00"
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "nodes": [
+    {
+      "id": "boolean_two_point_uniform",
+      "declaration": "ExpandingCodes.SharpThreshold.two_point_uniform",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Scalar.lean",
+      "statement": "\u2200 (a b : \u211d), 0 < a \u2192 a \u2264 b \u2192 b < 1 \u2192 \u2203 r : \u211d, 0 < r \u2227 r < 1 \u2227 \u2200 p \u2208 Set.Icc a b, ExpandingCodes.SharpThreshold.TwoPointContraction p r",
+      "statement_sha256": "96aafc2fcdbcebcb497100c84533cde085445617520126ec6f305a4dcc68a761",
+      "proof_route": "Prove the scalar two-point L^(4/3)\u2192L\u00b2 inequality. Normalize weighted L^(4/3) norm to one; away from constants use strict Jensen and compactness, near constants use the uniformly positive second-order gap (exponent 4/3). Compact p\u2208[a,b] gives one r>0. This is only an inequality in two real variables and has no code, event, dimension, transitivity, derivative, or asymptotic assumptions. More concretely, divide the Jensen gap ((E|f|^(4/3))^(3/2)\u2212(Ef)^2) by Var(f) on the compact unit sphere away from constants. The ratio has positive limit 1/3 at either constant \u00b11, uniformly for p in the compact interval. Any positive lower bound on this ratio supplies r\u00b2.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "tmp/feasibility/erasure-capacity.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Analysis/Convex/Deriv.lean",
+          "lines": "35-45",
+          "declaration": "MonotoneOn.convexOn_of_deriv",
+          "role": "Supports preferred scalar strong-convexity proof by monotonicity of derivative minus quadratic term."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Explicitly registered open supporting theorem. No claim of proof or checked reduction of canonical erasure_ambiguity."
+      },
+      "alternative_proof_routes": [
+        {
+          "origin": "Root coordinator suggestion, mathematically checked by sharp_threshold worker",
+          "status": "Preferred route for future Scalar.lean worker; not formalized",
+          "route": "Let \u03b4=min(a,1\u2212b)>0 and R=\u03b4^(\u22123/4). Normalize E_p|f|^(4/3)=1, treating the zero-norm case separately; then |x|,|y|\u2264R because both atom weights are\u2265\u03b4. On [\u2212R,R], g(t)=|t|^(4/3) has g\u2033\u2265(4/9)R^(\u22122/3) away from zero and continuous derivative at zero. Thus g(t)\u2212c t\u00b2 is convex for c=(2/9)R^(\u22122/3)=(2/9)\u221a\u03b4, established via monotonicity of g\u2032\u22122ct, including the crossing-zero case. Strong Jensen yields 1\u2212|Ef|^(4/3)\u2265c Var(f). Jensen also gives |Ef|\u22641, so 1\u2212(Ef)^2\u22651\u2212|Ef|^(4/3)\u2265c Var(f). Choose r=\u221ac (positive and <1); then ||T_r f||\u00b2_2=(Ef)^2+r\u00b2Var(f)\u22641. Undo normalization by homogeneity. This avoids compactness of a quotient near constants.",
+          "possible_elementary_support": "Real cube-root difference factorization can establish the derivative slope bound without a second-derivative theorem across zero."
+        }
+      ]
+    },
+    {
+      "id": "boolean_tensorize_two_point",
+      "declaration": "ExpandingCodes.SharpThreshold.tensorize_two_point",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean",
+      "statement": "\u2200 {I : Type*} [Fintype I] (p r : \u211d), 0 < p \u2192 p < 1 \u2192 0 \u2264 r \u2192 r \u2264 1 \u2192 ExpandingCodes.SharpThreshold.TwoPointContraction p r \u2192 \u2200 f : Finset I \u2192 \u211d, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.noise p r f E ^ 2) \u2264 (ExpandingCodes.Erasure.expectation p (fun E => |f E| ^ (4 / 3 : \u211d))) ^ (3 / 2 : \u211d)",
+      "statement_sha256": "e2fc526ec222ea30a6c85a6b256e6d92b2ec664bc6aca6c585090ab419ca67a6",
+      "proof_route": "Induct on the finite coordinate universe. Prove noise factorizes into the tensor product of two-point averaging operators from the explicitly defined Fourier formula. Apply the scalar contraction in one coordinate and mixed-norm Minkowski (2\u22654/3), then the induction hypothesis. The supplied two-point inequality remains a hypothesis, so this theorem isolates tensorization rather than assuming dimension-free contraction.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "tmp/feasibility/erasure-capacity.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Analysis/MeanInequalities.lean",
+          "lines": "1045-1053",
+          "declaration": "Real.Lp_add_le_of_nonneg",
+          "role": "Existing finite real Minkowski inequality. Weighted mixed-norm tensorization can use this after absorbing atom weights into inputs."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Explicitly registered open supporting theorem. No claim of proof or checked reduction of canonical erasure_ambiguity."
+      }
+    },
+    {
+      "id": "boolean_fourier_parseval",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_parseval",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Parseval.lean",
+      "statement": "\u2200 {I : Type*} [Fintype I] (p : \u211d), 0 < p \u2192 p < 1 \u2192 \u2200 f : Finset I \u2192 \u211d, ExpandingCodes.SharpThreshold.variance p f = \u2211 S : Finset I, if S.Nonempty then ExpandingCodes.SharpThreshold.fourier p f S ^ 2 else 0",
+      "statement_sha256": "6ab9a62ee05d1f275eaca93a72de45ce253322881903630f331fea602782f145",
+      "proof_route": "Factor expectations of products of centered normalized coordinates. A coordinate occurring once has zero mean; a coordinate occurring twice has second moment one. Thus the 2^m characters are an orthonormal basis of the 2^m-dimensional function space. Expand f, apply Parseval, and remove the empty coefficient (the mean). Pure finite linear algebra.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "tmp/feasibility/erasure-capacity.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Explicitly registered open supporting theorem. No claim of proof or checked reduction of canonical erasure_ambiguity."
+      }
+    },
+    {
+      "id": "boolean_fourier_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Energy.lean",
+      "statement": "\u2200 {I : Type*} [Fintype I] (p : \u211d), 0 < p \u2192 p < 1 \u2192 \u2200 f : Finset I \u2192 \u211d, p * (1 - p) * (\u2211 i : I, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.gradient i f E ^ 2)) = \u2211 S : Finset I, (S.card : \u211d) * ExpandingCodes.SharpThreshold.fourier p f S ^ 2",
+      "statement_sha256": "561bcee973759f1b6c3c3a8c9ce11c72ef2742f81180847e78fa1d03df5d7298",
+      "proof_route": "Differentiate each character in the discrete i coordinate. Characters missing i vanish; characters containing i lose i and gain factor 1/sqrt(p(1-p)). Apply Parseval to each gradient, and exchange finite sums. Each set S is counted card S times. Pure finite Fourier algebra, with no monotonicity or symmetry.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "tmp/feasibility/erasure-capacity.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Explicitly registered open supporting theorem. No claim of proof or checked reduction of canonical erasure_ambiguity."
+      }
+    },
+    {
+      "id": "boolean_fourier_noise_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy",
+      "file": "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean",
+      "statement": "\u2200 {I : Type*} [Fintype I] (p r : \u211d), 0 < p \u2192 p < 1 \u2192 \u2200 f : Finset I \u2192 \u211d, p * (1 - p) * (\u2211 i : I, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.noise p r (ExpandingCodes.SharpThreshold.gradient i f) E ^ 2)) = \u2211 S : Finset I, (S.card : \u211d) * r ^ (2 * (S.card - 1)) * ExpandingCodes.SharpThreshold.fourier p f S ^ 2",
+      "statement_sha256": "dedd343d7188b28508ca5ba96a8cdb10a1fede0a7a630d06f892aa4afc9fbba8",
+      "proof_route": "Use the same discrete-character derivative formula as the unnoised energy identity, now multiplying each remaining degree-(card S\u22121) coefficient by r^(card S\u22121). Squaring and summing gives the displayed exact identity. Holds for arbitrary real r and real f; no threshold conclusion is assumed.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "tmp/feasibility/erasure-capacity.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Explicitly registered open supporting theorem. No claim of proof or checked reduction of canonical erasure_ambiguity."
+      }
+    },
+    {
+      "id": "boolean_russo",
+      "declaration": "ExpandingCodes.SharpThreshold.russo",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Russo.lean",
+      "statement": "\u2200 {I : Type*} [Fintype I] (\u03a9 : Finset I \u2192 Prop) (p : \u211d), HasDerivAt (fun q => ExpandingCodes.SharpThreshold.probability q \u03a9) (ExpandingCodes.SharpThreshold.totalInfluence p \u03a9) p",
+      "statement_sha256": "9bc90fe24cee12f071a76ac0a54893a1812e111650dc626f1f9168bbc6785769",
+      "proof_route": "Differentiate the finite Bernoulli polynomial one coordinate at a time. Splitting off coordinate i gives derivative f(insert i E)\u2212f(erase i E), with remaining independent product weights. Sum the coordinate derivatives. Identity holds for every event and every real p; upwardness is needed only subsequently for nonnegativity.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "tmp/feasibility/erasure-capacity.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Explicitly registered open supporting theorem. No claim of proof or checked reduction of canonical erasure_ambiguity."
+      }
+    },
+    {
+      "id": "boolean_qualitative_sharp_threshold",
+      "declaration": "ExpandingCodes.SharpThreshold.cross_tendsto_zero",
+      "file": "ExpandingCodes/Probability/SharpThreshold.lean",
+      "statement": "\u2200 (J : \u2115 \u2192 Type) [\u2200 n, Fintype (J n)] (\u03a9 : \u2200 n, Finset (J n) \u2192 Prop) (a b : \u211d), 0 < a \u2192 a < b \u2192 b < 1 \u2192 (\u2200 n, ExpandingCodes.SharpThreshold.Upward (\u03a9 n)) \u2192 (\u2200 n, \u2200 p \u2208 Set.Icc a b, \u2200 i j, ExpandingCodes.SharpThreshold.influence p (\u03a9 n) i = ExpandingCodes.SharpThreshold.influence p (\u03a9 n) j) \u2192 Filter.Tendsto (fun n => Fintype.card (J n)) Filter.atTop Filter.atTop \u2192 Filter.Tendsto (fun n => ExpandingCodes.SharpThreshold.probability a (\u03a9 n) * (1 - ExpandingCodes.SharpThreshold.probability b (\u03a9 n))) Filter.atTop (nhds 0)",
+      "statement_sha256": "c9e591da182c57fc89290a21b7892603285de6433e1125bbd354aa76f61ecd2d",
+      "proof_route": "Choose one compact-interval scalar contraction radius; tensorize. Exact Parseval and gradient identities plus the proved weighted cutoff give Var\u2264r^(-2k)B sqrt(B/m)+B/(k+1) at a mean-value point with total influence\u2264B=1/(b\u2212a). Equal influences give each\u2264B/m. Monotonicity bounds the target product by that variance. First take m\u2192\u221e for fixed k and then k\u2192\u221e. All coefficient algebra, mean-value, and limit steps are explicit Lean proofs; only six genuinely lower-level analytic leaves remain open.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "boolean_two_point_uniform",
+        "boolean_tensorize_two_point",
+        "boolean_fourier_parseval",
+        "boolean_fourier_gradient_energy",
+        "boolean_fourier_noise_gradient_energy",
+        "boolean_russo"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 explains the source sharpness mechanism; this local theorem proves only the weaker qualitative product limit."
+        }
+      ],
+      "failed_attempts": [],
+      "review": {
+        "reviewer": "pending coordinator",
+        "statement_preserved": false,
+        "strictly_useful": false,
+        "notes": "Provisional supporting theorem. Awaiting independent graph verification; never a claim that canonical erasure_ambiguity is completed."
+      },
+      "decomposition": {
+        "parent_proof_route": "Choose one compact-interval scalar contraction radius; tensorize. Exact Parseval and gradient identities plus the proved weighted cutoff give Var\u2264r^(-2k)B sqrt(B/m)+B/(k+1) at a mean-value point with total influence\u2264B=1/(b\u2212a). Equal influences give each\u2264B/m. Monotonicity bounds the target product by that variance. First take m\u2192\u221e for fixed k and then k\u2192\u221e. All coefficient algebra, mean-value, and limit steps are explicit Lean proofs; only six genuinely lower-level analytic leaves remain open.",
+        "children": [
+          {
+            "id": "boolean_two_point_uniform",
+            "purpose": "Prove the scalar two-point L^(4/3)\u2192L\u00b2 inequality.",
+            "proof_route": "Prove the scalar two-point L^(4/3)\u2192L\u00b2 inequality. Normalize weighted L^(4/3) norm to one; away from constants use strict Jensen and compactness, near constants use the uniformly positive second-order gap (exponent 4/3). Compact p\u2208[a,b] gives one r>0. This is only an inequality in two real variables and has no code, event, dimension, transitivity, derivative, or asymptotic assumptions. More concretely, divide the Jensen gap ((E|f|^(4/3))^(3/2)\u2212(Ef)^2) by Var(f) on the compact unit sphere away from constants. The ratio has positive limit 1/3 at either constant \u00b11, uniformly for p in the compact interval. Any positive lower bound on this ratio supplies r\u00b2.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_tensorize_two_point",
+            "purpose": "Induct on the finite coordinate universe.",
+            "proof_route": "Induct on the finite coordinate universe. Prove noise factorizes into the tensor product of two-point averaging operators from the explicitly defined Fourier formula. Apply the scalar contraction in one coordinate and mixed-norm Minkowski (2\u22654/3), then the induction hypothesis. The supplied two-point inequality remains a hypothesis, so this theorem isolates tensorization rather than assuming dimension-free contraction.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_fourier_parseval",
+            "purpose": "Factor expectations of products of centered normalized coordinates.",
+            "proof_route": "Factor expectations of products of centered normalized coordinates. A coordinate occurring once has zero mean; a coordinate occurring twice has second moment one. Thus the 2^m characters are an orthonormal basis of the 2^m-dimensional function space. Expand f, apply Parseval, and remove the empty coefficient (the mean). Pure finite linear algebra.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_fourier_gradient_energy",
+            "purpose": "Differentiate each character in the discrete i coordinate.",
+            "proof_route": "Differentiate each character in the discrete i coordinate. Characters missing i vanish; characters containing i lose i and gain factor 1/sqrt(p(1-p)). Apply Parseval to each gradient, and exchange finite sums. Each set S is counted card S times. Pure finite Fourier algebra, with no monotonicity or symmetry.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_fourier_noise_gradient_energy",
+            "purpose": "Use the same discrete-character derivative formula as the unnoised energy identity, now multiplying each remaining degree-(card S\u22121) coefficient by r^(card S\u22121).",
+            "proof_route": "Use the same discrete-character derivative formula as the unnoised energy identity, now multiplying each remaining degree-(card S\u22121) coefficient by r^(card S\u22121). Squaring and summing gives the displayed exact identity. Holds for arbitrary real r and real f; no threshold conclusion is assumed.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_russo",
+            "purpose": "Differentiate the finite Bernoulli polynomial one coordinate at a time.",
+            "proof_route": "Differentiate the finite Bernoulli polynomial one coordinate at a time. Splitting off coordinate i gives derivative f(insert i E)\u2212f(erase i E), with remaining independent product weights. Sum the coordinate derivatives. Identity holds for every event and every real p; upwardness is needed only subsequently for nonnegativity.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          }
+        ]
+      }
+    }
+  ],
+  "qualitative_route": [
+    "Choose fixed 0<a<b<1. Let f be any upward indicator on m coordinates with equal influences for every p in [a,b]. Constants are trivial.",
+    "Russo and the mean value theorem give t\u2208(a,b) with total influence T=(\u03bc_b\u2212\u03bc_a)/(b\u2212a)\u2264B=1/(b\u2212a). Equal influences give I_i=T/m\u2264B/m.",
+    "Parseval: variance=\u03a3_{S nonempty} fhat(S)^2. Energy: \u03a3|S| fhat(S)^2=t(1\u2212t)T. The proved weighted_cutoff bounds the degree>k tail by t(1\u2212t)T/(k+1).",
+    "Tensorized two-point contraction applied to D_i f\u2208{0,1} gives ||T_r D_i f||_2\u00b2\u2264I_i^(3/2). The exact noisy gradient identity bounds low degrees 1\u2264|S|\u2264k by t(1\u2212t) r^(-2k)\u03a3 I_i^(3/2); using r^(-2k) rather than r^(-2(k\u22121)) avoids the k=0 special case.",
+    "The proved influence_moment_bound makes the low term \u2264t(1\u2212t)r^(-2k)B sqrt(B/m). Using t(1\u2212t)\u22641 gives Var_t(f)\u2264r^(-2k)B sqrt(B/m)+B/(k+1).",
+    "Monotonicity gives \u03bc_a(1\u2212\u03bc_b)\u2264\u03bc_t(1\u2212\u03bc_t). For each fixed k the first bound tends to zero as m\u2192\u221e uniformly over events and groups. Then let k\u2192\u221e. This yields the required uniform product limit without logarithmic rates.",
+    "For capacity at p=0 use the direct zero-erasure identity. For p>0 choose p<q<1\u2212\u03c1 and apply the Boolean theorem on [p,q]. No alphabet or field occurs anywhere in these Boolean lemmas."
+  ],
+  "unimplemented_glue": [
+    "Proofs of the six registered analytic leaves.",
+    "Permutation invariance implies equal influences and canonical punctured-event pullback are handled by the erasure-capacity worker."
+  ],
+  "failure_assessment": "A full threshold proof remains blocked on substantial missing Boolean Fourier/hypercontractive formalization. No theorem assumes a code capacity conclusion or a reformulation of the final sharp-threshold limit. Scalar inequality and finite tensorization are genuinely smaller mathematical ingredients. The elementary cutoff estimate is checked separately from these open declarations.",
+  "checked_reduction_route": {
+    "declaration": "ExpandingCodes.SharpThreshold.uniform_cross_bound",
+    "formula": "For fixed 0<a<b<1, \u2203r\u2208(0,1), uniformly over every finite J, upward event \u03a9 and equal influences on [a,b], with m=card J>0: \u03bc_a(\u03a9)(1\u2212\u03bc_b(\u03a9)) \u2264 r^(-2k) B sqrt(B/m)+B/(k+1) for every natural k, where B=1/(b\u2212a).",
+    "supporting_lemmas": [
+      "variance_le_cutoff",
+      "noisy_gradient_bound",
+      "probability_monotone",
+      "exists_small_totalInfluence",
+      "cross_probability_le_variance"
+    ],
+    "open_analytic_leaves": [
+      "ExpandingCodes.SharpThreshold.two_point_uniform",
+      "ExpandingCodes.SharpThreshold.tensorize_two_point",
+      "ExpandingCodes.SharpThreshold.fourier_parseval",
+      "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+      "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy",
+      "ExpandingCodes.SharpThreshold.russo"
+    ],
+    "graph_note": "Six leaf files import only hole-free Basic.lean; root assembly imports leaves. Parent/child files are distinct and no leaf imports the root assembly."
+  },
+  "worker_result": {
+    "status": "split_reduction_compiled_signatures_checked_axioms_audited",
+    "owned_files": [
+      "ExpandingCodes/Probability/SharpThreshold.lean",
+      "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+      "ExpandingCodes/Probability/SharpThreshold/Scalar.lean",
+      "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean",
+      "ExpandingCodes/Probability/SharpThreshold/Parseval.lean",
+      "ExpandingCodes/Probability/SharpThreshold/Energy.lean",
+      "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean",
+      "ExpandingCodes/Probability/SharpThreshold/Russo.lean",
+      "harness/tasks/sharp_threshold.json",
+      "harness/reviews/sharp_threshold.json"
+    ],
+    "open_theorem_bodies": [
+      "ExpandingCodes.SharpThreshold.two_point_uniform",
+      "ExpandingCodes.SharpThreshold.tensorize_two_point",
+      "ExpandingCodes.SharpThreshold.fourier_parseval",
+      "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+      "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy",
+      "ExpandingCodes.SharpThreshold.russo"
+    ],
+    "hole_free_components": [
+      "indicator_nonneg",
+      "indicator_le_one",
+      "probability_mem_Icc",
+      "variance_indicator",
+      "gradient_indicator_nonneg",
+      "influence_nonneg",
+      "weighted_cutoff",
+      "weighted_low_degree",
+      "influence_moment_bound",
+      "cutoff_variance_bound",
+      "equal_influences_bound",
+      "differentiable_probability",
+      "gradient_indicator_values"
+    ],
+    "final_statement_status": "Final Boolean sharp-threshold theorem is a compiled, signature-checked, axiom-audited reduction to six explicit independent analytic obligations. No canonical mission theorem altered; no completed sharp-threshold proof claimed.",
+    "tested_commands": [
+      "./tools/lake-serial build ExpandingCodes.Probability.SharpThreshold",
+      "python3 harness/engine.py --graph harness/tasks/sharp_threshold.json validate",
+      "./tools/lake-serial env lean -DautoImplicit=false /private/tmp/sharp-threshold-audit.lean"
+    ],
+    "build_result": "Build completed successfully (2654 jobs), including Basic, all six analytic files, full finite uniform estimate and final two-stage convergence reduction. Six expected sorry warnings remain.",
+    "signature_check": "All seven full closed registry statements checked in Lean by examples assigned the corresponding @declaration; exit code 0.",
+    "axiom_audit": {
+      "hole_free_component_count": 13,
+      "hole_free_components": [
+        "indicator_nonneg",
+        "indicator_le_one",
+        "probability_mem_Icc",
+        "variance_indicator",
+        "gradient_indicator_nonneg",
+        "influence_nonneg",
+        "weighted_cutoff",
+        "weighted_low_degree",
+        "influence_moment_bound",
+        "cutoff_variance_bound",
+        "equal_influences_bound",
+        "differentiable_probability",
+        "gradient_indicator_values"
+      ],
+      "hole_free_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reduction_declarations": [
+        "ExpandingCodes.SharpThreshold.noisy_gradient_bound",
+        "ExpandingCodes.SharpThreshold.variance_le_cutoff",
+        "ExpandingCodes.SharpThreshold.uniform_cross_bound",
+        "ExpandingCodes.SharpThreshold.cross_tendsto_zero"
+      ],
+      "reduction_transitive_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "interpretation": "The finite and asymptotic assemblies are checked reductions only. Six registered named leaf bodies remain open. No other forbidden axioms appeared."
+    }
+  }
+}

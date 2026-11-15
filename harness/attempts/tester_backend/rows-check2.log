@@ -1,0 +1,12 @@
+harness/attempts/tester_backend/SamplerRows.lean:43:48: error: don't know how to synthesize implicit argument `n`
+  @row q d k b (?m.79 O s h r hr) O s h ⟨r, ⋯⟩
+context:
+q d k b n : ℕ
+O : EncodedGaussian.Operations (Fin q)
+s : Fin (2 * k * q * d) → Fin q
+h : Fin (k * q * q * q) → Fin b
+r : ℕ
+hr : r + 1 ≤ q ^ d
+⊢ ℕ
+
+Note: All parameter types and holes (e.g., `_`) in the header of a theorem are resolved before the proof is processed; information from the proof cannot be used to infer what these values should be

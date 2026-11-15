@@ -1,0 +1,62 @@
+theorem program_valid (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (hv : Valid q ps s) :
+    Valid q ps (nextStore q tmp ps s) := by
+  induction ps generalizing s with
+  | nil => simp [Valid]
+  | cons p ps ih =>
+    have hu : q≠tmp ∧ q≠p.1 ∧ q≠p.2 ∧ q∉used ps ∧
+        tmp≠p.1 ∧ tmp≠p.2 ∧ tmp∉used ps ∧
+        p.1≠p.2 ∧ p.1∉used ps ∧ p.2∉used ps ∧ (used ps).Nodup := by
+      simp only [used,List.nodup_cons,List.mem_cons,not_or] at huniq
+      tauto
+    rcases hu with ⟨hqt,hqp,hqc,hqps,htp,htc,htps,hpc,hpps,hcps,hps⟩
+    have hut : (q::tmp::used ps).Nodup := by
+      simp only [List.nodup_cons,List.mem_cons,not_or]
+      exact ⟨⟨hqt,hqps⟩,htps,hps⟩
+    have hpv := hv p (by simp)
+    have htail : Valid q ps s := fun a ha => hv a (by simp [ha])
+    have hneq (a : Digit R) (ha : a∈ps) :
+        a.1≠p.1 ∧ a.1≠p.2 ∧ a.1≠tmp ∧ a.2≠p.1 ∧ a.2≠p.2 ∧ a.2≠tmp := by
+      have hl := used_mem_left ps a ha
+      have hr := used_mem_right ps a ha
+      exact ⟨fun he => hpps (he ▸ hl),fun he => hcps (he ▸ hl),fun he => htps (he ▸ hl),
+        fun he => hpps (he ▸ hr),fun he => hcps (he ▸ hr),fun he => htps (he ▸ hr)⟩
+    by_cases hz : s.reg p.2=0
+    · let e := resetStore q tmp p s
+      have heqQ : e.reg q=s.reg q := by simp [e,resetStore,TapeStore.setReg,hqt,hqp,hqc]
+      have hev : Valid q ps e := by
+        intro a ha
+        rcases hneq a ha with ⟨h₁,h₂,h₃,h₄,h₅,h₆⟩
+        simpa [e,resetStore,TapeStore.setReg,h₁,h₂,h₃,h₄,h₅,h₆,hqt,hqp,hqc] using htail a ha
+      have hvnext := ih hut e hev
+      rw [nextStore,if_pos hz]
+      intro a ha
+      simp only [List.mem_cons] at ha
+      rcases ha with rfl|ha
+      · rw [nextStore_fresh q tmp ps _ a.1 (Ne.symm htp) hpps,
+          nextStore_fresh q tmp ps _ a.2 (Ne.symm htc) hcps,
+          nextStore_fresh q tmp ps _ q hqt hqps]
+        simp [resetStore,TapeStore.setReg,hqt,hqp,hqc,Ne.symm htp,Ne.symm htc,hpc]
+        omega
+      · exact hvnext a ha
+    · rw [nextStore,if_neg hz]
+      intro a ha
+      simp only [List.mem_cons] at ha
+      rcases ha with rfl|ha
+      · simp [advanceStore,TapeStore.setReg,hpc,Ne.symm hpc,hqp,hqc]
+        omega
+      · rcases hneq a ha with ⟨h₁,h₂,h₃,h₄,h₅,h₆⟩
+        simpa [advanceStore,TapeStore.setReg,h₁,h₂,h₄,h₅,hqp,hqc] using htail a ha
+
+/-- Finite counter iterates preserve the canonical complement invariant. -/
+theorem iterate_valid (q tmp : Fin R) (ps : List (Digit R))
+    (huniq : (q::tmp::used ps).Nodup) (s : TapeStore R B) (hv : Valid q ps s) (n : ℕ) :
+    Valid q ps ((nextStore q tmp ps)^[n] s) := by
+  induction n with
+  | zero => exact hv
+  | succ n ih =>
+    rw [Function.iterate_succ_apply']
+    exact program_valid q tmp ps huniq _ ih
+
+#print axioms program_valid
+#print axioms iterate_valid

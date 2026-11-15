@@ -1,0 +1,49 @@
+harness/attempts/field_convolution/FieldConvolution.lean:65:30: warning: This simp argument is unused:
+  Ne.symm hxp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, toggle, toggleStore, hx, hy, hp, d₃, d₂, d₁, TapeStore.setReg, Ne.symm hyp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_convolution/FieldConvolution.lean:65:43: warning: This simp argument is unused:
+  Ne.symm hyp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, toggle, toggleStore, hx, hy, hp, d₃, d₂, d₁, TapeStore.setReg, Ne.symm hxp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_convolution/FieldConvolution.lean:78:22: warning: This simp argument is unused:
+  TapeStore.setReg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/field_convolution/FieldConvolution.lean:95:58: warning: Variable name `hyp` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hyp
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+harness/attempts/field_convolution/FieldConvolution.lean:323:4: warning: Unused tactic linter: `change 1 + s + 1 + t ≤ (n + 1) * (128 * (M + 1) ^ 2 + 10) + 1` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+harness/attempts/field_convolution/FieldConvolution.lean:473:51: warning: This simp argument is unused:
+  TapeCfg.store
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hcj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.Computation.FieldConvolution.convolution_stops_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldConvolution.convolution_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldConvolution.rawConvolution_eq_convolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.FieldConvolution.rawConvolution_eq_productCoefficient' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

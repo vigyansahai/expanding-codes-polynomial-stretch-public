@@ -1,0 +1,73 @@
+def formSlice {d k ell : ℕ} (forms : Fin (2*k*(2^ell)*d) → Fin (2^ell))
+    (r : Fin 2) (i : Fin k) (a : Fin (2^ell)) (j : Fin d) : Fin (2^ell) :=
+  forms (SamplerTables.flatFour 2 k (2^ell) d (((r,i),a),j))
+
+theorem random_phase_stops {d k ell b M : ℕ} {h : 0<ell}
+    {forms : Fin (2*k*(2^ell)*d) → Fin (2^ell)}
+    {hashes : Fin (k*(2^ell)*(2^ell)*(2^ell)) → Fin b} {z : Fin d → Fin (2^ell)}
+    (i : Fin k) (r : Fin 2) (a : Fin (2^ell)) (inp : Inputs) (hM : 1≤M)
+    (s : TapeStore (Storage.registers d k) 2) (hs : LayerInvariant d k ell b h forms hashes z M s)
+    (caps : LayerCaps d k ell b M) (ha : s.reg (Storage.address d k)=a.val) :
+    ∃ t e,t≤randomLinearTimeBound (i.val+k*r.val) d M ∧
+      (randomLinear (Storage.formLayout d k) (Storage.field d k) (Storage.point d k) (0 : Fin 2) (i.val+k*r.val)).Stops inp
+        (s.toCfg (randomLinear (B := 2) (Storage.formLayout d k) (Storage.field d k) (Storage.point d k) (0 : Fin 2) (i.val+k*r.val)).entry) t e ∧
+      LayerInvariant d k ell b h forms hashes z M e.store ∧ LayerFrame d k i s e.store ∧
+      TapeStore.SamePayload e.store s ∧
+      e.reg (Storage.field d k 30)=(EncodedSampler.linear (BinaryField.indexOperations ell h) (formSlice forms r i a) z).1.val := by
+  have hsa : s.reg (Storage.formLayout d k (.inl 0))=a.val := ha
+  have hsq : s.reg (Storage.formLayout d k (.inl 1))=2^ell := hs.field.cardinal
+  have hflat (j : Fin d) : vectorAddress (Storage.formLayout d k) (i.val+k*r.val) j s=
+      (SamplerTables.flatFour 2 k (2^ell) d (((r,i),a),j)).val := by
+    rw [SamplerLayerBounds.form_index_val]
+    unfold vectorAddress
+    rw [hsa,hsq]
+    ring
+  have hN : 2*k*(2^ell)*d≤M := by
+    have hmul := Nat.le_mul_of_pos_right (2*k*(2^ell)*d) (Nat.two_pow_pos ell)
+    have hbound := caps.formHead
+    omega
+  have hmid : s.reg (Storage.formLayout d k (.inl 0))+(i.val+k*r.val)*s.reg (Storage.formLayout d k (.inl 1))≤M := by
+    rw [hsa,hsq]
+    exact (SamplerLayerBounds.form_middle_lt r i a).le.trans caps.middle
+  have hindex : ∀ j,vectorAddress (Storage.formLayout d k) (i.val+k*r.val) j s≤M := by
+    intro j; rw [hflat]
+    exact (SamplerTables.flatFour 2 k (2^ell) d (((r,i),a),j)).isLt.le.trans hN
+  have hend : ∀ j,TapeArrays.entryOffset (vectorAddress (Storage.formLayout d k) (i.val+k*r.val) j s)
+      (s.reg (Storage.formLayout d k (.inl 1)))+s.reg (Storage.formLayout d k (.inl 1))≤M := by
+    intro j
+    rw [hflat,hsq]
+    have hb := (SamplerLayerBounds.table_end (2^ell) (SamplerTables.flatFour 2 k (2^ell) d (((r,i),a),j))).trans caps.formHead
+    unfold TapeArrays.entryOffset
+    nlinarith
+  have hvalues : ∀ j,TapeArrays.ThermometerAt s 0
+      (TapeArrays.entryOffset (vectorAddress (Storage.formLayout d k) (i.val+k*r.val) j s) (s.reg (Storage.formLayout d k (.inl 1))))
+      (s.reg (Storage.formLayout d k (.inl 1))) (formSlice forms r i a j).val := by
+    intro j; rw [hflat,hsq]
+    exact hs.tables.formTable _
+  obtain ⟨t,e,ht,he,hev,hee,hea,heq,hepoints,heframe,heb,hehead,heheads,hep,hem⟩ := randomLinear_stops
+    (Storage.formLayout d k) (Storage.formLayout_injective d k) (Storage.field d k) (Storage.field_injective d k)
+    (Storage.point d k) (Storage.coefficient_field_fresh d k) (Storage.point_field_fresh d k)
+    (Storage.point_form_fresh d k) (Storage.address_field_fresh d k) (Storage.field_form_q d k)
+    (Storage.field_form_fresh d k 3 (by decide)) (Storage.field_form_fresh d k 19 (by decide))
+    (Storage.field_form_fresh d k 24 (by decide)) 0 (i.val+k*r.val) inp ell h (formSlice forms r i a) z
+    M hM s hs.counters hs.field hs.points (hs.heads 0) hs.tables.formMarked hmid hindex hend hvalues
+  have hframe : LayerFrame d k i s e.store := by
+    intro x hx
+    apply heframe x
+    · intro j hxj
+      apply hx
+      rw [hxj]
+      exact writable_field d k i j
+    · intro j hxj
+      apply hx
+      rw [hxj]
+      exact writable_formLayout d k i j
+  have hheads : ∀ a,e.bufferHead a≤M := by
+    intro a
+    by_cases ha : a=0
+    · subst a; exact hehead
+    · rw [heheads a ha]
+      exact hs.heads a
+  exact ⟨t,e,ht,he,hs.transport hframe hee heb hheads hep,hframe,hep,hev⟩
+
+#print axioms random_phase_stops

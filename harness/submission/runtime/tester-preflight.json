@@ -1,0 +1,83 @@
+{
+  "ready_for_api": true,
+  "theorem_name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+  "source_path": "./harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean",
+  "source_bytes": 186497,
+  "source_sha256": "df1feba6bcb5b397d89c844623c19a17806924753ea9cc99c1f77ff808240722",
+  "compile": {
+    "exit_code": 0,
+    "elapsed_seconds": 98.16444237500001,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=harness/submission/runtime/staged",
+      "--setup=harness/submission/runtime/tester-closed.setup.json",
+      "-o",
+      "harness/submission/runtime/TesterReductionClosed.olean",
+      "harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean"
+    ]
+  },
+  "exact_type_and_axiom_audit_compile": {
+    "exit_code": 0,
+    "elapsed_seconds": 72.985169584,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=harness/submission/runtime/tester-closed-audit.setup.json",
+      "harness/submission/runtime/TesterClosedAudit.lean"
+    ]
+  },
+  "closed_source_audit": {
+    "type": "∀ (θ : Rat),\n  And\n      (@LT.lt Real Real.instLT (@OfNat.ofNat Real (nat_lit 0) (@Zero.toOfNat0 Real Real.instZero))\n        (@Rat.cast Real Real.instRatCast θ))\n      (@LT.lt Real Real.instLT (@Rat.cast Real Real.instRatCast θ)\n        (@HDiv.hDiv Real Real Real (@instHDiv Real (@DivInvMonoid.toDiv Real Real.instDivInvMonoid))\n          (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))\n          (@OfNat.ofNat Real (nat_lit 2) (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast ⋯)))) →\n    ExpandingCodes.PolynomialStretch.TesterImplementation θ fun n =>\n      ExpandingCodes.PolynomialStretch.binaryGeometry\n        (ExpandingCodes.PolynomialStretch.dimension (@Rat.cast Real Real.instRatCast θ)) n",
+    "name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "exact_original_type_equal": true,
+  "no_ancestor_or_original_project_proof_imports": true,
+  "pure_statement_portability_compile": {
+    "exit_code": 0,
+    "elapsed_seconds": 97.215533917,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=harness/submission/runtime/staged",
+      "--setup=harness/submission/runtime/tester-portability.setup.json",
+      "-o",
+      "harness/submission/runtime/TesterReductionPortability.olean",
+      "harness/submission/runtime/staged/Solutions/Sol_binary_tester_implementation_source.lean"
+    ]
+  },
+  "child_dependencies": [
+    "ExpandingCodes.Computation.GaussianDriver.rankProgram_stops_canonical",
+    "ExpandingCodes.Computation.TapeCompiler.compile_halts",
+    "ExpandingCodes.Computation.TesterFrontend.program_stops",
+    "ExpandingCodes.Computation.TesterGram.program_stops"
+  ],
+  "child_closed_artifacts": {
+    "Theorems.Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean",
+      "sha256": "28c0a2329217264ed58e7727e884c9a7d8374546a02c097b6169db4b63c98481"
+    },
+    "Theorems.Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.olean",
+      "sha256": "d155bfec74715208a8aff2d68e5109efa0177f2135aaf4645be8ebfb6bc027b2"
+    },
+    "Theorems.Thm_ExpandingCodes_Computation_TesterFrontend_program_stops": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TesterFrontend_program_stops.olean",
+      "sha256": "68f1884b83148e8c580628e73eeb8ba94f26c9ec953d0b68c2a6082b3250e1e3"
+    },
+    "Theorems.Thm_ExpandingCodes_Computation_TesterGram_program_stops": {
+      "path": "./.lake/build/lib/lean/Theorems/Thm_ExpandingCodes_Computation_TesterGram_program_stops.olean",
+      "sha256": "2185d6e74bae953a6cd27bdd64deaae939bb031a1229035eac7ffef9570a2fc2"
+    }
+  },
+  "frozen_runtime_definition_sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+  "local_gate": "identical actual source portable with pure registered child stubs; exact original type and standard-three-axiom closed proof using proper acyclic child caches"
+}

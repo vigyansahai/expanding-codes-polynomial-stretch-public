@@ -1,0 +1,20 @@
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1702:24: error(lean.unknownIdentifier): Unknown constant `ExpandingCodes.Computation.CounterCompiler.tape_write_scanned`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1734:13: error(lean.unknownIdentifier): Unknown identifier `haltControl`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1735:9: error(lean.unknownIdentifier): Unknown identifier `normal`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1752:10: error(lean.unknownIdentifier): Unknown identifier `haltControl`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1757:12: error(lean.unknownIdentifier): Unknown identifier `haltControl`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1760:16: error(lean.unknownIdentifier): Unknown identifier `haltControl`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1762:19: error(lean.unknownIdentifier): Unknown identifier `finish`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1781:11: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1782:10: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1783:11: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1784:10: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1785:9: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1789:5: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1788:28: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:1837:20: error(lean.unknownIdentifier): Unknown identifier `controlEquiv`
+
+Note: It is not possible to treat `controlEquiv` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+harness/submission/runtime/staged/Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryRuntime.lean:15671:5: warning: Ambiguous namespace `Computation`: it is interpreted as `_root_.ExpandingCodes.Computation` because this `open` occurs inside `namespace ExpandingCodes.PolynomialStretch`, while `_root_.Computation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ExpandingCodes.Computation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`

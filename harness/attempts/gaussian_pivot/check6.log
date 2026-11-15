@@ -1,0 +1,27 @@
+harness/attempts/gaussian_pivot/GaussianPivot.lean:81:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+harness/attempts/gaussian_pivot/GaussianPivot.lean:332:56: error: Application type mismatch: The argument
+  TapeProgram.Stops.seq hc he
+has type
+  (coordinates.seq invertPivot).Stops inp
+    (TapeCfg.mapPC (TapeProgram.leftLabel 418) (TapeStore.toCfg d coordinates.entry)) (t + 1 + s)
+    (TapeCfg.mapPC (TapeProgram.rightLabel 111) e)
+but is expected to have type
+  preparePivot.Stops inp (TapeStore.toCfg d preparePivot.entry) (t + 1 + s) (TapeCfg.mapPC ?m.293 e)
+in the application
+  And.intro (TapeProgram.Stops.seq hc he)
+'ExpandingCodes.Computation.GaussianPivot.invertPivot_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.GaussianPivot.coordinateLoop_stops' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.GaussianPivot.coordinates_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.GaussianPivot.preparePivot_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

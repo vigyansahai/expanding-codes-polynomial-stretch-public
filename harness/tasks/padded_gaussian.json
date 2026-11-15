@@ -1,0 +1,30 @@
+{
+  "owner": "root coordinator",
+  "draft": "harness/attempts/padded_gaussian/PaddedGaussian.lean",
+  "source": "ExpandingCodes/Computation/PaddedGaussian.lean",
+  "status": "complete, direct and public-o checked; all printed axioms standard only",
+  "model": "pivot A uses exactly GaussianProgram.scanResult(flatEntry A)0(m*n), proof-bounded Fin coordinate, no choice oracle. run O fuel A returns0 on no pivot, else1+recursive run with full same-dimension paddedSchur.",
+  "results": [
+    "pivot_none_iff",
+    "pivot_some_iff (nonzero scanvalue and exactflatindex)",
+    "pivot_value/nonzero/none_matrix",
+    "run_correct for fuel>=decoded rank",
+    "run_rows_correct with fuelm via Matrix.rank_le_card_height",
+    "run_eq_encodedRun",
+    "binaryTest_rank exact canonical detector matrix",
+    "State/step withdone fixedpoint",
+    "iterate_rank exact counter equality",
+    "iterate_rows_correct",
+    "binary_iterate_rank canonical full detector rank afterm actuallogicalrounds"
+  ],
+  "proof_route": "Exact first-nonzero scan semantic bridge. Each nonzero pivot drops rank1 by checked paddedSchur rank theorem; no pivot implies matrixzero. Induct fuel, use rank<=rowcount.",
+  "limitations": [
+    "Data algorithm/rank correctness, physical Gaussian driver refinement owned encoded_tester."
+  ],
+  "logs": [
+    "harness/attempts/padded_gaussian/check.log",
+    "harness/attempts/padded_gaussian/check2.log",
+    "harness/attempts/padded_gaussian/check4.log",
+    "harness/attempts/padded_gaussian/public.log"
+  ]
+}

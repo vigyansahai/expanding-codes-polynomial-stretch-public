@@ -1,0 +1,3 @@
+The canonical irreducible modulus makes the encoded quotient a field. For a nonzero operand, a multiplicative inverse exists among the $q=2^\ell$ encodings. The finite inverse certificate characterizes the successful candidates and identifies the selected result with the canonical inverse index. The zero operand is handled separately, with the specified total value zero.
+
+The program performs the bounded search and certificate checks on its actual work tapes. The setup predicate supplies the field parameters and initial register configuration needed by those executions. Their loop invariants yield the specified inverse-result store, the register bound and the complete preservation frame. Combining the proved clocks gives $20000(M+1)^7$; no inverse oracle is assumed.

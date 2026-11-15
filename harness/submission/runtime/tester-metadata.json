@@ -1,0 +1,52 @@
+{
+  "theorem_name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+  "preamble": "import Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime\n\nset_option autoImplicit false\n\nopen scoped Classical\nopen ExpandingCodes.PolynomialStretch\n",
+  "formal_statement": "theorem ExpandingCodes.PolynomialStretch.binary_tester_implementation_source (θ : ℚ)\n    (hθ : 0 < (θ : ℝ) ∧ (θ : ℝ) < 1/2) :\n    TesterImplementation θ (fun n => binaryGeometry (dimension (θ : ℝ)) n) := by sorry\n",
+  "original_declaration": {
+    "name": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+    "module": "harness.submission.Upload",
+    "kind": "theorem",
+    "isPrivate": false,
+    "isInstance": false,
+    "userName": "ExpandingCodes.PolynomialStretch.binary_tester_implementation_source",
+    "startLine": 29381,
+    "endLine": 29393,
+    "typeDeps": [
+      "ExpandingCodes.PolynomialStretch.TesterImplementation",
+      "ExpandingCodes.PolynomialStretch.binaryGeometry"
+    ],
+    "valueDeps": [
+      "ExpandingCodes.Computation.TesterEvaluation.sumLabels",
+      "ExpandingCodes.Computation.TapeProgram.halted",
+      "ExpandingCodes.Computation.SamplerOdometer.labels",
+      "ExpandingCodes.Computation.TesterGram.aDigits",
+      "ExpandingCodes.Computation.TapeProgram.entry",
+      "ExpandingCodes.Computation.TapeProgram.Exec.iterate",
+      "ExpandingCodes.Computation.TapeProgram.Stops.exec",
+      "ExpandingCodes.Computation.ParameterPrograms.setupLabels",
+      "ExpandingCodes.Computation.TapeCfg",
+      "ExpandingCodes.PolynomialStretch.binaryGeometry",
+      "ExpandingCodes.Computation.TesterPowers.productLabels",
+      "ExpandingCodes.Computation.TesterSuffix.labels",
+      "ExpandingCodes.PolynomialStretch.binary_tester_of_source",
+      "ExpandingCodes.Computation.TesterImplementation.clock_polynomial",
+      "ExpandingCodes.PolynomialStretch.dimension_ge_four",
+      "ExpandingCodes.Computation.TesterImplementation.clock",
+      "ExpandingCodes.Computation.TesterImplementation.source_stops",
+      "ExpandingCodes.Computation.TapeProgram.Stops",
+      "ExpandingCodes.Computation.TesterGram.zDigits",
+      "ExpandingCodes.Computation.TesterPrefix.initialStore",
+      "ExpandingCodes.Computation.TapeProgram.Stops.halted",
+      "ExpandingCodes.Computation.SamplerEvaluation.scaleLabels",
+      "ExpandingCodes.Computation.TapeProgram.step",
+      "ExpandingCodes.Computation.TesterGram.digit",
+      "ExpandingCodes.Computation.TesterGram.bDigits",
+      "ExpandingCodes.Computation.TesterAssembly.program",
+      "ExpandingCodes.Computation.SamplerOdometer.initializeLabels",
+      "ExpandingCodes.Computation.TapeCfg.output",
+      "ExpandingCodes.Computation.TapeProgram.run",
+      "ExpandingCodes.Computation.TapeStore.toCfg"
+    ]
+  },
+  "source_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc"
+}

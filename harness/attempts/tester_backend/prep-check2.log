@@ -1,0 +1,47 @@
+harness/attempts/tester_backend/TesterBackendPrep.lean:58:84: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+harness/attempts/tester_backend/TesterBackendPrep.lean:123:55: error: unsolved goals
+inp : Inputs
+d : BigStore
+M : ℕ
+hd : ∀ (r : Fin 80), d.reg r ≤ M
+hq : 0 < d.reg 23
+hn : d.reg 70 * d.reg 70 * d.reg 23 ≤ M
+hsq : d.reg 70 * d.reg 70 ≤ M
+t₁ : ℕ
+c₁ : TapeCfg 80 3 (copyLabels metadataPairs)
+ht₁ : t₁ ≤ metadataPairs.length * (7 * M + 8)
+h₁ : (copies metadataPairs).Stops inp (TapeStore.toCfg d (copies metadataPairs).entry) t₁ c₁
+hs₁ : c₁.store = copyResult metadataPairs d
+hb₁ : ∀ (r : Fin 80), c₁.reg r ≤ M
+t₂ : ℕ
+c₂ : TapeCfg 80 3 24
+ht₂ : t₂ ≤ 32 * (M + 1) ^ 2
+h₂ : (multiply 70 70 51 52 53).Stops inp (c₁.store.toCfg (multiply 70 70 51 52 53).entry) t₂ c₂
+hs₂ : c₂.store = multiplyStore c₁.store 70 70 51 52 53
+h70 : c₁.reg 70 = d.reg 70
+hb₂ : ∀ (r : Fin 80), c₂.reg r ≤ M
+t₃ : ℕ
+c₃ : TapeCfg 80 3 24
+ht₃ : t₃ ≤ 32 * (M + 1) ^ 2
+h₃ : (multiply 51 0 54 55 56).Stops inp (c₂.store.toCfg (multiply 51 0 54 55 56).entry) t₃ c₃
+hs₃ : c₃.store = multiplyStore c₂.store 51 0 54 55 56
+hpre : c₃.store = beforeZero d
+hpreBound : ∀ (r : Fin 80), (beforeZero d).reg r ≤ M
+⊢ (((((((((((((TapeStore.setReg d 0 (d.reg 23)).setReg 36 (d.reg 24)).setReg 37 (d.reg 19)).setReg 38 (d.reg 3)).setReg
+                                          40 (d.reg 70)).setReg
+                                      49 (d.reg 70)).setReg
+                                  79 0).setReg
+                              51 (d.reg 70 * d.reg 70)).setReg
+                          52 0).setReg
+                      53 0).setReg
+                  54 (d.reg 70 * d.reg 70 * d.reg 23)).setReg
+              55 0).setReg
+          56 0).reg
+      54 =
+    d.reg 70 * d.reg 70 * d.reg 23
+'ExpandingCodes.Computation.TesterBackendPrep.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

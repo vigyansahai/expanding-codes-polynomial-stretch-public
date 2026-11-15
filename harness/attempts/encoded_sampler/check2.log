@@ -1,0 +1,10 @@
+harness/attempts/encoded_sampler/EncodedSampler.lean:104:36: warning: This simp argument is unused:
+  Equiv.symm_apply_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [EncodedSampler.fixed_decode hO, EncodedSampler.linear_decode hO, SamplerTables.formsEquiv_apply,
+    fixedForm, linearForm, alpha, dif_pos hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ExpandingCodes.PolynomialStretch.encodedSampler_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.PolynomialStretch.encodedSampler_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]

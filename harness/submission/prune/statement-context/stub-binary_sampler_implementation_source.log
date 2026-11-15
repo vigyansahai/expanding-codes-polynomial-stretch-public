@@ -1,0 +1,2 @@
+./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.lean:8:8: warning: declaration uses `sorry`
+Lean check peak resident memory: 4864 MB; cap: 6144 MB

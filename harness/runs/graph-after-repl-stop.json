@@ -1,0 +1,2019 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "nodes": [
+    {
+      "id": "construction",
+      "declaration": "ExpandingCodes.PolynomialStretch.construction",
+      "file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_construction.lean",
+      "statement": "∃ Cd Ck : ℝ, 0 < Cd ∧ 0 < Ck ∧\n      ∀ ε : ℝ, 0 < ε → ε < 1 / 2 →\n        ∃ θ : ℚ, ε / 2 < (θ : ℝ) ∧ (θ : ℝ) < ε ∧\n          (ExpandingCodes.PolynomialStretch.dimension (θ : ℝ) : ℝ) ≤ Cd * ε⁻¹ ^ 2 ∧\n          (ExpandingCodes.PolynomialStretch.arity (θ : ℝ) : ℝ) ≤ Ck * ε⁻¹ ^ 6 ∧\n          ∃ g : ∀ n, ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension (θ : ℝ)) n,\n            ExpandingCodes.PolynomialStretch.EfficientFamily ε (ExpandingCodes.PolynomialStretch.arity (θ : ℝ)) (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension (θ : ℝ)))\n              (fun n => ExpandingCodes.PolynomialStretch.sampleLaw (θ : ℝ) n (g n)) (fun n => ExpandingCodes.PolynomialStretch.rankTest (θ : ℝ) (g n)) ∧\n            Filter.Tendsto (fun n => Real.log (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension (θ : ℝ)) n) / Real.log n -\n              2 * (ExpandingCodes.PolynomialStretch.dimension (θ : ℝ) : ℝ) ^ 2) Filter.atTop (nhds 0)",
+      "statement_sha256": "127cead23ef5ce4c738b38a42070e676c88a16a3245719efe6f857c0e20be02c",
+      "status": "open",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/construction.json"
+      ],
+      "sources": [
+        {
+          "url": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch",
+          "theorem_id": "9afe7db9-6470-4d2a-9b35-c888c1130f06",
+          "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+        }
+      ],
+      "proof_route": "Choose rational θ between ε/2 and ε; prove absolute parameter bounds and geometry existence, exact sampler/test implementations in NKtLB.Machine, eventual row growth, sampler weight/expansion, and arbitrary-error/uniform tests. Assemble the seven source milestones. All substantive obligations remain open.",
+      "failed_attempts": [],
+      "owner": "coordinator",
+      "interface": "canonical",
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": false,
+        "notes": "Exact authenticated platform statement and source definitions mirrored verbatim. No decomposition or proof claimed yet."
+      }
+    },
+    {
+      "id": "codeword_annihilation",
+      "declaration": "ExpandingCodes.PolynomialStretch.codeword_annihilation",
+      "file": "ExpandingCodes/Algebra/CodewordAnnihilation.lean",
+      "statement": "∀ (ε : ℝ), (0 < ε ∧ ε < 1 / 2) →\n    ∀ᶠ n : ℕ in Filter.atTop, ∀ (g : ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n)\n      (s : ExpandingCodes.PolynomialStretch.Forms g.F (ExpandingCodes.PolynomialStretch.dimension ε) (ExpandingCodes.PolynomialStretch.arity ε))\n      (h : ExpandingCodes.PolynomialStretch.Hashes g.F (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n)) (x : ExpandingCodes.PolynomialStretch.Word n),\n      ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x) = 0 ∧\n      ∀ e : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n),\n        (ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x + e)).rank ≤ ExpandingCodes.PolynomialStretch.weight e",
+      "statement_sha256": "e0fdbbb879737a1574db1ec58704e5caa1df86db75fd135e41d1df16ae22e4ca",
+      "proof_route": "Apply Filter.Eventually.of_forall. Root-proved dimension_ge_four supplies d≥4 and buckets is a positive power of two for every n. Instantiate the complete conditional codeword-annihilation and arbitrary-error-rank lemmas. No sampler output or coefficient/error choice is excluded.",
+      "owner": "finite_field_algebra",
+      "status": "proved",
+      "interface": "canonical",
+      "dependencies": [
+        "combined_codeword_annihilation",
+        "combined_corruption_rank"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json",
+        "harness/platform/definition-manifest.json",
+        "ExpandingCodes/Construction/ParameterBounds.lean"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact platform statement, theorem ID a62f8feb-bc30-4f5f-8cc4-da7d651f34c0"
+        },
+        {
+          "path": "ExpandingCodes/Construction/ParameterBounds.lean",
+          "declaration": "ExpandingCodes.PolynomialStretch.dimension_ge_four",
+          "role": "Root-owned elementary parameter bound, imported and included in the final transitive axiom audit."
+        }
+      ],
+      "failed_attempts": [],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Dimension and bucket positivity allow exact instantiation of the algebraic guarantee for all n, hence eventually.",
+        "children": [
+          {
+            "id": "combined_codeword_annihilation",
+            "purpose": "Proves the first conjunct for arbitrary canonical sampled forms, hashes and binary coefficients.",
+            "proof_route": "Sum preliminary-column polynomial orthogonality through column combining and mulVec.",
+            "strictly_useful": "Eliminates the algebraic content of testMatrix(codeword)=0 without using the canonical eventual theorem."
+          },
+          {
+            "id": "combined_corruption_rank",
+            "purpose": "Proves the second conjunct for arbitrary binary error vectors.",
+            "proof_route": "Additivity, codeword annihilation, and the diagonal support-rank bound.",
+            "strictly_useful": "Separates field-linear rank control from asymptotic parameters and sampler behavior."
+          }
+        ]
+      },
+      "platform_theorem_id": "a62f8feb-bc30-4f5f-8cc4-da7d651f34c0",
+      "platform_formal_statement_sha256": "a6ef8b08988099398519e1c526843559d1edefb5ff54d9d169d4084bac907cdd",
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:38:39.379976+00:00",
+        "signature_sha256": "db283cd11a4ded536f4dd17f61f4529945e73f0229462eada1abcf06889bcf5e",
+        "closure_signatures": {
+          "finite_field_triple_orthogonality": "4187a036629351d3f9c855ddb478ae810e47619f6cb22c37d1b6d6cfad5ad213",
+          "preliminary_pair_orthogonality": "8a706b80a5e00347160fdc781fc41adf2fcdfd69d2f29827bea86f5719e9bcdf",
+          "auxiliary_degree_strict_bound": "4008e7dc71fad695122279e685b992436650c8a967d6de76d48b6dcc4b549b9b",
+          "combined_codeword_annihilation": "4f102abc0791f4617e2b0b7f29b0a6b0c0ca809cca0b10bee94cd7da04580df5",
+          "combined_corruption_rank": "fbe0dcbcd24823ec11236eeca87e26544f135a876b6addb7c001a11c400b2b23",
+          "codeword_annihilation": "db283cd11a4ded536f4dd17f61f4529945e73f0229462eada1abcf06889bcf5e"
+        },
+        "files": {
+          "ExpandingCodes/Algebra/PolynomialSum.lean": "483f27185cafdce09fffb792ca4e0a07e8516bb43dc7ebd1131b90b0c8b2064f",
+          "ExpandingCodes/Algebra/CombinedOrthogonality.lean": "9947c53156734c0c66a334274b77abd53a0a68b48b612d35f5afe51302c88544",
+          "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean": "e192e8c5976fdebc13d5e725ea865d1672157936b04250cad4f7465d34e2f9e9",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+          "Definitions/Def_QuantumExpander_Decoder_Setting.lean": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+          "Definitions/Def_CodingTheory.lean": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+          "Definitions/Def_TillichZemor_HGP_Setting.lean": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+          "ExpandingCodes/Algebra/FlatIndicator.lean": "7d6dbf42ce7dd899ed7268ca4fb17773d40344a8f0b230329a31b976c73392da",
+          "ExpandingCodes/Algebra/AuxiliaryDegree.lean": "6cd98176c911c19d1d83647a1276734a1291b916a362badd4340afe24032df68",
+          "ExpandingCodes/Algebra/CodewordAnnihilation.lean": "9bd92170986d5b8164c456917f0d8d5badf8403a7257e524c3288e1decdeef2a",
+          "ExpandingCodes/Construction/ParameterBounds.lean": "8506978c68e4eaf79a0e7ca250c43e3a4e8c9f17ef852122f4f332000d4dacd8",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+          "tmp/feasibility/paper.txt": "92794235d9ddb9b9b67b6c56a720cad0984ac23eb56c56b08492ea64e4c4fab4",
+          "harness/platform/codeword_annihilation.json": "31c1a8c7191a576f3ee1144491d2cc7b0b65e5e64f2df3296c6956c5135daacd",
+          "harness/platform/definition-manifest.json": "44419d7025fcee76d1b3f8dcdfe5c295f5990154765451e6e6cc00bd01ead686"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "erasure_ambiguity",
+      "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "proof_route": "Choose q=(p+1-rho)/2, strictly between p and 1-rho. Apply the canonical conditional assembly and the independent mean-EXIT cross-decay result. The six explicit analytic leaves remain transitive open dependencies, so compilation proves only a checked reduction.",
+      "dependencies": [
+        "erasure_canonical_conditional_assembly",
+        "erasure_mean_exit_cross_decay"
+      ],
+      "owner": "erasure_capacity",
+      "status": "open",
+      "statement": "∀ (F : ℕ → Type) [∀ j, Field (F j)] [∀ j, Fintype (F j)] (M : ℕ → ℕ) (C : ∀ j, Submodule (F j) (Fin (M j) → F j)) (ρ p : ℝ), (0 < ρ ∧ ρ < 1) → (0 ≤ p ∧ p < 1 - ρ) → (∀ j, ExpandingCodes.PolynomialStretch.DoublyTransitiveCode (M j) (C j)) → Filter.Tendsto M Filter.atTop Filter.atTop → Filter.Tendsto (fun j => (Module.finrank (F j) (C j) : ℝ) / M j) Filter.atTop (nhds ρ) → Filter.Tendsto (fun j => ExpandingCodes.PolynomialStretch.erasureExpectation (C j) p / M j) Filter.atTop (nhds 0)",
+      "statement_sha256": "bd81c6f892bc3af76be5718c965d29bb4248e18b3ef0858187b4d4d5694c382f",
+      "interface": "canonical",
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Choose q=(p+1-rho)/2, strictly between p and 1-rho. Apply the canonical conditional assembly and the independent mean-EXIT cross-decay result. The six explicit analytic leaves remain transitive open dependencies, so compilation proves only a checked reduction.",
+        "children": [
+          {
+            "id": "erasure_canonical_conditional_assembly",
+            "purpose": "Bridge helper expectations to the exact platform definitions.",
+            "proof_route": "Use rfl bridge equalities to the exact canonical ambiguity and erasureExpectation definitions. Apply the checked generic subcritical convergence theorem. The Boolean cross-decay hypothesis is explicit and is not declared proved.",
+            "strictly_useful": "The helper explicitly assumes cross decay and proves only the final rank/rate passage, so it does not smuggle capacity into a definition."
+          },
+          {
+            "id": "erasure_mean_exit_cross_decay",
+            "purpose": "Apply pure Boolean sharpness to the stabilizer-invariant erasure events.",
+            "proof_route": "Shift to a tail with M>=2. Use the coordinate subtype OtherCoordinates i, of size M-1, the proved monotonic event, and proved equal influences. Apply the independent pure Boolean qualitative sharp-threshold theorem. A positive midpoint and monotonicity handle p=0.",
+            "strictly_useful": "The child proves a rate-free transition assertion. Code-rate information enters only through the separate one-sided area argument."
+          }
+        ]
+      }
+    },
+    {
+      "id": "auxiliary_rate",
+      "declaration": "ExpandingCodes.PolynomialStretch.auxiliary_rate",
+      "file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.lean",
+      "statement": "∀ (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)\n    (g : ∀ n, ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n),\n1 / 2 - ε / 8 ≤ ExpandingCodes.PolynomialStretch.limitingRate (ExpandingCodes.PolynomialStretch.dimension ε) ∧\n    ExpandingCodes.PolynomialStretch.limitingRate (ExpandingCodes.PolynomialStretch.dimension ε) < 1 / 2 ∧\n    Filter.Tendsto (fun n => (Module.finrank (g n).F (ExpandingCodes.PolynomialStretch.auxiliaryCode (g n)) : ℝ) /\n      ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n) Filter.atTop (nhds (ExpandingCodes.PolynomialStretch.limitingRate (ExpandingCodes.PolynomialStretch.dimension ε))) ∧\n    Filter.Tendsto (fun n => ExpandingCodes.PolynomialStretch.erasureExpectation (ExpandingCodes.PolynomialStretch.auxiliaryCode (g n)) (1 / 2) /\n      ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n) Filter.atTop (nhds 0)",
+      "statement_sha256": "1fe5f229ae93da4bb4bea97b73abd688a4dfcdf67119f71a182d4e56d16b1e55",
+      "status": "open",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/auxiliary_rate.json"
+      ],
+      "sources": [
+        {
+          "url": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch",
+          "theorem_id": "ac6f56d7-9985-4160-9c5d-84b2bccf5082",
+          "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+        }
+      ],
+      "proof_route": "Reduced monomial evaluation independence gives exact dimension count. Prove the lattice-count to unit-cube-volume limit, symmetry/anti-concentration bounds, and affine double transitivity; apply erasure ambiguity at p=1/2.",
+      "failed_attempts": [],
+      "owner": "unassigned",
+      "interface": "canonical",
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": false,
+        "notes": "Exact authenticated platform statement and source definitions mirrored verbatim. No decomposition or proof claimed yet."
+      }
+    },
+    {
+      "id": "distinguishing",
+      "declaration": "ExpandingCodes.PolynomialStretch.distinguishing",
+      "file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_distinguishing.lean",
+      "statement": "∀ (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2),\n∀ᶠ n : ℕ in Filter.atTop, ∀ g : ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n,\n      ExpandingCodes.PolynomialStretch.uniformProb (fun y : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n) => ExpandingCodes.PolynomialStretch.rankTest ε g y = true) ≤\n        Real.exp (-(ε ^ 2 / 32) * ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n) ∧\n      ∀ (s : ExpandingCodes.PolynomialStretch.Forms g.F (ExpandingCodes.PolynomialStretch.dimension ε) (ExpandingCodes.PolynomialStretch.arity ε))\n        (h : ExpandingCodes.PolynomialStretch.Hashes g.F (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n)) (x : ExpandingCodes.PolynomialStretch.Word n),\n        (∀ e : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n),\n          (ExpandingCodes.PolynomialStretch.weight e : ℝ) ≤ (1 / 2 - ε) * ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n →\n          ExpandingCodes.PolynomialStretch.rankTest ε g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x + e) = true) ∧\n        (∑ e : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n),\n          ExpandingCodes.PolynomialStretch.bernoulliWord (ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n) (1 / 2 - ε) e *\n            (if ExpandingCodes.PolynomialStretch.rankTest ε g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x + e) then (1 : ℝ) else 0)) ≥\n          1 - Real.exp (-(ε ^ 2 / 2) * ExpandingCodes.PolynomialStretch.rowCount (ExpandingCodes.PolynomialStretch.dimension ε) n)",
+      "statement_sha256": "6e15970f443200d0b8dd4adbe0a434e06b24eb937e673c443b302b8fc2e5ae19",
+      "status": "open",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/distinguishing.json"
+      ],
+      "sources": [
+        {
+          "url": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch",
+          "theorem_id": "3417ace9-afee-46d1-a19c-545d3168127b",
+          "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+        }
+      ],
+      "proof_route": "Use codeword annihilation for arbitrary errors, Sylvester rank inequality and restriction rank-nullity for expected uniform rank, and bounded differences for exponential soundness. Apply Hoeffding to Bernoulli error weight for acceptance.",
+      "failed_attempts": [],
+      "owner": "unassigned",
+      "interface": "canonical",
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": false,
+        "notes": "Exact authenticated platform statement and source definitions mirrored verbatim. No decomposition or proof claimed yet."
+      }
+    },
+    {
+      "id": "preliminary_expansion",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_expansion",
+      "file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_preliminary_expansion.lean",
+      "statement": "∀ (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)\n    (g : ∀ n, ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n),\nFilter.Tendsto (fun n =>\n      ExpandingCodes.PolynomialStretch.uniformProb (fun s : ExpandingCodes.PolynomialStretch.Forms (g n).F (ExpandingCodes.PolynomialStretch.dimension ε) (ExpandingCodes.PolynomialStretch.arity ε) =>\n        ¬ ExpandingCodes.PolynomialStretch.PreliminaryGood ε n (g n) s) * (n : ℝ) ^ (1 / ε))\n      Filter.atTop (nhds 0)",
+      "statement_sha256": "e649d15f8fd4b846c623a18abff52549ce557cd4de5c4081720994ad119a1a95",
+      "status": "open",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/preliminary_expansion.json"
+      ],
+      "sources": [
+        {
+          "url": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch",
+          "theorem_id": "1ce73220-63d1-4c40-b322-2817e04f5120",
+          "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+        }
+      ],
+      "proof_route": "Peeling reduces failure to sets with at least d collisions per row. Count deterministic active level sets, bound candidate witnesses by Vandermonde uniqueness, use independent q^-2 collision probabilities, and sum a convergent geometric envelope.",
+      "failed_attempts": [],
+      "owner": "unassigned",
+      "interface": "canonical",
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": false,
+        "notes": "Exact authenticated platform statement and source definitions mirrored verbatim. No decomposition or proof claimed yet."
+      }
+    },
+    {
+      "id": "hash_expansion",
+      "declaration": "ExpandingCodes.PolynomialStretch.hash_expansion",
+      "file": "Theorems/Thm_ExpandingCodes_PolynomialStretch_hash_expansion.lean",
+      "statement": "∀ (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)\n    (g : ∀ n, ExpandingCodes.PolynomialStretch.Geometry (ExpandingCodes.PolynomialStretch.dimension ε) n),\n∃ δ : ℕ → ℝ, (∀ n, 0 ≤ δ n) ∧\n      Filter.Tendsto (fun n => δ n * (n : ℝ) ^ (1 / ε)) Filter.atTop (nhds 0) ∧\n      ∀ᶠ n : ℕ in Filter.atTop, ∀ s : ExpandingCodes.PolynomialStretch.Forms (g n).F (ExpandingCodes.PolynomialStretch.dimension ε) (ExpandingCodes.PolynomialStretch.arity ε),\n        ExpandingCodes.PolynomialStretch.PreliminaryGood ε n (g n) s →\n        ExpandingCodes.PolynomialStretch.uniformProb (fun h : ExpandingCodes.PolynomialStretch.Hashes (g n).F (ExpandingCodes.PolynomialStretch.arity ε) (ExpandingCodes.PolynomialStretch.buckets ε n) =>\n          ¬ ExpandingCodes.PolynomialStretch.Expanding (ExpandingCodes.PolynomialStretch.combined (g n) s h) (1 - ε) (ExpandingCodes.PolynomialStretch.arity ε) ((n : ℝ) ^ (1 - ε))) ≤ δ n",
+      "statement_sha256": "e6d93f0abb05634339cc6922b811e384b44ba14c05d3c72cb06fa74eb9bb1e33",
+      "status": "open",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/hash_expansion.json"
+      ],
+      "sources": [
+        {
+          "url": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch",
+          "theorem_id": "ca01388c-e3df-4fa5-a27b-3bdfed5b40ad",
+          "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+        }
+      ],
+      "proof_route": "Expose independent hashes of distinct preliminary neighbors. Bound repeats by an occupancy union bound, sum over row sets, and derive an envelope uniform over every preliminary output.",
+      "failed_attempts": [],
+      "owner": "unassigned",
+      "interface": "canonical",
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": false,
+        "notes": "Exact authenticated platform statement and source definitions mirrored verbatim. No decomposition or proof claimed yet."
+      }
+    },
+    {
+      "id": "headline",
+      "declaration": "solution",
+      "file": "Solutions/Sol_ExpandingCodes_PolynomialStretch_expanding_codes.lean",
+      "statement": "∃ C : ℝ, 0 < C ∧ ∀ ε : ℝ, 0 < ε → ε < 1 / 2 →\n      ∃ (k : ℕ) (m : ℕ → ℕ) (P : ∀ n, PMF (ExpandingCodes.PolynomialStretch.Generator (m n) n))\n        (D : ∀ n, ExpandingCodes.PolynomialStretch.Word (m n) → Bool),\n        (k : ℝ) ≤ C * ε⁻¹ ^ 6 ∧ ExpandingCodes.PolynomialStretch.EfficientFamily ε k m P D",
+      "statement_sha256": "af282a3616664daef7b13bb3362e1faf434b8c5979411c6f5a674c0f9e403f84",
+      "status": "open",
+      "dependencies": [
+        "construction"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/goal.json"
+      ],
+      "sources": [
+        {
+          "theorem_id": "35a9bc65-151f-4a09-baa1-2c28821d6cd3",
+          "url": "https://prove2.me/missions/Expanding_Codes_with_Polynomial_Stretch"
+        }
+      ],
+      "proof_route": "Extract the arity bound and EfficientFamily witnesses from the more precise source construction theorem. This is a packaging reduction only; it does not close or count as progress on the central construction obligations.",
+      "failed_attempts": [],
+      "owner": "coordinator",
+      "interface": "canonical",
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "The proposition is the exact platform target. Reduction discards only extra dimension and row-growth conclusions from the official construction milestone. Difficulty remains visible in that milestone."
+      },
+      "decomposition": {
+        "parent_proof_route": "Unpack the official construction witnesses and discard extra conclusions.",
+        "children": [
+          {
+            "id": "construction",
+            "purpose": "Provides the specified sampler and test with stronger explicit construction and growth information.",
+            "proof_route": "Choose rational θ between ε/2 and ε; prove absolute parameter bounds and geometry existence, exact sampler/test implementations in NKtLB.Machine, eventual row growth, sampler weight/expansion, and arbitrary-error/uniform tests. Assemble the seven source milestones. All substantive obligations remain open.",
+            "strictly_useful": "Official more precise source milestone; this parent edge is explicitly packaging and not counted as a substantive mathematical decomposition."
+          }
+        ]
+      }
+    },
+    {
+      "id": "finite_field_triple_orthogonality",
+      "declaration": "ExpandingCodes.sum_eval_triple_eq_zero",
+      "file": "ExpandingCodes/Algebra/PolynomialSum.lean",
+      "statement": "∀ {K σ : Type*} [Field K] [Fintype K] [Fintype σ] [DecidableEq σ]\n    (p q a : MvPolynomial σ K) (R S : ℕ),\n    p.totalDegree ≤ R → q.totalDegree ≤ R → a.totalDegree ≤ S →\n    2 * R + S < Fintype.card σ * (Fintype.card K - 1) →\n    (∑ x : σ → K, MvPolynomial.eval x p * MvPolynomial.eval x q * MvPolynomial.eval x a) = 0",
+      "statement_sha256": "5c794538199bdb38d76f580e5aeaf45c276432775d9154d1a2d0ede765779873",
+      "proof_route": "Expand each polynomial into monomials. Below d(q-1), every supported exponent vector has one coordinate <q-1. Factor each monomial evaluation sum into a product of coordinate power sums; that coordinate factor is zero. Apply totalDegree_mul twice and the three separate degree bounds.",
+      "owner": "finite_field_algebra",
+      "status": "proved",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "tmp/feasibility/paper.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "470-515",
+          "role": "Paper Section 2.2 and Lemma 2.2: each column is a product of three affine equation indicators and has degree at most 3(q-1)."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+          "lines": "311-325",
+          "declaration": "FiniteField.sum_pow_lt_card_sub_one",
+          "role": "Univariate power-sum orthogonality."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+          "lines": "301-302",
+          "declaration": "Fintype.prod_sum",
+          "role": "Independent-coordinate sum factorization."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/ChevalleyWarning.lean",
+          "lines": "53-103",
+          "declaration": "MvPolynomial.sum_eval_eq_zero",
+          "role": "Existing equivalent orthogonality theorem discovered after the direct factorization proof; local proof does not depend on this theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Initial declarations without DecidableEq σ",
+          "result": "Fintype (σ → K) was not synthesized; made the standard variable-index decidable equality assumption explicit. In finite applications classical supplies it."
+        },
+        {
+          "approach": "Initial indicator evaluation statement without DecidableEq K",
+          "result": "The if-expression requires a decidable equality instance; added it only to evaluation theorems with if-expressions."
+        },
+        {
+          "approach": "Unparenthesized constant summand ∑ i, card K - 1",
+          "result": "Lean parsed subtraction outside the sum; parenthesized the summand. No mathematical obstruction."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:38:39.044790+00:00",
+        "signature_sha256": "4187a036629351d3f9c855ddb478ae810e47619f6cb22c37d1b6d6cfad5ad213",
+        "closure_signatures": {
+          "finite_field_triple_orthogonality": "4187a036629351d3f9c855ddb478ae810e47619f6cb22c37d1b6d6cfad5ad213"
+        },
+        "files": {
+          "ExpandingCodes/Algebra/PolynomialSum.lean": "483f27185cafdce09fffb792ca4e0a07e8516bb43dc7ebd1131b90b0c8b2064f",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+          "tmp/feasibility/paper.txt": "92794235d9ddb9b9b67b6c56a720cad0984ac23eb56c56b08492ea64e4c4fab4"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "affine_flat_pair_orthogonality",
+      "declaration": "ExpandingCodes.sum_eval_pair_mul_flatIndicator_eq_zero",
+      "file": "ExpandingCodes/Algebra/FlatIndicator.lean",
+      "statement": "∀ {K σ ι : Type*} [Field K] [Fintype K] [Fintype σ] [DecidableEq σ] [Fintype ι]\n    (p q : MvPolynomial σ K) (forms : ι → MvPolynomial σ K) (values : ι → K) (R : ℕ),\n    p.totalDegree ≤ R → q.totalDegree ≤ R → (∀ i, (forms i).totalDegree ≤ 1) →\n    2 * R + Fintype.card ι * (Fintype.card K - 1) < Fintype.card σ * (Fintype.card K - 1) →\n    (∑ x : σ → K, MvPolynomial.eval x p * MvPolynomial.eval x q *\n      MvPolynomial.eval x (ExpandingCodes.flatIndicator forms values)) = 0",
+      "statement_sha256": "355b533427fd43096db74fcbfe990b78669c5121a650b3f8917242b77555d7df",
+      "proof_route": "Build equationIndicator p a=1-(p-C a)^(q-1), prove its exact 0/1 evaluation by finite-field Fermat, multiply indicators, and bound total degree by card ι*(q-1). Then apply the independently proved triple-polynomial orthogonality theorem. The application ι=Fin 3 gives paper Lemma 2.2 column orthogonality.",
+      "owner": "finite_field_algebra",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "finite_field_triple_orthogonality"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "tmp/feasibility/paper.txt"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "470-515",
+          "role": "Paper Section 2.2 and Lemma 2.2: each column is a product of three affine equation indicators and has degree at most 3(q-1)."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/Finite/Basic.lean",
+          "lines": "311-325",
+          "declaration": "FiniteField.sum_pow_lt_card_sub_one",
+          "role": "Univariate power-sum orthogonality."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+          "lines": "301-302",
+          "declaration": "Fintype.prod_sum",
+          "role": "Independent-coordinate sum factorization."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/FieldTheory/ChevalleyWarning.lean",
+          "lines": "53-103",
+          "declaration": "MvPolynomial.sum_eval_eq_zero",
+          "role": "Existing equivalent orthogonality theorem discovered after the direct factorization proof; local proof does not depend on this theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Initial declarations without DecidableEq σ",
+          "result": "Fintype (σ → K) was not synthesized; made the standard variable-index decidable equality assumption explicit. In finite applications classical supplies it."
+        },
+        {
+          "approach": "Initial indicator evaluation statement without DecidableEq K",
+          "result": "The if-expression requires a decidable equality instance; added it only to evaluation theorems with if-expressions."
+        },
+        {
+          "approach": "Unparenthesized constant summand ∑ i, card K - 1",
+          "result": "Lean parsed subtraction outside the sum; parenthesized the summand. No mathematical obstruction."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Build equationIndicator p a=1-(p-C a)^(q-1), prove its exact 0/1 evaluation by finite-field Fermat, multiply indicators, and bound total degree by card ι*(q-1). Then apply the independently proved triple-polynomial orthogonality theorem. The application ι=Fin 3 gives paper Lemma 2.2 column orthogonality.",
+        "children": [
+          {
+            "id": "finite_field_triple_orthogonality",
+            "purpose": "Separates universal finite-field summation from the construction of affine-flat indicator polynomials.",
+            "proof_route": "Expand each polynomial into monomials. Below d(q-1), every supported exponent vector has one coordinate <q-1. Factor each monomial evaluation sum into a product of coordinate power sums; that coordinate factor is zero. Apply totalDegree_mul twice and the three separate degree bounds.",
+            "strictly_useful": "Works for arbitrary triples of polynomials, without flat indicators, Reed–Muller code assumptions, or the codeword/matrix conclusion."
+          }
+        ]
+      }
+    },
+    {
+      "id": "boolean_two_point_uniform",
+      "declaration": "ExpandingCodes.SharpThreshold.two_point_uniform",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Scalar.lean",
+      "statement": "∀ (a b : ℝ), 0 < a → a ≤ b → b < 1 → ∃ r : ℝ, 0 < r ∧ r < 1 ∧ ∀ p ∈ Set.Icc a b, ExpandingCodes.SharpThreshold.TwoPointContraction p r",
+      "statement_sha256": "96aafc2fcdbcebcb497100c84533cde085445617520126ec6f305a4dcc68a761",
+      "proof_route": "Prove the scalar two-point L^(4/3)→L² inequality. Normalize weighted L^(4/3) norm to one; away from constants use strict Jensen and compactness, near constants use the uniformly positive second-order gap (exponent 4/3). Compact p∈[a,b] gives one r>0. This is only an inequality in two real variables and has no code, event, dimension, transitivity, derivative, or asymptotic assumptions. More concretely, divide the Jensen gap ((E|f|^(4/3))^(3/2)−(Ef)^2) by Var(f) on the compact unit sphere away from constants. The ratio has positive limit 1/3 at either constant ±1, uniformly for p in the compact interval. Any positive lower bound on this ratio supplies r².",
+      "owner": "scalar",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Analysis/Convex/Deriv.lean",
+          "lines": "35-45",
+          "declaration": "MonotoneOn.convexOn_of_deriv",
+          "role": "Supports preferred scalar strong-convexity proof by monotonicity of derivative minus quadratic term."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      },
+      "alternative_proof_routes": [
+        {
+          "origin": "Root coordinator suggestion, mathematically checked by sharp_threshold worker",
+          "status": "Preferred route for future Scalar.lean worker; not formalized",
+          "route": "Let δ=min(a,1−b)>0 and R=δ^(−3/4). Normalize E_p|f|^(4/3)=1, treating the zero-norm case separately; then |x|,|y|≤R because both atom weights are≥δ. On [−R,R], g(t)=|t|^(4/3) has g″≥(4/9)R^(−2/3) away from zero and continuous derivative at zero. Thus g(t)−c t² is convex for c=(2/9)R^(−2/3)=(2/9)√δ, established via monotonicity of g′−2ct, including the crossing-zero case. Strong Jensen yields 1−|Ef|^(4/3)≥c Var(f). Jensen also gives |Ef|≤1, so 1−(Ef)^2≥1−|Ef|^(4/3)≥c Var(f). Choose r=√c (positive and <1); then ||T_r f||²_2=(Ef)^2+r²Var(f)≤1. Undo normalization by homogeneity. This avoids compactness of a quotient near constants.",
+          "possible_elementary_support": "Real cube-root difference factorization can establish the derivative slope bound without a second-derivative theorem across zero."
+        }
+      ]
+    },
+    {
+      "id": "boolean_tensorize_two_point",
+      "declaration": "ExpandingCodes.SharpThreshold.tensorize_two_point",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Tensorization.lean",
+      "statement": "∀ {I : Type*} [Fintype I] (p r : ℝ), 0 < p → p < 1 → 0 ≤ r → r ≤ 1 → ExpandingCodes.SharpThreshold.TwoPointContraction p r → ∀ f : Finset I → ℝ, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.noise p r f E ^ 2) ≤ (ExpandingCodes.Erasure.expectation p (fun E => |f E| ^ (4 / 3 : ℝ))) ^ (3 / 2 : ℝ)",
+      "statement_sha256": "e2fc526ec222ea30a6c85a6b256e6d92b2ec664bc6aca6c585090ab419ca67a6",
+      "proof_route": "Induct on the finite coordinate universe. Prove noise factorizes into the tensor product of two-point averaging operators from the explicitly defined Fourier formula. Apply the scalar contraction in one coordinate and mixed-norm Minkowski (2≥4/3), then the induction hypothesis. The supplied two-point inequality remains a hypothesis, so this theorem isolates tensorization rather than assuming dimension-free contraction.",
+      "owner": "tensorization",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        },
+        {
+          "path": ".lake/packages/mathlib/Mathlib/Analysis/MeanInequalities.lean",
+          "lines": "1045-1053",
+          "declaration": "Real.Lp_add_le_of_nonneg",
+          "role": "Existing finite real Minkowski inequality. Weighted mixed-norm tensorization can use this after absorbing atom weights into inputs."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      }
+    },
+    {
+      "id": "boolean_fourier_parseval",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_parseval",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Parseval.lean",
+      "statement": "∀ {I : Type*} [Fintype I] (p : ℝ), 0 < p → p < 1 → ∀ f : Finset I → ℝ, ExpandingCodes.SharpThreshold.variance p f = ∑ S : Finset I, if S.Nonempty then ExpandingCodes.SharpThreshold.fourier p f S ^ 2 else 0",
+      "statement_sha256": "6ab9a62ee05d1f275eaca93a72de45ce253322881903630f331fea602782f145",
+      "proof_route": "Factor expectations of products of centered normalized coordinates. A coordinate occurring once has zero mean; a coordinate occurring twice has second moment one. Thus the 2^m characters are an orthonormal basis of the 2^m-dimensional function space. Expand f, apply Parseval, and remove the empty coefficient (the mean). Pure finite linear algebra.",
+      "owner": "fourier",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      }
+    },
+    {
+      "id": "boolean_fourier_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_gradient_energy",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Energy.lean",
+      "statement": "∀ {I : Type*} [Fintype I] (p : ℝ), 0 < p → p < 1 → ∀ f : Finset I → ℝ, p * (1 - p) * (∑ i : I, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.gradient i f E ^ 2)) = ∑ S : Finset I, (S.card : ℝ) * ExpandingCodes.SharpThreshold.fourier p f S ^ 2",
+      "statement_sha256": "561bcee973759f1b6c3c3a8c9ce11c72ef2742f81180847e78fa1d03df5d7298",
+      "proof_route": "Differentiate each character in the discrete i coordinate. Characters missing i vanish; characters containing i lose i and gain factor 1/sqrt(p(1-p)). Apply Parseval to each gradient, and exchange finite sums. Each set S is counted card S times. Pure finite Fourier algebra, with no monotonicity or symmetry.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      }
+    },
+    {
+      "id": "boolean_fourier_noise_gradient_energy",
+      "declaration": "ExpandingCodes.SharpThreshold.fourier_noise_gradient_energy",
+      "file": "ExpandingCodes/Probability/SharpThreshold/NoisedEnergy.lean",
+      "statement": "∀ {I : Type*} [Fintype I] (p r : ℝ), 0 < p → p < 1 → ∀ f : Finset I → ℝ, p * (1 - p) * (∑ i : I, ExpandingCodes.Erasure.expectation p (fun E => ExpandingCodes.SharpThreshold.noise p r (ExpandingCodes.SharpThreshold.gradient i f) E ^ 2)) = ∑ S : Finset I, (S.card : ℝ) * r ^ (2 * (S.card - 1)) * ExpandingCodes.SharpThreshold.fourier p f S ^ 2",
+      "statement_sha256": "dedd343d7188b28508ca5ba96a8cdb10a1fede0a7a630d06f892aa4afc9fbba8",
+      "proof_route": "Use the same discrete-character derivative formula as the unnoised energy identity, now multiplying each remaining degree-(card S−1) coefficient by r^(card S−1). Squaring and summing gives the displayed exact identity. Holds for arbitrary real r and real f; no threshold conclusion is assumed.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      }
+    },
+    {
+      "id": "boolean_russo",
+      "declaration": "ExpandingCodes.SharpThreshold.russo",
+      "file": "ExpandingCodes/Probability/SharpThreshold/Russo.lean",
+      "statement": "∀ {I : Type*} [Fintype I] (Ω : Finset I → Prop) (p : ℝ), HasDerivAt (fun q => ExpandingCodes.SharpThreshold.probability q Ω) (ExpandingCodes.SharpThreshold.totalInfluence p Ω) p",
+      "statement_sha256": "9bc90fe24cee12f071a76ac0a54893a1812e111650dc626f1f9168bbc6785769",
+      "proof_route": "Differentiate the finite Bernoulli polynomial one coordinate at a time. Splitting off coordinate i gives derivative f(insert i E)−f(erase i E), with remaining independent product weights. Sum the coordinate derivatives. Identity holds for every event and every real p; upwardness is needed only subsequently for nonnegativity.",
+      "owner": "sharp_threshold",
+      "status": "proved",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 motivates the Boolean threshold step; present cutoff route is an independent qualitative derivation, not quoted as an already proved source theorem."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Reuse mathlib KKL, Russo, Boolean hypercontractivity, or sharp-threshold theorem",
+          "result": "Sol worker source audit found no applicable development. The current task supplies finite algebra and a weaker qualitative route; analytic leaves remain open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      },
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:41:42.847016+00:00",
+        "signature_sha256": "f5c328566928f2d80093f21c90b8e1ee3ad17737da3a260258f10b9c37debfd3",
+        "closure_signatures": {
+          "boolean_russo": "f5c328566928f2d80093f21c90b8e1ee3ad17737da3a260258f10b9c37debfd3"
+        },
+        "files": {
+          "ExpandingCodes/Probability/SharpThreshold/Russo.lean": "2e82aeb03d5871b43e62915fa4827e3891653a634da6d33babc6252996b5f94d",
+          "ExpandingCodes/Probability/SharpThreshold/Basic.lean": "3dda39b9770915dfa535475a66286c0ffb658b58e80fd1707ddac37ce4c20c76",
+          "ExpandingCodes/Probability/Erasure.lean": "b60f643917f35ecc7abe579ecd498e51243f46f2b12c3c673970ba8a53e25a47",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.SharpThreshold.russo' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "boolean_qualitative_sharp_threshold",
+      "declaration": "ExpandingCodes.SharpThreshold.cross_tendsto_zero",
+      "file": "ExpandingCodes/Probability/SharpThreshold.lean",
+      "statement": "∀ (J : ℕ → Type) [∀ n, Fintype (J n)] (Ω : ∀ n, Finset (J n) → Prop) (a b : ℝ), 0 < a → a < b → b < 1 → (∀ n, ExpandingCodes.SharpThreshold.Upward (Ω n)) → (∀ n, ∀ p ∈ Set.Icc a b, ∀ i j, ExpandingCodes.SharpThreshold.influence p (Ω n) i = ExpandingCodes.SharpThreshold.influence p (Ω n) j) → Filter.Tendsto (fun n => Fintype.card (J n)) Filter.atTop Filter.atTop → Filter.Tendsto (fun n => ExpandingCodes.SharpThreshold.probability a (Ω n) * (1 - ExpandingCodes.SharpThreshold.probability b (Ω n))) Filter.atTop (nhds 0)",
+      "statement_sha256": "c9e591da182c57fc89290a21b7892603285de6433e1125bbd354aa76f61ecd2d",
+      "proof_route": "Choose one compact-interval scalar contraction radius; tensorize. Exact Parseval and gradient identities plus the proved weighted cutoff give Var≤r^(-2k)B sqrt(B/m)+B/(k+1) at a mean-value point with total influence≤B=1/(b−a). Equal influences give each≤B/m. Monotonicity bounds the target product by that variance. First take m→∞ for fixed k and then k→∞. All coefficient algebra, mean-value, and limit steps are explicit Lean proofs; only six genuinely lower-level analytic leaves remain open.",
+      "owner": "sharp_threshold",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "boolean_two_point_uniform",
+        "boolean_tensorize_two_point",
+        "boolean_fourier_parseval",
+        "boolean_fourier_gradient_energy",
+        "boolean_fourier_noise_gradient_energy",
+        "boolean_russo"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/SharpThreshold/Basic.lean",
+        "ExpandingCodes/Probability/Erasure.lean"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "500-635",
+          "role": "Theorem 19 explains the source sharpness mechanism; this local theorem proves only the weaker qualitative product limit."
+        }
+      ],
+      "failed_attempts": [],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed exact finite Boolean definitions and analytic leaf signatures. These separate scalar convexity, finite product tensorization, Fourier identities, and finite polynomial differentiation; none assumes code capacity or the target sharp-threshold conclusion. Parent combines them by a Fourier cutoff and mean-value argument."
+      },
+      "decomposition": {
+        "parent_proof_route": "Choose one compact-interval scalar contraction radius; tensorize. Exact Parseval and gradient identities plus the proved weighted cutoff give Var≤r^(-2k)B sqrt(B/m)+B/(k+1) at a mean-value point with total influence≤B=1/(b−a). Equal influences give each≤B/m. Monotonicity bounds the target product by that variance. First take m→∞ for fixed k and then k→∞. All coefficient algebra, mean-value, and limit steps are explicit Lean proofs; only six genuinely lower-level analytic leaves remain open.",
+        "children": [
+          {
+            "id": "boolean_two_point_uniform",
+            "purpose": "Prove the scalar two-point L^(4/3)→L² inequality.",
+            "proof_route": "Prove the scalar two-point L^(4/3)→L² inequality. Normalize weighted L^(4/3) norm to one; away from constants use strict Jensen and compactness, near constants use the uniformly positive second-order gap (exponent 4/3). Compact p∈[a,b] gives one r>0. This is only an inequality in two real variables and has no code, event, dimension, transitivity, derivative, or asymptotic assumptions. More concretely, divide the Jensen gap ((E|f|^(4/3))^(3/2)−(Ef)^2) by Var(f) on the compact unit sphere away from constants. The ratio has positive limit 1/3 at either constant ±1, uniformly for p in the compact interval. Any positive lower bound on this ratio supplies r².",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_tensorize_two_point",
+            "purpose": "Induct on the finite coordinate universe.",
+            "proof_route": "Induct on the finite coordinate universe. Prove noise factorizes into the tensor product of two-point averaging operators from the explicitly defined Fourier formula. Apply the scalar contraction in one coordinate and mixed-norm Minkowski (2≥4/3), then the induction hypothesis. The supplied two-point inequality remains a hypothesis, so this theorem isolates tensorization rather than assuming dimension-free contraction.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_fourier_parseval",
+            "purpose": "Factor expectations of products of centered normalized coordinates.",
+            "proof_route": "Factor expectations of products of centered normalized coordinates. A coordinate occurring once has zero mean; a coordinate occurring twice has second moment one. Thus the 2^m characters are an orthonormal basis of the 2^m-dimensional function space. Expand f, apply Parseval, and remove the empty coefficient (the mean). Pure finite linear algebra.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_fourier_gradient_energy",
+            "purpose": "Differentiate each character in the discrete i coordinate.",
+            "proof_route": "Differentiate each character in the discrete i coordinate. Characters missing i vanish; characters containing i lose i and gain factor 1/sqrt(p(1-p)). Apply Parseval to each gradient, and exchange finite sums. Each set S is counted card S times. Pure finite Fourier algebra, with no monotonicity or symmetry.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_fourier_noise_gradient_energy",
+            "purpose": "Use the same discrete-character derivative formula as the unnoised energy identity, now multiplying each remaining degree-(card S−1) coefficient by r^(card S−1).",
+            "proof_route": "Use the same discrete-character derivative formula as the unnoised energy identity, now multiplying each remaining degree-(card S−1) coefficient by r^(card S−1). Squaring and summing gives the displayed exact identity. Holds for arbitrary real r and real f; no threshold conclusion is assumed.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          },
+          {
+            "id": "boolean_russo",
+            "purpose": "Differentiate the finite Bernoulli polynomial one coordinate at a time.",
+            "proof_route": "Differentiate the finite Bernoulli polynomial one coordinate at a time. Splitting off coordinate i gives derivative f(insert i E)−f(erase i E), with remaining independent product weights. Sum the coordinate derivatives. Identity holds for every event and every real p; upwardness is needed only subsequently for nonnegativity.",
+            "strictly_useful": "Independent finite Boolean-analysis ingredient: no code, rate, transitivity, or asymptotic capacity conclusion appears in its hypotheses."
+          }
+        ]
+      }
+    },
+    {
+      "id": "auxiliary_degree_strict_bound",
+      "declaration": "ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound",
+      "file": "ExpandingCodes/Algebra/AuxiliaryDegree.lean",
+      "statement": "∀ (q d : ℕ), 4 ≤ d → 2 ≤ q → 2 * ExpandingCodes.PolynomialStretch.auxiliaryDegree q d + 3 * (q - 1) < d * (q - 1)",
+      "statement_sha256": "bd6d20fe34e65169b25628be2e2afd65465037ebcaf6f350e8c303269d9daa2f",
+      "proof_route": "Cast the exact integer-floor definition to integers, prove numerator nonnegative, use 2*(N/2)≤N, and recast the strict inequality to naturals.",
+      "owner": "finite_field_algebra",
+      "status": "proved",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:38:39.119512+00:00",
+        "signature_sha256": "4008e7dc71fad695122279e685b992436650c8a967d6de76d48b6dcc4b549b9b",
+        "closure_signatures": {
+          "auxiliary_degree_strict_bound": "4008e7dc71fad695122279e685b992436650c8a967d6de76d48b6dcc4b549b9b"
+        },
+        "files": {
+          "ExpandingCodes/Algebra/AuxiliaryDegree.lean": "6cd98176c911c19d1d83647a1276734a1291b916a362badd4340afe24032df68",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+          "Definitions/Def_QuantumExpander_Decoder_Setting.lean": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+          "Definitions/Def_CodingTheory.lean": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+          "Definitions/Def_TillichZemor_HGP_Setting.lean": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+          "harness/platform/codeword_annihilation.json": "31c1a8c7191a576f3ee1144491d2cc7b0b65e5e64f2df3296c6956c5135daacd"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "preliminary_pair_orthogonality",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal",
+      "file": "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean",
+      "statement": "∀ {d n k R : ℕ} (g : ExpandingCodes.PolynomialStretch.Geometry d n) (s : ExpandingCodes.PolynomialStretch.Forms g.F d k)\n (c : Fin k × (g.F × g.F × g.F)) (a b : ExpandingCodes.PolynomialStretch.Monomials g.F d R),\n 2 * R + 3 * (Fintype.card g.F - 1) < d * (Fintype.card g.F - 1) →\n (∑ z : Fin (ExpandingCodes.PolynomialStretch.rowCount d n), ExpandingCodes.PolynomialStretch.monomialEval a (g.rowOrder z) * ExpandingCodes.PolynomialStretch.monomialEval b (g.rowOrder z) *\n (if ExpandingCodes.PolynomialStretch.preliminary g s z c = 0 then (0 : g.F) else 1)) = 0",
+      "statement_sha256": "33c3a7bae24289989842b5e826842ff00fd2fd31e606d08aefef8698736a23ac",
+      "proof_route": "Construct the fixed-column polynomial from the fixed Vandermonde form and the two sampled forms indexed at the column a-value. Prove exact 0/1 evaluation by rewriting dependent form selection under fixedForm=a. Represent monomial rows as products of variables; apply triple polynomial orthogonality and reindex by rowOrder.",
+      "owner": "finite_field_algebra",
+      "status": "proved",
+      "interface": "provisional",
+      "dependencies": [
+        "finite_field_triple_orthogonality"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "rw [hpred] to rewrite equivalent indicator predicates inside if",
+          "result": "Dependent Decidable motive rejected; replaced by simp only [hpred]."
+        },
+        {
+          "approach": "split_ifs <;> norm_num for Bit 0/1 evaluation",
+          "result": "norm_num did not consume impossible context hypotheses; replaced by an address equality split and simp."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Construct the fixed-column polynomial from the fixed Vandermonde form and the two sampled forms indexed at the column a-value. Prove exact 0/1 evaluation by rewriting dependent form selection under fixedForm=a. Represent monomial rows as products of variables; apply triple polynomial orthogonality and reindex by rowOrder.",
+        "children": [
+          {
+            "id": "finite_field_triple_orthogonality",
+            "purpose": "Universal polynomial sum vanishing, isolated from the canonical sampling model.",
+            "proof_route": "Monomial factorization and finite-field power sum.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          }
+        ]
+      },
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:38:39.090035+00:00",
+        "signature_sha256": "8a706b80a5e00347160fdc781fc41adf2fcdfd69d2f29827bea86f5719e9bcdf",
+        "closure_signatures": {
+          "finite_field_triple_orthogonality": "4187a036629351d3f9c855ddb478ae810e47619f6cb22c37d1b6d6cfad5ad213",
+          "preliminary_pair_orthogonality": "8a706b80a5e00347160fdc781fc41adf2fcdfd69d2f29827bea86f5719e9bcdf"
+        },
+        "files": {
+          "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean": "e192e8c5976fdebc13d5e725ea865d1672157936b04250cad4f7465d34e2f9e9",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+          "Definitions/Def_QuantumExpander_Decoder_Setting.lean": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+          "Definitions/Def_CodingTheory.lean": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+          "Definitions/Def_TillichZemor_HGP_Setting.lean": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+          "ExpandingCodes/Algebra/FlatIndicator.lean": "7d6dbf42ce7dd899ed7268ca4fb17773d40344a8f0b230329a31b976c73392da",
+          "ExpandingCodes/Algebra/PolynomialSum.lean": "483f27185cafdce09fffb792ca4e0a07e8516bb43dc7ebd1131b90b0c8b2064f",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+          "tmp/feasibility/paper.txt": "92794235d9ddb9b9b67b6c56a720cad0984ac23eb56c56b08492ea64e4c4fab4",
+          "harness/platform/codeword_annihilation.json": "31c1a8c7191a576f3ee1144491d2cc7b0b65e5e64f2df3296c6956c5135daacd"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "combined_codeword_annihilation",
+      "declaration": "ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero",
+      "file": "ExpandingCodes/Algebra/CombinedOrthogonality.lean",
+      "statement": "∀ {d n k b : ℕ} (g : ExpandingCodes.PolynomialStretch.Geometry d n) (s : ExpandingCodes.PolynomialStretch.Forms g.F d k) (h : ExpandingCodes.PolynomialStretch.Hashes g.F k b) (x : ExpandingCodes.PolynomialStretch.Word n),\n 4 ≤ d → 0 < b → ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x) = 0",
+      "statement_sha256": "fb398126bb09b587289658b90313be3b2d70d9f506d9f7b93ad8c04b8123da71",
+      "proof_route": "Use the characteristic-two prime-field ring map. Show each combined column is a binary sum of preliminary columns: the address indicator collapses the address sum, and positive b makes flattened layer positions unique by division by b. Distribute evaluation-pair sums and mulVec sums to obtain exact testMatrix annihilation.",
+      "owner": "finite_field_algebra",
+      "status": "proved",
+      "interface": "provisional",
+      "dependencies": [
+        "preliminary_pair_orthogonality",
+        "auxiliary_degree_strict_bound"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "First combined module check",
+          "result": "Two local normalization issues only: fin_cases on Bit required explicit change to canonical 0/1 numerals, and Nat.add_mul_div_right rather than left matches i*b. Corrected; module passed warm iteration and fresh build."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Use the characteristic-two prime-field ring map. Show each combined column is a binary sum of preliminary columns: the address indicator collapses the address sum, and positive b makes flattened layer positions unique by division by b. Distribute evaluation-pair sums and mulVec sums to obtain exact testMatrix annihilation.",
+        "children": [
+          {
+            "id": "preliminary_pair_orthogonality",
+            "purpose": "Exact preliminary column indicator-to-polynomial bridge.",
+            "proof_route": "Freeze the sampled forms at the column address and represent the three equations by flatIndicator.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          },
+          {
+            "id": "auxiliary_degree_strict_bound",
+            "purpose": "Integer-floor arithmetic supplying the explicit strict degree bound.",
+            "proof_route": "Nonnegative integer numerator and floor-division bound.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          }
+        ]
+      },
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:38:39.195356+00:00",
+        "signature_sha256": "4f102abc0791f4617e2b0b7f29b0a6b0c0ca809cca0b10bee94cd7da04580df5",
+        "closure_signatures": {
+          "finite_field_triple_orthogonality": "4187a036629351d3f9c855ddb478ae810e47619f6cb22c37d1b6d6cfad5ad213",
+          "preliminary_pair_orthogonality": "8a706b80a5e00347160fdc781fc41adf2fcdfd69d2f29827bea86f5719e9bcdf",
+          "auxiliary_degree_strict_bound": "4008e7dc71fad695122279e685b992436650c8a967d6de76d48b6dcc4b549b9b",
+          "combined_codeword_annihilation": "4f102abc0791f4617e2b0b7f29b0a6b0c0ca809cca0b10bee94cd7da04580df5"
+        },
+        "files": {
+          "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean": "e192e8c5976fdebc13d5e725ea865d1672157936b04250cad4f7465d34e2f9e9",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+          "Definitions/Def_QuantumExpander_Decoder_Setting.lean": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+          "Definitions/Def_CodingTheory.lean": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+          "Definitions/Def_TillichZemor_HGP_Setting.lean": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+          "ExpandingCodes/Algebra/FlatIndicator.lean": "7d6dbf42ce7dd899ed7268ca4fb17773d40344a8f0b230329a31b976c73392da",
+          "ExpandingCodes/Algebra/PolynomialSum.lean": "483f27185cafdce09fffb792ca4e0a07e8516bb43dc7ebd1131b90b0c8b2064f",
+          "ExpandingCodes/Algebra/CombinedOrthogonality.lean": "9947c53156734c0c66a334274b77abd53a0a68b48b612d35f5afe51302c88544",
+          "ExpandingCodes/Algebra/AuxiliaryDegree.lean": "6cd98176c911c19d1d83647a1276734a1291b916a362badd4340afe24032df68",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+          "tmp/feasibility/paper.txt": "92794235d9ddb9b9b67b6c56a720cad0984ac23eb56c56b08492ea64e4c4fab4",
+          "harness/platform/codeword_annihilation.json": "31c1a8c7191a576f3ee1144491d2cc7b0b65e5e64f2df3296c6956c5135daacd"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "combined_corruption_rank",
+      "declaration": "ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight",
+      "file": "ExpandingCodes/Algebra/CombinedOrthogonality.lean",
+      "statement": "∀ {d n k b : ℕ} (g : ExpandingCodes.PolynomialStretch.Geometry d n) (s : ExpandingCodes.PolynomialStretch.Forms g.F d k) (h : ExpandingCodes.PolynomialStretch.Hashes g.F k b) (x : ExpandingCodes.PolynomialStretch.Word n)\n (e : ExpandingCodes.PolynomialStretch.Word (ExpandingCodes.PolynomialStretch.rowCount d n)), 4 ≤ d → 0 < b →\n (ExpandingCodes.PolynomialStretch.testMatrix g ((ExpandingCodes.PolynomialStretch.combined g s h).mulVec x + e)).rank ≤ ExpandingCodes.PolynomialStretch.weight e",
+      "statement_sha256": "efe2ab4cf8047e67d34af3a341064b7abdaee5459ca7a29a8812d3e216582e62",
+      "proof_route": "Prove testMatrix additivity via the prime-field ring map; codeword annihilation reduces the corrupted test matrix to the error test matrix. Bound rank by the rank of its support diagonal, whose rank equals binary Hamming weight.",
+      "owner": "finite_field_algebra",
+      "status": "proved",
+      "interface": "provisional",
+      "dependencies": [
+        "preliminary_pair_orthogonality",
+        "auxiliary_degree_strict_bound"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "harness/platform/codeword_annihilation.json"
+      ],
+      "sources": [
+        {
+          "path": "harness/platform/codeword_annihilation.json",
+          "role": "Exact canonical target to which these helpers apply."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean",
+          "role": "Exact auxiliary degree, monomial row, and test matrix definitions."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean",
+          "role": "Exact address/preliminary/combined definitions."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "First combined module check",
+          "result": "Two local normalization issues only: fin_cases on Bit required explicit change to canonical 0/1 numerals, and Nat.add_mul_div_right rather than left matches i*b. Corrected; module passed warm iteration and fresh build."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Prove testMatrix additivity via the prime-field ring map; codeword annihilation reduces the corrupted test matrix to the error test matrix. Bound rank by the rank of its support diagonal, whose rank equals binary Hamming weight.",
+        "children": [
+          {
+            "id": "preliminary_pair_orthogonality",
+            "purpose": "Exact preliminary column indicator-to-polynomial bridge.",
+            "proof_route": "Freeze the sampled forms at the column address and represent the three equations by flatIndicator.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          },
+          {
+            "id": "auxiliary_degree_strict_bound",
+            "purpose": "Integer-floor arithmetic supplying the explicit strict degree bound.",
+            "proof_route": "Nonnegative integer numerator and floor-division bound.",
+            "strictly_useful": "Discharges a distinct obligation without assuming matrix annihilation or its equivalent."
+          }
+        ]
+      },
+      "verification": {
+        "mode": "prove",
+        "checked_at": "2026-11-14T07:38:39.270072+00:00",
+        "signature_sha256": "fbe0dcbcd24823ec11236eeca87e26544f135a876b6addb7c001a11c400b2b23",
+        "closure_signatures": {
+          "finite_field_triple_orthogonality": "4187a036629351d3f9c855ddb478ae810e47619f6cb22c37d1b6d6cfad5ad213",
+          "preliminary_pair_orthogonality": "8a706b80a5e00347160fdc781fc41adf2fcdfd69d2f29827bea86f5719e9bcdf",
+          "auxiliary_degree_strict_bound": "4008e7dc71fad695122279e685b992436650c8a967d6de76d48b6dcc4b549b9b",
+          "combined_corruption_rank": "fbe0dcbcd24823ec11236eeca87e26544f135a876b6addb7c001a11c400b2b23"
+        },
+        "files": {
+          "ExpandingCodes/Algebra/PreliminaryOrthogonality.lean": "e192e8c5976fdebc13d5e725ea865d1672157936b04250cad4f7465d34e2f9e9",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_PolynomialTest.lean": "cb5ac75afc6986978df27b39ccf8e6e606018e114e1ac77eb0f6990f0edc1ce2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean": "0ac9139ac4dea1d2b6a4d1cec2fd5aebac5c3b43810997adccbcf9d5e5d20565",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean": "261f441335b92356d9d92823ef88703fd615707be1b82be4b60666c7ae52cac2",
+          "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean": "921ac525ced0a48bd6334eacb12b813f5896fa3d457c5f5fea7e586298feda20",
+          "Definitions/Def_QuantumExpander_Decoder_Setting.lean": "6b7a11a188e615bf962761e8aaa065c13451087ca8b347877c0fe1503eaf8ad4",
+          "Definitions/Def_CodingTheory.lean": "2dd3bbcbf658c3cb5280e8b303422f43bc6f61b73e3f1a79e144e355e8c80473",
+          "Definitions/Def_TillichZemor_HGP_Setting.lean": "34c06f136935f97a45f52d2d8a9447019629cb2fe3d65c81baa11818c351e6e9",
+          "ExpandingCodes/Algebra/FlatIndicator.lean": "7d6dbf42ce7dd899ed7268ca4fb17773d40344a8f0b230329a31b976c73392da",
+          "ExpandingCodes/Algebra/PolynomialSum.lean": "483f27185cafdce09fffb792ca4e0a07e8516bb43dc7ebd1131b90b0c8b2064f",
+          "ExpandingCodes/Algebra/CombinedOrthogonality.lean": "9947c53156734c0c66a334274b77abd53a0a68b48b612d35f5afe51302c88544",
+          "ExpandingCodes/Algebra/AuxiliaryDegree.lean": "6cd98176c911c19d1d83647a1276734a1291b916a362badd4340afe24032df68",
+          "AGENTS.md": "1394d5e18940b6f1f1c3debf5d2e283ecc7abb016c6aef705b2324816ac2a2f0",
+          "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+          "lake-manifest.json": "e046536285ff0680f0fd9595a5e2474d45ebe665311a5fef161cb001103f2096",
+          "tmp/feasibility/paper.txt": "92794235d9ddb9b9b67b6c56a720cad0984ac23eb56c56b08492ea64e4c4fab4",
+          "harness/platform/codeword_annihilation.json": "31c1a8c7191a576f3ee1144491d2cc7b0b65e5e64f2df3296c6956c5135daacd"
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axiom_output": "'ExpandingCodes.sum_eval_triple_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ExpandingCodes.PolynomialStretch.preliminary_monomial_pair_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.auxiliaryDegree_strict_degree_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_mulVec_eq_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.testMatrix_combined_corruption_rank_le_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ExpandingCodes.PolynomialStretch.codeword_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "signature_check": "Lean full type compatibility with @declaration",
+        "trust_note": "Freshness record, not a security certificate; verify always reruns Lean."
+      }
+    },
+    {
+      "id": "erasure_ambiguity_support_bound",
+      "declaration": "ExpandingCodes.Erasure.finrank_ambiguity_le_undetermined",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "∀ {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I → K)) (E : Set I), Module.finrank K (ExpandingCodes.Erasure.ambiguity C E) ≤ Nat.card (ExpandingCodes.Erasure.undetermined C E)",
+      "statement_sha256": "537a44d09781b15f84a6e8fae45df3aefd4c712044807d0c3835110c0892a447",
+      "proof_route": "Restrict ambiguity words to the set of coordinates on which some ambiguity word is nonzero. The map is injective, so finite-dimensional linear algebra bounds finrank by the cardinality of that set.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      }
+    },
+    {
+      "id": "erasure_observed_witness_dimension",
+      "declaration": "ExpandingCodes.Erasure.card_essential_le_finrank",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "∀ {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I → K)) (E : Set I), Nat.card (ExpandingCodes.Erasure.essential C E) ≤ Module.finrank K C",
+      "statement_sha256": "22e2088e544d5819aad0fce73929d4a006edbdf55a9a44b3c4c0b039678cd2b4",
+      "proof_route": "For each observed coordinate i whose value cannot be inferred from the other observed values, choose a codeword supported on E union {i} and nonzero at i. Evaluating a linear combination at i kills every other witness, so the witnesses are linearly independent and their number is at most dim(C).",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      }
+    },
+    {
+      "id": "erasure_independent_coordinate_conditioning",
+      "declaration": "ExpandingCodes.Erasure.expectationOn_insert",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "∀ {I : Type*} [Fintype I] [DecidableEq I] {s : Finset I} {i : I}, i ∉ s → ∀ (p : ℝ) (f : Finset I → ℝ), ExpandingCodes.Erasure.expectationOn (insert i s) p f = (1 - p) * ExpandingCodes.Erasure.expectationOn s p f + p * ExpandingCodes.Erasure.expectationOn s p (fun A => f (insert i A))",
+      "statement_sha256": "cb1675c8229d4c42b1e99ebdfc0ac5180041320996c7bbb4bd65e75af777743c",
+      "proof_route": "Split the powerset into sets omitting i and sets containing i. Their Bernoulli weights factor as (1-p) and p times the law on the remaining coordinates. This independently proves the finite probability factorization, not a coding theorem.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      }
+    },
+    {
+      "id": "erasure_exit_one_sided_area",
+      "declaration": "ExpandingCodes.Erasure.exit_area_bound",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "∀ {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I → K)) {p : ℝ}, 0 ≤ p → p ≤ 1 → (1 - p) * (∑ i : I, ExpandingCodes.Erasure.exit C i p) ≤ (Module.finrank K C : ℝ)",
+      "statement_sha256": "9cd6a236df1991ad83b16b926e2d6f72d4b943b1fe7c3b1fa7d540d9b6acf1ce",
+      "proof_route": "Take expectations in the pointwise observed-witness inequality. The expected indicator of being observed and extrinsically unrecoverable is (1-p) times the EXIT function. Swap finite sums. This avoids entropy, fixed alphabet size, and any unproved integral area theorem.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "erasure_observed_witness_dimension",
+        "erasure_independent_coordinate_conditioning"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Take expectations in the pointwise observed-witness inequality. The expected indicator of being observed and extrinsically unrecoverable is (1-p) times the EXIT function. Swap finite sums. This avoids entropy, fixed alphabet size, and any unproved integral area theorem.",
+        "children": [
+          {
+            "id": "erasure_observed_witness_dimension",
+            "purpose": "Bound essential observed coordinates using independent codewords.",
+            "proof_route": "For each observed coordinate i whose value cannot be inferred from the other observed values, choose a codeword supported on E union {i} and nonzero at i. Evaluating a linear combination at i kills every other witness, so the witnesses are linearly independent and their number is at most dim(C).",
+            "strictly_useful": "The independent-witness fact is finite linear algebra and does not assume any capacity conclusion."
+          },
+          {
+            "id": "erasure_independent_coordinate_conditioning",
+            "purpose": "Separate one erasure coordinate into its two Bernoulli cases.",
+            "proof_route": "Split the powerset into sets omitting i and sets containing i. Their Bernoulli weights factor as (1-p) and p times the law on the remaining coordinates. This independently proves the finite probability factorization, not a coding theorem.",
+            "strictly_useful": "The child applies to arbitrary finite real-valued functions and is independent of coding theory."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_punctured_boolean_event",
+      "declaration": "ExpandingCodes.Erasure.exit_eq_puncturedProbability",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "∀ {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I → K)) (i : I) (p : ℝ), ExpandingCodes.Erasure.exit C i p = ExpandingCodes.Erasure.expectation (I := ExpandingCodes.Erasure.OtherCoordinates i) p (fun A => if ExpandingCodes.Erasure.puncturedFailure C i A then 1 else 0)",
+      "statement_sha256": "a48ad1b6ff01d382818f09b50b892c85e3c2b2ce3931d188b6058a712b7e4715",
+      "proof_route": "Reindex the powerset of univ.erase i by finite subsets of its coordinate subtype. Cardinalities are preserved, so the scalar EXIT curve is exactly a Boolean-event probability on M-1 coordinates.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      }
+    },
+    {
+      "id": "erasure_subcritical_limit_assembly",
+      "declaration": "ExpandingCodes.Erasure.ambiguity_sublinear_of_exit_crossDecay",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "∀ {N : ℕ → ℕ} {F : ℕ → Type*} [∀ j, Field (F j)] (C : ∀ j, Submodule (F j) (Fin (N j) → F j)) {ρ p q : ℝ}, 0 ≤ p → p < q → q < 1 → ρ < 1 - q → Filter.Tendsto (fun j => ExpandingCodes.Erasure.rate (C j)) Filter.atTop (nhds ρ) → Filter.Tendsto (fun j => ExpandingCodes.Erasure.meanExit (C j) p * (1 - ExpandingCodes.Erasure.meanExit (C j) q)) Filter.atTop (nhds 0) → Filter.Tendsto (fun j => ExpandingCodes.Erasure.normalizedAmbiguity (C j) p) Filter.atTop (nhds 0)",
+      "statement_sha256": "0e35998ca271d1faf685b9c43eb3f7cd0c3aacc12c2c6d68cdfed3a1bfe80b44",
+      "proof_route": "Fix p<q<1-rho. The rate limit and one-sided area bound give a uniform positive lower bound on 1-EXIT(q). Hence vanishing EXIT(p)*(1-EXIT(q)) forces EXIT(p)->0. Expected ambiguity divided by blocklength is bounded by EXIT(p), so squeeze.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "erasure_ambiguity_support_bound",
+        "erasure_exit_one_sided_area"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Fix p<q<1-rho. The rate limit and one-sided area bound give a uniform positive lower bound on 1-EXIT(q). Hence vanishing EXIT(p)*(1-EXIT(q)) forces EXIT(p)->0. Expected ambiguity divided by blocklength is bounded by EXIT(p), so squeeze.",
+        "children": [
+          {
+            "id": "erasure_ambiguity_support_bound",
+            "purpose": "Bound ambiguity dimension by the number of undetermined coordinates.",
+            "proof_route": "Restrict ambiguity words to the set of coordinates on which some ambiguity word is nonzero. The map is injective, so finite-dimensional linear algebra bounds finrank by the cardinality of that set.",
+            "strictly_useful": "A pointwise dimension inequality uses no randomness, rates, transitivity or analytic limit."
+          },
+          {
+            "id": "erasure_exit_one_sided_area",
+            "purpose": "Locate a transition by bounding its right-tail area using code rate.",
+            "proof_route": "Take expectations in the pointwise observed-witness inequality. The expected indicator of being observed and extrinsically unrecoverable is (1-p) times the EXIT function. Swap finite sums. This avoids entropy, fixed alphabet size, and any unproved integral area theorem.",
+            "strictly_useful": "The proved inequality works for every code at every valid probability, without a sharp-threshold hypothesis."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_canonical_conditional_assembly",
+      "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity_of_exit_crossDecay",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "statement": "∀ (F : ℕ → Type) [∀ j, Field (F j)] [∀ j, Fintype (F j)] (M : ℕ → ℕ) (C : ∀ j, Submodule (F j) (Fin (M j) → F j)) (ρ p q : ℝ), 0 ≤ p → p < q → q < 1 → ρ < 1 - q → Filter.Tendsto (fun j => (Module.finrank (F j) (C j) : ℝ) / M j) Filter.atTop (nhds ρ) → Filter.Tendsto (fun j => ExpandingCodes.Erasure.meanExit (C j) p * (1 - ExpandingCodes.Erasure.meanExit (C j) q)) Filter.atTop (nhds 0) → Filter.Tendsto (fun j => ExpandingCodes.PolynomialStretch.erasureExpectation (C j) p / M j) Filter.atTop (nhds 0)",
+      "statement_sha256": "15b5710269b71537fe9879f469b6e841c0bc437735d6877f466dfc2d8ce386a2",
+      "proof_route": "Use rfl bridge equalities to the exact canonical ambiguity and erasureExpectation definitions. Apply the checked generic subcritical convergence theorem. The Boolean cross-decay hypothesis is explicit and is not declared proved.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "erasure_subcritical_limit_assembly"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Use rfl bridge equalities to the exact canonical ambiguity and erasureExpectation definitions. Apply the checked generic subcritical convergence theorem. The Boolean cross-decay hypothesis is explicit and is not declared proved.",
+        "children": [
+          {
+            "id": "erasure_subcritical_limit_assembly",
+            "purpose": "Turn the rate bound and two-probability cross decay into a zero ambiguity limit.",
+            "proof_route": "Fix p<q<1-rho. The rate limit and one-sided area bound give a uniform positive lower bound on 1-EXIT(q). Hence vanishing EXIT(p)*(1-EXIT(q)) forces EXIT(p)->0. Expected ambiguity divided by blocklength is bounded by EXIT(p), so squeeze.",
+            "strictly_useful": "The child uses elementary limit algebra on a supplied cross-decay estimate and isolates it from coding symmetry."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_doubly_transitive_exit_symmetry",
+      "declaration": "ExpandingCodes.PolynomialStretch.meanExit_eq_exit_of_doublyTransitive",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "statement": "∀ {F : Type*} [Field F] {M : ℕ} (C : Submodule F (Fin M → F)), ExpandingCodes.PolynomialStretch.DoublyTransitiveCode M C → 2 ≤ M → ∀ (i : Fin M) (p : ℝ), ExpandingCodes.Erasure.meanExit C p = ExpandingCodes.Erasure.exit C i p",
+      "statement_sha256": "18e36cf1e440afc5b9dae81bc893be22c226bab738ebc304215cc37b9d35854e",
+      "proof_route": "A preserving subgroup also contains inverse permutations. Double transitivity gives ordinary transitivity for M>=2. Coordinate relabeling preserves the Bernoulli law, so all scalar EXIT functions equal their mean. This does not assume capacity.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      }
+    },
+    {
+      "id": "erasure_stabilizer_equal_influences",
+      "declaration": "ExpandingCodes.PolynomialStretch.puncturedFailure_equal_influences",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "proof_route": "The stabilizer of i acts transitively on the other coordinates. Transport the event using a code automorphism and reindex the Bernoulli expectation of its discrete gradient. This proves equality of the actual pivotal probabilities, not an unexplained symmetry assertion.",
+      "dependencies": [],
+      "owner": "erasure_capacity",
+      "status": "open",
+      "statement": "∀ {F : Type*} [Field F] {M : ℕ} (C : Submodule F (Fin M → F)), ExpandingCodes.PolynomialStretch.DoublyTransitiveCode M C → ∀ (i : Fin M) (p : ℝ) (a b : ExpandingCodes.Erasure.OtherCoordinates i), ExpandingCodes.SharpThreshold.influence p (ExpandingCodes.Erasure.puncturedFailure C i) a = ExpandingCodes.SharpThreshold.influence p (ExpandingCodes.Erasure.puncturedFailure C i) b",
+      "statement_sha256": "df1d1806fc99fee6fcf0214dfcf32b018d9f076804456bda680cb1aa1396adf1",
+      "interface": "provisional",
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      }
+    },
+    {
+      "id": "erasure_mean_exit_cross_decay",
+      "declaration": "ExpandingCodes.PolynomialStretch.meanExit_cross_tendsto_zero",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "proof_route": "Shift to a tail with M>=2. Use the coordinate subtype OtherCoordinates i, of size M-1, the proved monotonic event, and proved equal influences. Apply the independent pure Boolean qualitative sharp-threshold theorem. A positive midpoint and monotonicity handle p=0.",
+      "dependencies": [
+        "erasure_punctured_boolean_event",
+        "erasure_doubly_transitive_exit_symmetry",
+        "erasure_stabilizer_equal_influences",
+        "boolean_qualitative_sharp_threshold"
+      ],
+      "owner": "erasure_capacity",
+      "status": "open",
+      "statement": "∀ (F : ℕ → Type) [∀ j, Field (F j)] (M : ℕ → ℕ) (C : ∀ j, Submodule (F j) (Fin (M j) → F j)) (p q : ℝ), 0 ≤ p → p < q → q < 1 → (∀ j, ExpandingCodes.PolynomialStretch.DoublyTransitiveCode (M j) (C j)) → Filter.Tendsto M Filter.atTop Filter.atTop → Filter.Tendsto (fun j => ExpandingCodes.Erasure.meanExit (C j) p * (1 - ExpandingCodes.Erasure.meanExit (C j) q)) Filter.atTop (nhds 0)",
+      "statement_sha256": "7c4e0b80063e8362972c66b61986fed138d3f00bd85f095951547e4312c32dbe",
+      "interface": "provisional",
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "root coordinator",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "Reviewed source and worker compilation/axiom evidence. Canonical target signature is preserved; helper statements isolate finite algebra, probability, and symmetry with concrete proofs. Any remaining analytic assumptions are registered as separate Boolean leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Shift to a tail with M>=2. Use the coordinate subtype OtherCoordinates i, of size M-1, the proved monotonic event, and proved equal influences. Apply the independent pure Boolean qualitative sharp-threshold theorem. A positive midpoint and monotonicity handle p=0.",
+        "children": [
+          {
+            "id": "erasure_punctured_boolean_event",
+            "purpose": "Identify the exact M-1-coordinate Boolean event to which sharpness applies.",
+            "proof_route": "Reindex the powerset of univ.erase i by finite subsets of its coordinate subtype. Cardinalities are preserved, so the scalar EXIT curve is exactly a Boolean-event probability on M-1 coordinates.",
+            "strictly_useful": "This finite reindexing prevents accidentally keeping the distinguished coordinate or changing the alphabet assumptions."
+          },
+          {
+            "id": "erasure_doubly_transitive_exit_symmetry",
+            "purpose": "Identify the average EXIT curve with any chosen coordinate curve.",
+            "proof_route": "A preserving subgroup also contains inverse permutations. Double transitivity gives ordinary transitivity for M>=2. Coordinate relabeling preserves the Bernoulli law, so all scalar EXIT functions equal their mean. This does not assume capacity.",
+            "strictly_useful": "Only subgroup coordinate relabeling and ordinary transitivity are needed; no Boolean-analysis estimate is used."
+          },
+          {
+            "id": "erasure_stabilizer_equal_influences",
+            "purpose": "Show all actual Boolean pivotal probabilities are equal.",
+            "proof_route": "The stabilizer of i acts transitively on the other coordinates. Transport the event using a code automorphism and reindex the Bernoulli expectation of its discrete gradient. This proves equality of the actual pivotal probabilities, not an unexplained symmetry assertion.",
+            "strictly_useful": "The stabilizer argument discharges the symmetry hypothesis of a field-free theorem and does not assert its analytic conclusion."
+          },
+          {
+            "id": "boolean_qualitative_sharp_threshold",
+            "purpose": "Supply the genuinely analytic sharpness estimate for arbitrary upward Boolean events.",
+            "proof_route": "Choose one compact-interval scalar contraction radius; tensorize. Exact Parseval and gradient identities plus the proved weighted cutoff give Var≤r^(-2k)B sqrt(B/m)+B/(k+1) at a mean-value point with total influence≤B=1/(b−a). Equal influences give each≤B/m. Monotonicity bounds the target product by that variance. First take m→∞ for fixed k and then k→∞. All coefficient algebra, mean-value, and limit steps are explicit Lean proofs; only six genuinely lower-level analytic leaves remain open.",
+            "strictly_useful": "This pure Boolean theorem contains neither code dimension nor rate nor finite-field assumptions. Its six separately registered Fourier/hypercontractive leaves expose the missing work."
+          }
+        ]
+      }
+    }
+  ]
+}

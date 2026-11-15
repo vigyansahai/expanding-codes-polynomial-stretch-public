@@ -1,0 +1,985 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "owner": "erasure_capacity",
+  "file_ownership": [
+    "ExpandingCodes/Probability/Erasure.lean",
+    "ExpandingCodes/Probability/ErasureCapacity.lean",
+    "harness/tasks/erasure_capacity.json",
+    "harness/reviews/erasure_capacity.json"
+  ],
+  "canonical_target": {
+    "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity",
+    "statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\n/-- Lemma 2.3: the field, alphabet size and invariant group may vary with j. -/\ntheorem erasure_ambiguity\n    (F : \u2115 \u2192 Type) [\u2200 j, Field (F j)] [\u2200 j, Fintype (F j)]\n    (M : \u2115 \u2192 \u2115) (C : \u2200 j, Submodule (F j) (Fin (M j) \u2192 F j))\n    (\u03c1 p : \u211d) (h\u03c1 : 0 < \u03c1 \u2227 \u03c1 < 1) (hp : 0 \u2264 p \u2227 p < 1 - \u03c1)\n    (hsym : \u2200 j, DoublyTransitiveCode (M j) (C j))\n    (hlength : Tendsto M atTop atTop)\n    (hrate : Tendsto (fun j => (Module.finrank (F j) (C j) : \u211d) / M j) atTop (nhds \u03c1)) :\n    Tendsto (fun j => erasureExpectation (C j) p / M j) atTop (nhds 0) := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+    "source": "harness/platform/erasure_ambiguity.json",
+    "status": "reduction_compiled_axiom_audited",
+    "note": "Exact canonical theorem builds and all 11 closed metadata statements check. Recorded axiom audit contains sorryAx through explicitly registered Boolean-analysis leaves. Russo was subsequently promoted with an unchanged signature; the five other analytic leaves remain unresolved. This is a checked reduction, not a completed proof."
+  },
+  "nodes": [
+    {
+      "id": "erasure_ambiguity_support_bound",
+      "declaration": "ExpandingCodes.Erasure.finrank_ambiguity_le_undetermined",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "\u2200 {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I \u2192 K)) (E : Set I), Module.finrank K (ExpandingCodes.Erasure.ambiguity C E) \u2264 Nat.card (ExpandingCodes.Erasure.undetermined C E)",
+      "statement_sha256": "537a44d09781b15f84a6e8fae45df3aefd4c712044807d0c3835110c0892a447",
+      "proof_route": "Restrict ambiguity words to the set of coordinates on which some ambiguity word is nonzero. The map is injective, so finite-dimensional linear algebra bounds finrank by the cardinality of that set.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      }
+    },
+    {
+      "id": "erasure_observed_witness_dimension",
+      "declaration": "ExpandingCodes.Erasure.card_essential_le_finrank",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "\u2200 {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I \u2192 K)) (E : Set I), Nat.card (ExpandingCodes.Erasure.essential C E) \u2264 Module.finrank K C",
+      "statement_sha256": "22e2088e544d5819aad0fce73929d4a006edbdf55a9a44b3c4c0b039678cd2b4",
+      "proof_route": "For each observed coordinate i whose value cannot be inferred from the other observed values, choose a codeword supported on E union {i} and nonzero at i. Evaluating a linear combination at i kills every other witness, so the witnesses are linearly independent and their number is at most dim(C).",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      }
+    },
+    {
+      "id": "erasure_independent_coordinate_conditioning",
+      "declaration": "ExpandingCodes.Erasure.expectationOn_insert",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "\u2200 {I : Type*} [Fintype I] [DecidableEq I] {s : Finset I} {i : I}, i \u2209 s \u2192 \u2200 (p : \u211d) (f : Finset I \u2192 \u211d), ExpandingCodes.Erasure.expectationOn (insert i s) p f = (1 - p) * ExpandingCodes.Erasure.expectationOn s p f + p * ExpandingCodes.Erasure.expectationOn s p (fun A => f (insert i A))",
+      "statement_sha256": "cb1675c8229d4c42b1e99ebdfc0ac5180041320996c7bbb4bd65e75af777743c",
+      "proof_route": "Split the powerset into sets omitting i and sets containing i. Their Bernoulli weights factor as (1-p) and p times the law on the remaining coordinates. This independently proves the finite probability factorization, not a coding theorem.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      }
+    },
+    {
+      "id": "erasure_exit_one_sided_area",
+      "declaration": "ExpandingCodes.Erasure.exit_area_bound",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "\u2200 {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I \u2192 K)) {p : \u211d}, 0 \u2264 p \u2192 p \u2264 1 \u2192 (1 - p) * (\u2211 i : I, ExpandingCodes.Erasure.exit C i p) \u2264 (Module.finrank K C : \u211d)",
+      "statement_sha256": "9cd6a236df1991ad83b16b926e2d6f72d4b943b1fe7c3b1fa7d540d9b6acf1ce",
+      "proof_route": "Take expectations in the pointwise observed-witness inequality. The expected indicator of being observed and extrinsically unrecoverable is (1-p) times the EXIT function. Swap finite sums. This avoids entropy, fixed alphabet size, and any unproved integral area theorem.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "erasure_observed_witness_dimension",
+        "erasure_independent_coordinate_conditioning"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Take expectations in the pointwise observed-witness inequality. The expected indicator of being observed and extrinsically unrecoverable is (1-p) times the EXIT function. Swap finite sums. This avoids entropy, fixed alphabet size, and any unproved integral area theorem.",
+        "children": [
+          {
+            "id": "erasure_observed_witness_dimension",
+            "purpose": "Bound essential observed coordinates using independent codewords.",
+            "proof_route": "For each observed coordinate i whose value cannot be inferred from the other observed values, choose a codeword supported on E union {i} and nonzero at i. Evaluating a linear combination at i kills every other witness, so the witnesses are linearly independent and their number is at most dim(C).",
+            "strictly_useful": "The independent-witness fact is finite linear algebra and does not assume any capacity conclusion."
+          },
+          {
+            "id": "erasure_independent_coordinate_conditioning",
+            "purpose": "Separate one erasure coordinate into its two Bernoulli cases.",
+            "proof_route": "Split the powerset into sets omitting i and sets containing i. Their Bernoulli weights factor as (1-p) and p times the law on the remaining coordinates. This independently proves the finite probability factorization, not a coding theorem.",
+            "strictly_useful": "The child applies to arbitrary finite real-valued functions and is independent of coding theory."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_punctured_boolean_event",
+      "declaration": "ExpandingCodes.Erasure.exit_eq_puncturedProbability",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "\u2200 {K I : Type*} [Field K] [Fintype I] (C : Submodule K (I \u2192 K)) (i : I) (p : \u211d), ExpandingCodes.Erasure.exit C i p = ExpandingCodes.Erasure.expectation (I := ExpandingCodes.Erasure.OtherCoordinates i) p (fun A => if ExpandingCodes.Erasure.puncturedFailure C i A then 1 else 0)",
+      "statement_sha256": "a48ad1b6ff01d382818f09b50b892c85e3c2b2ce3931d188b6058a712b7e4715",
+      "proof_route": "Reindex the powerset of univ.erase i by finite subsets of its coordinate subtype. Cardinalities are preserved, so the scalar EXIT curve is exactly a Boolean-event probability on M-1 coordinates.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      }
+    },
+    {
+      "id": "erasure_subcritical_limit_assembly",
+      "declaration": "ExpandingCodes.Erasure.ambiguity_sublinear_of_exit_crossDecay",
+      "file": "ExpandingCodes/Probability/Erasure.lean",
+      "statement": "\u2200 {N : \u2115 \u2192 \u2115} {F : \u2115 \u2192 Type*} [\u2200 j, Field (F j)] (C : \u2200 j, Submodule (F j) (Fin (N j) \u2192 F j)) {\u03c1 p q : \u211d}, 0 \u2264 p \u2192 p < q \u2192 q < 1 \u2192 \u03c1 < 1 - q \u2192 Filter.Tendsto (fun j => ExpandingCodes.Erasure.rate (C j)) Filter.atTop (nhds \u03c1) \u2192 Filter.Tendsto (fun j => ExpandingCodes.Erasure.meanExit (C j) p * (1 - ExpandingCodes.Erasure.meanExit (C j) q)) Filter.atTop (nhds 0) \u2192 Filter.Tendsto (fun j => ExpandingCodes.Erasure.normalizedAmbiguity (C j) p) Filter.atTop (nhds 0)",
+      "statement_sha256": "0e35998ca271d1faf685b9c43eb3f7cd0c3aacc12c2c6d68cdfed3a1bfe80b44",
+      "proof_route": "Fix p<q<1-rho. The rate limit and one-sided area bound give a uniform positive lower bound on 1-EXIT(q). Hence vanishing EXIT(p)*(1-EXIT(q)) forces EXIT(p)->0. Expected ambiguity divided by blocklength is bounded by EXIT(p), so squeeze.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "erasure_ambiguity_support_bound",
+        "erasure_exit_one_sided_area"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/Erasure.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Fix p<q<1-rho. The rate limit and one-sided area bound give a uniform positive lower bound on 1-EXIT(q). Hence vanishing EXIT(p)*(1-EXIT(q)) forces EXIT(p)->0. Expected ambiguity divided by blocklength is bounded by EXIT(p), so squeeze.",
+        "children": [
+          {
+            "id": "erasure_ambiguity_support_bound",
+            "purpose": "Bound ambiguity dimension by the number of undetermined coordinates.",
+            "proof_route": "Restrict ambiguity words to the set of coordinates on which some ambiguity word is nonzero. The map is injective, so finite-dimensional linear algebra bounds finrank by the cardinality of that set.",
+            "strictly_useful": "A pointwise dimension inequality uses no randomness, rates, transitivity or analytic limit."
+          },
+          {
+            "id": "erasure_exit_one_sided_area",
+            "purpose": "Locate a transition by bounding its right-tail area using code rate.",
+            "proof_route": "Take expectations in the pointwise observed-witness inequality. The expected indicator of being observed and extrinsically unrecoverable is (1-p) times the EXIT function. Swap finite sums. This avoids entropy, fixed alphabet size, and any unproved integral area theorem.",
+            "strictly_useful": "The proved inequality works for every code at every valid probability, without a sharp-threshold hypothesis."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_canonical_conditional_assembly",
+      "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity_of_exit_crossDecay",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "statement": "\u2200 (F : \u2115 \u2192 Type) [\u2200 j, Field (F j)] [\u2200 j, Fintype (F j)] (M : \u2115 \u2192 \u2115) (C : \u2200 j, Submodule (F j) (Fin (M j) \u2192 F j)) (\u03c1 p q : \u211d), 0 \u2264 p \u2192 p < q \u2192 q < 1 \u2192 \u03c1 < 1 - q \u2192 Filter.Tendsto (fun j => (Module.finrank (F j) (C j) : \u211d) / M j) Filter.atTop (nhds \u03c1) \u2192 Filter.Tendsto (fun j => ExpandingCodes.Erasure.meanExit (C j) p * (1 - ExpandingCodes.Erasure.meanExit (C j) q)) Filter.atTop (nhds 0) \u2192 Filter.Tendsto (fun j => ExpandingCodes.PolynomialStretch.erasureExpectation (C j) p / M j) Filter.atTop (nhds 0)",
+      "statement_sha256": "15b5710269b71537fe9879f469b6e841c0bc437735d6877f466dfc2d8ce386a2",
+      "proof_route": "Use rfl bridge equalities to the exact canonical ambiguity and erasureExpectation definitions. Apply the checked generic subcritical convergence theorem. The Boolean cross-decay hypothesis is explicit and is not declared proved.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [
+        "erasure_subcritical_limit_assembly"
+      ],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Use rfl bridge equalities to the exact canonical ambiguity and erasureExpectation definitions. Apply the checked generic subcritical convergence theorem. The Boolean cross-decay hypothesis is explicit and is not declared proved.",
+        "children": [
+          {
+            "id": "erasure_subcritical_limit_assembly",
+            "purpose": "Turn the rate bound and two-probability cross decay into a zero ambiguity limit.",
+            "proof_route": "Fix p<q<1-rho. The rate limit and one-sided area bound give a uniform positive lower bound on 1-EXIT(q). Hence vanishing EXIT(p)*(1-EXIT(q)) forces EXIT(p)->0. Expected ambiguity divided by blocklength is bounded by EXIT(p), so squeeze.",
+            "strictly_useful": "The child uses elementary limit algebra on a supplied cross-decay estimate and isolates it from coding symmetry."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_doubly_transitive_exit_symmetry",
+      "declaration": "ExpandingCodes.PolynomialStretch.meanExit_eq_exit_of_doublyTransitive",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "statement": "\u2200 {F : Type*} [Field F] {M : \u2115} (C : Submodule F (Fin M \u2192 F)), ExpandingCodes.PolynomialStretch.DoublyTransitiveCode M C \u2192 2 \u2264 M \u2192 \u2200 (i : Fin M) (p : \u211d), ExpandingCodes.Erasure.meanExit C p = ExpandingCodes.Erasure.exit C i p",
+      "statement_sha256": "18e36cf1e440afc5b9dae81bc893be22c226bab738ebc304215cc37b9d35854e",
+      "proof_route": "A preserving subgroup also contains inverse permutations. Double transitivity gives ordinary transitivity for M>=2. Coordinate relabeling preserves the Bernoulli law, so all scalar EXIT functions equal their mean. This does not assume capacity.",
+      "owner": "erasure_capacity",
+      "status": "open",
+      "interface": "provisional",
+      "dependencies": [],
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      }
+    },
+    {
+      "id": "erasure_stabilizer_equal_influences",
+      "declaration": "ExpandingCodes.PolynomialStretch.puncturedFailure_equal_influences",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "proof_route": "The stabilizer of i acts transitively on the other coordinates. Transport the event using a code automorphism and reindex the Bernoulli expectation of its discrete gradient. This proves equality of the actual pivotal probabilities, not an unexplained symmetry assertion.",
+      "dependencies": [],
+      "owner": "erasure_capacity",
+      "status": "open",
+      "statement": "\u2200 {F : Type*} [Field F] {M : \u2115} (C : Submodule F (Fin M \u2192 F)), ExpandingCodes.PolynomialStretch.DoublyTransitiveCode M C \u2192 \u2200 (i : Fin M) (p : \u211d) (a b : ExpandingCodes.Erasure.OtherCoordinates i), ExpandingCodes.SharpThreshold.influence p (ExpandingCodes.Erasure.puncturedFailure C i) a = ExpandingCodes.SharpThreshold.influence p (ExpandingCodes.Erasure.puncturedFailure C i) b",
+      "statement_sha256": "df1d1806fc99fee6fcf0214dfcf32b018d9f076804456bda680cb1aa1396adf1",
+      "interface": "provisional",
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      }
+    },
+    {
+      "id": "erasure_mean_exit_cross_decay",
+      "declaration": "ExpandingCodes.PolynomialStretch.meanExit_cross_tendsto_zero",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "proof_route": "Shift to a tail with M>=2. Use the coordinate subtype OtherCoordinates i, of size M-1, the proved monotonic event, and proved equal influences. Apply the independent pure Boolean qualitative sharp-threshold theorem. A positive midpoint and monotonicity handle p=0.",
+      "dependencies": [
+        "erasure_punctured_boolean_event",
+        "erasure_doubly_transitive_exit_symmetry",
+        "erasure_stabilizer_equal_influences",
+        "boolean_qualitative_sharp_threshold"
+      ],
+      "owner": "erasure_capacity",
+      "status": "open",
+      "statement": "\u2200 (F : \u2115 \u2192 Type) [\u2200 j, Field (F j)] (M : \u2115 \u2192 \u2115) (C : \u2200 j, Submodule (F j) (Fin (M j) \u2192 F j)) (p q : \u211d), 0 \u2264 p \u2192 p < q \u2192 q < 1 \u2192 (\u2200 j, ExpandingCodes.PolynomialStretch.DoublyTransitiveCode (M j) (C j)) \u2192 Filter.Tendsto M Filter.atTop Filter.atTop \u2192 Filter.Tendsto (fun j => ExpandingCodes.Erasure.meanExit (C j) p * (1 - ExpandingCodes.Erasure.meanExit (C j) q)) Filter.atTop (nhds 0)",
+      "statement_sha256": "7c4e0b80063e8362972c66b61986fed138d3f00bd85f095951547e4312c32dbe",
+      "interface": "provisional",
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Shift to a tail with M>=2. Use the coordinate subtype OtherCoordinates i, of size M-1, the proved monotonic event, and proved equal influences. Apply the independent pure Boolean qualitative sharp-threshold theorem. A positive midpoint and monotonicity handle p=0.",
+        "children": [
+          {
+            "id": "erasure_punctured_boolean_event",
+            "purpose": "Identify the exact M-1-coordinate Boolean event to which sharpness applies.",
+            "proof_route": "Reindex the powerset of univ.erase i by finite subsets of its coordinate subtype. Cardinalities are preserved, so the scalar EXIT curve is exactly a Boolean-event probability on M-1 coordinates.",
+            "strictly_useful": "This finite reindexing prevents accidentally keeping the distinguished coordinate or changing the alphabet assumptions."
+          },
+          {
+            "id": "erasure_doubly_transitive_exit_symmetry",
+            "purpose": "Identify the average EXIT curve with any chosen coordinate curve.",
+            "proof_route": "A preserving subgroup also contains inverse permutations. Double transitivity gives ordinary transitivity for M>=2. Coordinate relabeling preserves the Bernoulli law, so all scalar EXIT functions equal their mean. This does not assume capacity.",
+            "strictly_useful": "Only subgroup coordinate relabeling and ordinary transitivity are needed; no Boolean-analysis estimate is used."
+          },
+          {
+            "id": "erasure_stabilizer_equal_influences",
+            "purpose": "Show all actual Boolean pivotal probabilities are equal.",
+            "proof_route": "The stabilizer of i acts transitively on the other coordinates. Transport the event using a code automorphism and reindex the Bernoulli expectation of its discrete gradient. This proves equality of the actual pivotal probabilities, not an unexplained symmetry assertion.",
+            "strictly_useful": "The stabilizer argument discharges the symmetry hypothesis of a field-free theorem and does not assert its analytic conclusion."
+          },
+          {
+            "id": "boolean_qualitative_sharp_threshold",
+            "purpose": "Supply the genuinely analytic sharpness estimate for arbitrary upward Boolean events.",
+            "proof_route": "Choose one compact-interval scalar contraction radius; tensorize. Exact Parseval and gradient identities plus the proved weighted cutoff give Var\u2264r^(-2k)B sqrt(B/m)+B/(k+1) at a mean-value point with total influence\u2264B=1/(b\u2212a). Equal influences give each\u2264B/m. Monotonicity bounds the target product by that variance. First take m\u2192\u221e for fixed k and then k\u2192\u221e. All coefficient algebra, mean-value, and limit steps are explicit Lean proofs; only six genuinely lower-level analytic leaves remain open.",
+            "strictly_useful": "This pure Boolean theorem contains neither code dimension nor rate nor finite-field assumptions. Its six separately registered Fourier/hypercontractive leaves expose the missing work."
+          }
+        ]
+      }
+    },
+    {
+      "id": "erasure_ambiguity_canonical",
+      "declaration": "ExpandingCodes.PolynomialStretch.erasure_ambiguity",
+      "file": "ExpandingCodes/Probability/ErasureCapacity.lean",
+      "proof_route": "Choose q=(p+1-rho)/2, strictly between p and 1-rho. Apply the canonical conditional assembly and the independent mean-EXIT cross-decay result. The six explicit analytic leaves remain transitive open dependencies, so compilation proves only a checked reduction.",
+      "dependencies": [
+        "erasure_canonical_conditional_assembly",
+        "erasure_mean_exit_cross_decay"
+      ],
+      "owner": "erasure_capacity",
+      "status": "open",
+      "statement": "\u2200 (F : \u2115 \u2192 Type) [\u2200 j, Field (F j)] [\u2200 j, Fintype (F j)] (M : \u2115 \u2192 \u2115) (C : \u2200 j, Submodule (F j) (Fin (M j) \u2192 F j)) (\u03c1 p : \u211d), (0 < \u03c1 \u2227 \u03c1 < 1) \u2192 (0 \u2264 p \u2227 p < 1 - \u03c1) \u2192 (\u2200 j, ExpandingCodes.PolynomialStretch.DoublyTransitiveCode (M j) (C j)) \u2192 Filter.Tendsto M Filter.atTop Filter.atTop \u2192 Filter.Tendsto (fun j => (Module.finrank (F j) (C j) : \u211d) / M j) Filter.atTop (nhds \u03c1) \u2192 Filter.Tendsto (fun j => ExpandingCodes.PolynomialStretch.erasureExpectation (C j) p / M j) Filter.atTop (nhds 0)",
+      "statement_sha256": "bd81c6f892bc3af76be5718c965d29bb4248e18b3ef0858187b4d4d5694c382f",
+      "interface": "canonical",
+      "context_files": [
+        "AGENTS.md",
+        "ExpandingCodes/Probability/ErasureCapacity.lean",
+        "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+        "harness/platform/erasure_ambiguity.json"
+      ],
+      "sources": [
+        {
+          "path": "tmp/feasibility/paper.txt",
+          "lines": "525-558",
+          "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "310-385",
+          "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "487-615",
+          "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+        },
+        {
+          "path": "tmp/feasibility/erasure-capacity.txt",
+          "lines": "936-956",
+          "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+        },
+        {
+          "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+          "role": "Exact platform definitions, untouched."
+        }
+      ],
+      "failed_attempts": [
+        {
+          "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+          "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+        },
+        {
+          "approach": "Formalize the full entropy EXIT area identity first.",
+          "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+        },
+        {
+          "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+          "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+        },
+        {
+          "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+          "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+        }
+      ],
+      "review": {
+        "reviewer": "erasure_capacity self-review; independent root review pending",
+        "statement_preserved": true,
+        "strictly_useful": true,
+        "notes": "No source definition was altered. Children isolate rank, finite probability, symmetry, and Boolean analysis. Open status is retained until coordinator verification; transitive sorryAx is expected only through the six explicit analytic leaves."
+      },
+      "decomposition": {
+        "parent_proof_route": "Choose q=(p+1-rho)/2, strictly between p and 1-rho. Apply the canonical conditional assembly and the independent mean-EXIT cross-decay result. The six explicit analytic leaves remain transitive open dependencies, so compilation proves only a checked reduction.",
+        "children": [
+          {
+            "id": "erasure_canonical_conditional_assembly",
+            "purpose": "Bridge helper expectations to the exact platform definitions.",
+            "proof_route": "Use rfl bridge equalities to the exact canonical ambiguity and erasureExpectation definitions. Apply the checked generic subcritical convergence theorem. The Boolean cross-decay hypothesis is explicit and is not declared proved.",
+            "strictly_useful": "The helper explicitly assumes cross decay and proves only the final rank/rate passage, so it does not smuggle capacity into a definition."
+          },
+          {
+            "id": "erasure_mean_exit_cross_decay",
+            "purpose": "Apply pure Boolean sharpness to the stabilizer-invariant erasure events.",
+            "proof_route": "Shift to a tail with M>=2. Use the coordinate subtype OtherCoordinates i, of size M-1, the proved monotonic event, and proved equal influences. Apply the independent pure Boolean qualitative sharp-threshold theorem. A positive midpoint and monotonicity handle p=0.",
+            "strictly_useful": "The child proves a rate-free transition assertion. Code-rate information enters only through the separate one-sided area argument."
+          }
+        ]
+      }
+    }
+  ],
+  "open_dependencies": [
+    {
+      "id": "generic_monotone_transitive_boolean_cross_decay",
+      "owner": "sharp_threshold",
+      "goal": "For upward Boolean events on coordinate sets of cardinality tending to infinity, invariant under transitive coordinate permutations, and fixed 0<=p<q<=1, prove mu_p(Omega)*(1-mu_q(Omega))->0.",
+      "meaning": "This isolates Boolean sharp threshold, independently of fields, code rate, entropy, and ambiguity dimensions. It is not a renamed capacity theorem.",
+      "route": "Source Theorem 19 yields dmu/dp >= c log(M) mu(1-mu) uniformly in alphabet, so logistic integration gives cross product <= exp(-c(q-p)log M). Current sharp_threshold worker is exploring a qualitative Fourier cutoff alternative using biased hypercontractivity and Russo differentiation.",
+      "library_gap": "No applicable KKL, Friedgut-Kalai, Russo-Margulis, influence, Fourier-on-biased-cube, or hypercontractive infrastructure was found by rg over Mathlib; finite sums, derivatives, real powers, and rank tools do exist.",
+      "status": "Replaced by six explicit analytic leaves and their checked Boolean assembly in sharp_threshold.json."
+    },
+    {
+      "id": "canonical_stabilizer_influence_symmetry",
+      "owner": "erasure_capacity",
+      "goal": "Use the stabilizer of coordinate i in the canonical doubly transitive subgroup to prove equal influences of puncturedFailure C i on the M-1 other coordinates.",
+      "route": "Construct puncturedEquiv sigma (sigma i=i), prove its event invariance by puncturedFailure_permute, use double transitivity on ordered pairs (i,j),(i,k), and use finite-Bernoulli change of variables for influences.",
+      "status": "Discharged: puncturedFailure_equal_influences compiles and has only standard kernel axioms."
+    }
+  ],
+  "sources": [
+    {
+      "path": "tmp/feasibility/paper.txt",
+      "lines": "525-558",
+      "role": "Exact Lemma 2.3 and dimension-to-undetermined-coordinate argument; fields may vary."
+    },
+    {
+      "path": "tmp/feasibility/erasure-capacity.txt",
+      "lines": "310-385",
+      "role": "EXIT polynomial, area identity, and transitive/doubly transitive event symmetry."
+    },
+    {
+      "path": "tmp/feasibility/erasure-capacity.txt",
+      "lines": "487-615",
+      "role": "Margulis-Russo, equal-influence Theorem 19, and uniform threshold width equation (8)."
+    },
+    {
+      "path": "tmp/feasibility/erasure-capacity.txt",
+      "lines": "936-956",
+      "role": "Section VI-D: Boolean erasure patterns and base-q entropy show alphabet-independent extension."
+    },
+    {
+      "path": "Definitions/Def_ExpandingCodes_PolynomialStretch_ErasureModel.lean",
+      "role": "Exact platform definitions, untouched."
+    }
+  ],
+  "failed_attempts": [
+    {
+      "approach": "Find a pre-existing general capacity/sharp-threshold theorem in Mathlib.",
+      "result": "No relevant theorem found by keyword search for KKL, Kahn-Kalai, Friedgut, Talagrand, hypercontractivity, Russo, Margulis, and influence. Do not add a capacity axiom."
+    },
+    {
+      "approach": "Formalize the full entropy EXIT area identity first.",
+      "result": "Superseded by a simpler proved pointwise independent-witness inequality, which directly gives the one-sided area bound needed to locate the threshold."
+    },
+    {
+      "approach": "Use Fintype.card on an arbitrary undetermined Set in theorem statements.",
+      "result": "Classical decidability is unavailable during statement elaboration unless scoped; use Nat.card for set subtypes and classical instances inside proofs."
+    },
+    {
+      "approach": "Treat compiling helper declarations as proof of the canonical erasure theorem.",
+      "result": "Rejected: capacity still requires the independent Boolean sharp-threshold input and canonical stabilizer/influence symmetry assembly. Helpers have no holes, but canonical theorem remains open."
+    },
+    {
+      "approach": "Specialize punctured finite-set subtype expressions directly to Fin M.",
+      "result": "Native Fin decidable equality and the generic Classical implementation produce non-definitionally-equal dependent subtypes/images. Exposed the frozen OtherCoordinates abbreviation and used Finset.map with a permutation embedding for invariant-event transport; mathematical model is unchanged."
+    }
+  ],
+  "integrity": {
+    "fixed_alphabet_assumption": false,
+    "custom_axioms": false,
+    "sorry_bodies": [],
+    "canonical_definitions_modified": false,
+    "ancestor_or_target_imports": false,
+    "unbounded_recursion": false,
+    "no_own_inline_or_registered_sorry": true
+  },
+  "external_dependency_records": [
+    "harness/tasks/sharp_threshold.json"
+  ],
+  "compile_evidence": {
+    "command": "./tools/lake-serial build ExpandingCodes.Probability.ErasureCapacity",
+    "exit_code": 0,
+    "audit_command": "./tools/lake-serial env lean /tmp/erasure-capacity-audit.lean",
+    "audit_exit_code": 0,
+    "closed_statements_checked": 11,
+    "review_record": "harness/reviews/erasure_capacity.json",
+    "checked_at": "2026-11-14T07:32:42.908653+00:00",
+    "source_sha256": {
+      "ExpandingCodes/Probability/Erasure.lean": "b60f643917f35ecc7abe579ecd498e51243f46f2b12c3c673970ba8a53e25a47",
+      "ExpandingCodes/Probability/ErasureCapacity.lean": "430d692daacda63fc9b5d65364b31bb594ba91e2f6e2665246bdc8c134fc6643"
+    }
+  },
+  "analytic_progress_after_parent_audit": {
+    "reported_discharged": "boolean_russo",
+    "remaining": [
+      "boolean_two_point_uniform",
+      "boolean_tensorize_two_point",
+      "boolean_fourier_parseval",
+      "boolean_fourier_gradient_energy",
+      "boolean_fourier_noise_gradient_energy"
+    ],
+    "coordinator_final_reverification_required": true
+  }
+}

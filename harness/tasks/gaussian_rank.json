@@ -1,0 +1,41 @@
+{
+  "owner": "gaussian_rank",
+  "status": "abstract_algorithm_complete_physical_refinement_open",
+  "files": [
+    "ExpandingCodes/Computation/GaussianElimination.lean",
+    "ExpandingCodes/Computation/GaussianCorrectness.lean",
+    "ExpandingCodes/Algebra/FullEvaluation.lean"
+  ],
+  "goal": "Deterministic eager-array full-pivot Gaussian elimination with exact matrix-rank correctness and polynomial abstract field-operation/array-access count, eventually refined to actual NKtLB code.",
+  "route": "Bounded row-major nonzero search; isolate chosen row and column through explicit Fin equivalences; eagerly compute smaller Schur table; recurse. Rank proof uses explicit invertible block Gaussian factors and a direct-sum range equivalence.",
+  "checked": [
+    "Public GaussianElimination.lean Lake build passed. Concrete deterministic eager nested-Vector full-pivot algorithm, finite row-major pivot scan, scan_cost_le, run_rank, run_work_le\u226412*m*n*min(m,n), run_field_operations_le, run_array_operations_le. Work audit has only propext, Classical.choice, Quot.sound.",
+    "Public GaussianCorrectness.lean Lake build passed. Direct-sum rank via explicit range equivalence, invertible block Gaussian factors, concrete nonzero-pivot rank contribution, rank_correct and run_correct. Axiom audits have only propext, Classical.choice, Quot.sound.",
+    "FullEvaluation.lean public Lake build passed before final threshold addition; final public serialized env lean -o refresh passed after threshold addition. Computable zero-padded fullEvaluationMatrix/fullTestMatrix, explicit base-q fullExponentOrder, eager fullTestTable, exact fullTestTable_rank, elimination work\u226412*rowCount^3, and natural cross-multiplication rationalRankTest_eq. No sorryAx in any printed audit.",
+    "Final Audit.lean direct compiler passed. All eight audited declarations use only propext, Classical.choice, Quot.sound. Concrete executable ZMod2 matrix [[0,1,0],[1,0,0],[1,1,0]] evaluates to rank 2 with comparisons4, inverses2, arithmetic15, reads21, writes5, enumerated14; example proof by decide passed."
+  ],
+  "in_progress": [],
+  "unresolved": [
+    "Count/refine construction of fullTestTable (the elimination bound deliberately excludes construction)",
+    "Refine all field operations to binary/thermometer encoded operations with proved costs",
+    "Refine all finite-array accesses/materializations/search loops and threshold multiplication/comparison to actual TapeProgram",
+    "Connect exact semantic rationalRankTest to the canonical TesterImplementation finite NKtLB machine and size/input parsing",
+    "Coordinator central Lake refresh after latest leaf promotion"
+  ],
+  "integrity": "No custom axioms, sorries, data holes, classical rank certificates, or exponentially enumerated spans/minors. The generic field algorithm is explicitly not claimed to be actual NKtLB implementation.",
+  "failed_approaches": [
+    "Initial nlinarith polynomial budget proof needed an explicit monotonicity product inequality",
+    "Mathlib sumArrowLequivProdArrow lives in LinearEquiv and requires Mathlib.LinearAlgebra.Pi",
+    "Explicit PUnit.{1} annotations were required to fix unresolved singleton universe metavariables",
+    "Scalar block calculations needed explicit finite-sum change statements before simplification",
+    "Simplifying resource totals required retaining the recursive Work.total expression or unfolding it in the induction hypothesis"
+  ],
+  "resource_model": "Work counts field comparisons, inversions, arithmetic, field-entry reads and writes, and enumerated index cells. It is abstract algorithm accounting, not Lean compiler instruction time or NKtLB time. Encoded field costs and each bit-buffer/counter action must still be refined.",
+  "source_locations": {
+    "algorithm": "ExpandingCodes/Computation/GaussianElimination.lean",
+    "correctness": "ExpandingCodes/Computation/GaussianCorrectness.lean",
+    "canonical_bridge": "ExpandingCodes/Algebra/FullEvaluation.lean",
+    "audit": "harness/attempts/gaussian_rank/Audit.lean"
+  },
+  "handoff": "Abstract algorithm/canonical semantic tester completed. Actual encoded-field and physical TapeProgram refinement, construction bounds, and exact TesterImplementation remain open; no NKtLB implementation claimed. Coordinator should run final central Lake refresh after importing/integrating these leaves."
+}

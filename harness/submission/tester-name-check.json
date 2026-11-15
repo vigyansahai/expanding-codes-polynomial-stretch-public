@@ -1,0 +1,21 @@
+{
+  "theorems": [
+    {
+      "theorem_id": "4f2f766f-a991-4a6b-8507-623ff8e9d87b",
+      "theorem_name": "SpaceReset.Hardness.theorem_2",
+      "theorem_title": "Theorem 2 — linear-factor hardness with certified minimum peak",
+      "status": "Open",
+      "preamble": "import Mathlib\nimport Definitions.Def_PvsNP\nimport Definitions.Def_SpaceReset_Hardness_Native\nimport Definitions.Def_SpaceReset_Hardness_Graphs\n\nset_option autoImplicit false",
+      "formal_statement": "namespace SpaceReset.Hardness\n\n/-- Theorem 2 (Linear-factor hardness with certified minimum peak), §1.5.3, p. 7, with its\n\"More explicitly\" paragraph and the proof's reduction (§3.3, pp. 27–28). -/\ntheorem theorem_2 :\n    (∃ f : PvsNP.Str → PvsNP.Str, PvsNP.PolyTimeComputable f ∧\n      ∀ w : PvsNP.Str, ∃ (k n : ℕ) (G : Matrix (Fin k) (Fin n) F2) (P h Pmin : ℕ)\n        (π₀ : Equiv.Perm (Fin n)),\n        f w = instanceCode G P h Pmin π₀ ∧ FullRowRank G ∧\n        ∀ (ε : ℝ), 0 ≤ ε → ε ≤ 1 / 64 → ∀ (c : Contract) (γ : GateSet),\n          PMin ε c γ G h = (Pmin : ℕ∞) ∧\n          (∃ R : ℕ, FeasibleAt ε c γ G π₀ Pmin h R) ∧\n          ∃ m : ℕ, OPT ε c γ G P h = (m : ℕ∞) ∧ 1 ≤ m ∧\n            (w ∈ PathwidthLang → m = 1) ∧\n            (w ∉ PathwidthLang → ((k : ℝ) - 1) / 6 ≤ (m : ℝ)) ∧\n            ∃ (π : Equiv.Perm (Fin n)) (C : CliffordCircuit (P - 1) n),\n              C.toNative.dzCount = 0 ∧ C.toNative.resetCount = m ∧\n              C.toNative.σ.rank ≤ 2 ^ h ∧\n              ErrorLE (reorder G π) c C.toNative.toProcess 0) ∧\n    ∀ (ε : ℝ), 0 ≤ ε → ε ≤ 1 / 64 → ∀ (c : Contract) (γ : GateSet)\n      (A : PvsNP.Str → PvsNP.Str), PvsNP.PolyTimeComputable A →\n      (∀ (k n : ℕ) (G : Matrix (Fin k) (Fin n) F2) (P h Pmin : ℕ) (π₀ : Equiv.Perm (Fin n))\n          (m : ℕ),\n        FullRowRank G → PMin ε c γ G h = (Pmin : ℕ∞) →\n        (∃ R : ℕ, FeasibleAt ε c γ G π₀ Pmin h R) →\n        OPT ε c γ G P h = (m : ℕ∞) → 1 ≤ m →\n        ∃ R : ℕ, A (instanceCode G P h Pmin π₀) = encNat R ∧ m ≤ R ∧\n          (R : ℝ) ≤ (k : ℝ) / 7 * (m : ℝ)) →\n      PvsNP.P = PvsNP.NP := by sorry\n\nend SpaceReset.Hardness\n"
+    },
+    {
+      "theorem_id": "526a3837-176d-48ca-b91b-50ce804f6172",
+      "theorem_name": "MaxCutMatrix2027.Upper.quartic_query_upper_bound",
+      "theorem_title": "Theorem 4.1 — Quartic query upper bound with RAM time",
+      "status": "Open",
+      "preamble": "import Definitions.Def_MaxCutMatrix2027_Upper_Algorithm\nset_option autoImplicit false\nopen MeasureTheory\nopen scoped Classical",
+      "formal_statement": "namespace MaxCutMatrix2027.Upper\n\n/-- Theorem 4.1, p.17, Algorithm 1, and its RAM implementation on p.28.\nThe constants precede every instance. Time is the number of RAM transitions.\nThe trace witness is chosen before the graph, expressing non-adaptivity.\nThe law identity identifies this implementation with the capped Bernoulli tester. -/\ntheorem quartic_query_upper_bound :\n    ∃ (C_RV T : ℝ), 0 < C_RV ∧ 0 < T ∧\n      let C_res := 2 * C_RV\n      let C₀ := (3 * C_res + 29) / 4\n      let C := max 6 (144 * C₀ ^ 2)\n      ∀ (n : ℕ), 2 ≤ n → ∀ ε : ℝ, 0 < ε → ε ≤ 1 →\n      let s := sampleSize C ε\n      (∀ ω : RandomTape (2 * s + 1),\n        ∃ pairs : List (ℕ × ℕ),\n          pairs.toFinset = plannedPairs n s ω ∧ pairs.Nodup ∧\n          (pairs.length : ℝ) ≤ 2 * (C + 1) ^ 2 / ε ^ 4 ∧\n          (∀ e ∈ pairs, e.1 < e.2 ∧ e.2 < n) ∧\n          ∀ G : SimpleGraph (Fin n), ∃ t : ℕ,\n            (t : ℝ) ≤ Real.rpow 2 (T / ε ^ 2) ∧\n            (execution G ε C ω t).output = some (algorithmEstimate G s ω) ∧\n            (execution G ε C ω t).queries = pairs ∧\n            (execution G ε C ω t).randomCursor ≤ 2 * s + 1 ∧\n            (∀ p ∈ (execution G ε C ω t).randomParameters, p = (s : ℝ) / n)) ∧\n      (∀ G : SimpleGraph (Fin n),\n        ENNReal.ofReal ((2 : ℝ) / 3) ≤ gapLaw n s (successEvent G ε C) ∧\n        (s < n → ∀ B : Set ℝ,\n          gapLaw n s {ω | algorithmEstimate G s ω ∈ B} =\n            ENNReal.ofReal (sampleAverage ((s : ℝ) / n)\n              (fun Q => if bernoulliEstimate G s Q ∈ B then 1 else 0)))) := by sorry\n\nend MaxCutMatrix2027.Upper\n"
+    }
+  ],
+  "total": 2
+}

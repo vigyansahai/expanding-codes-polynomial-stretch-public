@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "owner": "sampler_weight",
+  "owned_files": [
+    "ExpandingCodes/Construction/RowWeight.lean",
+    "ExpandingCodes/Construction/SamplerSupport.lean",
+    "harness/attempts/sampler_weight/*.lean",
+    "harness/tasks/sampler_weight.json"
+  ],
+  "canonical_definitions": [
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_BinaryModel.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Parameters.lean",
+    "Definitions/Def_ExpandingCodes_PolynomialStretch_Sampler.lean"
+  ],
+  "nodes": [
+    {
+      "id": "preliminary_rowWeight",
+      "declaration": "ExpandingCodes.PolynomialStretch.preliminary_rowWeight",
+      "statement": "\u2200 {d n k : \u2115} (g : Geometry d n) (s : Forms g.F d k), RowWeight (preliminary g s) k",
+      "proof_route": "Identify each row support with injective image i \u21a6 (i,address_i(row)); Finset.card_image_of_injective gives k.",
+      "owner": "sampler_weight",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "interface": "local_support_over_exact_canonical_definitions",
+      "dependencies": [],
+      "source": "paper Section 2.1; exact definitions named above",
+      "holes": [],
+      "file": "ExpandingCodes/Construction/RowWeight.lean",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Local supporting theorem over untouched exact canonical definitions; no platform-canonical theorem identity claimed."
+      }
+    },
+    {
+      "id": "combined_rowWeight",
+      "declaration": "ExpandingCodes.PolynomialStretch.combined_rowWeight",
+      "statement": "\u2200 {d n k b : \u2115} (g : Geometry d n) (s : Forms g.F d k) (h : Hashes g.F k b), 0 < b \u2192 k*b \u2264 n \u2192 RowWeight (combined g s h) k",
+      "proof_route": "Construct actual Fin n rowNeighbor i=i*b+hash_i(address_i(row)). Bound by (i+1)*b\u2264k*b\u2264n. Divide equality by b to prove injectivity. Prove support equals image then count k.",
+      "owner": "sampler_weight",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "interface": "local_support_over_exact_canonical_definitions",
+      "dependencies": [],
+      "source": "paper Section 2.1; exact definitions named above",
+      "holes": [],
+      "file": "ExpandingCodes/Construction/RowWeight.lean",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Local supporting theorem over untouched exact canonical definitions; no platform-canonical theorem identity claimed."
+      }
+    },
+    {
+      "id": "sampleLaw_ne_zero_iff",
+      "declaration": "ExpandingCodes.PolynomialStretch.sampleLaw_ne_zero_iff",
+      "statement": "\u2200 \u03b5 n (g : Geometry (dimension \u03b5) n) (G : Generator (rowCount (dimension \u03b5) n) n), sampleLaw \u03b5 n g G \u2260 0 \u2194 \u2203 (s : Forms g.F (dimension \u03b5) (arity \u03b5)) (h : Hashes g.F (arity \u03b5) (buckets \u03b5 n)), combined g s h = G",
+      "proof_route": "PMF.mem_support_map_iff; forward discards source support witness, reverse supplies PMF.mem_support_uniformOfFintype for the exact pair (s,h).",
+      "owner": "sampler_weight",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "interface": "local_support_over_exact_canonical_definitions",
+      "dependencies": [],
+      "source": "paper Section 2.1; exact definitions named above",
+      "holes": [],
+      "file": "ExpandingCodes/Construction/SamplerSupport.lean",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Local supporting theorem over untouched exact canonical definitions; no platform-canonical theorem identity claimed."
+      }
+    },
+    {
+      "id": "arity_mul_buckets_le",
+      "declaration": "ExpandingCodes.PolynomialStretch.arity_mul_buckets_le",
+      "statement": "\u2200 \u03b5 n, 0 < arity \u03b5 \u2192 arity \u03b5 \u2264 n \u2192 arity \u03b5 * buckets \u03b5 n \u2264 n",
+      "proof_route": "Nat.one_le_div_iff makes n/arity nonzero. Nat.pow_log_le_self bounds bucket count by n/arity. Multiply by arity and Nat.div_mul_le_self.",
+      "owner": "sampler_weight",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "interface": "local_support_over_exact_canonical_definitions",
+      "dependencies": [],
+      "source": "paper Section 2.1; exact definitions named above",
+      "holes": [],
+      "file": "ExpandingCodes/Construction/SamplerSupport.lean",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Local supporting theorem over untouched exact canonical definitions; no platform-canonical theorem identity claimed."
+      }
+    },
+    {
+      "id": "sampleLaw_output_rowWeight",
+      "declaration": "ExpandingCodes.PolynomialStretch.sampleLaw_output_rowWeight",
+      "statement": "\u2200 \u03b5 n, (0<\u03b5 \u2227 \u03b5<1/2) \u2192 arity \u03b5\u2264n \u2192 \u2200 g G, sampleLaw \u03b5 n g G\u22600 \u2192 RowWeight G (arity \u03b5)",
+      "proof_route": "Exact support characterization supplies forms and hashes; sampler_buckets_pos and arity_mul_buckets_le discharge combined_rowWeight premises. Positivity of arity follows Nat.ceil_pos and dimension_ge_four.",
+      "owner": "sampler_weight",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "interface": "local_support_over_exact_canonical_definitions",
+      "dependencies": [
+        "combined_rowWeight",
+        "sampleLaw_ne_zero_iff",
+        "arity_mul_buckets_le"
+      ],
+      "source": {
+        "path": "tmp/feasibility/paper.txt",
+        "lines": "407-420",
+        "role": "Theorem 2.1: every output has row weight k."
+      },
+      "holes": [],
+      "file": "ExpandingCodes/Construction/SamplerSupport.lean",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Local supporting theorem over untouched exact canonical definitions; no platform-canonical theorem identity claimed."
+      }
+    },
+    {
+      "id": "eventual_sampleLaw_rowWeight",
+      "declaration": "ExpandingCodes.PolynomialStretch.eventual_sampleLaw_rowWeight",
+      "statement": "\u2200 \u03b5, (0<\u03b5 \u2227 \u03b5<1/2) \u2192 \u2200\u1da0 n : \u2115 in Filter.atTop, \u2200 g G, sampleLaw \u03b5 n g G\u22600 \u2192 RowWeight G (arity \u03b5)",
+      "proof_route": "Filter.eventually_ge_atTop (arity \u03b5), then sampleLaw_output_rowWeight.",
+      "owner": "sampler_weight",
+      "status": "proved_public_build_and_transitive_axiom_audit_passed",
+      "interface": "local_support_over_exact_canonical_definitions",
+      "dependencies": [
+        "sampleLaw_output_rowWeight"
+      ],
+      "holes": [],
+      "file": "ExpandingCodes/Construction/SamplerSupport.lean",
+      "review": {
+        "reviewer": "root coordinator pending semantic integration",
+        "statement_preserved": true,
+        "notes": "Local supporting theorem over untouched exact canonical definitions; no platform-canonical theorem identity claimed."
+      }
+    }
+  ],
+  "worker_result": {
+    "status": "complete_all_sources_built_and_axiom_audited",
+    "open_theorem_bodies": [],
+    "pending_compilation": [],
+    "compiler_policy": "No persistent REPL. All completed proof checks and public builds used tools/lake-serial, permitted 6144 MB cap and one compiler at a time.",
+    "obstruction": "Resolved by coordinator: canonical Sampler import succeeds with permitted 6144 MB cap.",
+    "failed_attempts": [
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/sampler_weight/RowWeight.lean",
+        "result": "exit 134 memory_exception twice, before diagnostics"
+      },
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/sampler_weight/ImportOnly.lean",
+        "result": "exit 134 memory_exception, file only imports Sampler then #check Nat"
+      },
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/sampler_weight/RowWeight.lean",
+        "result": "Canonical weight and separately elaborated support-card needed simpa [weight, preliminary/combined] rather than rw/change because of Matrix/instance transparency. Corrected check passed."
+      },
+      {
+        "command": "./tools/lake-serial env lean harness/attempts/sampler_weight/SamplerSupport.lean",
+        "result": "Added explicit canonical Forms/Hashes existential binder types; replaced unavailable Set.mem_top simp name with direct uniform-support witness. Other arithmetic and consequence proofs passed."
+      }
+    ],
+    "promotion": "Both public modules promoted only after successful direct scratch checks; fresh serialized public builds passed.",
+    "tested_commands": [
+      "./tools/lake-serial env lean harness/attempts/sampler_weight/RowWeight.lean",
+      "./tools/lake-serial build ExpandingCodes.Construction.RowWeight",
+      "./tools/lake-serial env lean harness/attempts/sampler_weight/SamplerSupport.lean",
+      "./tools/lake-serial build ExpandingCodes.Construction.SamplerSupport",
+      "./tools/lake-serial env lean harness/attempts/sampler_weight/Audit.lean > harness/attempts/sampler_weight/axiom-audit.txt"
+    ],
+    "unresolved_proof_dependencies": [],
+    "source_sha256": {
+      "ExpandingCodes/Construction/RowWeight.lean": "c0a370804363f28ece7dad16352248b74e315d996842753b9da734011bdc93ac",
+      "ExpandingCodes/Construction/SamplerSupport.lean": "f63b0d832467320782370f5306229d3df4da91313a568d1ceaf97101088c0436"
+    },
+    "axiom_audit": {
+      "exit_code": 0,
+      "file": "harness/attempts/sampler_weight/axiom-audit.txt",
+      "declarations": [
+        "preliminary_rowWeight",
+        "rowNeighbor",
+        "rowNeighbor_injective",
+        "combined_row_support",
+        "combined_rowWeight",
+        "sampleLaw_ne_zero_iff",
+        "sampler_buckets_pos",
+        "arity_mul_buckets_le",
+        "sampleLaw_output_rowWeight",
+        "eventual_sampleLaw_rowWeight"
+      ],
+      "all_transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "forbidden_axioms": []
+    },
+    "clean_build_result": "Fresh public RowWeight built successfully (8712 jobs, module compilation 6.4s); fresh public SamplerSupport built successfully (8714 jobs, module compilation 4.7s). Imported-module axiom audit then passed.",
+    "proof_status": "No proof obligations remain in the assigned row-weight/support branch. All public proofs contain no sorry or custom axioms. No expansion or sampling-success hypothesis is used for row weight.",
+    "next_integration": "Coordinator-owned graph integration only. SamplerSupport imports RowWeight and existing ParameterBounds, never Growth or target/ancestor modules.",
+    "useful_supporting_declarations": {
+      "rowNeighbor": "Concrete layer-selected column as Fin n, assuming k*b\u2264n.",
+      "rowNeighbor_injective": "Injectivity via division by b when 0<b.",
+      "combined_row_support": "Exact Finset support=image of rowNeighbor, requiring only k*b\u2264n.",
+      "sampler_buckets_pos": "buckets \u03b5 n>0 for every \u03b5,n.",
+      "sampler_arity_pos": "Private same-file positivity helper from dimension_ge_four and Nat.ceil_pos."
+    }
+  }
+}

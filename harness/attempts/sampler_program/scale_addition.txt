@@ -1,0 +1,55 @@
+def scaleLabels : ℕ → ℕ
+  | 0 => 1
+  | c+1 => 9+scaleLabels c
+
+/-- A statically fixed number of preserving unary additions. Runtime radix or
+address values never occur in this finite code table. -/
+def scaleAdd (src dst tmp : Fin R) : (c : ℕ) → TapeProgram R B (scaleLabels c)
+  | 0 => TapeProgram.skip
+  | c+1 => TapeProgram.seq (TapeMacros.addPreserving src dst tmp) (scaleAdd src dst tmp c)
+
+def scaleStore (src dst tmp : Fin R) (c : ℕ) (s : TapeStore R B) : TapeStore R B :=
+  (s.setReg dst (s.reg dst+c*s.reg src)).setReg tmp 0
+
+theorem scaleAdd_stops (src dst tmp : Fin R) (hsd : src≠dst) (hst : src≠tmp) (hdt : dst≠tmp)
+    (c : ℕ) (inp : Inputs) (s : TapeStore R B) (htmp : s.reg tmp=0) :
+    ∃ e, (scaleAdd src dst tmp c).Stops inp
+      (s.toCfg (scaleAdd (B := B) src dst tmp c).entry) (c*(5*s.reg src+6)) e ∧
+      e.store=scaleStore src dst tmp c s := by
+  induction c generalizing s with
+  | zero =>
+    refine ⟨s.toCfg ⟨0,by simp [scaleLabels]⟩,TapeProgram.skip_stops inp s,?_⟩
+    rw [scaleStore,Nat.zero_mul,Nat.add_zero,setReg_self]
+    simpa [htmp] using (setReg_self s tmp).symm
+  | succ c ih =>
+    obtain ⟨d,hd,hds⟩ := TapeMacros.addPreserving_stops src dst tmp hsd hst hdt inp s
+    have hda : d.reg src=s.reg src := by
+      change d.store.reg src=_; rw [hds]; simp [TapeStore.setReg,hsd,hst]
+    have hdtm : d.reg tmp=0 := by
+      change d.store.reg tmp=_; rw [hds]; simp
+    obtain ⟨e,he,hes⟩ := ih d.store hdtm
+    have hall := hd.seq he
+    refine ⟨_,?_,?_⟩
+    · convert hall using 1
+      simp only [TapeCfg.store,hda,htmp]
+      ring
+    · change e.store=_
+      rw [hes,hds]
+      unfold scaleStore
+      simp only [TapeStore.setReg]
+      congr 1
+      funext j
+      by_cases htmpj : j=tmp
+      · subst j; simp
+      by_cases hdstj : j=dst
+      · subst j
+        simp [Function.update,hdt,Ne.symm hdt,hsd,hst]
+        ring
+      · simp [Function.update,htmpj,hdstj]
+
+theorem scaleLabels_eq (c : ℕ) : scaleLabels c=9*c+1 := by
+  induction c with
+  | zero => rfl
+  | succ c ih => simp only [scaleLabels,ih]; omega
+
+#print axioms scaleAdd_stops

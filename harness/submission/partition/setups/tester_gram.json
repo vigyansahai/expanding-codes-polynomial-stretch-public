@@ -1,0 +1,21 @@
+{
+  "name": "Solutions.Sol_ExpandingCodes_Computation_TesterGram_program_stops",
+  "isModule": false,
+  "options": {
+    "autoImplicit": false
+  },
+  "importArts": {
+    "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_multiply_stops.olean"
+      ]
+    ]
+  },
+  "dynlibs": [],
+  "plugins": []
+}

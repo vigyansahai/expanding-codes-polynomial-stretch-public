@@ -1,0 +1,83 @@
+[
+  {
+    "stage": "stub-binary_sampler_implementation_source",
+    "exit_code": 0,
+    "elapsed_seconds": 40.16643691062927,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=./harness/submission/prune/statement-context",
+      "--setup=./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.setup.json",
+      "-o",
+      "./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.olean",
+      "./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+    "context": "statement-only registered target stubs; not a closed-proof claim"
+  },
+  {
+    "stage": "stub-binary_tester_implementation_source",
+    "exit_code": 0,
+    "elapsed_seconds": 59.234384059906006,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=./harness/submission/prune/statement-context",
+      "--setup=./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.setup.json",
+      "-o",
+      "./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.olean",
+      "./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+    "context": "statement-only registered target stubs; not a closed-proof claim"
+  },
+  {
+    "stage": "stub-auxiliary_rate",
+    "exit_code": 0,
+    "elapsed_seconds": 61.98237085342407,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--root=./harness/submission/prune/statement-context",
+      "--setup=./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.setup.json",
+      "-o",
+      "./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.olean",
+      "./harness/submission/prune/statement-context/Theorems/Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+    "context": "statement-only registered target stubs; not a closed-proof claim"
+  },
+  {
+    "stage": "compile",
+    "exit_code": 0,
+    "elapsed_seconds": 93.88303470611572,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=./harness/submission/prune/statement-context/Main.setup.json",
+      "-o",
+      "./harness/submission/prune/statement-context/Main.olean",
+      "./harness/submission/prune/Main.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+    "context": "statement-only registered target stubs; not a closed-proof claim"
+  },
+  {
+    "stage": "audit",
+    "exit_code": 0,
+    "elapsed_seconds": 62.06696128845215,
+    "command": [
+      "./tools/lake-serial",
+      "env",
+      "lean",
+      "--setup=./harness/submission/prune/statement-context/MainStatementAudit.setup.json",
+      "./harness/submission/prune/statement-context/MainStatementAudit.lean"
+    ],
+    "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+    "context": "statement-only registered target stubs; not a closed-proof claim"
+  }
+]

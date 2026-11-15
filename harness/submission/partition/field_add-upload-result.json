@@ -1,0 +1,18 @@
+{
+  "source_sha256": "8e86c633678d2bdf35ec063175d17f844d29e1231f5a706f94400ed1035b2939",
+  "source_bytes": 211592,
+  "key": "field_add",
+  "mode": "upload",
+  "exit_code": 0,
+  "elapsed_seconds": 57.388503209,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.olean",
+    "./harness/submission/partition/staged/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.lean"
+  ],
+  "output": "./.lake/build/lib/lean/Solutions/Sol_ExpandingCodes_Computation_SourceFieldArithmetic_addition_stops.olean"
+}

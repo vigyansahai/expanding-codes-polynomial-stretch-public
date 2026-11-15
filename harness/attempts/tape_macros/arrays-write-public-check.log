@@ -1,0 +1,167 @@
+ExpandingCodes/Computation/TapeArrays.lean:89:64: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, seekRight, TapeStore.toCfg, d₂, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:97:20: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, cellStore, TapeStore.setReg, Machine.moveHead, Function.update_idem, Nat.add_assoc,
+    Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:126:70: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, reset, TapeStore.toCfg, hd, hm0, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:128:15: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, cellStore, hd, Machine.moveHead]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:133:51: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, cellStore, hd, Machine.moveHead]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:147:66: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, reset, TapeStore.toCfg, hs, d₁, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:151:16: warning: This simp argument is unused:
+  moved
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₁, cellStore, Function.update_idem]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:188:72: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.halted, copyCell, symbolLabel]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:214:46: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [d₂, d₁, copyCellStore, cellStore, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:234:36: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [copyCellStore, cellStore, Function.update_idem, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:243:36: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [copyCellStore, cellStore, Function.update_idem, Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:254:36: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [copyCellStore, cellStore, Function.update_idem, Machine.moveHead, Nat.add_assoc, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:280:41: warning: This simp argument is unused:
+  TapeProgram.decStore
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [copyCellStore, cellStore, Machine.moveHead, Function.update_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:298:16: warning: This simp argument is unused:
+  Function.update_of_ne hc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:362:16: warning: This simp argument is unused:
+  Function.update_of_ne hc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:385:45: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₁, cellStore, TapeStore.setReg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:390:60: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeRun, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:428:53: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [e, d₂, d₁, cellStore, TapeStore.setReg, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:437:62: warning: This simp argument is unused:
+  painted
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [TapeProgram.step, writeDebit, TapeStore.toCfg, e, cellStore]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:445:31: warning: This simp argument is unused:
+  hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, Ne.symm hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:445:36: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne, Nat.sub_sub, Nat.add_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:448:38: warning: This simp argument is unused:
+  Ne.symm hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Function.update, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ExpandingCodes/Computation/TapeArrays.lean:455:42: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+ExpandingCodes/Computation/TapeArrays.lean:455:42: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'ExpandingCodes.Computation.TapeArrays.seekRight_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.reset_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.copyCell_stops' depends on axioms: [propext, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.copyCells_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.copyCellsStore_symbol' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.TapeArrays.writeBlock_stops' depends on axioms: [propext, Classical.choice, Quot.sound]

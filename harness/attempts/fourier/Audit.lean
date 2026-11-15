@@ -1,0 +1,6 @@
+import ExpandingCodes.Probability.SharpThreshold.Parseval
+set_option autoImplicit false
+#print axioms ExpandingCodes.SharpThreshold.fourier_parseval
+#print axioms ExpandingCodes.SharpThreshold.fourier_inversion
+#print axioms ExpandingCodes.SharpThreshold.character_orthogonality
+#print axioms ExpandingCodes.SharpThreshold.fourier_inner_product

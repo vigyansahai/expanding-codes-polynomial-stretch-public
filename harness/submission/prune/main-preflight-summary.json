@@ -1,0 +1,95 @@
+{
+  "source_path": "./harness/submission/prune/Main.lean",
+  "sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+  "bytes": 217365,
+  "target": "ExpandingCodes.PolynomialStretch.expanding_codes",
+  "target_id": "35a9bc65-151f-4a09-baa1-2c28821d6cd3",
+  "exact_target_type_check": "Entire original existential proposition := @solution; passed in both contexts",
+  "closed_context": {
+    "compile": {
+      "stage": "compile",
+      "exit_code": 0,
+      "elapsed_seconds": 72.5245931148529,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--setup=harness/submission/prune/closed-context/Main.setup.json",
+        "-o",
+        "harness/submission/prune/closed-context/Main.olean",
+        "harness/submission/prune/Main.lean"
+      ],
+      "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce"
+    },
+    "audit": {
+      "stage": "audit",
+      "exit_code": 0,
+      "elapsed_seconds": 65.23191690444946,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--setup=harness/submission/prune/closed-context/MainAudit.setup.json",
+        "harness/submission/prune/MainAudit.lean"
+      ],
+      "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce"
+    },
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "compile_peak_mb": 4870,
+    "audit_peak_mb": 5080,
+    "note": "Actual proved endpoint/Core artifacts; private helper simp attributes may be present. This establishes a closed proof, separately from portability."
+  },
+  "statement_context": {
+    "compile": {
+      "stage": "compile",
+      "exit_code": 0,
+      "elapsed_seconds": 93.88303470611572,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--setup=./harness/submission/prune/statement-context/Main.setup.json",
+        "-o",
+        "./harness/submission/prune/statement-context/Main.olean",
+        "./harness/submission/prune/Main.lean"
+      ],
+      "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+      "context": "statement-only registered target stubs; not a closed-proof claim"
+    },
+    "audit": {
+      "stage": "audit",
+      "exit_code": 0,
+      "elapsed_seconds": 62.06696128845215,
+      "command": [
+        "./tools/lake-serial",
+        "env",
+        "lean",
+        "--setup=./harness/submission/prune/statement-context/MainStatementAudit.setup.json",
+        "./harness/submission/prune/statement-context/MainStatementAudit.lean"
+      ],
+      "main_source_sha256": "882837bb5d42db9080a4d1f47af80d7fc21d999aa923aeb8cce49141a6f726ce",
+      "context": "statement-only registered target stubs; not a closed-proof claim"
+    },
+    "compile_peak_mb": 5020,
+    "note": "Only published Data + three registered target statement stubs. Explicit audit confirms no Core or original project proof modules. Imported stub sorryAx is expected here; this is portability, not a closed-proof claim."
+  },
+  "byte_identical_across_contexts": true,
+  "runtime_endpoint_server_acceptance_required_before_post": true,
+  "source_originals_changed": false,
+  "attempt001_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "data_source_sha256": "a9d7bd4747c0e4a8fa7fd2079242f7e6ec20effd8e8ffd08bc492d4b8e501778",
+  "imports": [
+    "Mathlib",
+    "Definitions.Def_ExpandingCodes_PolynomialStretch_OperationalFamily",
+    "Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryRuntime",
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_binary_sampler_implementation_source",
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_binary_tester_implementation_source",
+    "Theorems.Thm_ExpandingCodes_PolynomialStretch_auxiliary_rate"
+  ],
+  "simp_root_command_count": 75,
+  "local_source_module_count": 69
+}

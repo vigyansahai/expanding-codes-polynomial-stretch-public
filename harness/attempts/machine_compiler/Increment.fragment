@@ -1,0 +1,73 @@
+ theorem step_finish (P : CounterProgram R L) (O : Set (List Bool)) (inp : Inputs)
+    (j : Fin L) (m : Machine.Cfg (compile P))
+    (hm : m.state = controlEquiv L (finish j)) :
+    (compile P).step O inp m =
+      let a := transition P (finish j)
+        (fun i => Machine.readRO (inp.get i) (m.roHead i))
+        (fun k => (m.rwTape k).getD (m.rwHead k) .blank)
+      { state := controlEquiv L a.1
+        roHead := fun i => Machine.moveHead (a.2.1 i) (m.roHead i)
+        rwTape := fun k => Machine.writeAt (m.rwTape k) (m.rwHead k) (a.2.2 k).1
+        rwHead := fun k => Machine.moveHead (a.2.2 k).2 (m.rwHead k) } := by
+  have hh : m.state ≠ (compile P).halt := by
+    rw [hm]; simp [compile, finish, haltControl]
+  have hq : m.state ≠ (compile P).query := by
+    rw [hm]; simp [compile, finish, queryControl]
+  simp only [Machine.step, if_neg hh, if_neg hq]
+  simp only [compile, hm, Equiv.symm_apply_apply]
+
+ theorem tape_write_scanned {l : List Sym} {f : ℕ → Sym}
+    (hr : TapeRep l f) (h : ℕ) : TapeRep (Machine.writeAt l h (l.getD h .blank)) f := by
+  rw [hr h]
+  exact hr.write_same h
+
+ theorem local_inc (P : CounterProgram R L) (O : Set (List Bool)) (inp : Inputs)
+    (c : CounterCfg R L) (m : Machine.Cfg (compile P)) (r : Fin R) (j : Fin L)
+    (hc : P.code c.pc = .inc r j) (hr : Represents P c m) :
+    Represents P (P.step inp c) (((compile P).step O inp)^[P.cost c] m) := by
+  have hm : m.state = controlEquiv L (normal c.pc) := by
+    simpa [target, hc] using hr.state
+  have hfinish : ((compile P).step O inp m).state = controlEquiv L (finish c.pc) := by
+    rw [step_normal P O inp c.pc m hm]
+    simp only [normal, transition, hc]
+  simp only [CounterProgram.cost, hc]
+  change Represents P (P.step inp c) ((compile P).step O inp ((compile P).step O inp m))
+  rw [step_finish P O inp c.pc _ hfinish, step_normal P O inp c.pc m hm]
+  simp only [normal, finish, transition, hc, CounterProgram.step]
+  constructor
+  · rfl
+  · simpa [roIdle, Machine.moveHead] using hr.roHead
+  · intro i
+    by_cases hi : i = r
+    · subst i
+      simp [Function.update_same, Machine.moveHead, hr.workHead]
+    · have hi' : workIdx i ≠ workIdx r := by simpa using hi
+      simpa [Function.update_of_ne hi', Function.update_of_ne hi, idle, Machine.moveHead]
+        using hr.workHead i
+  · intro i
+    by_cases hi : i = r
+    · subst i
+      simpa [Function.update_same, idle, Machine.moveHead, hr.workHead]
+        using (unary_inc_two_steps (hr.workTape r)).1
+    · have hi' : workIdx i ≠ workIdx r := by simpa using hi
+      simpa [Function.update_of_ne hi', Function.update_of_ne hi, idle, Machine.moveHead]
+        using tape_write_scanned (tape_write_scanned (hr.workTape i) (m.rwHead (workIdx i)))
+          (m.rwHead (workIdx i))
+  · simpa [Function.update_of_ne (outIdx_ne_workIdx r), idle, Machine.moveHead] using hr.outHead
+  · simpa [Function.update_of_ne (outIdx_ne_workIdx r), idle, Machine.moveHead]
+      using tape_write_scanned (tape_write_scanned hr.outTape (m.rwHead (outIdx R)))
+        (m.rwHead (outIdx R))
+
+ theorem localSimulation (P : CounterProgram R L) : LocalSimulation P := by
+  intro O inp c m hr
+  cases hc : P.code c.pc with
+  | halt => exact local_halt P O inp c m hc hr
+  | jump j => exact local_jump P O inp c m j hc hr
+  | inc r j => exact local_inc P O inp c m r j hc hr
+  | dec r z p =>
+    cases hn : c.reg r with
+    | zero => exact local_dec_zero P O inp c m r z p hc hr hn
+    | succ n => exact local_dec_positive P O inp c m r z p n hc hr hn
+  | emit b j => exact local_emit P O inp c m b j hc hr
+  | read r next => exact local_read P O inp c m r next hc hr
+

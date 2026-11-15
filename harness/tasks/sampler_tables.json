@@ -1,0 +1,32 @@
+{
+  "owner": "root coordinator",
+  "status": "proved by strict central verifier; exact statement, fresh Lake rebuild and transitive axiom closure checked",
+  "files": [
+    "ExpandingCodes/Computation/SamplerTables.lean",
+    "ExpandingCodes/Computation/EncodedSampler.lean"
+  ],
+  "proof_route": [
+    "Construct explicit row-major four-index bijections for all field coefficients and hash entries.",
+    "Split fair-bit input into form coefficient blocks, hash blocks and unused padding; compose exact bit-to-index and index-to-field bijections.",
+    "Connect every decoded value to the actual RandomTables.sampledValues reader and physical table-store theorem.",
+    "Evaluate fixed/linear forms and full combined matrix on executable finite indices, prove exact equality under the coherent binary geometry.",
+    "Transport arbitrary sufficiently long random tapes without changing any bit positions; obtain exact canonical sampleLaw mass."
+  ],
+  "limitations": [
+    "Actual full sampler source evaluation/output and global time bound still need construction.",
+    "Finite-index operation counts are not asserted to be machine runtimes."
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "logs": [
+    "harness/attempts/sampler_tables/check10.log",
+    "harness/attempts/sampler_tables/public2.log",
+    "harness/attempts/encoded_sampler/check4.log",
+    "harness/attempts/encoded_sampler/public.log",
+    "harness/runs/binary-sampler-random-law-verification.log"
+  ],
+  "central_node": "binary_sampler_random_law"
+}

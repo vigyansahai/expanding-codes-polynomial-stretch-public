@@ -1,0 +1,77 @@
+{
+  "owner": "tester_gram",
+  "status": "actual_full_gram_source_nested_loop_refinement_polynomial_clock_complete_checked",
+  "files": [
+    "ExpandingCodes/Computation/TesterPowers.lean",
+    "ExpandingCodes/Computation/TesterInput.lean",
+    "ExpandingCodes/Computation/TesterEvaluation.lean",
+    "ExpandingCodes/Computation/TesterGram.lean",
+    "ExpandingCodes/Computation/TesterGramCorrectness.lean"
+  ],
+  "scratch": "harness/attempts/tester_gram/",
+  "exact_goal": "Actual fixed finite TapeProgram, chosen before runtime n,q,ell,m, constructs binaryTestTable d n y in physical buffer0 from sizeInput n ++ wordBits y, with polynomial source steps, preserving output and preparing Gaussian interface.",
+  "route": [
+    "Physical runtime exponent power: copy exponent to disposable countdown, set scalar accumulator one, counted loop of checked field multiplication. Exponent is never unrolled in source.",
+    "Static dimension monomial: tail-first finite product, each factor invokes runtime power; compare exponent digit sum to canonical auxiliaryDegree and return exact zero above degree.",
+    "Read m word bits one at a time, writing each as a q-cell thermometer entry to separate input buffer2. Shared physical table lookup retrieves y_z.",
+    "Three base-q odometers enumerate a,b,z canonically; actual m^3 loops accumulate masked products and eagerly write m^2 exact Gram entries in buffer0."
+  ],
+  "checked": [
+    "TesterPowers.powerLoop_stops and power_stops scratch compiler PASS, public direct -o PASS. Fixed 879-label source computes exact EncodedTester.power with runtime exponent from a caller register; final countdown zero, field environment and all outside registers and tape payload unchanged; same global M bound on all final counters; time <= (exponent+1)*13420*(M+1)^6. Audits only propext, Classical.choice, Quot.sound.",
+    "TesterPowers.factor_stops/product_stops scratch PASS and public -o PASS, all clean audits. Static digit register list with fully runtime exponents; exact EncodedTester.product via productValue_eq; same M counter bound; source <= (dimension+1)*27020*(M+1)^7.",
+    "TesterInput block_stops/load_stops scratch PASS and public -o PASS. Actual 26-label input loader reads N bits, writes q-cell physical thermometer entries, proves exact table and RO0/head/BottomMarked invariants, same M counter bound. Time <= N*(20*(M+1)+2)+1. Additional checked register/count/output/other-RO/other-buffer frames and word_symbols for canonical sizeInput++wordBits input. All printed audits clean.",
+    "TesterEvaluation sumCore_stops/sumDigits_stops/evaluate_stops/evaluate_canonical_stops scratch PASS and public -o PASS. Actual preserved exponent sum, runtime degree comparator, branch to runtime-exponent monomial or zero; direct exact EncodedTester.evaluation result from physical canonical digit counters, same global M counter bound/environment/caller/tape frames; explicit polynomial timeBound(d,M). All printed audits clean.",
+    "TesterEvaluation auxiliaryDegree_nat and degree_stops scratch PASS and public -o PASS. Actual degree source copy(q), decrement, clear, static(d-3) preserving additions, decrement, physical halve. Exact canonical Int-floor/toNat cutoff under d>=4,q>=2; <=(d+1)*30*(M+1) true source steps, same M final bound assuming (d-3)*(q-1)<=M, outside/tape frames.",
+    "TesterGram.program d fixed full eager Gram transition table scratch PASS and initial public -o PASS. Actual m^3 counted loops, three physical odometers and six*d digit/countdown counters, physical y2 lookup, canonical evaluations, field multiply/add69, sequential q-cell writes0. No runtime n/q/ell/m/y controls code size. Public source uses 80+6*d registers and three buffers.",
+    "TesterGram.maskedTerm_stops scratch PASS, clean audit. Actual two canonical evaluations + save + shared source multiply/add produce add(mul(eval_a,eval_b),oldAcc) in69, preserve all digit counters and caller registers>=70, field environment, same global M and full tapes/heads/input/output. Clock <=2*TesterEvaluation.timeBound(d,M)+13300*(M+1)^6+28*M+32.",
+    "TesterGram.construct d scratch PASS, clean axiom audit. Concrete finite full matrix-prefix source composes actual sizeInput/setup(d,k=1), copies runtime m/ell/q, canonical SourceFieldSetup, all three markers/physical y input table, actual cutoff source and eager Gram program. It depends only on static d. Final public -o refresh PASS.",
+    "Final TesterGram public -o refresh PASS. Final Audit.lean importing public TesterGram PASS: all nine checked endpoint/source declarations depend only on propext, Classical.choice and Quot.sound (auxiliaryDegree_nat only propext/Quot.sound). No sorryAx. Log harness/attempts/tester_gram/final-audit.log. No compiler job pending.",
+    "2026-11-14 tester_gram_refinement: maskedTerm_stops strengthened by final exact degree65 frame, scratch and direct public-o PASS; clean audit. pointBody_stops scratch PASS: actual physical input lookup, conditional maskedTerm/skip, canonical z odometer and index increment; exact field pointValue, same global M, Core env/cutoff/m/input table/marker/head bound, canonical a/b preservation and z successor, all caller>=70 except73/78, SamePayload and buffer0/1 heads preserved; clean audit. New helper Numbered uses actual Valid complement counters and ofDigits modulo q^d, bridge to EncodedTester.digits checked.",
+    "2026-11-14 tester_gram_refinement: full new TesterGramCorrectness public direct-o PASS. pointLoop_stops composes all m actual point bodies and exact existing rightfold entry; pairPrepare/FinishAfter/pairBody_stops perform actual initialization, q-cell write and b/flat counters; GramEffect.prefix/bottomMarked checked. rowPrepare/Loop/FinishAfter/rowBody_stops compose actual m pair bodies preserving physical prefix and root backend frames. programPrepare/programLoop/program_stops compose all m actual row bodies, yielding BuildState at flat=m*m and BuildState.table = full ThermometerTable Gram0 q flatEntry(EncodedTester.table O D y). Every source endpoint printed only propext, Classical.choice, Quot.sound; no sorryAx or new holes. Snapshot harness/attempts/tester_gram_refinement/ProgramChecked.lean; public-check.log PASS.",
+    "2026-11-14 tester_gram_refinement FINAL: TesterGramCorrectness scratch, final public direct-o, and separate public-import Audit.lean all PASS. programTime_polynomial handles arbitrary polynomial M(x),m(x); programTime_mono_m is Monotone(programTime d M), programTime_mono also checked. Clock helpers depend only on propext/Quot.sound. Full source program_stops and BuildState.table audits only propext, Classical.choice, Quot.sound. No sorry/axioms/unsafe declarations in new module. Logs final-public-check.log and final-audit.log; snapshot FinalChecked.lean. Public source frozen/stable for root final central clean build."
+  ],
+  "in_progress": [],
+  "unresolved": [
+    "No Gram refinement obligations remain. Root owns overall final TesterImplementation source bridge, replacement of registered central tester endpoint, and frozen final clean build/transitive axiom audit. Root reported exact binary_tester_implementation_source scratch PASS with clean standard-axiom audit."
+  ],
+  "failed_approaches": [
+    "Initial input EntryWritten origin incorrectly used pre-read ROhead. Corrected to advanced source store; same physical tape/counter payload, RO0 incremented by one.",
+    "Avoid Fresh proofs for huge composed field code: manual loop execution induction uses checked semantic counter frame instead.",
+    "Use abbrev Registers=Fin(80+6*d), not a semireducible def alias: Lean tactic implicit-transparency checks otherwise reject intermediate equalities between Registers d and Fin(80+6*d).",
+    "Source evaluation order accumulates current term before prior sum; completing pure entry equality requires field add commutativity rather than assuming the fold orders are definitionally equal.",
+    "2026-11-14 refinement: do not reassociate TapeProgram.seq when composing actual existing source: finite label types and transition tables depend on association. pairFinishAfter/rowFinishAfter accept a checked prefix trace and append actual fragments left-associatively, so pairBody/rowBody/program match definitionally. Numbered uses Valid+ofDigits modulo q^d and canonical_digits; interpreting pointPrefix through field addition resolves reversed addition order.",
+    "2026-11-14 final clock closure: generic repeat/apply PolynomialBound.add can unfold constants into degenerate additions and loop in unification, exhausting default heartbeat/memory cap. Replaced with explicit finite PolynomialBound closure terms for evaluation/point/pair/row/program clocks; then default6144MB short-lived compiler PASS. No cap increase."
+  ],
+  "ownership": "Own only listed NEW public modules and scratch/task record. Root owns shared interfaces/TapeRename/full tester assembly, encoded_tester owns Gaussian source, sampler_program owns odometer/evaluation source.",
+  "layout": {
+    "ambient_registers": "Fin (80+6*d)",
+    "buffers": "0 Gram,1 Gaussian spare,2 received word",
+    "scalar_workspace": "0..32; field environment monic3,N19,q23,q\u00b224; runtime power result31,count32",
+    "callers": "64 evalout,65 canonical cutoff,66 exponent sum,67 flag,68 saved evalA,69 Gram sum,70 m,71 aIndex,72 bIndex,73 zIndex,74 outer count,75 column count,76 point/input count,77 Gram flat index,78 y bit,79 write width/copy scratch before field setup",
+    "digits": "80+g*d+i for g=0 a-digit,1 a-complement,2 b-digit,3 b-complement,4 z-digit,5 z-complement",
+    "setup": "parameterLayout identity first14; copies m4->70,ell2->20,q3->23 using79; SourceFieldSetup first32; degreeLayout=[23,0,1,2,65]"
+  },
+  "next_bounded_task": "None for tester_gram_refinement. Root frozen final central build and exact mission transitive axiom audit.",
+  "refinement_owner": "tester_gram_refinement",
+  "refinement_files": [
+    "ExpandingCodes/Computation/TesterGramCorrectness.lean"
+  ],
+  "refinement_scratch": "harness/attempts/tester_gram_refinement/",
+  "completed_refinement": {
+    "public_module": "ExpandingCodes/Computation/TesterGramCorrectness.lean",
+    "exact_execution": "TesterGram.program_stops d ell h D M hM y inp s hc hh hm hsp hdM hhead hmatrix",
+    "premises": "Core all regs\u2264M+canonical field env+D65+m70+physical input2 table/BottomMarked/head\u2264M; Gram head0=1; BottomMarked0/1; d*(q-1)\u2264M;1+m*q\u2264M;m*m\u2264M",
+    "result": "Actual existing program Stops at t\u2264programTime d M m, BuildState flat=m*m: exact physical all-entry row-major Gram table via BuildState.table, common M/Core, head0=1+m*m*q, BottomMarked0/1, sparehead1 unchanged, RO/output unchanged.",
+    "canonical_route": "Root TesterPrefix fixes ell=fieldExponent,d>=4,D=auxiliaryDegree, y=decide(word\u22600). BuildState.table is exactly flatEntry EncodedTester.table, definitionally canonical binaryTestTable.",
+    "clock": "programTime_polynomial d hM hm; programTime_mono_m d M; programTime_mono d hMN hmn.",
+    "proof_routes": [
+      "Numbered=Valid separate complement counters+ofDigits modulo q^d; canonical_digits identifies all true source digit registers with encoded finite enumeration.",
+      "pointPrefix rightfold over first k terms, interpretation injectivity and add_comm prove true source current-term-plus-accumulator recurrence.",
+      "Semantic counted-loop rule uses actual Stops traces plus proved body countdown preservation, no huge syntactic Fresh goals or source evaluator.",
+      "pairFinishAfter/rowFinishAfter preserve exact left-associated finite source tables; no source reassociation assumption.",
+      "GramEffect actual physical q-cell write extends only the true row-major prefix and preserves reserved markers; BuildState tracks table, heads, fields and I/O through all rows."
+    ],
+    "audit": "Only propext, Classical.choice, Quot.sound; clock helpers only propext/Quot.sound. No compiler pending after final audit.",
+    "ownership": "TesterGramCorrectness and harness/attempts/tester_gram_refinement; only coordinated prior-module change was adding proved degree65 final frame to maskedTerm_stops."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "source_sha256": "1e7feeaaa469802bcbfe79c674d6d0ada818931041e55345f2192a8491130675",
+  "source_bytes": 1207,
+  "key": "field_inverse",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 65.250526042,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_SourceFieldArithmetic_inverse_stops.olean"
+}

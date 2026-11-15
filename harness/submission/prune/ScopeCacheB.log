@@ -1,0 +1,2 @@
+harness/submission/prune/ScopeCacheB.lean:1:0: error: cannot import non-`module` harness.submission.prune.ScopeCacheA from `module`
+Lean check peak resident memory: 665 MB; cap: 6144 MB

@@ -1,0 +1,19 @@
+import ExpandingCodes.Probability.HashExpansion
+set_option autoImplicit false
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_prod_fibers
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_prod_le_of_fibers
+#print axioms ExpandingCodes.PolynomialStretch.exists_image_representatives
+#print axioms ExpandingCodes.PolynomialStretch.exists_image_cover_of_loss
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_image_covered_le
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_image_loss_le
+#print axioms ExpandingCodes.PolynomialStretch.hashColumn
+#print axioms ExpandingCodes.PolynomialStretch.hashesEquiv
+#print axioms ExpandingCodes.PolynomialStretch.preliminary_neighbors_card_le
+#print axioms ExpandingCodes.PolynomialStretch.combined_neighbors_eq_hashColumn_image
+#print axioms ExpandingCodes.PolynomialStretch.global_hash_image_card_le
+#print axioms ExpandingCodes.PolynomialStretch.combined_not_expanding_witness
+#print axioms ExpandingCodes.PolynomialStretch.combined_failure_implies_image_loss
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_combined_fixed_set_le
+#print axioms ExpandingCodes.PolynomialStretch.uniformProb_exists_combined_sets_le_pow
+#print axioms ExpandingCodes.PolynomialStretch.combined_bad_prob_le_two_base
+#print axioms ExpandingCodes.PolynomialStretch.hash_expansion_envelope

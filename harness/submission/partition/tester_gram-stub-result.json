@@ -1,0 +1,18 @@
+{
+  "source_sha256": "7b84dbba285c864fbdf56d4747e55d9784b362e968959716cc130b37f6f2848c",
+  "source_bytes": 1023,
+  "key": "tester_gram",
+  "mode": "stub",
+  "exit_code": 0,
+  "elapsed_seconds": 65.925978916,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--root=./harness/submission/partition/staged",
+    "-o",
+    "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TesterGram_program_stops.olean",
+    "./harness/submission/partition/staged/Theorems/Thm_ExpandingCodes_Computation_TesterGram_program_stops.lean"
+  ],
+  "output": "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TesterGram_program_stops.olean"
+}

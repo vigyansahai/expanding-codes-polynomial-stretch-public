@@ -1,0 +1,77 @@
+{
+  "task": "binary_field_model",
+  "status": "complete mathematical/executable data layer: all three public modules compile and audited theorems use only standard Lean axioms; physical TapeProgram refinement remains external",
+  "owner": "/root/binary_field_model",
+  "owned_public_files": [
+    "ExpandingCodes/Computation/BinaryPolynomial.lean",
+    "ExpandingCodes/Computation/BinaryField.lean",
+    "ExpandingCodes/Construction/BinaryGeometry.lean"
+  ],
+  "draft_directory": "harness/attempts/binary_field_model",
+  "exact_local_goal": "Provide an explicit coherent Fin (2^ell) binary coefficient representation of a degree-ell finite field, a bounded decidable least irreducible-polynomial search, and executable coefficient arithmetic proved to agree with the AdjoinRoot field. These are provisional implementation interfaces, not mission canonical definitions.",
+  "checked_results": [
+    "Explicit indexEquiv uses Mathlib finFunctionFinEquiv inverse division/remainder, not arbitrary finite equivalence choice.",
+    "Executable candidateCoefficient and productCoefficient finite convolution.",
+    "FactorFree tests monic factor pairs of degrees k and ell-k, for 1 <= k <= ell/2, with all ell+1 product coefficients compared. This is equivalent to irreducibility.",
+    "Each factor degree has exactly 2^k * 2^(ell-k) = q factor pairs. The full q-candidate selection is polynomial in q.",
+    "Monic irreducible degree-ell existence from GaloisField 2 ell, finite primitive-element theorem, and minpoly degree=finrank.",
+    "selectedIndex is the executable minimum of the finite decidable successful-candidate set; no classical data choice.",
+    "BinaryField public module checks: Carrier=AdjoinRoot modulus; explicit decode and canonical-remainder encode are inverse; Fin q elements equivalence and field cardinality; coefficient addition correctness.",
+    "Executable quotient/remainder search, multiply_remainder, decode_multiply, inverse, multiply_inverse, decode_inverse, index-level add/multiply/inverse semantic bridges all compile without holes.",
+    "Proved multiplicationCandidateCount=q^3, multiplicationCoefficientBudget <= 64*(q+1)^5, and inverseCoefficientBudget <= 67*(q+1)^6. These are explicit proposed coefficient-loop budgets for later source refinement. The numeric bounds are checked; they are not yet execution-time theorems for TapeProgram and exclude tape movement, index/bit conversion, and precomputed-modulus construction.",
+    "Explicit Bool <-> ZMod2 and length-ell bit-vector equivalences, with xor/addition and and/multiplication correctness.",
+    "binaryGeometry d n uses this same field element equivalence and explicit base-q row tuple enumeration; no arbitrary cardinality-choice enumeration.",
+    "Concrete executable evaluations: selectedIndex degrees 1,2,3,4 gives 0,3,3,3; GF(8) encoded 2*4=3 and inverse(2)=5."
+  ],
+  "source_locations": [
+    "Mathlib/Algebra/BigOperators/Fin.lean:580 finFunctionFinEquiv",
+    "Mathlib/Algebra/Polynomial/Monic.lean:337 Monic.irreducible_iff_natDegree'",
+    "Mathlib/FieldTheory/PrimitiveElement.lean:56 Field.exists_primitive_element_of_finite_top",
+    "Mathlib/FieldTheory/PrimitiveElement.lean:372 Field.primitive_element_iff_minpoly_natDegree_eq",
+    "Mathlib/FieldTheory/Finite/GaloisField.lean:80 GaloisField.finrank",
+    "Mathlib/RingTheory/AdjoinRoot.lean:569 modByMonicHom and mk_leftInverse"
+  ],
+  "failed_approaches": [
+    "Direct decidability using Polynomial.modByMonic is not executable: Mathlib Polynomial semiring and remainder definitions are noncomputable. Kept Polynomial only as semantic interpretation and used explicit finite ZMod2 buffers for executable tests."
+  ],
+  "multiplication_route": {
+    "runtime_data": "Fin ell -> ZMod2 input and remainder buffers; Fin (2ell) -> ZMod2 quotient buffer. ZMod2 is explicitly Fin2, so physical tape storage is one bit per coefficient.",
+    "test": "Finite coefficient convolution checks xy = r + modulus*s at all j : Fin (3ell+1). The full checked range covers modulus degree ell plus quotient degree below 2ell.",
+    "search": "q remainder candidates times q^2 quotient candidates = q^3 candidate pairs. Counters are bounded by q^3; arrays are not packed into exponentially large unary naturals.",
+    "semantic_existence": "Polynomial division is used only in the proof that a successful bounded pair exists; degree_divByMonic_le bounds the quotient below 2ell.",
+    "correctness": "div_modByMonic_unique identifies the returned remainder, and quotient evaluation proves field multiplication.",
+    "pending": "Actual TapeProgram implementation and source-step refinement; all arithmetic semantic bridges and loose coefficient budgets are checked."
+  },
+  "open_dependencies": [
+    "Actual TapeProgram source implementing the bounded coefficient algorithms and its source-step bounds.",
+    "Sampler/tester full programs and exact sampling law/rank correctness remain coordinator runtime obligations."
+  ],
+  "checks": [
+    "./tools/lake-serial env lean harness/attempts/binary_field_model/BinaryPolynomial.lean: pass",
+    "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Computation/BinaryPolynomial.olean ExpandingCodes/Computation/BinaryPolynomial.lean: pass",
+    "./tools/lake-serial env lean harness/attempts/binary_field_model/BinaryField.lean: complete arithmetic/budgets version pass",
+    "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Computation/BinaryField.olean ExpandingCodes/Computation/BinaryField.lean: complete arithmetic/budgets version pass and recompiled after additive Bool API update",
+    "./tools/lake-serial env lean harness/attempts/binary_field_model/BinaryGeometry.lean: pass",
+    "./tools/lake-serial env lean -o .lake/build/lib/lean/ExpandingCodes/Construction/BinaryGeometry.olean ExpandingCodes/Construction/BinaryGeometry.lean: pass",
+    "./tools/lake-serial env lean harness/attempts/binary_field_model/Audit.lean: pass, all printed dependency lists contained only propext/Classical.choice/Quot.sound; executable evaluations returned 0,3,3,3,3,5"
+  ],
+  "axiom_audit": {
+    "allowed_only": ["propext", "Classical.choice", "Quot.sound"],
+    "audited": [
+      "BinaryPolynomial.factorFree_iff_irreducible",
+      "BinaryPolynomial.modulus_irreducible",
+      "BinaryField.decode_encode",
+      "BinaryField.encode_decode",
+      "BinaryField.multiply_remainder",
+      "BinaryField.decode_multiply",
+      "BinaryField.decode_inverse",
+      "BinaryField.elements_multiplyIndex",
+      "BinaryField.multiplicationCoefficientBudget_le",
+      "BinaryField.inverseCoefficientBudget_le",
+      "binaryGeometry"
+    ],
+    "no_sorry": true,
+    "no_custom_axioms": true,
+    "lake_trace_refresh": "Pending central engine, as authorized by coordinator; direct public olean compiler checks and transitive axiom audits are complete."
+  }
+}

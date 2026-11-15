@@ -1,0 +1,3 @@
+'ExpandingCodes.PolynomialStretch.binary_tester_implementation_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

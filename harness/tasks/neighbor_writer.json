@@ -1,0 +1,33 @@
+{
+  "owner": "root coordinator",
+  "status": "complete, full output/source/polynomial/final counter and caller/tape frames checked",
+  "source": "ExpandingCodes/Computation/NeighborWriter.lean",
+  "draft": "harness/attempts/neighbor_writer/NeighborWriter.lean",
+  "layout": "reg:(Fin8\u2295Fink)\u2192FinR injective. inl0=n,1=col,2=out,3=comparisonflag,4/5/6=comparison scratch,7=count; inr i=neighbor_i.",
+  "algorithms": [
+    "Actual77label preserving equality-marker via two actual unary comparisons and physical zero branches",
+    "Static finite scan of k allocated neighbor registers; output flag is membership, prior one preserved",
+    "Actual4label Boolean flag consumer/emitter, source2steps",
+    "Actual n-column counted loop, finite code depending only on k, emitting every column including padding",
+    "Actual15label initializer clears col/out and copies runtime n to count"
+  ],
+  "proofs": [
+    "marks/body exact source traces and states",
+    "loop_stops with runtime n and polynomial counter invariant",
+    "writeRow_stops actual initialized full source run",
+    "writeRow_output = oldoutput ++ List.ofFn j:Finn => decide(exists i,j.val=neighbor_i)",
+    "external register and physical tape/head frames",
+    "writeRowBound <= (161*k+25)*(M+1)^2"
+  ],
+  "limitations": [
+    "This writer assumes the k neighbor indices have already been computed into their unary registers; field/table evaluation remains sampler worker scope."
+  ],
+  "logs": [
+    "harness/attempts/neighbor_writer/check9.log",
+    "harness/attempts/neighbor_writer/check10.log",
+    "harness/attempts/neighbor_writer/check11.log",
+    "harness/attempts/neighbor_writer/public-full.log",
+    "harness/attempts/neighbor_writer/check12.log",
+    "harness/attempts/neighbor_writer/public-final.log"
+  ]
+}

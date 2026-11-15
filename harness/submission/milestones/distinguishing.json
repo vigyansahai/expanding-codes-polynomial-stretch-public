@@ -1,0 +1,43 @@
+{
+  "theorem_id": "3417ace9-afee-46d1-a19c-545d3168127b",
+  "theorem_name": "ExpandingCodes.PolynomialStretch.distinguishing",
+  "theorem_title": "Proposition 2.5 — arbitrary-error and Bernoulli-error distinguishing",
+  "status": "Open",
+  "formal_statement": "namespace ExpandingCodes.PolynomialStretch\n\nopen Filter\nopen scoped BigOperators\n/-- Proposition 2.5. The two exponential constants are instantiated from its proof. -/\ntheorem distinguishing (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2) :\n    ∀ᶠ n : ℕ in atTop, ∀ g : Geometry (dimension ε) n,\n      uniformProb (fun y : Word (rowCount (dimension ε) n) => rankTest ε g y = true) ≤\n        Real.exp (-(ε ^ 2 / 32) * rowCount (dimension ε) n) ∧\n      ∀ (s : Forms g.F (dimension ε) (arity ε))\n        (h : Hashes g.F (arity ε) (buckets ε n)) (x : Word n),\n        (∀ e : Word (rowCount (dimension ε) n),\n          (weight e : ℝ) ≤ (1 / 2 - ε) * rowCount (dimension ε) n →\n          rankTest ε g ((combined g s h).mulVec x + e) = true) ∧\n        (∑ e : Word (rowCount (dimension ε) n),\n          bernoulliWord (rowCount (dimension ε) n) (1 / 2 - ε) e *\n            (if rankTest ε g ((combined g s h).mulVec x + e) then (1 : ℝ) else 0)) ≥\n          1 - Real.exp (-(ε ^ 2 / 2) * rowCount (dimension ε) n) := by sorry\n\nend ExpandingCodes.PolynomialStretch\n",
+  "natural_language_statement": "Fix $0<\\varepsilon<1/2$ and the specified rank test $D$ of equation (5). For every sufficiently large $n$, every sampled $G$, every binary codeword $c$ in its column image and every binary error $e$ of weight at most $(1/2-\\varepsilon)m$,\n$$D(c+e)=1,\\qquad\\Pr[D(U_m)=1]\\le e^{-\\varepsilon^2m/32}.$$\nIn addition, for independent Bernoulli errors $e\\sim\\operatorname{Ber}(1/2-\\varepsilon)^m$,\n$$\\Pr[D(c+e)=1]\\ge1-e^{-\\varepsilon^2m/2}.$$\nThe bounds are uniform over all codewords and all sampler outcomes. No expansion-success event or error-independence premise appears in the arbitrary-error clause.\n\nThis is the full distinguishing assertion together with the additional independent-error conclusion. The positive exponential rates displayed here instantiate the asymptotic rates in the source proof.\n\nDifferences from the source:\n- encoding: one-based vectors, fixed finite fields and sufficiently large input size → zero-based finite indices, public field/row equivalences, and an eventual assertion before all outputs; reason: these are the same objects and the standing sufficiently-large-n convention; no sampler output is excluded\n- encoding: exp(−Ω_ε(m)) for uniform false acceptance and Bernoulli rejection → eventual bounds exp(−ε²m/32) and exp(−ε²m/2), respectively; reason: Lemma 2.4 and the displayed expectation bound allow an εm/8 rank deviation; bounded differences and the εm/2 binomial slack give these rates\n- encoding: c∈im G and e∼Ber(1/2−ε)^m → c=Gx for arbitrary x and a finite weighted sum over all binary errors; reason: the complete column image and the exact independent Bernoulli law are unchanged\n",
+  "created_at": "2026-11-08T19:12:59.791784+00:00",
+  "vote_count": 0,
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "preamble": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_ErasureModel\nset_option autoImplicit false\nopen scoped Classical",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 11 / PDF p. 12, Proposition 2.5.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "fe8d995d-ec5c-467b-bd2f-41a7e699d8fb",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-11-08T20:43:53.576432+00:00"
+    },
+    {
+      "audit_id": "46149a3c-21cf-4730-812c-aece1abc8fa0",
+      "reviewer_id": "[REDACTED_ACCOUNT]",
+      "reviewer_username": "[REDACTED_ACCOUNT]",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-11-08T20:43:53.821744+00:00"
+    }
+  ],
+  "readback": null
+}

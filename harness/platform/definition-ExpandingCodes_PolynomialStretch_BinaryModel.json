@@ -1,0 +1,24 @@
+{
+  "definition_id": "e22f7418-e525-4794-84bd-255aa3a15287",
+  "definition_name": "ExpandingCodes_PolynomialStretch_BinaryModel",
+  "definition_title": "Binary column codes, one-sided expansion and finite probabilities",
+  "natural_language_statement": "A binary generator is an $m\\times n$ matrix $G$ over $\\mathbb F_2$; its code consists of all column products $Gx$. No column-independence assumption is made. A word's weight is the number of its nonzero coordinates. For a row set $S$, let $\\Gamma_G(S)$ be the columns touched by those rows. The matrix is $(\\gamma,k,t)$-expanding when every row has weight exactly $k$ and\n$$|\\Gamma_G(S)|\\ge\\gamma k|S|\\quad\\text{for every }|S|\\le t.$$\nThe empty row set is included. Finite event probabilities sum the masses of the outcomes in the event. Uniform probability uses the uniform law on a nonempty finite type. For binary words of length $m$, the mass of an independent Bernoulli-$p$ word $e$ is $p^{|\\operatorname{supp}(e)|}(1-p)^{m-|\\operatorname{supp}(e)|}$.\n\nThese conventions supply the generator, graph and noise interface used throughout the mission. The published neighborhood and isolated left-expansion predicates are reused without their surrounding quantum-code assumptions.\n\n**Formalization Note** Indices start at zero. The published normalized row cutoff is $t/m$ when $m>0$; an empty row type has a vacuous expansion condition and row-weight condition. All theorem-level construction assertions hold eventually with $m>n\\ge2$. Bernoulli masses are used only at valid probabilities.\n",
+  "created_at": "2026-11-08T19:09:20.470439+00:00",
+  "vote_count": 0,
+  "definition": "import Mathlib\nimport Definitions.Def_QuantumExpander_Decoder_Setting\nset_option autoImplicit false\nopen scoped Classical\n\nnamespace ExpandingCodes.PolynomialStretch\n\nopen scoped BigOperators\nabbrev Bit := ZMod 2\nabbrev Word (m : ℕ) := Fin m → Bit\nabbrev Generator (m n : ℕ) := Matrix (Fin m) (Fin n) Bit\nnoncomputable def weight {I K : Type*} [Fintype I] [Zero K] (v : I → K) : ℕ := by\n  classical\n  exact (Finset.univ.filter fun i => v i ≠ 0).card\nnoncomputable def neighbors {I J : Type*} [Fintype I] [Fintype J]\n    (G : Matrix I J Bit) (S : Finset I) : Finset J := by\n  classical\n  exact QuantumExpander.Decoder.nbhdA (fun i j => G i j ≠ 0) S\nnoncomputable def RowWeight {I J : Type*} [Fintype J] (G : Matrix I J Bit) (k : ℕ) : Prop :=\n  ∀ i, weight (G i) = k\nnoncomputable def Expanding {I J : Type*} [Fintype I] [Fintype J]\n    (G : Matrix I J Bit) (γ : ℝ) (k : ℕ) (t : ℝ) : Prop := by\n  classical\n  exact RowWeight G k ∧\n    (if Fintype.card I = 0 then True else\n      QuantumExpander.Decoder.IsLeftExpanding (fun i j => G i j ≠ 0) k\n        (t / Fintype.card I) (1 - γ))\nnoncomputable def eventProb {Ω : Type*} [Fintype Ω] (P : PMF Ω) (E : Ω → Prop) : ℝ := by\n  classical\n  exact ∑ ω, if E ω then (P ω).toReal else 0\nnoncomputable def uniformProb {Ω : Type*} [Fintype Ω] [Nonempty Ω] (E : Ω → Prop) : ℝ :=\n  eventProb (PMF.uniformOfFintype Ω) E\nnoncomputable def bernoulliWord (m : ℕ) (p : ℝ) (v : Word m) : ℝ :=\n  p ^ weight v * (1 - p) ^ (m - weight v)\n\nend ExpandingCodes.PolynomialStretch\n",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 1 / PDF p. 2, §1, generator and expansion definitions; printed p. 2 / PDF p. 3, Bernoulli convention.",
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "created_by": "[REDACTED_ACCOUNT]",
+  "created_by_username": "mikedeng1",
+  "deprecated_at": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+}

@@ -1,0 +1,27 @@
+{
+  "ready_for_submission": true,
+  "path": "./harness/submission/Upload.lean",
+  "sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "bytes": 1789284,
+  "local_modules_inlined": 146,
+  "proof_compile_seconds": 369.65189003944397,
+  "proof_compile_peak_mb": 5604,
+  "audit_seconds": 31.78613591194153,
+  "exact_target_check": "example of exact target proposition := @solution",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "canonical_definition_sha256_checks": 10,
+  "original_sources_changed": false,
+  "packaging_edits": [
+    "local import commands blanked and modules topologically section-isolated",
+    "RankExpectation duplicate uniformProb_mono removed using sanctioned Stage2 exact UTF8-byte span",
+    "341 standalone #print axioms commands removed using Lean parser spans"
+  ],
+  "source_manifest": "harness/submission/flatten-manifest.json",
+  "edit_manifest": "harness/submission/upload-manifest.json",
+  "compiler_log": "harness/submission/upload-compile.log",
+  "audit_log": "harness/submission/upload-audit.log"
+}

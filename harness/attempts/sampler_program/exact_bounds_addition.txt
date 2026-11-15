@@ -1,0 +1,55 @@
+theorem scaleStore_bound_exact (src dst tmp : Fin R) (c M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) (hresult : s.reg dst+c*s.reg src≤M) :
+    ∀ i,(scaleStore src dst tmp c s).reg i≤M := by
+  exact setReg_bound _ _ 0 M (setReg_bound _ _ _ M hs hresult) (by omega)
+
+theorem formIndexStore_bound_exact (r : Fin 5 → Fin R) (c d j M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) (hmid : s.reg (r 0)+c*s.reg (r 1)≤M)
+    (hresult : d*(s.reg (r 0)+c*s.reg (r 1))+j≤M) :
+    ∀ i,(formIndexStore r c d j s).reg i≤M := by
+  exact setReg_bound _ _ 0 M
+    (setReg_bound _ _ _ M (setReg_bound _ _ _ M hs hmid) hresult) (by omega)
+
+theorem hornerStore_bound_exact (r : Fin 6 → Fin R) (M : ℕ) (s : TapeStore R B)
+    (hs : ∀ i,s.reg i≤M) (hresult : s.reg (r 1)*s.reg (r 0)+s.reg (r 2)≤M) :
+    ∀ i,(hornerStore r s).reg i≤M := by
+  unfold hornerStore
+  apply setReg_bound
+  · apply setReg_bound
+    · apply setReg_bound
+      · exact setReg_bound _ _ _ M hs (by omega)
+      · omega
+    · omega
+  · exact hresult
+
+theorem hashIndexStore_flat (r : Fin 8 → Fin R) (hr : Function.Injective r)
+    (i : ℕ) (s : TapeStore R B) :
+    hashIndexStore r i s=
+      ((((s.setReg (r 4) (s.reg (r 3)+s.reg (r 0)*(s.reg (r 2)+s.reg (r 0)*
+        (s.reg (r 1)+s.reg (r 0)*i)))).setReg (r 5) (s.reg (r 0)*(s.reg (r 2)+s.reg (r 0)*
+          (s.reg (r 1)+s.reg (r 0)*i)))).setReg (r 6) 0).setReg (r 7) 0) := by
+  unfold hashIndexStore hornerStore hashLayout
+  simp only [TapeStore.setReg]
+  congr 1
+  funext x
+  by_cases h₄ : x=r 4
+  · subst x; simp [Function.update,hr.eq_iff]; ring
+  by_cases h₅ : x=r 5
+  · subst x; simp [Function.update,hr.eq_iff]; ring
+  by_cases h₆ : x=r 6
+  · subst x; simp [Function.update,hr.eq_iff]
+  by_cases h₇ : x=r 7
+  · subst x; simp [Function.update,hr.eq_iff]
+  simp [Function.update,h₄,h₅,h₆,h₇]
+
+theorem hashIndexStore_bound_exact (r : Fin 8 → Fin R) (hr : Function.Injective r)
+    (i M : ℕ) (s : TapeStore R B) (hs : ∀ x,s.reg x≤M)
+    (hresult : s.reg (r 3)+s.reg (r 0)*(s.reg (r 2)+s.reg (r 0)*
+      (s.reg (r 1)+s.reg (r 0)*i))≤M) :
+    ∀ x,(hashIndexStore r i s).reg x≤M := by
+  rw [hashIndexStore_flat r hr]
+  exact setReg_bound _ _ 0 M (setReg_bound _ _ 0 M
+    (setReg_bound _ _ _ M (setReg_bound _ _ _ M hs hresult) (by omega)) (by omega)) (by omega)
+
+#print axioms hashIndexStore_bound_exact
+#print axioms hornerStore_bound_exact

@@ -1,0 +1,31 @@
+{
+  "name": "Solutions.Sol_binary_tester_implementation_source",
+  "isModule": false,
+  "options": {
+    "autoImplicit": false
+  },
+  "plugins": [],
+  "dynlibs": [],
+  "importArts": {
+    "Theorems.Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_GaussianDriver_rankProgram_stops_canonical.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TapeCompiler_compile_halts.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_Computation_TesterFrontend_program_stops": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TesterFrontend_program_stops.olean"
+      ]
+    ],
+    "Theorems.Thm_ExpandingCodes_Computation_TesterGram_program_stops": [
+      [
+        "./harness/submission/partition/statement-cache/Theorems/Thm_ExpandingCodes_Computation_TesterGram_program_stops.olean"
+      ]
+    ]
+  }
+}

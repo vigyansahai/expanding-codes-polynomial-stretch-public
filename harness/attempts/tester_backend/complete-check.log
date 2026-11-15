@@ -1,0 +1,30 @@
+harness/attempts/tester_backend/TesterBackendComplete.lean:13:53: error: Application type mismatch: The argument
+  h
+has type
+  registers i = registers j
+but is expected to have type
+  i = j
+in the application
+  congrArg Fin.val h
+harness/attempts/tester_backend/TesterBackendComplete.lean:15:53: error: Application type mismatch: The argument
+  h
+has type
+  buffers i = buffers j
+but is expected to have type
+  i = j
+in the application
+  congrArg Fin.val h
+harness/attempts/tester_backend/TesterBackendComplete.lean:65:22: error(lean.unknownIdentifier): Unknown identifier `Function.update_same`
+harness/attempts/tester_backend/TesterBackendComplete.lean:77:4: error: Type mismatch: After simplification, term
+  hc
+ has type
+  @Eq ℕ ((result d).reg 51) (m * m)
+but is expected to have type
+  @Eq ℕ ((project (result d)).reg 51) (m * m)
+'ExpandingCodes.Computation.TesterBackendComplete.program_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.TesterBackendComplete.timeBound_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

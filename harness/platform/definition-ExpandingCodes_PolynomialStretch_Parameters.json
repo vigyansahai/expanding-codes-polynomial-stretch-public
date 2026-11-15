@@ -1,0 +1,24 @@
+{
+  "definition_id": "6fdf94a9-373d-4fa5-a94d-9b422a52b5c9",
+  "definition_name": "ExpandingCodes_PolynomialStretch_Parameters",
+  "definition_title": "Construction parameters, extension fields and public row order",
+  "natural_language_statement": "Fix a real construction parameter $\\varepsilon\\in(0,1/2)$ and an integer input size $n$. Define\n$$d=2\\lceil512\\varepsilon^{-2}\\rceil,\\qquad k=\\lceil4d^2\\varepsilon^{-2}\\rceil,\\qquad q=2^{\\max(1,\\lceil\\log_2(n^{2d})\\rceil)},\\qquad m=q^d.$$\nThe bucket count $b$ is the largest power of two at most $\\lfloor n/k\\rfloor$ once $n\\ge k$. A geometry consists of a genuine finite field $F$ of characteristic two, an enumeration identifying its elements with $\\{0,\\ldots,q-1\\}$, and a public bijection between the $m$ row indices and $F^d$. The first $k$ enumerated elements give the distinct fixed layer labels $\\alpha_i$ once $q\\ge k$.\n\nThis is the deterministic data of the construction. It supplies no rank bound, expansion assertion, algorithm or correctness premise.\n\n**Formalization Note** Natural logarithms to base two are rounded by integer `clog` and `log`; the displayed exponent description is used for $n\\ge2$. Small sizes use $q\\ge2$, $b\\ge1$ and zero as a label outside the enumeration. Every theorem that needs valid construction parameters asserts its property for sufficiently large $n$. The field and row enumerations are chosen before sampler randomness; effective choices are required by the implementation conclusion.\n",
+  "created_at": "2026-11-08T19:09:45.511995+00:00",
+  "vote_count": 0,
+  "definition": "import Mathlib\nimport Definitions.Def_ExpandingCodes_PolynomialStretch_BinaryModel\nset_option autoImplicit false\nopen scoped Classical\n\nnamespace ExpandingCodes.PolynomialStretch\n\nnoncomputable def dimension (ε : ℝ) : ℕ := 2 * ⌈512 * ε⁻¹ ^ 2⌉₊\nnoncomputable def arity (ε : ℝ) : ℕ := ⌈4 * (dimension ε : ℝ) ^ 2 * ε⁻¹ ^ 2⌉₊\ndef fieldExponent (d n : ℕ) : ℕ := max 1 (Nat.clog 2 (n ^ (2 * d)))\ndef fieldSize (d n : ℕ) : ℕ := 2 ^ fieldExponent d n\ndef rowCount (d n : ℕ) : ℕ := fieldSize d n ^ d\nnoncomputable def buckets (ε : ℝ) (n : ℕ) : ℕ := 2 ^ Nat.log 2 (n / arity ε)\n/-- Finite field and public index choices; no algorithmic or expansion guarantee is a field. -/\nstructure Geometry (d n : ℕ) where\n  F : Type\n  field : Field F\n  finite : Fintype F\n  charTwo : CharP F 2\n  elements : Fin (fieldSize d n) ≃ F\n  rowOrder : Fin (rowCount d n) ≃ (Fin d → F)\nattribute [instance] Geometry.field Geometry.finite Geometry.charTwo\nnoncomputable def alpha {d n : ℕ} (g : Geometry d n) {k : ℕ} (i : Fin k) : g.F :=\n  if h : i.val < fieldSize d n then g.elements ⟨i.val, h⟩ else 0\n\nend ExpandingCodes.PolynomialStretch\n",
+  "source": "Isaac M Hair, Amit Sahai, Expanding Codes with Polynomial Stretch, STOC 2027 submission #824 (October 2026), printed p. 8 / PDF p. 9, §2.1, equations (1)–(2), fixed labels and row order.",
+  "tags": [
+    "coding-theory",
+    "expanding-codes",
+    "p2o-batch-stoc27a",
+    "p2o-gran-per-chapter",
+    "p2o-plan-paper",
+    "p2o-v1"
+  ],
+  "created_by": "[REDACTED_ACCOUNT]",
+  "created_by_username": "mikedeng1",
+  "deprecated_at": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+}

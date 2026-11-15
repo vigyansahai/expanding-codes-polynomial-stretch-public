@@ -1,0 +1,19 @@
+harness/attempts/gaussian_pivot/GaussianPivot.lean:77:2: error: failed to synthesize
+  Decidable (∀ (j : Fin 43), TapeProgram.preservesRegister 55 (coordinateStep.code j))
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+harness/attempts/gaussian_pivot/GaussianPivot.lean:125:4: error: Type mismatch: After simplification, term
+  hnumber
+ has type
+  Nat.ofDigits (base.reg 40)
+      (SamplerOdometer.readings [(43, 52), (53, 54)] (SamplerOdometer.nextStore 40 59 [(43, 52), (53, 54)] s)) =
+    (base.reg 2 - n) % base.reg 40 ^ 2
+but is expected to have type
+  Nat.ofDigits (base.reg 40)
+      (SamplerOdometer.readings [(43, 52), (53, 54)] (SamplerOdometer.nextStore 40 59 [(43, 52), (53, 54)] s)) =
+    base.reg 2 - n
+'ExpandingCodes.Computation.GaussianPivot.invertPivot_stops' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExpandingCodes.Computation.GaussianPivot.coordinateLoop_stops' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,29 @@
+{
+  "created_at": 1794697027.134455,
+  "theorem_id": "35a9bc65-151f-4a09-baa1-2c28821d6cd3",
+  "proof_path": "harness/submission/Upload.lean",
+  "proof_sha256": "4624ce0405f3ef91e6bef78156cfbcb968ff48c58efc69ce42d8e05d44990dcc",
+  "proof_bytes": 1789284,
+  "phase": "submitted",
+  "proof_type": "prove",
+  "http_status": 200,
+  "response": {
+    "submission_id": "ba3d85cd-48ba-4e68-ad41-de4ba3fd5a5b",
+    "status": "PENDING",
+    "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+    "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+  },
+  "submission_id": "ba3d85cd-48ba-4e68-ad41-de4ba3fd5a5b",
+  "last_poll_at": 1794697046.107241,
+  "last_http_status": 200,
+  "last_verdict": {
+    "id": "ba3d85cd-48ba-4e68-ad41-de4ba3fd5a5b",
+    "theorem_id": "35a9bc65-151f-4a09-baa1-2c28821d6cd3",
+    "user_id": "[REDACTED_ACCOUNT]",
+    "status": "FAILED",
+    "error_message": "Submission rejected by the soundness guard:\ncould not lex the submitted code: Source too large for token scanner: 1789284 bytes (max 1048576)",
+    "file_path": "35a9bc65-151f-4a09-baa1-2c28821d6cd3/[REDACTED_ACCOUNT]/ba3d85cd-48ba-4e68-ad41-de4ba3fd5a5b.lean",
+    "created_at": "2026-11-14T22:57:08.12739+00:00",
+    "updated_at": "2026-11-14T22:57:09.821867+00:00"
+  }
+}

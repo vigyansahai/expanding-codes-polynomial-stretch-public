@@ -1,0 +1,53 @@
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:25:14: error: `simp` made no progress
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:25:20: warning: This simp argument is unused:
+  bitEquiv_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [bitEquiv_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:32:14: error: `simp` made no progress
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:32:20: warning: This simp argument is unused:
+  bitEquiv_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [bitEquiv_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:38:24: error: unsolved goals
+case «0»
+ell : ℕ
+a : Fin (2 ^ ell)
+hu : IsUnit (poly ell a)
+hc : IsUnit 0
+hcp : C 0 = poly ell a
+hcn : 0 ≠ 0
+⊢ 0 = 1
+
+case «1»
+ell : ℕ
+a : Fin (2 ^ ell)
+hu : IsUnit (poly ell a)
+hc : IsUnit 1
+hcp : C 1 = poly ell a
+hcn : 1 ≠ 0
+⊢ 1 = 1
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:99:30: error(lean.invalidField): Invalid field `natDegree_pos_of_not_isUnit_of_dvd_monic`: The environment does not contain `Eq.natDegree_pos_of_not_isUnit_of_dvd_monic`, so it is not possible to project the field `natDegree_pos_of_not_isUnit_of_dvd_monic` from an expression
+  candidate_monic ell p
+of type
+  (candidate ell p).leadingCoeff = 1
+harness/attempts/raw_irreducibility/RawIrreducibility.lean:101:30: error(lean.invalidField): Invalid field `natDegree_pos_of_not_isUnit_of_dvd_monic`: The environment does not contain `Eq.natDegree_pos_of_not_isUnit_of_dvd_monic`, so it is not possible to project the field `natDegree_pos_of_not_isUnit_of_dvd_monic` from an expression
+  candidate_monic ell p
+of type
+  (candidate ell p).leadingCoeff = 1
+'ExpandingCodes.Computation.RawIrreducibility.factorMatches_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.RawIrreducibility.factorFree_iff_canonical' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'ExpandingCodes.Computation.RawIrreducibility.selectedIndex_factorFree' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

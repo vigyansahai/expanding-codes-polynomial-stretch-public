@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 72.985169584,
+  "command": [
+    "./tools/lake-serial",
+    "env",
+    "lean",
+    "--setup=harness/submission/runtime/tester-closed-audit.setup.json",
+    "harness/submission/runtime/TesterClosedAudit.lean"
+  ]
+}

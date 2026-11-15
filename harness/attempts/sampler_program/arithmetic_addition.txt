@@ -1,0 +1,121 @@
+/-- Shared physical field workspace occupies 0..26. External operands are27,28
+and output29. Addition remaps its preserved second-input register directly to
+external operand28, leaving the multiplication modulus in register3 untouched. -/
+def fieldLayout (r : Fin 30 → Fin R) (i : Fin 27) : Fin R :=
+  r ⟨i.val,by omega⟩
+
+def additionLayout (r : Fin 30 → Fin R) (i : Fin 27) : Fin R :=
+  if i=3 then r 28 else fieldLayout r i
+
+theorem fieldLayout_injective (r : Fin 30 → Fin R) (hr : Function.Injective r) :
+    Function.Injective (fieldLayout r) := by
+  intro i j h
+  have hh := congrArg Fin.val (hr h)
+  exact Fin.ext hh
+
+theorem additionLayout_injective (r : Fin 30 → Fin R) (hr : Function.Injective r) :
+    Function.Injective (additionLayout r) := by
+  intro i j h
+  by_cases hi : i=3 <;> by_cases hj : j=3
+  · exact hi.trans hj.symm
+  · simp only [additionLayout,if_pos hi,if_neg hj] at h
+    have hh := congrArg Fin.val (hr h)
+    simp only [fieldLayout,Fin.val_mk] at hh
+    have := j.isLt
+    omega
+  · simp only [additionLayout,if_neg hi,if_pos hj] at h
+    have hh := congrArg Fin.val (hr h)
+    simp only [fieldLayout,Fin.val_mk] at hh
+    have := i.isLt
+    omega
+  · simp only [additionLayout,if_neg hi,if_neg hj] at h
+    exact fieldLayout_injective r hr h
+
+/-- Actual finite field addition into an external register. Runtime field size,
+bit length and polynomial modulus never occur in this source code table. -/
+def addFrom (r : Fin 30 → Fin R) : TapeProgram R B 387 :=
+  TapeProgram.seq (TapeProgram.seq (TapeMacros.copy (r 27) (r 0) (r 2))
+    (SourceFieldArithmetic.addition (additionLayout r))) (TapeMacros.copy (r 20) (r 29) (r 2))
+
+theorem addFrom_stops (r : Fin 30 → Fin R) (hr : Function.Injective r)
+    (inp : Inputs) (ell : ℕ) (a b : Fin (2^ell))
+    (M : ℕ) (hM : 1≤M) (s : TapeStore R B) (hs : ∀ j,s.reg j≤M)
+    (ha : s.reg (r 27)=a.val) (hb : s.reg (r 28)=b.val)
+    (hN : s.reg (r 19)=3*ell+1) (hq : s.reg (r 23)=2^ell) :
+    ∃ t e, t≤3100*(M+1)^5 ∧
+      (addFrom r).Stops inp (s.toCfg (addFrom (B := B) r).entry) t e ∧
+      e.reg (r 29)=(ExpandingCodes.PolynomialStretch.BinaryField.addIndex ell a b).val ∧
+      (∀ i : Fin 30,i=3 ∨ i=19 ∨ i=23 ∨ i=24 ∨ i=27 ∨ i=28 → e.reg (r i)=s.reg (r i)) ∧
+      (∀ j,(∀ i : Fin 30,j≠r i) → e.reg j=s.reg j) ∧
+      (∀ j,e.reg j≤M) ∧ FieldConvolution.tapeData e.store=FieldConvolution.tapeData s := by
+  obtain ⟨u,c,hu,hc,hcs,hcb⟩ := copy_stops_bound (r 27) (r 0) (r 2)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M s hs
+  have hcval (i : Fin 30) : c.reg (r i)=if i=0 then s.reg (r 27) else if i=2 then 0 else s.reg (r i) := by
+    change c.store.reg (r i)=_
+    rw [hcs]
+    simp [reg_layout r hr]
+    split <;> split <;> simp_all
+  obtain ⟨v,d,hv,hd,hds,hdv,hdi,hdo,hdb,hdt⟩ := SourceFieldArithmetic.addition_stops
+    (additionLayout r) (additionLayout_injective r hr) inp ell a b M hM c.store hcb
+    (by simpa [additionLayout,fieldLayout,hcval] using ha)
+    (by simpa [additionLayout,fieldLayout,hcval] using hb)
+    (by simpa [additionLayout,fieldLayout,hcval] using hN)
+    (by simpa [additionLayout,fieldLayout,hcval] using hq)
+  obtain ⟨w,e,hw,he,hes,heb⟩ := copy_stops_bound (r 20) (r 29) (r 2)
+    (hr.ne (by decide)) (hr.ne (by decide)) (hr.ne (by decide)) inp M d.store hdb
+  have hall := (hc.seq hd).seq he
+  have hd20 : d.reg (r 20)=(ExpandingCodes.PolynomialStretch.BinaryField.addIndex ell a b).val := by
+    simpa [additionLayout,fieldLayout] using hdv
+  have heval (i : Fin 30) : e.reg (r i)=if i=29 then d.reg (r 20) else if i=2 then 0 else d.reg (r i) := by
+    change e.store.reg (r i)=_
+    rw [hes]
+    simp [reg_layout r hr]
+    split <;> split <;> simp_all
+  have houtside (i : Fin 30) (hi : i=3 ∨ i=27) :
+      ∀ j : Fin 27,r i≠additionLayout r j := by
+    intro j hj
+    by_cases h3 : j=3
+    · rw [additionLayout,if_pos h3] at hj
+      have hval := congrArg Fin.val (hr hj)
+      rcases hi with rfl|rfl <;> simp at hval
+    · rw [additionLayout,if_neg h3] at hj
+      have hval := congrArg Fin.val (hr hj)
+      rcases hi with rfl|rfl
+      · have heq : j=3 := Fin.ext (by simpa [fieldLayout] using hval.symm)
+        exact h3 heq
+      · have := j.isLt
+        simp only [fieldLayout,Fin.val_mk] at hval
+        omega
+  refine ⟨u+1+v+1+w,_,?_,hall,?_,?_,?_,heb,?_⟩
+  · have hp : M+1≤(M+1)^5 := Nat.le_pow (by omega)
+    omega
+  · rw [heval]; simp [hd20]
+  · intro i hi
+    rcases hi with rfl|rfl|rfl|rfl|rfl|rfl
+    · rw [heval]; simp only [show (3:Fin 30)≠29 by decide,show (3:Fin 30)≠2 by decide,if_false]
+      rw [hdo (r 3) (houtside 3 (Or.inl rfl)),hcval]; rfl
+    · have hh := hdi 19 (by decide) (by decide)
+      simpa [heval,additionLayout,fieldLayout,hcval] using hh
+    · have hh := hdi 23 (by decide) (by decide)
+      simpa [heval,additionLayout,fieldLayout,hcval] using hh
+    · have hh := hdi 24 (by decide) (by decide)
+      simpa [heval,additionLayout,fieldLayout,hcval] using hh
+    · rw [heval]; simp only [show (27:Fin 30)≠29 by decide,show (27:Fin 30)≠2 by decide,if_false]
+      rw [hdo (r 27) (houtside 27 (Or.inr rfl)),hcval]; rfl
+    · have hh := hdi 3 (by decide) (by decide)
+      simpa [heval,additionLayout,fieldLayout,hcval] using hh
+  · intro j hj
+    change e.store.reg j=_
+    rw [hes]
+    simp only [TapeStore.setReg,Function.update_of_ne (hj 2),Function.update_of_ne (hj 29)]
+    rw [hdo j (by intro i; by_cases hi : i=3
+                    · simpa [additionLayout,hi] using hj 28
+                    · simpa [additionLayout,hi,fieldLayout] using hj ⟨i.val,by omega⟩)]
+    change c.store.reg j=_
+    rw [hcs]
+    simp [TapeStore.setReg,hj]
+  · change FieldConvolution.tapeData e.store=_
+    rw [hes]
+    simpa only [FieldConvolution.tapeData_setReg,hcs,FieldConvolution.tapeData_setReg] using hdt
+
+#print axioms addFrom_stops
